@@ -28,6 +28,12 @@ class BaseViewController: UIViewController {
         label.text = appLabel.name
         self.view.addSubview(label)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //ここでCurrentIDを設定
+        AppLabel.currentID = appLabel.idNumber
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

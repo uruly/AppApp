@@ -13,6 +13,7 @@ class BasePageViewController: UIPageViewController {
     
     var isInfinity = false //無限スクロールにするかどうか
     var appLabel:AppLabel!
+    var selectionBar:SelectionBar!
     
     override init(transitionStyle style: UIPageViewControllerTransitionStyle, navigationOrientation: UIPageViewControllerNavigationOrientation, options: [String : Any]? = nil) {
         super.init(transitionStyle:.scroll,navigationOrientation:.horizontal,options:options)
@@ -24,6 +25,8 @@ class BasePageViewController: UIPageViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let width = self.view.frame.width
+        let height = self.view.frame.height
         self.view.backgroundColor = UIColor.purple
         appLabel = AppLabel()
         print(appLabel.array)
@@ -35,6 +38,13 @@ class BasePageViewController: UIPageViewController {
         
         let scrollView = self.view.subviews.flatMap { $0 as? UIScrollView }.first
         scrollView?.delegate = self
+        
+        let navigationBarHeight = self.navigationController?.navigationBar.frame.maxY ?? 56
+        print(navigationBarHeight)
+        //セレクションバーを配置
+        selectionBar = SelectionBar(frame:CGRect(x:0,y:navigationBarHeight,width:width,height:65))
+        self.view.addSubview(selectionBar)
+        
     }
 
     func getBase(appLabel:AppLabelData) -> BaseViewController {

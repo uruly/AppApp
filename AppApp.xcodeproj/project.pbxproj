@@ -20,6 +20,9 @@
 		667ECE511FC382C7009233DE /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 667ECE501FC382C7009233DE /* RealmSwift.framework */; };
 		667ECE571FC3836C009233DE /* AppLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE561FC3836C009233DE /* AppLabel.swift */; };
 		667ECE591FC388B9009233DE /* UIColor+AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE581FC388B9009233DE /* UIColor+AppColor.swift */; };
+		667ECE5B1FC3958D009233DE /* SelectionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE5A1FC3958D009233DE /* SelectionBar.swift */; };
+		667ECE5F1FC395C2009233DE /* SelectionBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE5D1FC395C2009233DE /* SelectionBarCell.swift */; };
+		667ECE601FC395C2009233DE /* SelectionBarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 667ECE5E1FC395C2009233DE /* SelectionBarCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +62,9 @@
 		667ECE501FC382C7009233DE /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		667ECE561FC3836C009233DE /* AppLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLabel.swift; sourceTree = "<group>"; };
 		667ECE581FC388B9009233DE /* UIColor+AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+AppColor.swift"; sourceTree = "<group>"; };
+		667ECE5A1FC3958D009233DE /* SelectionBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionBar.swift; sourceTree = "<group>"; };
+		667ECE5D1FC395C2009233DE /* SelectionBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionBarCell.swift; sourceTree = "<group>"; };
+		667ECE5E1FC395C2009233DE /* SelectionBarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectionBarCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +123,7 @@
 				667ECE481FC368BF009233DE /* BasePageViewController.swift */,
 				667ECE4A1FC3690E009233DE /* BaseViewController.swift */,
 				667ECE561FC3836C009233DE /* AppLabel.swift */,
+				667ECE5C1FC39594009233DE /* SelectionBar */,
 				667ECE581FC388B9009233DE /* UIColor+AppColor.swift */,
 				667ECE1C1FC36784009233DE /* Main.storyboard */,
 				667ECE1F1FC36784009233DE /* Assets.xcassets */,
@@ -151,6 +158,16 @@
 				667ECE4E1FC382B9009233DE /* Realm.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		667ECE5C1FC39594009233DE /* SelectionBar */ = {
+			isa = PBXGroup;
+			children = (
+				667ECE5A1FC3958D009233DE /* SelectionBar.swift */,
+				667ECE5D1FC395C2009233DE /* SelectionBarCell.swift */,
+				667ECE5E1FC395C2009233DE /* SelectionBarCell.xib */,
+			);
+			path = SelectionBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +278,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				667ECE601FC395C2009233DE /* SelectionBarCell.xib in Resources */,
 				667ECE231FC36784009233DE /* LaunchScreen.storyboard in Resources */,
 				667ECE201FC36784009233DE /* Assets.xcassets in Resources */,
 				667ECE1E1FC36784009233DE /* Main.storyboard in Resources */,
@@ -310,8 +328,10 @@
 				667ECE4B1FC3690E009233DE /* BaseViewController.swift in Sources */,
 				667ECE471FC36850009233DE /* BaseNavigationViewController.swift in Sources */,
 				667ECE591FC388B9009233DE /* UIColor+AppColor.swift in Sources */,
+				667ECE5F1FC395C2009233DE /* SelectionBarCell.swift in Sources */,
 				667ECE491FC368BF009233DE /* BasePageViewController.swift in Sources */,
 				667ECE191FC36784009233DE /* AppDelegate.swift in Sources */,
+				667ECE5B1FC3958D009233DE /* SelectionBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

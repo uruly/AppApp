@@ -36,7 +36,7 @@ class AppLabel {
     var array:[AppLabelData] = []
     
     //現在のラベル
-    static var currentID:String?
+    static var currentID:Int?
     
     init(){
         self.readLabelData()
