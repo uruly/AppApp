@@ -18,6 +18,8 @@
 		667ECE4B1FC3690E009233DE /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE4A1FC3690E009233DE /* BaseViewController.swift */; };
 		667ECE4F1FC382B9009233DE /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 667ECE4E1FC382B9009233DE /* Realm.framework */; };
 		667ECE511FC382C7009233DE /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 667ECE501FC382C7009233DE /* RealmSwift.framework */; };
+		667ECE571FC3836C009233DE /* AppLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE561FC3836C009233DE /* AppLabel.swift */; };
+		667ECE591FC388B9009233DE /* UIColor+AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE581FC388B9009233DE /* UIColor+AppColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		667ECE4A1FC3690E009233DE /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		667ECE4E1FC382B9009233DE /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		667ECE501FC382C7009233DE /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		667ECE561FC3836C009233DE /* AppLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLabel.swift; sourceTree = "<group>"; };
+		667ECE581FC388B9009233DE /* UIColor+AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+AppColor.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +116,8 @@
 				667ECE461FC36850009233DE /* BaseNavigationViewController.swift */,
 				667ECE481FC368BF009233DE /* BasePageViewController.swift */,
 				667ECE4A1FC3690E009233DE /* BaseViewController.swift */,
+				667ECE561FC3836C009233DE /* AppLabel.swift */,
+				667ECE581FC388B9009233DE /* UIColor+AppColor.swift */,
 				667ECE1C1FC36784009233DE /* Main.storyboard */,
 				667ECE1F1FC36784009233DE /* Assets.xcassets */,
 				667ECE211FC36784009233DE /* LaunchScreen.storyboard */,
@@ -300,8 +306,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				667ECE571FC3836C009233DE /* AppLabel.swift in Sources */,
 				667ECE4B1FC3690E009233DE /* BaseViewController.swift in Sources */,
 				667ECE471FC36850009233DE /* BaseNavigationViewController.swift in Sources */,
+				667ECE591FC388B9009233DE /* UIColor+AppColor.swift in Sources */,
 				667ECE491FC368BF009233DE /* BasePageViewController.swift in Sources */,
 				667ECE191FC36784009233DE /* AppDelegate.swift in Sources */,
 			);

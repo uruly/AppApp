@@ -11,10 +11,22 @@ import UIKit
 
 class BaseViewController: UIViewController {
 
+    var appLabel:AppLabelData!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.cyan
+        
+        let width = self.view.frame.width
+        let height = self.view.frame.height
+        
+        self.view.backgroundColor = appLabel.color
 
+        //とりあえず仮のラベル
+        let label = UILabel()
+        label.frame = CGRect(x:0,y:0,width:100,height:50)
+        label.center = CGPoint(x:width / 2,y:height / 2)
+        label.text = appLabel.name
+        self.view.addSubview(label)
     }
 
     override func didReceiveMemoryWarning() {

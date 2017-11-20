@@ -12,6 +12,7 @@ import UIKit
 class BasePageViewController: UIPageViewController {
     
     var isInfinity = false //無限スクロールにするかどうか
+    var appLabel:AppLabel!
     
     override init(transitionStyle style: UIPageViewControllerTransitionStyle, navigationOrientation: UIPageViewControllerNavigationOrientation, options: [String : Any]? = nil) {
         super.init(transitionStyle:.scroll,navigationOrientation:.horizontal,options:options)
@@ -24,8 +25,11 @@ class BasePageViewController: UIPageViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.purple
-        
-        self.setViewControllers([getBase()], direction: .forward, animated: true, completion: nil)
+        appLabel = AppLabel()
+        print(appLabel.array)
+        if appLabel.array.count > 0 {
+            self.setViewControllers([getBase(appLabel: appLabel.array[0])], direction: .forward, animated: true, completion: nil)
+        }
         self.dataSource = self
         self.delegate = self as? UIPageViewControllerDelegate
         
@@ -33,8 +37,9 @@ class BasePageViewController: UIPageViewController {
         scrollView?.delegate = self
     }
 
-    func getBase() -> BaseViewController {
+    func getBase(appLabel:AppLabelData) -> BaseViewController {
         let baseView = BaseViewController()
+        baseView.appLabel = appLabel
         return baseView
     }
     
