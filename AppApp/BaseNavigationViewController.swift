@@ -13,8 +13,9 @@ class BaseNavigationViewController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+        self.navigationBar.barTintColor = UIColor.white
+        let pageView = BasePageViewController()
+        self.viewControllers = [pageView]
     }
 
     override func didReceiveMemoryWarning() {
