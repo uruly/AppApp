@@ -15,6 +15,8 @@ class CreateAppLabelViewController: UIViewController {
         
         let width = self.view.frame.width
         let height = self.view.frame.height
+        self.view.backgroundColor = UIColor.backgroundGray()
+        
         //ナビゲーションバーを設置
         let naviBarHeight = UIApplication.shared.statusBarFrame.height + 47.0
         print(naviBarHeight)
@@ -26,6 +28,13 @@ class CreateAppLabelViewController: UIViewController {
         naviBarItem.rightBarButtonItem = saveBtn
         naviBar.items = [naviBarItem]
         self.view.addSubview(naviBar)
+        
+        //tableViewを設置
+        let tableView = CreateAppLabelTableView(frame: CGRect(x:0,y:naviBar.frame.maxY,
+                                                              width:width,
+                                                              height:height - naviBar.frame.maxY),
+                                                createAppLabelVC:self)
+        self.view.addSubview(tableView)
         
     }
     

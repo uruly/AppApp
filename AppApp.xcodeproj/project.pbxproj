@@ -26,6 +26,7 @@
 		667ECE621FC3A00E009233DE /* CreateAppLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE611FC3A00E009233DE /* CreateAppLabelView.swift */; };
 		667ECE641FC3A7BD009233DE /* CreateAppLabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE631FC3A7BD009233DE /* CreateAppLabelViewController.swift */; };
 		667ECE661FC3ADCA009233DE /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE651FC3ADCA009233DE /* CustomNavigationBar.swift */; };
+		667ECE691FC3B454009233DE /* CreateAppLabelTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE681FC3B454009233DE /* CreateAppLabelTableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		667ECE611FC3A00E009233DE /* CreateAppLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAppLabelView.swift; sourceTree = "<group>"; };
 		667ECE631FC3A7BD009233DE /* CreateAppLabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAppLabelViewController.swift; sourceTree = "<group>"; };
 		667ECE651FC3ADCA009233DE /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
+		667ECE681FC3B454009233DE /* CreateAppLabelTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAppLabelTableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,8 +133,7 @@
 				667ECE561FC3836C009233DE /* AppLabel.swift */,
 				667ECE5C1FC39594009233DE /* SelectionBar */,
 				667ECE581FC388B9009233DE /* UIColor+AppColor.swift */,
-				667ECE611FC3A00E009233DE /* CreateAppLabelView.swift */,
-				667ECE631FC3A7BD009233DE /* CreateAppLabelViewController.swift */,
+				667ECE671FC3AFC2009233DE /* CreateAppLabel */,
 				667ECE651FC3ADCA009233DE /* CustomNavigationBar.swift */,
 				667ECE1C1FC36784009233DE /* Main.storyboard */,
 				667ECE1F1FC36784009233DE /* Assets.xcassets */,
@@ -177,6 +178,16 @@
 				667ECE5E1FC395C2009233DE /* SelectionBarCell.xib */,
 			);
 			path = SelectionBar;
+			sourceTree = "<group>";
+		};
+		667ECE671FC3AFC2009233DE /* CreateAppLabel */ = {
+			isa = PBXGroup;
+			children = (
+				667ECE611FC3A00E009233DE /* CreateAppLabelView.swift */,
+				667ECE681FC3B454009233DE /* CreateAppLabelTableView.swift */,
+				667ECE631FC3A7BD009233DE /* CreateAppLabelViewController.swift */,
+			);
+			path = CreateAppLabel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -341,6 +352,7 @@
 				667ECE621FC3A00E009233DE /* CreateAppLabelView.swift in Sources */,
 				667ECE591FC388B9009233DE /* UIColor+AppColor.swift in Sources */,
 				667ECE5F1FC395C2009233DE /* SelectionBarCell.swift in Sources */,
+				667ECE691FC3B454009233DE /* CreateAppLabelTableView.swift in Sources */,
 				667ECE491FC368BF009233DE /* BasePageViewController.swift in Sources */,
 				667ECE191FC36784009233DE /* AppDelegate.swift in Sources */,
 				667ECE5B1FC3958D009233DE /* SelectionBar.swift in Sources */,
