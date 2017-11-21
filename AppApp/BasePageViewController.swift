@@ -9,6 +9,11 @@
 
 import UIKit
 
+protocol BasePageViewControllerDelegate {
+    var basePageVC:BasePageViewController { get }
+}
+
+
 class BasePageViewController: UIPageViewController {
     
     var isInfinity = true //無限スクロールにするかどうか
@@ -35,6 +40,14 @@ class BasePageViewController: UIPageViewController {
         self.view.backgroundColor = UIColor.backgroundGray()
         appLabel = AppLabel()
         print(appLabel.array)
+        
+        let navigationBarHeight = self.navigationController?.navigationBar.frame.maxY ?? 56
+        print(navigationBarHeight)
+        //セレクションバーを配置
+        selectionBar = SelectionBar(frame:CGRect(x:0,y:navigationBarHeight,width:width,height:65),pageVC:self)
+        self.view.addSubview(selectionBar)
+        
+        
         if appLabel.array.count > 0 {
             self.setViewControllers([getBase(appLabel: appLabel.array[0])], direction: .forward, animated: true, completion: nil)
         }
@@ -44,11 +57,7 @@ class BasePageViewController: UIPageViewController {
         let scrollView = self.view.subviews.flatMap { $0 as? UIScrollView }.first
         scrollView?.delegate = self
         
-        let navigationBarHeight = self.navigationController?.navigationBar.frame.maxY ?? 56
-        print(navigationBarHeight)
-        //セレクションバーを配置
-        selectionBar = SelectionBar(frame:CGRect(x:0,y:navigationBarHeight,width:width,height:65),pageVC:self)
-        self.view.addSubview(selectionBar)
+
         
     }
     

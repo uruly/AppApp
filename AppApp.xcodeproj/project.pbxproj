@@ -27,6 +27,9 @@
 		667ECE661FC3ADCA009233DE /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE651FC3ADCA009233DE /* CustomNavigationBar.swift */; };
 		667ECE691FC3B454009233DE /* CreateAppLabelTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE681FC3B454009233DE /* CreateAppLabelTableView.swift */; };
 		667ECE6B1FC3CB79009233DE /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE6A1FC3CB79009233DE /* ColorPicker.swift */; };
+		667ECE6D1FC41F7E009233DE /* AppCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE6C1FC41F7E009233DE /* AppCollectionView.swift */; };
+		667ECE711FC4206F009233DE /* AppCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE6F1FC4206F009233DE /* AppCollectionViewCell.swift */; };
+		667ECE721FC4206F009233DE /* AppCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 667ECE701FC4206F009233DE /* AppCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +76,9 @@
 		667ECE651FC3ADCA009233DE /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		667ECE681FC3B454009233DE /* CreateAppLabelTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAppLabelTableView.swift; sourceTree = "<group>"; };
 		667ECE6A1FC3CB79009233DE /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
+		667ECE6C1FC41F7E009233DE /* AppCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCollectionView.swift; sourceTree = "<group>"; };
+		667ECE6F1FC4206F009233DE /* AppCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCollectionViewCell.swift; sourceTree = "<group>"; };
+		667ECE701FC4206F009233DE /* AppCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +141,7 @@
 				667ECE581FC388B9009233DE /* UIColor+AppColor.swift */,
 				667ECE671FC3AFC2009233DE /* CreateAppLabel */,
 				667ECE651FC3ADCA009233DE /* CustomNavigationBar.swift */,
+				667ECE6E1FC41F83009233DE /* AppCollectionView */,
 				667ECE1C1FC36784009233DE /* Main.storyboard */,
 				667ECE1F1FC36784009233DE /* Assets.xcassets */,
 				667ECE211FC36784009233DE /* LaunchScreen.storyboard */,
@@ -188,6 +195,16 @@
 				667ECE6A1FC3CB79009233DE /* ColorPicker.swift */,
 			);
 			path = CreateAppLabel;
+			sourceTree = "<group>";
+		};
+		667ECE6E1FC41F83009233DE /* AppCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				667ECE6C1FC41F7E009233DE /* AppCollectionView.swift */,
+				667ECE6F1FC4206F009233DE /* AppCollectionViewCell.swift */,
+				667ECE701FC4206F009233DE /* AppCollectionViewCell.xib */,
+			);
+			path = AppCollectionView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -302,6 +319,7 @@
 				667ECE231FC36784009233DE /* LaunchScreen.storyboard in Resources */,
 				667ECE201FC36784009233DE /* Assets.xcassets in Resources */,
 				667ECE1E1FC36784009233DE /* Main.storyboard in Resources */,
+				667ECE721FC4206F009233DE /* AppCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,7 +372,9 @@
 				667ECE5F1FC395C2009233DE /* SelectionBarCell.swift in Sources */,
 				667ECE691FC3B454009233DE /* CreateAppLabelTableView.swift in Sources */,
 				667ECE491FC368BF009233DE /* BasePageViewController.swift in Sources */,
+				667ECE711FC4206F009233DE /* AppCollectionViewCell.swift in Sources */,
 				667ECE191FC36784009233DE /* AppDelegate.swift in Sources */,
+				667ECE6D1FC41F7E009233DE /* AppCollectionView.swift in Sources */,
 				667ECE5B1FC3958D009233DE /* SelectionBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -27,6 +27,16 @@ class BaseViewController: UIViewController {
         label.center = CGPoint(x:width / 2,y:height / 2)
         label.text = appLabel.name
         self.view.addSubview(label)
+        
+        //コレクションビューを配置
+        let topMargin = basePageVC.selectionBar.frame.maxY + 7  //+部分がラインになる
+        let collectionView = AppCollectionView(frame: CGRect(x:0,
+                                                             y:topMargin,
+                                                             width:width,
+                                                             height:height - topMargin ))
+        self.view.addSubview(collectionView)
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,4 +50,10 @@ class BaseViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+}
+
+extension BaseViewController: BasePageViewControllerDelegate {
+    var basePageVC:BasePageViewController {
+        return parent as! BasePageViewController
+    }
 }
