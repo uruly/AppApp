@@ -59,11 +59,8 @@ class BasePageViewController: UIPageViewController {
     }
     
     func createAppLabel(){
-        //新しくラベルを作る
-        let width = self.view.frame.width
-        let height = self.view.frame.height
-        let createLabelView = CreateAppLabelView(frame: CGRect(x:0,y:0,width:width,height:height))
-        self.view.addSubview(createLabelView)
+        let createLabelVC = CreateAppLabelViewController()
+        self.present(createLabelVC, animated: true, completion: nil)
     }
 }
 extension BasePageViewController: UIPageViewControllerDataSource {
