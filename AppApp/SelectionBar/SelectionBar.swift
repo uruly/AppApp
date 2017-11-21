@@ -28,6 +28,8 @@ class SelectionBar: UICollectionView {
     convenience init(frame:CGRect,pageVC:BasePageViewController){
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsetsMake(15,0,0,0)
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
         layout.estimatedItemSize = CGSize(width:100,height:50)
         layout.scrollDirection = .horizontal
         self.init(frame: frame, collectionViewLayout: layout)

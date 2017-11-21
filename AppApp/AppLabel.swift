@@ -35,19 +35,24 @@ struct AppLabelData {
 
 class AppLabel {
     //全てのラベルデータを入れる
-    var array:[AppLabelData] = []
+    var array:[AppLabelData] = []{
+        didSet{
+            AppLabel.count = array.count
+        }
+    }
     
     //現在のラベル
     static var currentID:Int?
+    static var count:Int?
     
     init(){
-        self.readLabelData()
+        self.reloadLabelData()
         if array.count == 0 {
             saveDefaultData()
         }
     }
     
-    func readLabelData(){
+    func reloadLabelData(){
         //ラベルを読み込む処理
         self.array = []
         let realm = try! Realm()
@@ -78,16 +83,25 @@ class AppLabel {
         array.append(AppLabelData(name: name, color: UIColor.allLabel(), id: "0", order:0))
     }
     
-    func saveLabelData(name:String,color:UIColor,id:String,order:Int){
+    static func saveLabelData(name:String,color:UIColor,id:String,order:Int,_ completion:()->()){
         let colorData = NSKeyedArchiver.archivedData(withRootObject:color)
         let label = AppLabelRealmData(value:["name":name,
                                              "color":colorData,
                                              "id":id,
                                              "order":order
             ])
-        let realm = try! Realm()
-        try! realm.write {
-            realm.add(label,update:true)
+        do {
+            let realm = try Realm()
+            do {
+                try realm.write {
+                    realm.add(label,update:true)
+                }
+                completion()
+            }catch{
+                print("error\(error)")
+            }
+        }catch{
+            print("error\(error)")
         }
     }
     

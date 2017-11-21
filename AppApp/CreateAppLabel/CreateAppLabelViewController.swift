@@ -12,6 +12,7 @@ class CreateAppLabelViewController: UIViewController {
 
     var naviBar:CustomNavigationBar!
     var tableView:CreateAppLabelTableView!
+    var pickerView:UIPickerView!
     
     var labelName:String?{
         didSet{
@@ -82,9 +83,15 @@ class CreateAppLabelViewController: UIViewController {
         colorPickerView.setup()
         colorPickerView.delegate = self
         self.view.addSubview(colorPickerView)
+        
+        //ピッカービュー
+        pickerView = UIPickerView(frame: CGRect(x:0,y:height,width:width,height:200))
     }
     
     @objc func cancelBtnTapped(){
+        if let textField = tableView.currentTextField{
+            textField.resignFirstResponder()
+        }
         self.dismiss(animated: true, completion: nil)
     }
 
@@ -92,7 +99,14 @@ class CreateAppLabelViewController: UIViewController {
         if sender.tintColor != nil {
             return
         }
-        print("nilおｋ！")
+        //セーブをする
+        let id = NSUUID().uuidString
+        AppLabel.saveLabelData(name: labelName!, color: color, id: id, order: AppLabel.count!){
+            BasePageViewController.isUnwind = true
+            self.dismiss(animated:true,completion:nil)
+        }
+        
+        
     }
     
     func showColorPicker(){

@@ -14,6 +14,7 @@ class BasePageViewController: UIPageViewController {
     var isInfinity = false //無限スクロールにするかどうか
     var appLabel:AppLabel!
     var selectionBar:SelectionBar!
+    static var isUnwind = false
     
     override init(transitionStyle style: UIPageViewControllerTransitionStyle, navigationOrientation: UIPageViewControllerNavigationOrientation, options: [String : Any]? = nil) {
         super.init(transitionStyle:.scroll,navigationOrientation:.horizontal,options:options)
@@ -45,6 +46,14 @@ class BasePageViewController: UIPageViewController {
         selectionBar = SelectionBar(frame:CGRect(x:0,y:navigationBarHeight,width:width,height:65),pageVC:self)
         self.view.addSubview(selectionBar)
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if BasePageViewController.isUnwind{
+            appLabel.reloadLabelData()
+            selectionBar.reloadData()
+        }
     }
 
     func getBase(appLabel:AppLabelData) -> BaseViewController {
