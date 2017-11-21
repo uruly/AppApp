@@ -13,6 +13,7 @@ class CreateAppLabelTableView: UITableView {
     var createAppLabelVC:CreateAppLabelViewController!
     var colorView:UIView!
     var orderLabel:UILabel!
+    var currentTextField:UITextField?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -34,6 +35,11 @@ class CreateAppLabelTableView: UITableView {
 
 extension CreateAppLabelTableView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section != 0{
+            if let textField = currentTextField{
+                textField.resignFirstResponder()
+            }
+        }
         if indexPath.section == 1{
             //カラーピッカーを表示
             print("colorPicker")
@@ -62,6 +68,7 @@ extension CreateAppLabelTableView:UITableViewDataSource {
             textField.leftViewMode = UITextFieldViewMode.always
             textField.delegate = self
             textField.returnKeyType = .done
+            textField.viewWithTag(5)
             if indexPath.row == 0 {
                 textField.placeholder = "ラベル名"
                 textField.becomeFirstResponder()
@@ -100,6 +107,10 @@ extension CreateAppLabelTableView:UITableViewDataSource {
 }
 
 extension CreateAppLabelTableView:UITextFieldDelegate {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        self.currentTextField = textField
+        return true
+    }
     func textFieldDidEndEditing(_ textField: UITextField) {
         print("end")
         textField.resignFirstResponder()
@@ -112,8 +123,8 @@ extension CreateAppLabelTableView:UITextFieldDelegate {
 
 extension CreateAppLabelTableView:UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        if let textField = scrollView.viewWithTag(5),textField.isFirstResponder{
-//            textField.resignFirstResponder()
-//        }
+        if let textField = currentTextField{
+            textField.resignFirstResponder()
+        }
     }
 }
