@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PIs-nu-5HU">
-                        <rect key="frame" x="15" y="15" width="152" height="21"/>
+                        <rect key="frame" x="20" y="15" width="142" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="c2y-tB-UKT"/>
                         </constraints>
@@ -31,10 +31,10 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="PIs-nu-5HU" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="OLd-HP-76w"/>
+                <constraint firstItem="PIs-nu-5HU" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="OLd-HP-76w"/>
                 <constraint firstItem="PIs-nu-5HU" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="fz3-hR-nQo"/>
                 <constraint firstItem="PIs-nu-5HU" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="lkF-Om-lCO"/>
-                <constraint firstAttribute="trailing" secondItem="PIs-nu-5HU" secondAttribute="trailing" constant="15" id="uX4-Jo-ba8"/>
+                <constraint firstAttribute="trailing" secondItem="PIs-nu-5HU" secondAttribute="trailing" constant="20" id="uX4-Jo-ba8"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="182" height="50"/>

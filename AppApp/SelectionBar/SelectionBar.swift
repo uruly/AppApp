@@ -48,7 +48,7 @@ extension SelectionBar: UICollectionViewDelegate {
 extension SelectionBar: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
-            return 5
+            return pageVC.appLabel.array.count
         }
         //＋ボタン
         if section == 1 {
@@ -60,7 +60,8 @@ extension SelectionBar: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "selection", for: indexPath) as! SelectionBarCell
         if indexPath.section == 0 {
-            
+            cell.label.text = pageVC.appLabel.array[indexPath.row].name
+            cell.contentView.backgroundColor = pageVC.appLabel.array[indexPath.row].color
         }
         if indexPath.section == 1 {
             cell.label.text = "＋"
