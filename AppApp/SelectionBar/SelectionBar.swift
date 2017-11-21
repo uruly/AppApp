@@ -65,13 +65,20 @@ class SelectionBar: UICollectionView {
         //次のセルの現在の中心位置
         let nextCellPoint = self.convert(nextCell.center, from: self.superview)
         
-        diffX = ( nextCellPoint.x - center ) / self.frame.width
+        if nextCellPoint.x - center != 0 {
+            diffX = ( nextCellPoint.x - center ) / self.frame.width
+        }
     }
     
     func scrollToHorizontallyCenter(index:Int,x:CGFloat){
         print(diffX)
         print(x)
+        print("contentSize\(self.contentSize)")
+        print("contentOffset.x\(self.contentOffset.x)")
         if self.contentOffset.x + (diffX * x) < 0{
+            return
+        }
+        if self.contentOffset.x + (diffX * x) > contentSize.width - self.frame.width{
             return
         }
         self.contentOffset.x += (diffX * x)
