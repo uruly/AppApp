@@ -99,6 +99,9 @@ class CreateAppLabelViewController: UIViewController {
         if sender.tintColor != nil {
             return
         }
+        //同じ色がすでに含まれていたらポップアップで確認を取る
+        
+        
         //セーブをする
         let id = NSUUID().uuidString
         AppLabel.saveLabelData(name: labelName!, color: color, id: id, order: AppLabel.count!){

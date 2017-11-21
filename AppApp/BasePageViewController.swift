@@ -76,40 +76,33 @@ extension BasePageViewController: UIPageViewControllerDataSource {
     //ページが戻る
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         
-//        //現在の位置で場合分け
-//        if viewController.isKind(of: BaseViewController.self){
-//            let currentView = viewController as! BaseViewController
-//            let prevCatValue = currentView.category.rawValue - 1
-//            if(prevCatValue < 1){
-//                return self.isInfinity ? getBase(category: Categories(rawValue:Categories.count)!) : nil
-//            }
-//            return getBase(category: Categories(rawValue: prevCatValue)!)
-//        }else{
-//            return nil
-//        }
-        return nil
+        //現在の位置で場合分け
+        if viewController.isKind(of: BaseViewController.self){
+            let currentView = viewController as! BaseViewController
+            let prevValue = currentView.appLabel.order - 1
+            if(prevValue < 0){
+                return self.isInfinity ? getBase(appLabel:appLabel.array.last!) : nil
+            }
+            return getBase(appLabel: appLabel.array[prevValue])
+        }else{
+            return nil
+        }
     }
     
     //ページが進む
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         
-//        //現在の位置で場合分け
-//        if viewController.isKind(of: BaseViewController.self){
-//            let currentView = viewController as! BaseViewController
-//            CurrentViewData.category = currentView.category
-//            //CurrentViewData.baseView = currentView
-//            //self.setCurrentCategory(category: currentView.category)
-//            //self.categoryBar.setCurrentCategory(category: currentView.category)
-//            let nextCatValue = currentView.category.rawValue + 1
-//            if(nextCatValue > Categories.count){
-//                return self.isInfinity ? getBase(category: Categories(rawValue:1)!) : nil
-//            }
-//            return getBase(category: Categories(rawValue: nextCatValue)!)
-//        }else{
-//            return nil
-//        }
-        return nil
-        
+        //現在の位置で場合分け
+        if viewController.isKind(of: BaseViewController.self){
+            let currentView = viewController as! BaseViewController
+            let nextValue = currentView.appLabel.order + 1
+            if(nextValue > appLabel.array.count - 1){
+                return self.isInfinity ? getBase(appLabel:appLabel.array.first!) : nil
+            }
+            return getBase(appLabel:appLabel.array[nextValue])
+        }else{
+            return nil
+        }
     }
 }
 
