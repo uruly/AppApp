@@ -35,6 +35,52 @@ class SelectionBar: UICollectionView {
         self.init(frame: frame, collectionViewLayout: layout)
         self.pageVC = pageVC
     }
+
+//    var diffX = {(nextIndex:Int) -> CGFloat in
+//        if nextIndex > AppLabel.count || nextIndex < 0{
+//            return 0
+//        }
+//        let nextCell = self.cellForItem(at: IndexPath(row: nextIndex, section: 0))
+//        //寄せたい位置
+//        let center = self.frame.width / 2
+//
+//        //次のセルの現在の中心位置
+//        let nextCellPoint = self.convert(nextCell!.center, from: self.superview)
+//        return center - nextCellPoint.x / self.frame.width
+//    }
+    var diffX:CGFloat = 0
+    
+    func setDiffX(nextIndex:Int){
+        print("nextIndex\(nextIndex)")
+        if nextIndex >= AppLabel.count! || nextIndex < 0{
+            diffX = 0
+            return
+        }
+        guard let nextCell = self.cellForItem(at: IndexPath(row: nextIndex, section: 0)) else {
+            diffX = 0
+            return
+        }
+        //寄せたい位置
+        let center = self.frame.width / 2
+        //次のセルの現在の中心位置
+        let nextCellPoint = self.convert(nextCell.center, from: self.superview)
+        
+        diffX = ( nextCellPoint.x - center ) / self.frame.width
+    }
+    
+    func scrollToHorizontallyCenter(index:Int,x:CGFloat){
+        print(diffX)
+        print(x)
+        if self.contentOffset.x + (diffX * x) < 0{
+            return
+        }
+        self.contentOffset.x += (diffX * x)
+    }
+    
+    func scrollAdjust(index:Int){
+        let indexPath = IndexPath(row: index, section: 0)
+        self.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+    }
 }
 
 extension SelectionBar: UICollectionViewDelegate {
@@ -88,4 +134,9 @@ extension SelectionBar: UICollectionViewDataSource {
         return 2
     }
     
+}
+extension SelectionBar:UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print("セレクションバースクロール中\(scrollView.contentOffset.x)")
+    }
 }

@@ -15,6 +15,10 @@ class BasePageViewController: UIPageViewController {
     var appLabel:AppLabel!
     var selectionBar:SelectionBar!
     static var isUnwind = false
+    var lastContentOffsetX:CGFloat!
+    var currentPageIndex:Int = 0
+    var nextPageIndex:Int = 0
+    var isSelectionScroll = true
     
     override init(transitionStyle style: UIPageViewControllerTransitionStyle, navigationOrientation: UIPageViewControllerNavigationOrientation, options: [String : Any]? = nil) {
         super.init(transitionStyle:.scroll,navigationOrientation:.horizontal,options:options)
@@ -104,15 +108,67 @@ extension BasePageViewController: UIPageViewControllerDataSource {
             return nil
         }
     }
+    
+}
+extension BasePageViewController:UIPageViewControllerDelegate{
+    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
+        print("willTransiton")
+        if let curVC = pageViewController.viewControllers?.first,curVC.isKind(of:BaseViewController.self){
+            let currentVC = curVC as! BaseViewController
+            print(currentVC.appLabel.name)
+            self.currentPageIndex = currentVC.appLabel.order
+        }
+        if let neVC = pendingViewControllers.first,neVC.isKind(of: BaseViewController.self){
+            let nextVC = neVC as! BaseViewController
+            print(nextVC.appLabel.name)
+            self.nextPageIndex = nextVC.appLabel.order
+            if fabs(Double(self.currentPageIndex - self.nextPageIndex)) > 1{
+                selectionBar.diffX = 0
+            }else{
+                selectionBar.setDiffX(nextIndex: self.nextPageIndex)
+            }
+        }
+
+    }
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        if let prevVC = previousViewControllers.first,prevVC.isKind(of: BaseViewController.self){
+            let previousVC = prevVC as! BaseViewController
+            print(previousVC.appLabel.name)
+            if let curVC = pageViewController.viewControllers?.first,curVC.isKind(of:BaseViewController.self){
+                let currentVC = curVC as! BaseViewController
+                print(currentVC.appLabel.name)
+                self.currentPageIndex = currentVC.appLabel.order
+                selectionBar.scrollAdjust(index:self.currentPageIndex)
+            }
+        }
+        print("っここ")
+        print("previousView\(previousViewControllers)")
+    }
 }
 
 extension BasePageViewController: UIScrollViewDelegate {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         print("Drag開始")
-        //
+        isSelectionScroll = true
+        lastContentOffsetX = scrollView.contentOffset.x
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print("スクロール中\(scrollView.contentOffset.x)")
+        //print("スクロール中\(scrollView.contentOffset.x)")
         //ここでカテゴリバーを移動させる
+        let diffX = scrollView.contentOffset.x - lastContentOffsetX
+        if fabs(diffX) < 200 && isSelectionScroll{
+            //selectionBar.scrollToHorizontallyCenter(index:self.nextPageIndex ,x:diffX)
+        }
+        lastContentOffsetX = scrollView.contentOffset.x
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        print("didendDrag")
+        //isSelectionScroll = false
+    }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        //指が離れたとき、近い方にカテゴリを移動
+        
     }
 }
