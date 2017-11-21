@@ -14,6 +14,7 @@ class AppLabelRealmData : Object {
     @objc dynamic var name:String?      //ラベルの名前
     @objc dynamic var color:Data?    //ラベルの色
     @objc dynamic var id:String?        //id
+    @objc dynamic var order = 0     //順番
     
     override static func primaryKey() -> String? {
         return "id"
@@ -25,10 +26,11 @@ struct AppLabelData {
     var name:String!
     var color:UIColor!
     var id:String!
+    var order:Int!
     
-    var idNumber:Int? {
-        return Int(id)
-    }
+//    var idNumber:Int? {
+//        return Int(id)
+//    }
 }
 
 class AppLabel {
@@ -53,7 +55,7 @@ class AppLabel {
         for obj in objs{
             if let name = obj.name ,let colorData = obj.color,let id = obj.id{
                 let color = NSKeyedUnarchiver.unarchiveObject(with: colorData) as! UIColor
-                let label = AppLabelData(name: name, color: color, id: id)
+                let label = AppLabelData(name: name, color: color, id: id,order: obj.order)
                 self.array.append(label)
             }
         }
@@ -65,21 +67,23 @@ class AppLabel {
         let colorData = NSKeyedArchiver.archivedData(withRootObject: UIColor.allLabel())
         let label = AppLabelRealmData(value:["name":name,
                                              "color":colorData,
-                                             "id":"0"
+                                             "id":"0",
+                                             "order":0
             ])
         let realm = try! Realm()
         try! realm.write {
             realm.add(label,update:true)
         }
         
-        array.append(AppLabelData(name: name, color: UIColor.allLabel(), id: "0"))
+        array.append(AppLabelData(name: name, color: UIColor.allLabel(), id: "0", order:0))
     }
     
-    static func saveLabelData(name:String,color:UIColor,id:String){
+    func saveLabelData(name:String,color:UIColor,id:String,order:Int){
         let colorData = NSKeyedArchiver.archivedData(withRootObject:color)
         let label = AppLabelRealmData(value:["name":name,
                                              "color":colorData,
-                                             "id":id
+                                             "id":id,
+                                             "order":order
             ])
         let realm = try! Realm()
         try! realm.write {

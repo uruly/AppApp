@@ -9,6 +9,9 @@
 import UIKit
 
 class SelectionBar: UICollectionView {
+    
+    var pageVC:BasePageViewController!
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -22,17 +25,24 @@ class SelectionBar: UICollectionView {
         self.showsHorizontalScrollIndicator = false
     }
     
-    convenience init(frame:CGRect){
+    convenience init(frame:CGRect,pageVC:BasePageViewController){
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsetsMake(15,0,0,0)
         layout.estimatedItemSize = CGSize(width:100,height:50)
         layout.scrollDirection = .horizontal
         self.init(frame: frame, collectionViewLayout: layout)
+        self.pageVC = pageVC
     }
 }
 
 extension SelectionBar: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //＋ボタンを押しているはず
+        if indexPath.section == 1 {
+            //ここでpageVC上のラベル追加関数を呼び出す
+            pageVC.createAppLabel()
+        }
+    }
 }
 
 extension SelectionBar: UICollectionViewDataSource {

@@ -32,7 +32,7 @@ class BaseViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //ここでCurrentIDを設定
-        AppLabel.currentID = appLabel.idNumber
+        AppLabel.currentID = appLabel.order
     }
 
     override func didReceiveMemoryWarning() {

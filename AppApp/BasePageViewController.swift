@@ -42,7 +42,7 @@ class BasePageViewController: UIPageViewController {
         let navigationBarHeight = self.navigationController?.navigationBar.frame.maxY ?? 56
         print(navigationBarHeight)
         //セレクションバーを配置
-        selectionBar = SelectionBar(frame:CGRect(x:0,y:navigationBarHeight,width:width,height:65))
+        selectionBar = SelectionBar(frame:CGRect(x:0,y:navigationBarHeight,width:width,height:65),pageVC:self)
         self.view.addSubview(selectionBar)
         
     }
@@ -56,6 +56,14 @@ class BasePageViewController: UIPageViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func createAppLabel(){
+        //新しくラベルを作る
+        let width = self.view.frame.width
+        let height = self.view.frame.height
+        let createLabelView = CreateAppLabelView(frame: CGRect(x:0,y:0,width:width,height:height))
+        self.view.addSubview(createLabelView)
     }
 }
 extension BasePageViewController: UIPageViewControllerDataSource {
