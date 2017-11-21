@@ -26,6 +26,7 @@
 		667ECE641FC3A7BD009233DE /* CreateAppLabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE631FC3A7BD009233DE /* CreateAppLabelViewController.swift */; };
 		667ECE661FC3ADCA009233DE /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE651FC3ADCA009233DE /* CustomNavigationBar.swift */; };
 		667ECE691FC3B454009233DE /* CreateAppLabelTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE681FC3B454009233DE /* CreateAppLabelTableView.swift */; };
+		667ECE6B1FC3CB79009233DE /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE6A1FC3CB79009233DE /* ColorPicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		667ECE631FC3A7BD009233DE /* CreateAppLabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAppLabelViewController.swift; sourceTree = "<group>"; };
 		667ECE651FC3ADCA009233DE /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		667ECE681FC3B454009233DE /* CreateAppLabelTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAppLabelTableView.swift; sourceTree = "<group>"; };
+		667ECE6A1FC3CB79009233DE /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +185,7 @@
 			children = (
 				667ECE631FC3A7BD009233DE /* CreateAppLabelViewController.swift */,
 				667ECE681FC3B454009233DE /* CreateAppLabelTableView.swift */,
+				667ECE6A1FC3CB79009233DE /* ColorPicker.swift */,
 			);
 			path = CreateAppLabel;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				667ECE4B1FC3690E009233DE /* BaseViewController.swift in Sources */,
 				667ECE471FC36850009233DE /* BaseNavigationViewController.swift in Sources */,
 				667ECE641FC3A7BD009233DE /* CreateAppLabelViewController.swift in Sources */,
+				667ECE6B1FC3CB79009233DE /* ColorPicker.swift in Sources */,
 				667ECE591FC388B9009233DE /* UIColor+AppColor.swift in Sources */,
 				667ECE5F1FC395C2009233DE /* SelectionBarCell.swift in Sources */,
 				667ECE691FC3B454009233DE /* CreateAppLabelTableView.swift in Sources */,

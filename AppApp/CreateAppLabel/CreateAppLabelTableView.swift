@@ -35,6 +35,8 @@ class CreateAppLabelTableView: UITableView {
 
 extension CreateAppLabelTableView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.isSelected = false
         if indexPath.section != 0{
             if let textField = currentTextField{
                 textField.resignFirstResponder()
@@ -43,6 +45,7 @@ extension CreateAppLabelTableView: UITableViewDelegate {
         if indexPath.section == 1{
             //カラーピッカーを表示
             print("colorPicker")
+            createAppLabelVC.showColorPicker()
         }
         if indexPath.section == 2{
             print("uipickerを表示")

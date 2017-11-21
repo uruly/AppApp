@@ -11,6 +11,7 @@ import UIKit
 class CreateAppLabelViewController: UIViewController {
 
     var naviBar:CustomNavigationBar!
+    var tableView:CreateAppLabelTableView!
     
     var labelName:String?{
         didSet{
@@ -34,6 +35,17 @@ class CreateAppLabelViewController: UIViewController {
         }
     }
     
+    var color:UIColor = UIColor.blue{
+        didSet{
+            if tableView == nil {
+                return
+            }
+            tableView.colorView.backgroundColor = color
+        }
+    }
+    
+    var colorPickerView:ColorPicker!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -55,12 +67,21 @@ class CreateAppLabelViewController: UIViewController {
         self.view.addSubview(naviBar)
         
         //tableViewを設置
-        let tableView = CreateAppLabelTableView(frame: CGRect(x:0,y:naviBar.frame.maxY,
+        tableView = CreateAppLabelTableView(frame: CGRect(x:0,y:naviBar.frame.maxY,
                                                               width:width,
                                                               height:height - naviBar.frame.maxY),
                                                 createAppLabelVC:self)
         self.view.addSubview(tableView)
         
+        //カラーピッカー
+        colorPickerView = ColorPicker()
+        colorPickerView.frame = CGRect(x:0,
+                                       y:height,
+                                       width:width,
+                                       height:200)
+        colorPickerView.setup()
+        colorPickerView.delegate = self
+        self.view.addSubview(colorPickerView)
     }
     
     @objc func cancelBtnTapped(){
@@ -73,10 +94,27 @@ class CreateAppLabelViewController: UIViewController {
         }
         print("nilおｋ！")
     }
+    
+    func showColorPicker(){
+        let width = self.view.frame.width
+        let height = self.view.frame.height
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+            self.colorPickerView.frame = CGRect(x:0,y:height - 200,width:width,height:200)
+        }, completion: nil)
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
 
+}
+
+extension CreateAppLabelViewController:ColorDelegate {
+    func pickedColor(color:UIColor,endState:Bool){
+        print("color\(color)")
+        self.color = color
+    }
 }
