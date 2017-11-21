@@ -43,6 +43,16 @@ extension SelectionBar: UICollectionViewDelegate {
         if indexPath.section == 1 {
             //ここでpageVC上のラベル追加関数を呼び出す
             pageVC.createAppLabel()
+        }else {
+            //ページビューを移動させる
+            self.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+            let nextView:BaseViewController = pageVC.getBase(appLabel:pageVC.appLabel.array[indexPath.row])
+            let isLeftDirection = AppLabel.currentID ?? 0 < indexPath.row
+            if(isLeftDirection){
+                pageVC.setViewControllers([nextView], direction: .forward, animated: true, completion: nil)
+            }else{
+                pageVC.setViewControllers([nextView], direction: .reverse, animated: true, completion: nil)
+            }
         }
     }
 }

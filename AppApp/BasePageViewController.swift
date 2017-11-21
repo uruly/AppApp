@@ -11,7 +11,7 @@ import UIKit
 
 class BasePageViewController: UIPageViewController {
     
-    var isInfinity = false //無限スクロールにするかどうか
+    var isInfinity = true //無限スクロールにするかどうか
     var appLabel:AppLabel!
     var selectionBar:SelectionBar!
     static var isUnwind = false
@@ -28,7 +28,7 @@ class BasePageViewController: UIPageViewController {
         super.viewDidLoad()
         let width = self.view.frame.width
         let height = self.view.frame.height
-        self.view.backgroundColor = UIColor.purple
+        self.view.backgroundColor = UIColor.backgroundGray()
         appLabel = AppLabel()
         print(appLabel.array)
         if appLabel.array.count > 0 {
@@ -107,5 +107,12 @@ extension BasePageViewController: UIPageViewControllerDataSource {
 }
 
 extension BasePageViewController: UIScrollViewDelegate {
-    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        print("Drag開始")
+        //
+    }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print("スクロール中\(scrollView.contentOffset.x)")
+        //ここでカテゴリバーを移動させる
+    }
 }
