@@ -10,6 +10,30 @@ import UIKit
 
 class CreateAppLabelViewController: UIViewController {
 
+    var naviBar:CustomNavigationBar!
+    
+    var labelName:String?{
+        didSet{
+            if labelName != "" && labelName != nil{
+                //trueなら保存できる
+                if AppLabel.contains(name: labelName!){
+                    if let items = naviBar.items,let rightItem = items[0].rightBarButtonItem{
+                        rightItem.tintColor = nil
+                    }
+                }else {
+                    if let items = naviBar.items,let rightItem = items[0].rightBarButtonItem{
+                        rightItem.tintColor = UIColor.lightGray
+                    }
+                    //ポップアップで重複を知らせる
+                }
+            }else{
+                if let items = naviBar.items,let rightItem = items[0].rightBarButtonItem{
+                    rightItem.tintColor = UIColor.lightGray
+                }
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,10 +44,11 @@ class CreateAppLabelViewController: UIViewController {
         //ナビゲーションバーを設置
         let naviBarHeight = UIApplication.shared.statusBarFrame.height + 47.0
         print(naviBarHeight)
-        let naviBar = CustomNavigationBar(frame: CGRect(x:0,y:0,width:width,height:naviBarHeight))
+        naviBar = CustomNavigationBar(frame: CGRect(x:0,y:0,width:width,height:naviBarHeight))
         let naviBarItem = UINavigationItem(title:"ラベルを追加")
         let cancelBtn = UIBarButtonItem(title: "キャンセル", style: .plain, target: self, action: #selector(self.cancelBtnTapped))
-        let saveBtn = UIBarButtonItem(title: "保存", style: .plain, target: self, action: #selector(self.saveBtnTapped))
+        let saveBtn = UIBarButtonItem(title: "保存", style: .plain, target: self, action: #selector(self.saveBtnTapped(sender:)))
+        saveBtn.tintColor = UIColor.lightGray    //まだ押せない
         naviBarItem.leftBarButtonItem = cancelBtn
         naviBarItem.rightBarButtonItem = saveBtn
         naviBar.items = [naviBarItem]
@@ -42,8 +67,11 @@ class CreateAppLabelViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
 
-    @objc func saveBtnTapped(){
-        
+    @objc func saveBtnTapped(sender:UIBarButtonItem){
+        if sender.tintColor != nil {
+            return
+        }
+        print("nilおｋ！")
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -71,8 +71,10 @@ extension CreateAppLabelTableView:UITableViewDataSource {
             textField.viewWithTag(5)
             if indexPath.row == 0 {
                 textField.placeholder = "ラベル名"
+                textField.tag = 1
                 textField.becomeFirstResponder()
             }else if indexPath.row == 1 {
+                textField.tag = 2
                 textField.placeholder = "ラベルの説明(任意)"
             }
             cell.contentView.addSubview(textField)
@@ -113,6 +115,9 @@ extension CreateAppLabelTableView:UITextFieldDelegate {
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
         print("end")
+        if textField.tag == 1 { //ラベル名
+            createAppLabelVC.labelName = textField.text
+        }
         textField.resignFirstResponder()
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

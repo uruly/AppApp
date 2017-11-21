@@ -23,7 +23,6 @@
 		667ECE5B1FC3958D009233DE /* SelectionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE5A1FC3958D009233DE /* SelectionBar.swift */; };
 		667ECE5F1FC395C2009233DE /* SelectionBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE5D1FC395C2009233DE /* SelectionBarCell.swift */; };
 		667ECE601FC395C2009233DE /* SelectionBarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 667ECE5E1FC395C2009233DE /* SelectionBarCell.xib */; };
-		667ECE621FC3A00E009233DE /* CreateAppLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE611FC3A00E009233DE /* CreateAppLabelView.swift */; };
 		667ECE641FC3A7BD009233DE /* CreateAppLabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE631FC3A7BD009233DE /* CreateAppLabelViewController.swift */; };
 		667ECE661FC3ADCA009233DE /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE651FC3ADCA009233DE /* CustomNavigationBar.swift */; };
 		667ECE691FC3B454009233DE /* CreateAppLabelTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE681FC3B454009233DE /* CreateAppLabelTableView.swift */; };
@@ -69,7 +68,6 @@
 		667ECE5A1FC3958D009233DE /* SelectionBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionBar.swift; sourceTree = "<group>"; };
 		667ECE5D1FC395C2009233DE /* SelectionBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionBarCell.swift; sourceTree = "<group>"; };
 		667ECE5E1FC395C2009233DE /* SelectionBarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectionBarCell.xib; sourceTree = "<group>"; };
-		667ECE611FC3A00E009233DE /* CreateAppLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAppLabelView.swift; sourceTree = "<group>"; };
 		667ECE631FC3A7BD009233DE /* CreateAppLabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAppLabelViewController.swift; sourceTree = "<group>"; };
 		667ECE651FC3ADCA009233DE /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		667ECE681FC3B454009233DE /* CreateAppLabelTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAppLabelTableView.swift; sourceTree = "<group>"; };
@@ -183,9 +181,8 @@
 		667ECE671FC3AFC2009233DE /* CreateAppLabel */ = {
 			isa = PBXGroup;
 			children = (
-				667ECE611FC3A00E009233DE /* CreateAppLabelView.swift */,
-				667ECE681FC3B454009233DE /* CreateAppLabelTableView.swift */,
 				667ECE631FC3A7BD009233DE /* CreateAppLabelViewController.swift */,
+				667ECE681FC3B454009233DE /* CreateAppLabelTableView.swift */,
 			);
 			path = CreateAppLabel;
 			sourceTree = "<group>";
@@ -349,7 +346,6 @@
 				667ECE4B1FC3690E009233DE /* BaseViewController.swift in Sources */,
 				667ECE471FC36850009233DE /* BaseNavigationViewController.swift in Sources */,
 				667ECE641FC3A7BD009233DE /* CreateAppLabelViewController.swift in Sources */,
-				667ECE621FC3A00E009233DE /* CreateAppLabelView.swift in Sources */,
 				667ECE591FC388B9009233DE /* UIColor+AppColor.swift in Sources */,
 				667ECE5F1FC395C2009233DE /* SelectionBarCell.swift in Sources */,
 				667ECE691FC3B454009233DE /* CreateAppLabelTableView.swift in Sources */,

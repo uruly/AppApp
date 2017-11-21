@@ -90,5 +90,18 @@ class AppLabel {
             realm.add(label,update:true)
         }
     }
+    
+    static func contains(name:String) -> Bool{
+        let realm = try! Realm()
+        let objs = realm.objects(AppLabelRealmData.self)
+        for obj in objs{
+            if obj.name == name {
+                return false
+            }
+        }
+        return true
+    }
+    
+    
 }
 
