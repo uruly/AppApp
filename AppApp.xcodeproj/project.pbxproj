@@ -30,6 +30,7 @@
 		667ECE6D1FC41F7E009233DE /* AppCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE6C1FC41F7E009233DE /* AppCollectionView.swift */; };
 		667ECE711FC4206F009233DE /* AppCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE6F1FC4206F009233DE /* AppCollectionViewCell.swift */; };
 		667ECE721FC4206F009233DE /* AppCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 667ECE701FC4206F009233DE /* AppCollectionViewCell.xib */; };
+		66AA1DF21FC543BA001C419E /* IconSizeChanger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AA1DF11FC543BA001C419E /* IconSizeChanger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		667ECE6C1FC41F7E009233DE /* AppCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCollectionView.swift; sourceTree = "<group>"; };
 		667ECE6F1FC4206F009233DE /* AppCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCollectionViewCell.swift; sourceTree = "<group>"; };
 		667ECE701FC4206F009233DE /* AppCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppCollectionViewCell.xib; sourceTree = "<group>"; };
+		66AA1DF11FC543BA001C419E /* IconSizeChanger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IconSizeChanger.swift; path = AppApp/IconSizeChanger.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 				667ECE581FC388B9009233DE /* UIColor+AppColor.swift */,
 				667ECE671FC3AFC2009233DE /* CreateAppLabel */,
 				667ECE651FC3ADCA009233DE /* CustomNavigationBar.swift */,
+				66AA1DF11FC543BA001C419E /* IconSizeChanger.swift */,
 				667ECE6E1FC41F83009233DE /* AppCollectionView */,
 				667ECE1C1FC36784009233DE /* Main.storyboard */,
 				667ECE1F1FC36784009233DE /* Assets.xcassets */,
@@ -362,6 +365,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66AA1DF21FC543BA001C419E /* IconSizeChanger.swift in Sources */,
 				667ECE661FC3ADCA009233DE /* CustomNavigationBar.swift in Sources */,
 				667ECE571FC3836C009233DE /* AppLabel.swift in Sources */,
 				667ECE4B1FC3690E009233DE /* BaseViewController.swift in Sources */,

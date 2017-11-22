@@ -12,6 +12,7 @@ import UIKit
 class BaseViewController: UIViewController {
 
     var appLabel:AppLabelData!
+    var collectionView:AppCollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +31,7 @@ class BaseViewController: UIViewController {
         
         //コレクションビューを配置
         let topMargin = basePageVC.selectionBar.frame.maxY + 7  //+部分がラインになる
-        let collectionView = AppCollectionView(frame: CGRect(x:0,
+        collectionView = AppCollectionView(frame: CGRect(x:0,
                                                              y:topMargin,
                                                              width:width,
                                                              height:height - topMargin ))
@@ -43,6 +44,11 @@ class BaseViewController: UIViewController {
         super.viewWillAppear(animated)
         //ここでCurrentIDを設定
         AppLabel.currentID = appLabel.order
+        
+        //delegateを設定
+        if self.basePageVC.iconSizeChanger != nil {
+            self.basePageVC.iconSizeChanger.sliderDelegate = collectionView
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,3 +63,4 @@ extension BaseViewController: BasePageViewControllerDelegate {
         return parent as! BasePageViewController
     }
 }
+

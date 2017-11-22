@@ -24,6 +24,7 @@ class BasePageViewController: UIPageViewController {
     var currentPageIndex:Int = 0
     var nextPageIndex:Int = 0
     var isSelectionScroll = true
+    var iconSizeChanger:IconSizeChanger!
     
     override init(transitionStyle style: UIPageViewControllerTransitionStyle, navigationOrientation: UIPageViewControllerNavigationOrientation, options: [String : Any]? = nil) {
         super.init(transitionStyle:.scroll,navigationOrientation:.horizontal,options:options)
@@ -47,6 +48,13 @@ class BasePageViewController: UIPageViewController {
         selectionBar = SelectionBar(frame:CGRect(x:0,y:navigationBarHeight,width:width,height:65),pageVC:self)
         self.view.addSubview(selectionBar)
         
+        //toolbarを配置
+        let toolbarHeight = self.navigationController?.toolbar.frame.height ?? 44
+        iconSizeChanger = IconSizeChanger(frame:CGRect(x:0,
+                                                       y:height - toolbarHeight,
+                                                       width:width,
+                                                       height:toolbarHeight))
+        self.view.addSubview(iconSizeChanger)
         
         if appLabel.array.count > 0 {
             self.setViewControllers([getBase(appLabel: appLabel.array[0])], direction: .forward, animated: true, completion: nil)
@@ -57,7 +65,6 @@ class BasePageViewController: UIPageViewController {
         let scrollView = self.view.subviews.flatMap { $0 as? UIScrollView }.first
         scrollView?.delegate = self
         
-
         
     }
     

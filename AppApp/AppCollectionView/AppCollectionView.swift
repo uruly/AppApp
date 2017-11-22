@@ -9,6 +9,9 @@
 import UIKit
 
 class AppCollectionView: UICollectionView {
+    
+    var itemSize:CGSize = CGSize(width:50.0,height:50.0)
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -23,8 +26,11 @@ class AppCollectionView: UICollectionView {
     
     convenience init(frame:CGRect){
         let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsetsMake(15,15,15,15)
-        layout.itemSize = CGSize(width:50,height:50)
+        let margin:CGFloat = 15.0
+        layout.sectionInset = UIEdgeInsetsMake(margin,margin,margin,margin)
+        layout.minimumLineSpacing = margin
+        layout.minimumInteritemSpacing = margin
+        layout.itemSize = CGSize(width:50.0,height:50.0)
         self.init(frame:frame,collectionViewLayout:layout)
     }
 }
@@ -43,5 +49,20 @@ extension AppCollectionView:UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
+    }
+}
+
+extension AppCollectionView:UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return itemSize
+    }
+}
+
+extension AppCollectionView:IconSizeChangerDelegate{
+    @objc func sliderValueChanged(sender: UISlider) {
+        print("ここで受け取り！\(sender.value)")
+        //collectionViewのitemSizeを変える
+        self.itemSize = CGSize(width:CGFloat(sender.value),height:CGFloat(sender.value))
+        self.collectionViewLayout.invalidateLayout()
     }
 }
