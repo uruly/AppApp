@@ -31,6 +31,9 @@
 		667ECE711FC4206F009233DE /* AppCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE6F1FC4206F009233DE /* AppCollectionViewCell.swift */; };
 		667ECE721FC4206F009233DE /* AppCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 667ECE701FC4206F009233DE /* AppCollectionViewCell.xib */; };
 		66AA1DF21FC543BA001C419E /* IconSizeChanger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AA1DF11FC543BA001C419E /* IconSizeChanger.swift */; };
+		66AA1DFA1FC56519001C419E /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AA1DF91FC56519001C419E /* ShareViewController.swift */; };
+		66AA1DFD1FC56519001C419E /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66AA1DFB1FC56519001C419E /* MainInterface.storyboard */; };
+		66AA1E011FC56519001C419E /* ShareFromAppStoreExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 66AA1DF71FC56519001C419E /* ShareFromAppStoreExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +51,28 @@
 			remoteGlobalIDString = 667ECE141FC36784009233DE;
 			remoteInfo = AppApp;
 		};
+		66AA1DFF1FC56519001C419E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 667ECE0D1FC36784009233DE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 66AA1DF61FC56519001C419E;
+			remoteInfo = ShareFromAppStoreExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		66AA1E051FC56519001C419E /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				66AA1E011FC56519001C419E /* ShareFromAppStoreExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		667ECE151FC36784009233DE /* AppApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,6 +105,10 @@
 		667ECE6F1FC4206F009233DE /* AppCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCollectionViewCell.swift; sourceTree = "<group>"; };
 		667ECE701FC4206F009233DE /* AppCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppCollectionViewCell.xib; sourceTree = "<group>"; };
 		66AA1DF11FC543BA001C419E /* IconSizeChanger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IconSizeChanger.swift; path = AppApp/IconSizeChanger.swift; sourceTree = SOURCE_ROOT; };
+		66AA1DF71FC56519001C419E /* ShareFromAppStoreExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ShareFromAppStoreExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		66AA1DF91FC56519001C419E /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		66AA1DFC1FC56519001C419E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		66AA1DFE1FC56519001C419E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +135,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		66AA1DF41FC56519001C419E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -116,6 +151,7 @@
 				667ECE171FC36784009233DE /* AppApp */,
 				667ECE2C1FC36784009233DE /* AppAppTests */,
 				667ECE371FC36784009233DE /* AppAppUITests */,
+				66AA1DF81FC56519001C419E /* ShareFromAppStoreExtension */,
 				667ECE161FC36784009233DE /* Products */,
 				667ECE4D1FC382B9009233DE /* Frameworks */,
 			);
@@ -127,6 +163,7 @@
 				667ECE151FC36784009233DE /* AppApp.app */,
 				667ECE291FC36784009233DE /* AppAppTests.xctest */,
 				667ECE341FC36784009233DE /* AppAppUITests.xctest */,
+				66AA1DF71FC56519001C419E /* ShareFromAppStoreExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -210,6 +247,16 @@
 			path = AppCollectionView;
 			sourceTree = "<group>";
 		};
+		66AA1DF81FC56519001C419E /* ShareFromAppStoreExtension */ = {
+			isa = PBXGroup;
+			children = (
+				66AA1DF91FC56519001C419E /* ShareViewController.swift */,
+				66AA1DFB1FC56519001C419E /* MainInterface.storyboard */,
+				66AA1DFE1FC56519001C419E /* Info.plist */,
+			);
+			path = ShareFromAppStoreExtension;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -221,10 +268,12 @@
 				667ECE121FC36784009233DE /* Frameworks */,
 				667ECE131FC36784009233DE /* Resources */,
 				667ECE4C1FC3826D009233DE /* ShellScript */,
+				66AA1E051FC56519001C419E /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				66AA1E001FC56519001C419E /* PBXTargetDependency */,
 			);
 			name = AppApp;
 			productName = AppApp;
@@ -267,6 +316,23 @@
 			productReference = 667ECE341FC36784009233DE /* AppAppUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		66AA1DF61FC56519001C419E /* ShareFromAppStoreExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 66AA1E021FC56519001C419E /* Build configuration list for PBXNativeTarget "ShareFromAppStoreExtension" */;
+			buildPhases = (
+				66AA1DF31FC56519001C419E /* Sources */,
+				66AA1DF41FC56519001C419E /* Frameworks */,
+				66AA1DF51FC56519001C419E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ShareFromAppStoreExtension;
+			productName = ShareFromAppStoreExtension;
+			productReference = 66AA1DF71FC56519001C419E /* ShareFromAppStoreExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -291,6 +357,10 @@
 						ProvisioningStyle = Automatic;
 						TestTargetID = 667ECE141FC36784009233DE;
 					};
+					66AA1DF61FC56519001C419E = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 667ECE101FC36784009233DE /* Build configuration list for PBXProject "AppApp" */;
@@ -309,6 +379,7 @@
 				667ECE141FC36784009233DE /* AppApp */,
 				667ECE281FC36784009233DE /* AppAppTests */,
 				667ECE331FC36784009233DE /* AppAppUITests */,
+				66AA1DF61FC56519001C419E /* ShareFromAppStoreExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -337,6 +408,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		66AA1DF51FC56519001C419E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66AA1DFD1FC56519001C419E /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,6 +478,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		66AA1DF31FC56519001C419E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66AA1DFA1FC56519001C419E /* ShareViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -411,6 +498,11 @@
 			isa = PBXTargetDependency;
 			target = 667ECE141FC36784009233DE /* AppApp */;
 			targetProxy = 667ECE351FC36784009233DE /* PBXContainerItemProxy */;
+		};
+		66AA1E001FC56519001C419E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 66AA1DF61FC56519001C419E /* ShareFromAppStoreExtension */;
+			targetProxy = 66AA1DFF1FC56519001C419E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -429,6 +521,14 @@
 				667ECE221FC36784009233DE /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		66AA1DFB1FC56519001C419E /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				66AA1DFC1FC56519001C419E /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -544,6 +644,7 @@
 		667ECE3E1FC36784009233DE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q2UN54KG3Y;
@@ -564,6 +665,7 @@
 		667ECE3F1FC36784009233DE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q2UN54KG3Y;
@@ -647,6 +749,36 @@
 			};
 			name = Release;
 		};
+		66AA1E031FC56519001C419E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q2UN54KG3Y;
+				INFOPLIST_FILE = ShareFromAppStoreExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = xyz.uruly.AppApp.ShareFromAppStoreExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		66AA1E041FC56519001C419E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q2UN54KG3Y;
+				INFOPLIST_FILE = ShareFromAppStoreExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = xyz.uruly.AppApp.ShareFromAppStoreExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -682,6 +814,15 @@
 			buildConfigurations = (
 				667ECE441FC36784009233DE /* Debug */,
 				667ECE451FC36784009233DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		66AA1E021FC56519001C419E /* Build configuration list for PBXNativeTarget "ShareFromAppStoreExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				66AA1E031FC56519001C419E /* Debug */,
+				66AA1E041FC56519001C419E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
