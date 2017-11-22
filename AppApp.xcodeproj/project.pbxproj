@@ -34,6 +34,8 @@
 		66AA1DFA1FC56519001C419E /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AA1DF91FC56519001C419E /* ShareViewController.swift */; };
 		66AA1DFD1FC56519001C419E /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66AA1DFB1FC56519001C419E /* MainInterface.storyboard */; };
 		66AA1E011FC56519001C419E /* ShareFromAppStoreExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 66AA1DF71FC56519001C419E /* ShareFromAppStoreExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		66AA1E091FC5900D001C419E /* LabelListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AA1E081FC5900D001C419E /* LabelListTableViewController.swift */; };
+		66AA1E0B1FC5919E001C419E /* MemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AA1E0A1FC5919E001C419E /* MemoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +111,8 @@
 		66AA1DF91FC56519001C419E /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		66AA1DFC1FC56519001C419E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		66AA1DFE1FC56519001C419E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		66AA1E081FC5900D001C419E /* LabelListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelListTableViewController.swift; sourceTree = "<group>"; };
+		66AA1E0A1FC5919E001C419E /* MemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -251,6 +255,8 @@
 			isa = PBXGroup;
 			children = (
 				66AA1DF91FC56519001C419E /* ShareViewController.swift */,
+				66AA1E0A1FC5919E001C419E /* MemoViewController.swift */,
+				66AA1E081FC5900D001C419E /* LabelListTableViewController.swift */,
 				66AA1DFB1FC56519001C419E /* MainInterface.storyboard */,
 				66AA1DFE1FC56519001C419E /* Info.plist */,
 			);
@@ -482,7 +488,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66AA1E091FC5900D001C419E /* LabelListTableViewController.swift in Sources */,
 				66AA1DFA1FC56519001C419E /* ShareViewController.swift in Sources */,
+				66AA1E0B1FC5919E001C419E /* MemoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

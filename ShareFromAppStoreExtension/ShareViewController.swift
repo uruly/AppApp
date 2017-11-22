@@ -10,7 +10,56 @@ import UIKit
 import Social
 
 class ShareViewController: SLComposeServiceViewController {
-
+    
+    lazy var ratingItem: SLComposeSheetConfigurationItem? = {
+        guard let item = SLComposeSheetConfigurationItem() else {
+            return nil
+        }
+        item.title = "評価"
+        //item.value = "3"
+        //item.tapHandler = self.showListViewControllerOfRating
+        return item
+    }()
+    
+    lazy var labelItem: SLComposeSheetConfigurationItem? = {
+        guard let item = SLComposeSheetConfigurationItem() else {
+            return nil
+        }
+        item.title = "ラベル"
+        item.value = "ALL"      //userDefaultで保存しておきたい
+        item.tapHandler = self.showLabelList
+        return item
+    }()
+    
+    lazy var memoItem: SLComposeSheetConfigurationItem? = {
+        guard let item = SLComposeSheetConfigurationItem() else {
+            return nil
+        }
+        item.title = "メモ"
+        item.tapHandler = self.showMemoView
+        return item
+        
+    }()
+    
+    var memoText:String = ""{
+        didSet{
+            memoItem?.value = memoText
+        }
+    }
+    
+    func showLabelList() {
+        let labelListVC = LabelListTableViewController(style: .plain)
+        //controller.selectedValue = ratingItem.value
+        //controller.delegate  = self
+        pushConfigurationViewController(labelListVC)
+    }
+    
+    func showMemoView() {
+        let memoVC = MemoViewController()
+        memoVC.delegate = self
+        pushConfigurationViewController(memoVC)
+    }
+    
     override func viewDidLoad(){
         super.viewDidLoad()
         self.title = "Appを保存"
@@ -19,6 +68,7 @@ class ShareViewController: SLComposeServiceViewController {
         self.textView.isUserInteractionEnabled = false
         //self.textView.canBecomeFirstResponder = false
     }
+    
     
     override func textViewDidBeginEditing(_ textView: UITextView) {
         textView.resignFirstResponder()
@@ -47,13 +97,19 @@ class ShareViewController: SLComposeServiceViewController {
         
         print(self.extensionContext?.inputItems.count)
         print(self.contentText)
-        print()
+        print("memoText\(self.memoText)")
         self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
     }
 
     override func configurationItems() -> [Any]! {
-        // To add configuration options via table cells at the bottom of the sheet, return an array of SLComposeSheetConfigurationItem here.
-        return []
+        
+        return [labelItem,memoItem,ratingItem]
     }
 
+}
+
+extension ShareViewController:MemoViewDelegate {
+    var shareVC:ShareViewController {
+        return self
+    }
 }
