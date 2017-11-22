@@ -11,6 +11,28 @@ import Social
 
 class ShareViewController: SLComposeServiceViewController {
 
+    override func viewDidLoad(){
+        super.viewDidLoad()
+        self.title = "Appを保存"
+        let vc: UIViewController = self.navigationController!.viewControllers[0]
+        vc.navigationItem.rightBarButtonItem!.title = "保存"
+        self.textView.isUserInteractionEnabled = false
+        //self.textView.canBecomeFirstResponder = false
+    }
+    
+    override func textViewDidBeginEditing(_ textView: UITextView) {
+        textView.resignFirstResponder()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        //self.textView.resignFirstResponder()
+    }
+    
     override func isContentValid() -> Bool {
         // Do validation of contentText and/or NSExtensionContext attachments here
         //ポストを無効にする条件を書く
