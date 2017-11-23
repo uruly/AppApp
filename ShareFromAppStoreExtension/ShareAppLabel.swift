@@ -21,15 +21,11 @@ class AppLabelRealmData : Object {
     }
 }
 
-////
-//struct AppLabelData {
-//    var name:String!
-//    var color:UIColor!
-//    var id:String!
-//    var order:Int!
-//    
-//    //    var idNumber:Int? {
-//    //        return Int(id)
-//    //    }
-//}
+struct AppLabelData {
+    var name:String!
+    var color:UIColor!
+    var id:String!
+    var order:Int!
+}
+
 

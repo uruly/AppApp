@@ -47,10 +47,18 @@ class ShareViewController: SLComposeServiceViewController {
         }
     }
     
+    var labelList:[AppLabelData] = [] {
+        didSet {
+            labelItem?.value = ""
+            for label in labelList {
+                labelItem?.value = (labelItem?.value ?? "") + "【\(label.name!)】"
+            }
+        }
+    }
+    
     func showLabelList() {
         let labelListVC = LabelListTableViewController(style: .plain)
-        //controller.selectedValue = ratingItem.value
-        //controller.delegate  = self
+        labelListVC.delegate = self
         pushConfigurationViewController(labelListVC)
     }
     
@@ -98,6 +106,7 @@ class ShareViewController: SLComposeServiceViewController {
         print(self.extensionContext?.inputItems.count)
         print(self.contentText)
         print("memoText\(self.memoText)")
+        print("label\(labelList)")
         self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
     }
 
@@ -108,8 +117,15 @@ class ShareViewController: SLComposeServiceViewController {
 
 }
 
-extension ShareViewController:MemoViewDelegate {
+extension ShareViewController:MemoViewDelegate{
     var shareVC:ShareViewController {
         return self
     }
 }
+
+extension ShareViewController:LabelListTableViewControllerDelegate {
+//    var shareVC:ShareViewController {
+//        return self
+//    }
+}
+

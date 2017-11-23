@@ -9,16 +9,14 @@
 import UIKit
 import RealmSwift
 
-struct AppLabelData {
-    var name:String!
-    var color:UIColor!
-    var id:String!
-    var order:Int!
+@objc protocol LabelListTableViewControllerDelegate {
+    var shareVC:ShareViewController { get }
 }
 
 class LabelListTableViewController: UITableViewController {
     
     var list:[AppLabelData] = []
+    var delegate:LabelListTableViewControllerDelegate!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,21 +71,71 @@ class LabelListTableViewController: UITableViewController {
             cell.textLabel?.text = "新しいラベルを作成"
         }else {
             cell.textLabel?.text = list[indexPath.row].name
+            if self.delegate.shareVC.labelList.contains(where: {$0.id == list[indexPath.row].id}){
+                cell.accessoryType = .checkmark
+            }else {
+                cell.accessoryType = .none
+            }
         }
-        // Configure the cell...
+        
+        
+        
 
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        cell?.accessoryType = .checkmark
+        
+        if self.delegate.shareVC.labelList.contains(where: {$0.id == list[indexPath.row].id}){
+            //外す
+            cell?.accessoryType = .none
+            let index = self.delegate.shareVC.labelList.findIndex{$0.id == list[indexPath.row].id}
+            if index.count > 0 {
+                self.delegate.shareVC.labelList.remove(at: index[0])
+            }
+            
+        }else {
+            //つける
+            cell?.accessoryType = .checkmark
+            self.delegate.shareVC.labelList.append(list[indexPath.row])
+        }
+        
+        cell?.isSelected = false
     }
     
-    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)
-        cell?.accessoryType = .none
+//    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+//        let cell = tableView.cellForRow(at: indexPath)
+//        cell?.accessoryType = .none
+//    }
+
+
+}
+
+extension Array where Element: Hashable {
+    
+    func unique() -> [Element] {
+        var r = [Element]()
+        for i in self {
+            r += !r.contains(i) ? [i] : []
+        }
+        return r
     }
+    
+    mutating func uniqueInPlace() {
+        self = self.unique()
+    }
+    
+}
 
-
+extension Array {
+    func findIndex(includeElement: (Element) -> Bool) -> [Int] {
+        var indexArray:[Int] = []
+        for (index, element) in enumerated() {
+            if includeElement(element) {
+                indexArray.append(index)
+            }
+        }
+        return indexArray
+    }
 }
