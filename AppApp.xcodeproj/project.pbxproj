@@ -10,6 +10,7 @@
 		66498E281FC6651A00239B47 /* String+Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E271FC6651A00239B47 /* String+Path.swift */; };
 		66498E2A1FC666A400239B47 /* ShareAppLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E291FC666A400239B47 /* ShareAppLabel.swift */; };
 		66498E2C1FC67A6400239B47 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E2B1FC67A6400239B47 /* AppData.swift */; };
+		66498E2E1FC6B92C00239B47 /* ApplicationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E2D1FC6B92C00239B47 /* ApplicationData.swift */; };
 		667ECE191FC36784009233DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE181FC36784009233DE /* AppDelegate.swift */; };
 		667ECE1E1FC36784009233DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 667ECE1C1FC36784009233DE /* Main.storyboard */; };
 		667ECE201FC36784009233DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 667ECE1F1FC36784009233DE /* Assets.xcassets */; };
@@ -85,6 +86,7 @@
 		66498E271FC6651A00239B47 /* String+Path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Path.swift"; sourceTree = "<group>"; };
 		66498E291FC666A400239B47 /* ShareAppLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareAppLabel.swift; sourceTree = "<group>"; };
 		66498E2B1FC67A6400239B47 /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
+		66498E2D1FC6B92C00239B47 /* ApplicationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationData.swift; sourceTree = "<group>"; };
 		667ECE151FC36784009233DE /* AppApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		667ECE181FC36784009233DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		667ECE1D1FC36784009233DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				667ECE461FC36850009233DE /* BaseNavigationViewController.swift */,
 				667ECE481FC368BF009233DE /* BasePageViewController.swift */,
 				667ECE4A1FC3690E009233DE /* BaseViewController.swift */,
+				66498E2D1FC6B92C00239B47 /* ApplicationData.swift */,
 				667ECE561FC3836C009233DE /* AppLabel.swift */,
 				667ECE5C1FC39594009233DE /* SelectionBar */,
 				667ECE581FC388B9009233DE /* UIColor+AppColor.swift */,
@@ -485,6 +488,7 @@
 				667ECE691FC3B454009233DE /* CreateAppLabelTableView.swift in Sources */,
 				667ECE491FC368BF009233DE /* BasePageViewController.swift in Sources */,
 				66498E281FC6651A00239B47 /* String+Path.swift in Sources */,
+				66498E2E1FC6B92C00239B47 /* ApplicationData.swift in Sources */,
 				667ECE711FC4206F009233DE /* AppCollectionViewCell.swift in Sources */,
 				667ECE191FC36784009233DE /* AppDelegate.swift in Sources */,
 				667ECE6D1FC41F7E009233DE /* AppCollectionView.swift in Sources */,

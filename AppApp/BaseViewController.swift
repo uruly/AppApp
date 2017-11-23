@@ -8,6 +8,7 @@
 // コレクションビューを乗せてページングさせるビューコントローラ
 
 import UIKit
+import RealmSwift
 
 class BaseViewController: UIViewController {
 
@@ -38,6 +39,17 @@ class BaseViewController: UIViewController {
         self.view.addSubview(collectionView)
         
         
+        //とりあえずお試し
+        var config = Realm.Configuration(schemaVersion:SCHEMA_VERSION)
+        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
+        config.fileURL = url.appendingPathComponent("db.realm")
+        
+        let realm = try! Realm(configuration: config)
+        let objs = realm.objects(ApplicationData.self)
+        for obj in objs{
+            print(obj.app)
+            print(obj.memo)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -1,6 +1,6 @@
 //
-//  AppData.swift
-//  ShareFromAppStoreExtension
+//  ApplicationData.swift
+//  AppApp
 //
 //  Created by 久保　玲於奈 on 2017/11/23.
 //  Copyright © 2017年 Reona Kubo. All rights reserved.
@@ -10,6 +10,7 @@ import UIKit
 import RealmSwift
 
 let SCHEMA_VERSION:UInt64 = 2
+
 //保存するアプリデータ
 class AppRealmData : Object {
     @objc dynamic var name:String!      //アプリの名前
@@ -38,3 +39,4 @@ class ApplicationData: Object {
         return "id"
     }
 }
+

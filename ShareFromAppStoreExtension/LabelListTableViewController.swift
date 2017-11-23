@@ -29,7 +29,7 @@ class LabelListTableViewController: UITableViewController {
 
     func readLabelData(){
         list = []
-        var config = Realm.Configuration()
+        var config = Realm.Configuration(schemaVersion:SCHEMA_VERSION)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
         config.fileURL = url.appendingPathComponent("db.realm")
         

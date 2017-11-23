@@ -190,7 +190,7 @@ class ShareViewController: SLComposeServiceViewController {
     
     func saveAppData(name:String,developer:String,id:String,url:String,image:Data,date:Date){
         var config =  Realm.Configuration(
-            schemaVersion: 2,
+            schemaVersion: SCHEMA_VERSION,
             migrationBlock: { migration, oldSchemaVersion in
                 if (oldSchemaVersion < 1) {
                     migration.enumerateObjects(ofType: AppRealmData.className()) { oldObject, newObject in
