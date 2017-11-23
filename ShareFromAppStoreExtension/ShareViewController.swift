@@ -105,7 +105,7 @@ class ShareViewController: SLComposeServiceViewController {
         loadData(itemProviders: itemProviders) { (name, developer, id, url, image) in
             self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
             print("この中きたよ")
-            self.saveAppData(name: name, developer: developer, id: id, url: url, image: image, date: Date())
+            self.saveAppData(name: name, developer: developer, id: id, urlString: url, image: image, date: Date())
         }
         
     }
@@ -188,13 +188,15 @@ class ShareViewController: SLComposeServiceViewController {
 
 
     
-    func saveAppData(name:String,developer:String,id:String,url:String,image:Data,date:Date){
+    func saveAppData(name:String,developer:String,id:String,urlString:String,image:Data,date:Date){
         var config =  Realm.Configuration(
             schemaVersion: SCHEMA_VERSION,
             migrationBlock: { migration, oldSchemaVersion in
-                if (oldSchemaVersion < 1) {
+                print(oldSchemaVersion)
+                if (oldSchemaVersion < 4) {
                     migration.enumerateObjects(ofType: AppRealmData.className()) { oldObject, newObject in
                         print("migration")
+                        
                         newObject!["urlString"] = ""
                     }
                 }
@@ -207,7 +209,7 @@ class ShareViewController: SLComposeServiceViewController {
         let appData = AppRealmData(value: ["name":name,
                                            "developer":developer,
                                            "id":id,
-                                           "url":url,
+                                           "urlString":urlString,
                                            "image":image,
                                            "date":date])
         let realm = try! Realm()

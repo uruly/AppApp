@@ -46,9 +46,10 @@ class BaseViewController: UIViewController {
         
         let realm = try! Realm(configuration: config)
         let objs = realm.objects(ApplicationData.self)
+        print(objs)
         for obj in objs{
             print(obj.app)
-            print(obj.memo)
+            print(obj)
         }
     }
     

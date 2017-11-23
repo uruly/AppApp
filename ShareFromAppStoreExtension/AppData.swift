@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-let SCHEMA_VERSION:UInt64 = 2
+let SCHEMA_VERSION:UInt64 = 4
 //保存するアプリデータ
 class AppRealmData : Object {
     @objc dynamic var name:String!      //アプリの名前
@@ -27,8 +27,8 @@ class AppRealmData : Object {
 
 //アプリとラベルの紐付け
 class ApplicationData: Object {
-    var app:AppRealmData? = nil         //アプリデータ
-    var label:AppLabelRealmData? = nil       //らベルデータ
+    @objc dynamic var app:AppRealmData? = nil         //アプリデータ
+    @objc dynamic var label:AppLabelRealmData? = nil       //らベルデータ
     @objc dynamic var id:String!        //固有id UUID
     @objc dynamic var rate:Double = 0   //ラベルでのレート
     @objc dynamic var order:Int = 0     //ラベルでの場所
