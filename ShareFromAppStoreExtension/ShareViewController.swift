@@ -8,6 +8,7 @@
 
 import UIKit
 import Social
+//import MobileCoreServices
 
 class ShareViewController: SLComposeServiceViewController {
     
@@ -99,15 +100,51 @@ class ShareViewController: SLComposeServiceViewController {
     }
 
     override func didSelectPost() {
-        // This is called after the user selects Post. Do the upload of contentText and/or NSExtensionContext attachments.
-    
-        // Inform the host that we're done, so it un-blocks its UI. Note: Alternatively you could call super's -didSelectPost, which will similarly complete the extension context.
+        let extensionItem: NSExtensionItem = self.extensionContext?.inputItems.first as! NSExtensionItem
+        let itemProviders = extensionItem.attachments as! [NSItemProvider]
         
-        print(self.extensionContext?.inputItems.count)
-        print(self.contentText)
-        print("memoText\(self.memoText)")
-        print("label\(labelList)")
-        self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
+        for itemProvider in itemProviders {
+            print(itemProvider.registeredTypeIdentifiers)
+            //URL
+            if (itemProvider.hasItemConformingToTypeIdentifier("public.url")) {
+                print("ないの？")
+                itemProvider.loadItem(forTypeIdentifier: "public.url", options: nil, completionHandler: {
+                    (item, error) in
+                    
+                    // item に url が入っている
+                    let itemNSURL: NSURL = item as! NSURL
+                    print("urlあるよ\(item)")
+                    // 行いたい処理を書く
+                })
+            }
+            
+            //IMAGE
+            if (itemProvider.hasItemConformingToTypeIdentifier("public.image")) {
+                itemProvider.loadItem(forTypeIdentifier: "public.image", options: nil, completionHandler: {
+                    (item, error) in
+                    
+                    // item にUIImageが入っている
+                    
+                    
+                    // 行いたい処理を書く
+                })
+            }
+            
+            //PLAIN-TEXT
+            if (itemProvider.hasItemConformingToTypeIdentifier("public.plain-text")) {
+                itemProvider.loadItem(forTypeIdentifier: "public.plain-text", options: nil, completionHandler: {
+                    (item, error) in
+                    
+                    
+                    // item にUIImageが入っている
+                    print("plain-text\(item)")
+                    
+                    
+                    // 行いたい処理を書く
+                })
+            }
+        }
+
     }
 
     override func configurationItems() -> [Any]! {
