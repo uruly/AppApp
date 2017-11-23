@@ -214,7 +214,53 @@ class ShareViewController: SLComposeServiceViewController {
         try! realm.write {
             realm.add(appData,update:true)
         }
-        
+        saveLabelAppData(appData:appData)
+    }
+    
+    func saveLabelAppData(appData:AppRealmData){
+        if labelList.count == 0 {
+            let colorData = NSKeyedArchiver.archivedData(withRootObject: UIColor.blue)
+            let labelRealm = AppLabelRealmData(value:["name":"ALL",
+                                                 "color":colorData,
+                                                 "id":"0",
+                                                 "order":0
+                ])
+            let id = UUID().uuidString
+            let data = ApplicationData(value: ["app":appData,
+                                               "label":labelRealm,
+                                               "id":id,
+                                               "rate":0,
+                                               "order":0,
+                                               "memo":memoText])
+            
+            let realm = try! Realm()
+            try! realm.write {
+                realm.add(data,update:true)
+            }
+            print("seikou?")
+        }else {
+            for label in labelList {
+                let colorData = NSKeyedArchiver.archivedData(withRootObject: label.color)
+                let labelRealm = AppLabelRealmData(value:["name":label.name,
+                                                     "color":colorData,
+                                                     "id":label.id,
+                                                     "order":label.order
+                    ])
+                let id = UUID().uuidString
+                let data = ApplicationData(value: ["app":appData,
+                                                   "label":labelRealm,
+                                                   "id":id,
+                                                   "rate":0,
+                                                   "order":0,
+                                                   "memo":memoText])
+                
+                let realm = try! Realm()
+                try! realm.write {
+                    realm.add(data,update:true)
+                }
+                print("成功?")
+            }
+        }
     }
 
     override func configurationItems() -> [Any]! {
