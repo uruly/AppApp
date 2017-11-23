@@ -55,7 +55,11 @@ class AppLabel {
     func reloadLabelData(){
         //ラベルを読み込む処理
         self.array = []
-        let realm = try! Realm()
+        var config = Realm.Configuration()
+        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
+        config.fileURL = url.appendingPathComponent("db.realm")
+        
+        let realm = try! Realm(configuration: config)
         let objs = realm.objects(AppLabelRealmData.self)
         for obj in objs{
             if let name = obj.name ,let colorData = obj.color,let id = obj.id{
@@ -75,7 +79,11 @@ class AppLabel {
                                              "id":"0",
                                              "order":0
             ])
-        let realm = try! Realm()
+        var config = Realm.Configuration()
+        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
+        config.fileURL = url.appendingPathComponent("db.realm")
+        
+        let realm = try! Realm(configuration: config)
         try! realm.write {
             realm.add(label,update:true)
         }
@@ -91,11 +99,16 @@ class AppLabel {
                                              "order":order
             ])
         do {
-            let realm = try Realm()
+            var config = Realm.Configuration()
+            let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
+            config.fileURL = url.appendingPathComponent("db.realm")
+            
+            let realm = try Realm(configuration: config)
             do {
                 try realm.write {
                     realm.add(label,update:true)
                 }
+                
                 completion()
             }catch{
                 print("error\(error)")
@@ -106,7 +119,11 @@ class AppLabel {
     }
     
     static func contains(name:String) -> Bool{
-        let realm = try! Realm()
+        var config = Realm.Configuration()
+        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
+        config.fileURL = url.appendingPathComponent("db.realm")
+        
+        let realm = try! Realm(configuration: config)
         let objs = realm.objects(AppLabelRealmData.self)
         for obj in objs{
             if obj.name == name {
