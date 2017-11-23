@@ -189,10 +189,20 @@ class ShareViewController: SLComposeServiceViewController {
 
     
     func saveAppData(name:String,developer:String,id:String,url:String,image:Data,date:Date){
-        var config = Realm.Configuration()
-        config.deleteRealmIfMigrationNeeded = false
+        var config =  Realm.Configuration(
+            schemaVersion: 2,
+            migrationBlock: { migration, oldSchemaVersion in
+                if (oldSchemaVersion < 1) {
+                    migration.enumerateObjects(ofType: AppRealmData.className()) { oldObject, newObject in
+                        print("migration")
+                        newObject!["urlString"] = ""
+                    }
+                }
+        })
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
         config.fileURL = url.appendingPathComponent("db.realm")
+        
+        Realm.Configuration.defaultConfiguration = config
         
         let appData = AppRealmData(value: ["name":name,
                                            "developer":developer,
@@ -200,17 +210,9 @@ class ShareViewController: SLComposeServiceViewController {
                                            "url":url,
                                            "image":image,
                                            "date":date])
-        do{
-            let realm = try Realm(configuration: config)
-            do {
-                try realm.write {
-                    realm.add(appData,update:true)
-                }
-            }catch{
-                print("error\(error)")
-            }
-        }catch{
-            print(error)
+        let realm = try! Realm()
+        try! realm.write {
+            realm.add(appData,update:true)
         }
         
     }
