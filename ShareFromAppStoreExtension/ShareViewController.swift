@@ -8,7 +8,7 @@
 
 import UIKit
 import Social
-//import MobileCoreServices
+import RealmSwift
 
 class ShareViewController: SLComposeServiceViewController {
     
