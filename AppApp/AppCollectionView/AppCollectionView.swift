@@ -41,6 +41,12 @@ class AppCollectionView: UICollectionView {
         self.dataSource = self
         self.register(UINib(nibName:"AppCollectionViewCell",bundle:nil), forCellWithReuseIdentifier: "imageCollection")
         self.backgroundColor = UIColor.white
+        
+        //長押しで
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(cellLongPressed(sender:)))
+        longPress.allowableMovement = 10
+        longPress.minimumPressDuration = 0.5
+        self.addGestureRecognizer(longPress)
     }
     
     convenience init(frame:CGRect){
@@ -56,6 +62,26 @@ class AppCollectionView: UICollectionView {
     override func reloadData(){
         if appData != nil {
             super.reloadData()
+        }
+    }
+    
+    @objc func cellLongPressed(sender:UILongPressGestureRecognizer){
+        switch(sender.state) {
+            
+        case .began:
+            guard let selectedIndexPath = self.indexPathForItem(at: sender.location(in:self)) else {
+                break
+            }
+            self.beginInteractiveMovementForItem(at: selectedIndexPath)
+            
+        case .changed:
+            self.updateInteractiveMovementTargetPosition(sender.location(in: sender.view!))
+            
+        case .ended:
+            self.endInteractiveMovement()
+            
+        default:
+            self.cancelInteractiveMovement()
         }
     }
 }
@@ -83,6 +109,11 @@ extension AppCollectionView:UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return appData.appList.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let tempNumber = appData.appList.remove(at: sourceIndexPath.item)
+        appData.appList.insert(tempNumber, at: destinationIndexPath.item)
     }
 }
 
