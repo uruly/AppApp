@@ -41,7 +41,11 @@ class BasePageViewController: UIPageViewController {
         let height = self.view.frame.height
         self.view.backgroundColor = UIColor.backgroundGray()
         appLabel = AppLabel()
-        print(appLabel.array)
+        
+        //ナビゲーションバーをカスタマイズ
+        self.title = "AppApp"
+        let editBtn = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(self.editTapped(sender:)))
+        self.navigationItem.rightBarButtonItem = editBtn
         
         let navigationBarHeight = self.navigationController?.navigationBar.frame.maxY ?? 56
         print(navigationBarHeight)
@@ -108,6 +112,16 @@ class BasePageViewController: UIPageViewController {
         self.present(editLabelVC, animated: true, completion: {
             self.isGoDetail = false
         })
+    }
+    
+    //編集中にする
+    @objc func editTapped(sender:UIBarButtonItem){
+        AppCollectionView.isWhileEditing = true
+        
+        //スクロールできないようにする
+        let scrollView = self.view.subviews.flatMap { $0 as? UIScrollView }.first
+        scrollView?.isScrollEnabled = false
+        
     }
 }
 extension BasePageViewController: UIPageViewControllerDataSource {

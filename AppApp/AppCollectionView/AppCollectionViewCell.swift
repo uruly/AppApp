@@ -11,10 +11,18 @@ import UIKit
 class AppCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var imageView: UIImageView!
+    
+    @IBOutlet weak var checkImageView: UIImageView!
+    
+    var imageMaskView:UIView!
+    //var checkView:UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        //imageView.backgroundColor = UIColor.blue
+        
+        checkImageView.image = UIImage(named:"check.png")?.withRenderingMode(.alwaysTemplate)
+        checkImageView.tintColor = UIColor.checkBtn()
+        
+        checkImageView.isHidden = true
     }
 
 }

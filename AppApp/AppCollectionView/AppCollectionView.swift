@@ -14,6 +14,7 @@ import UIKit
 
 class AppCollectionView: UICollectionView {
     
+    static var isWhileEditing = false
     var itemSize:CGSize = CGSize(width:50,height:50)
     var lastContentOffsetY:CGFloat = 0
     var appDelegate:AppCollectionViewDelegate! {
@@ -31,6 +32,8 @@ class AppCollectionView: UICollectionView {
             self.reloadData()
         }
     }
+    
+    var checkArray:[ApplicationStruct] = []
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -90,8 +93,24 @@ class AppCollectionView: UICollectionView {
 
 extension AppCollectionView:UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //画面遷移をする
-        self.appDelegate.baseVC.toDetailViewController(appData:appData)
+        if AppCollectionView.isWhileEditing {
+            let cell:AppCollectionViewCell = collectionView.cellForItem(at: indexPath) as! AppCollectionViewCell
+            
+            let id = appData.appList[indexPath.row].id
+            let index = checkArray.findIndex(includeElement: {$0.id == id})
+            if index.count > 0 {
+                self.checkArray.remove(at: index[0])
+                cell.checkImageView.isHidden = true
+                cell.imageView.alpha = 1.0
+            }else {
+                self.checkArray.append(appData.appList[indexPath.row])
+                cell.checkImageView.isHidden = false
+                cell.imageView.alpha = 0.5
+            }
+        }else{
+            //画面遷移をする
+            self.appDelegate.baseVC.toDetailViewController(appData:appData)
+        }
     }
 }
 
@@ -100,6 +119,15 @@ extension AppCollectionView:UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier:"imageCollection",for:indexPath) as! AppCollectionViewCell
         if appData == nil {
             return cell
+        }
+        cell.checkImageView.isHidden = true
+        cell.imageView.alpha = 1.0
+        //編集中かどうか
+        if AppCollectionView.isWhileEditing {
+            if checkArray.contains(where: {$0.id == appData.appList[indexPath.row].id}){
+                cell.checkImageView.isHidden = false
+                cell.imageView.alpha = 0.5
+            }
         }
         cell.imageView.image = nil
         if let imageData = appData.appList[indexPath.row].app.image {

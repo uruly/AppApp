@@ -25,4 +25,12 @@ extension UIColor {
         return UIColor(red: 114 / 255, green: 113 / 255, blue: 113 / 255, alpha: 1.0)
     }
     
+    //チェックボタンの色　未定
+    class func checkBtn() -> UIColor {
+        return UIColor.blue
+    }
+    
+    class func blackMask() -> UIColor {
+        return UIColor(red: 1 / 255, green: 1 / 255, blue: 1 / 255, alpha: 1)
+    }
 }

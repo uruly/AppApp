@@ -22,17 +22,25 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bxh-tQ-d4Y">
                         <rect key="frame" x="0.0" y="0.0" width="113" height="112"/>
                     </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vhx-LZ-8RK">
+                        <rect key="frame" x="0.0" y="0.0" width="113" height="112"/>
+                    </imageView>
                 </subviews>
             </view>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="Vhx-LZ-8RK" secondAttribute="bottom" id="7nj-jm-ZS6"/>
                 <constraint firstAttribute="bottom" secondItem="Bxh-tQ-d4Y" secondAttribute="bottom" id="BQy-TX-gY5"/>
                 <constraint firstItem="Bxh-tQ-d4Y" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Nny-7C-L3n"/>
                 <constraint firstItem="Bxh-tQ-d4Y" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Ttc-sB-WD7"/>
+                <constraint firstItem="Vhx-LZ-8RK" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="UAC-V6-lkS"/>
                 <constraint firstAttribute="trailing" secondItem="Bxh-tQ-d4Y" secondAttribute="trailing" id="abm-Ca-nkN"/>
+                <constraint firstItem="Vhx-LZ-8RK" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="zMV-dC-kix"/>
+                <constraint firstAttribute="trailing" secondItem="Vhx-LZ-8RK" secondAttribute="trailing" id="zhB-TQ-xAJ"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="113" height="112"/>
             <connections>
+                <outlet property="checkImageView" destination="Vhx-LZ-8RK" id="Q0Q-oS-Wqy"/>
                 <outlet property="imageView" destination="Bxh-tQ-d4Y" id="7CA-Du-hN0"/>
             </connections>
             <point key="canvasLocation" x="64.5" y="105"/>

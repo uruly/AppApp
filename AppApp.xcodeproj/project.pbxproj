@@ -14,6 +14,8 @@
 		66498E301FC7A01D00239B47 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E2F1FC7A01D00239B47 /* DetailViewController.swift */; };
 		66498E321FC7B5AA00239B47 /* EditAppLabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E311FC7B5AA00239B47 /* EditAppLabelViewController.swift */; };
 		66498E341FC7BA3600239B47 /* UIApplication+Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E331FC7BA3600239B47 /* UIApplication+Stack.swift */; };
+		66498E371FC8067100239B47 /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 66498E361FC8067100239B47 /* check.png */; };
+		66498E391FC810BF00239B47 /* Array+FindIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E381FC810BF00239B47 /* Array+FindIndex.swift */; };
 		667ECE191FC36784009233DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE181FC36784009233DE /* AppDelegate.swift */; };
 		667ECE1E1FC36784009233DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 667ECE1C1FC36784009233DE /* Main.storyboard */; };
 		667ECE201FC36784009233DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 667ECE1F1FC36784009233DE /* Assets.xcassets */; };
@@ -93,6 +95,8 @@
 		66498E2F1FC7A01D00239B47 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		66498E311FC7B5AA00239B47 /* EditAppLabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAppLabelViewController.swift; sourceTree = "<group>"; };
 		66498E331FC7BA3600239B47 /* UIApplication+Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Stack.swift"; sourceTree = "<group>"; };
+		66498E361FC8067100239B47 /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
+		66498E381FC810BF00239B47 /* Array+FindIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+FindIndex.swift"; sourceTree = "<group>"; };
 		667ECE151FC36784009233DE /* AppApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		667ECE181FC36784009233DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		667ECE1D1FC36784009233DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -165,6 +169,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		66498E351FC8066000239B47 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				66498E361FC8067100239B47 /* check.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
 		667ECE0C1FC36784009233DE = {
 			isa = PBXGroup;
 			children = (
@@ -199,6 +211,7 @@
 				667ECE4A1FC3690E009233DE /* BaseViewController.swift */,
 				66498E2F1FC7A01D00239B47 /* DetailViewController.swift */,
 				66498E2D1FC6B92C00239B47 /* ApplicationData.swift */,
+				66498E381FC810BF00239B47 /* Array+FindIndex.swift */,
 				667ECE561FC3836C009233DE /* AppLabel.swift */,
 				667ECE5C1FC39594009233DE /* SelectionBar */,
 				667ECE581FC388B9009233DE /* UIColor+AppColor.swift */,
@@ -208,6 +221,7 @@
 				66498E331FC7BA3600239B47 /* UIApplication+Stack.swift */,
 				667ECE6E1FC41F83009233DE /* AppCollectionView */,
 				667ECE1C1FC36784009233DE /* Main.storyboard */,
+				66498E351FC8066000239B47 /* images */,
 				667ECE1F1FC36784009233DE /* Assets.xcassets */,
 				667ECE211FC36784009233DE /* LaunchScreen.storyboard */,
 				667ECE241FC36784009233DE /* Info.plist */,
@@ -430,6 +444,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66498E371FC8067100239B47 /* check.png in Resources */,
 				667ECE601FC395C2009233DE /* SelectionBarCell.xib in Resources */,
 				667ECE231FC36784009233DE /* LaunchScreen.storyboard in Resources */,
 				667ECE201FC36784009233DE /* Assets.xcassets in Resources */,
@@ -495,6 +510,7 @@
 				66498E341FC7BA3600239B47 /* UIApplication+Stack.swift in Sources */,
 				667ECE591FC388B9009233DE /* UIColor+AppColor.swift in Sources */,
 				66498E321FC7B5AA00239B47 /* EditAppLabelViewController.swift in Sources */,
+				66498E391FC810BF00239B47 /* Array+FindIndex.swift in Sources */,
 				667ECE5F1FC395C2009233DE /* SelectionBarCell.swift in Sources */,
 				66498E301FC7A01D00239B47 /* DetailViewController.swift in Sources */,
 				667ECE691FC3B454009233DE /* CreateAppLabelTableView.swift in Sources */,
