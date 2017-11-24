@@ -209,6 +209,8 @@ extension AppCollectionView:UIScrollViewDelegate {
                     }
                 }
             }
+        }else {
+            self.appDelegate.baseVC.basePageVC.iconSizeChanger.center.y = maxY - middleHeight
         }
         lastContentOffsetY = scrollView.contentOffset.y
         //self.appDelegate.baseVC.basePageVC.iconSizeChanger.isHidden = true

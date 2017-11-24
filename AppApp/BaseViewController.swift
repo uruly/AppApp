@@ -88,6 +88,8 @@ extension BaseViewController: AppCollectionViewDelegate{
 }
 
 extension BaseViewController: EditToolbarDelegate {
+    
+    //これらの操作が終わったら自動的に編集中を終わらせる
     @objc func addLabelBtnTapped() {
         print("addLabel")
     }
@@ -98,6 +100,7 @@ extension BaseViewController: EditToolbarDelegate {
         let otherAction = UIAlertAction(title: "画像を削除する", style: .default) {
             action in NSLog("はいボタンが押されました")
             self.collectionView.deleteAppData()
+            self.basePageVC.cancelEdit(sender: self.basePageVC.navigationItem.rightBarButtonItem!)
         }
         let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel) {
             action in NSLog("いいえボタンが押されました")
