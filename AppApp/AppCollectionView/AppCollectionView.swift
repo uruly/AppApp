@@ -17,7 +17,11 @@ class AppCollectionView: UICollectionView {
     var itemSize:CGSize = CGSize(width:50.0,height:50.0)
     var appDelegate:AppCollectionViewDelegate! {
         didSet{
-            appData = AppData(label:appDelegate.baseVC.appLabel)
+            if appDelegate.baseVC.appLabel.name == "ALL" {
+                appData = AppData(allLabel:appDelegate.baseVC.appLabel)
+            }else {
+                appData = AppData(label:appDelegate.baseVC.appLabel)
+            }
         }
     }
     var appData:AppData! {
@@ -41,7 +45,7 @@ class AppCollectionView: UICollectionView {
     convenience init(frame:CGRect){
         let layout = UICollectionViewFlowLayout()
         let margin:CGFloat = 15.0
-        layout.sectionInset = UIEdgeInsetsMake(margin,margin,margin,margin)
+        layout.sectionInset = UIEdgeInsetsMake(margin,margin,margin + 49,margin)
         layout.minimumLineSpacing = margin
         layout.minimumInteritemSpacing = margin
         layout.itemSize = CGSize(width:50.0,height:50.0)

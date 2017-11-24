@@ -71,6 +71,12 @@ class AppData {
         self.label = label
         readAppData(label:label)
     }
+    
+    init(allLabel:AppLabelData){
+        self.label = allLabel
+        readAllAppData()
+    }
+    
     //読み込み
     func readAppData(label:AppLabelData){
         appList = []
@@ -91,6 +97,31 @@ class AppData {
             //applicationStruct
             guard let app = obj.app else{ return }
             let appData = AppStruct(name: app.name, developer: app.developer, id: app.id, urlString: app.urlString, image: app.image, date: app.date)
+            
+            let appLabel = ApplicationStruct(app: appData, label: label, id: obj.id, rate: obj.rate, order: obj.order, memo: obj.memo)
+            
+            appList.append(appLabel)
+            
+        }
+    }
+    
+    func readAllAppData(){
+        appList = []
+        
+        var config = Realm.Configuration(schemaVersion:SCHEMA_VERSION)
+        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
+        config.fileURL = url.appendingPathComponent("db.realm")
+        
+        let realm = try! Realm(configuration: config)
+
+        let objs = realm.objects(ApplicationData.self)
+        for obj in objs {
+            //applicationStruct
+            guard let app = obj.app else{ return }
+            let appData = AppStruct(name: app.name, developer: app.developer, id: app.id, urlString: app.urlString, image: app.image, date: app.date)
+            if appList.contains(where: {$0.app.id == app.id}){
+                continue
+            }
             
             let appLabel = ApplicationStruct(app: appData, label: label, id: obj.id, rate: obj.rate, order: obj.order, memo: obj.memo)
             
