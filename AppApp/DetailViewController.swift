@@ -16,7 +16,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
 
         self.view.backgroundColor = UIColor.backgroundGray()
-        self.title = appData.label.name
+        self.title = "アプリの情報"
         
         // Do any additional setup after loading the view.
     }

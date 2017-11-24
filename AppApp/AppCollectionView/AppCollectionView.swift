@@ -15,6 +15,7 @@ import UIKit
 class AppCollectionView: UICollectionView {
     
     var itemSize:CGSize = CGSize(width:50.0,height:50.0)
+    var lastContentOffsetY:CGFloat = 0
     var appDelegate:AppCollectionViewDelegate! {
         didSet{
             if appDelegate.baseVC.appLabel.name == "ALL" {
@@ -98,4 +99,44 @@ extension AppCollectionView:IconSizeChangerDelegate{
         self.itemSize = CGSize(width:CGFloat(sender.value),height:CGFloat(sender.value))
         self.collectionViewLayout.invalidateLayout()
     }
+}
+
+extension AppCollectionView:UIScrollViewDelegate {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        lastContentOffsetY = 0
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print("offsetY\(scrollView.contentOffset.y)")
+        let maxY = self.appDelegate.baseVC.view.frame.maxY
+        let middleHeight = self.appDelegate.baseVC.basePageVC.iconSizeChanger.frame.height / 2
+        let diffX = fabs(lastContentOffsetY - scrollView.contentOffset.y)
+        if scrollView.contentOffset.y >= 0 {
+            if scrollView.contentOffset.y > lastContentOffsetY {
+                print("非表示")
+                if self.appDelegate.baseVC.basePageVC.iconSizeChanger.frame.minY < maxY {
+                    if self.appDelegate.baseVC.basePageVC.iconSizeChanger.frame.minY + diffX < 0 {
+                        self.appDelegate.baseVC.basePageVC.iconSizeChanger.center.y = maxY + middleHeight
+                    }else {
+                        print("ここよばれてり")
+                        self.appDelegate.baseVC.basePageVC.iconSizeChanger.center.y += diffX
+                    }
+                }
+            }else {
+                print("表示")
+                if self.appDelegate.baseVC.basePageVC.iconSizeChanger.frame.maxY > maxY {
+                    //上にあげすぎない
+                    if self.appDelegate.baseVC.basePageVC.iconSizeChanger.frame.maxY - diffX < maxY {
+                        self.appDelegate.baseVC.basePageVC.iconSizeChanger.center.y = maxY - middleHeight
+                    }else {
+                        self.appDelegate.baseVC.basePageVC.iconSizeChanger.center.y -= diffX
+                    }
+                }
+            }
+        }
+        lastContentOffsetY = scrollView.contentOffset.y
+        //self.appDelegate.baseVC.basePageVC.iconSizeChanger.isHidden = true
+    }
+    
+    
 }
