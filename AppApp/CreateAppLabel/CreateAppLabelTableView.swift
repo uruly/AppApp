@@ -14,6 +14,7 @@ class CreateAppLabelTableView: UITableView {
     var colorView:UIView!
     var orderLabel:UILabel!
     var currentTextField:UITextField?
+    var isKeyboardAppear = true
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -71,11 +72,14 @@ extension CreateAppLabelTableView:UITableViewDataSource {
             textField.leftViewMode = UITextFieldViewMode.always
             textField.delegate = self
             textField.returnKeyType = .done
-            textField.viewWithTag(5)
+            //textField.viewWithTag(5)
             if indexPath.row == 0 {
                 textField.placeholder = "ラベル名"
                 textField.tag = 1
-                textField.becomeFirstResponder()
+                if isKeyboardAppear{
+                    textField.becomeFirstResponder()
+                }
+                self.currentTextField = textField
             }else if indexPath.row == 1 {
                 textField.tag = 2
                 textField.placeholder = "ラベルの説明(任意)"
@@ -87,7 +91,7 @@ extension CreateAppLabelTableView:UITableViewDataSource {
         if indexPath.section == 1{
             cell.textLabel?.text = "カラー"
             colorView = UIView(frame: CGRect(x:0,y:0,width:20,height:20))
-            colorView.backgroundColor = UIColor.blue
+            colorView.backgroundColor = createAppLabelVC.color
             colorView.layer.cornerRadius = 10
             cell.accessoryView = colorView
         }

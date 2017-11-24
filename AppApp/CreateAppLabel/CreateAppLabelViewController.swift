@@ -17,8 +17,8 @@ class CreateAppLabelViewController: UIViewController {
     var labelName:String?{
         didSet{
             if labelName != "" && labelName != nil{
-                //trueなら保存できる
-                if AppLabel.contains(name: labelName!){
+                //すでにあったらno
+                if !AppLabel.contains(name: labelName!){
                     if let items = naviBar.items,let rightItem = items[0].rightBarButtonItem{
                         rightItem.tintColor = nil
                     }
@@ -35,6 +35,7 @@ class CreateAppLabelViewController: UIViewController {
             }
         }
     }
+    var order:Int = 0
     
     var color:UIColor = UIColor.blue{
         didSet{
@@ -67,12 +68,7 @@ class CreateAppLabelViewController: UIViewController {
         naviBar.items = [naviBarItem]
         self.view.addSubview(naviBar)
         
-        //tableViewを設置
-        tableView = CreateAppLabelTableView(frame: CGRect(x:0,y:naviBar.frame.maxY,
-                                                              width:width,
-                                                              height:height - naviBar.frame.maxY),
-                                                createAppLabelVC:self)
-        self.view.addSubview(tableView)
+        setTableView()
         
         //カラーピッカー
         colorPickerView = ColorPicker()
@@ -88,9 +84,22 @@ class CreateAppLabelViewController: UIViewController {
         pickerView = UIPickerView(frame: CGRect(x:0,y:height,width:width,height:200))
     }
     
+    func setTableView(){
+        //tableViewを設置
+        let width = self.view.frame.width
+        let height = self.view.frame.height
+        tableView = CreateAppLabelTableView(frame: CGRect(x:0,y:naviBar.frame.maxY,
+                                                          width:width,
+                                                          height:height - naviBar.frame.maxY),
+                                            createAppLabelVC:self)
+        self.view.addSubview(tableView)
+    }
+    
     @objc func cancelBtnTapped(){
-        if let textField = tableView.currentTextField{
-            textField.resignFirstResponder()
+        if tableView != nil {
+            if let textField = tableView.currentTextField{
+                textField.resignFirstResponder()
+            }
         }
         self.dismiss(animated: true, completion: nil)
     }
@@ -100,16 +109,18 @@ class CreateAppLabelViewController: UIViewController {
             return
         }
         //同じ色がすでに含まれていたらポップアップで確認を取る
+        self.saveLabelData()
         
         
+    }
+    
+    func saveLabelData(){
         //セーブをする
         let id = NSUUID().uuidString
         AppLabel.saveLabelData(name: labelName!, color: color, id: id, order: AppLabel.count!){
             BasePageViewController.isUnwind = true
             self.dismiss(animated:true,completion:nil)
         }
-        
-        
     }
     
     func showColorPicker(){

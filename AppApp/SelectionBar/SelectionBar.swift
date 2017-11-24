@@ -23,6 +23,12 @@ class SelectionBar: UICollectionView {
         self.register(UINib(nibName:"SelectionBarCell",bundle:nil), forCellWithReuseIdentifier: "selection")
         self.backgroundColor = UIColor.backgroundGray()
         self.showsHorizontalScrollIndicator = false
+        
+        //長押しで
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(cellLongPressed(sender:)))
+        longPress.allowableMovement = 10
+        longPress.minimumPressDuration = 0.5
+        self.addGestureRecognizer(longPress)
     }
     
     convenience init(frame:CGRect,pageVC:BasePageViewController){
@@ -36,18 +42,6 @@ class SelectionBar: UICollectionView {
         self.pageVC = pageVC
     }
 
-//    var diffX = {(nextIndex:Int) -> CGFloat in
-//        if nextIndex > AppLabel.count || nextIndex < 0{
-//            return 0
-//        }
-//        let nextCell = self.cellForItem(at: IndexPath(row: nextIndex, section: 0))
-//        //寄せたい位置
-//        let center = self.frame.width / 2
-//
-//        //次のセルの現在の中心位置
-//        let nextCellPoint = self.convert(nextCell!.center, from: self.superview)
-//        return center - nextCellPoint.x / self.frame.width
-//    }
     var diffX:CGFloat = 0
     
     func setDiffX(nextIndex:Int){
@@ -87,6 +81,15 @@ class SelectionBar: UICollectionView {
     func scrollAdjust(index:Int){
         let indexPath = IndexPath(row: index, section: 0)
         self.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+    }
+    
+    @objc func cellLongPressed(sender:UILongPressGestureRecognizer){
+        //長押ししたら編集画面になる
+        guard let indexPath = self.indexPathForItem(at: sender.location(in:self)) else {
+            return
+        }
+        
+        pageVC.editAppLabel(label:pageVC.appLabel.array[indexPath.row])
     }
 }
 

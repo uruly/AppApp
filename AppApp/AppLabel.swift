@@ -127,10 +127,10 @@ class AppLabel {
         let objs = realm.objects(AppLabelRealmData.self)
         for obj in objs{
             if obj.name == name {
-                return false
+                return true
             }
         }
-        return true
+        return false
     }
     
     

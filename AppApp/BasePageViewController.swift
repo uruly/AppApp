@@ -25,6 +25,7 @@ class BasePageViewController: UIPageViewController {
     var nextPageIndex:Int = 0
     var isSelectionScroll = true
     var iconSizeChanger:IconSizeChanger!
+    var isGoDetail = false
     
     override init(transitionStyle style: UIPageViewControllerTransitionStyle, navigationOrientation: UIPageViewControllerNavigationOrientation, options: [String : Any]? = nil) {
         super.init(transitionStyle:.scroll,navigationOrientation:.horizontal,options:options)
@@ -90,6 +91,23 @@ class BasePageViewController: UIPageViewController {
     func createAppLabel(){
         let createLabelVC = CreateAppLabelViewController()
         self.present(createLabelVC, animated: true, completion: nil)
+    }
+    
+    func editAppLabel(label:AppLabelData){
+        if isGoDetail {
+            return
+        }
+        isGoDetail = true
+        let editLabelVC = EditAppLabelViewController()
+        //今の値を入れておく
+        editLabelVC.currentName = label.name
+        editLabelVC.order = label.order
+        editLabelVC.color = label.color
+        editLabelVC.id = label.id
+        
+        self.present(editLabelVC, animated: true, completion: {
+            self.isGoDetail = false
+        })
     }
 }
 extension BasePageViewController: UIPageViewControllerDataSource {
