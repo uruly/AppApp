@@ -56,6 +56,10 @@ class BaseViewController: UIViewController {
             self.collectionView.itemSize = CGSize(width:value,height:value)
             self.collectionView.collectionViewLayout.invalidateLayout()
         }
+        
+        if self.basePageVC.editToolbar != nil {
+            self.basePageVC.editToolbar.editDelegate = self
+        }
         collectionView.appDelegate = self
     }
 
@@ -81,5 +85,21 @@ extension BaseViewController: AppCollectionViewDelegate{
     var baseVC:BaseViewController {
         return self
     }
+}
+
+extension BaseViewController: EditToolbarDelegate {
+    @objc func addLabelBtnTapped() {
+        print("addLabel")
+    }
+    
+    @objc func deleteAppBtnTapped() {
+        print("delete")
+    }
+    
+    @objc func shareAppBtnTapped() {
+        print("share")
+    }
+    
+    
 }
 

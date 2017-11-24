@@ -25,6 +25,7 @@ class BasePageViewController: UIPageViewController {
     var nextPageIndex:Int = 0
     var isSelectionScroll = true
     var iconSizeChanger:IconSizeChanger!
+    var editToolbar:EditToolbar!
     var isGoDetail = false
     
     override init(transitionStyle style: UIPageViewControllerTransitionStyle, navigationOrientation: UIPageViewControllerNavigationOrientation, options: [String : Any]? = nil) {
@@ -61,6 +62,11 @@ class BasePageViewController: UIPageViewController {
                                                        width:width,
                                                        height:toolbarHeight))
         self.view.addSubview(iconSizeChanger)
+        
+        //同じ位置にEditToolbarを配置
+        editToolbar = EditToolbar(frame: iconSizeChanger.frame)
+        editToolbar.isHidden = true
+        self.view.addSubview(editToolbar)
         
         if appLabel.array.count > 0 {
             self.setViewControllers([getBase(appLabel: appLabel.array[0])], direction: .forward, animated: true, completion: nil)
@@ -128,6 +134,7 @@ class BasePageViewController: UIPageViewController {
                 baseVC.collectionView.checkArray = []
                 baseVC.collectionView.reloadData()
             }
+            editToolbar.isHidden = true
         }else{
             //編集中にする
             AppCollectionView.isWhileEditing = true
@@ -138,6 +145,9 @@ class BasePageViewController: UIPageViewController {
                 baseVC.collectionView.checkArray = []
                 baseVC.collectionView.reloadData()
             }
+            
+            //edittoolbarを表示
+            editToolbar.isHidden = false
             
         }
         
