@@ -89,6 +89,17 @@ class AppCollectionView: UICollectionView {
             self.cancelInteractiveMovement()
         }
     }
+    
+    func deleteAppData(){
+        appData.deleteAppData(appList: checkArray){
+            if checkArray.count > 0 {
+                self.appData.readAppData(label: checkArray[0].label)
+                self.appData.resetOrder()
+                self.checkArray = []
+                self.reloadData()
+            }
+        }
+    }
 }
 
 extension AppCollectionView:UICollectionViewDelegate {

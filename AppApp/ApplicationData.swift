@@ -125,4 +125,22 @@ class AppData {
             
         }
     }
+    
+    //delete
+    func deleteAppData(appList:[ApplicationStruct],_ completion:()->()){
+        for app in appList {
+            var config = Realm.Configuration(schemaVersion:SCHEMA_VERSION)
+            let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
+            config.fileURL = url.appendingPathComponent("db.realm")
+            
+            let realm = try! Realm(configuration: config)
+            guard let obj = realm.object(ofType: ApplicationData.self, forPrimaryKey: app.id) else {
+                return
+            }
+            try! realm.write {
+                realm.delete(obj)
+            }
+        }
+        completion()
+    }
 }
