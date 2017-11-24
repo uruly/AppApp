@@ -72,10 +72,10 @@ class AppData {
         readAppData(label:label)
     }
     
-    init(allLabel:AppLabelData){
-        self.label = allLabel
-        readAllAppData()
-    }
+//    init(allLabel:AppLabelData){
+//        self.label = allLabel
+//        readAllAppData()
+//    }
     
     //読み込み
     func readAppData(label:AppLabelData){
@@ -91,8 +91,8 @@ class AppData {
         guard let labelObject = realm.object(ofType: AppLabelRealmData.self, forPrimaryKey: label.id) else {
             return
         }
-        
-        let objs = realm.objects(ApplicationData.self).filter("label == %@",labelObject)
+        let sortProperties = [SortDescriptor(keyPath: "order", ascending: true) ]
+        let objs = realm.objects(ApplicationData.self).filter("label == %@",labelObject).sorted(by:sortProperties)
         for obj in objs {
             //applicationStruct
             guard let app = obj.app else{ return }
@@ -103,29 +103,25 @@ class AppData {
             appList.append(appLabel)
             
         }
+        
     }
     
-    func readAllAppData(){
-        appList = []
-        
-        var config = Realm.Configuration(schemaVersion:SCHEMA_VERSION)
-        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
-        config.fileURL = url.appendingPathComponent("db.realm")
-        
-        let realm = try! Realm(configuration: config)
+    //並び順を更新
+    func resetOrder(){
+        for i in 0 ..< appList.count {
+            //appの並びを更新
+            var config = Realm.Configuration(schemaVersion:SCHEMA_VERSION)
+            let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
+            config.fileURL = url.appendingPathComponent("db.realm")
 
-        let objs = realm.objects(ApplicationData.self)
-        for obj in objs {
-            //applicationStruct
-            guard let app = obj.app else{ return }
-            let appData = AppStruct(name: app.name, developer: app.developer, id: app.id, urlString: app.urlString, image: app.image, date: app.date)
-            if appList.contains(where: {$0.app.id == app.id}){
-                continue
+            let realm = try! Realm(configuration: config)
+            guard let app = realm.object(ofType: ApplicationData.self, forPrimaryKey: appList[i].id) else {
+                return
             }
-            
-            let appLabel = ApplicationStruct(app: appData, label: label, id: obj.id, rate: obj.rate, order: obj.order, memo: obj.memo)
-            
-            appList.append(appLabel)
+            try! realm.write {
+                app.order = i
+                realm.add(app,update:true)
+            }
             
         }
     }

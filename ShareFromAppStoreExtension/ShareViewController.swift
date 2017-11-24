@@ -188,6 +188,7 @@ class ShareViewController: SLComposeServiceViewController {
 
 
     
+    //AppのDataをセーブするよ
     func saveAppData(name:String,developer:String,id:String,urlString:String,image:Data,date:Date){
         var config =  Realm.Configuration(
             schemaVersion: SCHEMA_VERSION,
@@ -219,52 +220,117 @@ class ShareViewController: SLComposeServiceViewController {
         saveLabelAppData(appData:appData)
     }
     
+    func saveAllLabel(appData:AppRealmData){
+        let colorData = NSKeyedArchiver.archivedData(withRootObject: UIColor.blue)
+        let labelRealm = AppLabelRealmData(value:["name":"ALL",
+                                                  "color":colorData,
+                                                  "id":"0",
+                                                  "order":0
+            ])
+        
+        var id = UUID().uuidString
+        var order = self.dataCount(label:labelRealm)
+        let realm = try! Realm()
+        if contains(labelID: labelRealm.id!, appID: appData.id){
+            //すでにあるidをつける
+            let objs = realm.objects(ApplicationData.self)
+            for obj in objs {
+                if obj.app!.id == appData.id && obj.label!.id == labelRealm.id! {
+                    id = obj.id
+                    order = obj.order
+                    break
+                }
+            }
+        }
+        let data = ApplicationData(value: ["app":appData,
+                                           "label":labelRealm,
+                                           "id":id,
+                                           "rate":0,
+                                           "order":order,
+                                           "memo":memoText])
+        
+        try! realm.write {
+            realm.add(data,update:true)
+        }
+        print("seikou?")
+    }
+    //Appとラベルを紐づけたのを保存するよ
     func saveLabelAppData(appData:AppRealmData){
-        if labelList.count == 0 {
-            let colorData = NSKeyedArchiver.archivedData(withRootObject: UIColor.blue)
-            let labelRealm = AppLabelRealmData(value:["name":"ALL",
-                                                 "color":colorData,
-                                                 "id":"0",
-                                                 "order":0
+        
+        saveAllLabel(appData:appData)
+        let index = labelList.findIndex(includeElement: {$0.name == "ALL"})
+        if index.count > 0 {
+            print("all消すよ")
+            labelList.remove(at: index[0])
+        }
+        
+        for label in labelList {
+            print("label.name:\(label.name)")
+            let colorData = NSKeyedArchiver.archivedData(withRootObject: label.color)
+            let labelRealm = AppLabelRealmData(value:["name":label.name,
+                                                      "color":colorData,
+                                                      "id":label.id,
+                                                      "order":label.order
                 ])
-            let id = UUID().uuidString
+            var id = UUID().uuidString
+            var order = self.dataCount(label:labelRealm)
+            let realm = try! Realm()
+            if contains(labelID: labelRealm.id!, appID: appData.id){
+                //すでにあるidをつける
+                let objs = realm.objects(ApplicationData.self)
+                for obj in objs {
+                    if obj.app!.id == appData.id && obj.label!.id == labelRealm.id! {
+                        id = obj.id
+                        order = obj.order
+                    }
+                }
+            }
             let data = ApplicationData(value: ["app":appData,
                                                "label":labelRealm,
                                                "id":id,
                                                "rate":0,
-                                               "order":0,
+                                               "order":order,
                                                "memo":memoText])
             
-            let realm = try! Realm()
             try! realm.write {
                 realm.add(data,update:true)
             }
-            print("seikou?")
-        }else {
-            for label in labelList {
-                let colorData = NSKeyedArchiver.archivedData(withRootObject: label.color)
-                let labelRealm = AppLabelRealmData(value:["name":label.name,
-                                                     "color":colorData,
-                                                     "id":label.id,
-                                                     "order":label.order
-                    ])
-                let id = UUID().uuidString
-                let data = ApplicationData(value: ["app":appData,
-                                                   "label":labelRealm,
-                                                   "id":id,
-                                                   "rate":0,
-                                                   "order":0,
-                                                   "memo":memoText])
-                
-                let realm = try! Realm()
-                try! realm.write {
-                    realm.add(data,update:true)
-                }
-                print("成功?")
-            }
+            print("成功?")
         }
     }
+    
+    func dataCount(label:AppLabelRealmData) -> Int {
+        var config = Realm.Configuration(schemaVersion:SCHEMA_VERSION)
+        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
+        config.fileURL = url.appendingPathComponent("db.realm")
+        
+        let realm = try! Realm(configuration: config)
+        guard let labelData = realm.object(ofType: AppLabelRealmData.self, forPrimaryKey: label.id) else {
+            return 0
+        }
+        
+        let objs = realm.objects(ApplicationData.self).filter("label == %@",labelData)
+        print("objs.count\(objs.count)")
+        return objs.count
+    }
 
+    func contains(labelID:String,appID:String) -> Bool{
+        var config = Realm.Configuration(schemaVersion:SCHEMA_VERSION)
+        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
+        config.fileURL = url.appendingPathComponent("db.realm")
+        
+        let realm = try! Realm(configuration: config)
+        guard let label = realm.object(ofType: AppLabelRealmData.self, forPrimaryKey: labelID) else{
+            return false
+        }
+        guard let app = realm.object(ofType: AppRealmData.self, forPrimaryKey: appID) else {
+            return false
+        }
+        print("app.name\(app.name),label\(label.name!)")
+        return true
+    }
+    
+    
     override func configurationItems() -> [Any]! {
         
         return [labelItem,memoItem,ratingItem]

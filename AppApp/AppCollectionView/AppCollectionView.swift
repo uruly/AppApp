@@ -18,11 +18,12 @@ class AppCollectionView: UICollectionView {
     var lastContentOffsetY:CGFloat = 0
     var appDelegate:AppCollectionViewDelegate! {
         didSet{
-            if appDelegate.baseVC.appLabel.name == "ALL" {
-                appData = AppData(allLabel:appDelegate.baseVC.appLabel)
-            }else {
-                appData = AppData(label:appDelegate.baseVC.appLabel)
-            }
+//            if appDelegate.baseVC.appLabel.name == "ALL" {
+//                appData = AppData(allLabel:appDelegate.baseVC.appLabel)
+//            }else {
+//                appData = AppData(label:appDelegate.baseVC.appLabel)
+//            }
+            appData = AppData(label:appDelegate.baseVC.appLabel)
         }
     }
     var appData:AppData! {
@@ -114,6 +115,8 @@ extension AppCollectionView:UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let tempNumber = appData.appList.remove(at: sourceIndexPath.item)
         appData.appList.insert(tempNumber, at: destinationIndexPath.item)
+        //appDataのorderを更新
+        appData.resetOrder()
     }
 }
 
