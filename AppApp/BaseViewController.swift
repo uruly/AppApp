@@ -50,6 +50,11 @@ class BaseViewController: UIViewController {
         //delegateを設定
         if self.basePageVC.iconSizeChanger != nil {
             self.basePageVC.iconSizeChanger.sliderDelegate = collectionView
+            var value = CGFloat(UserDefaults.standard.float(forKey:"IconSize"))
+            if value == 0 { value = 50.0 }
+            self.basePageVC.iconSizeChanger.slider.value = Float(value)
+            self.collectionView.itemSize = CGSize(width:value,height:value)
+            self.collectionView.collectionViewLayout.invalidateLayout()
         }
         collectionView.appDelegate = self
     }

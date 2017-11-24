@@ -14,7 +14,7 @@ import UIKit
 
 class AppCollectionView: UICollectionView {
     
-    var itemSize:CGSize = CGSize(width:50.0,height:50.0)
+    var itemSize:CGSize = CGSize(width:50,height:50)
     var lastContentOffsetY:CGFloat = 0
     var appDelegate:AppCollectionViewDelegate! {
         didSet{
@@ -56,7 +56,8 @@ class AppCollectionView: UICollectionView {
         layout.sectionInset = UIEdgeInsetsMake(margin,margin,margin + 49,margin)
         layout.minimumLineSpacing = margin
         layout.minimumInteritemSpacing = margin
-        layout.itemSize = CGSize(width:50.0,height:50.0)
+        let iconSize = CGFloat(UserDefaults.standard.float(forKey:"IconSize"))
+        layout.itemSize = CGSize(width:iconSize,height:iconSize)
         self.init(frame:frame,collectionViewLayout:layout)
     }
     
@@ -131,6 +132,8 @@ extension AppCollectionView:IconSizeChangerDelegate{
         print("ここで受け取り！\(sender.value)")
         //collectionViewのitemSizeを変える
         self.itemSize = CGSize(width:CGFloat(sender.value),height:CGFloat(sender.value))
+        UserDefaults.standard.set(sender.value, forKey: "IconSize")
+        
         self.collectionViewLayout.invalidateLayout()
     }
 }

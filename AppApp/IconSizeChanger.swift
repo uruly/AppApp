@@ -35,7 +35,8 @@ class IconSizeChanger: UIToolbar {
         slider = UISlider(frame: CGRect(x:0,y:0,width:self.frame.width / 2,height:self.frame.height))
         slider.minimumValue = 30.0
         slider.maximumValue = 200.0
-        slider.value = 50.0 //初期値
+        let value = UserDefaults.standard.float(forKey:"IconSize")
+        slider.value = value == 0 ? 50.0 : value
         
         let sliderView = UIBarButtonItem(customView: slider)
         
