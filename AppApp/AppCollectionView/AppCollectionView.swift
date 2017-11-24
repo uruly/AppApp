@@ -8,9 +8,23 @@
 
 import UIKit
 
+@objc protocol AppCollectionViewDelegate{
+    var baseVC:BaseViewController { get }
+}
+
 class AppCollectionView: UICollectionView {
     
     var itemSize:CGSize = CGSize(width:50.0,height:50.0)
+    var appDelegate:AppCollectionViewDelegate! {
+        didSet{
+            appData = AppData(label:appDelegate.baseVC.appLabel)
+        }
+    }
+    var appData:AppData! {
+        didSet {
+            self.reloadData()
+        }
+    }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -33,6 +47,12 @@ class AppCollectionView: UICollectionView {
         layout.itemSize = CGSize(width:50.0,height:50.0)
         self.init(frame:frame,collectionViewLayout:layout)
     }
+    
+    override func reloadData(){
+        if appData != nil {
+            super.reloadData()
+        }
+    }
 }
 
 extension AppCollectionView:UICollectionViewDelegate {
@@ -42,13 +62,19 @@ extension AppCollectionView:UICollectionViewDelegate {
 extension AppCollectionView:UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier:"imageCollection",for:indexPath) as! AppCollectionViewCell
-        
+        if appData == nil {
+            return cell
+        }
+        cell.imageView.image = nil
+        if let imageData = appData.appList[indexPath.row].app.image {
+            cell.imageView.image = UIImage(data:imageData)
+        }
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return appData.appList.count
     }
 }
 

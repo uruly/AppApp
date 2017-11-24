@@ -14,7 +14,7 @@ class AppCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        imageView.backgroundColor = UIColor.blue
+        //imageView.backgroundColor = UIColor.blue
     }
 
 }

@@ -16,11 +16,11 @@ protocol BasePageViewControllerDelegate {
 
 class BasePageViewController: UIPageViewController {
     
-    var isInfinity = true //無限スクロールにするかどうか
+    var isInfinity = false //無限スクロールにするかどうか
     var appLabel:AppLabel!
     var selectionBar:SelectionBar!
     static var isUnwind = false
-    var lastContentOffsetX:CGFloat!
+    var lastContentOffsetX:CGFloat = 0
     var currentPageIndex:Int = 0
     var nextPageIndex:Int = 0
     var isSelectionScroll = true

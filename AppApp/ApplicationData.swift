@@ -40,3 +40,62 @@ class ApplicationData: Object {
     }
 }
 
+struct AppStruct {
+    var name:String!
+    var developer:String!
+    var id:String!
+    var urlString:String!
+    var image:Data!
+    var date:Date!
+}
+
+struct ApplicationStruct{
+    var app:AppStruct!
+    var label:AppLabelData!
+    var id:String!
+    var rate:Double?
+    var order:Int!
+    var memo:String?
+}
+
+
+//ApplicationDataを保存
+class AppData {
+    
+    //label
+    var label:AppLabelData!
+    
+    var appList:[ApplicationStruct]!
+    
+    init(label:AppLabelData) {
+        self.label = label
+        readAppData(label:label)
+    }
+    //読み込み
+    func readAppData(label:AppLabelData){
+        appList = []
+        
+        var config = Realm.Configuration(schemaVersion:SCHEMA_VERSION)
+        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
+        config.fileURL = url.appendingPathComponent("db.realm")
+        
+        let realm = try! Realm(configuration: config)
+        
+        //先にラベルを取得
+        guard let labelObject = realm.object(ofType: AppLabelRealmData.self, forPrimaryKey: label.id) else {
+            return
+        }
+        
+        let objs = realm.objects(ApplicationData.self).filter("label == %@",labelObject)
+        for obj in objs {
+            //applicationStruct
+            guard let app = obj.app else{ return }
+            let appData = AppStruct(name: app.name, developer: app.developer, id: app.id, urlString: app.urlString, image: app.image, date: app.date)
+            
+            let appLabel = ApplicationStruct(app: appData, label: label, id: obj.id, rate: obj.rate, order: obj.order, memo: obj.memo)
+            
+            appList.append(appLabel)
+            
+        }
+    }
+}

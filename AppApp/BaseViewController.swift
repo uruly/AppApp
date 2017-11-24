@@ -8,7 +8,6 @@
 // コレクションビューを乗せてページングさせるビューコントローラ
 
 import UIKit
-import RealmSwift
 
 class BaseViewController: UIViewController {
 
@@ -36,21 +35,11 @@ class BaseViewController: UIViewController {
                                                              y:topMargin,
                                                              width:width,
                                                              height:height - topMargin ))
+        collectionView.appDelegate = self
         self.view.addSubview(collectionView)
         
         
-        //とりあえずお試し
-        var config = Realm.Configuration(schemaVersion:SCHEMA_VERSION)
-        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
-        config.fileURL = url.appendingPathComponent("db.realm")
         
-        let realm = try! Realm(configuration: config)
-        let objs = realm.objects(ApplicationData.self)
-        print(objs)
-        for obj in objs{
-            print(obj.app)
-            print(obj)
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,6 +51,7 @@ class BaseViewController: UIViewController {
         if self.basePageVC.iconSizeChanger != nil {
             self.basePageVC.iconSizeChanger.sliderDelegate = collectionView
         }
+        collectionView.appDelegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -74,6 +64,11 @@ class BaseViewController: UIViewController {
 extension BaseViewController: BasePageViewControllerDelegate {
     var basePageVC:BasePageViewController {
         return parent as! BasePageViewController
+    }
+}
+extension BaseViewController: AppCollectionViewDelegate{
+    var baseVC:BaseViewController {
+        return self
     }
 }
 
