@@ -59,6 +59,12 @@ class BaseViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    func toDetailViewController(appData:AppData){
+        let detailVC = DetailViewController()
+        detailVC.appData = appData
+        
+        self.navigationController?.pushViewController(detailVC, animated: true)
+    }
 }
 
 extension BaseViewController: BasePageViewControllerDelegate {

@@ -99,8 +99,13 @@ extension SelectionBar: UICollectionViewDelegate {
         }else {
             //ページビューを移動させる
             self.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+            
+            if AppLabel.currentID == indexPath.row {
+                return
+            }
+            
             let nextView:BaseViewController = pageVC.getBase(appLabel:pageVC.appLabel.array[indexPath.row])
-            let isLeftDirection = AppLabel.currentID ?? 0 < indexPath.row
+            let isLeftDirection = (AppLabel.currentID ?? 0) < indexPath.row
             if(isLeftDirection){
                 pageVC.setViewControllers([nextView], direction: .forward, animated: true, completion: nil)
             }else{

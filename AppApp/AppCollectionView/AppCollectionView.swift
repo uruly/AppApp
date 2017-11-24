@@ -60,7 +60,10 @@ class AppCollectionView: UICollectionView {
 }
 
 extension AppCollectionView:UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //画面遷移をする
+        self.appDelegate.baseVC.toDetailViewController(appData:appData)
+    }
 }
 
 extension AppCollectionView:UICollectionViewDataSource {
