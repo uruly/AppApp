@@ -44,7 +44,8 @@ class BasePageViewController: UIPageViewController {
         
         //ナビゲーションバーをカスタマイズ
         self.title = "AppApp"
-        let editBtn = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(self.editTapped(sender:)))
+        //let editBtn = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(self.editTapped(sender:)))
+        let editBtn = UIBarButtonItem(title: "編集", style: .plain, target: self, action: #selector(self.editTapped(sender:)))
         self.navigationItem.rightBarButtonItem = editBtn
         
         let navigationBarHeight = self.navigationController?.navigationBar.frame.maxY ?? 56
@@ -116,11 +117,29 @@ class BasePageViewController: UIPageViewController {
     
     //編集中にする
     @objc func editTapped(sender:UIBarButtonItem){
-        AppCollectionView.isWhileEditing = true
-        
-        //スクロールできないようにする
+        let isWhileEditing = AppCollectionView.isWhileEditing
         let scrollView = self.view.subviews.flatMap { $0 as? UIScrollView }.first
-        scrollView?.isScrollEnabled = false
+        if isWhileEditing {
+            //編集中を解除する
+            AppCollectionView.isWhileEditing = false
+            scrollView?.isScrollEnabled = true
+            sender.title = "編集"
+            if let baseVC:BaseViewController = self.viewControllers?[0] as? BaseViewController{
+                baseVC.collectionView.checkArray = []
+                baseVC.collectionView.reloadData()
+            }
+        }else{
+            //編集中にする
+            AppCollectionView.isWhileEditing = true
+            sender.title = "完了"
+            //スクロールできないようにする
+            scrollView?.isScrollEnabled = false
+            if let baseVC:BaseViewController = self.viewControllers?[0] as? BaseViewController{
+                baseVC.collectionView.checkArray = []
+                baseVC.collectionView.reloadData()
+            }
+            
+        }
         
     }
 }
