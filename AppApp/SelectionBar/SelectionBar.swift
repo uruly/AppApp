@@ -193,7 +193,7 @@ extension SelectionBar: UICollectionViewDataSource {
         let tempNumber = pageVC.appLabel.array.remove(at: sourceIndexPath.item)
         pageVC.appLabel.array.insert(tempNumber, at: destinationIndexPath.item)
         //appLabelのorderを更新
-        //appData.resetOrder()
+        pageVC.appLabel.resetOrder()
     }
     
 }

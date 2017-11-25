@@ -61,7 +61,8 @@ class AppLabel {
         config.fileURL = url.appendingPathComponent("db.realm")
         
         let realm = try! Realm(configuration: config)
-        let objs = realm.objects(AppLabelRealmData.self)
+        let sortProperties = [SortDescriptor(keyPath: "order", ascending: true) ]
+        let objs = realm.objects(AppLabelRealmData.self).sorted(by: sortProperties)
         for obj in objs{
             if let name = obj.name ,let colorData = obj.color,let id = obj.id{
                 let color = NSKeyedUnarchiver.unarchiveObject(with: colorData) as! UIColor
@@ -155,5 +156,24 @@ class AppLabel {
         completion()
     }
     
+    //並び順を更新
+    func resetOrder(){
+        for i in 0 ..< array.count {
+            //appの並びを更新
+            var config = Realm.Configuration(schemaVersion:SCHEMA_VERSION)
+            let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
+            config.fileURL = url.appendingPathComponent("db.realm")
+            
+            let realm = try! Realm(configuration: config)
+            guard let label = realm.object(ofType: AppLabelRealmData.self, forPrimaryKey: array[i].id) else {
+                return
+            }
+            try! realm.write {
+                label.order = i
+                realm.add(label,update:true)
+            }
+            
+        }
+    }
 }
 
