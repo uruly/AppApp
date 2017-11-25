@@ -107,14 +107,13 @@ class AppLabel {
         
         let realm = try! Realm(configuration: config)
         if order != AppLabel.count {
-            //そのほかのorderを更新
-            let objects = realm.objects(AppLabelRealmData.self)
-            for object in objects {
+            //ほかの並びを更新
+            let sortProperties = [SortDescriptor(keyPath: "order", ascending: true) ]
+            let objects = realm.objects(AppLabelRealmData.self).sorted(by:sortProperties)
+            for i in order ..< objects.count{
                 try! realm.write {
-                    if object.order != 0 && object.order >= order {   // 5こあってorder = 3番目なら orderより大きいものを+1
-                        object.order = object.order + 1
-                        realm.add(object, update: true)
-                    }
+                    objects[i].order = i + 1
+                    realm.add(objects[i],update:true)
                 }
             }
         }
@@ -148,38 +147,21 @@ class AppLabel {
             }
         }else {
             //ほかの並びを更新
-            let objects = realm.objects(AppLabelRealmData.self)
-            for object in objects {
-                print("objectOrer\(object.order)")
-                if object.order == 0 {
-                    //allは何もしない
-                    print("all")
-                }else if object.order < order{
+            let sortProperties = [SortDescriptor(keyPath: "order", ascending: true) ]
+            let objects = realm.objects(AppLabelRealmData.self).sorted(by:sortProperties)
+            if order < currentObject.order {
+                for i in order ... currentObject.order {
                     try! realm.write {
-                        object.order = object.order - 1
-                        realm.add(object,update:true)
+                        objects[i].order = i + 1
+                        realm.add(objects[i],update:true)
                     }
-                }else if object.order > order{
+                }
+            }else {
+                for i in currentObject.order ... order{
                     try! realm.write {
-                        object.order = object.order + 1
-                        realm.add(object,update:true)
+                        objects[i].order = i - 1
+                        realm.add(objects[i],update:true)
                     }
-                }else{
-                    //新しいorder と 同じものの処理
-                    if object.order > currentObject.order {
-                        try! realm.write {
-                            object.order = object.order - 1
-                            realm.add(object,update:true)
-                        }
-                    }else {
-                        try! realm.write {
-                            object.order = object.order + 1
-                            realm.add(object,update:true)
-                        }
-                    }
-                    print("objectOrder\(object.order)")
-                    print("currentOrder\(currentObject.order)")
-                    print("newOrder\(order)")
                 }
             }
             
@@ -246,6 +228,7 @@ class AppLabel {
                 label.order = i
                 realm.add(label,update:true)
             }
+            array[i].order = i
             
         }
     }

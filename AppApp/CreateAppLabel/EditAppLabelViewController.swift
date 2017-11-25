@@ -57,10 +57,10 @@ class EditAppLabelViewController: CreateAppLabelViewController {
             if editTableView == nil {
                 return
             }
-            var text = "\(order)番目に追加"
-            if order == (AppLabel.count ?? 1) - 1{
-                text = "最後に追加"
-            }
+            var text = "\(order)番目"
+//            if order == (AppLabel.count ?? 1) - 1{
+//                text = "最後に追加"
+//            }
             editTableView.orderLabel.text = text
         }
     }
