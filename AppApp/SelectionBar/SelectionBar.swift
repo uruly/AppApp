@@ -194,6 +194,8 @@ extension SelectionBar: UICollectionViewDataSource {
         pageVC.appLabel.array.insert(tempNumber, at: destinationIndexPath.item)
         //appLabelのorderを更新
         pageVC.appLabel.resetOrder()
+        
+        //self.collectionViewLayout.invalidateLayout()
     }
     
 }

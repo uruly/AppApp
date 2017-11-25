@@ -93,6 +93,7 @@ class AppLabel {
         array.append(AppLabelData(name: name, color: UIColor.allLabel(), id: "0", order:0))
     }
     
+    
     static func saveLabelData(name:String,color:UIColor,id:String,order:Int,_ completion:()->()){
         let colorData = NSKeyedArchiver.archivedData(withRootObject:color)
         let label = AppLabelRealmData(value:["name":name,
@@ -100,25 +101,97 @@ class AppLabel {
                                              "id":id,
                                              "order":order
             ])
-        do {
-            var config = Realm.Configuration(schemaVersion:SCHEMA_VERSION)
-            let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
-            config.fileURL = url.appendingPathComponent("db.realm")
-            
-            let realm = try Realm(configuration: config)
-            do {
-                try realm.write {
-                    realm.add(label,update:true)
+        var config = Realm.Configuration(schemaVersion:SCHEMA_VERSION)
+        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
+        config.fileURL = url.appendingPathComponent("db.realm")
+        
+        let realm = try! Realm(configuration: config)
+        if order != AppLabel.count {
+            //そのほかのorderを更新
+            let objects = realm.objects(AppLabelRealmData.self)
+            for object in objects {
+                try! realm.write {
+                    if object.order != 0 && object.order >= order {   // 5こあってorder = 3番目なら orderより大きいものを+1
+                        object.order = object.order + 1
+                        realm.add(object, update: true)
+                    }
                 }
-                
-                completion()
-            }catch{
-                print("error\(error)")
             }
-        }catch{
-            print("error\(error)")
         }
+        try! realm.write {
+            realm.add(label,update:true)
+        }
+        completion()
+
     }
+    
+    static func updateLabelData(name:String,color:UIColor,id:String,order:Int,_ completion:()->()){
+        let colorData = NSKeyedArchiver.archivedData(withRootObject:color)
+        let label = AppLabelRealmData(value:["name":name,
+                                             "color":colorData,
+                                             "id":id,
+                                             "order":order
+            ])
+        var config = Realm.Configuration(schemaVersion:SCHEMA_VERSION)
+        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
+        config.fileURL = url.appendingPathComponent("db.realm")
+        
+        let realm = try! Realm(configuration: config)
+
+        guard let currentObject = realm.object(ofType: AppLabelRealmData.self, forPrimaryKey: id) else {
+            return
+        }
+        
+        if currentObject.order == order {
+            try! realm.write {
+                realm.add(label,update:true)
+            }
+        }else {
+            //ほかの並びを更新
+            let objects = realm.objects(AppLabelRealmData.self)
+            for object in objects {
+                print("objectOrer\(object.order)")
+                if object.order == 0 {
+                    //allは何もしない
+                    print("all")
+                }else if object.order < order{
+                    try! realm.write {
+                        object.order = object.order - 1
+                        realm.add(object,update:true)
+                    }
+                }else if object.order > order{
+                    try! realm.write {
+                        object.order = object.order + 1
+                        realm.add(object,update:true)
+                    }
+                }else{
+                    //新しいorder と 同じものの処理
+                    if object.order > currentObject.order {
+                        try! realm.write {
+                            object.order = object.order - 1
+                            realm.add(object,update:true)
+                        }
+                    }else {
+                        try! realm.write {
+                            object.order = object.order + 1
+                            realm.add(object,update:true)
+                        }
+                    }
+                    print("objectOrder\(object.order)")
+                    print("currentOrder\(currentObject.order)")
+                    print("newOrder\(order)")
+                }
+            }
+            
+            try! realm.write {
+                realm.add(label,update:true)
+            }
+        }
+        
+        completion()
+        
+    }
+
     
     static func contains(name:String) -> Bool{
         var config = Realm.Configuration(schemaVersion:SCHEMA_VERSION)
@@ -158,7 +231,7 @@ class AppLabel {
     
     //並び順を更新
     func resetOrder(){
-        for i in 0 ..< array.count {
+        for i in 1 ..< array.count {
             //appの並びを更新
             var config = Realm.Configuration(schemaVersion:SCHEMA_VERSION)
             let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
@@ -168,6 +241,7 @@ class AppLabel {
             guard let label = realm.object(ofType: AppLabelRealmData.self, forPrimaryKey: array[i].id) else {
                 return
             }
+            print(array[i].name)
             try! realm.write {
                 label.order = i
                 realm.add(label,update:true)

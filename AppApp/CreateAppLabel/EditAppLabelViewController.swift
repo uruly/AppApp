@@ -14,6 +14,7 @@ class EditAppLabelViewController: CreateAppLabelViewController {
     
     var currentName:String!
     var editTableView:EditAppLabelTableView!
+    var editPickerView:EditAppOrderPickerView!
     
     override var color:UIColor{
         didSet{
@@ -51,24 +52,43 @@ class EditAppLabelViewController: CreateAppLabelViewController {
             }
         }
     }
+    override var order:Int{
+        didSet {
+            if editTableView == nil {
+                return
+            }
+            var text = "\(order)番目に追加"
+            if order == (AppLabel.count ?? 1) - 1{
+                text = "最後に追加"
+            }
+            editTableView.orderLabel.text = text
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         if naviBar.items != nil && naviBar.items!.count > 0{
             naviBar.items![0].title = "ラベルを編集"
         }
+        //pickerView.orderDelegate = self
         colorPickerView.delegate = self
         labelName = currentName
         self.editTableView.isKeyboardAppear = false
-        
-        
+        //currentRow = order
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if currentName == "ALL" {
+        if id == "0" {
             print("ここ")
             editTableView.currentTextField?.isUserInteractionEnabled = false
+        }else {
+            //orderの位置を設定
+            var text = "\(order)番目"
+//            if order == AppLabel.count {
+//                text = "最後に追加"
+//            }
+            editTableView.orderLabel.text = text
         }
     }
     
@@ -92,7 +112,16 @@ class EditAppLabelViewController: CreateAppLabelViewController {
             deleteBtn.addTarget(self, action: #selector(self.deleteBtnTapped), for: .touchUpInside)
             
             self.view.addSubview(deleteBtn)
+        }else {
+            //orderかえられないようにする
+            editTableView.isAll = true
         }
+        
+        //ピッカービュー
+        editPickerView = EditAppOrderPickerView(frame: CGRect(x:0,y:height,width:width,height:200))
+        editPickerView.orderDelegate = self
+        self.view.addSubview(editPickerView)
+        
     }
     
     @objc func deleteBtnTapped(){
@@ -122,16 +151,29 @@ class EditAppLabelViewController: CreateAppLabelViewController {
     
     override func saveLabelData(){
         //セーブをする
-        AppLabel.saveLabelData(name: labelName!, color: color, id: id, order: order){
+        print(order)
+        AppLabel.updateLabelData(name: labelName!, color: color, id: id, order: order){
             BasePageViewController.isUnwind = true
             self.dismiss(animated:true,completion:nil)
         }
     }
+    
+    override func showPicker(){
+        let width = self.view.frame.width
+        let height = self.view.frame.height
+        //        print(currentRow)
+        self.editPickerView.selectRow(order - 1, inComponent: 0, animated: false)
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+            self.editPickerView.frame = CGRect(x:0,y:height - 200,width:width,height:200)
+        }, completion: nil)
+    }
+    
 }
 
 class EditAppLabelTableView:CreateAppLabelTableView {
     
     var currentName:String!
+    var isAll = false
     
     override var currentTextField:UITextField?{
         didSet {
@@ -144,7 +186,27 @@ class EditAppLabelTableView:CreateAppLabelTableView {
         }
     }
     
-
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return isAll ? 2 : super.numberOfSections(in: tableView)
+    }
     
+    
+}
+
+class EditAppOrderPickerView:LabelOrderPickerView{
+    
+    override func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        //ラベルの数だけ
+        let count =  AppLabel.count ?? 1
+        return count - 1
+    }
+    
+    override func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        var text = "\(row + 1)番目"
+//        if row + 1 == AppLabel.count {
+//            text = "最後"
+//        }
+        return text
+    }
 }
 

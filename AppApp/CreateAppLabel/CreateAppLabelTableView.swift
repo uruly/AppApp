@@ -50,6 +50,7 @@ extension CreateAppLabelTableView: UITableViewDelegate {
         }
         if indexPath.section == 2{
             print("uipickerを表示")
+            createAppLabelVC.showPicker()
         }
     }
 }
@@ -143,3 +144,4 @@ extension CreateAppLabelTableView:UIScrollViewDelegate {
         }
     }
 }
+
