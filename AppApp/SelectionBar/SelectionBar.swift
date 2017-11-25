@@ -99,6 +99,8 @@ class SelectionBar: UICollectionView {
         pageVC.editAppLabel(label:pageVC.appLabel.array[indexPath.row])
     }
     @objc func cellLongPressed(sender:UILongPressGestureRecognizer){
+        
+        
         switch(sender.state) {
             
         case .began:
@@ -190,11 +192,14 @@ extension SelectionBar: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         print("sourceIndexPath\(sourceIndexPath.section)\(destinationIndexPath.section)")
+
+        //collectionViewLayout.invalidateLayout()
         let tempNumber = pageVC.appLabel.array.remove(at: sourceIndexPath.item)
         pageVC.appLabel.array.insert(tempNumber, at: destinationIndexPath.item)
         //appLabelのorderを更新
         pageVC.appLabel.resetOrder()
-        
+        //self.reloadData()
+        self.layoutIfNeeded()
         //self.collectionViewLayout.invalidateLayout()
     }
     
@@ -204,3 +209,29 @@ extension SelectionBar:UIScrollViewDelegate {
         print("セレクションバースクロール中\(scrollView.contentOffset.x)")
     }
 }
+
+//extension UICollectionViewFlowLayout {
+//
+//    open override func invalidationContext(forInteractivelyMovingItems targetIndexPaths: [IndexPath], withTargetPosition targetPosition: CGPoint, previousIndexPaths: [IndexPath], previousPosition: CGPoint) -> UICollectionViewLayoutInvalidationContext {
+//
+//        let context = super.invalidationContext(forInteractivelyMovingItems: targetIndexPaths, withTargetPosition: targetPosition, previousIndexPaths: previousIndexPaths, previousPosition: previousPosition)
+//
+//        //Check that the movement has actually happeneds
+//        if previousIndexPaths.first!.item != targetIndexPaths.first!.item {
+//            collectionView?.dataSource?.collectionView?(collectionView!, moveItemAt: previousIndexPaths.first!, to: targetIndexPaths.last!)
+//        }
+//
+//        return context
+//    }
+//
+//    open override func invalidationContextForEndingInteractiveMovementOfItems(toFinalIndexPaths indexPaths: [IndexPath], previousIndexPaths: [IndexPath], movementCancelled: Bool) -> UICollectionViewLayoutInvalidationContext {
+//        return super.invalidationContextForEndingInteractiveMovementOfItems(toFinalIndexPaths: indexPaths, previousIndexPaths: previousIndexPaths, movementCancelled: movementCancelled)
+//    }
+//
+//    open override func layoutAttributesForInteractivelyMovingItem(at indexPath: IndexPath, withTargetPosition position: CGPoint) -> UICollectionViewLayoutAttributes {
+//        let attributes = super.layoutAttributesForInteractivelyMovingItem(at: indexPath, withTargetPosition: position)
+//        attributes.alpha = 0.8
+//        return attributes
+//    }
+//}
+

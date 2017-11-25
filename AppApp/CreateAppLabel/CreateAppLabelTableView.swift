@@ -31,6 +31,10 @@ class CreateAppLabelTableView: UITableView {
         self.init(frame: frame, style: .grouped)
         self.createAppLabelVC = createAppLabelVC
     }
+    
+    @objc func nameChanged(sender:UITextField){
+        createAppLabelVC.labelName = sender.text
+    }
 
 }
 
@@ -83,6 +87,7 @@ extension CreateAppLabelTableView:UITableViewDataSource {
                 if isKeyboardAppear{
                     textField.becomeFirstResponder()
                 }
+                textField.addTarget(self, action: #selector(self.nameChanged(sender:)), for: .editingChanged)
                 self.currentTextField = textField
             }else if indexPath.row == 1 {
                 textField.tag = 2
@@ -131,6 +136,8 @@ extension CreateAppLabelTableView:UITextFieldDelegate {
         }
         textField.resignFirstResponder()
     }
+    
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
