@@ -42,7 +42,8 @@ class AppLabel {
     }
     
     //現在のラベル
-    static var currentID:Int?
+    static var currentID:String?
+    static var currentOrder:Int?
     static var count:Int?
     
     init(){
@@ -133,6 +134,26 @@ class AppLabel {
         return false
     }
     
+    static func deleteLabelData(labelID:String,_ completion:()->()){
+        var config = Realm.Configuration(schemaVersion:SCHEMA_VERSION)
+        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
+        config.fileURL = url.appendingPathComponent("db.realm")
+        
+        let realm = try! Realm(configuration: config)
+        guard let labelData = realm.object(ofType: AppLabelRealmData.self, forPrimaryKey: labelID) else{
+            return
+        }
+        let appObjects = realm.objects(ApplicationData.self).filter("label == %@",labelData)
+        for object in appObjects{
+            try! realm.write {
+                realm.delete(object)
+            }
+        }
+        try! realm.write {
+            realm.delete(labelData)
+        }
+        completion()
+    }
     
 }
 

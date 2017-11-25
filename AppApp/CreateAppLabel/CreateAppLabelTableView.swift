@@ -65,6 +65,9 @@ extension CreateAppLabelTableView:UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "createAppLabel", for: indexPath)
+        for subview in cell.contentView.subviews {
+            subview.removeFromSuperview()
+        }
         if indexPath.section == 0{
             let textField = UITextField(frame:cell.contentView.frame)
             textField.leftView = UIView(frame: CGRect(x:0,y:0,

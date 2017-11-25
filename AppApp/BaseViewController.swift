@@ -45,8 +45,8 @@ class BaseViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //ここでCurrentIDを設定
-        AppLabel.currentID = appLabel.order
-        
+        AppLabel.currentID = appLabel.id
+        AppLabel.currentOrder = appLabel.order
         //delegateを設定
         if self.basePageVC.iconSizeChanger != nil {
             self.basePageVC.iconSizeChanger.sliderDelegate = collectionView

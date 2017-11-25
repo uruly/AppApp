@@ -85,6 +85,9 @@ class BasePageViewController: UIPageViewController {
         if BasePageViewController.isUnwind{
             appLabel.reloadLabelData()
             selectionBar.reloadData()
+            if !appLabel.array.contains(where: {$0.id == AppLabel.currentID}){
+                self.setViewControllers([getBase(appLabel: appLabel.array[0])], direction: .forward, animated: false, completion: nil)
+            }
         }
     }
 

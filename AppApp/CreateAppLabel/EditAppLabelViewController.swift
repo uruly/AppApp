@@ -60,6 +60,8 @@ class EditAppLabelViewController: CreateAppLabelViewController {
         colorPickerView.delegate = self
         labelName = currentName
         self.editTableView.isKeyboardAppear = false
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -79,6 +81,43 @@ class EditAppLabelViewController: CreateAppLabelViewController {
                                                           height:height - naviBar.frame.maxY),
                                             createAppLabelVC:self)
         self.view.addSubview(editTableView)
+        
+        if id != "0"{
+            let deleteBtn = UIButton(frame:CGRect(x:0,y:0,width:width,height:50))
+            deleteBtn.center = CGPoint(x:width / 2,y:height - 25)
+            deleteBtn.setTitle("ラベルを削除", for: .normal)
+            
+            deleteBtn.setTitleColor(UIColor.red, for: .normal)
+            deleteBtn.titleLabel?.font = UIFont.systemFont(ofSize:14)
+            deleteBtn.addTarget(self, action: #selector(self.deleteBtnTapped), for: .touchUpInside)
+            
+            self.view.addSubview(deleteBtn)
+        }
+    }
+    
+    @objc func deleteBtnTapped(){
+        //ポップアップを表示
+        let alertController = UIAlertController(title: "ラベルを削除します。", message: "", preferredStyle: .alert)
+        let otherAction = UIAlertAction(title: "削除する", style: .default) {
+            action in
+            NSLog("はいボタンが押されました")
+            self.deleteLabel()
+        }
+        let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel) {
+            action in NSLog("いいえボタンが押されました")
+        }
+        
+        alertController.addAction(otherAction)
+        alertController.addAction(cancelAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func deleteLabel(){
+        AppLabel.deleteLabelData(labelID: id) {
+            BasePageViewController.isUnwind = true
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     override func saveLabelData(){
@@ -104,5 +143,8 @@ class EditAppLabelTableView:CreateAppLabelTableView {
             }
         }
     }
+    
+
+    
 }
 
