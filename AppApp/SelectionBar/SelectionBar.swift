@@ -145,6 +145,7 @@ extension SelectionBar: UICollectionViewDelegate {
             self.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
             
             if AppLabel.currentOrder == indexPath.row {
+                print("return\(AppLabel.currentOrder)")
                 return
             }
             

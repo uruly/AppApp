@@ -83,10 +83,14 @@ class BasePageViewController: UIPageViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if BasePageViewController.isUnwind{
+            print("truedayo")
             appLabel.reloadLabelData()
             selectionBar.reloadData()
             if !appLabel.array.contains(where: {$0.id == AppLabel.currentID}){
                 self.setViewControllers([getBase(appLabel: appLabel.array[0])], direction: .forward, animated: false, completion: nil)
+            }
+            if self.navigationItem.rightBarButtonItem != nil {
+                cancelEdit(sender:self.navigationItem.rightBarButtonItem!)
             }
         }
     }

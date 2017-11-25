@@ -60,7 +60,12 @@ class AppCollectionView: UICollectionView {
         layout.minimumLineSpacing = margin
         layout.minimumInteritemSpacing = margin
         let iconSize = CGFloat(UserDefaults.standard.float(forKey:"IconSize"))
-        layout.itemSize = CGSize(width:iconSize,height:iconSize)
+        if iconSize < 30 {
+            layout.itemSize = CGSize(width:50.0,height:50.0)
+            UserDefaults.standard.set(50.0, forKey: "IconSize")
+        }else{
+            layout.itemSize = CGSize(width:iconSize,height:iconSize)
+        }
         self.init(frame:frame,collectionViewLayout:layout)
     }
     

@@ -77,6 +77,10 @@ class EditAppLabelViewController: CreateAppLabelViewController {
         //currentRow = order
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if id == "0" {
@@ -85,9 +89,6 @@ class EditAppLabelViewController: CreateAppLabelViewController {
         }else {
             //orderの位置を設定
             var text = "\(order)番目"
-//            if order == AppLabel.count {
-//                text = "最後に追加"
-//            }
             editTableView.orderLabel.text = text
         }
     }

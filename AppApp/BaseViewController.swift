@@ -92,6 +92,13 @@ extension BaseViewController: EditToolbarDelegate {
     //これらの操作が終わったら自動的に編集中を終わらせる
     @objc func addLabelBtnTapped() {
         print("addLabel")
+        if collectionView.checkArray.count == 0 {
+            return
+        }
+        let labelListVC = LabelListViewController()
+        labelListVC.appList = collectionView.checkArray
+        labelListVC.baseVC = self
+        basePageVC.present(labelListVC, animated: true, completion: nil)
     }
     
     @objc func deleteAppBtnTapped() {
@@ -118,4 +125,5 @@ extension BaseViewController: EditToolbarDelegate {
     
     
 }
+
 

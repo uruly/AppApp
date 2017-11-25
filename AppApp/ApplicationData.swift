@@ -143,4 +143,40 @@ class AppData {
         }
         completion()
     }
+    
+    //save
+    static func saveAppData(appList:[ApplicationStruct],labelList:[AppLabelData],_ completion:()->()){
+        for labelData in labelList {
+            var config = Realm.Configuration(schemaVersion:SCHEMA_VERSION)
+            let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
+            config.fileURL = url.appendingPathComponent("db.realm")
+            
+            let realm = try! Realm(configuration: config)
+            for appData in appList {
+                guard let app = realm.object(ofType: AppRealmData.self, forPrimaryKey: appData.app.id) else {
+                    continue
+                }
+                guard let label = realm.object(ofType: AppLabelRealmData.self, forPrimaryKey: labelData.id) else {
+                    continue
+                }
+                let applicationData = realm.objects(ApplicationData.self).filter("label == %@ && app == %@",label,app)
+                if applicationData.count > 0{
+                    print("すでにラベルにあるよ")
+                    continue
+                }
+                let id = UUID().uuidString
+                let appCount = realm.objects(ApplicationData.self).filter("label == %@",label).count
+                let object = ApplicationData(value: ["app":app,
+                                                     "label":label,
+                                                     "id":id,
+                                                     "rate":0,
+                                                     "order":appCount,
+                                                     "memo":""])
+                try! realm.write {
+                    realm.add(object, update: true)
+                }
+            }
+        }
+        completion()
+    }
 }
