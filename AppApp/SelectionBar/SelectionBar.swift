@@ -105,7 +105,7 @@ class SelectionBar: UICollectionView {
             guard let selectedIndexPath = self.indexPathForItem(at: sender.location(in:self)) else {
                 break
             }
-            if selectedIndexPath.section == 1 {
+            if selectedIndexPath.section == 1 || selectedIndexPath.row == 0{
                 return
             }
             self.beginInteractiveMovementForItem(at: selectedIndexPath)
@@ -120,7 +120,7 @@ class SelectionBar: UICollectionView {
                 break
             }
             print(nextIndexPath)
-            if nextIndexPath.section == 1 {
+            if nextIndexPath.section == 1 || nextIndexPath.row == 0{
                 self.cancelInteractiveMovement()
             }else {
                 self.endInteractiveMovement()
