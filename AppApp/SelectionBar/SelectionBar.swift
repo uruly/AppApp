@@ -29,6 +29,10 @@ class SelectionBar: UICollectionView {
         longPress.allowableMovement = 10
         longPress.minimumPressDuration = 0.5
         self.addGestureRecognizer(longPress)
+        
+        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(cellDoubleTapped(sender:)))
+        doubleTap.numberOfTapsRequired = 2
+        self.addGestureRecognizer(doubleTap)
     }
     
     convenience init(frame:CGRect,pageVC:BasePageViewController){
@@ -83,13 +87,48 @@ class SelectionBar: UICollectionView {
         self.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
     
-    @objc func cellLongPressed(sender:UILongPressGestureRecognizer){
+    @objc func cellDoubleTapped(sender:UITapGestureRecognizer){
         //長押ししたら編集画面になる
         guard let indexPath = self.indexPathForItem(at: sender.location(in:self)) else {
             return
         }
+        if indexPath.section == 1 {
+            return
+        }
         
         pageVC.editAppLabel(label:pageVC.appLabel.array[indexPath.row])
+    }
+    @objc func cellLongPressed(sender:UILongPressGestureRecognizer){
+        switch(sender.state) {
+            
+        case .began:
+            guard let selectedIndexPath = self.indexPathForItem(at: sender.location(in:self)) else {
+                break
+            }
+            if selectedIndexPath.section == 1 {
+                return
+            }
+            self.beginInteractiveMovementForItem(at: selectedIndexPath)
+            
+        case .changed:
+            print("changed")
+            self.updateInteractiveMovementTargetPosition(sender.location(in: sender.view!))
+            
+        case .ended:
+            print("end")
+            guard let nextIndexPath = self.indexPathForItem(at: sender.location(in: sender.view!)) else {
+                break
+            }
+            print(nextIndexPath)
+            if nextIndexPath.section == 1 {
+                self.cancelInteractiveMovement()
+            }else {
+                self.endInteractiveMovement()
+            }
+            
+        default:
+            self.cancelInteractiveMovement()
+        }
     }
 }
 
@@ -147,6 +186,14 @@ extension SelectionBar: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        print("sourceIndexPath\(sourceIndexPath.section)\(destinationIndexPath.section)")
+        let tempNumber = pageVC.appLabel.array.remove(at: sourceIndexPath.item)
+        pageVC.appLabel.array.insert(tempNumber, at: destinationIndexPath.item)
+        //appLabelのorderを更新
+        //appData.resetOrder()
     }
     
 }
