@@ -22,8 +22,13 @@ class LabelListTableViewController: UITableViewController {
         super.viewDidLoad()
         
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "labelList")
-        self.tableView.allowsMultipleSelection = true
+        //self.tableView.allowsMultipleSelection = true
         
+        //readLabelData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         readLabelData()
     }
 
@@ -42,6 +47,7 @@ class LabelListTableViewController: UITableViewController {
                 self.list.append(label)
             }
         }
+        self.tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -69,6 +75,7 @@ class LabelListTableViewController: UITableViewController {
         
         if indexPath.section == 1 {
             cell.textLabel?.text = "新しいラベルを作成"
+            cell.accessoryType = .none
         }else {
             cell.textLabel?.text = list[indexPath.row].name
             if self.delegate.shareVC.labelList.contains(where: {$0.id == list[indexPath.row].id}){
@@ -85,6 +92,13 @@ class LabelListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 1 {
+            let createLabelVC = CreateLabelViewController(style:.grouped)
+            self.navigationController?.pushViewController(createLabelVC, animated: true)
+            return
+        }
+        
+        
         let cell = tableView.cellForRow(at: indexPath)
         
         if self.delegate.shareVC.labelList.contains(where: {$0.id == list[indexPath.row].id}){
