@@ -87,9 +87,59 @@ class ShareViewController: SLComposeServiceViewController {
         super.viewWillAppear(animated)
     }
     
+    
+    func isAppStore(_ completion:@escaping (Bool)->()){
+        let extensionItem: NSExtensionItem = self.extensionContext?.inputItems.first as! NSExtensionItem
+       // var bool = false
+        let itemProviders = extensionItem.attachments as! [NSItemProvider]
+        if !itemProviders.contains(where: { (itemProvider) -> Bool in
+            return itemProvider.hasItemConformingToTypeIdentifier("public.url")
+        }){
+            completion(false)
+        }
+        for itemProvider in itemProviders {
+            print(itemProvider.registeredTypeIdentifiers)
+            //URL
+            if (itemProvider.hasItemConformingToTypeIdentifier("public.url")) {
+                itemProvider.loadItem(forTypeIdentifier: "public.url", options: nil, completionHandler: {
+                    (item, error) in
+                    
+                    let url = (item as? URL)!.absoluteString
+                    if url.contains("itunes.apple.com"){
+                        completion(true)
+                    }else {
+                        completion(false)
+                    }
+                })
+            }
+        }
+    }
+    
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         //self.textView.resignFirstResponder()
+        isAppStore { (bool) in
+            if !bool {
+                self.showAlert()
+            }
+        }
+    }
+    
+    func showAlert(){
+        //ポップアップを表示
+        let alertController = UIAlertController(title: "利用できません", message: "この機能はAppStoreでのみ利用できます。", preferredStyle: .alert)
+        let otherAction = UIAlertAction(title: "了解", style: .destructive) {
+            action in NSLog("はいボタンが押されました")
+            self.cancel()
+        }
+//        let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel) {
+//            action in NSLog("いいえボタンが押されました")
+//        }
+        
+        alertController.addAction(otherAction)
+        
+        self.present(alertController, animated: true, completion: nil)
     }
     
     override func isContentValid() -> Bool {
