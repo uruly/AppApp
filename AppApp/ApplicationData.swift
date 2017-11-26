@@ -179,4 +179,31 @@ class AppData {
         }
         completion()
     }
+    
+    static func saveAppData(appList:[AppStruct],labelID:String,_ completion:()->()){
+        var config = Realm.Configuration(schemaVersion:SCHEMA_VERSION)
+        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
+        config.fileURL = url.appendingPathComponent("db.realm")
+        let realm = try! Realm(configuration: config)
+        guard let label = realm.object(ofType: AppLabelRealmData.self, forPrimaryKey: labelID) else {
+            return
+        }
+        for app in appList {
+            let id = UUID().uuidString
+            guard let appData = realm.object(ofType: AppRealmData.self, forPrimaryKey: app.id) else {
+                continue
+            }
+            let appCount = realm.objects(ApplicationData.self).filter("label == %@",label).count
+            let object = ApplicationData(value: ["app":appData,
+                                                 "label":label,
+                                                 "id":id,
+                                                 "rate":0,
+                                                 "order":appCount,
+                                                 "memo":""])
+            try! realm.write {
+                realm.add(object, update: true)
+            }
+        }
+        completion()
+    }
 }

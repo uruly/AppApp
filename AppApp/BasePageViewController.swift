@@ -108,7 +108,8 @@ class BasePageViewController: UIPageViewController {
     
     func createAppLabel(){
         let createLabelVC = CreateAppLabelViewController()
-        self.present(createLabelVC, animated: true, completion: nil)
+        let naviVC = UINavigationController(rootViewController: createLabelVC)
+        self.present(naviVC, animated: true, completion: nil)
     }
     
     func editAppLabel(label:AppLabelData){
@@ -123,7 +124,8 @@ class BasePageViewController: UIPageViewController {
         editLabelVC.color = label.color
         editLabelVC.id = label.id
         
-        self.present(editLabelVC, animated: true, completion: {
+        let naviVC = UINavigationController(rootViewController: editLabelVC)
+        self.present(naviVC, animated: true, completion: {
             self.isGoDetail = false
         })
     }

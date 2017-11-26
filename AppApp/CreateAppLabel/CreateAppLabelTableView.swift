@@ -16,6 +16,7 @@ class CreateAppLabelTableView: UITableView {
     var currentTextField:UITextField?
     var isKeyboardAppear = true
     
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -55,6 +56,11 @@ extension CreateAppLabelTableView: UITableViewDelegate {
         if indexPath.section == 2{
             print("uipickerを表示")
             createAppLabelVC.showPicker()
+        }
+        
+        if indexPath.section == 3 {
+            print("appを追加")
+            createAppLabelVC.showAppList()
         }
     }
 }

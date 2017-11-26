@@ -29,24 +29,19 @@ class EditAppLabelViewController: CreateAppLabelViewController {
         didSet{
             if labelName != "" && labelName != nil{
                 if AppLabel.contains(name: labelName!) && labelName != currentName{
-                    if let items = naviBar.items,
-                        items.count > 0 ,
-                        let rightItem = items[0].rightBarButtonItem{
+                    if let rightItem = self.navigationItem.rightBarButtonItem{
                         
                         rightItem.tintColor = UIColor.lightGray
                     }
                 }else {
-                    if let items = naviBar.items,
-                        items.count > 0,
-                        let rightItem = items[0].rightBarButtonItem{
+                    if let rightItem = self.navigationItem.rightBarButtonItem{
                         
                         rightItem.tintColor = nil
                     }
                     //ポップアップで重複を知らせる
                 }
             }else{
-                if let items = naviBar.items,items.count > 0 ,
-                    let rightItem = items[0].rightBarButtonItem{
+                if let rightItem = self.navigationItem.rightBarButtonItem{
                     rightItem.tintColor = UIColor.lightGray
                 }
             }
@@ -67,9 +62,10 @@ class EditAppLabelViewController: CreateAppLabelViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if naviBar.items != nil && naviBar.items!.count > 0{
-            naviBar.items![0].title = "ラベルを編集"
-        }
+//        if self.navigationController?.navigationBar.items != nil && self.navigationController?.navigationBar.items!.count > 0{
+//            naviBar.items![0].title = "ラベルを編集"
+//        }
+        self.title = "ラベルを編集"
         //pickerView.orderDelegate = self
         colorPickerView.delegate = self
         labelName = currentName
@@ -97,9 +93,10 @@ class EditAppLabelViewController: CreateAppLabelViewController {
         //tableViewを設置
         let width = self.view.frame.width
         let height = self.view.frame.height
-        editTableView = EditAppLabelTableView(frame: CGRect(x:0,y:naviBar.frame.maxY,
+        let naviBarHeight:CGFloat = self.navigationController?.navigationBar.frame.maxY ?? 57.0
+        editTableView = EditAppLabelTableView(frame: CGRect(x:0,y:naviBarHeight,
                                                           width:width,
-                                                          height:height - naviBar.frame.maxY),
+                                                          height:height - naviBarHeight),
                                             createAppLabelVC:self)
         self.view.addSubview(editTableView)
         
@@ -154,8 +151,10 @@ class EditAppLabelViewController: CreateAppLabelViewController {
         //セーブをする
         print(order)
         AppLabel.updateLabelData(name: labelName!, color: color, id: id, order: order){
-            BasePageViewController.isUnwind = true
-            self.dismiss(animated:true,completion:nil)
+            AppData.saveAppData(appList: appList, labelID: id) {
+                BasePageViewController.isUnwind = true
+                self.dismiss(animated:true,completion:nil)
+            }
         }
     }
     

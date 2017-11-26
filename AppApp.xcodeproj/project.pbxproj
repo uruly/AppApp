@@ -18,6 +18,7 @@
 		66498E391FC810BF00239B47 /* Array+FindIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E381FC810BF00239B47 /* Array+FindIndex.swift */; };
 		66498E3B1FC82F9000239B47 /* EditToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E3A1FC82F9000239B47 /* EditToolbar.swift */; };
 		6677FC221FCA691200CB105E /* FakeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6677FC211FCA691200CB105E /* FakeView.swift */; };
+		6677FC241FCA6CE400CB105E /* AppListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6677FC231FCA6CE400CB105E /* AppListViewController.swift */; };
 		667ECE191FC36784009233DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE181FC36784009233DE /* AppDelegate.swift */; };
 		667ECE1E1FC36784009233DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 667ECE1C1FC36784009233DE /* Main.storyboard */; };
 		667ECE201FC36784009233DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 667ECE1F1FC36784009233DE /* Assets.xcassets */; };
@@ -103,6 +104,7 @@
 		66498E381FC810BF00239B47 /* Array+FindIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+FindIndex.swift"; sourceTree = "<group>"; };
 		66498E3A1FC82F9000239B47 /* EditToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditToolbar.swift; sourceTree = "<group>"; };
 		6677FC211FCA691200CB105E /* FakeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FakeView.swift; path = AppApp/FakeView.swift; sourceTree = SOURCE_ROOT; };
+		6677FC231FCA6CE400CB105E /* AppListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppListViewController.swift; sourceTree = "<group>"; };
 		667ECE151FC36784009233DE /* AppApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		667ECE181FC36784009233DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		667ECE1D1FC36784009233DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 				667ECE631FC3A7BD009233DE /* CreateAppLabelViewController.swift */,
 				667ECE681FC3B454009233DE /* CreateAppLabelTableView.swift */,
 				66498E311FC7B5AA00239B47 /* EditAppLabelViewController.swift */,
+				6677FC231FCA6CE400CB105E /* AppListViewController.swift */,
 				66DF587D1FC92D3F00CD71DC /* LabelOrderPickerView.swift */,
 				667ECE6A1FC3CB79009233DE /* ColorPicker.swift */,
 			);
@@ -518,6 +521,7 @@
 				667ECE571FC3836C009233DE /* AppLabel.swift in Sources */,
 				667ECE4B1FC3690E009233DE /* BaseViewController.swift in Sources */,
 				667ECE471FC36850009233DE /* BaseNavigationViewController.swift in Sources */,
+				6677FC241FCA6CE400CB105E /* AppListViewController.swift in Sources */,
 				667ECE641FC3A7BD009233DE /* CreateAppLabelViewController.swift in Sources */,
 				667ECE6B1FC3CB79009233DE /* ColorPicker.swift in Sources */,
 				66498E341FC7BA3600239B47 /* UIApplication+Stack.swift in Sources */,
