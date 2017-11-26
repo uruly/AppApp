@@ -17,6 +17,7 @@ class AppCollectionView: UICollectionView {
     static var isWhileEditing = false
     var itemSize:CGSize = CGSize(width:50,height:50)
     var lastContentOffsetY:CGFloat = 0
+    var maxSize:CGFloat = 160.0
     var appDelegate:AppCollectionViewDelegate! {
         didSet{
 //            if appDelegate.baseVC.appLabel.name == "ALL" {
@@ -44,6 +45,7 @@ class AppCollectionView: UICollectionView {
         self.delegate = self
         self.dataSource = self
         self.register(UINib(nibName:"AppCollectionViewCell",bundle:nil), forCellWithReuseIdentifier: "imageCollection")
+        self.register(UINib(nibName:"AppInfoCell",bundle:nil), forCellWithReuseIdentifier: "AppInfo")
         self.backgroundColor = UIColor.white
         
         //長押しで
@@ -110,18 +112,20 @@ class AppCollectionView: UICollectionView {
 extension AppCollectionView:UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if AppCollectionView.isWhileEditing {
-            let cell:AppCollectionViewCell = collectionView.cellForItem(at: indexPath) as! AppCollectionViewCell
-            
-            let id = appData.appList[indexPath.row].id
-            let index = checkArray.findIndex(includeElement: {$0.id == id})
-            if index.count > 0 {
-                self.checkArray.remove(at: index[0])
-                cell.checkImageView.isHidden = true
-                cell.imageView.alpha = 1.0
-            }else {
-                self.checkArray.append(appData.appList[indexPath.row])
-                cell.checkImageView.isHidden = false
-                cell.imageView.alpha = 0.5
+            if itemSize.width < maxSize {
+                let cell:AppCollectionViewCell = collectionView.cellForItem(at: indexPath) as! AppCollectionViewCell
+                
+                let id = appData.appList[indexPath.row].id
+                let index = checkArray.findIndex(includeElement: {$0.id == id})
+                if index.count > 0 {
+                    self.checkArray.remove(at: index[0])
+                    cell.checkImageView.isHidden = true
+                    cell.imageView.alpha = 1.0
+                }else {
+                    self.checkArray.append(appData.appList[indexPath.row])
+                    cell.checkImageView.isHidden = false
+                    cell.imageView.alpha = 0.5
+                }
             }
         }else{
             //画面遷移をする
@@ -132,25 +136,30 @@ extension AppCollectionView:UICollectionViewDelegate {
 
 extension AppCollectionView:UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier:"imageCollection",for:indexPath) as! AppCollectionViewCell
-        if appData == nil {
+        
+        if itemSize.width < maxSize {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier:"imageCollection",for:indexPath) as! AppCollectionViewCell
+            if appData == nil {
+                return cell
+            }
+            cell.checkImageView.isHidden = true
+            cell.imageView.alpha = 1.0
+            //編集中かどうか
+            if AppCollectionView.isWhileEditing {
+                if checkArray.contains(where: {$0.id == appData.appList[indexPath.row].id}){
+                    cell.checkImageView.isHidden = false
+                    cell.imageView.alpha = 0.5
+                }
+            }
+            cell.imageView.image = nil
+            if let imageData = appData.appList[indexPath.row].app.image {
+                cell.imageView.image = UIImage(data:imageData)
+            }
+            return cell
+        }else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AppInfo", for: indexPath) as! AppInfoCell
             return cell
         }
-        cell.checkImageView.isHidden = true
-        cell.imageView.alpha = 1.0
-        //編集中かどうか
-        if AppCollectionView.isWhileEditing {
-            if checkArray.contains(where: {$0.id == appData.appList[indexPath.row].id}){
-                cell.checkImageView.isHidden = false
-                cell.imageView.alpha = 0.5
-            }
-        }
-        cell.imageView.image = nil
-        if let imageData = appData.appList[indexPath.row].app.image {
-            cell.imageView.image = UIImage(data:imageData)
-        }
-        
-        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -175,10 +184,22 @@ extension AppCollectionView:IconSizeChangerDelegate{
     @objc func sliderValueChanged(sender: UISlider) {
         print("ここで受け取り！\(sender.value)")
         //collectionViewのitemSizeを変える
-        self.itemSize = CGSize(width:CGFloat(sender.value),height:CGFloat(sender.value))
+        let value = CGFloat(sender.value)
+        let currentSize = self.itemSize.width
+        if value > maxSize {
+            self.itemSize = CGSize(width:self.frame.width - 50,height:100)
+        }else {
+            self.itemSize = CGSize(width:value,height:value)
+        }
         UserDefaults.standard.set(sender.value, forKey: "IconSize")
         
         self.collectionViewLayout.invalidateLayout()
+        
+        //cellが変わるときはreloadしたい
+        if (currentSize >= value && currentSize <= maxSize ) || ( value >= maxSize && currentSize < value) {
+            print("reloadData")
+            self.reloadData()
+        }
     }
 }
 
