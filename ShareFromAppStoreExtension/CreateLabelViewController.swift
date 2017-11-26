@@ -13,8 +13,17 @@ class CreateLabelViewController: UITableViewController {
 
     var name:String!
     var colorView:UIView!
-    var color:UIColor!
+    var color:UIColor!{
+        didSet{
+            if colorView != nil {
+                colorView.backgroundColor = color
+            }
+        }
+    }
+    var colorPickerView:ColorPicker!
     //var labelListVC:LabelListTableViewController!
+    let pickerViewHeight:CGFloat = 200.0
+    var textField:UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +31,21 @@ class CreateLabelViewController: UITableViewController {
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "createAppLabel")
         self.color = UIColor.yellow
         self.title = "ラベルを作成"
+        
+        if let parentView = self.navigationController?.parent?.view {
+            let width = parentView.frame.width
+            let height = parentView.frame.height
+            
+            //カラーピッカー
+            colorPickerView = ColorPicker()
+            colorPickerView.frame = CGRect(x:0,
+                                           y:height,
+                                           width:width,
+                                           height:pickerViewHeight)
+            colorPickerView.setup()
+            colorPickerView.delegate = self
+            parentView.addSubview(colorPickerView)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -67,6 +91,18 @@ class CreateLabelViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return 1
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        if indexPath.section == 1{
+            self.showColorPicker()
+            if textField != nil {
+                textField.resignFirstResponder()
+            }
+        }
+        cell?.isSelected = false
+        
+    }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -75,7 +111,7 @@ class CreateLabelViewController: UITableViewController {
             subview.removeFromSuperview()
         }
         if indexPath.section == 0{
-            let textField = UITextField(frame:cell.contentView.frame)
+            textField = UITextField(frame:cell.contentView.frame)
             textField.leftView = UIView(frame: CGRect(x:0,y:0,
                                                       width:15,height:cell.contentView.frame.height))
             textField.leftViewMode = UITextFieldViewMode.always
@@ -154,6 +190,47 @@ class CreateLabelViewController: UITableViewController {
         }
         return false
     }
+    
+    
+    
+    func showColorPicker(){
+        if colorPickerView != nil {
+            if let parentView = self.navigationController?.parent?.view {
+                let width = parentView.frame.width
+                let height = parentView.frame.height
+                createFakeView(tag: 1)
+                UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+                    self.colorPickerView.frame = CGRect(x:0,y:height - 200,width:width,height:200)
+                }, completion: nil)
+            }
+        }
+    }
+    
+    func createFakeView(tag:Int){
+        if let parentView = self.navigationController?.parent?.view {
+            let width = parentView.frame.width
+            let height = parentView.frame.height
+            let fakeView = FakeView(frame:CGRect(x:0,y:0,width:width,height:height - pickerViewHeight))
+            fakeView.delegate = self
+            fakeView.pickerTag = tag
+            parentView.addSubview(fakeView)
+        }
+    }
+    
+    func dismissPickerView(tag:Int){
+        self.closeColorPicker()
+    }
+    
+    func closeColorPicker(){
+        if let parentView = self.navigationController?.parent?.view {
+            let width = parentView.frame.width
+            let height = parentView.frame.height
+            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+                self.colorPickerView.frame = CGRect(x:0,y:height,width:width,height:200)
+            }, completion: nil)
+        }
+    }
+    
 }
 
 extension CreateLabelViewController: UITextFieldDelegate {
@@ -173,3 +250,10 @@ extension CreateLabelViewController: UITextFieldDelegate {
         return true
     }
 }
+extension CreateLabelViewController:ColorDelegate {
+    func pickedColor(color:UIColor,endState:Bool){
+        print("color\(color)")
+        self.color = color
+    }
+}
+
