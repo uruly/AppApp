@@ -15,7 +15,7 @@ import UIKit
 class AppCollectionView: UICollectionView {
     
     static var isWhileEditing = false
-    var itemSize:CGSize = CGSize(width:50,height:50)
+    var itemSize:CGSize!
     var lastContentOffsetY:CGFloat = 0
     var maxSize:CGFloat = 160.0
     var appDelegate:AppCollectionViewDelegate! {
@@ -30,7 +30,10 @@ class AppCollectionView: UICollectionView {
     }
     var appData:AppData! {
         didSet {
+            print("self.itemSize\(self.itemSize)")
+            //self.collectionViewLayout.invalidateLayout()
             self.reloadData()
+            //self.collectionViewLayout.invalidateLayout()
         }
     }
     
@@ -46,7 +49,7 @@ class AppCollectionView: UICollectionView {
         self.dataSource = self
         self.register(UINib(nibName:"AppCollectionViewCell",bundle:nil), forCellWithReuseIdentifier: "imageCollection")
         self.register(UINib(nibName:"AppInfoCell",bundle:nil), forCellWithReuseIdentifier: "AppInfo")
-        self.backgroundColor = UIColor.white
+        self.backgroundColor = UIColor.backgroundGray()
         
         //長押しで
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(cellLongPressed(sender:)))
@@ -65,10 +68,19 @@ class AppCollectionView: UICollectionView {
         if iconSize < 30 {
             layout.itemSize = CGSize(width:50.0,height:50.0)
             UserDefaults.standard.set(50.0, forKey: "IconSize")
-        }else{
-            layout.itemSize = CGSize(width:iconSize,height:iconSize)
+        }else{  //設定されているとき
+            if iconSize > 160.0 {
+                print("iconSize\(iconSize)")
+                layout.itemSize = CGSize(width:frame.width - 30,height:100)
+            }else {
+                print("iconSizeElse\(iconSize)")
+                layout.itemSize = CGSize(width:iconSize,height:iconSize)
+            }
         }
         self.init(frame:frame,collectionViewLayout:layout)
+        self.itemSize = layout.itemSize
+//        print(self.itemSize)
+//        self.reloadData()
     }
     
     override func reloadData(){
@@ -158,6 +170,13 @@ extension AppCollectionView:UICollectionViewDataSource {
             return cell
         }else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AppInfo", for: indexPath) as! AppInfoCell
+            cell.imageView.image = nil
+            if let imageData = appData.appList[indexPath.row].app.image {
+                cell.imageView.image = UIImage(data:imageData)
+            }
+            cell.nameLabel.text = appData.appList[indexPath.row].app.name
+            cell.developerLabel.text = appData.appList[indexPath.row].app.developer
+            
             return cell
         }
     }
@@ -187,7 +206,7 @@ extension AppCollectionView:IconSizeChangerDelegate{
         let value = CGFloat(sender.value)
         let currentSize = self.itemSize.width
         if value > maxSize {
-            self.itemSize = CGSize(width:self.frame.width - 50,height:100)
+            self.itemSize = CGSize(width:self.frame.width - 30,height:100)
         }else {
             self.itemSize = CGSize(width:value,height:value)
         }

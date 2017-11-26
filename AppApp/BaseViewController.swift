@@ -53,7 +53,11 @@ class BaseViewController: UIViewController {
             var value = CGFloat(UserDefaults.standard.float(forKey:"IconSize"))
             if value == 0 { value = 50.0 }
             self.basePageVC.iconSizeChanger.slider.value = Float(value)
-            self.collectionView.itemSize = CGSize(width:value,height:value)
+            if value > 160.0 {
+                self.collectionView.itemSize = CGSize(width:self.view.frame.width - 30,height:100)
+            }else {
+                self.collectionView.itemSize = CGSize(width:value,height:value)
+            }
             self.collectionView.collectionViewLayout.invalidateLayout()
         }
         
