@@ -202,6 +202,9 @@ extension SelectionBar: UICollectionViewDataSource {
         //self.reloadData()
         self.layoutIfNeeded()
         //self.collectionViewLayout.invalidateLayout()
+        print(sourceIndexPath.item)
+
+        pageVC.reloadPage(order:AppLabel.currentOrder!)
     }
     
 }

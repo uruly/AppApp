@@ -95,6 +95,10 @@ class BasePageViewController: UIPageViewController {
         }
     }
 
+    func reloadPage(order:Int){
+        self.setViewControllers([getBase(appLabel: appLabel.array[order])], direction: .forward, animated: false, completion: nil)
+    }
+    
     func getBase(appLabel:AppLabelData) -> BaseViewController {
         let baseView = BaseViewController()
         baseView.appLabel = appLabel
@@ -174,7 +178,7 @@ extension BasePageViewController: UIPageViewControllerDataSource {
         //現在の位置で場合分け
         if viewController.isKind(of: BaseViewController.self){
             let currentView = viewController as! BaseViewController
-            let prevValue = currentView.appLabel.order - 1
+            let prevValue = AppLabel.currentOrder! - 1
             if(prevValue < 0){
                 return self.isInfinity ? getBase(appLabel:appLabel.array.last!) : nil
             }
@@ -190,7 +194,7 @@ extension BasePageViewController: UIPageViewControllerDataSource {
         //現在の位置で場合分け
         if viewController.isKind(of: BaseViewController.self){
             let currentView = viewController as! BaseViewController
-            let nextValue = currentView.appLabel.order + 1
+            let nextValue = AppLabel.currentOrder! + 1
             if(nextValue > appLabel.array.count - 1){
                 return self.isInfinity ? getBase(appLabel:appLabel.array.first!) : nil
             }

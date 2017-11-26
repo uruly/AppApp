@@ -24,8 +24,6 @@
 	<dict>
 		<key>NSExtensionAttributes</key>
 		<dict>
-			<key>NSExtensionActivationRule</key>
-			<string>TRUEPREDICATE</string>
 			<key>NSExtensionActivationSupportsText </key>
 			<true/>
 			<key>NSExtensionActivationSupportsImageWithMaxCount </key>
