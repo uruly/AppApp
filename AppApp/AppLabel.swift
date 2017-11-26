@@ -205,8 +205,19 @@ class AppLabel {
                 realm.delete(object)
             }
         }
+        let deleteOrder = labelData.order
         try! realm.write {
             realm.delete(labelData)
+        }
+        //orderを直す
+        let labelList = realm.objects(AppLabelRealmData.self)
+        for label in labelList {
+            if label.order > deleteOrder {
+                try! realm.write{
+                    label.order = label.order - 1
+                    realm.add(label, update: true)
+                }
+            }
         }
         completion()
     }
