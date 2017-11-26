@@ -69,7 +69,9 @@ class AppData {
     
     init(label:AppLabelData) {
         self.label = label
-        readAppData(label:label)
+        readAppData(label:label){
+            print("読み込み完了")
+        }
     }
     
 //    init(allLabel:AppLabelData){
@@ -78,13 +80,14 @@ class AppData {
 //    }
     
     //読み込み
-    func readAppData(label:AppLabelData){
+    func readAppData(label:AppLabelData,_ completion:@escaping ()->()){
         appList = []
         
         var config = Realm.Configuration(schemaVersion:SCHEMA_VERSION)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
         config.fileURL = url.appendingPathComponent("db.realm")
         
+        //DispatchQueue.global().async {
         let realm = try! Realm(configuration: config)
         
         //先にラベルを取得
@@ -100,9 +103,11 @@ class AppData {
             
             let appLabel = ApplicationStruct(app: appData, label: label, id: obj.id, rate: obj.rate, order: obj.order, memo: obj.memo)
             
-            appList.append(appLabel)
-            
+            self.appList.append(appLabel)
         }
+        //reloadしたいなー
+        completion()
+        //}
         
     }
     

@@ -25,14 +25,18 @@ class AppCollectionView: UICollectionView {
 //            }else {
 //                appData = AppData(label:appDelegate.baseVC.appLabel)
 //            }
-            appData = AppData(label:appDelegate.baseVC.appLabel)
+            DispatchQueue.global().async {
+                self.appData = AppData(label:self.appDelegate.baseVC.appLabel)
+            }
         }
     }
     var appData:AppData! {
         didSet {
             print("self.itemSize\(self.itemSize)")
             //self.collectionViewLayout.invalidateLayout()
-            self.reloadData()
+            DispatchQueue.main.async {
+                self.reloadData()
+            }
             //self.collectionViewLayout.invalidateLayout()
         }
     }
@@ -109,13 +113,21 @@ class AppCollectionView: UICollectionView {
         }
     }
     
-    func deleteAppData(){
-        appData.deleteAppData(appList: checkArray){
-            if checkArray.count > 0 {
-                self.appData.readAppData(label: checkArray[0].label)
-                self.appData.resetOrder()
-                self.checkArray = []
-                self.reloadData()
+    func deleteAppData(_ completion:@escaping ()->()){
+        DispatchQueue.global().async {
+            print(self.checkArray)
+            self.appData.deleteAppData(appList: self.checkArray){
+                if self.checkArray.count > 0 {
+                    self.appData.readAppData(label: self.checkArray[0].label){
+                        self.appData.resetOrder()
+                        DispatchQueue.main.async {
+                            self.checkArray = []
+                            print("reload")
+                            self.reloadData()
+                            completion()
+                        }
+                    }
+                }
             }
         }
     }

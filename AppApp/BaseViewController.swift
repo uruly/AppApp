@@ -107,11 +107,12 @@ extension BaseViewController: EditToolbarDelegate {
     
     @objc func deleteAppBtnTapped() {
         //ポップアップを表示
-        let alertController = UIAlertController(title: "画像を削除します。", message: "", preferredStyle: .actionSheet)
-        let otherAction = UIAlertAction(title: "画像を削除する", style: .default) {
+        let alertController = UIAlertController(title: "Appを削除します。", message: "", preferredStyle: .actionSheet)
+        let otherAction = UIAlertAction(title: "Appを削除する", style: .default) {
             action in NSLog("はいボタンが押されました")
-            self.collectionView.deleteAppData()
-            self.basePageVC.cancelEdit(sender: self.basePageVC.navigationItem.rightBarButtonItem!)
+            self.collectionView.deleteAppData{
+                self.basePageVC.cancelEdit(sender: self.basePageVC.navigationItem.rightBarButtonItem!)
+            }
         }
         let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel) {
             action in NSLog("いいえボタンが押されました")
