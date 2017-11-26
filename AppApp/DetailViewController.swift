@@ -10,15 +10,32 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
-    var appData:AppData!
+    var appData:ApplicationStruct!
+    var scrollView:UIScrollView!
+    var appInfoView:AppInfoView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let width = self.view.frame.width
+        let height = self.view.frame.height
 
         self.view.backgroundColor = UIColor.backgroundGray()
         self.title = "アプリの情報"
         
-        // Do any additional setup after loading the view.
+        
+        scrollView = UIScrollView()
+        scrollView.frame = CGRect(x:0,y:0,width:width,height:height)
+        scrollView.delegate = self
+        self.view.addSubview(scrollView)
+        
+        let naviBarHeight = self.navigationController?.navigationBar.frame.maxY ?? 57.0
+        let margin:CGFloat = 15.0
+        appInfoView = AppInfoView(frame:CGRect(x:margin,y:margin,width:width - (margin * 2),height:height))
+        appInfoView.appName = appData.app.name
+        appInfoView.imageData = appData.app.image
+        appInfoView.setSubviews()
+        scrollView.addSubview(appInfoView)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,14 +44,8 @@ class DetailViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+extension DetailViewController: UIScrollViewDelegate {
+    
 }

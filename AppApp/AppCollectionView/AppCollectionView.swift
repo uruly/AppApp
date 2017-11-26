@@ -153,7 +153,7 @@ extension AppCollectionView:UICollectionViewDelegate {
             }
         }else{
             //画面遷移をする
-            self.appDelegate.baseVC.toDetailViewController(appData:appData)
+            self.appDelegate.baseVC.toDetailViewController(appData:appData.appList[indexPath.row])
         }
     }
 }

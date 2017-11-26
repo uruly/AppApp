@@ -72,7 +72,7 @@ class BaseViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    func toDetailViewController(appData:AppData){
+    func toDetailViewController(appData:ApplicationStruct){
         let detailVC = DetailViewController()
         detailVC.appData = appData
         
