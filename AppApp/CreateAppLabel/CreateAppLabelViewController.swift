@@ -15,6 +15,7 @@ class CreateAppLabelViewController: UIViewController {
     var pickerView:LabelOrderPickerView!
     var isResetOrder = false
     //var currentRow:Int = AppLabel.count ?? 0
+    let pickerViewHeight:CGFloat = 200.0
     
     var labelName:String?{
         didSet{
@@ -88,7 +89,7 @@ class CreateAppLabelViewController: UIViewController {
         colorPickerView.frame = CGRect(x:0,
                                        y:height,
                                        width:width,
-                                       height:200)
+                                       height:pickerViewHeight)
         colorPickerView.setup()
         colorPickerView.delegate = self
         self.view.addSubview(colorPickerView)
@@ -106,7 +107,7 @@ class CreateAppLabelViewController: UIViewController {
         self.view.addSubview(tableView)
         
         //ピッカービュー
-        pickerView = LabelOrderPickerView(frame: CGRect(x:0,y:height,width:width,height:200))
+        pickerView = LabelOrderPickerView(frame: CGRect(x:0,y:height,width:width,height:pickerViewHeight))
         pickerView.orderDelegate = self
         self.view.addSubview(pickerView)
     }
@@ -129,7 +130,23 @@ class CreateAppLabelViewController: UIViewController {
         
         
     }
+    func createFakeView(tag:Int){
+        let width = self.view.frame.width
+        let height = self.view.frame.height
+        let fakeView = FakeView(frame:CGRect(x:0,y:0,width:width,height:height - pickerViewHeight))
+        fakeView.delegate = self
+        fakeView.pickerTag = tag
+        self.view.addSubview(fakeView)
+    }
     
+    func dismissPickerView(tag:Int){
+        print("dis\(tag)")
+        if tag == 1 {   //カラーピッカーを閉じる
+            self.closeColorPicker()
+        }else { //pickerViewを閉じる
+            self.closePicker()
+        }
+    }
     func saveLabelData(){
         //セーブをする
         let id = NSUUID().uuidString
@@ -142,16 +159,32 @@ class CreateAppLabelViewController: UIViewController {
     func showColorPicker(){
         let width = self.view.frame.width
         let height = self.view.frame.height
+        createFakeView(tag: 1)
         UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
             self.colorPickerView.frame = CGRect(x:0,y:height - 200,width:width,height:200)
+        }, completion: nil)
+    }
+    
+    func closeColorPicker(){
+        let width = self.view.frame.width
+        let height = self.view.frame.height
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+            self.colorPickerView.frame = CGRect(x:0,y:height,width:width,height:200)
+        }, completion: nil)
+    }
+    func closePicker(){
+        let width = self.view.frame.width
+        let height = self.view.frame.height
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+            self.pickerView.frame = CGRect(x:0,y:height,width:width,height:200)
         }, completion: nil)
     }
     
     func showPicker(){
         let width = self.view.frame.width
         let height = self.view.frame.height
-//        print(currentRow)
         self.pickerView.selectRow(order, inComponent: 0, animated: false)
+        createFakeView(tag: 2)
         UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
             self.pickerView.frame = CGRect(x:0,y:height - 200,width:width,height:200)
         }, completion: nil)

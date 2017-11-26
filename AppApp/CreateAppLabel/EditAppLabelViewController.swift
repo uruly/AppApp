@@ -163,12 +163,20 @@ class EditAppLabelViewController: CreateAppLabelViewController {
         let width = self.view.frame.width
         let height = self.view.frame.height
         //        print(currentRow)
+        createFakeView(tag: 2)
         self.editPickerView.selectRow(order - 1, inComponent: 0, animated: false)
         UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
             self.editPickerView.frame = CGRect(x:0,y:height - 200,width:width,height:200)
         }, completion: nil)
     }
     
+    override func closePicker(){
+        let width = self.view.frame.width
+        let height = self.view.frame.height
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+            self.editPickerView.frame = CGRect(x:0,y:height,width:width,height:200)
+        }, completion: nil)
+    }
 }
 
 class EditAppLabelTableView:CreateAppLabelTableView {
