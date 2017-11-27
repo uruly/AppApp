@@ -211,4 +211,42 @@ class AppData {
         }
         completion()
     }
+    
+    static func deleteAppData(app:ApplicationStruct,_ completion:()->()){
+        //ラベルについているAppのみを消すよ
+        var config = Realm.Configuration(schemaVersion:SCHEMA_VERSION)
+        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
+        config.fileURL = url.appendingPathComponent("db.realm")
+        
+        let realm = try! Realm(configuration: config)
+        guard let obj = realm.object(ofType: ApplicationData.self, forPrimaryKey: app.id) else {
+            return
+        }
+        try! realm.write {
+            realm.delete(obj)
+        }
+        completion()
+    }
+    
+    static func deleteAppAllData(app:AppStruct,_ completion:()->()){
+        var config = Realm.Configuration(schemaVersion:SCHEMA_VERSION)
+        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
+        config.fileURL = url.appendingPathComponent("db.realm")
+        
+        let realm = try! Realm(configuration: config)
+        guard let appData = realm.object(ofType: AppData.self, forPrimaryKey: app.id) else {
+            return
+        }
+        let objects = realm.objects(ApplicationData.self).filter("app == %@",appData)
+        for obj in objects {
+            try! realm.write {
+                realm.delete(obj)
+                
+            }
+        }
+        try! realm.write {
+            realm.delete(appData)
+        }
+        completion()
+    }
 }
