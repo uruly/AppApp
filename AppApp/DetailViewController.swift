@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import RealmSwift
 
 class DetailViewController: UIViewController {
 
@@ -17,6 +17,11 @@ class DetailViewController: UIViewController {
     var commonInfoView:CommonInfoView!
     var labelInfoView:LabelAppInfoView!
     var delegate:MemoDelegate!
+    var memoText:String = ""{
+        didSet {
+            saveAppLabelMemo(memoText)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +49,7 @@ class DetailViewController: UIViewController {
                                                        height:200),
                                          style: .grouped)
         self.delegate = labelInfoView
+        labelInfoView.detailVC = self
         labelInfoView.memo = appData.memo ?? "メモ"
         scrollView.addSubview(labelInfoView)
         
@@ -71,6 +77,26 @@ class DetailViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        if let viewControllers = self.navigationController?.viewControllers {
+            var existsSelfInViewControllers = true
+            for viewController in viewControllers {
+                if viewController == self {
+                    existsSelfInViewControllers = false
+                    // selfが存在した時点で処理を終える
+                    break
+                }
+            }
+            
+            if existsSelfInViewControllers {
+                print("前の画面に戻る処理が行われました")
+                if memoText != "" {
+                    self.saveAppLabelMemo(memoText)
+                }
+            }
+        }
+        super.viewWillDisappear(animated)
+    }
     
     func convertDate(_ date:Date) -> String {
         let component = Calendar.current.dateComponents([.year,.month,.day], from: date)
@@ -85,6 +111,22 @@ class DetailViewController: UIViewController {
         self.navigationController?.pushViewController(webVC, animated: true)
     }
 
+    
+    func saveAppLabelMemo(_ text:String ){
+        print("saveMemo")
+        var config = Realm.Configuration(schemaVersion:SCHEMA_VERSION)
+        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
+        config.fileURL = url.appendingPathComponent("db.realm")
+        let realm = try! Realm(configuration: config)
+        
+        guard let obj = realm.object(ofType: ApplicationData.self, forPrimaryKey: appData.id) else {
+            return
+        }
+        try! realm.write {
+            obj.memo = text
+            realm.add(obj, update: true)
+        }
+    }
 }
 
 extension DetailViewController: UIScrollViewDelegate {

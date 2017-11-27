@@ -162,7 +162,7 @@ extension WebViewController:UIScrollViewDelegate {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print("offsetY\(scrollView.contentOffset.y)")
+        //print("offsetY\(scrollView.contentOffset.y)")
         let maxY = self.view.frame.maxY
         let toolBarHeight:CGFloat = 44.0
         let middleHeight = toolBarHeight / 2

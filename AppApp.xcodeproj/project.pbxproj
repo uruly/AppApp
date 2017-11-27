@@ -28,6 +28,7 @@
 		666E06BF1FCBB3880043DCFF /* left_arrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 666E06BD1FCBB3880043DCFF /* left_arrow@3x.png */; };
 		666E06C11FCBB5E90043DCFF /* WebPageToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666E06C01FCBB5E90043DCFF /* WebPageToolbar.swift */; };
 		666E06C31FCBC1E50043DCFF /* PassThroughIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666E06C21FCBC1E50043DCFF /* PassThroughIndicator.swift */; };
+		666E06C51FCBCB260043DCFF /* UITextView+Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666E06C41FCBCB260043DCFF /* UITextView+Placeholder.swift */; };
 		6677FC221FCA691200CB105E /* FakeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6677FC211FCA691200CB105E /* FakeView.swift */; };
 		6677FC241FCA6CE400CB105E /* AppListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6677FC231FCA6CE400CB105E /* AppListViewController.swift */; };
 		6677FC261FCA7E0400CB105E /* VersionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6677FC251FCA7E0400CB105E /* VersionManager.swift */; };
@@ -131,6 +132,7 @@
 		666E06BD1FCBB3880043DCFF /* left_arrow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left_arrow@3x.png"; sourceTree = "<group>"; };
 		666E06C01FCBB5E90043DCFF /* WebPageToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebPageToolbar.swift; sourceTree = "<group>"; };
 		666E06C21FCBC1E50043DCFF /* PassThroughIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassThroughIndicator.swift; sourceTree = "<group>"; };
+		666E06C41FCBCB260043DCFF /* UITextView+Placeholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Placeholder.swift"; sourceTree = "<group>"; };
 		6677FC211FCA691200CB105E /* FakeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FakeView.swift; path = AppApp/FakeView.swift; sourceTree = SOURCE_ROOT; };
 		6677FC231FCA6CE400CB105E /* AppListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppListViewController.swift; sourceTree = "<group>"; };
 		6677FC251FCA7E0400CB105E /* VersionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionManager.swift; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 				66A3C3F81FCB66E7007EB295 /* AppInfoView.swift */,
 				666E06AE1FCB94DF0043DCFF /* CommonInfoView.swift */,
 				666E06B01FCB98890043DCFF /* LabelAppInfoView.swift */,
+				666E06C41FCBCB260043DCFF /* UITextView+Placeholder.swift */,
 				666E06B21FCB9A880043DCFF /* MemoCell.swift */,
 				666E06B31FCB9A880043DCFF /* MemoCell.xib */,
 				666E06B61FCBAC290043DCFF /* WebViewController.swift */,
@@ -607,6 +610,7 @@
 				667ECE6D1FC41F7E009233DE /* AppCollectionView.swift in Sources */,
 				667ECE5B1FC3958D009233DE /* SelectionBar.swift in Sources */,
 				66A3C3F91FCB66E7007EB295 /* AppInfoView.swift in Sources */,
+				666E06C51FCBCB260043DCFF /* UITextView+Placeholder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -240,14 +240,14 @@ extension AppCollectionView:UIScrollViewDelegate {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print("offsetY\(scrollView.contentOffset.y)")
+        //print("offsetY\(scrollView.contentOffset.y)")
         let maxY = self.appDelegate.baseVC.view.frame.maxY
         let middleHeight = self.appDelegate.baseVC.basePageVC.iconSizeChanger.frame.height / 2
         let minY = maxY - ( middleHeight * 2 )
         let diffX = fabs(lastContentOffsetY - scrollView.contentOffset.y)
         let frameMinY = self.appDelegate.baseVC.basePageVC.iconSizeChanger.frame.minY
-        let frameMaxY = self.appDelegate.baseVC.basePageVC.iconSizeChanger.frame.maxY
-        let currentFrameCenterY = self.appDelegate.baseVC.basePageVC.iconSizeChanger.center.y
+        //let frameMaxY = self.appDelegate.baseVC.basePageVC.iconSizeChanger.frame.maxY
+        //let currentFrameCenterY = self.appDelegate.baseVC.basePageVC.iconSizeChanger.center.y
         
         if scrollView.contentOffset.y > 0 {
             if scrollView.contentOffset.y > lastContentOffsetY {
