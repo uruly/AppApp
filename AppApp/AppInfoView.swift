@@ -15,7 +15,6 @@ class AppInfoView: UIView {
     
     var imageData:Data!
     var appName:String!
-    var tableView:UITableView!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -45,38 +44,8 @@ class AppInfoView: UIView {
         appNameLabel.sizeToFit()
         self.addSubview(appNameLabel)
         
-        tableView = UITableView(frame: CGRect(x:margin,y:imageView.frame.maxY + margin,
-                                              width:width - (margin * 2 ),
-                                              height:height - imageView.frame.maxY),
-                                style: .grouped)
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.backgroundColor = UIColor.white
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "AppInfo")
-        self.addSubview(tableView)
         
     }
 
 }
 
-extension AppInfoView: UITableViewDelegate {
-    
-}
-extension AppInfoView: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "基本情報"
-    }
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AppInfo", for: indexPath)
-        cell.textLabel?.text = "にゃーん"
-        return cell
-    }
-}

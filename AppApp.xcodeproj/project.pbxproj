@@ -17,7 +17,7 @@
 		66498E371FC8067100239B47 /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 66498E361FC8067100239B47 /* check.png */; };
 		66498E391FC810BF00239B47 /* Array+FindIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E381FC810BF00239B47 /* Array+FindIndex.swift */; };
 		66498E3B1FC82F9000239B47 /* EditToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E3A1FC82F9000239B47 /* EditToolbar.swift */; };
-		666E06AD1FCB68F90043DCFF /* AppInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 666E06AC1FCB68F90043DCFF /* AppInfoView.xib */; };
+		666E06AF1FCB94DF0043DCFF /* CommonInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666E06AE1FCB94DF0043DCFF /* CommonInfoView.swift */; };
 		6677FC221FCA691200CB105E /* FakeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6677FC211FCA691200CB105E /* FakeView.swift */; };
 		6677FC241FCA6CE400CB105E /* AppListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6677FC231FCA6CE400CB105E /* AppListViewController.swift */; };
 		6677FC261FCA7E0400CB105E /* VersionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6677FC251FCA7E0400CB105E /* VersionManager.swift */; };
@@ -110,7 +110,7 @@
 		66498E361FC8067100239B47 /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
 		66498E381FC810BF00239B47 /* Array+FindIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+FindIndex.swift"; sourceTree = "<group>"; };
 		66498E3A1FC82F9000239B47 /* EditToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditToolbar.swift; sourceTree = "<group>"; };
-		666E06AC1FCB68F90043DCFF /* AppInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppInfoView.xib; sourceTree = "<group>"; };
+		666E06AE1FCB94DF0043DCFF /* CommonInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonInfoView.swift; sourceTree = "<group>"; };
 		6677FC211FCA691200CB105E /* FakeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FakeView.swift; path = AppApp/FakeView.swift; sourceTree = SOURCE_ROOT; };
 		6677FC231FCA6CE400CB105E /* AppListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppListViewController.swift; sourceTree = "<group>"; };
 		6677FC251FCA7E0400CB105E /* VersionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionManager.swift; sourceTree = "<group>"; };
@@ -234,8 +234,8 @@
 				667ECE481FC368BF009233DE /* BasePageViewController.swift */,
 				667ECE4A1FC3690E009233DE /* BaseViewController.swift */,
 				66498E2F1FC7A01D00239B47 /* DetailViewController.swift */,
-				666E06AC1FCB68F90043DCFF /* AppInfoView.xib */,
 				66A3C3F81FCB66E7007EB295 /* AppInfoView.swift */,
+				666E06AE1FCB94DF0043DCFF /* CommonInfoView.swift */,
 				66498E2D1FC6B92C00239B47 /* ApplicationData.swift */,
 				6677FC251FCA7E0400CB105E /* VersionManager.swift */,
 				66498E3A1FC82F9000239B47 /* EditToolbar.swift */,
@@ -480,7 +480,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				666E06AD1FCB68F90043DCFF /* AppInfoView.xib in Resources */,
 				66498E371FC8067100239B47 /* check.png in Resources */,
 				667ECE601FC395C2009233DE /* SelectionBarCell.xib in Resources */,
 				667ECE231FC36784009233DE /* LaunchScreen.storyboard in Resources */,
@@ -541,6 +540,7 @@
 				66AA1DF21FC543BA001C419E /* IconSizeChanger.swift in Sources */,
 				667ECE661FC3ADCA009233DE /* CustomNavigationBar.swift in Sources */,
 				66DF587E1FC92D3F00CD71DC /* LabelOrderPickerView.swift in Sources */,
+				666E06AF1FCB94DF0043DCFF /* CommonInfoView.swift in Sources */,
 				667ECE571FC3836C009233DE /* AppLabel.swift in Sources */,
 				667ECE4B1FC3690E009233DE /* BaseViewController.swift in Sources */,
 				667ECE471FC36850009233DE /* BaseNavigationViewController.swift in Sources */,
