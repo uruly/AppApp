@@ -8,13 +8,15 @@
 
 import UIKit
 
+
 class DetailViewController: UIViewController {
 
     var appData:ApplicationStruct!
     var scrollView:UIScrollView!
     var appInfoView:AppInfoView!
     var commonInfoView:CommonInfoView!
-    
+    var labelInfoView:LabelAppInfoView!
+    var delegate:MemoDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +25,6 @@ class DetailViewController: UIViewController {
 
         self.view.backgroundColor = UIColor.backgroundGray()
         self.title = appData.label.name
-        
         
         scrollView = UIScrollView()
         scrollView.frame = CGRect(x:0,y:0,width:width,height:height)
@@ -38,7 +39,14 @@ class DetailViewController: UIViewController {
         appInfoView.setSubviews()
         scrollView.addSubview(appInfoView)
         
-        commonInfoView = CommonInfoView(frame: CGRect(x:margin,y:appInfoView.frame.maxY + margin,
+        labelInfoView = LabelAppInfoView(frame: CGRect(x:margin,y:appInfoView.frame.maxY + margin,
+                                                       width:width - (margin * 2 ),
+                                                       height:200),
+                                         style: .grouped)
+        self.delegate = labelInfoView
+        scrollView.addSubview(labelInfoView)
+        
+        commonInfoView = CommonInfoView(frame: CGRect(x:margin,y:labelInfoView.frame.maxY + margin,
                                               width:width - (margin * 2 ),
                                               height:200),
                                 style: .grouped)
@@ -47,6 +55,7 @@ class DetailViewController: UIViewController {
         commonInfoView.saveDate = convertDate(appData.app.date)
         scrollView.addSubview(commonInfoView)
         
+        scrollView.contentSize = CGSize(width:width,height:commonInfoView.frame.maxY + 200)
     }
 
     override func didReceiveMemoryWarning() {
@@ -65,5 +74,7 @@ class DetailViewController: UIViewController {
 }
 
 extension DetailViewController: UIScrollViewDelegate {
-    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        delegate.scroll()
+    }
 }

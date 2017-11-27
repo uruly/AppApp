@@ -18,6 +18,9 @@
 		66498E391FC810BF00239B47 /* Array+FindIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E381FC810BF00239B47 /* Array+FindIndex.swift */; };
 		66498E3B1FC82F9000239B47 /* EditToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E3A1FC82F9000239B47 /* EditToolbar.swift */; };
 		666E06AF1FCB94DF0043DCFF /* CommonInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666E06AE1FCB94DF0043DCFF /* CommonInfoView.swift */; };
+		666E06B11FCB98890043DCFF /* LabelAppInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666E06B01FCB98890043DCFF /* LabelAppInfoView.swift */; };
+		666E06B41FCB9A880043DCFF /* MemoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666E06B21FCB9A880043DCFF /* MemoCell.swift */; };
+		666E06B51FCB9A880043DCFF /* MemoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 666E06B31FCB9A880043DCFF /* MemoCell.xib */; };
 		6677FC221FCA691200CB105E /* FakeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6677FC211FCA691200CB105E /* FakeView.swift */; };
 		6677FC241FCA6CE400CB105E /* AppListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6677FC231FCA6CE400CB105E /* AppListViewController.swift */; };
 		6677FC261FCA7E0400CB105E /* VersionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6677FC251FCA7E0400CB105E /* VersionManager.swift */; };
@@ -111,6 +114,9 @@
 		66498E381FC810BF00239B47 /* Array+FindIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+FindIndex.swift"; sourceTree = "<group>"; };
 		66498E3A1FC82F9000239B47 /* EditToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditToolbar.swift; sourceTree = "<group>"; };
 		666E06AE1FCB94DF0043DCFF /* CommonInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonInfoView.swift; sourceTree = "<group>"; };
+		666E06B01FCB98890043DCFF /* LabelAppInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelAppInfoView.swift; sourceTree = "<group>"; };
+		666E06B21FCB9A880043DCFF /* MemoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoCell.swift; sourceTree = "<group>"; };
+		666E06B31FCB9A880043DCFF /* MemoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoCell.xib; sourceTree = "<group>"; };
 		6677FC211FCA691200CB105E /* FakeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FakeView.swift; path = AppApp/FakeView.swift; sourceTree = SOURCE_ROOT; };
 		6677FC231FCA6CE400CB105E /* AppListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppListViewController.swift; sourceTree = "<group>"; };
 		6677FC251FCA7E0400CB105E /* VersionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionManager.swift; sourceTree = "<group>"; };
@@ -236,6 +242,9 @@
 				66498E2F1FC7A01D00239B47 /* DetailViewController.swift */,
 				66A3C3F81FCB66E7007EB295 /* AppInfoView.swift */,
 				666E06AE1FCB94DF0043DCFF /* CommonInfoView.swift */,
+				666E06B01FCB98890043DCFF /* LabelAppInfoView.swift */,
+				666E06B21FCB9A880043DCFF /* MemoCell.swift */,
+				666E06B31FCB9A880043DCFF /* MemoCell.xib */,
 				66498E2D1FC6B92C00239B47 /* ApplicationData.swift */,
 				6677FC251FCA7E0400CB105E /* VersionManager.swift */,
 				66498E3A1FC82F9000239B47 /* EditToolbar.swift */,
@@ -483,6 +492,7 @@
 				66498E371FC8067100239B47 /* check.png in Resources */,
 				667ECE601FC395C2009233DE /* SelectionBarCell.xib in Resources */,
 				667ECE231FC36784009233DE /* LaunchScreen.storyboard in Resources */,
+				666E06B51FCB9A880043DCFF /* MemoCell.xib in Resources */,
 				667ECE201FC36784009233DE /* Assets.xcassets in Resources */,
 				6677FC301FCAB72F00CB105E /* AppInfoCell.xib in Resources */,
 				667ECE1E1FC36784009233DE /* Main.storyboard in Resources */,
@@ -543,6 +553,7 @@
 				666E06AF1FCB94DF0043DCFF /* CommonInfoView.swift in Sources */,
 				667ECE571FC3836C009233DE /* AppLabel.swift in Sources */,
 				667ECE4B1FC3690E009233DE /* BaseViewController.swift in Sources */,
+				666E06B11FCB98890043DCFF /* LabelAppInfoView.swift in Sources */,
 				667ECE471FC36850009233DE /* BaseNavigationViewController.swift in Sources */,
 				6677FC241FCA6CE400CB105E /* AppListViewController.swift in Sources */,
 				667ECE641FC3A7BD009233DE /* CreateAppLabelViewController.swift in Sources */,
@@ -559,6 +570,7 @@
 				66498E301FC7A01D00239B47 /* DetailViewController.swift in Sources */,
 				667ECE691FC3B454009233DE /* CreateAppLabelTableView.swift in Sources */,
 				667ECE491FC368BF009233DE /* BasePageViewController.swift in Sources */,
+				666E06B41FCB9A880043DCFF /* MemoCell.swift in Sources */,
 				66498E281FC6651A00239B47 /* String+Path.swift in Sources */,
 				66498E2E1FC6B92C00239B47 /* ApplicationData.swift in Sources */,
 				66FD458C1FC96B2A0093BB83 /* LabelListViewController.swift in Sources */,
