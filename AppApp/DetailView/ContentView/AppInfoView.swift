@@ -16,6 +16,7 @@ class AppInfoView: UIView {
     var imageData:Data!
     var appName:String!
     var detailVC:DetailViewController!
+    //var widthLayout:CGFloat!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -23,8 +24,13 @@ class AppInfoView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor.white
+        print("ここよばれ")
         //setSubviews()
+    }
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.backgroundColor = UIColor.white
+        print("kokoyo")
     }
     
     func setSubviews(){

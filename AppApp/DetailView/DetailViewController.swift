@@ -13,11 +13,8 @@ import StoreKit
 class DetailViewController: UIViewController {
 
     var appData:ApplicationStruct!
-    var scrollView:UIScrollView!
-    var appInfoView:AppInfoView!
-    var commonInfoView:CommonInfoView!
-    var labelInfoView:LabelAppInfoView!
     var delegate:MemoDelegate!
+    var contentView:DetailContentView!
     var memoText:String = ""{
         didSet {
             saveAppLabelMemo(memoText)
@@ -29,80 +26,53 @@ class DetailViewController: UIViewController {
         let width = self.view.frame.width
         let height = self.view.frame.height
 
-        self.view.backgroundColor = UIColor.backgroundGray()
+        self.view.backgroundColor = UIColor.white
         self.title = appData.label.name
-        
-        scrollView = UIScrollView()
-        scrollView.frame = CGRect(x:0,y:0,width:width,height:height)
-        scrollView.delegate = self
-        self.view.addSubview(scrollView)
         
         let naviBarHeight = self.navigationController?.navigationBar.frame.maxY ?? 57.0
         let margin:CGFloat = 15.0
-        appInfoView = AppInfoView(frame:CGRect(x:margin,y:margin,width:width - (margin * 2),height:180))
-        appInfoView.appName = appData.app.name
-        appInfoView.imageData = appData.app.image
-        appInfoView.detailVC = self
-        appInfoView.setSubviews()
-        scrollView.addSubview(appInfoView)
         
-        labelInfoView = LabelAppInfoView(frame: CGRect(x:margin,y:appInfoView.frame.maxY + margin,
-                                                       width:width - (margin * 2 ),
-                                                       height:200),
-                                         style: .grouped)
-        self.delegate = labelInfoView
-        labelInfoView.detailVC = self
-        labelInfoView.memo = appData.memo ?? "メモ"
-        scrollView.addSubview(labelInfoView)
+        let layout = UICollectionViewFlowLayout()
+        layout.estimatedItemSize = CGSize(width:width - (margin * 2),height:200)
+        layout.sectionInset = UIEdgeInsetsMake(15, 0, 30, 0)
+        contentView = DetailContentView(frame: CGRect(x:0,y:0,width:width,height:height), collectionViewLayout: layout)
+        self.view.addSubview(contentView)
         
-        commonInfoView = CommonInfoView(frame: CGRect(x:margin,y:labelInfoView.frame.maxY + margin,
-                                              width:width - (margin * 2 ),
-                                              height:200),
-                                style: .grouped)
-        commonInfoView.developerName = appData.app.developer
-        commonInfoView.id = appData.app.id
-        commonInfoView.saveDate = convertDate(appData.app.date)
-        commonInfoView.detailVC = self
-        scrollView.addSubview(commonInfoView)
-        
-        
-        //AppStoreで見る
-        
-        //アプリを全てのラベルから削除するボタン
-        
-//        let itunesURL:String = appData.app.urlString
-//        let url = URL(string:itunesURL)
-//        let app:UIApplication = UIApplication.shared
-//        app.openURL(url!)
-        
-        
-        scrollView.contentSize = CGSize(width:width,height:commonInfoView.frame.maxY + 200)
+        contentView.appName = appData.app.name
+        contentView.imageData = appData.app.image
+        contentView.detailVC = self
+        contentView.memo = appData.memo
+        contentView.developerName = appData.app.developer
+        contentView.id = appData.app.id
+        contentView.saveDate = convertDate(appData.app.date)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-//    override func viewWillDisappear(_ animated: Bool) {
-//        if let viewControllers = self.navigationController?.viewControllers {
-//            var existsSelfInViewControllers = true
-//            for viewController in viewControllers {
-//                if viewController == self {
-//                    existsSelfInViewControllers = false
-//                    // selfが存在した時点で処理を終える
-//                    break
-//                }
-//            }
-//
-//            if existsSelfInViewControllers {
-//                print("前の画面に戻る処理が行われました")
-//                if memoText != "" {
-//                    self.saveAppLabelMemo(memoText)
-//                }
-//            }
-//        }
-//        super.viewWillDisappear(animated)
-//    }
+    override func viewWillDisappear(_ animated: Bool) {
+        if let viewControllers = self.navigationController?.viewControllers {
+            var existsSelfInViewControllers = true
+            for viewController in viewControllers {
+                if viewController == self {
+                    existsSelfInViewControllers = false
+                    // selfが存在した時点で処理を終える
+                    break
+                }
+            }
+
+            if existsSelfInViewControllers {
+                print("前の画面に戻る処理が行われました")
+//                UIView.animate(withDuration: 0.3, animations: {
+//                    self.navigationController?.navigationBar.barTintColor = UIColor.white
+//                    self.navigationController?.navigationBar.tintColor = nil
+//                })
+                
+            }
+        }
+        super.viewWillDisappear(animated)
+    }
     
     func convertDate(_ date:Date) -> String {
         let component = Calendar.current.dateComponents([.year,.month,.day], from: date)
@@ -151,15 +121,6 @@ class DetailViewController: UIViewController {
                 print(error)
             }
         }
-//        presentViewController( productViewController, animated: true, completion: {() -> Void in
-//
-//            let productID = "710247888" // 調べたアプリのID
-//            let parameters:Dictionary = [SKStoreProductParameterITunesItemIdentifier: productID]
-//            productViewController.loadProductWithParameters( parameters, completionBlock: {(Bool, NSError) -> Void in
-//                // 読み込み完了またはエラーのときの処理
-//                // ...
-//            })
-//        })
     }
 }
 

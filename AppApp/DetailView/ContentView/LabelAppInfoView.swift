@@ -17,23 +17,28 @@ class LabelAppInfoView: UITableView {
     var memo:String = ""
     var memoView:UITextView!
     var detailVC:DetailViewController!
+    //var widthLayout:CGFloat!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
     override init(frame: CGRect, style: UITableViewStyle) {
-        super.init(frame: frame, style: style)
+        super.init(frame: frame, style: .grouped)
+    }
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
         self.delegate = self
         self.dataSource = self
         self.backgroundColor = UIColor.white
-        //self.isScrollEnabled = false
+        self.isScrollEnabled = false
         self.register(UITableViewCell.self, forCellReuseIdentifier: "AppInfo")
         self.register(UINib(nibName:"MemoCell",bundle:nil), forCellReuseIdentifier: "MemoCell")
         self.estimatedRowHeight = 500
         self.rowHeight = UITableViewAutomaticDimension
+        
     }
-
 }
 
 extension LabelAppInfoView:UITableViewDelegate {

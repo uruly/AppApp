@@ -15,6 +15,7 @@ class CommonInfoView: UITableView {
     var id:String!
     var headerTextList = ["基本情報"]
     var detailVC:DetailViewController!
+    //var widthLayout:CGFloat!
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -22,14 +23,17 @@ class CommonInfoView: UITableView {
     
     override init(frame: CGRect, style: UITableViewStyle) {
         super.init(frame: frame, style: style)
+        //print("ここ呼ばれている？？？？")
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
         self.delegate = self
         self.dataSource = self
         self.backgroundColor = UIColor.white
         self.isScrollEnabled = false
         self.register(UITableViewCell.self, forCellReuseIdentifier: "AppInfo")
     }
-    
-    
 
 }
 
