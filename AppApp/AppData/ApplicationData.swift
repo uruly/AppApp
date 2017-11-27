@@ -234,7 +234,7 @@ class AppData {
         config.fileURL = url.appendingPathComponent("db.realm")
         
         let realm = try! Realm(configuration: config)
-        guard let appData = realm.object(ofType: AppData.self, forPrimaryKey: app.id) else {
+        guard let appData = realm.object(ofType: AppRealmData.self, forPrimaryKey: app.id) else {
             return
         }
         let objects = realm.objects(ApplicationData.self).filter("app == %@",appData)
