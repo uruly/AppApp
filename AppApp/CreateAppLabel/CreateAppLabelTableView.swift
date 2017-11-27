@@ -14,6 +14,7 @@ class CreateAppLabelTableView: UITableView {
     var colorView:UIView!
     var orderLabel:UILabel!
     var currentTextField:UITextField?
+    var memoView:UITextView!
     var isKeyboardAppear = true
     
     
@@ -26,6 +27,9 @@ class CreateAppLabelTableView: UITableView {
         self.delegate = self
         self.dataSource = self
         self.register(UITableViewCell.self, forCellReuseIdentifier: "createAppLabel")
+        self.register(UINib(nibName:"MemoCell",bundle:nil), forCellReuseIdentifier: "memo")
+        self.estimatedRowHeight = 500
+        self.rowHeight = UITableViewAutomaticDimension
     }
     
     convenience init(frame:CGRect,createAppLabelVC:CreateAppLabelViewController){
@@ -75,54 +79,67 @@ extension CreateAppLabelTableView:UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "createAppLabel", for: indexPath)
-        for subview in cell.contentView.subviews {
-            subview.removeFromSuperview()
-        }
-        if indexPath.section == 0{
-            let textField = UITextField(frame:cell.contentView.frame)
-            textField.leftView = UIView(frame: CGRect(x:0,y:0,
-                                                      width:15,height:cell.contentView.frame.height))
-            textField.leftViewMode = UITextFieldViewMode.always
-            textField.delegate = self
-            textField.returnKeyType = .done
-            //textField.viewWithTag(5)
-            if indexPath.row == 0 {
-                textField.placeholder = "ラベル名"
-                textField.tag = 1
-                if isKeyboardAppear{
-                    textField.becomeFirstResponder()
+        if indexPath.section == 0 && indexPath.row == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "memo", for: indexPath) as! MemoCell
+            cell.memoView.placeholder = "ラベルの説明(任意)"
+            cell.memoView.font = UIFont.systemFont(ofSize: 16)
+            cell.memoView.delegate = self
+            cell.memoView.text = createAppLabelVC.explain ?? ""
+            self.memoView = cell.memoView
+            if let placeholderLabel = cell.memoView.viewWithTag(100) as? UILabel {
+                placeholderLabel.font = UIFont.systemFont(ofSize:16)
+                if createAppLabelVC.explain != nil && createAppLabelVC.explain != ""{
+                    placeholderLabel.isHidden = true
                 }
-                textField.addTarget(self, action: #selector(self.nameChanged(sender:)), for: .editingChanged)
-                self.currentTextField = textField
-            }else if indexPath.row == 1 {
-                textField.tag = 2
-                textField.placeholder = "ラベルの説明(任意)"
             }
-            cell.contentView.addSubview(textField)
-        }
-        
-        //カラーを表示
-        if indexPath.section == 1{
-            cell.textLabel?.text = "カラー"
-            colorView = UIView(frame: CGRect(x:0,y:0,width:20,height:20))
-            colorView.backgroundColor = createAppLabelVC.color
-            colorView.layer.cornerRadius = 10
-            cell.accessoryView = colorView
-        }
-        
-        if indexPath.section == 2{
-            cell.textLabel?.text = "並び順"
-            orderLabel = UILabel(frame:CGRect(x:0,y:0,width:100,height:cell.contentView.frame.height))
-            orderLabel.text = "最後に追加"
-            orderLabel.textAlignment = .right
-            cell.accessoryView = orderLabel
+            return cell
+        }else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "createAppLabel", for: indexPath)
+            for subview in cell.contentView.subviews {
+                subview.removeFromSuperview()
+            }
+            if indexPath.section == 0{
+                if indexPath.row == 0 {
+                    let textField = UITextField(frame:cell.contentView.frame)
+                    textField.leftView = UIView(frame: CGRect(x:0,y:0,
+                                                              width:15,height:cell.contentView.frame.height))
+                    textField.leftViewMode = UITextFieldViewMode.always
+                    textField.delegate = self
+                    textField.returnKeyType = .done
+                    //textField.viewWithTag(5)
+                    textField.placeholder = "ラベル名"
+                    textField.tag = 1
+                    if isKeyboardAppear{
+                        textField.becomeFirstResponder()
+                    }
+                    textField.addTarget(self, action: #selector(self.nameChanged(sender:)), for: .editingChanged)
+                    self.currentTextField = textField
+                    cell.contentView.addSubview(textField)
+                }
+            }
             
+            //カラーを表示
+            if indexPath.section == 1{
+                cell.textLabel?.text = "カラー"
+                colorView = UIView(frame: CGRect(x:0,y:0,width:20,height:20))
+                colorView.backgroundColor = createAppLabelVC.color
+                colorView.layer.cornerRadius = 10
+                cell.accessoryView = colorView
+            }
+            
+            if indexPath.section == 2{
+                cell.textLabel?.text = "並び順"
+                orderLabel = UILabel(frame:CGRect(x:0,y:0,width:100,height:cell.contentView.frame.height))
+                orderLabel.text = ""
+                orderLabel.textAlignment = .right
+                cell.accessoryView = orderLabel
+                
+            }
+            if indexPath.section == 3{
+                cell.textLabel?.text = "Appを追加"
+            }
+            return cell
         }
-        if indexPath.section == 3{
-            cell.textLabel?.text = "Appを追加"
-        }
-        return cell
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -150,11 +167,28 @@ extension CreateAppLabelTableView:UITextFieldDelegate {
     }
     
 }
+extension CreateAppLabelTableView: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        self.beginUpdates()
+        self.endUpdates()
+        //チェンジしたとき
+        if let placeholderLabel = textView.viewWithTag(100) as? UILabel {
+            placeholderLabel.isHidden = textView.text.count > 0
+        }
+        createAppLabelVC.explain = textView.text
+    }
+    func textViewDidEndEditing(_ textView: UITextView) {
+        textView.resignFirstResponder()
+    }
+}
 
 extension CreateAppLabelTableView:UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if let textField = currentTextField{
             textField.resignFirstResponder()
+        }
+        if let textView = memoView {
+            textView.resignFirstResponder()
         }
     }
 }

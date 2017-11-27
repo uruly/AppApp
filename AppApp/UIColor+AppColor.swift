@@ -33,4 +33,8 @@ extension UIColor {
     class func blackMask() -> UIColor {
         return UIColor(red: 1 / 255, green: 1 / 255, blue: 1 / 255, alpha: 1)
     }
+    
+    class func placeholder() -> UIColor {
+        return UIColor(red: 199 / 255, green: 199 / 255, blue: 205 / 255, alpha: 1)
+    }
 }

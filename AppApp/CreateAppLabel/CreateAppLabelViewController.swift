@@ -60,6 +60,8 @@ class CreateAppLabelViewController: UIViewController {
         }
     }
     
+    var explain:String?
+    
     var appList:[AppStruct] = []
     
     var colorPickerView:ColorPicker!
@@ -117,19 +119,30 @@ class CreateAppLabelViewController: UIViewController {
             if let textField = tableView.currentTextField{
                 textField.resignFirstResponder()
             }
+            if let textView = tableView.memoView {
+                textView.resignFirstResponder()
+            }
         }
         self.dismiss(animated: true, completion: nil)
     }
 
     @objc func saveBtnTapped(sender:UIBarButtonItem){
+        if tableView != nil {
+            if let textField = tableView.currentTextField{
+                textField.resignFirstResponder()
+            }
+            if let textView = tableView.memoView {
+                textView.resignFirstResponder()
+            }
+        }
         if sender.tintColor != nil {
             return
         }
         //同じ色がすでに含まれていたらポップアップで確認を取る
         self.saveLabelData()
         
-        
     }
+    
     func createFakeView(tag:Int){
         let width = self.view.frame.width
         let height = self.view.frame.height
@@ -150,7 +163,7 @@ class CreateAppLabelViewController: UIViewController {
     func saveLabelData(){
         //セーブをする
         let id = NSUUID().uuidString
-        AppLabel.saveLabelData(name: labelName!, color: color, id: id, order: order){
+        AppLabel.saveLabelData(name: labelName!, color: color, id: id, order: order,explain:explain){
             //
             AppData.saveAppData(appList: appList, labelID: id) {
                 BasePageViewController.isUnwind = true

@@ -127,6 +127,7 @@ class BasePageViewController: UIPageViewController {
         editLabelVC.order = label.order
         editLabelVC.color = label.color
         editLabelVC.id = label.id
+        editLabelVC.explain = label.explain
         
         let naviVC = UINavigationController(rootViewController: editLabelVC)
         self.present(naviVC, animated: true, completion: {

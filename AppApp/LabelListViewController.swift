@@ -94,7 +94,7 @@ class LabelListViewController: UIViewController {
             }
             if let name = obj.name ,let colorData = obj.color,let id = obj.id{
                 let color = NSKeyedUnarchiver.unarchiveObject(with: colorData) as! UIColor
-                let label = AppLabelData(name: name, color: color, id: id,order: obj.order)
+                let label = AppLabelData(name: name, color: color, id: id,order: obj.order,explain:obj.explain)
                 self.list.append(label)
             }
         }
@@ -152,6 +152,7 @@ extension LabelListViewController:UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "labelList", for: indexPath)
         
         cell.textLabel?.text = list[indexPath.row].name
+        cell.detailTextLabel?.text = list[indexPath.row].explain
         if self.checkArray.contains(where: {$0.id == list[indexPath.row].id}){
             cell.accessoryType = .checkmark
         }else {

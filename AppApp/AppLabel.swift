@@ -28,6 +28,7 @@ struct AppLabelData {
     var color:UIColor!
     var id:String!
     var order:Int!
+    var explain:String?
     
 //    var idNumber:Int? {
 //        return Int(id)
@@ -90,7 +91,7 @@ class AppLabel {
         for obj in objs{
             if let name = obj.name ,let colorData = obj.color,let id = obj.id{
                 let color = NSKeyedUnarchiver.unarchiveObject(with: colorData) as! UIColor
-                let label = AppLabelData(name: name, color: color, id: id,order: obj.order)
+                let label = AppLabelData(name: name, color: color, id: id,order: obj.order,explain:obj.explain)
                 self.array.append(label)
             }
         }
@@ -114,16 +115,17 @@ class AppLabel {
             realm.add(label,update:true)
         }
         
-        array.append(AppLabelData(name: name, color: UIColor.allLabel(), id: "0", order:0))
+        array.append(AppLabelData(name: name, color: UIColor.allLabel(), id: "0", order:0,explain:"全てのApp"))
     }
     
     
-    static func saveLabelData(name:String,color:UIColor,id:String,order:Int,_ completion:()->()){
+    static func saveLabelData(name:String,color:UIColor,id:String,order:Int,explain:String?,_ completion:()->()){
         let colorData = NSKeyedArchiver.archivedData(withRootObject:color)
         let label = AppLabelRealmData(value:["name":name,
                                              "color":colorData,
                                              "id":id,
-                                             "order":order
+                                             "order":order,
+                                             "explain":explain
             ])
         var config = Realm.Configuration(schemaVersion:SCHEMA_VERSION)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
@@ -148,12 +150,13 @@ class AppLabel {
 
     }
     
-    static func updateLabelData(name:String,color:UIColor,id:String,order:Int,_ completion:()->()){
+    static func updateLabelData(name:String,color:UIColor,id:String,order:Int,explain:String?,_ completion:()->()){
         let colorData = NSKeyedArchiver.archivedData(withRootObject:color)
         let label = AppLabelRealmData(value:["name":name,
                                              "color":colorData,
                                              "id":id,
-                                             "order":order
+                                             "order":order,
+                                             "explain":explain
             ])
         var config = Realm.Configuration(schemaVersion:SCHEMA_VERSION)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!

@@ -122,6 +122,18 @@ class EditAppLabelViewController: CreateAppLabelViewController {
         
     }
     
+    @objc override func cancelBtnTapped(){
+        if editTableView != nil {
+            if let textField = editTableView.currentTextField{
+                textField.resignFirstResponder()
+            }
+            if let textView = editTableView.memoView {
+                textView.resignFirstResponder()
+            }
+        }
+        self.dismiss(animated: true, completion: nil)
+    }
+
     @objc func deleteBtnTapped(){
         //ポップアップを表示
         let alertController = UIAlertController(title: "ラベルを削除します。", message: "", preferredStyle: .alert)
@@ -148,9 +160,17 @@ class EditAppLabelViewController: CreateAppLabelViewController {
     }
     
     override func saveLabelData(){
+        if editTableView != nil {
+            if let textField = editTableView.currentTextField{
+                textField.resignFirstResponder()
+            }
+            if let textView = editTableView.memoView {
+                textView.resignFirstResponder()
+            }
+        }
         //セーブをする
         print(order)
-        AppLabel.updateLabelData(name: labelName!, color: color, id: id, order: order){
+        AppLabel.updateLabelData(name: labelName!, color: color, id: id, order: order,explain:explain){
             AppData.saveAppData(appList: appList, labelID: id) {
                 BasePageViewController.isUnwind = true
                 self.dismiss(animated:true,completion:nil)
