@@ -37,7 +37,7 @@ class AppInfoView: UIView {
         self.addSubview(imageView)
         
         //アプリ名を配置
-        appNameLabel = UILabel(frame: CGRect(x:imageView.frame.maxX + margin,y:margin,width:width - imageView.frame.width - (margin * 2),height:200))
+        appNameLabel = UILabel(frame: CGRect(x:imageView.frame.maxX + margin,y:margin,width:width - imageView.frame.width - (margin * 2),height:250))
         appNameLabel.text = appName
         appNameLabel.numberOfLines = 0
         appNameLabel.font = UIFont.boldSystemFont(ofSize: 16)

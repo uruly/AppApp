@@ -44,6 +44,7 @@ class DetailViewController: UIViewController {
                                                        height:200),
                                          style: .grouped)
         self.delegate = labelInfoView
+        labelInfoView.memo = appData.memo ?? "メモ"
         scrollView.addSubview(labelInfoView)
         
         commonInfoView = CommonInfoView(frame: CGRect(x:margin,y:labelInfoView.frame.maxY + margin,
@@ -53,7 +54,15 @@ class DetailViewController: UIViewController {
         commonInfoView.developerName = appData.app.developer
         commonInfoView.id = appData.app.id
         commonInfoView.saveDate = convertDate(appData.app.date)
+        commonInfoView.detailVC = self
         scrollView.addSubview(commonInfoView)
+        
+        
+        //AppStoreで見る
+        
+        //アプリを全てのラベルから削除するボタン
+        
+        
         
         scrollView.contentSize = CGSize(width:width,height:commonInfoView.frame.maxY + 200)
     }
@@ -70,6 +79,11 @@ class DetailViewController: UIViewController {
         
     }
     
+    func segueToWebView(_ text:String){
+        let webVC = WebViewController()
+        webVC.searchWord = text
+        self.navigationController?.pushViewController(webVC, animated: true)
+    }
 
 }
 

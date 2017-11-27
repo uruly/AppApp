@@ -21,6 +21,7 @@
 		666E06B11FCB98890043DCFF /* LabelAppInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666E06B01FCB98890043DCFF /* LabelAppInfoView.swift */; };
 		666E06B41FCB9A880043DCFF /* MemoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666E06B21FCB9A880043DCFF /* MemoCell.swift */; };
 		666E06B51FCB9A880043DCFF /* MemoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 666E06B31FCB9A880043DCFF /* MemoCell.xib */; };
+		666E06B71FCBAC290043DCFF /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666E06B61FCBAC290043DCFF /* WebViewController.swift */; };
 		6677FC221FCA691200CB105E /* FakeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6677FC211FCA691200CB105E /* FakeView.swift */; };
 		6677FC241FCA6CE400CB105E /* AppListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6677FC231FCA6CE400CB105E /* AppListViewController.swift */; };
 		6677FC261FCA7E0400CB105E /* VersionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6677FC251FCA7E0400CB105E /* VersionManager.swift */; };
@@ -117,6 +118,7 @@
 		666E06B01FCB98890043DCFF /* LabelAppInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelAppInfoView.swift; sourceTree = "<group>"; };
 		666E06B21FCB9A880043DCFF /* MemoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoCell.swift; sourceTree = "<group>"; };
 		666E06B31FCB9A880043DCFF /* MemoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoCell.xib; sourceTree = "<group>"; };
+		666E06B61FCBAC290043DCFF /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		6677FC211FCA691200CB105E /* FakeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FakeView.swift; path = AppApp/FakeView.swift; sourceTree = SOURCE_ROOT; };
 		6677FC231FCA6CE400CB105E /* AppListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppListViewController.swift; sourceTree = "<group>"; };
 		6677FC251FCA7E0400CB105E /* VersionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionManager.swift; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 				666E06B01FCB98890043DCFF /* LabelAppInfoView.swift */,
 				666E06B21FCB9A880043DCFF /* MemoCell.swift */,
 				666E06B31FCB9A880043DCFF /* MemoCell.xib */,
+				666E06B61FCBAC290043DCFF /* WebViewController.swift */,
 				66498E2D1FC6B92C00239B47 /* ApplicationData.swift */,
 				6677FC251FCA7E0400CB105E /* VersionManager.swift */,
 				66498E3A1FC82F9000239B47 /* EditToolbar.swift */,
@@ -548,6 +551,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				66AA1DF21FC543BA001C419E /* IconSizeChanger.swift in Sources */,
+				666E06B71FCBAC290043DCFF /* WebViewController.swift in Sources */,
 				667ECE661FC3ADCA009233DE /* CustomNavigationBar.swift in Sources */,
 				66DF587E1FC92D3F00CD71DC /* LabelOrderPickerView.swift in Sources */,
 				666E06AF1FCB94DF0043DCFF /* CommonInfoView.swift in Sources */,

@@ -14,6 +14,7 @@ class CommonInfoView: UITableView {
     var saveDate:String!
     var id:String!
     var headerTextList = ["基本情報"]
+    var detailVC:DetailViewController!
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -37,6 +38,13 @@ extension CommonInfoView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         cell?.isSelected = false
+        
+        if indexPath.row == 2 {
+            return
+        }
+        if let label = cell?.accessoryView as? UILabel {
+            detailVC.segueToWebView(label.text ?? "")
+        }
     }
 }
 extension CommonInfoView: UITableViewDataSource {
