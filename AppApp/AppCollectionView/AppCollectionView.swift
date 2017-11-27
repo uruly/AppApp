@@ -194,6 +194,9 @@ extension AppCollectionView:UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if appData == nil {
+            return 0
+        }
         return appData.appList.count
     }
     

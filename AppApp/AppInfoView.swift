@@ -15,6 +15,7 @@ class AppInfoView: UIView {
     
     var imageData:Data!
     var appName:String!
+    var detailVC:DetailViewController!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -43,6 +44,15 @@ class AppInfoView: UIView {
         appNameLabel.font = UIFont.boldSystemFont(ofSize: 16)
         appNameLabel.sizeToFit()
         self.addSubview(appNameLabel)
+        
+        //ボタンを配置
+        let showStoreBtn = UIButton()
+        showStoreBtn.frame = CGRect(x:imageView.frame.maxX + margin,y:appNameLabel.frame.maxY + margin,width:width - imageView.frame.width - (margin * 2),height:50)
+        showStoreBtn.backgroundColor = UIColor.blue
+        showStoreBtn.addTarget(detailVC, action: #selector(detailVC.showProductPage), for: .touchUpInside)
+        showStoreBtn.setTitle("詳細", for: .normal)
+        self.addSubview(showStoreBtn)
+        
         
         
     }

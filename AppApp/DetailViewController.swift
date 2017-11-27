@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import StoreKit
 
 class DetailViewController: UIViewController {
 
@@ -41,6 +42,7 @@ class DetailViewController: UIViewController {
         appInfoView = AppInfoView(frame:CGRect(x:margin,y:margin,width:width - (margin * 2),height:180))
         appInfoView.appName = appData.app.name
         appInfoView.imageData = appData.app.image
+        appInfoView.detailVC = self
         appInfoView.setSubviews()
         scrollView.addSubview(appInfoView)
         
@@ -68,6 +70,10 @@ class DetailViewController: UIViewController {
         
         //アプリを全てのラベルから削除するボタン
         
+//        let itunesURL:String = appData.app.urlString
+//        let url = URL(string:itunesURL)
+//        let app:UIApplication = UIApplication.shared
+//        app.openURL(url!)
         
         
         scrollView.contentSize = CGSize(width:width,height:commonInfoView.frame.maxY + 200)
@@ -77,26 +83,26 @@ class DetailViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    override func viewWillDisappear(_ animated: Bool) {
-        if let viewControllers = self.navigationController?.viewControllers {
-            var existsSelfInViewControllers = true
-            for viewController in viewControllers {
-                if viewController == self {
-                    existsSelfInViewControllers = false
-                    // selfが存在した時点で処理を終える
-                    break
-                }
-            }
-            
-            if existsSelfInViewControllers {
-                print("前の画面に戻る処理が行われました")
-                if memoText != "" {
-                    self.saveAppLabelMemo(memoText)
-                }
-            }
-        }
-        super.viewWillDisappear(animated)
-    }
+//    override func viewWillDisappear(_ animated: Bool) {
+//        if let viewControllers = self.navigationController?.viewControllers {
+//            var existsSelfInViewControllers = true
+//            for viewController in viewControllers {
+//                if viewController == self {
+//                    existsSelfInViewControllers = false
+//                    // selfが存在した時点で処理を終える
+//                    break
+//                }
+//            }
+//
+//            if existsSelfInViewControllers {
+//                print("前の画面に戻る処理が行われました")
+//                if memoText != "" {
+//                    self.saveAppLabelMemo(memoText)
+//                }
+//            }
+//        }
+//        super.viewWillDisappear(animated)
+//    }
     
     func convertDate(_ date:Date) -> String {
         let component = Calendar.current.dateComponents([.year,.month,.day], from: date)
@@ -127,10 +133,46 @@ class DetailViewController: UIViewController {
             realm.add(obj, update: true)
         }
     }
+    
+    @objc func showProductPage() {
+        let productVC = SKStoreProductViewController()
+        productVC.delegate = self
+        
+        guard var id = appData.app.id else { return }
+        if let range = id.range(of: "id") {
+            // 置換する(変数を直接操作する)
+            id.replaceSubrange(range, with: "")
+        }
+        self.present(productVC, animated: true) {
+            productVC.loadProduct(withParameters: [SKStoreProductParameterITunesItemIdentifier:id]) { (bool, error) in
+//                if !bool {
+//                    productVC.dismiss(animated: true, completion: nil)
+//                }
+                print(error)
+            }
+        }
+//        presentViewController( productViewController, animated: true, completion: {() -> Void in
+//
+//            let productID = "710247888" // 調べたアプリのID
+//            let parameters:Dictionary = [SKStoreProductParameterITunesItemIdentifier: productID]
+//            productViewController.loadProductWithParameters( parameters, completionBlock: {(Bool, NSError) -> Void in
+//                // 読み込み完了またはエラーのときの処理
+//                // ...
+//            })
+//        })
+    }
 }
 
 extension DetailViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         delegate.scroll()
     }
+}
+
+extension DetailViewController : SKStoreProductViewControllerDelegate {
+    // キャンセルボタンが押された時の処理
+    func productViewControllerDidFinish(_ viewController: SKStoreProductViewController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
 }
