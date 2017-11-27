@@ -15,6 +15,7 @@ class AppLabelRealmData : Object {
     @objc dynamic var color:Data?    //ラベルの色
     @objc dynamic var id:String?        //id
     @objc dynamic var order = 0     //順番
+    @objc dynamic var explain:String?
     
     override static func primaryKey() -> String? {
         return "id"

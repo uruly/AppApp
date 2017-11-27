@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-let SCHEMA_VERSION:UInt64 = 4
+let SCHEMA_VERSION:UInt64 = 5
 //保存するアプリデータ
 class AppRealmData : Object {
     @objc dynamic var name:String!      //アプリの名前

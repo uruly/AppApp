@@ -265,6 +265,9 @@ class ShareViewController: SLComposeServiceViewController {
                         
                         newObject!["urlString"] = ""
                     }
+                    migration.enumerateObjects(ofType: AppLabelRealmData.className()){ oldObject,newObject in
+                        newObject!["explain"] = ""
+                    }
                 }
         })
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!

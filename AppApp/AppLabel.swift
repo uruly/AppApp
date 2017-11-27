@@ -15,6 +15,7 @@ class AppLabelRealmData : Object {
     @objc dynamic var color:Data?    //ラベルの色
     @objc dynamic var id:String?        //id
     @objc dynamic var order = 0     //順番
+    @objc dynamic var explain:String?
     
     override static func primaryKey() -> String? {
         return "id"
@@ -47,10 +48,33 @@ class AppLabel {
     static var count:Int?
     
     init(){
+        self.migration()
         self.reloadLabelData()
         if array.count == 0 {
             saveDefaultData()
         }
+    }
+    
+    func migration(){
+        var config =  Realm.Configuration(
+            schemaVersion: SCHEMA_VERSION,
+            migrationBlock: { migration, oldSchemaVersion in
+                print(oldSchemaVersion)
+                if (oldSchemaVersion < 4) {
+                    migration.enumerateObjects(ofType: AppRealmData.className()) { oldObject, newObject in
+                        print("migration")
+                        
+                        newObject!["urlString"] = ""
+                    }
+                    migration.enumerateObjects(ofType: AppLabelRealmData.className()){ oldObject,newObject in
+                        newObject!["explain"] = ""
+                    }
+                }
+        })
+        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
+        config.fileURL = url.appendingPathComponent("db.realm")
+        
+        Realm.Configuration.defaultConfiguration = config
     }
     
     func reloadLabelData(){
