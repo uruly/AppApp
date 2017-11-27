@@ -172,7 +172,7 @@
 		667ECE6F1FC4206F009233DE /* AppCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCollectionViewCell.swift; sourceTree = "<group>"; };
 		667ECE701FC4206F009233DE /* AppCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppCollectionViewCell.xib; sourceTree = "<group>"; };
 		66A3C3F81FCB66E7007EB295 /* AppInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoView.swift; sourceTree = "<group>"; };
-		66AA1DF11FC543BA001C419E /* IconSizeChanger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IconSizeChanger.swift; path = AppApp/IconSizeChanger.swift; sourceTree = SOURCE_ROOT; };
+		66AA1DF11FC543BA001C419E /* IconSizeChanger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IconSizeChanger.swift; path = AppApp/MainView/ContentView/IconSizeChanger.swift; sourceTree = SOURCE_ROOT; };
 		66AA1DF71FC56519001C419E /* ShareFromAppStoreExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ShareFromAppStoreExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		66AA1DF91FC56519001C419E /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		66AA1DFC1FC56519001C419E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
@@ -230,6 +230,86 @@
 			path = images;
 			sourceTree = "<group>";
 		};
+		66681CD11FCC083A009A0F55 /* DetailView */ = {
+			isa = PBXGroup;
+			children = (
+				66498E2F1FC7A01D00239B47 /* DetailViewController.swift */,
+				66681CD21FCC085A009A0F55 /* ContentView */,
+			);
+			path = DetailView;
+			sourceTree = "<group>";
+		};
+		66681CD21FCC085A009A0F55 /* ContentView */ = {
+			isa = PBXGroup;
+			children = (
+				666E06B21FCB9A880043DCFF /* MemoCell.swift */,
+				666E06B31FCB9A880043DCFF /* MemoCell.xib */,
+				66A3C3F81FCB66E7007EB295 /* AppInfoView.swift */,
+				666E06AE1FCB94DF0043DCFF /* CommonInfoView.swift */,
+				666E06B01FCB98890043DCFF /* LabelAppInfoView.swift */,
+			);
+			path = ContentView;
+			sourceTree = "<group>";
+		};
+		66681CD31FCC088D009A0F55 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				667ECE461FC36850009233DE /* BaseNavigationViewController.swift */,
+				667ECE481FC368BF009233DE /* BasePageViewController.swift */,
+				667ECE4A1FC3690E009233DE /* BaseViewController.swift */,
+				66681CD71FCC08F2009A0F55 /* ContentView */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
+		66681CD41FCC08A6009A0F55 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				66498E271FC6651A00239B47 /* String+Path.swift */,
+				666E06C41FCBCB260043DCFF /* UITextView+Placeholder.swift */,
+				66498E381FC810BF00239B47 /* Array+FindIndex.swift */,
+				66498E331FC7BA3600239B47 /* UIApplication+Stack.swift */,
+				667ECE581FC388B9009233DE /* UIColor+AppColor.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		66681CD51FCC08C0009A0F55 /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				666E06B61FCBAC290043DCFF /* WebViewController.swift */,
+				666E06C21FCBC1E50043DCFF /* PassThroughIndicator.swift */,
+				666E06C01FCBB5E90043DCFF /* WebPageToolbar.swift */,
+			);
+			path = WebView;
+			sourceTree = "<group>";
+		};
+		66681CD61FCC08D2009A0F55 /* AppData */ = {
+			isa = PBXGroup;
+			children = (
+				66498E2D1FC6B92C00239B47 /* ApplicationData.swift */,
+				667ECE561FC3836C009233DE /* AppLabel.swift */,
+			);
+			path = AppData;
+			sourceTree = "<group>";
+		};
+		66681CD71FCC08F2009A0F55 /* ContentView */ = {
+			isa = PBXGroup;
+			children = (
+				66AA1DF11FC543BA001C419E /* IconSizeChanger.swift */,
+				66498E3A1FC82F9000239B47 /* EditToolbar.swift */,
+			);
+			path = ContentView;
+			sourceTree = "<group>";
+		};
+		66681CD81FCC0967009A0F55 /* LabelListView */ = {
+			isa = PBXGroup;
+			children = (
+				66FD458B1FC96B2A0093BB83 /* LabelListViewController.swift */,
+			);
+			path = LabelListView;
+			sourceTree = "<group>";
+		};
 		667ECE0C1FC36784009233DE = {
 			isa = PBXGroup;
 			children = (
@@ -258,34 +338,18 @@
 			children = (
 				66498E241FC5A6D700239B47 /* AppApp.entitlements */,
 				667ECE181FC36784009233DE /* AppDelegate.swift */,
-				66498E271FC6651A00239B47 /* String+Path.swift */,
-				667ECE461FC36850009233DE /* BaseNavigationViewController.swift */,
-				667ECE481FC368BF009233DE /* BasePageViewController.swift */,
-				667ECE4A1FC3690E009233DE /* BaseViewController.swift */,
-				66498E2F1FC7A01D00239B47 /* DetailViewController.swift */,
-				66A3C3F81FCB66E7007EB295 /* AppInfoView.swift */,
-				666E06AE1FCB94DF0043DCFF /* CommonInfoView.swift */,
-				666E06B01FCB98890043DCFF /* LabelAppInfoView.swift */,
-				666E06C41FCBCB260043DCFF /* UITextView+Placeholder.swift */,
-				666E06B21FCB9A880043DCFF /* MemoCell.swift */,
-				666E06B31FCB9A880043DCFF /* MemoCell.xib */,
-				666E06B61FCBAC290043DCFF /* WebViewController.swift */,
-				666E06C21FCBC1E50043DCFF /* PassThroughIndicator.swift */,
-				66498E2D1FC6B92C00239B47 /* ApplicationData.swift */,
 				6677FC251FCA7E0400CB105E /* VersionManager.swift */,
-				66498E3A1FC82F9000239B47 /* EditToolbar.swift */,
-				66498E381FC810BF00239B47 /* Array+FindIndex.swift */,
-				667ECE561FC3836C009233DE /* AppLabel.swift */,
-				66FD458B1FC96B2A0093BB83 /* LabelListViewController.swift */,
-				666E06C01FCBB5E90043DCFF /* WebPageToolbar.swift */,
+				66681CD31FCC088D009A0F55 /* MainView */,
+				66681CD11FCC083A009A0F55 /* DetailView */,
+				66681CD51FCC08C0009A0F55 /* WebView */,
+				66681CD41FCC08A6009A0F55 /* Extension */,
+				66681CD61FCC08D2009A0F55 /* AppData */,
+				66681CD81FCC0967009A0F55 /* LabelListView */,
 				667ECE5C1FC39594009233DE /* SelectionBar */,
-				667ECE581FC388B9009233DE /* UIColor+AppColor.swift */,
-				6677FC211FCA691200CB105E /* FakeView.swift */,
 				667ECE671FC3AFC2009233DE /* CreateAppLabel */,
-				667ECE651FC3ADCA009233DE /* CustomNavigationBar.swift */,
-				66AA1DF11FC543BA001C419E /* IconSizeChanger.swift */,
-				66498E331FC7BA3600239B47 /* UIApplication+Stack.swift */,
 				667ECE6E1FC41F83009233DE /* AppCollectionView */,
+				667ECE651FC3ADCA009233DE /* CustomNavigationBar.swift */,
+				6677FC211FCA691200CB105E /* FakeView.swift */,
 				667ECE1C1FC36784009233DE /* Main.storyboard */,
 				66498E351FC8066000239B47 /* images */,
 				667ECE1F1FC36784009233DE /* Assets.xcassets */,
