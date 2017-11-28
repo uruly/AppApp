@@ -20,6 +20,7 @@ class DetailContentView: UICollectionView {
     var memoDelegate:MemoDelegate!
     var topInfoFrame:CGSize = CGSize.zero {
         didSet{
+            print("よばれええ")
             self.collectionViewLayout.invalidateLayout()
         }
     }
@@ -73,9 +74,9 @@ extension DetailContentView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.row == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "detailAppInfo", for: indexPath) as! DetailAppInfoViewCell
-            for subview in cell.infoView.subviews  {
-                subview.removeFromSuperview()
-            }
+//            for subview in cell.infoView.subviews  {
+//                subview.removeFromSuperview()
+//            }
             cell.infoView.appName = self.appName
             cell.infoView.imageData = self.imageData
             cell.infoView.detailVC = self.detailVC
@@ -118,7 +119,9 @@ extension DetailContentView: UICollectionViewDataSource {
 extension DetailContentView:UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch indexPath.row {
-        case 0: return topInfoFrame
+        case 0:
+            print("topInfoFrame\(topInfoFrame)")
+            return topInfoFrame
         case 1: return commonInfoFrame
         case 2: return memoViewFrame
         case 3: return deleteViewFrame

@@ -37,4 +37,8 @@ extension UIColor {
     class func placeholder() -> UIColor {
         return UIColor(red: 199 / 255, green: 199 / 255, blue: 205 / 255, alpha: 1)
     }
+    
+    class func appStoreBlue() -> UIColor {
+        return UIColor(red: 0, green: 0.478431, blue: 1, alpha: 1)
+    }
 }

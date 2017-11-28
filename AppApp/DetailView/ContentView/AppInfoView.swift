@@ -17,6 +17,7 @@ class AppInfoView: UIView {
     var appName:String!
     var detailVC:DetailViewController!
     //var widthLayout:CGFloat!
+    var canSetSubview = true
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -34,6 +35,9 @@ class AppInfoView: UIView {
     }
     
     func setSubviews(){
+        if canSetSubview == false {
+            return
+        }
         let margin:CGFloat = 15.0
         let width = self.frame.width
         let height = self.frame.height
@@ -53,10 +57,10 @@ class AppInfoView: UIView {
         
         //ボタンを配置
         let showStoreBtn = UIButton()
-        let btnWidth:CGFloat = 150.0
+        let btnWidth:CGFloat = 100.0
         //width - imageView.frame.width - (margin * 2)
         showStoreBtn.frame = CGRect(x:imageView.frame.maxX + margin,y:imageView.frame.maxY - 35,width:btnWidth,height:35)
-        showStoreBtn.backgroundColor = UIColor.blue
+        showStoreBtn.backgroundColor = UIColor.appStoreBlue()
         showStoreBtn.addTarget(detailVC, action: #selector(detailVC.showProductPage), for: .touchUpInside)
         showStoreBtn.setTitle("AppStore", for: .normal)
         showStoreBtn.setTitleColor(UIColor.white, for: .normal)
@@ -66,7 +70,7 @@ class AppInfoView: UIView {
         //Webで見るボタン
         let webSearchBtn = UIButton()
         webSearchBtn.frame = CGRect(x:width - 50 + 10,y:imageView.frame.maxY - 35,width:50,height:35)
-        webSearchBtn.backgroundColor = UIColor.blue
+        webSearchBtn.backgroundColor = UIColor.appStoreBlue()
         webSearchBtn.addTarget(self, action: #selector(self.showWebPage), for: .touchUpInside)
         webSearchBtn.setTitle("Web", for: .normal)
         webSearchBtn.setTitleColor(UIColor.white, for: .normal)
@@ -81,7 +85,8 @@ class AppInfoView: UIView {
             webSearchBtn.frame = CGRect(x:width - 50 + 10,y:appNameLabel.frame.maxY,width:50,height:35)
         }
         
-        detailVC.contentView.topInfoFrame = CGSize(width:detailVC.view.frame.width,height:imageView.frame.maxY + margin)
+        detailVC.contentView.topInfoFrame = CGSize(width:UIScreen.main.bounds.width,height:imageView.frame.maxY + margin)
+        canSetSubview = false
     }
     
     @objc func showWebPage(){
