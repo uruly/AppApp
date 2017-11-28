@@ -101,6 +101,7 @@ extension DetailContentView: UICollectionViewDataSource {
             self.detailVC.delegate = cell.tableView
             cell.tableView.detailVC = self.detailVC
             cell.tableView.memo = memo
+            self.memoDelegate = cell.tableView
             //cell.tableView = self.frame.width - 30
             cell.tableView.reloadData()
             
@@ -129,9 +130,17 @@ extension DetailContentView:UICollectionViewDelegateFlowLayout {
 
 extension DetailContentView: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+
+    }
+    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
+        print("begin")
         if memoDelegate != nil {
             memoDelegate.scroll()
         }
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        print("beginDrag")
     }
 }
 
