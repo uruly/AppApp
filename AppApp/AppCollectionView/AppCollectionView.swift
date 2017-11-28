@@ -251,8 +251,8 @@ extension AppCollectionView:UIScrollViewDelegate {
         let frameMinY = self.appDelegate.baseVC.basePageVC.iconSizeChanger.frame.minY
         //let frameMaxY = self.appDelegate.baseVC.basePageVC.iconSizeChanger.frame.maxY
         //let currentFrameCenterY = self.appDelegate.baseVC.basePageVC.iconSizeChanger.center.y
-        
-        if scrollView.contentOffset.y > 0 {
+        let frameMaxY = self.contentSize.height - (middleHeight * 2) - maxY
+        if scrollView.contentOffset.y > 0 && scrollView.contentOffset.y <= frameMaxY{
             if scrollView.contentOffset.y > lastContentOffsetY {
                 //どんどん非表示
                 if ( frameMinY + diffX ) >= maxY {
