@@ -49,11 +49,11 @@ extension DeleteAppView: UITableViewDelegate {
         let cell = tableView.cellForRow(at: indexPath)
         cell?.isSelected = false
         
-        if indexPath.row == 2 {
-            return
+        if indexPath.row == 0{
+            detailVC.deleteAppLabelData()
         }
-        if let label = cell?.accessoryView as? UILabel {
-            //detailVC.segueToWebView(label.text ?? "")
+        if indexPath.row == 1 {
+            detailVC.deleteAppAllData()
         }
     }
 }

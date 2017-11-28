@@ -147,6 +147,47 @@ class DetailViewController: UIViewController {
             }
         }
     }
+    
+    func deleteAppAllData(){
+        //ポップアップを表示
+        let alertController = UIAlertController(title: "Appを全て削除します。", message: "全てのラベルからAppを削除します", preferredStyle: .alert)
+        let otherAction = UIAlertAction(title: "削除する", style: .default) {
+            action in
+            NSLog("はいボタンが押されました")
+            AppData.deleteAppAllData(app: self.appData.app, {
+                self.navigationController?.popViewController(animated: true)
+            })
+        }
+        let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel) {
+            action in NSLog("いいえボタンが押されました")
+        }
+        
+        alertController.addAction(otherAction)
+        alertController.addAction(cancelAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    
+    func deleteAppLabelData(){
+        //ポップアップを表示
+        let alertController = UIAlertController(title: "\(appData.label.name!)からAppを削除します。", message: "", preferredStyle: .alert)
+        let otherAction = UIAlertAction(title: "削除する", style: .default) {
+            action in
+            NSLog("はいボタンが押されました")
+            AppData.deleteAppData(app: self.appData, {
+                self.navigationController?.popViewController(animated: true)
+            })
+        }
+        let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel) {
+            action in NSLog("いいえボタンが押されました")
+        }
+        
+        alertController.addAction(otherAction)
+        alertController.addAction(cancelAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
 }
 
 extension DetailViewController : SKStoreProductViewControllerDelegate {
