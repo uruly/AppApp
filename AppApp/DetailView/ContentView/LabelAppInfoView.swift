@@ -46,7 +46,11 @@ class LabelAppInfoView: UITableView {
             name: NSNotification.Name.UIKeyboardWillShow,
             object: nil
         )
-        
+    }
+    
+    override func removeFromSuperview() {
+        super.removeFromSuperview()
+        print("remove")
     }
     override func reloadData() {
         super.reloadData()
@@ -68,13 +72,18 @@ class LabelAppInfoView: UITableView {
                     print("rect\(rect)")
                     //このYがキーボードと被っているかどうかで判断をする
                     let scrollRect = memoView.convert(rect, to: self.detailVC.view)
+                    let currentContentRect = memoView.convert(rect,to:self.detailVC.contentView)
+                    print("contentRe\(currentContentRect)")
                     print("scrollRect.maxY\(scrollRect.maxY)")
+                    print("min\(scrollRect.minY)")
                     print("keyMinY\(keyMinY)")
-                    if scrollRect.maxY >= keyMinY {
+                    if scrollRect.minY >= keyMinY {
                         let diffY = scrollRect.minY - keyMinY
                         print(diffY)
                         //let currentContentOffsetY =
-                        detailVC.contentView.contentOffset.y += diffY
+                        print("detailVC.contentView.contentOffset.y\(detailVC.contentView.contentOffset.y)")
+                        // navigationbar の分が−64されて帰ってくる
+                        detailVC.contentView.contentOffset.y += (diffY - (detailVC.navigationController?.navigationBar.frame.maxY ?? 0) )
                     }
                 }
             }
