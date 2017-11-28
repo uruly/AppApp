@@ -37,7 +37,15 @@ class LabelAppInfoView: UITableView {
         self.register(UINib(nibName:"MemoCell",bundle:nil), forCellReuseIdentifier: "MemoCell")
         self.estimatedRowHeight = 500
         self.rowHeight = UITableViewAutomaticDimension
+        self.contentInset.bottom = 15
         print("awake")
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.showKeyboard(notification:)),
+            name: NSNotification.Name.UIKeyboardWillShow,
+            object: nil
+        )
         
     }
     override func reloadData() {
@@ -46,10 +54,40 @@ class LabelAppInfoView: UITableView {
             detailVC.contentView.memoViewFrame = CGSize(width:detailVC.view.frame.width,height:200)
         }
     }
+    
+    @objc func showKeyboard(notification: Notification) {
+        
+        if let userInfo = notification.userInfo {
+            if let keyboardFrameInfo = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue {
+                // キーボードの高さを取得
+                print(keyboardFrameInfo.cgRectValue.height)
+                let keyboardHeight = keyboardFrameInfo.cgRectValue.height
+                let keyMinY = self.detailVC.view.frame.height - keyboardHeight
+                if let range = memoView.selectedTextRange?.end{
+                    let rect = memoView.caretRect(for:range)
+                    print("rect\(rect)")
+                    //このYがキーボードと被っているかどうかで判断をする
+                    let scrollRect = memoView.convert(rect, to: self.detailVC.view)
+                    print("scrollRect.maxY\(scrollRect.maxY)")
+                    print("keyMinY\(keyMinY)")
+                    if scrollRect.maxY >= keyMinY {
+                        let diffY = scrollRect.minY - keyMinY
+                        print(diffY)
+                        //let currentContentOffsetY =
+                        detailVC.contentView.contentOffset.y += diffY
+                    }
+                }
+            }
+        }
+    }
+    
 }
 
 extension LabelAppInfoView:UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.isSelected = false
+    }
 }
 extension LabelAppInfoView:UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -62,16 +100,16 @@ extension LabelAppInfoView:UITableViewDataSource {
             cell.memoView.text = memo
             cell.memoView.placeholder = "ラベルごとにメモを残せます"
             memoView = cell.memoView
-            
+            if let placeholderLabel = cell.memoView.viewWithTag(100) as? UILabel {
+                placeholderLabel.isHidden = cell.memoView.text.count > 0
+            }
             
             DispatchQueue.global().asyncAfter(deadline: DispatchTime.now() + 0.2, execute: {
                 DispatchQueue.main.async {
-                    self.detailVC.contentView.memoViewFrame = CGSize(width:self.detailVC.view.frame.width,height:cell.memoView.contentSize.height + 50)
+                    self.detailVC.contentView.memoViewFrame = CGSize(width:self.detailVC.view.frame.width,height:cell.memoView.contentSize.height + 70)
                     //print("このてーぶるよばれてる\(cell.memoView.bounds),\(size)")
                 }
             })
-            //memoView.detailVC = self.detailVC
-            //memoView.isScrollEnabled = false
             return cell
         }else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AppInfo", for: indexPath)
@@ -90,6 +128,13 @@ extension LabelAppInfoView:UITableViewDataSource {
 extension LabelAppInfoView:UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         print("はじめ\(textView.frame)")
+//        if let range = textView.selectedTextRange?.end{
+//            let rect = textView.caretRect(for:range)
+//            print(rect)
+//            //このYがキーボードと被っているかどうかで判断をする
+//            let scrollRect = textView.convert(rect, to: self.detailVC.view)
+//            print(scrollRect)
+//        }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
@@ -101,13 +146,21 @@ extension LabelAppInfoView:UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         self.beginUpdates()
         self.endUpdates()
-        detailVC.contentView.memoViewFrame = CGSize(width:detailVC.view.frame.width,height:textView.frame.height + 50.0)
+        detailVC.contentView.memoViewFrame = CGSize(width:detailVC.view.frame.width,height:textView.frame.height + 70.0)
         
         if let placeholderLabel = textView.viewWithTag(100) as? UILabel {
             placeholderLabel.isHidden = textView.text.count > 0
         }
         if let text = textView.text{
             detailVC.memoText = text
+        }
+        
+        if let range = textView.selectedTextRange?.end{
+            let rect = textView.caretRect(for:range)
+            print(rect)
+            //このYがキーボードと被っているかどうかで判断をする
+            let scrollRect = textView.convert(rect, to: self.detailVC.view)
+            print(scrollRect)
         }
     }
     

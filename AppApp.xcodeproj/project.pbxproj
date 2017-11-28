@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		660616881FCD2A6900667020 /* MemoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660616861FCD2A6900667020 /* MemoCollectionViewCell.swift */; };
-		660616891FCD2A6900667020 /* MemoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 660616871FCD2A6900667020 /* MemoCollectionViewCell.xib */; };
 		6606168B1FCD348100667020 /* DeleteAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6606168A1FCD348100667020 /* DeleteAppView.swift */; };
 		6606168E1FCD35AE00667020 /* DeleteViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6606168C1FCD35AE00667020 /* DeleteViewCell.swift */; };
 		6606168F1FCD35AE00667020 /* DeleteViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6606168D1FCD35AE00667020 /* DeleteViewCell.xib */; };
@@ -122,8 +120,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		660616861FCD2A6900667020 /* MemoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoCollectionViewCell.swift; sourceTree = "<group>"; };
-		660616871FCD2A6900667020 /* MemoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoCollectionViewCell.xib; sourceTree = "<group>"; };
 		6606168A1FCD348100667020 /* DeleteAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAppView.swift; sourceTree = "<group>"; };
 		6606168C1FCD35AE00667020 /* DeleteViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteViewCell.swift; sourceTree = "<group>"; };
 		6606168D1FCD35AE00667020 /* DeleteViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeleteViewCell.xib; sourceTree = "<group>"; };
@@ -277,8 +273,6 @@
 				66681CE41FCC17E2009A0F55 /* DetailAppInfoViewCell.xib */,
 				66681CDF1FCC1734009A0F55 /* DetailCommonViewCell.swift */,
 				66681CE01FCC1734009A0F55 /* DetailCommonViewCell.xib */,
-				660616861FCD2A6900667020 /* MemoCollectionViewCell.swift */,
-				660616871FCD2A6900667020 /* MemoCollectionViewCell.xib */,
 				6606168C1FCD35AE00667020 /* DeleteViewCell.swift */,
 				6606168D1FCD35AE00667020 /* DeleteViewCell.xib */,
 				6676ED351FCD582100815BF8 /* DetailMemoViewCell.swift */,
@@ -617,7 +611,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				660616891FCD2A6900667020 /* MemoCollectionViewCell.xib in Resources */,
 				6606168F1FCD35AE00667020 /* DeleteViewCell.xib in Resources */,
 				666E06BA1FCBB3740043DCFF /* right_arrow@3x.png in Resources */,
 				666E06BB1FCBB3740043DCFF /* right_arrow@2x.png in Resources */,
@@ -692,7 +685,6 @@
 				66DF587E1FC92D3F00CD71DC /* LabelOrderPickerView.swift in Sources */,
 				666E06AF1FCB94DF0043DCFF /* CommonInfoView.swift in Sources */,
 				667ECE571FC3836C009233DE /* AppLabel.swift in Sources */,
-				660616881FCD2A6900667020 /* MemoCollectionViewCell.swift in Sources */,
 				667ECE4B1FC3690E009233DE /* BaseViewController.swift in Sources */,
 				667ECE471FC36850009233DE /* BaseNavigationViewController.swift in Sources */,
 				6606168E1FCD35AE00667020 /* DeleteViewCell.swift in Sources */,
