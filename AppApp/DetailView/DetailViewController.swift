@@ -45,7 +45,7 @@ class DetailViewController: UIViewController {
         let width = self.view.frame.width
         let height = self.view.frame.height
 
-        self.view.backgroundColor = UIColor.white
+        //self.view.backgroundColor = UIColor.white
         self.title = appData.label.name
         
         let naviBarHeight = self.navigationController?.navigationBar.frame.maxY ?? 57.0
@@ -66,7 +66,9 @@ class DetailViewController: UIViewController {
         contentView.id = appData.app.id
         contentView.saveDate = convertDate(appData.app.date)
         
-        print(self.navigationController?.navigationBar.tintColor)
+        self.navigationController?.navigationBar.barTintColor = nil
+        self.navigationController?.navigationBar.backgroundColor = self.appData.label.color.withAlphaComponent(0.8)
+        self.view.backgroundColor = appData.label.color
         
     }
 
@@ -91,10 +93,10 @@ class DetailViewController: UIViewController {
 
             if existsSelfInViewControllers {
                 print("前の画面に戻る処理が行われました")
-//                UIView.animate(withDuration: 0.3, animations: {
-//                    self.navigationController?.navigationBar.barTintColor = UIColor.white
-//                    self.navigationController?.navigationBar.tintColor = nil
-//                })
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.navigationController?.navigationBar.barTintColor = UIColor.white
+                    self.navigationController?.navigationBar.tintColor = nil
+                })
                 
             }
         }

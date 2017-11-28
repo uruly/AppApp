@@ -20,7 +20,6 @@ class BaseViewController: UIViewController {
         let width = self.view.frame.width
         let height = self.view.frame.height
         
-        self.view.backgroundColor = appLabel.color
 
         //とりあえず仮のラベル
         let label = UILabel()
@@ -45,6 +44,7 @@ class BaseViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //ここでCurrentIDを設定
+        print("BaseViewWillAppear")
         AppLabel.currentID = appLabel.id
         AppLabel.currentOrder = appLabel.order
         //delegateを設定
@@ -65,6 +65,7 @@ class BaseViewController: UIViewController {
             self.basePageVC.editToolbar.editDelegate = self
         }
         collectionView.appDelegate = self
+        self.view.backgroundColor = appLabel.color
     }
 
     override func didReceiveMemoryWarning() {

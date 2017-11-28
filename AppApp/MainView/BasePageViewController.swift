@@ -86,8 +86,11 @@ class BasePageViewController: UIPageViewController {
             print("truedayo")
             appLabel.reloadLabelData()
             selectionBar.reloadData()
+            selectionBar.collectionViewLayout.invalidateLayout()
             if !appLabel.array.contains(where: {$0.id == AppLabel.currentID}){
                 self.setViewControllers([getBase(appLabel: appLabel.array[0])], direction: .forward, animated: false, completion: nil)
+            }else {
+                self.setViewControllers([getBase(appLabel: appLabel.array[AppLabel.currentOrder!])], direction: .forward, animated: false, completion: nil)
             }
             if self.navigationItem.rightBarButtonItem != nil {
                 cancelEdit(sender:self.navigationItem.rightBarButtonItem!)
