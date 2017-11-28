@@ -163,7 +163,6 @@ extension LabelAppInfoView:UITextViewDelegate {
         self.beginUpdates()
         self.endUpdates()
         detailVC.contentView.memoViewFrame = CGSize(width:detailVC.view.frame.width,height:textView.frame.height + 70.0)
-        
         if let placeholderLabel = textView.viewWithTag(100) as? UILabel {
             placeholderLabel.isHidden = textView.text.count > 0
         }
@@ -172,17 +171,23 @@ extension LabelAppInfoView:UITextViewDelegate {
         }
         
         //カーソルがキーボードと被ってないかチェック
-        let keyMinY = self.detailVC.view.frame.height - keyboardHeight
-        if let range = textView.selectedTextRange?.start{
-            let rect = textView.caretRect(for:range)
-            let scrollRect = textView.convert(rect, to: self.detailVC.view)
-            if scrollRect.maxY >= keyMinY {
-                let diffY = scrollRect.maxY - keyMinY
-                UIView.animate(withDuration: 0.2, animations: {
-                    self.detailVC.contentView.contentOffset.y += diffY + 70
-                })
+        DispatchQueue.global().asyncAfter(deadline: DispatchTime.now() + 0.2, execute: {
+            DispatchQueue.main.async {
+                let keyMinY = self.detailVC.view.frame.height - self.keyboardHeight
+                if let range = textView.selectedTextRange?.start{
+                    let rect = textView.caretRect(for:range)
+                    let scrollRect = textView.convert(rect, to: self.detailVC.view)
+                    print("scrollRect\(scrollRect),keyMinY\(keyMinY)")
+                    if scrollRect.maxY >= keyMinY {
+                        let diffY = scrollRect.maxY - keyMinY
+                        UIView.animate(withDuration: 0.2, animations: {
+                            print("ここ呼ばれているよ")
+                            self.detailVC.contentView.contentOffset.y += diffY + 70
+                        })
+                    }
+                }
             }
-        }
+        })
     }
     
     

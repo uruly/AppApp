@@ -57,7 +57,7 @@ class DetailViewController: UIViewController {
         layout.sectionInset = UIEdgeInsetsMake(15, 0, 50, 0)
         contentView = DetailContentView(frame: CGRect(x:0,y:0,width:width,height:height), collectionViewLayout: layout)
         self.view.addSubview(contentView)
-        
+        contentView.backgroundColor = UIColor.white
         contentView.appName = appData.app.name
         contentView.imageData = appData.app.image
         contentView.detailVC = self

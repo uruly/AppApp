@@ -44,19 +44,21 @@ class AppInfoView: UIView {
         self.addSubview(imageView)
         
         //アプリ名を配置
-        appNameLabel = UILabel(frame: CGRect(x:imageView.frame.maxX + margin,y:margin,width:width - imageView.frame.width - (margin * 2),height:250))
+        appNameLabel = UILabel(frame: CGRect(x:imageView.frame.maxX + margin,y:margin + 5,width:width - imageView.frame.width - (margin * 2),height:250))
         appNameLabel.text = appName
         appNameLabel.numberOfLines = 0
-        appNameLabel.font = UIFont.boldSystemFont(ofSize: 16)
+        appNameLabel.font = UIFont.boldSystemFont(ofSize: 18)
         appNameLabel.sizeToFit()
         self.addSubview(appNameLabel)
         
         //ボタンを配置
         let showStoreBtn = UIButton()
-        showStoreBtn.frame = CGRect(x:imageView.frame.maxX + margin,y:appNameLabel.frame.maxY + margin,width:width - imageView.frame.width - (margin * 2),height:50)
+        showStoreBtn.frame = CGRect(x:imageView.frame.maxX + margin,y:imageView.frame.maxY - 35,width:width - imageView.frame.width - (margin * 2),height:35)
         showStoreBtn.backgroundColor = UIColor.blue
         showStoreBtn.addTarget(detailVC, action: #selector(detailVC.showProductPage), for: .touchUpInside)
-        showStoreBtn.setTitle("詳細", for: .normal)
+        showStoreBtn.setTitle("AppStoreでみる", for: .normal)
+        showStoreBtn.setTitleColor(UIColor.white, for: .normal)
+        showStoreBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         self.addSubview(showStoreBtn)
         
         
