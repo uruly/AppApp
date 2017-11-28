@@ -17,6 +17,7 @@ class DetailContentView: UICollectionView {
     var developerName:String!
     var id:String!
     var saveDate:String!
+    var memoDelegate:MemoDelegate!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -26,7 +27,7 @@ class DetailContentView: UICollectionView {
         super.init(frame: frame, collectionViewLayout: layout)
         self.delegate = self
         self.dataSource = self
-        self.register(UINib(nibName:"DetailMemoViewCell",bundle:nil), forCellWithReuseIdentifier: "detailMemo")
+        self.register(UINib(nibName:"MemoCollectionViewCell",bundle:nil), forCellWithReuseIdentifier: "detailMemo")
         self.register(UINib(nibName:"DetailCommonViewCell",bundle:nil), forCellWithReuseIdentifier: "detailCommon")
         self.register(UINib(nibName:"DetailAppInfoViewCell",bundle:nil), forCellWithReuseIdentifier: "detailAppInfo")
     }
@@ -45,7 +46,9 @@ extension DetailContentView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.row == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "detailAppInfo", for: indexPath) as! DetailAppInfoViewCell
-            
+            for subview in cell.infoView.subviews  {
+                subview.removeFromSuperview()
+            }
             cell.infoView.appName = self.appName
             cell.infoView.imageData = self.imageData
             cell.infoView.detailVC = self.detailVC
@@ -67,15 +70,26 @@ extension DetailContentView: UICollectionViewDataSource {
         }
         //else if indexPath.row == 2 {
         else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "detailMemo", for: indexPath) as! DetailMemoViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "detailMemo", for: indexPath) as! MemoCollectionViewCell
             
-            self.detailVC.delegate = cell.tableView
-            cell.tableView.detailVC = self.detailVC
-            cell.tableView.memo = memo
-            //cell.tableView = self.frame.width - 30
-            cell.tableView.reloadData()
+            self.detailVC.delegate = cell
+            cell.detailVC = self.detailVC
+            cell.memoView.text = memo
+            if let placeholderLabel = cell.memoView.viewWithTag(100) as? UILabel {
+                placeholderLabel.isHidden = cell.memoView.text.count > 0
+            }
+            self.memoDelegate = cell
             
             return cell
         }
     }
 }
+
+extension DetailContentView: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if memoDelegate != nil {
+            memoDelegate.scroll()
+        }
+    }
+}
+

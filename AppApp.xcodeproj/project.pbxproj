@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		660616881FCD2A6900667020 /* MemoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660616861FCD2A6900667020 /* MemoCollectionViewCell.swift */; };
+		660616891FCD2A6900667020 /* MemoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 660616871FCD2A6900667020 /* MemoCollectionViewCell.xib */; };
 		66498E281FC6651A00239B47 /* String+Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E271FC6651A00239B47 /* String+Path.swift */; };
 		66498E2A1FC666A400239B47 /* ShareAppLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E291FC666A400239B47 /* ShareAppLabel.swift */; };
 		66498E2C1FC67A6400239B47 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E2B1FC67A6400239B47 /* AppData.swift */; };
@@ -117,6 +119,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		660616861FCD2A6900667020 /* MemoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoCollectionViewCell.swift; sourceTree = "<group>"; };
+		660616871FCD2A6900667020 /* MemoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoCollectionViewCell.xib; sourceTree = "<group>"; };
 		66498E231FC5A69B00239B47 /* ShareFromAppStoreExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareFromAppStoreExtension.entitlements; sourceTree = "<group>"; };
 		66498E241FC5A6D700239B47 /* AppApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AppApp.entitlements; sourceTree = "<group>"; };
 		66498E271FC6651A00239B47 /* String+Path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Path.swift"; sourceTree = "<group>"; };
@@ -268,6 +272,8 @@
 				66681CE01FCC1734009A0F55 /* DetailCommonViewCell.xib */,
 				66681CDB1FCC1565009A0F55 /* DetailMemoViewCell.swift */,
 				66681CDC1FCC1566009A0F55 /* DetailMemoViewCell.xib */,
+				660616861FCD2A6900667020 /* MemoCollectionViewCell.swift */,
+				660616871FCD2A6900667020 /* MemoCollectionViewCell.xib */,
 			);
 			path = ContentView;
 			sourceTree = "<group>";
@@ -602,6 +608,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				660616891FCD2A6900667020 /* MemoCollectionViewCell.xib in Resources */,
 				666E06BA1FCBB3740043DCFF /* right_arrow@3x.png in Resources */,
 				666E06BB1FCBB3740043DCFF /* right_arrow@2x.png in Resources */,
 				66681CE61FCC17E2009A0F55 /* DetailAppInfoViewCell.xib in Resources */,
@@ -675,6 +682,7 @@
 				666E06AF1FCB94DF0043DCFF /* CommonInfoView.swift in Sources */,
 				667ECE571FC3836C009233DE /* AppLabel.swift in Sources */,
 				66681CDD1FCC1566009A0F55 /* DetailMemoViewCell.swift in Sources */,
+				660616881FCD2A6900667020 /* MemoCollectionViewCell.swift in Sources */,
 				667ECE4B1FC3690E009233DE /* BaseViewController.swift in Sources */,
 				666E06B11FCB98890043DCFF /* LabelAppInfoView.swift in Sources */,
 				667ECE471FC36850009233DE /* BaseNavigationViewController.swift in Sources */,

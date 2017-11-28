@@ -124,12 +124,6 @@ class DetailViewController: UIViewController {
     }
 }
 
-extension DetailViewController: UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        delegate.scroll()
-    }
-}
-
 extension DetailViewController : SKStoreProductViewControllerDelegate {
     // キャンセルボタンが押された時の処理
     func productViewControllerDidFinish(_ viewController: SKStoreProductViewController) {
