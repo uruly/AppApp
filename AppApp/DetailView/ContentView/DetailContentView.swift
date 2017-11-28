@@ -23,7 +23,7 @@ class DetailContentView: UICollectionView {
             self.collectionViewLayout.invalidateLayout()
         }
     }
-    var memoViewFrame:CGSize = CGSize.zero {
+    var memoViewFrame:CGSize = CGSize(width:300,height:100) {
         didSet {
             self.collectionViewLayout.invalidateLayout()
         }
@@ -97,14 +97,12 @@ extension DetailContentView: UICollectionViewDataSource {
         }
         else if indexPath.row == 2 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "detailMemo", for: indexPath) as! DetailMemoViewCell
-            
-            //self.detailVC.delegate =
+            print("ここにはきてる")
+            self.detailVC.delegate = cell.tableView
             cell.tableView.detailVC = self.detailVC
-            //cell.tableView.memoView.text = memo
-//            if let placeholderLabel = cell.tableView.memoView.viewWithTag(100) as? UILabel {
-//                placeholderLabel.isHidden = cell.tableView.memoView.text.count > 0
-//            }
-           // self.memoDelegate = cell.tableView.memoView
+            cell.tableView.memo = memo
+            //cell.tableView = self.frame.width - 30
+            cell.tableView.reloadData()
             
             return cell
         }else {

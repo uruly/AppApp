@@ -8,9 +8,9 @@
 
 import UIKit
 
-//@objc protocol MemoDelegate {
-//    func scroll()
-//}
+@objc protocol MemoDelegate {
+    func scroll()
+}
 
 class LabelAppInfoView: UITableView {
     
@@ -37,12 +37,13 @@ class LabelAppInfoView: UITableView {
         self.register(UINib(nibName:"MemoCell",bundle:nil), forCellReuseIdentifier: "MemoCell")
         self.estimatedRowHeight = 500
         self.rowHeight = UITableViewAutomaticDimension
+        print("awake")
         
     }
     override func reloadData() {
         super.reloadData()
-        if detailVC != nil && memoView != nil{
-            detailVC.contentView.commonInfoFrame = CGSize(width:detailVC.view.frame.width,height:self.memoView.frame.maxY)
+        if detailVC != nil{
+            detailVC.contentView.memoViewFrame = CGSize(width:detailVC.view.frame.width,height:200)
         }
     }
 }
@@ -61,6 +62,8 @@ extension LabelAppInfoView:UITableViewDataSource {
             cell.memoView.text = memo
             cell.memoView.placeholder = "ラベルごとにメモを残せます"
             memoView = cell.memoView
+            detailVC.contentView.memoViewFrame = CGSize(width:detailVC.view.frame.width,height:cell.memoView.frame.height + 50)
+            print("このてーぶるよばれてる\(cell.memoView.frame)")
             //memoView.detailVC = self.detailVC
             //memoView.isScrollEnabled = false
             return cell
@@ -79,6 +82,10 @@ extension LabelAppInfoView:UITableViewDataSource {
 }
 
 extension LabelAppInfoView:UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        print("はじめ\(textView.frame)")
+    }
+    
     func textViewDidEndEditing(_ textView: UITextView) {
         textView.resignFirstResponder()
         if let text = textView.text{
@@ -88,6 +95,7 @@ extension LabelAppInfoView:UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         self.beginUpdates()
         self.endUpdates()
+        detailVC.contentView.memoViewFrame = CGSize(width:detailVC.view.frame.width,height:textView.frame.height + 50.0)
         
         if let placeholderLabel = textView.viewWithTag(100) as? UILabel {
             placeholderLabel.isHidden = textView.text.count > 0
@@ -103,32 +111,32 @@ extension LabelAppInfoView:UITextViewDelegate {
         return true
     }
 }
-//extension LabelAppInfoView:MemoDelegate {
-//    func scroll(){
-//        if memoView != nil{
-//            if let text = memoView.text , memoView.isFirstResponder{
-//                detailVC.memoText = text
-//            }
-//            _ = memoView.resignFirstResponder()
-//        }
-//    }
-//}
-//
-//class MemoTextView:UITextView {
-//    var detailVC:DetailViewController!
-//
-//    override func resignFirstResponder() -> Bool {
-//        if detailVC != nil {
-//            detailVC.saveAppLabelMemo(self.text)
-//        }
-//        return super.resignFirstResponder()
-//    }
-//
-//    override var isScrollEnabled: Bool{
-//        didSet {
-//            print("setされたよ")
-//            print("isScrollEnabled")
-//        }
-//    }
-//}
+extension LabelAppInfoView:MemoDelegate {
+    func scroll(){
+        if memoView != nil{
+            if let text = memoView.text , memoView.isFirstResponder{
+                detailVC.memoText = text
+            }
+            _ = memoView.resignFirstResponder()
+        }
+    }
+}
+
+class MemoTextView:UITextView {
+    var detailVC:DetailViewController!
+
+    override func resignFirstResponder() -> Bool {
+        if detailVC != nil {
+            detailVC.saveAppLabelMemo(self.text)
+        }
+        return super.resignFirstResponder()
+    }
+
+    override var isScrollEnabled: Bool{
+        didSet {
+            print("setされたよ")
+            print("isScrollEnabled")
+        }
+    }
+}
 

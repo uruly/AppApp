@@ -11,6 +11,7 @@ import UIKit
 class DetailMemoViewCell: UICollectionViewCell {
 
     //@IBOutlet weak var widthLayout: NSLayoutConstraint!
+    
     @IBOutlet weak var tableView: LabelAppInfoView!
     override func awakeFromNib() {
         super.awakeFromNib()

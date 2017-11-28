@@ -7,10 +7,10 @@
 //
 
 import UIKit
-
-@objc protocol MemoDelegate{
-    func scroll()
-}
+//
+//@objc protocol MemoDelegate{
+//    func scroll()
+//}
 
 class MemoCollectionViewCell: UICollectionViewCell {
 
@@ -64,13 +64,14 @@ extension MemoCollectionViewCell:UITextViewDelegate {
         return true
     }
 }
-extension MemoCollectionViewCell:MemoDelegate {
-    func scroll(){
-        if memoView != nil{
-            if let text = memoView.text , memoView.isFirstResponder{
-                detailVC.memoText = text
-            }
-            //_ = memoView.resignFirstResponder()
-        }
-    }
-}
+//extension MemoCollectionViewCell:MemoDelegate {
+//    func scroll(){
+//        if memoView != nil{
+//            if let text = memoView.text , memoView.isFirstResponder{
+//                detailVC.memoText = text
+//            }
+//            //_ = memoView.resignFirstResponder()
+//        }
+//    }
+//}
+

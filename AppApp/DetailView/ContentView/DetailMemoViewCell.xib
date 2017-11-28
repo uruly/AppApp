@@ -35,7 +35,7 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="295" height="148"/>
             <connections>
-                <outlet property="tableView" destination="p0v-eh-EMB" id="pgs-iE-fz3"/>
+                <outlet property="tableView" destination="p0v-eh-EMB" id="Goc-71-FJg"/>
             </connections>
             <point key="canvasLocation" x="147.5" y="101"/>
         </collectionViewCell>
