@@ -62,8 +62,14 @@ extension LabelAppInfoView:UITableViewDataSource {
             cell.memoView.text = memo
             cell.memoView.placeholder = "ラベルごとにメモを残せます"
             memoView = cell.memoView
-            detailVC.contentView.memoViewFrame = CGSize(width:detailVC.view.frame.width,height:cell.memoView.frame.height + 50)
-            print("このてーぶるよばれてる\(cell.memoView.frame)")
+            
+            let size = cell.memoView.convert(cell.frame, to: self)
+            DispatchQueue.global().asyncAfter(deadline: DispatchTime.now() + 0.2, execute: {
+                DispatchQueue.main.async {
+                    self.detailVC.contentView.memoViewFrame = CGSize(width:self.detailVC.view.frame.width,height:cell.memoView.contentSize.height + 50)
+                    print("このてーぶるよばれてる\(cell.memoView.bounds),\(size)")
+                }
+            })
             //memoView.detailVC = self.detailVC
             //memoView.isScrollEnabled = false
             return cell

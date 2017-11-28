@@ -23,7 +23,7 @@ class DetailContentView: UICollectionView {
             self.collectionViewLayout.invalidateLayout()
         }
     }
-    var memoViewFrame:CGSize = CGSize(width:300,height:100) {
+    var memoViewFrame:CGSize = CGSize.zero {
         didSet {
             self.collectionViewLayout.invalidateLayout()
         }
