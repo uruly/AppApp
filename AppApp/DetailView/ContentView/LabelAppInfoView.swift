@@ -205,21 +205,21 @@ extension LabelAppInfoView:MemoDelegate {
     }
 }
 
-class MemoTextView:UITextView {
-    var detailVC:DetailViewController!
-
-    override func resignFirstResponder() -> Bool {
-        if detailVC != nil {
-            detailVC.saveAppLabelMemo(self.text)
-        }
-        return super.resignFirstResponder()
-    }
-
-    override var isScrollEnabled: Bool{
-        didSet {
-            print("setされたよ")
-            print("isScrollEnabled")
-        }
-    }
-}
+//class MemoTextView:UITextView {
+//    var detailVC:DetailViewController!
+//
+//    override func resignFirstResponder() -> Bool {
+//        if detailVC != nil {
+//            detailVC.saveAppLabelMemo(self.text)
+//        }
+//        return super.resignFirstResponder()
+//    }
+//
+//    override var isScrollEnabled: Bool{
+//        didSet {
+//            print("setされたよ")
+//            print("isScrollEnabled")
+//        }
+//    }
+//}
 

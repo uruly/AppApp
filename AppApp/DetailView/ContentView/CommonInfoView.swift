@@ -77,7 +77,7 @@ extension CommonInfoView: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AppInfo", for: indexPath)
         cell.textLabel?.font = UIFont.systemFont(ofSize: 14)
         if indexPath.section == 0 {
-            let label = UILabel(frame:CGRect(x:0,y:0,width:200,height:cell.contentView.frame.height))
+            let label = UILabel(frame:CGRect(x:0,y:0,width:250,height:cell.contentView.frame.height))
             label.textAlignment = .right
             label.font = UIFont.systemFont(ofSize: 14)
             cell.accessoryView = label
