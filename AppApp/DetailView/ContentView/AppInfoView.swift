@@ -60,7 +60,7 @@ class AppInfoView: UIView {
         self.addSubview(showStoreBtn)
         
         
-        
+        detailVC.contentView.topInfoFrame = CGSize(width:detailVC.view.frame.width,height:imageView.frame.maxY + margin)
     }
 
 }

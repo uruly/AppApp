@@ -47,6 +47,7 @@ extension MemoCollectionViewCell:UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         //self.beginUpdates()
         //self.endUpdates()
+        
         detailVC.contentView.collectionViewLayout.invalidateLayout()
         
         if let placeholderLabel = textView.viewWithTag(100) as? UILabel {

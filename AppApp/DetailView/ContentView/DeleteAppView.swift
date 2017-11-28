@@ -34,6 +34,13 @@ class DeleteAppView: UITableView {
         //self.estimatedRowHeight = 150
         //self.rowHeight = UITableViewAutomaticDimension
     }
+    
+    override func reloadData() {
+        super.reloadData()
+        if detailVC != nil {
+            detailVC.contentView.deleteViewFrame = CGSize(width:detailVC.view.frame.width,height:200)
+        }
+    }
 
 }
 extension DeleteAppView: UITableViewDelegate {

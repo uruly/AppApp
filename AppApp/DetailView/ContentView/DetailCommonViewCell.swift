@@ -20,21 +20,4 @@ class DetailCommonViewCell: UICollectionViewCell {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "AppInfo")
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        //ここでcellの大きさを変えたい
-        self.sizeToFit()
-        print("layoutSubviewだよ")
-    }
-
-    func setTableViewDataSourceDelegate
-        <D: UITableViewDataSource & UITableViewDelegate>
-        (dataSourceDelegate: D, forRow row: Int) {
-        
-        tableView.delegate = dataSourceDelegate
-        tableView.dataSource = dataSourceDelegate
-        tableView.reloadData()
-        
-    }
-    
 }

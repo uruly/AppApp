@@ -18,6 +18,27 @@ class DetailContentView: UICollectionView {
     var id:String!
     var saveDate:String!
     var memoDelegate:MemoDelegate!
+    var topInfoFrame:CGSize = CGSize.zero {
+        didSet{
+            self.collectionViewLayout.invalidateLayout()
+        }
+    }
+    var memoViewFrame:CGSize = CGSize.zero {
+        didSet {
+            self.collectionViewLayout.invalidateLayout()
+        }
+    }
+    var commonInfoFrame:CGSize = CGSize.zero {
+        didSet {
+            self.collectionViewLayout.invalidateLayout()
+        }
+    }
+    var deleteViewFrame:CGSize = CGSize.zero {
+        didSet {
+            self.collectionViewLayout.invalidateLayout()
+        }
+    }
+    
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -27,7 +48,7 @@ class DetailContentView: UICollectionView {
         super.init(frame: frame, collectionViewLayout: layout)
         self.delegate = self
         self.dataSource = self
-        self.register(UINib(nibName:"MemoCollectionViewCell",bundle:nil), forCellWithReuseIdentifier: "detailMemo")
+        self.register(UINib(nibName:"DetailMemoViewCell",bundle:nil), forCellWithReuseIdentifier: "detailMemo")
         self.register(UINib(nibName:"DetailCommonViewCell",bundle:nil), forCellWithReuseIdentifier: "detailCommon")
         self.register(UINib(nibName:"DetailAppInfoViewCell",bundle:nil), forCellWithReuseIdentifier: "detailAppInfo")
         self.register(UINib(nibName:"DeleteViewCell",bundle:nil),forCellWithReuseIdentifier: "deleteApp")
@@ -45,13 +66,6 @@ extension DetailContentView:UICollectionViewDelegate {
 }
 
 extension DetailContentView: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        guard let cell = cell as? DetailCommonViewCell else { return }
-        
-        //ShopTableViewCell.swiftで設定したメソッドを呼び出す
-        cell.setTableViewDataSourceDelegate(dataSourceDelegate: cell.tableView, forRow: indexPath.row)
-    }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 4
     }
@@ -82,15 +96,15 @@ extension DetailContentView: UICollectionViewDataSource {
             return cell
         }
         else if indexPath.row == 2 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "detailMemo", for: indexPath) as! MemoCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "detailMemo", for: indexPath) as! DetailMemoViewCell
             
-            self.detailVC.delegate = cell
-            cell.detailVC = self.detailVC
-            cell.memoView.text = memo
-            if let placeholderLabel = cell.memoView.viewWithTag(100) as? UILabel {
-                placeholderLabel.isHidden = cell.memoView.text.count > 0
-            }
-            self.memoDelegate = cell
+            //self.detailVC.delegate =
+            cell.tableView.detailVC = self.detailVC
+            //cell.tableView.memoView.text = memo
+//            if let placeholderLabel = cell.tableView.memoView.viewWithTag(100) as? UILabel {
+//                placeholderLabel.isHidden = cell.tableView.memoView.text.count > 0
+//            }
+           // self.memoDelegate = cell.tableView.memoView
             
             return cell
         }else {
@@ -99,6 +113,18 @@ extension DetailContentView: UICollectionViewDataSource {
             cell.tableView.labelName = self.detailVC.appData.label.name
             
             return cell
+        }
+    }
+}
+extension DetailContentView:UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        switch indexPath.row {
+        case 0: return topInfoFrame
+        case 1: return commonInfoFrame
+        case 2: return memoViewFrame
+        case 3: return deleteViewFrame
+        default:
+            return CGSize(width:self.frame.width,height:100)
         }
     }
 }

@@ -18,10 +18,4 @@ class DetailAppInfoViewCell: UICollectionViewCell {
         //widthLayout.constant = UIScreen.main.bounds.width - 30
         //infoView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - 30)
     }
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        //ここでcellの大きさを変えたい
-        self.sizeThatFits(infoView.frame.size)
-        print("layoutSubviewだよ")
-    }
 }

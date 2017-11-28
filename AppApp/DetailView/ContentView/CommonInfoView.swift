@@ -34,6 +34,13 @@ class CommonInfoView: UITableView {
         self.isScrollEnabled = false
         self.register(UITableViewCell.self, forCellReuseIdentifier: "AppInfo")
     }
+    
+    override func reloadData() {
+        super.reloadData()
+        if detailVC != nil {
+            detailVC.contentView.commonInfoFrame = CGSize(width:detailVC.view.frame.width,height:200)
+        }
+    }
 
 }
 
