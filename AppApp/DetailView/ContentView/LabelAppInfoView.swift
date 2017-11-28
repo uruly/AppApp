@@ -66,7 +66,7 @@ class LabelAppInfoView: UITableView {
                     if scrollRect.maxY >= keyMinY {
                         let diffY = scrollRect.maxY - keyMinY
                         UIView.animate(withDuration: 0.2, animations: {
-                            self.detailVC.contentView.contentOffset.y += diffY + 20.0
+                            self.detailVC.contentView.contentOffset.y += diffY + 70.0
                         })
                     }
                 }
@@ -75,6 +75,25 @@ class LabelAppInfoView: UITableView {
     }
     
     @objc func dismissKeyboard(notification:Notification){
+    }
+    
+    func setDoneBtn(memoView:UITextView){
+        // 仮のサイズでツールバー生成
+        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 40))
+        toolBar.barStyle = .default  // スタイルを設定
+        toolBar.sizeToFit()  // 画面幅に合わせてサイズを変更
+        // スペーサー
+        let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        // 閉じるボタン
+        let commitButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.doneBtnTapped(sender:)))
+        toolBar.items = [spacer, commitButton]
+        
+        
+        memoView.inputAccessoryView = toolBar
+    }
+    
+    @objc func doneBtnTapped(sender:UIBarButtonItem){
+        memoView.resignFirstResponder()
     }
     
 }
@@ -99,6 +118,7 @@ extension LabelAppInfoView:UITableViewDataSource {
             if let placeholderLabel = cell.memoView.viewWithTag(100) as? UILabel {
                 placeholderLabel.isHidden = cell.memoView.text.count > 0
             }
+            setDoneBtn(memoView: cell.memoView)
             
             DispatchQueue.global().asyncAfter(deadline: DispatchTime.now() + 0.2, execute: {
                 DispatchQueue.main.async {
@@ -159,7 +179,7 @@ extension LabelAppInfoView:UITextViewDelegate {
             if scrollRect.maxY >= keyMinY {
                 let diffY = scrollRect.maxY - keyMinY
                 UIView.animate(withDuration: 0.2, animations: {
-                    self.detailVC.contentView.contentOffset.y += diffY + 20
+                    self.detailVC.contentView.contentOffset.y += diffY + 70
                 })
             }
         }
