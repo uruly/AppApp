@@ -19,10 +19,11 @@ class MemoCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.contentView.backgroundColor = UIColor.white
         memoView.delegate = self
         memoView.text = memo
         memoView.placeholder = "ラベルごとにメモを残せます"
-        widthLayout.constant = UIScreen.main.bounds.width - 30
+        widthLayout.constant = UIScreen.main.bounds.width - 60
     }
 
 }
@@ -36,6 +37,7 @@ extension MemoCollectionViewCell:UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         //self.beginUpdates()
         //self.endUpdates()
+        detailVC.contentView.collectionViewLayout.invalidateLayout()
         
         if let placeholderLabel = textView.viewWithTag(100) as? UILabel {
             placeholderLabel.isHidden = textView.text.count > 0

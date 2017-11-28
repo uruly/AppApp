@@ -19,24 +19,33 @@
                 <rect key="frame" x="0.0" y="0.0" width="337" height="148"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Hck-Tl-N1D">
-                        <rect key="frame" x="0.0" y="0.0" width="337" height="148"/>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Hck-Tl-N1D">
+                        <rect key="frame" x="15" y="37.5" width="307" height="95.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="337" id="DFi-uR-VRy"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="DFi-uR-VRy"/>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="GB8-zG-Pi3"/>
                         </constraints>
                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="このラベルに関するメモ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eDF-41-U8B">
+                        <rect key="frame" x="15" y="15" width="307" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="Hck-Tl-N1D" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="APn-E0-dgK"/>
-                <constraint firstItem="Hck-Tl-N1D" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Flb-xt-8XB"/>
-                <constraint firstAttribute="bottom" secondItem="Hck-Tl-N1D" secondAttribute="bottom" id="Kh2-lz-R30"/>
-                <constraint firstAttribute="trailing" secondItem="Hck-Tl-N1D" secondAttribute="trailing" id="Zqi-gt-Ida"/>
+                <constraint firstItem="eDF-41-U8B" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="15" id="GL7-yj-DwB"/>
+                <constraint firstAttribute="bottom" secondItem="Hck-Tl-N1D" secondAttribute="bottom" constant="15" id="Kh2-lz-R30"/>
+                <constraint firstAttribute="trailing" secondItem="eDF-41-U8B" secondAttribute="trailing" constant="15" id="PV1-zn-2AM"/>
+                <constraint firstAttribute="trailing" secondItem="Hck-Tl-N1D" secondAttribute="trailing" constant="15" id="dZ3-Xn-rRZ"/>
+                <constraint firstItem="Hck-Tl-N1D" firstAttribute="top" secondItem="eDF-41-U8B" secondAttribute="bottom" constant="5" id="f3w-Sb-IZS"/>
+                <constraint firstItem="Hck-Tl-N1D" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="nZA-VE-OZk"/>
+                <constraint firstItem="eDF-41-U8B" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="smw-1a-zCH"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="337" height="148"/>
