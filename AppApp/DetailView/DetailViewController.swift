@@ -33,7 +33,8 @@ class DetailViewController: UIViewController {
         let margin:CGFloat = 15.0
         
         let layout = UICollectionViewFlowLayout()
-        layout.estimatedItemSize = CGSize(width:width - (margin * 2),height:200)
+        layout.estimatedItemSize = CGSize(width:width - (margin * 2),height:300)
+        //layout.itemSize = CGSize(width:width - (margin * 2),height:500)
         layout.sectionInset = UIEdgeInsetsMake(15, 0, 30, 0)
         contentView = DetailContentView(frame: CGRect(x:0,y:0,width:width,height:height), collectionViewLayout: layout)
         self.view.addSubview(contentView)

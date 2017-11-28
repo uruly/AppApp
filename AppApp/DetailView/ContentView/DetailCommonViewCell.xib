@@ -23,7 +23,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="267" height="149"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="267" id="tmY-eu-EwX"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="Y8I-Wf-wHW"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="267" id="tmY-eu-EwX"/>
                         </constraints>
                     </tableView>
                 </subviews>

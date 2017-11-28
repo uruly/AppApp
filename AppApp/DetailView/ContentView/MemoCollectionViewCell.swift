@@ -8,6 +8,10 @@
 
 import UIKit
 
+@objc protocol MemoDelegate{
+    func scroll()
+}
+
 class MemoCollectionViewCell: UICollectionViewCell {
 
     var memo:String = ""
@@ -26,8 +30,14 @@ class MemoCollectionViewCell: UICollectionViewCell {
         widthLayout.constant = UIScreen.main.bounds.width - 60
     }
 
+    
+    
 }
 extension MemoCollectionViewCell:UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        detailVC.contentView.scrollToMemoView()
+    }
+    
     func textViewDidEndEditing(_ textView: UITextView) {
         textView.resignFirstResponder()
         if let text = textView.text{
@@ -59,7 +69,7 @@ extension MemoCollectionViewCell:MemoDelegate {
             if let text = memoView.text , memoView.isFirstResponder{
                 detailVC.memoText = text
             }
-            _ = memoView.resignFirstResponder()
+            //_ = memoView.resignFirstResponder()
         }
     }
 }

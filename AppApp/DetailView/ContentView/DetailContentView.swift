@@ -30,6 +30,12 @@ class DetailContentView: UICollectionView {
         self.register(UINib(nibName:"MemoCollectionViewCell",bundle:nil), forCellWithReuseIdentifier: "detailMemo")
         self.register(UINib(nibName:"DetailCommonViewCell",bundle:nil), forCellWithReuseIdentifier: "detailCommon")
         self.register(UINib(nibName:"DetailAppInfoViewCell",bundle:nil), forCellWithReuseIdentifier: "detailAppInfo")
+        self.register(UINib(nibName:"DeleteViewCell",bundle:nil),forCellWithReuseIdentifier: "deleteApp")
+    }
+    
+    func scrollToMemoView(){
+        let indexPath = IndexPath(row: 2, section: 0)
+        scrollToItem(at: indexPath, at: .bottom, animated: true)
     }
     
 }
@@ -40,7 +46,7 @@ extension DetailContentView:UICollectionViewDelegate {
 
 extension DetailContentView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return 4
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -68,8 +74,7 @@ extension DetailContentView: UICollectionViewDataSource {
             
             return cell
         }
-        //else if indexPath.row == 2 {
-        else {
+        else if indexPath.row == 2 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "detailMemo", for: indexPath) as! MemoCollectionViewCell
             
             self.detailVC.delegate = cell
@@ -79,6 +84,12 @@ extension DetailContentView: UICollectionViewDataSource {
                 placeholderLabel.isHidden = cell.memoView.text.count > 0
             }
             self.memoDelegate = cell
+            
+            return cell
+        }else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "deleteApp", for: indexPath) as! DeleteViewCell
+            cell.tableView.detailVC = self.detailVC
+            cell.tableView.labelName = self.detailVC.appData.label.name
             
             return cell
         }

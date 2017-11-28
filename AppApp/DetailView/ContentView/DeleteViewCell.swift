@@ -1,16 +1,16 @@
 //
-//  DetailCommonViewCell.swift
+//  DeleteViewCell.swift
 //  AppApp
 //
-//  Created by 久保　玲於奈 on 2017/11/27.
+//  Created by 久保　玲於奈 on 2017/11/28.
 //  Copyright © 2017年 Reona Kubo. All rights reserved.
 //
 
 import UIKit
 
-class DetailCommonViewCell: UICollectionViewCell {
-    @IBOutlet weak var tableView: CommonInfoView!
-    
+class DeleteViewCell: UICollectionViewCell {
+
+    @IBOutlet weak var tableView: DeleteAppView!
     @IBOutlet weak var widthLayout: NSLayoutConstraint!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -18,5 +18,6 @@ class DetailCommonViewCell: UICollectionViewCell {
         widthLayout.constant = UIScreen.main.bounds.width - 30
         tableView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - 30)
     }
+
 
 }

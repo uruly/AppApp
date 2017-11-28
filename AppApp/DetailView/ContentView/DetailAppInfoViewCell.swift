@@ -16,6 +16,7 @@ class DetailAppInfoViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
         widthLayout.constant = UIScreen.main.bounds.width - 30
+        infoView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - 30)
     }
 
 }
