@@ -53,7 +53,7 @@ extension DeleteAppView: UITableViewDelegate {
         let cell = tableView.cellForRow(at: indexPath)
         cell?.isSelected = false
         
-        if detailVC.appData.label.id != "0"  {
+        if detailVC.appData.label.id == "0"  {
             detailVC.deleteAppAllData()
         }else {
             if indexPath.row == 0{
