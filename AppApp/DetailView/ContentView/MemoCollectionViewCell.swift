@@ -27,7 +27,7 @@ class MemoCollectionViewCell: UICollectionViewCell {
         memoView.delegate = self
         memoView.text = memo
         memoView.placeholder = "ラベルごとにメモを残せます"
-        widthLayout.constant = UIScreen.main.bounds.width - 60
+        //widthLayout.constant = UIScreen.main.bounds.width - 60
     }
 
     

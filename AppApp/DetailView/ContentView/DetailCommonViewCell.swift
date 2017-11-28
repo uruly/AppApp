@@ -15,8 +15,26 @@ class DetailCommonViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        widthLayout.constant = UIScreen.main.bounds.width - 30
-        tableView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - 30)
+        //widthLayout.constant = UIScreen.main.bounds.width - 30
+        //tableView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - 30)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "AppInfo")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        //ここでcellの大きさを変えたい
+        self.sizeToFit()
+        print("layoutSubviewだよ")
     }
 
+    func setTableViewDataSourceDelegate
+        <D: UITableViewDataSource & UITableViewDelegate>
+        (dataSourceDelegate: D, forRow row: Int) {
+        
+        tableView.delegate = dataSourceDelegate
+        tableView.dataSource = dataSourceDelegate
+        tableView.reloadData()
+        
+    }
+    
 }

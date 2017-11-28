@@ -45,6 +45,13 @@ extension DetailContentView:UICollectionViewDelegate {
 }
 
 extension DetailContentView: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard let cell = cell as? DetailCommonViewCell else { return }
+        
+        //ShopTableViewCell.swiftで設定したメソッドを呼び出す
+        cell.setTableViewDataSourceDelegate(dataSourceDelegate: cell.tableView, forRow: indexPath.row)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 4
     }
