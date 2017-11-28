@@ -10,6 +10,7 @@ import UIKit
 
 @objc protocol MemoDelegate {
     func scroll()
+    var labelAppInfoView:LabelAppInfoView { get } 
 }
 
 class LabelAppInfoView: UITableView {
@@ -40,18 +41,8 @@ class LabelAppInfoView: UITableView {
         self.contentInset.bottom = 15
         print("awake")
         
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(self.showKeyboard(notification:)),
-            name: NSNotification.Name.UIKeyboardWillShow,
-            object: nil
-        )
     }
-    
-    override func removeFromSuperview() {
-        super.removeFromSuperview()
-        print("remove")
-    }
+
     override func reloadData() {
         super.reloadData()
         if detailVC != nil{
@@ -67,27 +58,48 @@ class LabelAppInfoView: UITableView {
                 print(keyboardFrameInfo.cgRectValue.height)
                 let keyboardHeight = keyboardFrameInfo.cgRectValue.height
                 let keyMinY = self.detailVC.view.frame.height - keyboardHeight
-                if let range = memoView.selectedTextRange?.end{
+                if let range = memoView.selectedTextRange?.start{
                     let rect = memoView.caretRect(for:range)
+                    print("range\(range)")
                     print("rect\(rect)")
+                    //NSInteger pos = [textField offsetFromPosition:beginning toPosition:startPosition
+//                    var pos = memoView.offset(from: memoView.beginningOfDocument, to: start)
                     //このYがキーボードと被っているかどうかで判断をする
+                    //let scrollRect = self.detailVC.contentView.convert(rect, from: memoView)
+                    //print("scrollRect\(scrollRect)")
                     let scrollRect = memoView.convert(rect, to: self.detailVC.view)
                     let currentContentRect = memoView.convert(rect,to:self.detailVC.contentView)
                     print("contentRe\(currentContentRect)")
                     print("scrollRect.maxY\(scrollRect.maxY)")
                     print("min\(scrollRect.minY)")
                     print("keyMinY\(keyMinY)")
-                    if scrollRect.minY >= keyMinY {
-                        let diffY = scrollRect.minY - keyMinY
+                    if scrollRect.maxY >= keyMinY {
+                        let diffY = scrollRect.maxY - keyMinY
                         print(diffY)
+                        detailVC.contentView.contentOffset.y += diffY + 20.0
+                        print("memoView.center前\(memoView.center)")
+
                         //let currentContentOffsetY =
                         print("detailVC.contentView.contentOffset.y\(detailVC.contentView.contentOffset.y)")
+//                        let current = detailVC.contentView.contentOffset.y
+//                        if current + diffY > detailVC.contentView.contentSize.height {
+//                            print("大きいよ")
+//                            detailVC.contentView.contentOffset.y += diffY
+//                        }else {
+//                            print("ちいさいよ")
+//                            detailVC.view.transform.translatedBy(x: 0, y: -diffY)
+//                        }
                         // navigationbar の分が−64されて帰ってくる
-                        detailVC.contentView.contentOffset.y += (diffY - (detailVC.navigationController?.navigationBar.frame.maxY ?? 0) )
+                        //detailVC.view.transform = CGAffineTransform(translationX: 0, y: -(diffY + 50.0))
+//                        detailVC.contentView.contentSize.height += 100
+                        //detailVC.contentView.contentOffset.y = currentContentRect.minY - 200
                     }
                 }
             }
         }
+    }
+    
+    @objc func dismissKeyboard(notification:Notification){
     }
     
 }
@@ -187,6 +199,9 @@ extension LabelAppInfoView:MemoDelegate {
             }
             _ = memoView.resignFirstResponder()
         }
+    }
+    var labelAppInfoView:LabelAppInfoView{
+        return self
     }
 }
 

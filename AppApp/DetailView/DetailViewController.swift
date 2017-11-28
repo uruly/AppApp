@@ -13,7 +13,26 @@ import StoreKit
 class DetailViewController: UIViewController {
 
     var appData:ApplicationStruct!
-    var delegate:MemoDelegate!
+    var canSetObserver = true
+    var delegate:MemoDelegate!{
+        didSet {
+            if canSetObserver {
+                NotificationCenter.default.addObserver(
+                    delegate,
+                    selector: #selector(delegate.labelAppInfoView.showKeyboard(notification:)),
+                    name: NSNotification.Name.UIKeyboardDidShow,
+                    object: nil
+                )
+                NotificationCenter.default.addObserver(
+                    delegate,
+                    selector: #selector(delegate.labelAppInfoView.dismissKeyboard(notification:)),
+                    name: NSNotification.Name.UIKeyboardDidHide,
+                    object: nil
+                )
+                canSetObserver = false
+            }
+        }
+    }
     var contentView:DetailContentView!
     var memoText:String = ""{
         didSet {
@@ -46,8 +65,13 @@ class DetailViewController: UIViewController {
         contentView.developerName = appData.app.developer
         contentView.id = appData.app.id
         contentView.saveDate = convertDate(appData.app.date)
+        
     }
 
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
