@@ -19,6 +19,7 @@ class LabelAppInfoView: UITableView {
     var memoView:UITextView!
     var detailVC:DetailViewController!
     //var widthLayout:CGFloat!
+    var keyboardHeight:CGFloat = 0
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -57,42 +58,16 @@ class LabelAppInfoView: UITableView {
                 // キーボードの高さを取得
                 print(keyboardFrameInfo.cgRectValue.height)
                 let keyboardHeight = keyboardFrameInfo.cgRectValue.height
+                self.keyboardHeight = keyboardHeight
                 let keyMinY = self.detailVC.view.frame.height - keyboardHeight
                 if let range = memoView.selectedTextRange?.start{
                     let rect = memoView.caretRect(for:range)
-                    print("range\(range)")
-                    print("rect\(rect)")
-                    //NSInteger pos = [textField offsetFromPosition:beginning toPosition:startPosition
-//                    var pos = memoView.offset(from: memoView.beginningOfDocument, to: start)
-                    //このYがキーボードと被っているかどうかで判断をする
-                    //let scrollRect = self.detailVC.contentView.convert(rect, from: memoView)
-                    //print("scrollRect\(scrollRect)")
                     let scrollRect = memoView.convert(rect, to: self.detailVC.view)
-                    let currentContentRect = memoView.convert(rect,to:self.detailVC.contentView)
-                    print("contentRe\(currentContentRect)")
-                    print("scrollRect.maxY\(scrollRect.maxY)")
-                    print("min\(scrollRect.minY)")
-                    print("keyMinY\(keyMinY)")
                     if scrollRect.maxY >= keyMinY {
                         let diffY = scrollRect.maxY - keyMinY
-                        print(diffY)
-                        detailVC.contentView.contentOffset.y += diffY + 20.0
-                        print("memoView.center前\(memoView.center)")
-
-                        //let currentContentOffsetY =
-                        print("detailVC.contentView.contentOffset.y\(detailVC.contentView.contentOffset.y)")
-//                        let current = detailVC.contentView.contentOffset.y
-//                        if current + diffY > detailVC.contentView.contentSize.height {
-//                            print("大きいよ")
-//                            detailVC.contentView.contentOffset.y += diffY
-//                        }else {
-//                            print("ちいさいよ")
-//                            detailVC.view.transform.translatedBy(x: 0, y: -diffY)
-//                        }
-                        // navigationbar の分が−64されて帰ってくる
-                        //detailVC.view.transform = CGAffineTransform(translationX: 0, y: -(diffY + 50.0))
-//                        detailVC.contentView.contentSize.height += 100
-                        //detailVC.contentView.contentOffset.y = currentContentRect.minY - 200
+                        UIView.animate(withDuration: 0.2, animations: {
+                            self.detailVC.contentView.contentOffset.y += diffY + 20.0
+                        })
                     }
                 }
             }
@@ -176,12 +151,17 @@ extension LabelAppInfoView:UITextViewDelegate {
             detailVC.memoText = text
         }
         
-        if let range = textView.selectedTextRange?.end{
+        //カーソルがキーボードと被ってないかチェック
+        let keyMinY = self.detailVC.view.frame.height - keyboardHeight
+        if let range = textView.selectedTextRange?.start{
             let rect = textView.caretRect(for:range)
-            print(rect)
-            //このYがキーボードと被っているかどうかで判断をする
             let scrollRect = textView.convert(rect, to: self.detailVC.view)
-            print(scrollRect)
+            if scrollRect.maxY >= keyMinY {
+                let diffY = scrollRect.maxY - keyMinY
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.detailVC.contentView.contentOffset.y += diffY + 20
+                })
+            }
         }
     }
     
