@@ -44,7 +44,7 @@ class AppInfoView: UIView {
         self.addSubview(imageView)
         
         //アプリ名を配置
-        appNameLabel = UILabel(frame: CGRect(x:imageView.frame.maxX + margin,y:margin + 5,width:width - imageView.frame.width - (margin * 2),height:250))
+        appNameLabel = UILabel(frame: CGRect(x:imageView.frame.maxX + margin,y:margin + 5,width:width - imageView.frame.width - (margin * 2),height:30))
         appNameLabel.text = appName
         appNameLabel.numberOfLines = 0
         appNameLabel.font = UIFont.boldSystemFont(ofSize: 18)
@@ -53,16 +53,39 @@ class AppInfoView: UIView {
         
         //ボタンを配置
         let showStoreBtn = UIButton()
-        showStoreBtn.frame = CGRect(x:imageView.frame.maxX + margin,y:imageView.frame.maxY - 35,width:width - imageView.frame.width - (margin * 2),height:35)
+        let btnWidth:CGFloat = 150.0
+        //width - imageView.frame.width - (margin * 2)
+        showStoreBtn.frame = CGRect(x:imageView.frame.maxX + margin,y:imageView.frame.maxY - 35,width:btnWidth,height:35)
         showStoreBtn.backgroundColor = UIColor.blue
         showStoreBtn.addTarget(detailVC, action: #selector(detailVC.showProductPage), for: .touchUpInside)
-        showStoreBtn.setTitle("AppStoreでみる", for: .normal)
+        showStoreBtn.setTitle("AppStore", for: .normal)
         showStoreBtn.setTitleColor(UIColor.white, for: .normal)
         showStoreBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         self.addSubview(showStoreBtn)
         
+        //Webで見るボタン
+        let webSearchBtn = UIButton()
+        webSearchBtn.frame = CGRect(x:width - 50 + 10,y:imageView.frame.maxY - 35,width:50,height:35)
+        webSearchBtn.backgroundColor = UIColor.blue
+        webSearchBtn.addTarget(self, action: #selector(self.showWebPage), for: .touchUpInside)
+        webSearchBtn.setTitle("Web", for: .normal)
+        webSearchBtn.setTitleColor(UIColor.white, for: .normal)
+        webSearchBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        self.addSubview(webSearchBtn)
+        
+        if appNameLabel.frame.maxY > showStoreBtn.frame.minY {
+            print("被っているよ")
+            appNameLabel.font = UIFont.boldSystemFont(ofSize: 16)
+            appNameLabel.sizeThatFits(CGSize(width:appNameLabel.frame.width,height:showStoreBtn.frame.minY - appNameLabel.frame.minY))
+            showStoreBtn.frame = CGRect(x:imageView.frame.maxX + margin,y:appNameLabel.frame.maxY,width:btnWidth,height:35)
+            webSearchBtn.frame = CGRect(x:width - 50 + 10,y:appNameLabel.frame.maxY,width:50,height:35)
+        }
         
         detailVC.contentView.topInfoFrame = CGSize(width:detailVC.view.frame.width,height:imageView.frame.maxY + margin)
+    }
+    
+    @objc func showWebPage(){
+        detailVC.segueToWebView(detailVC.appData.app.name)
     }
 
 }
