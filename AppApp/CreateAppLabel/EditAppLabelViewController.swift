@@ -170,13 +170,41 @@ class EditAppLabelViewController: CreateAppLabelViewController {
         }
         //セーブをする
         print(order)
-        AppLabel.updateLabelData(name: labelName!, color: color, id: id, order: order,explain:explain){
-            AppData.saveAppData(appList: appList, labelID: id) {
-                BasePageViewController.isUnwind = true
-                self.dismiss(animated:true,completion:nil)
+        self.checkColor(color)
+    }
+
+    override func checkColor(_ color:UIColor) {
+        if AppLabel.contains(color: color,isEdit:true,id:self.id) {
+            //ポップアップを表示
+            let alertController = UIAlertController(title: "この色はすでに使われています", message: "", preferredStyle: .alert)
+            let otherAction = UIAlertAction(title: "このまま保存する", style: .default) {
+                action in
+                NSLog("はいボタンが押されました")
+                AppLabel.updateLabelData(name: self.labelName!, color: self.color, id: self.id, order: self.order,explain:self.explain){
+                    AppData.saveAppData(appList: self.appList, labelID: self.id) {
+                        BasePageViewController.isUnwind = true
+                        self.dismiss(animated:true,completion:nil)
+                    }
+                }
+            }
+            let cancelAction = UIAlertAction(title: "修正する", style: .cancel) {
+                action in NSLog("いいえボタンが押されました")
+            }
+            
+            alertController.addAction(otherAction)
+            alertController.addAction(cancelAction)
+            
+            self.present(alertController, animated: true, completion: nil)
+        }else {
+            AppLabel.updateLabelData(name: labelName!, color: color, id: id, order: order,explain:explain){
+                AppData.saveAppData(appList: appList, labelID: id) {
+                    BasePageViewController.isUnwind = true
+                    self.dismiss(animated:true,completion:nil)
+                }
             }
         }
     }
+    
     
     override func showPicker(){
         let width = self.view.frame.width

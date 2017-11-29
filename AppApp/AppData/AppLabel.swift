@@ -217,6 +217,34 @@ class AppLabel {
         return false
     }
     
+    static func contains(color:UIColor,isEdit:Bool,id:String) -> Bool{
+        var config = Realm.Configuration(schemaVersion:SCHEMA_VERSION)
+        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
+        config.fileURL = url.appendingPathComponent("db.realm")
+        
+        let realm = try! Realm(configuration: config)
+        let objs = realm.objects(AppLabelRealmData.self)
+        for obj in objs{
+            if let objColor = NSKeyedUnarchiver.unarchiveObject(with: obj.color!) as? UIColor{
+                if objColor == color{
+                    print("同じ色")
+                    if isEdit {
+                        //自身と同じ色ならcontinue
+                        if obj.id == id {
+                            continue
+                        }else {
+                            return true
+                        }
+                        
+                    }else {
+                        return true
+                    }
+                }
+            }
+        }
+        return false
+    }
+    
     static func deleteLabelData(labelID:String,_ completion:()->()){
         var config = Realm.Configuration(schemaVersion:SCHEMA_VERSION)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!

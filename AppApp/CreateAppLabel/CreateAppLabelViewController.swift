@@ -139,8 +139,31 @@ class CreateAppLabelViewController: UIViewController {
             return
         }
         //同じ色がすでに含まれていたらポップアップで確認を取る
-        self.saveLabelData()
+        self.checkColor(color)
         
+        
+    }
+    
+    func checkColor(_ color:UIColor) {
+        if AppLabel.contains(color: color,isEdit:false,id:"") {
+            //ポップアップを表示
+            let alertController = UIAlertController(title: "この色はすでに使われています", message: "", preferredStyle: .alert)
+            let otherAction = UIAlertAction(title: "このまま保存する", style: .default) {
+                action in
+                NSLog("はいボタンが押されました")
+                self.saveLabelData()
+            }
+            let cancelAction = UIAlertAction(title: "修正する", style: .cancel) {
+                action in NSLog("いいえボタンが押されました")
+            }
+            
+            alertController.addAction(otherAction)
+            alertController.addAction(cancelAction)
+            
+            self.present(alertController, animated: true, completion: nil)
+        }else {
+            self.saveLabelData()
+        }
     }
     
     func createFakeView(tag:Int){
