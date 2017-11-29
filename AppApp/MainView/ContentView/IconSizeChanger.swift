@@ -65,7 +65,7 @@ class IconSizeChanger: UIToolbar {
     }
     
     func setupCollect(){
-        slider = UISlider(frame: CGRect(x:0,y:0,width:self.frame.width / 2,height:self.frame.height))
+        slider = UISlider(frame: CGRect(x:0,y:0,width:self.frame.width * 2 / 5,height:self.frame.height))
         slider.minimumValue = 30.0
         slider.maximumValue = 150.0
         let value = UserDefaults.standard.float(forKey:"IconSize")
@@ -75,8 +75,15 @@ class IconSizeChanger: UIToolbar {
         let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         
         let listBtn = UIBarButtonItem(image: UIImage(named:"list.png"), style: .plain, target: self, action: #selector(self.changeMode(sender:)))
+        
+        let smallIcon = UIBarButtonItem(image: UIImage(named:"small.png"), style: .plain, target: self, action: nil)
+        let bigIcon = UIBarButtonItem(image: UIImage(named:"big.png"),style:.plain,target:self,action:nil)
+        let flexibleIcon = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+        smallIcon.tintColor = UIColor.lightGray
+        bigIcon.tintColor = UIColor.lightGray
+        
         listBtn.tag = 5
-        self.items = [sliderView,flexible,listBtn]
+        self.items = [smallIcon,sliderView,bigIcon,flexible,flexibleIcon,flexible,listBtn]
         
         if sliderDelegate != nil {
             slider.addTarget(sliderDelegate, action: #selector(sliderDelegate.sliderValueChanged(sender:)), for: .valueChanged)
