@@ -65,6 +65,7 @@ class AppInfoView: UIView {
         showStoreBtn.setTitle("AppStore", for: .normal)
         showStoreBtn.setTitleColor(UIColor.white, for: .normal)
         showStoreBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        showStoreBtn.layer.cornerRadius = 35 / 2
         self.addSubview(showStoreBtn)
         
         //Webで見るボタン
@@ -75,6 +76,7 @@ class AppInfoView: UIView {
         webSearchBtn.setTitle("Web", for: .normal)
         webSearchBtn.setTitleColor(UIColor.white, for: .normal)
         webSearchBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        webSearchBtn.layer.cornerRadius = 35 / 2
         self.addSubview(webSearchBtn)
         
         if appNameLabel.frame.maxY > showStoreBtn.frame.minY {
