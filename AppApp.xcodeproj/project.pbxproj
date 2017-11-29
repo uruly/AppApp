@@ -20,6 +20,10 @@
 		66498E371FC8067100239B47 /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 66498E361FC8067100239B47 /* check.png */; };
 		66498E391FC810BF00239B47 /* Array+FindIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E381FC810BF00239B47 /* Array+FindIndex.swift */; };
 		66498E3B1FC82F9000239B47 /* EditToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E3A1FC82F9000239B47 /* EditToolbar.swift */; };
+		6652DED01FCEAC9800EB84F6 /* collect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6652DECE1FCEAC9800EB84F6 /* collect@2x.png */; };
+		6652DED11FCEAC9800EB84F6 /* collect@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6652DECF1FCEAC9800EB84F6 /* collect@3x.png */; };
+		6652DED81FCEAF6100EB84F6 /* list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6652DED61FCEAF6000EB84F6 /* list@2x.png */; };
+		6652DED91FCEAF6100EB84F6 /* list@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6652DED71FCEAF6000EB84F6 /* list@3x.png */; };
 		66681CDA1FCC1501009A0F55 /* DetailContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66681CD91FCC1501009A0F55 /* DetailContentView.swift */; };
 		66681CE11FCC1734009A0F55 /* DetailCommonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66681CDF1FCC1734009A0F55 /* DetailCommonViewCell.swift */; };
 		66681CE21FCC1734009A0F55 /* DetailCommonViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66681CE01FCC1734009A0F55 /* DetailCommonViewCell.xib */; };
@@ -135,6 +139,10 @@
 		66498E361FC8067100239B47 /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
 		66498E381FC810BF00239B47 /* Array+FindIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+FindIndex.swift"; sourceTree = "<group>"; };
 		66498E3A1FC82F9000239B47 /* EditToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditToolbar.swift; sourceTree = "<group>"; };
+		6652DECE1FCEAC9800EB84F6 /* collect@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "collect@2x.png"; sourceTree = "<group>"; };
+		6652DECF1FCEAC9800EB84F6 /* collect@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "collect@3x.png"; sourceTree = "<group>"; };
+		6652DED61FCEAF6000EB84F6 /* list@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list@2x.png"; sourceTree = "<group>"; };
+		6652DED71FCEAF6000EB84F6 /* list@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list@3x.png"; sourceTree = "<group>"; };
 		66681CD91FCC1501009A0F55 /* DetailContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailContentView.swift; sourceTree = "<group>"; };
 		66681CDF1FCC1734009A0F55 /* DetailCommonViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCommonViewCell.swift; sourceTree = "<group>"; };
 		66681CE01FCC1734009A0F55 /* DetailCommonViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailCommonViewCell.xib; sourceTree = "<group>"; };
@@ -243,6 +251,10 @@
 			children = (
 				666E06B91FCBB3740043DCFF /* right_arrow@2x.png */,
 				666E06BC1FCBB3880043DCFF /* left_arrow@2x.png */,
+				6652DECE1FCEAC9800EB84F6 /* collect@2x.png */,
+				6652DECF1FCEAC9800EB84F6 /* collect@3x.png */,
+				6652DED61FCEAF6000EB84F6 /* list@2x.png */,
+				6652DED71FCEAF6000EB84F6 /* list@3x.png */,
 				666E06BD1FCBB3880043DCFF /* left_arrow@3x.png */,
 				666E06B81FCBB3740043DCFF /* right_arrow@3x.png */,
 				66498E361FC8067100239B47 /* check.png */,
@@ -615,9 +627,12 @@
 				666E06BA1FCBB3740043DCFF /* right_arrow@3x.png in Resources */,
 				666E06BB1FCBB3740043DCFF /* right_arrow@2x.png in Resources */,
 				66681CE61FCC17E2009A0F55 /* DetailAppInfoViewCell.xib in Resources */,
+				6652DED01FCEAC9800EB84F6 /* collect@2x.png in Resources */,
 				66498E371FC8067100239B47 /* check.png in Resources */,
+				6652DED11FCEAC9800EB84F6 /* collect@3x.png in Resources */,
 				666E06BE1FCBB3880043DCFF /* left_arrow@2x.png in Resources */,
 				667ECE601FC395C2009233DE /* SelectionBarCell.xib in Resources */,
+				6652DED91FCEAF6100EB84F6 /* list@3x.png in Resources */,
 				667ECE231FC36784009233DE /* LaunchScreen.storyboard in Resources */,
 				6676ED381FCD582200815BF8 /* DetailMemoViewCell.xib in Resources */,
 				666E06B51FCB9A880043DCFF /* MemoCell.xib in Resources */,
@@ -625,6 +640,7 @@
 				666E06BF1FCBB3880043DCFF /* left_arrow@3x.png in Resources */,
 				6677FC301FCAB72F00CB105E /* AppInfoCell.xib in Resources */,
 				667ECE1E1FC36784009233DE /* Main.storyboard in Resources */,
+				6652DED81FCEAF6100EB84F6 /* list@2x.png in Resources */,
 				66681CE21FCC1734009A0F55 /* DetailCommonViewCell.xib in Resources */,
 				667ECE721FC4206F009233DE /* AppCollectionViewCell.xib in Resources */,
 			);

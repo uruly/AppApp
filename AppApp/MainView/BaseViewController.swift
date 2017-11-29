@@ -50,15 +50,17 @@ class BaseViewController: UIViewController {
         //delegateを設定
         if self.basePageVC.iconSizeChanger != nil {
             self.basePageVC.iconSizeChanger.sliderDelegate = collectionView
-            var value = CGFloat(UserDefaults.standard.float(forKey:"IconSize"))
-            if value == 0 { value = 50.0 }
-            self.basePageVC.iconSizeChanger.slider.value = Float(value)
-            if value > 160.0 {
-                self.collectionView.itemSize = CGSize(width:self.view.frame.width - 30,height:100)
-            }else {
-                self.collectionView.itemSize = CGSize(width:value,height:value)
+            if self.basePageVC.iconSizeChanger.slider != nil {
+                var value = CGFloat(UserDefaults.standard.float(forKey:"IconSize"))
+                if value == 0 { value = 50.0 }
+                self.basePageVC.iconSizeChanger.slider.value = Float(value)
+                if value > 160.0 {
+                    self.collectionView.itemSize = CGSize(width:self.view.frame.width - 30,height:100)
+                }else {
+                    self.collectionView.itemSize = CGSize(width:value,height:value)
+                }
+                self.collectionView.collectionViewLayout.invalidateLayout()
             }
-            self.collectionView.collectionViewLayout.invalidateLayout()
         }
         
         if self.basePageVC.editToolbar != nil {
