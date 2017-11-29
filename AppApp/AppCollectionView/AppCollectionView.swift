@@ -36,7 +36,7 @@ class AppCollectionView: UICollectionView {
             //self.collectionViewLayout.invalidateLayout()
             DispatchQueue.main.async {
                 self.reloadData()
-                self.backgroundColor = self.appData.label.color
+                //self.backgroundColor = self.appData.label.color
             }
             //self.collectionViewLayout.invalidateLayout()
         }
@@ -104,6 +104,8 @@ class AppCollectionView: UICollectionView {
     
     override func reloadData(){
         if appData != nil {
+            self.backgroundColor = mode == .collect ? UIColor.white : self.appData.label.color
+            //self.backgroundColor = UIColor.white
             super.reloadData()
         }
     }
