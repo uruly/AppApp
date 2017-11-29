@@ -19,8 +19,8 @@ class AppCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        checkImageView.image = UIImage(named:"check.png")?.withRenderingMode(.alwaysTemplate)
-        checkImageView.tintColor = UIColor.checkBtn()
+        //checkImageView.image = UIImage(named:"check2.png")?.withRenderingMode(.alwaysTemplate)
+        //checkImageView.tintColor = UIColor.checkBtn()
         
         checkImageView.isHidden = true
         
