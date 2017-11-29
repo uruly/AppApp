@@ -405,7 +405,7 @@ class ShareViewController: SLComposeServiceViewController {
     
     override func configurationItems() -> [Any]! {
         
-        return [labelItem,memoItem,ratingItem]
+        return [labelItem!,memoItem!]
     }
 
 }
