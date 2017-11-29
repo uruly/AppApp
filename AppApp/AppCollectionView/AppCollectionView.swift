@@ -203,6 +203,17 @@ extension AppCollectionView:UICollectionViewDataSource {
             cell.nameLabel.text = appData.appList[indexPath.row].app.name
             cell.developerLabel.text = appData.appList[indexPath.row].app.developer
             
+            //チェックマーク
+            cell.checkImageView.isHidden = true
+            cell.imageView.alpha = 1.0
+            //編集中かどうか
+            if AppCollectionView.isWhileEditing {
+                if checkArray.contains(where: {$0.id == appData.appList[indexPath.row].id}){
+                    cell.checkImageView.isHidden = false
+                    cell.imageView.alpha = 0.5
+                }
+            }
+            
             return cell
         }
     }
