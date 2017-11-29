@@ -38,6 +38,13 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check.png" translatesAutoresizingMaskIntoConstraints="NO" id="zXb-K3-kxZ">
+                        <rect key="frame" x="300" y="75" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="F26-Wi-Zp0"/>
+                            <constraint firstAttribute="height" constant="30" id="gRF-hT-OPt"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
             </view>
             <constraints>
@@ -46,14 +53,17 @@
                 <constraint firstItem="NpB-L0-wfH" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="15" id="3w7-0E-tPC"/>
                 <constraint firstAttribute="bottom" secondItem="8UY-sq-nVj" secondAttribute="bottom" constant="5" id="8AU-ib-yPL"/>
                 <constraint firstItem="NpB-L0-wfH" firstAttribute="leading" secondItem="8UY-sq-nVj" secondAttribute="trailing" constant="15" id="8J7-9X-TSt"/>
+                <constraint firstAttribute="trailing" secondItem="zXb-K3-kxZ" secondAttribute="trailing" constant="5" id="8Qf-xE-Nfo"/>
                 <constraint firstAttribute="trailing" secondItem="8OE-ma-Mzn" secondAttribute="trailing" constant="15" id="HTy-lf-Q9J"/>
                 <constraint firstAttribute="trailing" secondItem="NpB-L0-wfH" secondAttribute="trailing" constant="15" id="HZW-s2-hkA"/>
                 <constraint firstItem="8UY-sq-nVj" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="Ll9-Ap-xhX"/>
+                <constraint firstAttribute="bottom" secondItem="zXb-K3-kxZ" secondAttribute="bottom" constant="5" id="ldV-GO-gKe"/>
                 <constraint firstItem="8OE-ma-Mzn" firstAttribute="leading" secondItem="8UY-sq-nVj" secondAttribute="trailing" constant="15" id="zWN-Nv-ec8"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="335" height="110"/>
             <connections>
+                <outlet property="checkImageView" destination="zXb-K3-kxZ" id="SdL-eQ-q65"/>
                 <outlet property="developerLabel" destination="8OE-ma-Mzn" id="ahd-37-R8U"/>
                 <outlet property="imageView" destination="8UY-sq-nVj" id="L2i-YG-6UY"/>
                 <outlet property="nameLabel" destination="NpB-L0-wfH" id="ZbA-Ap-hpv"/>
@@ -61,4 +71,7 @@
             <point key="canvasLocation" x="167.5" y="82"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="check.png" width="400" height="400"/>
+    </resources>
 </document>

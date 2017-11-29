@@ -150,6 +150,20 @@ extension AppCollectionView:UICollectionViewDelegate {
                     cell.checkImageView.isHidden = false
                     cell.imageView.alpha = 0.5
                 }
+            }else {
+                let cell:AppInfoCell = collectionView.cellForItem(at: indexPath) as! AppInfoCell
+                
+                let id = appData.appList[indexPath.row].id
+                let index = checkArray.findIndex(includeElement: {$0.id == id})
+                if index.count > 0 {
+                    self.checkArray.remove(at: index[0])
+                    cell.checkImageView.isHidden = true
+                    cell.imageView.alpha = 1.0
+                }else {
+                    self.checkArray.append(appData.appList[indexPath.row])
+                    cell.checkImageView.isHidden = false
+                    cell.imageView.alpha = 0.5
+                }
             }
         }else{
             //画面遷移をする

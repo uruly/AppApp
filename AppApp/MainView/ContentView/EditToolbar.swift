@@ -35,7 +35,8 @@ class EditToolbar: UIToolbar {
     func setup(){
         let addLabelBtn = UIBarButtonItem(title: "ラベルを追加", style: .plain, target: editDelegate, action: #selector(editDelegate.addLabelBtnTapped))
         let deleteBtn = UIBarButtonItem(barButtonSystemItem: .trash, target: editDelegate, action: #selector(editDelegate.deleteAppBtnTapped))
-        let shareBtn = UIBarButtonItem(barButtonSystemItem: .action, target: editDelegate, action: #selector(editDelegate.shareAppBtnTapped))
+//        let shareBtn = UIBarButtonItem(barButtonSystemItem: .action, target: editDelegate, action: #selector(editDelegate.shareAppBtnTapped))
+        let shareBtn = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         
         
         let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)

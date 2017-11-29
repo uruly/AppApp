@@ -13,11 +13,16 @@ class AppInfoCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var developerLabel: UILabel!
+    @IBOutlet weak var checkImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         self.contentView.backgroundColor = UIColor.white
+        checkImageView.image = UIImage(named:"check.png")?.withRenderingMode(.alwaysTemplate)
+        checkImageView.tintColor = UIColor.checkBtn()
+        
+        checkImageView.isHidden = true
     }
 
 }
