@@ -293,21 +293,26 @@ class ShareViewController: SLComposeServiceViewController {
     }
     
     func saveAllLabel(appData:AppRealmData){
-        let colorData = NSKeyedArchiver.archivedData(withRootObject: UIColor.blue)
-        let labelRealm = AppLabelRealmData(value:["name":"ALL",
+        let realm = try! Realm()
+        var labelRealm:AppLabelRealmData
+        if let all = realm.object(ofType: AppLabelRealmData.self, forPrimaryKey: "0") {
+            labelRealm = all
+        }else {
+            //allがない時
+            let colorData = NSKeyedArchiver.archivedData(withRootObject: UIColor(red: 0, green: 0.478431, blue: 1, alpha: 1))
+            labelRealm = AppLabelRealmData(value:["name":"ALL",
                                                   "color":colorData,
                                                   "id":"0",
                                                   "order":0
-            ])
-        
+                ])
+        }
         var id = UUID().uuidString
         var order = self.dataCount(label:labelRealm)
-        let realm = try! Realm()
         if contains(labelID: labelRealm.id!, appID: appData.id){
             //すでにあるidをつける
             let objs = realm.objects(ApplicationData.self)
             for obj in objs {
-                if obj.app!.id == appData.id && obj.label!.id == labelRealm.id! {
+                if obj.app!.id == appData.id && obj.label!.id == labelRealm.id!  {
                     id = obj.id
                     order = obj.order
                     break
