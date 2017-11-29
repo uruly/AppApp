@@ -74,7 +74,7 @@ class IconSizeChanger: UIToolbar {
         
         let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         
-        let listBtn = UIBarButtonItem(image: UIImage(named:"list.png"), style: .plain, target: self, action: #selector(self.changeMode(sender:)))
+        let listBtn = UIBarButtonItem(image: UIImage(named:"list2.png"), style: .plain, target: self, action: #selector(self.changeMode(sender:)))
         
         let smallIcon = UIBarButtonItem(image: UIImage(named:"small.png"), style: .plain, target: self, action: nil)
         let bigIcon = UIBarButtonItem(image: UIImage(named:"big.png"),style:.plain,target:self,action:nil)
