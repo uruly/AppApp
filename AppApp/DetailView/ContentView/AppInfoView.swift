@@ -58,33 +58,34 @@ class AppInfoView: UIView {
         //ボタンを配置
         let showStoreBtn = UIButton()
         let btnWidth:CGFloat = 100.0
+        let btnHeight:CGFloat = 30.0
         //width - imageView.frame.width - (margin * 2)
-        showStoreBtn.frame = CGRect(x:imageView.frame.maxX + margin,y:imageView.frame.maxY - 35,width:btnWidth,height:35)
+        showStoreBtn.frame = CGRect(x:imageView.frame.maxX + margin,y:imageView.frame.maxY - btnHeight,width:btnWidth,height:btnHeight)
         showStoreBtn.backgroundColor = UIColor.appStoreBlue()
         showStoreBtn.addTarget(detailVC, action: #selector(detailVC.showProductPage), for: .touchUpInside)
         showStoreBtn.setTitle("AppStore", for: .normal)
         showStoreBtn.setTitleColor(UIColor.white, for: .normal)
         showStoreBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
-        showStoreBtn.layer.cornerRadius = 35 / 2
+        showStoreBtn.layer.cornerRadius = btnHeight / 2
         self.addSubview(showStoreBtn)
         
         //Webで見るボタン
         let webSearchBtn = UIButton()
-        webSearchBtn.frame = CGRect(x:width - 50 + 10,y:imageView.frame.maxY - 35,width:50,height:35)
+        webSearchBtn.frame = CGRect(x:width - 50 + 10,y:imageView.frame.maxY - btnHeight,width:50,height:btnHeight)
         webSearchBtn.backgroundColor = UIColor.appStoreBlue()
         webSearchBtn.addTarget(self, action: #selector(self.showWebPage), for: .touchUpInside)
         webSearchBtn.setTitle("Web", for: .normal)
         webSearchBtn.setTitleColor(UIColor.white, for: .normal)
         webSearchBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
-        webSearchBtn.layer.cornerRadius = 35 / 2
+        webSearchBtn.layer.cornerRadius = btnHeight / 2
         self.addSubview(webSearchBtn)
         
         if appNameLabel.frame.maxY > showStoreBtn.frame.minY {
             print("被っているよ")
             appNameLabel.font = UIFont.boldSystemFont(ofSize: 16)
             appNameLabel.sizeThatFits(CGSize(width:appNameLabel.frame.width,height:showStoreBtn.frame.minY - appNameLabel.frame.minY))
-            showStoreBtn.frame = CGRect(x:imageView.frame.maxX + margin,y:appNameLabel.frame.maxY,width:btnWidth,height:35)
-            webSearchBtn.frame = CGRect(x:width - 50 + 10,y:appNameLabel.frame.maxY,width:50,height:35)
+            showStoreBtn.frame = CGRect(x:imageView.frame.maxX + margin,y:appNameLabel.frame.maxY,width:btnWidth,height:btnHeight)
+            webSearchBtn.frame = CGRect(x:width - 50 + 10,y:appNameLabel.frame.maxY,width:50,height:btnHeight)
         }
         
         detailVC.contentView.topInfoFrame = CGSize(width:UIScreen.main.bounds.width,height:imageView.frame.maxY + margin)
