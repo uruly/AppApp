@@ -179,7 +179,7 @@ extension WebViewController:WKUIDelegate {
 
 extension WebViewController:UIScrollViewDelegate {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        lastContentOffsetY = 0
+        lastContentOffsetY = scrollView.contentOffset.y
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

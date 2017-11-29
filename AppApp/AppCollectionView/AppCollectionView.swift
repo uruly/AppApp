@@ -239,7 +239,7 @@ extension AppCollectionView:IconSizeChangerDelegate{
 
 extension AppCollectionView:UIScrollViewDelegate {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        lastContentOffsetY = 0
+        lastContentOffsetY = scrollView.contentOffset.y
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
