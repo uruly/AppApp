@@ -20,7 +20,8 @@ class BaseViewController: UIViewController {
         let width = self.view.frame.width
         let height = self.view.frame.height
         
-
+        self.view.backgroundColor = UIColor.white
+        
         //とりあえず仮のラベル
         let label = UILabel()
         label.frame = CGRect(x:0,y:0,width:100,height:50)
@@ -29,7 +30,7 @@ class BaseViewController: UIViewController {
         self.view.addSubview(label)
         
         //コレクションビューを配置
-        let topMargin = basePageVC.selectionBar.frame.maxY + 7  //+部分がラインになる
+        let topMargin = basePageVC.selectionBar.frame.maxY + 4  //+部分がラインになる
         collectionView = AppCollectionView(frame: CGRect(x:0,
                                                              y:topMargin,
                                                              width:width,
@@ -50,15 +51,17 @@ class BaseViewController: UIViewController {
         //delegateを設定
         if self.basePageVC.iconSizeChanger != nil {
             self.basePageVC.iconSizeChanger.sliderDelegate = collectionView
+            self.collectionView.mode = self.basePageVC.iconSizeChanger.toolbarMode
             if self.basePageVC.iconSizeChanger.slider != nil {
                 var value = CGFloat(UserDefaults.standard.float(forKey:"IconSize"))
                 if value == 0 { value = 50.0 }
                 self.basePageVC.iconSizeChanger.slider.value = Float(value)
-                if value > 160.0 {
-                    self.collectionView.itemSize = CGSize(width:self.view.frame.width - 30,height:100)
-                }else {
-                    self.collectionView.itemSize = CGSize(width:value,height:value)
-                }
+                self.collectionView.itemSize = CGSize(width:value,height:value)
+//                if value > 160.0 {
+//                    self.collectionView.itemSize = CGSize(width:self.view.frame.width - 30,height:100)
+//                }else {
+//                    self.collectionView.itemSize = CGSize(width:value,height:value)
+//                }
                 self.collectionView.collectionViewLayout.invalidateLayout()
             }
         }

@@ -52,7 +52,7 @@ class BasePageViewController: UIPageViewController {
         let navigationBarHeight = self.navigationController?.navigationBar.frame.maxY ?? 56
         print(navigationBarHeight)
         //セレクションバーを配置
-        selectionBar = SelectionBar(frame:CGRect(x:0,y:navigationBarHeight,width:width,height:65),pageVC:self)
+        selectionBar = SelectionBar(frame:CGRect(x:0,y:navigationBarHeight,width:width,height:55),pageVC:self)
         self.view.addSubview(selectionBar)
         
         //toolbarを配置

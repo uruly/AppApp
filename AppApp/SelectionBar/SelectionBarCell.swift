@@ -15,6 +15,26 @@ class SelectionBarCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         print("awakeFromNib")
+        //layoutLabel()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        layoutLabel()
+    }
+    
+    func layoutLabel(){
+        //角丸をつける
+        let maskPath = UIBezierPath(roundedRect: bounds,
+                                    byRoundingCorners: [.topLeft, .topRight],
+                                    cornerRadii: CGSize(width:10,height:10))
+        let maskLayer = CAShapeLayer()
+        maskLayer.frame = bounds
+        maskLayer.path = maskPath.cgPath
+        self.contentView.layer.mask = maskLayer
+        
+        //文字色どうしよう
+        label.textColor = UIColor.white
     }
 
 }

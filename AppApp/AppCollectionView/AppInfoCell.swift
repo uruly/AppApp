@@ -23,6 +23,8 @@ class AppInfoCell: UICollectionViewCell {
         checkImageView.tintColor = UIColor.checkBtn()
         
         checkImageView.isHidden = true
+        
+        self.contentView.layer.cornerRadius = 30.0
     }
 
 }

@@ -40,7 +40,7 @@ class SelectionBar: UICollectionView {
         layout.sectionInset = UIEdgeInsetsMake(15,0,0,0)
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
-        layout.estimatedItemSize = CGSize(width:100,height:50)
+        layout.estimatedItemSize = CGSize(width:100,height:40)
         layout.scrollDirection = .horizontal
         self.init(frame: frame, collectionViewLayout: layout)
         self.pageVC = pageVC

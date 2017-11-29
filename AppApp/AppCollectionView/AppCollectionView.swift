@@ -36,6 +36,7 @@ class AppCollectionView: UICollectionView {
             //self.collectionViewLayout.invalidateLayout()
             DispatchQueue.main.async {
                 self.reloadData()
+                self.backgroundColor = self.appData.label.color
             }
             //self.collectionViewLayout.invalidateLayout()
         }
@@ -59,7 +60,7 @@ class AppCollectionView: UICollectionView {
         self.dataSource = self
         self.register(UINib(nibName:"AppCollectionViewCell",bundle:nil), forCellWithReuseIdentifier: "imageCollection")
         self.register(UINib(nibName:"AppInfoCell",bundle:nil), forCellWithReuseIdentifier: "AppInfo")
-        self.backgroundColor = UIColor.backgroundGray()
+        self.backgroundColor = UIColor.white
         
         //モードを決めておく
         let userDefaults = UserDefaults.standard
@@ -252,7 +253,7 @@ extension AppCollectionView:UICollectionViewDelegateFlowLayout{
         if mode == .collect {
             return itemSize
         }else {
-            return CGSize(width:self.frame.width - 30,height:100)
+            return CGSize(width:self.frame.width - 30,height:125)
         }
     }
 }
