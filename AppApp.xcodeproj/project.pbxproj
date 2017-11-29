@@ -32,6 +32,8 @@
 		6652DEE51FCECDA500EB84F6 /* list2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6652DEE31FCECDA500EB84F6 /* list2@2x.png */; };
 		6652DEEC1FCED46700EB84F6 /* check2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6652DEEA1FCED46700EB84F6 /* check2@3x.png */; };
 		6652DEED1FCED46700EB84F6 /* check2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6652DEEB1FCED46700EB84F6 /* check2@2x.png */; };
+		6652DEF01FCED73000EB84F6 /* safari@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6652DEEE1FCED72F00EB84F6 /* safari@2x.png */; };
+		6652DEF11FCED73000EB84F6 /* safari@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6652DEEF1FCED72F00EB84F6 /* safari@3x.png */; };
 		66681CDA1FCC1501009A0F55 /* DetailContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66681CD91FCC1501009A0F55 /* DetailContentView.swift */; };
 		66681CE11FCC1734009A0F55 /* DetailCommonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66681CDF1FCC1734009A0F55 /* DetailCommonViewCell.swift */; };
 		66681CE21FCC1734009A0F55 /* DetailCommonViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66681CE01FCC1734009A0F55 /* DetailCommonViewCell.xib */; };
@@ -159,6 +161,8 @@
 		6652DEE31FCECDA500EB84F6 /* list2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list2@2x.png"; sourceTree = "<group>"; };
 		6652DEEA1FCED46700EB84F6 /* check2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check2@3x.png"; sourceTree = "<group>"; };
 		6652DEEB1FCED46700EB84F6 /* check2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check2@2x.png"; sourceTree = "<group>"; };
+		6652DEEE1FCED72F00EB84F6 /* safari@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "safari@2x.png"; sourceTree = "<group>"; };
+		6652DEEF1FCED72F00EB84F6 /* safari@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "safari@3x.png"; sourceTree = "<group>"; };
 		66681CD91FCC1501009A0F55 /* DetailContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailContentView.swift; sourceTree = "<group>"; };
 		66681CDF1FCC1734009A0F55 /* DetailCommonViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCommonViewCell.swift; sourceTree = "<group>"; };
 		66681CE01FCC1734009A0F55 /* DetailCommonViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailCommonViewCell.xib; sourceTree = "<group>"; };
@@ -267,6 +271,8 @@
 			children = (
 				666E06B91FCBB3740043DCFF /* right_arrow@2x.png */,
 				666E06BC1FCBB3880043DCFF /* left_arrow@2x.png */,
+				6652DEEE1FCED72F00EB84F6 /* safari@2x.png */,
+				6652DEEF1FCED72F00EB84F6 /* safari@3x.png */,
 				6652DECE1FCEAC9800EB84F6 /* collect@2x.png */,
 				6652DECF1FCEAC9800EB84F6 /* collect@3x.png */,
 				6652DED61FCEAF6000EB84F6 /* list@2x.png */,
@@ -654,6 +660,7 @@
 				666E06BB1FCBB3740043DCFF /* right_arrow@2x.png in Resources */,
 				66681CE61FCC17E2009A0F55 /* DetailAppInfoViewCell.xib in Resources */,
 				6652DED01FCEAC9800EB84F6 /* collect@2x.png in Resources */,
+				6652DEF11FCED73000EB84F6 /* safari@3x.png in Resources */,
 				6652DEE51FCECDA500EB84F6 /* list2@2x.png in Resources */,
 				66498E371FC8067100239B47 /* check.png in Resources */,
 				6652DEDD1FCEB7A800EB84F6 /* small@3x.png in Resources */,
@@ -674,6 +681,7 @@
 				6652DED81FCEAF6100EB84F6 /* list@2x.png in Resources */,
 				6652DEED1FCED46700EB84F6 /* check2@2x.png in Resources */,
 				66681CE21FCC1734009A0F55 /* DetailCommonViewCell.xib in Resources */,
+				6652DEF01FCED73000EB84F6 /* safari@2x.png in Resources */,
 				667ECE721FC4206F009233DE /* AppCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

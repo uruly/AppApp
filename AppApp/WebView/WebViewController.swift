@@ -58,7 +58,7 @@ class WebViewController: UIViewController {
         let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         back.tintColor = UIColor.lightGray
         forward.tintColor = UIColor.lightGray
-        let safari = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: nil)
+        let safari = UIBarButtonItem(image: UIImage(named:"safari.png"), style: .plain, target: self, action: #selector(self.goSafari))
         toolbar.items = [back,flexible,forward,flexible,refresh,flexible,safari]
         self.view.addSubview(toolbar)
         
@@ -112,6 +112,13 @@ class WebViewController: UIViewController {
     
     @objc func refreshView(){
         self.webView.reload()
+    }
+    
+    @objc func goSafari(){
+        if let url = webView.url{
+            let app:UIApplication = UIApplication.shared
+            app.openURL(url)
+        }
     }
     
     override func didReceiveMemoryWarning() {
