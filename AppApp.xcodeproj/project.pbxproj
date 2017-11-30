@@ -25,6 +25,19 @@
 		660B57941FD0173C00DBC823 /* logo2.png in Resources */ = {isa = PBXBuildFile; fileRef = 660B57931FD0173C00DBC823 /* logo2.png */; };
 		660B57961FD019CE00DBC823 /* logo3.png in Resources */ = {isa = PBXBuildFile; fileRef = 660B57951FD019CE00DBC823 /* logo3.png */; };
 		660B57981FD0466A00DBC823 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 660B57971FD0466A00DBC823 /* logo.png */; };
+		660B579A1FD067E500DBC823 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B57991FD067E500DBC823 /* TutorialViewController.swift */; };
+		660B579D1FD06C6400DBC823 /* TutorialPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B579C1FD06C6400DBC823 /* TutorialPageView.swift */; };
+		660B579F1FD06FBE00DBC823 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B579E1FD06FBE00DBC823 /* WelcomeView.swift */; };
+		660B57A21FD06FDB00DBC823 /* WelcomeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B57A01FD06FDB00DBC823 /* WelcomeViewCell.swift */; };
+		660B57A31FD06FDB00DBC823 /* WelcomeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 660B57A11FD06FDB00DBC823 /* WelcomeViewCell.xib */; };
+		660B57A61FD071D500DBC823 /* HowToViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B57A41FD071D500DBC823 /* HowToViewCell.swift */; };
+		660B57A71FD071D500DBC823 /* HowToViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 660B57A51FD071D500DBC823 /* HowToViewCell.xib */; };
+		660B57A91FD071EA00DBC823 /* HowToView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B57A81FD071EA00DBC823 /* HowToView.swift */; };
+		660B57AB1FD07C3700DBC823 /* iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 660B57AA1FD07C3700DBC823 /* iphone.png */; };
+		660B57AD1FD07D9200DBC823 /* screenShot0.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 660B57AC1FD07D9200DBC823 /* screenShot0.jpeg */; };
+		660B57AF1FD0806900DBC823 /* screenShot1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 660B57AE1FD0806900DBC823 /* screenShot1.jpeg */; };
+		660B57B11FD0811600DBC823 /* screenShot2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 660B57B01FD0811600DBC823 /* screenShot2.jpeg */; };
+		660B57B31FD083D600DBC823 /* screenShot3.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 660B57B21FD083D600DBC823 /* screenShot3.jpeg */; };
 		66498E281FC6651A00239B47 /* String+Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E271FC6651A00239B47 /* String+Path.swift */; };
 		66498E2A1FC666A400239B47 /* ShareAppLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E291FC666A400239B47 /* ShareAppLabel.swift */; };
 		66498E2C1FC67A6400239B47 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E2B1FC67A6400239B47 /* AppData.swift */; };
@@ -167,6 +180,19 @@
 		660B57931FD0173C00DBC823 /* logo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo2.png; sourceTree = "<group>"; };
 		660B57951FD019CE00DBC823 /* logo3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo3.png; sourceTree = "<group>"; };
 		660B57971FD0466A00DBC823 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		660B57991FD067E500DBC823 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
+		660B579C1FD06C6400DBC823 /* TutorialPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPageView.swift; sourceTree = "<group>"; };
+		660B579E1FD06FBE00DBC823 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		660B57A01FD06FDB00DBC823 /* WelcomeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewCell.swift; sourceTree = "<group>"; };
+		660B57A11FD06FDB00DBC823 /* WelcomeViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeViewCell.xib; sourceTree = "<group>"; };
+		660B57A41FD071D500DBC823 /* HowToViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToViewCell.swift; sourceTree = "<group>"; };
+		660B57A51FD071D500DBC823 /* HowToViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HowToViewCell.xib; sourceTree = "<group>"; };
+		660B57A81FD071EA00DBC823 /* HowToView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToView.swift; sourceTree = "<group>"; };
+		660B57AA1FD07C3700DBC823 /* iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iphone.png; sourceTree = "<group>"; };
+		660B57AC1FD07D9200DBC823 /* screenShot0.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = screenShot0.jpeg; sourceTree = "<group>"; };
+		660B57AE1FD0806900DBC823 /* screenShot1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = screenShot1.jpeg; sourceTree = "<group>"; };
+		660B57B01FD0811600DBC823 /* screenShot2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = screenShot2.jpeg; sourceTree = "<group>"; };
+		660B57B21FD083D600DBC823 /* screenShot3.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = screenShot3.jpeg; sourceTree = "<group>"; };
 		66498E231FC5A69B00239B47 /* ShareFromAppStoreExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareFromAppStoreExtension.entitlements; sourceTree = "<group>"; };
 		66498E241FC5A6D700239B47 /* AppApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AppApp.entitlements; sourceTree = "<group>"; };
 		66498E271FC6651A00239B47 /* String+Path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Path.swift"; sourceTree = "<group>"; };
@@ -313,9 +339,29 @@
 			path = ColorView;
 			sourceTree = "<group>";
 		};
+		660B579B1FD067E900DBC823 /* TutorialView */ = {
+			isa = PBXGroup;
+			children = (
+				660B57991FD067E500DBC823 /* TutorialViewController.swift */,
+				660B579C1FD06C6400DBC823 /* TutorialPageView.swift */,
+				660B57A41FD071D500DBC823 /* HowToViewCell.swift */,
+				660B57A51FD071D500DBC823 /* HowToViewCell.xib */,
+				660B57A81FD071EA00DBC823 /* HowToView.swift */,
+				660B579E1FD06FBE00DBC823 /* WelcomeView.swift */,
+				660B57A01FD06FDB00DBC823 /* WelcomeViewCell.swift */,
+				660B57A11FD06FDB00DBC823 /* WelcomeViewCell.xib */,
+			);
+			path = TutorialView;
+			sourceTree = "<group>";
+		};
 		66498E351FC8066000239B47 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				660B57AA1FD07C3700DBC823 /* iphone.png */,
+				660B57AC1FD07D9200DBC823 /* screenShot0.jpeg */,
+				660B57AE1FD0806900DBC823 /* screenShot1.jpeg */,
+				660B57B01FD0811600DBC823 /* screenShot2.jpeg */,
+				660B57B21FD083D600DBC823 /* screenShot3.jpeg */,
 				660B57911FD013DD00DBC823 /* appapp_logo1.png */,
 				660B57971FD0466A00DBC823 /* logo.png */,
 				660B57931FD0173C00DBC823 /* logo2.png */,
@@ -462,6 +508,7 @@
 				66498E241FC5A6D700239B47 /* AppApp.entitlements */,
 				667ECE181FC36784009233DE /* AppDelegate.swift */,
 				6677FC251FCA7E0400CB105E /* VersionManager.swift */,
+				660B579B1FD067E900DBC823 /* TutorialView */,
 				66681CD31FCC088D009A0F55 /* MainView */,
 				66681CD11FCC083A009A0F55 /* DetailView */,
 				66681CD51FCC08C0009A0F55 /* WebView */,
@@ -710,6 +757,7 @@
 				660B57961FD019CE00DBC823 /* logo3.png in Resources */,
 				6652DEE11FCEB7DA00EB84F6 /* big@2x.png in Resources */,
 				6606168F1FCD35AE00667020 /* DeleteViewCell.xib in Resources */,
+				660B57AB1FD07C3700DBC823 /* iphone.png in Resources */,
 				666E06BA1FCBB3740043DCFF /* right_arrow@3x.png in Resources */,
 				666E06BB1FCBB3740043DCFF /* right_arrow@2x.png in Resources */,
 				66681CE61FCC17E2009A0F55 /* DetailAppInfoViewCell.xib in Resources */,
@@ -718,14 +766,18 @@
 				6652DEE51FCECDA500EB84F6 /* list2@2x.png in Resources */,
 				660B57771FCFDB1000DBC823 /* colorData.json in Resources */,
 				66498E371FC8067100239B47 /* check.png in Resources */,
+				660B57AF1FD0806900DBC823 /* screenShot1.jpeg in Resources */,
 				660B57981FD0466A00DBC823 /* logo.png in Resources */,
 				6652DEDD1FCEB7A800EB84F6 /* small@3x.png in Resources */,
+				660B57AD1FD07D9200DBC823 /* screenShot0.jpeg in Resources */,
 				6652DED11FCEAC9800EB84F6 /* collect@3x.png in Resources */,
 				666E06BE1FCBB3880043DCFF /* left_arrow@2x.png in Resources */,
 				667ECE601FC395C2009233DE /* SelectionBarCell.xib in Resources */,
+				660B57B11FD0811600DBC823 /* screenShot2.jpeg in Resources */,
 				6652DEE01FCEB7DA00EB84F6 /* big@3x.png in Resources */,
 				660B576C1FCFC5F500DBC823 /* RGBSliderCell.xib in Resources */,
 				6652DED91FCEAF6100EB84F6 /* list@3x.png in Resources */,
+				660B57B31FD083D600DBC823 /* screenShot3.jpeg in Resources */,
 				667ECE231FC36784009233DE /* LaunchScreen.storyboard in Resources */,
 				6652DEE41FCECDA500EB84F6 /* list2@3x.png in Resources */,
 				6676ED381FCD582200815BF8 /* DetailMemoViewCell.xib in Resources */,
@@ -736,7 +788,9 @@
 				666E06BF1FCBB3880043DCFF /* left_arrow@3x.png in Resources */,
 				6677FC301FCAB72F00CB105E /* AppInfoCell.xib in Resources */,
 				667ECE1E1FC36784009233DE /* Main.storyboard in Resources */,
+				660B57A71FD071D500DBC823 /* HowToViewCell.xib in Resources */,
 				6652DED81FCEAF6100EB84F6 /* list@2x.png in Resources */,
+				660B57A31FD06FDB00DBC823 /* WelcomeViewCell.xib in Resources */,
 				6652DEED1FCED46700EB84F6 /* check2@2x.png in Resources */,
 				660B57721FCFC5F500DBC823 /* ColorBaseCell.xib in Resources */,
 				660B57941FD0173C00DBC823 /* logo2.png in Resources */,
@@ -801,6 +855,8 @@
 				66681CDA1FCC1501009A0F55 /* DetailContentView.swift in Sources */,
 				66DF587E1FC92D3F00CD71DC /* LabelOrderPickerView.swift in Sources */,
 				666E06AF1FCB94DF0043DCFF /* CommonInfoView.swift in Sources */,
+				660B579F1FD06FBE00DBC823 /* WelcomeView.swift in Sources */,
+				660B57A61FD071D500DBC823 /* HowToViewCell.swift in Sources */,
 				667ECE571FC3836C009233DE /* AppLabel.swift in Sources */,
 				667ECE4B1FC3690E009233DE /* BaseViewController.swift in Sources */,
 				667ECE471FC36850009233DE /* BaseNavigationViewController.swift in Sources */,
@@ -819,9 +875,12 @@
 				66498E391FC810BF00239B47 /* Array+FindIndex.swift in Sources */,
 				667ECE5F1FC395C2009233DE /* SelectionBarCell.swift in Sources */,
 				660B57751FCFC5F500DBC823 /* RGBSliderCell.swift in Sources */,
+				660B57A21FD06FDB00DBC823 /* WelcomeViewCell.swift in Sources */,
 				660B576E1FCFC5F500DBC823 /* RGBSliderView.swift in Sources */,
+				660B57A91FD071EA00DBC823 /* HowToView.swift in Sources */,
 				666E06C31FCBC1E50043DCFF /* PassThroughIndicator.swift in Sources */,
 				6677FC261FCA7E0400CB105E /* VersionManager.swift in Sources */,
+				660B579D1FD06C6400DBC823 /* TutorialPageView.swift in Sources */,
 				6677FC2F1FCAB72F00CB105E /* AppInfoCell.swift in Sources */,
 				66681CE51FCC17E2009A0F55 /* DetailAppInfoViewCell.swift in Sources */,
 				666E06C11FCBB5E90043DCFF /* WebPageToolbar.swift in Sources */,
@@ -836,6 +895,7 @@
 				66FD458C1FC96B2A0093BB83 /* LabelListViewController.swift in Sources */,
 				660B57731FCFC5F500DBC823 /* ColorSetViewCell.swift in Sources */,
 				667ECE711FC4206F009233DE /* AppCollectionViewCell.swift in Sources */,
+				660B579A1FD067E500DBC823 /* TutorialViewController.swift in Sources */,
 				667ECE191FC36784009233DE /* AppDelegate.swift in Sources */,
 				667ECE6D1FC41F7E009233DE /* AppCollectionView.swift in Sources */,
 				660B57711FCFC5F500DBC823 /* ColorSetView.swift in Sources */,

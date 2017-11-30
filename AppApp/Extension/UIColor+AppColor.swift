@@ -46,4 +46,8 @@ extension UIColor {
     class func customColorView() -> UIColor {
         return UIColor(red: 247 / 255, green: 194 / 255, blue: 66 / 255, alpha: 1)
     }
+    
+    class func mainBlue() -> UIColor {
+        return UIColor(red: 63 / 255, green: 158 / 255, blue: 216 / 255, alpha: 1)
+    }
 }
