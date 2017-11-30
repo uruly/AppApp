@@ -96,7 +96,7 @@ class ColorBaseView: UIView {
     func setupPageControl(){
         pageControl = UIPageControl(frame: CGRect(x:0,y:self.frame.height - 40,width:self.frame.width,height:40))
         pageControl.currentPage = 0
-        pageControl.numberOfPages = self.pageView.colors.count
+        pageControl.numberOfPages = self.pageView.colorSet.keys.count
         //pageControl.currentPageIndicatorTintColor = UIColor.black
         pageControl.addTarget(self, action: #selector(self.pageControlTapped(sender:)), for: .touchUpInside)
         self.addSubview(pageControl)

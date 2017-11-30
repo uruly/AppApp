@@ -19,7 +19,7 @@ enum ColorMode {
 
 class ColorPageView: UICollectionView {
 
-    var colors:[UIColor] = [UIColor.purple,UIColor.blue,UIColor.brown,UIColor.yellow,UIColor.red]
+    //var colors:[UIColor] = [UIColor.purple,UIColor.blue,UIColor.brown,UIColor.yellow,UIColor.red]
     var colorPageDelegate:ColorPageControlDelegate!
     var colorDelegate:ColorDelegate!
     var colorMode:ColorMode = .set {
@@ -28,6 +28,8 @@ class ColorPageView: UICollectionView {
         }
     }
     
+    var colorSet:[String:[UIColor]] = [:]
+    var colorKeys:[String] = []
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -54,10 +56,20 @@ class ColorPageView: UICollectionView {
         self.showsVerticalScrollIndicator = false
         self.showsHorizontalScrollIndicator = false
         self.backgroundColor = UIColor.appStoreBlue()
-        readColorSet()
+    }
+    
+    override func reloadData(){
+        if colorMode == .set {
+            readColorSet()
+            super.reloadData()
+        }else {
+            super.reloadData()
+        }
     }
     
     func readColorSet(){
+        self.colorSet = [:]
+        self.colorKeys = []
         let path = Bundle.main.path(forResource: "colorData", ofType: "json")
         do {
             let jsonString = try String(contentsOfFile: path!)
@@ -66,29 +78,31 @@ class ColorPageView: UICollectionView {
                 let json = try JSONSerialization.jsonObject(with: colorData, options: JSONSerialization.ReadingOptions.allowFragments)
                 let top = json as! NSArray
                 for object in top {
-                    print(object)
+                    //print(object)
+                    let set = object as! NSDictionary
+                    //print(set["セット名"])
+                    guard let setName = set["セット名"] as? String else {
+                        continue
+                    }
+                    self.colorSet[setName] = []
+                    self.colorKeys.append(setName)
+                    let colors = set["カラー"] as! NSArray
+                    for col in colors {
+                        let color = col as! NSDictionary
+                        let red = color["red"] as! Int
+                        let green = color["green"] as! Int
+                        let blue = color["blue"] as! Int
+                        let uiColor = UIColor(red: CGFloat(red) / 255, green: CGFloat(green) / 255, blue: CGFloat(blue) / 255, alpha: 1)
+                        self.colorSet[setName]!.append(uiColor)
+                        print("setName:\(setName),カラーレッド:\(red)")
+                    }
                 }
-//                for roop in top {
-//                    let next = roop as! NSDictionary
-//                    print(next["id"] as! String) // 1, 2 が表示
-//
-//                    let content = next["content"] as! NSDictionary
-//                    print(content["age"] as! Int) // 25, 20 が表示
-//                }
             } catch {
                 print(error)
             }
         }catch {
             print(error)
         }
-//        do{
-//            //https://www.hackingwithswift.com/example-code/strings/how-to-load-a-string-from-a-file-in-your-bundle
-//            let jsonStr = try String(contentsOfFile: path!)
-//            let json =  JSON.parse(jsonStr)
-//            return json
-//        } catch{
-//            return nil
-//        }
     }
     
 }
@@ -103,7 +117,7 @@ extension ColorPageView: UICollectionViewDelegate {
 extension ColorPageView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if colorMode == .set {  //ページ数
-            return colors.count
+            return colorSet.keys.count
         }else {
             return 1
         }
@@ -113,7 +127,7 @@ extension ColorPageView: UICollectionViewDataSource {
         if colorMode == .set {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "base", for: indexPath) as! ColorBaseCell
             //cell.backgroundColor = colors[indexPath.row]
-            cell.colorSetView.colorSet = [colors[indexPath.row]]
+            cell.colorSetView.colorSet = colorSet[colorKeys[indexPath.row]] ?? []
             print(colorDelegate)
             cell.colorSetView.colorDelegate = colorDelegate
             cell.colorSetView.reloadData()
