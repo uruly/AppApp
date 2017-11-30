@@ -24,6 +24,7 @@
 		660B57921FD013DD00DBC823 /* appapp_logo1.png in Resources */ = {isa = PBXBuildFile; fileRef = 660B57911FD013DD00DBC823 /* appapp_logo1.png */; };
 		660B57941FD0173C00DBC823 /* logo2.png in Resources */ = {isa = PBXBuildFile; fileRef = 660B57931FD0173C00DBC823 /* logo2.png */; };
 		660B57961FD019CE00DBC823 /* logo3.png in Resources */ = {isa = PBXBuildFile; fileRef = 660B57951FD019CE00DBC823 /* logo3.png */; };
+		660B57981FD0466A00DBC823 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 660B57971FD0466A00DBC823 /* logo.png */; };
 		66498E281FC6651A00239B47 /* String+Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E271FC6651A00239B47 /* String+Path.swift */; };
 		66498E2A1FC666A400239B47 /* ShareAppLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E291FC666A400239B47 /* ShareAppLabel.swift */; };
 		66498E2C1FC67A6400239B47 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E2B1FC67A6400239B47 /* AppData.swift */; };
@@ -165,6 +166,7 @@
 		660B57911FD013DD00DBC823 /* appapp_logo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appapp_logo1.png; sourceTree = "<group>"; };
 		660B57931FD0173C00DBC823 /* logo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo2.png; sourceTree = "<group>"; };
 		660B57951FD019CE00DBC823 /* logo3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo3.png; sourceTree = "<group>"; };
+		660B57971FD0466A00DBC823 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		66498E231FC5A69B00239B47 /* ShareFromAppStoreExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareFromAppStoreExtension.entitlements; sourceTree = "<group>"; };
 		66498E241FC5A6D700239B47 /* AppApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AppApp.entitlements; sourceTree = "<group>"; };
 		66498E271FC6651A00239B47 /* String+Path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Path.swift"; sourceTree = "<group>"; };
@@ -315,6 +317,7 @@
 			isa = PBXGroup;
 			children = (
 				660B57911FD013DD00DBC823 /* appapp_logo1.png */,
+				660B57971FD0466A00DBC823 /* logo.png */,
 				660B57931FD0173C00DBC823 /* logo2.png */,
 				660B57951FD019CE00DBC823 /* logo3.png */,
 				666E06B91FCBB3740043DCFF /* right_arrow@2x.png */,
@@ -715,6 +718,7 @@
 				6652DEE51FCECDA500EB84F6 /* list2@2x.png in Resources */,
 				660B57771FCFDB1000DBC823 /* colorData.json in Resources */,
 				66498E371FC8067100239B47 /* check.png in Resources */,
+				660B57981FD0466A00DBC823 /* logo.png in Resources */,
 				6652DEDD1FCEB7A800EB84F6 /* small@3x.png in Resources */,
 				6652DED11FCEAC9800EB84F6 /* collect@3x.png in Resources */,
 				666E06BE1FCBB3880043DCFF /* left_arrow@2x.png in Resources */,
