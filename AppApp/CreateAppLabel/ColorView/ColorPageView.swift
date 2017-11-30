@@ -20,7 +20,8 @@ enum ColorMode {
 class ColorPageView: UICollectionView {
 
     var colors:[UIColor] = [UIColor.purple,UIColor.blue,UIColor.brown,UIColor.yellow,UIColor.red]
-    var colorDelegate:ColorPageControlDelegate!
+    var colorPageDelegate:ColorPageControlDelegate!
+    var colorDelegate:ColorDelegate!
     var colorMode:ColorMode = .set {
         didSet{
             self.reloadData()
@@ -77,16 +78,19 @@ extension ColorPageView: UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "base", for: indexPath) as! ColorBaseCell
             //cell.backgroundColor = colors[indexPath.row]
             cell.colorSetView.colorSet = [colors[indexPath.row]]
+            print(colorDelegate)
+            cell.colorSetView.colorDelegate = colorDelegate
             cell.colorSetView.reloadData()
             
             return cell
         }else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "customBase", for: indexPath) as! RGBSliderCell
-            
+            cell.sliderView.colorDelegate = colorDelegate
+            print(colorDelegate)
             return cell
         }
     }
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        colorDelegate.movePage(count:indexPath.row)
+        colorPageDelegate.movePage(count:indexPath.row)
     }
 }

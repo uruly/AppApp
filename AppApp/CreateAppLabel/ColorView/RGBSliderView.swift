@@ -8,16 +8,24 @@
 
 import UIKit
 
+@objc protocol ColorDelegate {
+    func setColor(color:UIColor)
+}
+
 class RGBSliderView: UIView {
 
     var view:UIView!
     var redSlider:UISlider!
     var greenSlider:UISlider!
     var blueSlider:UISlider!
+    var colorDelegate:ColorDelegate!
     var color:UIColor! {
         didSet{
             print("ここ呼ばれているよ")
             self.view.backgroundColor = color
+            if colorDelegate != nil {
+                colorDelegate.setColor(color: color)
+            }
         }
     }
     

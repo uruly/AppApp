@@ -98,6 +98,7 @@ class CreateAppLabelViewController: UIViewController {
         
         colorPickView = ColorBaseView(frame: CGRect(x:0,y:height,width:width,height:pickerViewHeight + 50))
         colorPickView.createAppLabelVC = self
+        //colorPickView.colorDelegate = self
         self.view.addSubview(colorPickView)
         
     }
@@ -255,10 +256,14 @@ class CreateAppLabelViewController: UIViewController {
 }
 
 extension CreateAppLabelViewController:ColorDelegate {
-    func pickedColor(color:UIColor,endState:Bool){
-        print("color\(color)")
+    func setColor(color: UIColor) {
         self.color = color
     }
+    
+//    func pickedColor(color:UIColor,endState:Bool){
+//        print("color\(color)")
+//        self.color = color
+//    }
 }
 extension CreateAppLabelViewController: LabelOrderPickerDelegate {
     func changedValue(_ order: Int) {

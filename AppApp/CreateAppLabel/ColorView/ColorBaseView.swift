@@ -14,7 +14,13 @@ class ColorBaseView: UIView {
     var pageControl:UIPageControl!
     var pageView:ColorPageView!
     var toolbar:UIToolbar!
-    var createAppLabelVC:CreateAppLabelViewController!
+    var createAppLabelVC:CreateAppLabelViewController! {
+        didSet {
+            setupPageView()
+            setupPageControl()
+        }
+    }
+    var colorDelegate:ColorDelegate!
     
     let toolbarHeight:CGFloat = 40.0
     
@@ -25,8 +31,8 @@ class ColorBaseView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupToolbar()
-        setupPageView()
-        setupPageControl()
+        //setupPageView()
+        //setupPageControl()
         //影をつける
         self.layer.masksToBounds = false
         self.layer.shadowColor = UIColor.darkGray.cgColor
@@ -81,7 +87,9 @@ class ColorBaseView: UIView {
     func setupPageView(){
         pageView = ColorPageView(frame:CGRect(x:0,y:toolbarHeight,width:self.frame.width,
                                               height:self.frame.height - toolbarHeight))
-        pageView.colorDelegate = self
+        pageView.colorPageDelegate = self
+        print(self.createAppLabelVC)
+        pageView.colorDelegate = self.createAppLabelVC
         self.addSubview(pageView)
     }
     

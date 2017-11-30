@@ -11,6 +11,8 @@ import UIKit
 class ColorSetView: UICollectionView {
 
     var colorSet:[UIColor] = []
+    var colorDelegate:ColorDelegate!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,6 +25,15 @@ class ColorSetView: UICollectionView {
 }
 
 extension ColorSetView: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! ColorSetViewCell
+        cell.isSelected = true
+        
+        print(colorDelegate)
+        if colorDelegate != nil {
+            colorDelegate.setColor(color: colorSet[indexPath.row])
+        }
+    }
     
 }
 extension ColorSetView: UICollectionViewDelegateFlowLayout {

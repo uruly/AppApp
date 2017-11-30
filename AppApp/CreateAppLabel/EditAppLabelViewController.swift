@@ -69,6 +69,7 @@ class EditAppLabelViewController: CreateAppLabelViewController {
         //pickerView.orderDelegate = self
         //colorPickerView.delegate = self
         colorPickView.createAppLabelVC = self
+        //colorPickView.colorDelegate = self
         labelName = currentName
         self.editTableView.isKeyboardAppear = false
         //currentRow = order
