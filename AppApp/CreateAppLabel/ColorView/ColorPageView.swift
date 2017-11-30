@@ -28,6 +28,7 @@ class ColorPageView: UICollectionView {
         }
     }
     
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -53,6 +54,41 @@ class ColorPageView: UICollectionView {
         self.showsVerticalScrollIndicator = false
         self.showsHorizontalScrollIndicator = false
         self.backgroundColor = UIColor.appStoreBlue()
+        readColorSet()
+    }
+    
+    func readColorSet(){
+        let path = Bundle.main.path(forResource: "colorData", ofType: "json")
+        do {
+            let jsonString = try String(contentsOfFile: path!)
+            let colorData: Data =  jsonString.data(using: String.Encoding.utf8)!
+            do {
+                let json = try JSONSerialization.jsonObject(with: colorData, options: JSONSerialization.ReadingOptions.allowFragments)
+                let top = json as! NSArray
+                for object in top {
+                    print(object)
+                }
+//                for roop in top {
+//                    let next = roop as! NSDictionary
+//                    print(next["id"] as! String) // 1, 2 が表示
+//
+//                    let content = next["content"] as! NSDictionary
+//                    print(content["age"] as! Int) // 25, 20 が表示
+//                }
+            } catch {
+                print(error)
+            }
+        }catch {
+            print(error)
+        }
+//        do{
+//            //https://www.hackingwithswift.com/example-code/strings/how-to-load-a-string-from-a-file-in-your-bundle
+//            let jsonStr = try String(contentsOfFile: path!)
+//            let json =  JSON.parse(jsonStr)
+//            return json
+//        } catch{
+//            return nil
+//        }
     }
     
 }
