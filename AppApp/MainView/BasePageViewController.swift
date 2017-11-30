@@ -44,13 +44,25 @@ class BasePageViewController: UIPageViewController {
         appLabel = AppLabel()
         
         //ナビゲーションバーをカスタマイズ
-        self.title = "AppApp"
+        self.title = ""
         //let editBtn = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(self.editTapped(sender:)))
         let editBtn = UIBarButtonItem(title: "選択", style: .plain, target: self, action: #selector(self.editTapped(sender:)))
         self.navigationItem.rightBarButtonItem = editBtn
         
+        let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        self.navigationItem.leftBarButtonItems = [flexible]
         let navigationBarHeight = self.navigationController?.navigationBar.frame.maxY ?? 56
-        print(navigationBarHeight)
+        let statusBarHeight = UIApplication.shared.statusBarFrame.height
+        //ロゴを乗せる
+        let titlePath = Bundle.main.path(forResource: "logo3", ofType: "png")
+        let titleLogo =  UIImageView(image: UIImage(contentsOfFile:titlePath!)?.withRenderingMode(.alwaysTemplate))
+        titleLogo.frame = CGRect(x:(width - 200) / 2,y:-10,width:200,height:navigationBarHeight)
+        titleLogo.contentMode = .scaleAspectFit
+        titleLogo.tintColor = UIColor.darkGray
+        self.navigationController?.navigationBar.addSubview(titleLogo)
+        //let titleLoboBtn = UIBarButtonItem(customView: titleLogo)
+        //self.navigationItem.titleView = titleLogo
+        
         //セレクションバーを配置
         selectionBar = SelectionBar(frame:CGRect(x:0,y:navigationBarHeight,width:width,height:55),pageVC:self)
         self.view.addSubview(selectionBar)
