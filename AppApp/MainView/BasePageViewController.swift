@@ -49,8 +49,8 @@ class BasePageViewController: UIPageViewController {
         let editBtn = UIBarButtonItem(title: "選択", style: .plain, target: self, action: #selector(self.editTapped(sender:)))
         self.navigationItem.rightBarButtonItem = editBtn
         
-        let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
-        self.navigationItem.leftBarButtonItems = [flexible]
+        //let flexible = UIBarButtonItem(title: "  ", style: .plain, target: self, action: nil)
+        //self.navigationItem.leftBarButtonItems = [flexible]
         let navigationBarHeight = self.navigationController?.navigationBar.frame.maxY ?? 56
         let statusBarHeight = UIApplication.shared.statusBarFrame.height
         //ロゴを乗せる
@@ -59,6 +59,7 @@ class BasePageViewController: UIPageViewController {
         titleLogo.frame = CGRect(x:(width - 200) / 2,y:-10,width:200,height:navigationBarHeight)
         titleLogo.contentMode = .scaleAspectFit
         titleLogo.tintColor = UIColor.darkGray
+        titleLogo.tag = 255
         self.navigationController?.navigationBar.addSubview(titleLogo)
         //let titleLoboBtn = UIBarButtonItem(customView: titleLogo)
         //self.navigationItem.titleView = titleLogo
@@ -94,6 +95,9 @@ class BasePageViewController: UIPageViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if let titleLogo = self.navigationController?.navigationBar.viewWithTag(255){
+            titleLogo.isHidden = false
+        }
         if BasePageViewController.isUnwind{
             print("truedayo")
             appLabel.reloadLabelData()
@@ -108,6 +112,17 @@ class BasePageViewController: UIPageViewController {
                 cancelEdit(sender:self.navigationItem.rightBarButtonItem!)
             }
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if let titleLogo = self.navigationController?.navigationBar.viewWithTag(255){
+            titleLogo.isHidden = true
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
     }
 
     func reloadPage(order:Int){
