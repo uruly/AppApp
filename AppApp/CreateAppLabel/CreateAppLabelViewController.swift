@@ -64,7 +64,8 @@ class CreateAppLabelViewController: UIViewController {
     
     var appList:[AppStruct] = []
     
-    var colorPickerView:ColorPicker!
+    //var colorPickerView:ColorPicker!
+    var colorPickView:ColorBaseView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,14 +87,17 @@ class CreateAppLabelViewController: UIViewController {
         setTableView()
         
         //カラーピッカー
-        colorPickerView = ColorPicker()
-        colorPickerView.frame = CGRect(x:0,
-                                       y:height,
-                                       width:width,
-                                       height:pickerViewHeight)
-        colorPickerView.setup()
-        colorPickerView.delegate = self
-        self.view.addSubview(colorPickerView)
+//        colorPickerView = ColorPicker()
+//        colorPickerView.frame = CGRect(x:0,
+//                                       y:height,
+//                                       width:width,
+//                                       height:pickerViewHeight)
+//        colorPickerView.setup()
+//        colorPickerView.delegate = self
+//        self.view.addSubview(colorPickerView)
+        
+        colorPickView = ColorBaseView(frame: CGRect(x:0,y:height,width:width,height:pickerViewHeight + 50))
+        self.view.addSubview(colorPickView)
         
     }
     
@@ -169,7 +173,8 @@ class CreateAppLabelViewController: UIViewController {
     func createFakeView(tag:Int){
         let width = self.view.frame.width
         let height = self.view.frame.height
-        let fakeView = FakeView(frame:CGRect(x:0,y:0,width:width,height:height - pickerViewHeight))
+        let fakeViewHeight = tag == 1 ? height - ( pickerViewHeight + 50 ) : height - pickerViewHeight
+        let fakeView = FakeView(frame:CGRect(x:0,y:0,width:width,height:fakeViewHeight))
         fakeView.delegate = self
         fakeView.pickerTag = tag
         self.view.addSubview(fakeView)
@@ -201,7 +206,7 @@ class CreateAppLabelViewController: UIViewController {
         let height = self.view.frame.height
         createFakeView(tag: 1)
         UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
-            self.colorPickerView.frame = CGRect(x:0,y:height - 200,width:width,height:200)
+            self.colorPickView.frame = CGRect(x:0,y:height - ( self.pickerViewHeight + 50),width:width,height:self.pickerViewHeight + 50)
         }, completion: nil)
     }
     
@@ -209,7 +214,7 @@ class CreateAppLabelViewController: UIViewController {
         let width = self.view.frame.width
         let height = self.view.frame.height
         UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
-            self.colorPickerView.frame = CGRect(x:0,y:height,width:width,height:200)
+            self.colorPickView.frame = CGRect(x:0,y:height,width:width,height:self.pickerViewHeight + 50)
         }, completion: nil)
     }
     func closePicker(){
