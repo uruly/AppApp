@@ -10,7 +10,6 @@ import UIKit
 
 @objc protocol ColorPageControlDelegate {
     func movePage(count:Int)
-    var basePageView:ColorBaseView { get }
 }
 
 enum ColorMode {
@@ -62,9 +61,6 @@ class ColorPageView: UICollectionView {
     override func reloadData(){
         if colorMode == .set {
             readColorSet()
-            if colorPageDelegate != nil {
-                colorPageDelegate.basePageView.pageControl.numberOfPages = self.colorSet.keys.count
-            }
             super.reloadData()
         }else {
             super.reloadData()

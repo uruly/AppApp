@@ -12,33 +12,29 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ColorSetViewCell" customModule="AppApp" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="RGBSliderCell" customModule="AppApp" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check.png" translatesAutoresizingMaskIntoConstraints="NO" id="pv1-CJ-ykD">
-                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LrN-Kd-QCf" customClass="RGBSliderView" customModule="AppApp" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="5" width="50" height="45"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="pv1-CJ-ykD" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="IaO-iv-Eii"/>
-                <constraint firstAttribute="bottom" secondItem="pv1-CJ-ykD" secondAttribute="bottom" id="Liw-un-Pyn"/>
-                <constraint firstItem="pv1-CJ-ykD" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="RZj-8o-cTH"/>
-                <constraint firstItem="pv1-CJ-ykD" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ZpV-ZD-b9Y"/>
-                <constraint firstItem="pv1-CJ-ykD" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="blD-7M-vhW"/>
-                <constraint firstAttribute="trailing" secondItem="pv1-CJ-ykD" secondAttribute="trailing" id="mql-aa-mRa"/>
+                <constraint firstItem="LrN-Kd-QCf" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="N9u-q9-gum"/>
+                <constraint firstItem="LrN-Kd-QCf" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="PG0-NK-nfY"/>
+                <constraint firstAttribute="bottom" secondItem="LrN-Kd-QCf" secondAttribute="bottom" id="gND-vu-MMQ"/>
+                <constraint firstAttribute="trailing" secondItem="LrN-Kd-QCf" secondAttribute="trailing" id="gTU-bF-Mlx"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <connections>
-                <outlet property="checkImageView" destination="pv1-CJ-ykD" id="2uk-XF-T9x"/>
+                <outlet property="sliderView" destination="LrN-Kd-QCf" id="h3c-ZH-cmi"/>
             </connections>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="check.png" width="400" height="400"/>
-    </resources>
 </document>

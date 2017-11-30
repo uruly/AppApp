@@ -35,6 +35,13 @@ class SelectionBarCell: UICollectionViewCell {
         
         //文字色どうしよう
         label.textColor = UIColor.white
+        
+        //影をつける
+        self.layer.masksToBounds = false
+        self.layer.shadowColor = UIColor.darkGray.cgColor
+        self.layer.shadowOffset = CGSize(width:0,height:-1)
+        self.layer.shadowRadius = 2
+        self.layer.shadowOpacity = 0.2
     }
 
 }
