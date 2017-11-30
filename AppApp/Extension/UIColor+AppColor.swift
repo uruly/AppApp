@@ -41,4 +41,9 @@ extension UIColor {
     class func appStoreBlue() -> UIColor {
         return UIColor(red: 0, green: 0.478431, blue: 1, alpha: 1)
     }
+    
+    //花葉
+    class func customColorView() -> UIColor {
+        return UIColor(red: 247 / 255, green: 194 / 255, blue: 66 / 255, alpha: 1)
+    }
 }

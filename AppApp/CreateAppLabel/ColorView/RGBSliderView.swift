@@ -31,7 +31,7 @@ class RGBSliderView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.backgroundColor = UIColor.blue
+        self.backgroundColor = UIColor.white
         setup()
     }
     
@@ -39,6 +39,14 @@ class RGBSliderView: UIView {
         let margin:CGFloat = 15
         view = UIView(frame:CGRect(x:margin,y:margin,width:50,height:50))
         view.backgroundColor = UIColor.yellow
+        view.layer.cornerRadius = 10.0
+        //影をつける
+        view.layer.masksToBounds = false
+        view.layer.shadowColor = UIColor.darkGray.cgColor
+        view.layer.shadowOffset = CGSize(width:1,height:1)
+        view.layer.shadowRadius = 4
+        view.layer.shadowOpacity = 0.5
+        
         self.addSubview(view)
         
         let labelMinX = view.frame.maxX + margin

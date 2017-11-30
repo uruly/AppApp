@@ -16,7 +16,7 @@ class ColorSetView: UICollectionView {
         super.awakeFromNib()
         self.delegate = self
         self.dataSource = self
-        self.backgroundColor = UIColor.blue
+        self.backgroundColor = UIColor.white
         self.register(UINib(nibName:"ColorSetViewCell",bundle:nil), forCellWithReuseIdentifier: "color")
     }
 

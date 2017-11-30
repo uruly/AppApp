@@ -97,6 +97,7 @@ class CreateAppLabelViewController: UIViewController {
 //        self.view.addSubview(colorPickerView)
         
         colorPickView = ColorBaseView(frame: CGRect(x:0,y:height,width:width,height:pickerViewHeight + 50))
+        colorPickView.createAppLabelVC = self
         self.view.addSubview(colorPickView)
         
     }
@@ -177,6 +178,7 @@ class CreateAppLabelViewController: UIViewController {
         let fakeView = FakeView(frame:CGRect(x:0,y:0,width:width,height:fakeViewHeight))
         fakeView.delegate = self
         fakeView.pickerTag = tag
+        fakeView.tag = 66
         self.view.addSubview(fakeView)
     }
     

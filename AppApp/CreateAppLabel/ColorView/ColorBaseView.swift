@@ -14,6 +14,7 @@ class ColorBaseView: UIView {
     var pageControl:UIPageControl!
     var pageView:ColorPageView!
     var toolbar:UIToolbar!
+    var createAppLabelVC:CreateAppLabelViewController!
     
     let toolbarHeight:CGFloat = 40.0
     
@@ -26,6 +27,12 @@ class ColorBaseView: UIView {
         setupToolbar()
         setupPageView()
         setupPageControl()
+        //影をつける
+        self.layer.masksToBounds = false
+        self.layer.shadowColor = UIColor.darkGray.cgColor
+        self.layer.shadowOffset = CGSize(width:1,height:1)
+        self.layer.shadowRadius = 4
+        self.layer.shadowOpacity = 0.5
     }
     
     func setupToolbar(){
@@ -33,7 +40,7 @@ class ColorBaseView: UIView {
         colorSetBtn.frame = CGRect(x:0,y:0,width:130,height:toolbarHeight)
         colorSetBtn.setTitle("カラーセット", for: .normal)
         colorSetBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
-        colorSetBtn.backgroundColor = UIColor.blue
+        colorSetBtn.backgroundColor = UIColor.appStoreBlue()
         colorSetBtn.addTarget(self, action: #selector(self.changeMode), for: .touchUpInside)
         self.addSubview(colorSetBtn)
         
@@ -41,7 +48,7 @@ class ColorBaseView: UIView {
         customBtn.frame = CGRect(x:colorSetBtn.frame.maxX,y:0,width:80,height:toolbarHeight)
         customBtn.setTitle("カスタム", for: .normal)
         customBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
-        customBtn.backgroundColor = UIColor.cyan
+        customBtn.backgroundColor = UIColor.customColorView()
         customBtn.addTarget(self, action: #selector(self.changeMode), for: .touchUpInside)
         self.addSubview(customBtn)
         
@@ -50,6 +57,7 @@ class ColorBaseView: UIView {
         doneBtn.setTitle("完了", for: .normal)
         doneBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         doneBtn.backgroundColor = UIColor.gray
+        doneBtn.addTarget(self, action: #selector(self.doneBtnTapped), for: .touchUpInside)
         self.addSubview(doneBtn)
         
         colorSetBtn.layer.mask = roundedCorner(bounds: colorSetBtn.bounds)
@@ -71,7 +79,8 @@ class ColorBaseView: UIView {
     }
     
     func setupPageView(){
-        pageView = ColorPageView(frame:CGRect(x:0,y:toolbarHeight,width:self.frame.width,height:self.frame.height - toolbarHeight))
+        pageView = ColorPageView(frame:CGRect(x:0,y:toolbarHeight,width:self.frame.width,
+                                              height:self.frame.height - toolbarHeight))
         pageView.colorDelegate = self
         self.addSubview(pageView)
     }
@@ -93,15 +102,24 @@ class ColorBaseView: UIView {
     
     @objc func doneBtnTapped(){
         print("done")
+        if createAppLabelVC != nil {
+            createAppLabelVC.closeColorPicker()
+            if let fakeView = createAppLabelVC.view.viewWithTag(66) {
+                print("あるよ")
+                fakeView.removeFromSuperview()
+            }
+        }
     }
     
     @objc func changeMode(){
         let currentMode = pageView.colorMode
         if currentMode == .set {
             pageView.colorMode = .custom
+            pageView.backgroundColor = UIColor.customColorView()
             pageControl.isHidden = true
         }else {
             pageView.colorMode = .set
+            pageView.backgroundColor = UIColor.appStoreBlue()
             pageControl.isHidden = false
         }
     }

@@ -12,22 +12,22 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="RGBSliderCell" customModule="ColorView" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="RGBSliderCell" customModule="AppApp" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LrN-Kd-QCf" customClass="RGBSliderView" customModule="ColorView" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LrN-Kd-QCf" customClass="RGBSliderView" customModule="AppApp" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="5" width="50" height="45"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstItem="LrN-Kd-QCf" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="N9u-q9-gum"/>
-                <constraint firstItem="LrN-Kd-QCf" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="PG0-NK-nfY"/>
+                <constraint firstItem="LrN-Kd-QCf" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="PG0-NK-nfY"/>
                 <constraint firstAttribute="bottom" secondItem="LrN-Kd-QCf" secondAttribute="bottom" id="gND-vu-MMQ"/>
                 <constraint firstAttribute="trailing" secondItem="LrN-Kd-QCf" secondAttribute="trailing" id="gTU-bF-Mlx"/>
             </constraints>
