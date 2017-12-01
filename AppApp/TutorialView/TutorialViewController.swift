@@ -85,7 +85,7 @@ class TutorialViewController: UIViewController {
         let height = self.view.frame.height
         let navigationHeight:CGFloat = 80.0
         let margin:CGFloat = 15.0
-        helpView = HelpView(frame: CGRect(x:0,y:navigationHeight + margin,width:width,height:height - navigationHeight - margin), style:.plain )
+        helpView = HelpView(frame: CGRect(x:0,y:navigationHeight + margin,width:width,height:height - navigationHeight - margin), style:.grouped )
         self.view.addSubview(helpView)
     }
     

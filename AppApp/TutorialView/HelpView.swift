@@ -11,6 +11,7 @@ import UIKit
 class HelpView: UITableView {
     
     var questionAnswer:[(String,String,String)] = []
+    var currentTag:Int = 100
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -62,6 +63,22 @@ class HelpView: UITableView {
             print(error)
         }
     }
+    
+    @objc func sectionTapped(sender:UITapGestureRecognizer){
+        if let header = sender.view{
+            print(header.tag)
+            //itemSizeをかえてアコーディオンさせる
+            if self.currentTag == header.tag {
+                self.currentTag = 100
+                self.beginUpdates()
+                self.endUpdates()
+            }else {
+                self.currentTag = header.tag
+                self.beginUpdates()
+                self.endUpdates()
+            }
+        }
+    }
 
 }
 
@@ -83,10 +100,42 @@ extension HelpView: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return questionAnswer.count
     }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return questionAnswer[section].0
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView(frame:CGRect(x:0,y:0,width:tableView.frame.width,height:80))
+        view.backgroundColor = UIColor.blue
+        view.tag = section
+        //タップジェスチャを登録 //
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(sectionTapped(sender:)))
+        view.addGestureRecognizer(tapGesture)
+        
+        let margin:CGFloat = 15
+        let label = UILabel(frame:CGRect(x:margin,y:0,width:view.frame.width - (margin * 2),height:80))
+        label.text = questionAnswer[section].0
+        label.textColor = UIColor.white
+        label.font = UIFont.boldSystemFont(ofSize: 18)
+        view.addSubview(label)
+        
+        return view
+    }
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0
     }
     
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return nil
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+        return 80
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == currentTag {
+            return 100
+        }else {
+            return 0
+        }
+    }
 
 }
