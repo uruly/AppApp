@@ -143,6 +143,18 @@ class BasePageViewController: UIPageViewController {
         super.viewDidDisappear(animated)
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if #available(iOS 11.0, *) {
+            let topMargin = self.view.safeAreaInsets.top
+            if topMargin != 0{
+                if let titleLogo = self.navigationController?.navigationBar.viewWithTag(255){
+                    titleLogo.center.y -= 5
+                }
+            }
+        }
+    }
+    
     @objc func showTutorial(){
         let tutorialVC = TutorialViewController()
         TutorialViewController.isFirst = false
