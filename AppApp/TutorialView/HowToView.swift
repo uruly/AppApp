@@ -46,6 +46,38 @@ class HowToView: UIView {
         self.addSubview(screenShot)
         
         //吹き出しを設置
+        if index == 0 {
+            let rect = CGRect(x:screenShot.frame.maxX - 180,y:screenShot.frame.minY + screenShot.frame.width - 80,width:200,height:80)
+            let balloonView = BalloonView(frame: rect,color:UIColor.allLabel())
+            balloonView.isDown = false
+            balloonView.label.text = "ここをタップ"
+            balloonView.label.textColor = UIColor.white
+            self.addSubview(balloonView)
+            animation(balloonView)
+        }else if index == 1 {
+            let rect = CGRect(x:margin * 3,y:screenShot.frame.minY + screenShot.frame.width - 80,width:200,height:120)
+            let balloonView = BalloonView(frame: rect,color:UIColor.allLabel())
+            balloonView.isDown = true
+            balloonView.label.text = "長押しで順番を入れ替え\nすると使いやすい！"
+            balloonView.label.textColor = UIColor.white
+            self.addSubview(balloonView)
+            animation(balloonView)
+        }else if index == 2 {
+            let rect = CGRect(x:(width - 200) / 2,y:screenShot.frame.minY + screenShot.frame.width + margin,width:200,height:120)
+            let balloonView = BalloonView(frame: rect,color:UIColor.allLabel())
+            balloonView.isDown = false
+            balloonView.label.text = "メモやラベルは後から変更可能！"
+            balloonView.label.textColor = UIColor.white
+            self.addSubview(balloonView)
+            animation(balloonView)
+        }
+        
+    }
+    
+    func animation(_ view:BalloonView){
+        UIView.animate(withDuration: 0.5, delay: 0, options: [.repeat,.autoreverse,.curveEaseIn], animations: {
+            view.center.y += 5.0
+        }, completion: nil)
     }
     
 

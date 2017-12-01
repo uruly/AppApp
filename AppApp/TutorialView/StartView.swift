@@ -36,8 +36,15 @@ class StartView: UIView {
         header.numberOfLines = 0
         self.addSubview(header)
         
-        startBtn = UIButton(frame:CGRect(x:margin,y:width / 2,width:200,height:50))
-        startBtn.center = CGPoint(x:width / 2,y:width * 2 / 3)
+        let helpLabel = UILabel(frame:CGRect(x:margin * 2,y:header.frame.maxY,width:width - (margin * 4),height:100))
+        helpLabel.font = UIFont.systemFont(ofSize: 16)
+        helpLabel.textColor = UIColor.white
+        helpLabel.text = "このチュートリアルはいつでも見ることができます。\nわからないことがあれば、右上のHELPを見てみてください。"
+        helpLabel.numberOfLines = 0
+        self.addSubview(helpLabel)
+        
+        startBtn = UIButton(frame:CGRect(x:margin,y:width / 2,width:width - (margin * 4),height:50))
+        startBtn.center = CGPoint(x:width / 2,y:width * 4 / 5)
         startBtn.setTitle("スタート", for: .normal)
         startBtn.setTitleColor(UIColor.darkGray, for: .normal)
         startBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
