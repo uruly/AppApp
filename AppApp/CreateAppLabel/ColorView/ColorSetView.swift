@@ -29,7 +29,7 @@ extension ColorSetView: UICollectionViewDelegate {
         let cell = collectionView.cellForItem(at: indexPath) as! ColorSetViewCell
         cell.isSelected = true
         
-        print(colorDelegate)
+        //print(colorDelegate)
         if colorDelegate != nil {
             colorDelegate.setColor(color: colorSet[indexPath.row])
         }

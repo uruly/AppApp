@@ -14,7 +14,7 @@ class SelectionBarCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        print("awakeFromNib")
+        //print("awakeFromNib")
         //layoutLabel()
     }
     

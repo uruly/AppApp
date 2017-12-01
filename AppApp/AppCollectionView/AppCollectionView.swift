@@ -32,7 +32,7 @@ class AppCollectionView: UICollectionView {
     }
     var appData:AppData! {
         didSet {
-            print("self.itemSize\(self.itemSize)")
+            //print("self.itemSize\(self.itemSize)")
             //self.collectionViewLayout.invalidateLayout()
             DispatchQueue.main.async {
                 self.reloadData()
@@ -92,7 +92,7 @@ class AppCollectionView: UICollectionView {
 //                print("iconSize\(iconSize)")
 //                layout.itemSize = CGSize(width:frame.width - 30,height:100)
 //            }else {
-                print("iconSizeElse\(iconSize)")
+                //print("iconSizeElse\(iconSize)")
                 layout.itemSize = CGSize(width:iconSize,height:iconSize)
 //            }
         }
@@ -132,14 +132,14 @@ class AppCollectionView: UICollectionView {
     
     func deleteAppData(_ completion:@escaping ()->()){
         DispatchQueue.global().async {
-            print(self.checkArray)
+            //print(self.checkArray)
             self.appData.deleteAppData(appList: self.checkArray){
                 if self.checkArray.count > 0 {
                     self.appData.readAppData(label: self.checkArray[0].label){
                         self.appData.resetOrder()
                         DispatchQueue.main.async {
                             self.checkArray = []
-                            print("reload")
+                            //print("reload")
                             self.reloadData()
                             completion()
                         }
@@ -262,10 +262,10 @@ extension AppCollectionView:UICollectionViewDelegateFlowLayout{
 
 extension AppCollectionView:IconSizeChangerDelegate{
     @objc func sliderValueChanged(sender: UISlider) {
-        print("ここで受け取り！\(sender.value)")
+        //print("ここで受け取り！\(sender.value)")
         //collectionViewのitemSizeを変える
         let value = CGFloat(sender.value)
-        let currentSize = self.itemSize.width
+       // let currentSize = self.itemSize.width
 //        if value > maxSize {
 //            self.itemSize = CGSize(width:self.frame.width - 30,height:100)
 //        }else {

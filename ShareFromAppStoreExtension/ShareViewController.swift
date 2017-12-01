@@ -98,7 +98,7 @@ class ShareViewController: SLComposeServiceViewController {
             completion(1)
         }
         for itemProvider in itemProviders {
-            print(itemProvider.registeredTypeIdentifiers)
+            //print(itemProvider.registeredTypeIdentifiers)
             //URL
             if (itemProvider.hasItemConformingToTypeIdentifier("public.url")) {
                 itemProvider.loadItem(forTypeIdentifier: "public.url", options: nil, completionHandler: {
@@ -169,7 +169,7 @@ class ShareViewController: SLComposeServiceViewController {
         let itemProviders = extensionItem.attachments as! [NSItemProvider]
         loadData(itemProviders: itemProviders) { (name, developer, id, url, image) in
             self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
-            print("この中きたよ")
+            //print("この中きたよ")
             self.saveAppData(name: name, developer: developer, id: id, urlString: url, image: image)
         }
         
@@ -184,10 +184,10 @@ class ShareViewController: SLComposeServiceViewController {
         //var date = Date()
         
         for itemProvider in itemProviders {
-            print(itemProvider.registeredTypeIdentifiers)
+            //print(itemProvider.registeredTypeIdentifiers)
             //URL
             if (itemProvider.hasItemConformingToTypeIdentifier("public.url")) {
-                print("ないの？")
+                //print("ないの？")
                 itemProvider.loadItem(forTypeIdentifier: "public.url", options: nil, completionHandler: {
                     (item, error) in
                     
@@ -234,12 +234,12 @@ class ShareViewController: SLComposeServiceViewController {
                         //App名
                         var nameString = text[..<developLabelRange!.lowerBound]
                         nameString.removeSubrange(appLabelRange!)
-                        print("name\(nameString)")
+                        //print("name\(nameString)")
                         name = String(nameString)
                         
                         //デベロッパ名
                         let developString = text[developLabelRange!.upperBound ..< text.endIndex]
-                        print("develop\(developString)")
+                        //print("develop\(developString)")
                         developer = String(developString)
                         
                         if name != nil && developer != nil && id != nil && url != nil && image != nil {
@@ -258,10 +258,10 @@ class ShareViewController: SLComposeServiceViewController {
         var config =  Realm.Configuration(
             schemaVersion: SCHEMA_VERSION,
             migrationBlock: { migration, oldSchemaVersion in
-                print(oldSchemaVersion)
+                //print(oldSchemaVersion)
                 if (oldSchemaVersion < 4) {
                     migration.enumerateObjects(ofType: AppRealmData.className()) { oldObject, newObject in
-                        print("migration")
+                        //print("migration")
                         
                         newObject!["urlString"] = ""
                     }
@@ -329,7 +329,7 @@ class ShareViewController: SLComposeServiceViewController {
         try! realm.write {
             realm.add(data,update:true)
         }
-        print("seikou?")
+        //print("seikou?")
     }
     //Appとラベルを紐づけたのを保存するよ
     func saveLabelAppData(appData:AppRealmData){
@@ -337,12 +337,12 @@ class ShareViewController: SLComposeServiceViewController {
         saveAllLabel(appData:appData)
         let index = labelList.findIndex(includeElement: {$0.name == "ALL"})
         if index.count > 0 {
-            print("all消すよ")
+            //print("all消すよ")
             labelList.remove(at: index[0])
         }
         
         for label in labelList {
-            print("label.name:\(label.name)")
+            //print("label.name:\(label.name)")
             let colorData = NSKeyedArchiver.archivedData(withRootObject: label.color)
             let labelRealm = AppLabelRealmData(value:["name":label.name,
                                                       "color":colorData,
@@ -372,7 +372,7 @@ class ShareViewController: SLComposeServiceViewController {
             try! realm.write {
                 realm.add(data,update:true)
             }
-            print("成功?")
+            //print("成功?")
         }
     }
     
@@ -387,7 +387,7 @@ class ShareViewController: SLComposeServiceViewController {
         }
         
         let objs = realm.objects(ApplicationData.self).filter("label == %@",labelData)
-        print("objs.count\(objs.count)")
+        //print("objs.count\(objs.count)")
         return objs.count
     }
 
@@ -397,13 +397,13 @@ class ShareViewController: SLComposeServiceViewController {
         config.fileURL = url.appendingPathComponent("db.realm")
         
         let realm = try! Realm(configuration: config)
-        guard let label = realm.object(ofType: AppLabelRealmData.self, forPrimaryKey: labelID) else{
+        guard let _ = realm.object(ofType: AppLabelRealmData.self, forPrimaryKey: labelID) else{
             return false
         }
-        guard let app = realm.object(ofType: AppRealmData.self, forPrimaryKey: appID) else {
+        guard let _ = realm.object(ofType: AppRealmData.self, forPrimaryKey: appID) else {
             return false
         }
-        print("app.name\(app.name),label\(label.name!)")
+        //print("app.name\(app.name),label\(label.name!)")
         return true
     }
     

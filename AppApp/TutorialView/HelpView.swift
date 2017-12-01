@@ -70,7 +70,7 @@ class HelpView: UITableView {
     
     @objc func sectionTapped(sender:UITapGestureRecognizer){
         if let header = sender.view{
-            print(header.tag)
+            //print(header.tag)
             //itemSizeをかえてアコーディオンさせる
             if self.currentTag == header.tag {
                 self.currentTag = nil
@@ -141,7 +141,7 @@ extension HelpView: UITableViewDataSource {
         if section < questionAnswer.count {
             text = questionAnswer[section].0
         }else {
-            print(section - ( questionAnswer.count - 1))
+            //print(section - ( questionAnswer.count - 1))
             if section - ( questionAnswer.count) >= 0 {
                 text = links[section - ( questionAnswer.count)].0
             }

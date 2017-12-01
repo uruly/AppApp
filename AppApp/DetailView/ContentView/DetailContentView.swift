@@ -20,7 +20,7 @@ class DetailContentView: UICollectionView {
     var memoDelegate:MemoDelegate!
     var topInfoFrame:CGSize = CGSize.zero {
         didSet{
-            print("よばれええ")
+            //print("よばれええ")
             self.collectionViewLayout.invalidateLayout()
         }
     }
@@ -98,7 +98,7 @@ extension DetailContentView: UICollectionViewDataSource {
         }
         else if indexPath.row == 2 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "detailMemo", for: indexPath) as! DetailMemoViewCell
-            print("ここにはきてる")
+            //print("ここにはきてる")
             self.detailVC.delegate = cell.tableView
             cell.tableView.detailVC = self.detailVC
             cell.tableView.memo = memo
@@ -120,7 +120,7 @@ extension DetailContentView:UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch indexPath.row {
         case 0:
-            print("topInfoFrame\(topInfoFrame)")
+            //print("topInfoFrame\(topInfoFrame)")
             return topInfoFrame
         case 1: return commonInfoFrame
         case 2: return memoViewFrame
@@ -136,14 +136,14 @@ extension DetailContentView: UIScrollViewDelegate {
 
     }
     func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
-        print("begin")
+        //print("begin")
         if memoDelegate != nil {
             memoDelegate.scroll()
         }
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        print("beginDrag")
+        //print("beginDrag")
         if let view = detailVC.view.viewWithTag(543){
             view.removeFromSuperview()
         }

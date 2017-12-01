@@ -64,7 +64,7 @@ class CreateLabelViewController: UITableViewController {
             }
             
             if existsSelfInViewControllers {
-                print("前の画面に戻る処理が行われました")
+                //print("前の画面に戻る処理が行われました")
                 self.saveLabel()
             }
         }
@@ -145,7 +145,7 @@ class CreateLabelViewController: UITableViewController {
     }
     
     @objc func saveLabel(){
-        print("ここ呼ばれてない？")
+        //print("ここ呼ばれてない？")
         if name != nil && name != "" && !self.contains(name:name){
             //saveする
             save {
@@ -239,7 +239,7 @@ extension CreateLabelViewController: UITextFieldDelegate {
         return true
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
-        print("end")
+        //print("end")
         name = textField.text
         textField.resignFirstResponder()
     }
@@ -252,7 +252,7 @@ extension CreateLabelViewController: UITextFieldDelegate {
 }
 extension CreateLabelViewController:ColorDelegate {
     func pickedColor(color:UIColor,endState:Bool){
-        print("color\(color)")
+        //print("color\(color)")
         self.color = color
     }
 }

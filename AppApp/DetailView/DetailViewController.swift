@@ -48,8 +48,8 @@ class DetailViewController: UIViewController {
         //self.view.backgroundColor = UIColor.white
         self.title = appData.label.name
         
-        let naviBarHeight = self.navigationController?.navigationBar.frame.maxY ?? 57.0
-        let margin:CGFloat = 15.0
+        //let naviBarHeight = self.navigationController?.navigationBar.frame.maxY ?? 57.0
+        //let margin:CGFloat = 15.0
         
         let layout = UICollectionViewFlowLayout()
         //layout.estimatedItemSize = CGSize(width:width - (margin * 2),height:200)
@@ -110,7 +110,7 @@ class DetailViewController: UIViewController {
             }
 
             if existsSelfInViewControllers {
-                print("前の画面に戻る処理が行われました")
+                //print("前の画面に戻る処理が行われました")
                 UIView.animate(withDuration: 0.3, animations: {
                     self.navigationController?.navigationBar.barTintColor = UIColor.white
                     self.navigationController?.navigationBar.tintColor = nil
@@ -136,7 +136,7 @@ class DetailViewController: UIViewController {
 
     
     func saveAppLabelMemo(_ text:String ){
-        print("saveMemo")
+        //print("saveMemo")
         var config = Realm.Configuration(schemaVersion:SCHEMA_VERSION)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
         config.fileURL = url.appendingPathComponent("db.realm")
@@ -165,7 +165,7 @@ class DetailViewController: UIViewController {
 //                if !bool {
 //                    productVC.dismiss(animated: true, completion: nil)
 //                }
-                print(error)
+                print(error ?? nil)
             }
         }
     }

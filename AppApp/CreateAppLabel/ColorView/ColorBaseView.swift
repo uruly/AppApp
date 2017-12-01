@@ -88,7 +88,7 @@ class ColorBaseView: UIView {
         pageView = ColorPageView(frame:CGRect(x:0,y:toolbarHeight,width:self.frame.width,
                                               height:self.frame.height - toolbarHeight))
         pageView.colorPageDelegate = self
-        print(self.createAppLabelVC)
+        //print(self.createAppLabelVC)
         pageView.colorDelegate = self.createAppLabelVC
         self.addSubview(pageView)
     }
@@ -103,17 +103,17 @@ class ColorBaseView: UIView {
     }
     
     @objc func pageControlTapped(sender:UIPageControl){
-        print(sender.currentPage)
+        //print(sender.currentPage)
         let indexPath = IndexPath(row: sender.currentPage, section: 0)
         pageView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
     
     @objc func doneBtnTapped(){
-        print("done")
+        //print("done")
         if createAppLabelVC != nil {
             createAppLabelVC.closeColorPicker()
             if let fakeView = createAppLabelVC.view.viewWithTag(66) {
-                print("あるよ")
+                //print("あるよ")
                 fakeView.removeFromSuperview()
             }
         }

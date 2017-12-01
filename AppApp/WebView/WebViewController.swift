@@ -143,14 +143,14 @@ extension WebViewController:WKNavigationDelegate{
 
     }
     func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
-        print("commit")
+        //print("commit")
         self.resetToolbar()
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         let url = navigationAction.request.url
         let urlString = ((url) != nil) ? url!.absoluteString : ""
-        print("ここ")
+        //print("ここ")
         if isMatch(input: urlString,pattern: "\\/\\/itunes\\.apple\\.com\\/") {
             // AppStoreのリンクなら、ストアアプリで開く
             UIApplication.shared.openURL(url!)
@@ -169,9 +169,9 @@ extension WebViewController:WKNavigationDelegate{
 }
 extension WebViewController:WKUIDelegate {
     func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
-        print("ここ")
+        //print("ここ")
         guard let url = navigationAction.request.url else {
-            print("nil")
+            //print("nil")
             return nil
         }
         

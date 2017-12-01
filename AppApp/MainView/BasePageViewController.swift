@@ -53,7 +53,7 @@ class BasePageViewController: UIPageViewController {
 
         self.navigationItem.leftBarButtonItem = tutorial
         let navigationBarHeight = self.navigationController?.navigationBar.frame.maxY ?? 56
-        let statusBarHeight = UIApplication.shared.statusBarFrame.height
+        //let statusBarHeight = UIApplication.shared.statusBarFrame.height
         //ロゴを乗せる
         let titlePath = Bundle.main.path(forResource: "logo3", ofType: "png")
         let titleLogo =  UIImageView(image: UIImage(contentsOfFile:titlePath!)?.withRenderingMode(.alwaysTemplate))
@@ -86,7 +86,7 @@ class BasePageViewController: UIPageViewController {
             self.setViewControllers([getBase(appLabel: appLabel.array[0])], direction: .forward, animated: true, completion: nil)
         }
         self.dataSource = self
-        self.delegate = self as? UIPageViewControllerDelegate
+        self.delegate = self as UIPageViewControllerDelegate
         
         let scrollView = self.view.subviews.flatMap { $0 as? UIScrollView }.first
         scrollView?.delegate = self
@@ -100,7 +100,7 @@ class BasePageViewController: UIPageViewController {
             titleLogo.isHidden = false
         }
         if BasePageViewController.isUnwind{
-            print("truedayo")
+            //print("truedayo")
             appLabel.reloadLabelData()
             selectionBar.reloadData()
             selectionBar.collectionViewLayout.invalidateLayout()
@@ -190,7 +190,7 @@ class BasePageViewController: UIPageViewController {
     //編集中にする
     @objc func editTapped(sender:UIBarButtonItem){
         let isWhileEditing = AppCollectionView.isWhileEditing
-        let scrollView = self.view.subviews.flatMap { $0 as? UIScrollView }.first
+        //let scrollView = self.view.subviews.flatMap { $0 as? UIScrollView }.first
         if isWhileEditing {
             //編集中を解除する
             cancelEdit(sender: sender)
@@ -230,7 +230,7 @@ extension BasePageViewController: UIPageViewControllerDataSource {
         
         //現在の位置で場合分け
         if viewController.isKind(of: BaseViewController.self){
-            let currentView = viewController as! BaseViewController
+            //let currentView = viewController as! BaseViewController
             let prevValue = AppLabel.currentOrder! - 1
             if(prevValue < 0){
                 return self.isInfinity ? getBase(appLabel:appLabel.array.last!) : nil
@@ -246,7 +246,7 @@ extension BasePageViewController: UIPageViewControllerDataSource {
         
         //現在の位置で場合分け
         if viewController.isKind(of: BaseViewController.self){
-            let currentView = viewController as! BaseViewController
+            //let currentView = viewController as! BaseViewController
             let nextValue = AppLabel.currentOrder! + 1
             if(nextValue > appLabel.array.count - 1){
                 return self.isInfinity ? getBase(appLabel:appLabel.array.first!) : nil
@@ -260,15 +260,15 @@ extension BasePageViewController: UIPageViewControllerDataSource {
 }
 extension BasePageViewController:UIPageViewControllerDelegate{
     func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
-        print("willTransiton")
+        //print("willTransiton")
         if let curVC = pageViewController.viewControllers?.first,curVC.isKind(of:BaseViewController.self){
             let currentVC = curVC as! BaseViewController
-            print(currentVC.appLabel.name)
+            //print(currentVC.appLabel.name)
             self.currentPageIndex = currentVC.appLabel.order
         }
         if let neVC = pendingViewControllers.first,neVC.isKind(of: BaseViewController.self){
             let nextVC = neVC as! BaseViewController
-            print(nextVC.appLabel.name)
+            //print(nextVC.appLabel.name)
             self.nextPageIndex = nextVC.appLabel.order
             if fabs(Double(self.currentPageIndex - self.nextPageIndex)) > 1{
                 selectionBar.diffX = 0
@@ -280,23 +280,23 @@ extension BasePageViewController:UIPageViewControllerDelegate{
     }
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         if let prevVC = previousViewControllers.first,prevVC.isKind(of: BaseViewController.self){
-            let previousVC = prevVC as! BaseViewController
-            print(previousVC.appLabel.name)
+            //let previousVC = prevVC as! BaseViewController
+            //print(previousVC.appLabel.name)
             if let curVC = pageViewController.viewControllers?.first,curVC.isKind(of:BaseViewController.self){
                 let currentVC = curVC as! BaseViewController
-                print(currentVC.appLabel.name)
+                //print(currentVC.appLabel.name)
                 self.currentPageIndex = currentVC.appLabel.order
                 selectionBar.scrollAdjust(index:self.currentPageIndex)
             }
         }
-        print("っここ")
-        print("previousView\(previousViewControllers)")
+        //print("っここ")
+        //print("previousView\(previousViewControllers)")
     }
 }
 
 extension BasePageViewController: UIScrollViewDelegate {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        print("Drag開始")
+        //print("Drag開始")
         if let view = self.view.viewWithTag(543){
             view.removeFromSuperview()
         }
@@ -314,7 +314,7 @@ extension BasePageViewController: UIScrollViewDelegate {
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        print("didendDrag")
+        //print("didendDrag")
         //isSelectionScroll = false
     }
     

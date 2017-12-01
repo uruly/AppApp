@@ -54,16 +54,16 @@ extension CreateAppLabelTableView: UITableViewDelegate {
         }
         if indexPath.section == 1{
             //カラーピッカーを表示
-            print("colorPicker")
+            //print("colorPicker")
             createAppLabelVC.showColorPicker()
         }
         if indexPath.section == 2{
-            print("uipickerを表示")
+            //print("uipickerを表示")
             createAppLabelVC.showPicker()
         }
         
         if indexPath.section == 3 {
-            print("appを追加")
+            //print("appを追加")
             createAppLabelVC.showAppList()
         }
     }
@@ -153,7 +153,7 @@ extension CreateAppLabelTableView:UITextFieldDelegate {
         return true
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
-        print("end")
+        //print("end")
         if textField.tag == 1 { //ラベル名
             createAppLabelVC.labelName = textField.text
         }

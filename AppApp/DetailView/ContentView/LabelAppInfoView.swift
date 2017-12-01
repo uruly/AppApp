@@ -40,7 +40,7 @@ class LabelAppInfoView: UITableView {
         self.estimatedRowHeight = 500
         self.rowHeight = UITableViewAutomaticDimension
         self.contentInset.bottom = 15
-        print("awake")
+        //print("awake")
         
     }
 
@@ -56,7 +56,7 @@ class LabelAppInfoView: UITableView {
         if let userInfo = notification.userInfo {
             if let keyboardFrameInfo = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue {
                 // キーボードの高さを取得
-                print(keyboardFrameInfo.cgRectValue.height)
+                //print(keyboardFrameInfo.cgRectValue.height)
                 let keyboardHeight = keyboardFrameInfo.cgRectValue.height
                 self.keyboardHeight = keyboardHeight
                 let keyMinY = self.detailVC.view.frame.height - keyboardHeight
@@ -143,7 +143,7 @@ extension LabelAppInfoView:UITableViewDataSource {
 
 extension LabelAppInfoView:UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
-        print("はじめ\(textView.frame)")
+        //print("はじめ\(textView.frame)")
 //        if let range = textView.selectedTextRange?.end{
 //            let rect = textView.caretRect(for:range)
 //            print(rect)
@@ -177,11 +177,11 @@ extension LabelAppInfoView:UITextViewDelegate {
                 if let range = textView.selectedTextRange?.start{
                     let rect = textView.caretRect(for:range)
                     let scrollRect = textView.convert(rect, to: self.detailVC.view)
-                    print("scrollRect\(scrollRect),keyMinY\(keyMinY)")
+                    //print("scrollRect\(scrollRect),keyMinY\(keyMinY)")
                     if scrollRect.maxY >= keyMinY {
                         let diffY = scrollRect.maxY - keyMinY
                         UIView.animate(withDuration: 0.2, animations: {
-                            print("ここ呼ばれているよ")
+                            //print("ここ呼ばれているよ")
                             self.detailVC.contentView.contentOffset.y += diffY + 70
                         })
                     }

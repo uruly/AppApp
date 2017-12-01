@@ -25,10 +25,10 @@ class WebPageToolbar: UIToolbar {
         if #available(iOS 11.0, *) ,isiPhoneX{
             for subview in self.subviews {
                 let stringFromClass = NSStringFromClass(subview.classForCoder)
-                print(stringFromClass)
+                //print(stringFromClass)
                 if stringFromClass.contains("BarBackground") {
                     subview.frame = self.bounds
-                    print(subview.frame)
+                    //print(subview.frame)
                     subview.backgroundColor = UIColor.green
                     //subview.frame.size.height = self.bounds.height
                 } else if stringFromClass.contains("ContentView") {
@@ -38,7 +38,7 @@ class WebPageToolbar: UIToolbar {
                         for barItem in contentSubview.subviews{
                             for constraint in barItem.constraints {
                                 if let id = constraint.identifier,id.contains("height"){
-                                    print(id)
+                                    //print(id)
                                     constraint.priority = .defaultLow
                                 }
                             }

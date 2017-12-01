@@ -60,10 +60,10 @@ class AppLabel {
         var config =  Realm.Configuration(
             schemaVersion: SCHEMA_VERSION,
             migrationBlock: { migration, oldSchemaVersion in
-                print(oldSchemaVersion)
+                //print(oldSchemaVersion)
                 if (oldSchemaVersion < 4) {
                     migration.enumerateObjects(ofType: AppRealmData.className()) { oldObject, newObject in
-                        print("migration")
+                        //print("migration")
                         
                         newObject!["urlString"] = ""
                     }
@@ -125,7 +125,7 @@ class AppLabel {
                                              "color":colorData,
                                              "id":id,
                                              "order":order,
-                                             "explain":explain
+                                             "explain":explain ?? ""
             ])
         var config = Realm.Configuration(schemaVersion:SCHEMA_VERSION)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
@@ -156,7 +156,7 @@ class AppLabel {
                                              "color":colorData,
                                              "id":id,
                                              "order":order,
-                                             "explain":explain
+                                             "explain":explain ?? ""
             ])
         var config = Realm.Configuration(schemaVersion:SCHEMA_VERSION)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
@@ -227,7 +227,7 @@ class AppLabel {
         for obj in objs{
             if let objColor = NSKeyedUnarchiver.unarchiveObject(with: obj.color!) as? UIColor{
                 if objColor == color{
-                    print("同じ色")
+                    //print("同じ色")
                     if isEdit {
                         //自身と同じ色ならcontinue
                         if obj.id == id {
@@ -289,7 +289,7 @@ class AppLabel {
             guard let label = realm.object(ofType: AppLabelRealmData.self, forPrimaryKey: array[i].id) else {
                 return
             }
-            print(array[i].name)
+            //print(array[i].name)
             try! realm.write {
                 label.order = i
                 realm.add(label,update:true)

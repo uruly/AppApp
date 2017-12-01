@@ -67,7 +67,7 @@ class AppListViewController: UIViewController {
                 if let currentLabel = realm.object(ofType: AppLabelRealmData.self, forPrimaryKey: labelID) {
                     let currentLabelApp = realm.objects(ApplicationData.self).filter("label == %@ && app == %@",currentLabel,obj.app!)
                     if currentLabelApp.count > 0 {
-                        print("すでにあるよ")
+                        //print("すでにあるよ")
                         continue
                     }
                 }

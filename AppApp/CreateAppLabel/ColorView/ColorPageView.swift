@@ -132,7 +132,7 @@ extension ColorPageView: UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "base", for: indexPath) as! ColorBaseCell
             //cell.backgroundColor = colors[indexPath.row]
             cell.colorSetView.colorSet = colorSet[colorKeys[indexPath.row]] ?? []
-            print(colorDelegate)
+            //print(colorDelegate)
             cell.colorSetView.colorDelegate = colorDelegate
             cell.colorSetView.reloadData()
             
@@ -140,7 +140,7 @@ extension ColorPageView: UICollectionViewDataSource {
         }else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "customBase", for: indexPath) as! RGBSliderCell
             cell.sliderView.colorDelegate = colorDelegate
-            print(colorDelegate)
+            //print(colorDelegate)
             return cell
         }
     }

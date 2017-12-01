@@ -45,7 +45,7 @@ class ColorPicker: UIView {
     
     override func draw(_ rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()
-        print(size)
+        //print(size)
         let blockSize = CGSize(width:size.width / CGFloat(xCount), height:size.height / CGFloat(yCount))
         
         for i in 0...yCount {
@@ -93,7 +93,7 @@ class FakeView: UIView {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-        print("多ｔｔぷ")
+        //print("多ｔｔぷ")
         self.delegate.dismissPickerView(tag:pickerTag)
         self.removeFromSuperview()
     }

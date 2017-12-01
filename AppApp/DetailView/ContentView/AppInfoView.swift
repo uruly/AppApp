@@ -25,13 +25,13 @@ class AppInfoView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        print("ここよばれ")
+        //print("ここよばれ")
         //setSubviews()
     }
     override func awakeFromNib() {
         super.awakeFromNib()
         self.backgroundColor = UIColor.white
-        print("kokoyo")
+        //print("kokoyo")
     }
     
     func setSubviews(){
@@ -40,7 +40,7 @@ class AppInfoView: UIView {
         }
         let margin:CGFloat = 15.0
         let width = self.frame.width
-        let height = self.frame.height
+        //let height = self.frame.height
         
         //イメージビューを配置
         imageView = UIImageView(frame:CGRect(x:margin,y:margin,width:width / 3,height:width / 3))
@@ -81,7 +81,7 @@ class AppInfoView: UIView {
         self.addSubview(webSearchBtn)
         
         if appNameLabel.frame.maxY > showStoreBtn.frame.minY {
-            print("被っているよ")
+            //print("被っているよ")
             appNameLabel.font = UIFont.boldSystemFont(ofSize: 16)
             appNameLabel.sizeThatFits(CGSize(width:appNameLabel.frame.width,height:showStoreBtn.frame.minY - appNameLabel.frame.minY))
             showStoreBtn.frame = CGRect(x:imageView.frame.maxX + margin,y:appNameLabel.frame.maxY,width:btnWidth,height:btnHeight)

@@ -75,8 +75,8 @@ class CreateAppLabelViewController: UIViewController {
         self.view.backgroundColor = UIColor.backgroundGray()
         
         //ナビゲーションバーを設置
-        let naviBarHeight = UIApplication.shared.statusBarFrame.height + 47.0
-        print(naviBarHeight)
+        //let naviBarHeight = UIApplication.shared.statusBarFrame.height + 47.0
+        //print(naviBarHeight)
         //naviBar = CustomNavigationBar(frame: CGRect(x:0,y:0,width:width,height:naviBarHeight))
         self.title = "ラベルを追加"
         let cancelBtn = UIBarButtonItem(title: "キャンセル", style: .plain, target: self, action: #selector(self.cancelBtnTapped))
@@ -184,7 +184,7 @@ class CreateAppLabelViewController: UIViewController {
     }
     
     func dismissPickerView(tag:Int){
-        print("dis\(tag)")
+        //print("dis\(tag)")
         if tag == 1 {   //カラーピッカーを閉じる
             self.closeColorPicker()
         }else { //pickerViewを閉じる
@@ -240,7 +240,7 @@ class CreateAppLabelViewController: UIViewController {
     
     func showAppList(){
         let appListVC = AppListViewController()
-        print("koko")
+        //print("koko")
         appListVC.createAppLabelVC = self
         self.navigationController?.pushViewController(appListVC, animated: true)
         
@@ -268,7 +268,7 @@ extension CreateAppLabelViewController:ColorDelegate {
 extension CreateAppLabelViewController: LabelOrderPickerDelegate {
     func changedValue(_ order: Int) {
         //orderLabel.text = text
-        print("changed\(order)")
+        //print("changed\(order)")
         self.order = order
     }
 }

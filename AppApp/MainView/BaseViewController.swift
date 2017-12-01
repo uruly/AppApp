@@ -45,7 +45,7 @@ class BaseViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //ここでCurrentIDを設定
-        print("BaseViewWillAppear")
+        //print("BaseViewWillAppear")
         AppLabel.currentID = appLabel.id
         AppLabel.currentOrder = appLabel.order
         //delegateを設定
@@ -101,7 +101,7 @@ extension BaseViewController: EditToolbarDelegate {
     
     //これらの操作が終わったら自動的に編集中を終わらせる
     @objc func addLabelBtnTapped() {
-        print("addLabel")
+        //print("addLabel")
         if collectionView.checkArray.count == 0 {
             return
         }
@@ -131,7 +131,7 @@ extension BaseViewController: EditToolbarDelegate {
     }
     
     @objc func shareAppBtnTapped() {
-        print("share")
+        //print("share")
     }
     
     

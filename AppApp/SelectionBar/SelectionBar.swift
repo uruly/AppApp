@@ -49,7 +49,7 @@ class SelectionBar: UICollectionView {
     var diffX:CGFloat = 0
     
     func setDiffX(nextIndex:Int){
-        print("nextIndex\(nextIndex)")
+        //print("nextIndex\(nextIndex)")
         if nextIndex >= AppLabel.count! || nextIndex < 0{
             diffX = 0
             return
@@ -69,10 +69,10 @@ class SelectionBar: UICollectionView {
     }
     
     func scrollToHorizontallyCenter(index:Int,x:CGFloat){
-        print(diffX)
-        print(x)
-        print("contentSize\(self.contentSize)")
-        print("contentOffset.x\(self.contentOffset.x)")
+        //print(diffX)
+        //print(x)
+        //print("contentSize\(self.contentSize)")
+        //print("contentOffset.x\(self.contentOffset.x)")
         if self.contentOffset.x + (diffX * x) < 0{
             return
         }
@@ -113,15 +113,15 @@ class SelectionBar: UICollectionView {
             self.beginInteractiveMovementForItem(at: selectedIndexPath)
             
         case .changed:
-            print("changed")
+            //print("changed")
             self.updateInteractiveMovementTargetPosition(sender.location(in: sender.view!))
             
         case .ended:
-            print("end")
+            //print("end")
             guard let nextIndexPath = self.indexPathForItem(at: sender.location(in: sender.view!)) else {
                 break
             }
-            print(nextIndexPath)
+            //print(nextIndexPath)
             if nextIndexPath.section == 1 || nextIndexPath.row == 0{
                 self.cancelInteractiveMovement()
             }else {
@@ -145,7 +145,7 @@ extension SelectionBar: UICollectionViewDelegate {
             self.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
             
             if AppLabel.currentOrder == indexPath.row {
-                print("return\(AppLabel.currentOrder)")
+                //print("return\(AppLabel.currentOrder)")
                 return
             }
             
@@ -192,7 +192,7 @@ extension SelectionBar: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        print("sourceIndexPath\(sourceIndexPath.section)\(destinationIndexPath.section)")
+        //print("sourceIndexPath\(sourceIndexPath.section)\(destinationIndexPath.section)")
 
         //collectionViewLayout.invalidateLayout()
         let tempNumber = pageVC.appLabel.array.remove(at: sourceIndexPath.item)
@@ -202,7 +202,7 @@ extension SelectionBar: UICollectionViewDataSource {
         //self.reloadData()
         self.layoutIfNeeded()
         //self.collectionViewLayout.invalidateLayout()
-        print(sourceIndexPath.item)
+        //print(sourceIndexPath.item)
 
         pageVC.reloadPage(order:AppLabel.currentOrder!)
     }
@@ -210,7 +210,7 @@ extension SelectionBar: UICollectionViewDataSource {
 }
 extension SelectionBar:UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print("セレクションバースクロール中\(scrollView.contentOffset.x)")
+        //print("セレクションバースクロール中\(scrollView.contentOffset.x)")
     }
 }
 

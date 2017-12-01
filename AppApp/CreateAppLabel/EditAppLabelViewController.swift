@@ -52,7 +52,7 @@ class EditAppLabelViewController: CreateAppLabelViewController {
             if editTableView == nil {
                 return
             }
-            var text = "\(order)番目"
+            let text = "\(order)番目"
 //            if order == (AppLabel.count ?? 1) - 1{
 //                text = "最後に追加"
 //            }
@@ -82,11 +82,11 @@ class EditAppLabelViewController: CreateAppLabelViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if id == "0" {
-            print("ここ")
+            //print("ここ")
             editTableView.currentTextField?.isUserInteractionEnabled = false
         }else {
             //orderの位置を設定
-            var text = "\(order)番目"
+            let text = "\(order)番目"
             editTableView.orderLabel.text = text
         }
     }
@@ -171,7 +171,7 @@ class EditAppLabelViewController: CreateAppLabelViewController {
             }
         }
         //セーブをする
-        print(order)
+        //print(order)
         self.checkColor(color)
     }
 
@@ -260,7 +260,7 @@ class EditAppOrderPickerView:LabelOrderPickerView{
     }
     
     override func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        var text = "\(row + 1)番目"
+        let text = "\(row + 1)番目"
 //        if row + 1 == AppLabel.count {
 //            text = "最後"
 //        }

@@ -21,7 +21,7 @@ class RGBSliderView: UIView {
     var colorDelegate:ColorDelegate!
     var color:UIColor! {
         didSet{
-            print("ここ呼ばれているよ")
+            //print("ここ呼ばれているよ")
             self.view.backgroundColor = color
             if colorDelegate != nil {
                 colorDelegate.setColor(color: color)
@@ -117,10 +117,10 @@ class RGBSliderView: UIView {
     
     @objc func sliderValueChanged(sender:UISlider){
         guard let current = color.cgColor.components else {
-            print("ここ")
+            //print("ここ")
             return
         }
-        print(current)
+        //print(current)
         if sender.tag == 1{ //red
             color = UIColor(red: CGFloat(sender.value) / 255, green: current[1], blue: current[2], alpha: 1)
         }else if sender.tag == 2 { //green

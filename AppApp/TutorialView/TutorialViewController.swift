@@ -138,7 +138,7 @@ class TutorialViewController: UIViewController {
     
 
     @objc func pageControlTapped(sender:UIPageControl){
-        print(sender.currentPage)
+        //print(sender.currentPage)
         let indexPath = IndexPath(row: sender.currentPage, section: 0)
         pageView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }

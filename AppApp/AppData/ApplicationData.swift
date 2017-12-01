@@ -70,7 +70,7 @@ class AppData {
     init(label:AppLabelData) {
         self.label = label
         readAppData(label:label){
-            print("読み込み完了")
+            //print("読み込み完了")
         }
     }
     
@@ -166,7 +166,7 @@ class AppData {
                 }
                 let applicationData = realm.objects(ApplicationData.self).filter("label == %@ && app == %@",label,app)
                 if applicationData.count > 0{
-                    print("すでにラベルにあるよ")
+                    //print("すでにラベルにあるよ")
                     continue
                 }
                 let id = UUID().uuidString

@@ -43,7 +43,7 @@ class LabelListViewController: UIViewController {
         self.view.backgroundColor = UIColor.backgroundGray()
         //ナビゲーションバーを設置
         let naviBarHeight = UIApplication.shared.statusBarFrame.height + 47.0
-        print(naviBarHeight)
+        //print(naviBarHeight)
         naviBar = CustomNavigationBar(frame: CGRect(x:0,y:0,width:width,height:naviBarHeight))
         let naviBarItem = UINavigationItem(title:"ラベルを追加")
         let cancelBtn = UIBarButtonItem(title: "キャンセル", style: .plain, target: self, action: #selector(self.cancelBtnTapped))

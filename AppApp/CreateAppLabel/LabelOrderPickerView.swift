@@ -33,7 +33,7 @@ class LabelOrderPickerView: UIPickerView {
 
 extension LabelOrderPickerView: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        print("row\(row)")
+        //print("row\(row)")
         //tableViewを更新
         if orderDelegate != nil {
             orderDelegate.changedValue(row + 1)

@@ -28,7 +28,7 @@ class BaseNavigationViewController: UINavigationController {
         let userDefaults = UserDefaults.standard
         if !userDefaults.bool(forKey:"FirstLaunch"){
             let tutorialVC = TutorialViewController()
-            print("First")
+            //print("First")
             self.present(tutorialVC, animated: true, completion: nil)
             userDefaults.set(true,forKey:"FirstLaunch")
         }
