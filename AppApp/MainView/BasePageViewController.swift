@@ -97,9 +97,6 @@ class BasePageViewController: UIPageViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if let titleLogo = self.navigationController?.navigationBar.viewWithTag(255){
-            titleLogo.isHidden = false
-        }
         if BasePageViewController.isUnwind{
             //print("truedayo")
             appLabel.reloadLabelData()
@@ -143,11 +140,18 @@ class BasePageViewController: UIPageViewController {
         super.viewDidDisappear(animated)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if let titleLogo = self.navigationController?.navigationBar.viewWithTag(255){
+            titleLogo.isHidden = false
+        }
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         if #available(iOS 11.0, *) {
-            let topMargin = self.view.safeAreaInsets.top
-            if topMargin != 0{
+            let isiPhoneX = UIScreen.main.bounds.size == CGSize(width: 375, height: 812)
+            if isiPhoneX{
                 if let titleLogo = self.navigationController?.navigationBar.viewWithTag(255){
                     titleLogo.center.y -= 5
                 }
