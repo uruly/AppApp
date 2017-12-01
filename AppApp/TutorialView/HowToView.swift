@@ -11,11 +11,11 @@ import UIKit
 class HowToView: UIView {
     
     var header:UILabel!
-    var headerTextArray = ["まずは、AppStoreで\n気になるアプリを見つけよう！","AppAppアイコンを選択！","Appを保存してみよう！","保存したらAppAppで閲覧しよう！","",""]
+    var headerTextArray = ["まずは、AppStoreで\n気になるアプリを見つけよう","AppAppアイコンを選択","Appを保存してみよう","ラベルをつけて整理しよう"] //4
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.backgroundColor = UIColor.allLabel()
+        self.backgroundColor = UIColor.howto()
         //setup()
     }
     

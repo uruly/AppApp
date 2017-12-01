@@ -22,6 +22,17 @@ class BaseNavigationViewController: UINavigationController {
         super.viewWillAppear(animated)
         VersionManager.checkVersion()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let userDefaults = UserDefaults.standard
+        if !userDefaults.bool(forKey:"FirstLaunch"){
+            let tutorialVC = TutorialViewController()
+            print("First")
+            self.present(tutorialVC, animated: true, completion: nil)
+            //userDefaults.set(true,forKey:"FirstLaunch")
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

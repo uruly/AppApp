@@ -18,16 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-        let userDefaults = UserDefaults.standard
-        var firstVC = UIViewController()
-        if userDefaults.bool(forKey:"FirstLaunch"){
-            firstVC = BaseNavigationViewController()
-            //userDefaults.set(true,forKey:"FirstLaunch")
-        }else{
-            firstVC = TutorialViewController()
-        }
-        
-        self.window!.rootViewController = firstVC
         
         return true
     }

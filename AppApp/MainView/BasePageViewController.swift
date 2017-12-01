@@ -42,7 +42,7 @@ class BasePageViewController: UIPageViewController {
         let height = self.view.frame.height
         self.view.backgroundColor = UIColor.backgroundGray()
         appLabel = AppLabel()
-        
+        self.automaticallyAdjustsScrollViewInsets = false
         //ナビゲーションバーをカスタマイズ
         self.title = ""
         //let editBtn = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(self.editTapped(sender:)))

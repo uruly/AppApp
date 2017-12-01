@@ -10,6 +10,7 @@ import UIKit
 
 @objc protocol TutorialPageControlDelegate {
     func movePage(count:Int)
+    var tutorialVC:TutorialViewController { get }
 }
 
 class TutorialPageView: UICollectionView {
@@ -27,6 +28,7 @@ class TutorialPageView: UICollectionView {
         self.dataSource = self
         self.register(UINib(nibName:"WelcomeViewCell",bundle:nil), forCellWithReuseIdentifier: "welcome")
         self.register(UINib(nibName:"HowToViewCell",bundle:nil), forCellWithReuseIdentifier: "howTo")
+        self.register(UINib(nibName:"StartViewCell",bundle:nil), forCellWithReuseIdentifier: "start")
     }
     
     convenience init(frame: CGRect){
@@ -55,19 +57,23 @@ extension TutorialPageView: UICollectionViewDelegate {
 extension TutorialPageView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //ページ数
-        return 5
+        return 6
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.row == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "welcome", for: indexPath) as! WelcomeViewCell
             return cell
-        }else {
+        }else if indexPath.row < 5{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "howTo", for: indexPath) as! HowToViewCell
             for subview in cell.howToView.subviews{
                 subview.removeFromSuperview()
             }
             cell.howToView.setup(index: indexPath.row - 1)
+            return cell
+        }else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "start", for: indexPath) as! StartViewCell
+            cell.startView.tutorialVC = pageDelegate.tutorialVC
             return cell
         }
     }
