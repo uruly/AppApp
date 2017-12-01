@@ -144,6 +144,9 @@ extension DetailContentView: UIScrollViewDelegate {
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         print("beginDrag")
+        if let view = detailVC.view.viewWithTag(543){
+            view.removeFromSuperview()
+        }
     }
 }
 

@@ -72,6 +72,24 @@ class DetailViewController: UIViewController {
         
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let userDefaults = UserDefaults.standard
+        if !userDefaults.bool(forKey:"search"){
+            let rect = CGRect(x:self.view.frame.width - 315,y:self.view.frame.height * 1 / 3,width:300,height:60)
+            let balloonView = BalloonView(frame: rect,color:UIColor.help())
+            balloonView.isDown = true
+            balloonView.tag = 543
+            balloonView.label.text = "タップすると開発者名やIDをWebで検索"
+            balloonView.label.textColor = UIColor.white
+            self.view.addSubview(balloonView)
+            UIView.animate(withDuration: 0.5, delay: 0, options: [.repeat,.autoreverse,.curveEaseIn], animations: {
+                balloonView.center.y += 5.0
+            }, completion: nil)
+            userDefaults.set(true,forKey:"search")
+        }
+    }
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         NotificationCenter.default.removeObserver(self)

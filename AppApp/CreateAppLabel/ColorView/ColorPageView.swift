@@ -98,7 +98,7 @@ class ColorPageView: UICollectionView {
                         let blue = color["blue"] as! Int
                         let uiColor = UIColor(red: CGFloat(red) / 255, green: CGFloat(green) / 255, blue: CGFloat(blue) / 255, alpha: 1)
                         self.colorSet[setName]!.append(uiColor)
-                        print("setName:\(setName),カラーレッド:\(red)")
+                        //print("setName:\(setName),カラーレッド:\(red)")
                     }
                 }
             } catch {
