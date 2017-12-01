@@ -60,6 +60,8 @@ class EditAppLabelViewController: CreateAppLabelViewController {
         }
     }
     
+    var deleteBtn:UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 //        if self.navigationController?.navigationBar.items != nil && self.navigationController?.navigationBar.items!.count > 0{
@@ -103,7 +105,7 @@ class EditAppLabelViewController: CreateAppLabelViewController {
         self.view.addSubview(editTableView)
         
         if id != "0"{
-            let deleteBtn = UIButton(frame:CGRect(x:0,y:0,width:width,height:50))
+            deleteBtn = UIButton(frame:CGRect(x:0,y:0,width:width,height:50))
             deleteBtn.center = CGPoint(x:width / 2,y:height - 25)
             deleteBtn.setTitle("ラベルを削除", for: .normal)
             
@@ -122,6 +124,17 @@ class EditAppLabelViewController: CreateAppLabelViewController {
         editPickerView.orderDelegate = self
         self.view.addSubview(editPickerView)
         
+    }
+    
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if #available(iOS 11.0, *) {
+            let bottomMargin = self.view.safeAreaInsets.bottom
+            if bottomMargin != 0 && deleteBtn != nil{
+                deleteBtn.center = CGPoint(x:self.view.frame.width / 2,y:self.view.frame.height - 25 - bottomMargin)
+            }
+        }
     }
     
     @objc override func cancelBtnTapped(){
