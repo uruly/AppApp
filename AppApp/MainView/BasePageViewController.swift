@@ -49,8 +49,9 @@ class BasePageViewController: UIPageViewController {
         let editBtn = UIBarButtonItem(title: "選択", style: .plain, target: self, action: #selector(self.editTapped(sender:)))
         self.navigationItem.rightBarButtonItem = editBtn
         
-        //let flexible = UIBarButtonItem(title: "  ", style: .plain, target: self, action: nil)
-        //self.navigationItem.leftBarButtonItems = [flexible]
+        let tutorial = UIBarButtonItem(image: UIImage(named:"tutorialMark.png")!.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(self.showTutorial))
+
+        self.navigationItem.leftBarButtonItem = tutorial
         let navigationBarHeight = self.navigationController?.navigationBar.frame.maxY ?? 56
         let statusBarHeight = UIApplication.shared.statusBarFrame.height
         //ロゴを乗せる
@@ -123,6 +124,12 @@ class BasePageViewController: UIPageViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+    }
+    
+    @objc func showTutorial(){
+        let tutorialVC = TutorialViewController()
+        TutorialViewController.isFirst = false
+        self.navigationController?.present(tutorialVC, animated: true, completion: nil)
     }
 
     func reloadPage(order:Int){

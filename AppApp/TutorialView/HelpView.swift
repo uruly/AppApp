@@ -22,6 +22,9 @@ class HelpView: UITableView {
         self.delegate = self
         self.dataSource = self
         self.register(UITableViewCell.self, forCellReuseIdentifier: "help")
+        self.backgroundColor = UIColor.help()
+        self.separatorColor = UIColor.white
+        self.sectionFooterHeight = 1
     }
     
     func setup(){
@@ -102,15 +105,15 @@ extension HelpView: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView(frame:CGRect(x:0,y:0,width:tableView.frame.width,height:80))
-        view.backgroundColor = UIColor.blue
+        let view = UIView(frame:CGRect(x:0,y:0,width:tableView.frame.width,height:60))
+        view.backgroundColor = UIColor.help()
         view.tag = section
         //タップジェスチャを登録 //
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(sectionTapped(sender:)))
         view.addGestureRecognizer(tapGesture)
         
         let margin:CGFloat = 15
-        let label = UILabel(frame:CGRect(x:margin,y:0,width:view.frame.width - (margin * 2),height:80))
+        let label = UILabel(frame:CGRect(x:margin,y:0,width:view.frame.width - (margin * 2),height:60))
         label.text = questionAnswer[section].0
         label.textColor = UIColor.white
         label.font = UIFont.boldSystemFont(ofSize: 18)
@@ -119,7 +122,7 @@ extension HelpView: UITableViewDataSource {
         return view
     }
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0
+        return 1
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -127,7 +130,7 @@ extension HelpView: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
-        return 80
+        return 60
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

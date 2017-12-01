@@ -13,6 +13,7 @@ class TutorialViewController: UIViewController {
     var pageView:TutorialPageView!
     var pageControl:UIPageControl!
     var helpView:HelpView!
+    static var isFirst:Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,6 +76,7 @@ class TutorialViewController: UIViewController {
         helpBtn.setTitleColor(UIColor.white, for: .normal)
         helpBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         helpBtn.backgroundColor = UIColor.help()
+        helpBtn.addTarget(self, action: #selector(helpBtnTapped), for: .touchUpInside)
         self.view.addSubview(helpBtn)
 
         
@@ -86,21 +88,29 @@ class TutorialViewController: UIViewController {
         let navigationHeight:CGFloat = 80.0
         let margin:CGFloat = 15.0
         helpView = HelpView(frame: CGRect(x:0,y:navigationHeight + margin,width:width,height:height - navigationHeight - margin), style:.grouped )
+        helpView.isHidden = TutorialViewController.isFirst
         self.view.addSubview(helpView)
     }
     
     @objc func welcomeBtnTapped(){
         let indexPath = IndexPath(row: 0, section: 0)
-        pageView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        pageView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
+        helpView.isHidden = true
     }
     @objc func howtoBtnTapped(){
+        helpView.isHidden = true
         let indexPath = IndexPath(row: 1, section: 0)
-        pageView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        pageView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
     }
     
     @objc func startBtnTapped(){
+        helpView.isHidden = true
         let indexPath = IndexPath(row: 5, section: 0)
-        pageView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        pageView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
+    }
+    
+    @objc func helpBtnTapped(){
+        helpView.isHidden = false
     }
 
     @objc func pageControlTapped(sender:UIPageControl){

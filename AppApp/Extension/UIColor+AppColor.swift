@@ -60,6 +60,6 @@ extension UIColor {
     }
     
     class func help() -> UIColor {
-        return UIColor(red: 16 / 255, green: 81 / 255, blue: 130 / 255, alpha: 1)
+        return UIColor(red: 255 / 255, green: 201 / 255, blue: 82 / 255, alpha: 1)
     }
 }

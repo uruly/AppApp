@@ -30,7 +30,7 @@ class BaseNavigationViewController: UINavigationController {
             let tutorialVC = TutorialViewController()
             print("First")
             self.present(tutorialVC, animated: true, completion: nil)
-            //userDefaults.set(true,forKey:"FirstLaunch")
+            userDefaults.set(true,forKey:"FirstLaunch")
         }
     }
     override func didReceiveMemoryWarning() {
