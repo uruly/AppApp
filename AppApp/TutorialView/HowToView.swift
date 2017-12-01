@@ -24,7 +24,7 @@ class HowToView: UIView {
         let height = UIScreen.main.bounds.height
         let margin:CGFloat = 15.0
         header = UILabel(frame:CGRect(x:margin,y:0,width:300,height:100))
-        header.font = UIFont.boldSystemFont(ofSize: 22)
+        header.font = UIFont.boldSystemFont(ofSize: 22 + VersionManager.excess)
         header.textColor = UIColor.white
         header.text = headerTextArray[index]
         header.numberOfLines = 0

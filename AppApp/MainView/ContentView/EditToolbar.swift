@@ -29,6 +29,7 @@ class EditToolbar: UIToolbar {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.barTintColor = UIColor.white
         //setup()
     }
     

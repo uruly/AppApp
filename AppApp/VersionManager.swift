@@ -9,7 +9,7 @@
 import UIKit
 
 //アプリの番号
-let APPLE_ID = "" //自分のアプリの番号
+let APPLE_ID = "1319908151" //自分のアプリの番号
 let RESOLUTION:String = "@" + String(Int(UIScreen.main.scale)) + "x"
 
 
@@ -94,5 +94,18 @@ struct VersionManager {
 //            return 60
 //        }
 //    }
+    
+    static var excess:CGFloat {
+        let screenWidth = UIScreen.main.bounds.width
+        if screenWidth <= 320.0{
+            return -2
+        }else if screenWidth <= 375.0{
+            return 0
+        }else if screenWidth > 376.0{
+            return 2
+        }else {
+            return 2
+        }
+    }
 }
 

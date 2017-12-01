@@ -29,8 +29,8 @@ class WelcomeView: UIView {
         self.addSubview(logoView)
         
         //ラベルを置く
-        let explain = UILabel(frame:CGRect(x:logoView.frame.minX + margin,y:logoView.frame.maxY,width:280,height:150))
-        explain.font = UIFont.boldSystemFont(ofSize: 20)
+        let explain = UILabel(frame:CGRect(x:logoView.frame.minX + margin,y:logoView.frame.maxY,width:width -  (margin * 4),height:150))
+        explain.font = UIFont.boldSystemFont(ofSize: 20 + VersionManager.excess)
         explain.textColor = UIColor.white
         explain.numberOfLines = 0
         explain.text = "はじめまして。\nAppAppは、AppStoreのアプリを整理・コレクションするためのアプリです。"
