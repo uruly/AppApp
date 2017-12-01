@@ -51,7 +51,7 @@ class CreateAppLabelViewController: UIViewController {
         }
     }
     
-    var color:UIColor = UIColor.blue{
+    var color:UIColor = UIColor(red: CGFloat(arc4random_uniform(254)) / 255,green:CGFloat(arc4random_uniform(254) ) / 255,blue:CGFloat(arc4random_uniform(254) ) / 255,alpha:1){
         didSet{
             if tableView == nil {
                 return
