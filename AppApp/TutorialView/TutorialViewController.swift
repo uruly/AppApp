@@ -12,6 +12,7 @@ class TutorialViewController: UIViewController {
 
     var pageView:TutorialPageView!
     var pageControl:UIPageControl!
+    var helpView:HelpView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +28,8 @@ class TutorialViewController: UIViewController {
         
         setupPageControl()
         setupNaviBtn()
+        
+        setupHelp()
     }
     
     func setupPageControl(){
@@ -76,6 +79,16 @@ class TutorialViewController: UIViewController {
 
         
     }
+    
+    func setupHelp(){
+        let width = self.view.frame.width
+        let height = self.view.frame.height
+        let navigationHeight:CGFloat = 80.0
+        let margin:CGFloat = 15.0
+        helpView = HelpView(frame: CGRect(x:0,y:navigationHeight + margin,width:width,height:height - navigationHeight - margin), style:.plain )
+        self.view.addSubview(helpView)
+    }
+    
     @objc func welcomeBtnTapped(){
         let indexPath = IndexPath(row: 0, section: 0)
         pageView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)

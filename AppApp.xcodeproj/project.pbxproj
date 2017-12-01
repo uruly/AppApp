@@ -41,6 +41,8 @@
 		660B57B51FD10F7900DBC823 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B57B41FD10F7900DBC823 /* StartView.swift */; };
 		660B57B81FD10F9500DBC823 /* StartViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B57B61FD10F9500DBC823 /* StartViewCell.swift */; };
 		660B57B91FD10F9500DBC823 /* StartViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 660B57B71FD10F9500DBC823 /* StartViewCell.xib */; };
+		660B57BB1FD1260800DBC823 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B57BA1FD1260800DBC823 /* HelpView.swift */; };
+		660B57BD1FD12A9B00DBC823 /* help.json in Resources */ = {isa = PBXBuildFile; fileRef = 660B57BC1FD12A9A00DBC823 /* help.json */; };
 		66498E281FC6651A00239B47 /* String+Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E271FC6651A00239B47 /* String+Path.swift */; };
 		66498E2A1FC666A400239B47 /* ShareAppLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E291FC666A400239B47 /* ShareAppLabel.swift */; };
 		66498E2C1FC67A6400239B47 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E2B1FC67A6400239B47 /* AppData.swift */; };
@@ -199,6 +201,8 @@
 		660B57B41FD10F7900DBC823 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		660B57B61FD10F9500DBC823 /* StartViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewCell.swift; sourceTree = "<group>"; };
 		660B57B71FD10F9500DBC823 /* StartViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartViewCell.xib; sourceTree = "<group>"; };
+		660B57BA1FD1260800DBC823 /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
+		660B57BC1FD12A9A00DBC823 /* help.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = help.json; sourceTree = "<group>"; };
 		66498E231FC5A69B00239B47 /* ShareFromAppStoreExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareFromAppStoreExtension.entitlements; sourceTree = "<group>"; };
 		66498E241FC5A6D700239B47 /* AppApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AppApp.entitlements; sourceTree = "<group>"; };
 		66498E271FC6651A00239B47 /* String+Path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Path.swift"; sourceTree = "<group>"; };
@@ -359,6 +363,7 @@
 				660B57B41FD10F7900DBC823 /* StartView.swift */,
 				660B57B61FD10F9500DBC823 /* StartViewCell.swift */,
 				660B57B71FD10F9500DBC823 /* StartViewCell.xib */,
+				660B57BA1FD1260800DBC823 /* HelpView.swift */,
 			);
 			path = TutorialView;
 			sourceTree = "<group>";
@@ -534,6 +539,7 @@
 				667ECE211FC36784009233DE /* LaunchScreen.storyboard */,
 				667ECE241FC36784009233DE /* Info.plist */,
 				660B57761FCFDB1000DBC823 /* colorData.json */,
+				660B57BC1FD12A9A00DBC823 /* help.json */,
 			);
 			path = AppApp;
 			sourceTree = "<group>";
@@ -790,6 +796,7 @@
 				660B57B31FD083D600DBC823 /* screenShot3.jpeg in Resources */,
 				667ECE231FC36784009233DE /* LaunchScreen.storyboard in Resources */,
 				6652DEE41FCECDA500EB84F6 /* list2@3x.png in Resources */,
+				660B57BD1FD12A9B00DBC823 /* help.json in Resources */,
 				6676ED381FCD582200815BF8 /* DetailMemoViewCell.xib in Resources */,
 				6652DEEC1FCED46700EB84F6 /* check2@3x.png in Resources */,
 				660B57741FCFC5F500DBC823 /* ColorSetViewCell.xib in Resources */,
@@ -865,6 +872,7 @@
 				66681CDA1FCC1501009A0F55 /* DetailContentView.swift in Sources */,
 				66DF587E1FC92D3F00CD71DC /* LabelOrderPickerView.swift in Sources */,
 				666E06AF1FCB94DF0043DCFF /* CommonInfoView.swift in Sources */,
+				660B57BB1FD1260800DBC823 /* HelpView.swift in Sources */,
 				660B579F1FD06FBE00DBC823 /* WelcomeView.swift in Sources */,
 				660B57A61FD071D500DBC823 /* HowToViewCell.swift in Sources */,
 				667ECE571FC3836C009233DE /* AppLabel.swift in Sources */,
