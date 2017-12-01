@@ -11,8 +11,8 @@ import UIKit
 class HelpView: UITableView {
     
     var questionAnswer:[(String,String,String)] = []
-    var currentTag:Int = 100
-
+    var currentTag:Int?
+    var links:[(String,String,String,String)] = [("このアプリのレビューを投稿する","いつもご利用ありがとうございます。以下のボタンよりレビューページへ飛ぶことができます。","レビューページへ","https://itunes.apple.com/us/app/itunes-u/id\(APPLE_ID)?action=write-review"),("お問い合わせをする","何かご意見・ご要望・感想等ありましたら、以下のボタンより、開発者サイトに飛ぶことができます。お気軽にご連絡ください。","開発者サイトへ","http://uruly.xyz/contact/")]
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -21,7 +21,8 @@ class HelpView: UITableView {
         super.init(frame:frame,style:style)
         self.delegate = self
         self.dataSource = self
-        self.register(UITableViewCell.self, forCellReuseIdentifier: "help")
+        self.register(UINib(nibName:"HelpViewCell",bundle:nil), forCellReuseIdentifier: "help")
+        self.register(UINib(nibName:"HelpLinkCell",bundle:nil), forCellReuseIdentifier: "helpLink")
         self.backgroundColor = UIColor.help()
         self.separatorColor = UIColor.white
         self.sectionFooterHeight = 1
@@ -72,13 +73,26 @@ class HelpView: UITableView {
             print(header.tag)
             //itemSizeをかえてアコーディオンさせる
             if self.currentTag == header.tag {
-                self.currentTag = 100
+                self.currentTag = nil
                 self.beginUpdates()
                 self.endUpdates()
             }else {
                 self.currentTag = header.tag
                 self.beginUpdates()
                 self.endUpdates()
+            }
+        }
+    }
+    
+    @objc func linkBtnTapped(sender:UIButton){
+        let urlString = links[sender.tag].3
+        if let url = URL(string: urlString) {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url)
+            } else {
+                if UIApplication.shared.canOpenURL(url){
+                    UIApplication.shared.openURL(url)
+                }
             }
         }
     }
@@ -95,16 +109,43 @@ extension HelpView: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "help", for: indexPath)
-        
-        return cell
+        if indexPath.section < questionAnswer.count {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "help", for: indexPath) as! HelpViewCell
+            cell.answerLabel.text = questionAnswer[indexPath.section].1
+            if let imagePath = Bundle.main.path(forResource: questionAnswer[indexPath.section].2, ofType: "png") {
+                cell.explainImageView.image = UIImage(contentsOfFile:imagePath)
+            }else {
+                cell.explainImageView.image = nil
+            }
+            return cell
+        }else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "helpLink", for: indexPath) as! HelpLinkCell
+            let index = indexPath.section - ( questionAnswer.count)
+            if index >= 0 {
+                cell.answerLabel.text = links[index].1
+                cell.linkBtn.setTitle(links[index].2, for: .normal)
+                cell.linkBtn.tag = index
+                cell.linkBtn.addTarget(self, action: #selector(self.linkBtnTapped(sender:)), for: .touchUpInside)
+            }
+            
+            return cell
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return questionAnswer.count
+        return questionAnswer.count + links.count
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        var text = ""
+        if section < questionAnswer.count {
+            text = questionAnswer[section].0
+        }else {
+            print(section - ( questionAnswer.count - 1))
+            if section - ( questionAnswer.count) >= 0 {
+                text = links[section - ( questionAnswer.count)].0
+            }
+        }
         let view = UIView(frame:CGRect(x:0,y:0,width:tableView.frame.width,height:60))
         view.backgroundColor = UIColor.help()
         view.tag = section
@@ -114,7 +155,7 @@ extension HelpView: UITableViewDataSource {
         
         let margin:CGFloat = 15
         let label = UILabel(frame:CGRect(x:margin,y:0,width:view.frame.width - (margin * 2),height:60))
-        label.text = questionAnswer[section].0
+        label.text = text
         label.textColor = UIColor.white
         label.font = UIFont.boldSystemFont(ofSize: 18)
         view.addSubview(label)
@@ -122,10 +163,18 @@ extension HelpView: UITableViewDataSource {
         return view
     }
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if section == questionAnswer.count + links.count - 1{
+            return 100
+        }
         return 1
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if section == questionAnswer.count + links.count - 1{
+            let view = UIView(frame:CGRect(x:0,y:0,width:self.frame.width,height:100))
+            view.backgroundColor = UIColor.help()
+            return view
+        }
         return nil
     }
     
@@ -135,7 +184,15 @@ extension HelpView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == currentTag {
-            return 100
+            if indexPath.section < questionAnswer.count {
+                if let _ = Bundle.main.path(forResource: questionAnswer[indexPath.section].2, ofType: "png") {
+                    return 300
+                }else {
+                    return 150
+                }
+            }else {
+                return 180
+            }
         }else {
             return 0
         }
