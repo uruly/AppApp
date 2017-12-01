@@ -170,8 +170,11 @@ class ShareViewController: SLComposeServiceViewController {
         loadData(itemProviders: itemProviders) { (name, developer, id, url, image) in
             self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
             //print("この中きたよ")
+            print("name\(name),url\(url)")
             self.saveAppData(name: name, developer: developer, id: id, urlString: url, image: image)
         }
+        //失敗したときにもこれ呼ばんと固まる
+        //self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
         
     }
     
@@ -184,7 +187,7 @@ class ShareViewController: SLComposeServiceViewController {
         //var date = Date()
         
         for itemProvider in itemProviders {
-            //print(itemProvider.registeredTypeIdentifiers)
+            print(itemProvider.registeredTypeIdentifiers)
             //URL
             if (itemProvider.hasItemConformingToTypeIdentifier("public.url")) {
                 //print("ないの？")
@@ -192,7 +195,7 @@ class ShareViewController: SLComposeServiceViewController {
                     (item, error) in
                     
                     url = (item as? URL)!.absoluteString
-                    //print("url\(url)")
+                    print("url\(url)")
                     
                     //let urlText = url!.absoluteString
                     if let idRange = url?.range(of: "id"),let endIndex = url?.index(of: "?"){
@@ -203,6 +206,7 @@ class ShareViewController: SLComposeServiceViewController {
                     if name != nil && developer != nil && id != nil && url != nil && image != nil {
                         completion(name!,developer!,id!,url!,image!)
                     }
+                     print("error\(error)")
                 })
             }
             
@@ -218,6 +222,7 @@ class ShareViewController: SLComposeServiceViewController {
                     if name != nil && developer != nil && id != nil && url != nil && image != nil {
                         completion(name!,developer!,id!,url!,image!)
                     }
+                     print("error\(error)")
                 })
             }
             
@@ -227,6 +232,7 @@ class ShareViewController: SLComposeServiceViewController {
                     (item, error) in
                     
                     let text = item as! String
+                    print(text)
                     if text.contains("App名"){
                         let appLabelRange = text.range(of:"App名: ")
                         let developLabelRange = text.range(of:"、デベロッパ: ")
@@ -234,7 +240,25 @@ class ShareViewController: SLComposeServiceViewController {
                         //App名
                         var nameString = text[..<developLabelRange!.lowerBound]
                         nameString.removeSubrange(appLabelRange!)
-                        //print("name\(nameString)")
+                        print("name\(nameString)")
+                        name = String(nameString)
+                        
+                        //デベロッパ名
+                        let developString = text[developLabelRange!.upperBound ..< text.endIndex]
+                        //print("develop\(developString)")
+                        developer = String(developString)
+                        
+                        if name != nil && developer != nil && id != nil && url != nil && image != nil {
+                            completion(name!,developer!,id!,url!,image!)
+                        }
+                    }else if text.contains("by") {
+                        //let appLabelRange = text.range(of:"")
+                        let developLabelRange = text.range(of:"by")
+                        
+                        //App名
+                        let nameString = text[..<developLabelRange!.lowerBound]
+                        //nameString.removeSubrange(appLabelRange!)
+                        print("name\(nameString)")
                         name = String(nameString)
                         
                         //デベロッパ名
@@ -246,6 +270,7 @@ class ShareViewController: SLComposeServiceViewController {
                             completion(name!,developer!,id!,url!,image!)
                         }
                     }
+                    print("error\(error)")
                 })
             }
         }
@@ -329,7 +354,7 @@ class ShareViewController: SLComposeServiceViewController {
         try! realm.write {
             realm.add(data,update:true)
         }
-        //print("seikou?")
+        print("seikou?")
     }
     //Appとラベルを紐づけたのを保存するよ
     func saveLabelAppData(appData:AppRealmData){
@@ -372,7 +397,7 @@ class ShareViewController: SLComposeServiceViewController {
             try! realm.write {
                 realm.add(data,update:true)
             }
-            //print("成功?")
+            print("成功?")
         }
     }
     
