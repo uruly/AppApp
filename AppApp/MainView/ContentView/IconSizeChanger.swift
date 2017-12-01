@@ -104,6 +104,7 @@ class IconSizeChanger: UIToolbar {
             //コレクト表示からリスト表示に変更
             setupList()
             self.toolbarMode = .list
+            sliderDelegate.collectionView.appDelegate.baseVC.basePageVC.setToolbarItems(self.items, animated: false)
 //            if sliderDelegate != nil {
 //                sliderDelegate.collectionView.mode = .list
 //            }
@@ -111,6 +112,7 @@ class IconSizeChanger: UIToolbar {
             //リスト表示からコレクト表示に変更
             setupCollect()
             self.toolbarMode = .collect
+            sliderDelegate.collectionView.appDelegate.baseVC.basePageVC.setToolbarItems(self.items, animated: false)
 //            if sliderDelegate != nil {
 //                sliderDelegate.collectionView.mode = .collect
 //            }

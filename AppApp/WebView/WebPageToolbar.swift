@@ -28,9 +28,6 @@ class WebPageToolbar: UIToolbar {
                 //print(stringFromClass)
                 if stringFromClass.contains("BarBackground") {
                     subview.frame = self.bounds
-                    //print(subview.frame)
-                    subview.backgroundColor = UIColor.green
-                    //subview.frame.size.height = self.bounds.height
                 } else if stringFromClass.contains("ContentView") {
                     subview.frame.origin.y = 0
                     subview.frame.size.height = self.bounds.height - bottomInset
@@ -38,18 +35,13 @@ class WebPageToolbar: UIToolbar {
                         for barItem in contentSubview.subviews{
                             for constraint in barItem.constraints {
                                 if let id = constraint.identifier,id.contains("height"){
-                                    //print(id)
                                     constraint.priority = .defaultLow
                                 }
                             }
-                            //barItem.constraints.removeAll()
                             let bottom = barItem.bottomAnchor.constraint(equalTo: contentSubview.bottomAnchor, constant: -bottomInset)
                             bottom.priority = .required
                             bottom.isActive = true
-                            //let heightConst = barItem.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.5)
                             let heightConst = barItem.heightAnchor.constraint(lessThanOrEqualTo: contentSubview.heightAnchor, multiplier: 0.9)
-                            //let heightConst = barItem.heightAnchor.constraint(lessThanOrEqualToConstant: contentSubview.frame.height)
-                            //barItem.heightAnchor.constraint(greaterThanOrEqualToConstant: <#T##CGFloat#>)
                             heightConst.priority = UILayoutPriority.required
                             heightConst.isActive = true
                         }

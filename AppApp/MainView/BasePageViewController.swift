@@ -75,12 +75,13 @@ class BasePageViewController: UIPageViewController {
                                                        y:height - toolbarHeight,
                                                        width:width,
                                                        height:toolbarHeight))
-        self.view.addSubview(iconSizeChanger)
-        
+        //self.view.addSubview(iconSizeChanger)
+        self.navigationController?.setToolbarHidden(false, animated: false)
+
+        self.setToolbarItems(iconSizeChanger.items, animated: false)
+        //print(self.navigationController?.toolbar.items)
         //同じ位置にEditToolbarを配置
         editToolbar = EditToolbar(frame: iconSizeChanger.frame)
-        editToolbar.isHidden = true
-        self.view.addSubview(editToolbar)
         
         if appLabel.array.count > 0 {
             self.setViewControllers([getBase(appLabel: appLabel.array[0])], direction: .forward, animated: true, completion: nil)
@@ -128,6 +129,7 @@ class BasePageViewController: UIPageViewController {
                 userDefaults.set(true,forKey:"editLabel")
             }
         }
+        self.navigationController?.toolbar.isHidden = false
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -207,7 +209,9 @@ class BasePageViewController: UIPageViewController {
             }
             
             //edittoolbarを表示
-            editToolbar.isHidden = false
+            //self.navigationController?.setToolbarHidden(false, animated: false)
+            
+            self.setToolbarItems(editToolbar.items, animated: false)
         }
         
     }
@@ -221,7 +225,9 @@ class BasePageViewController: UIPageViewController {
             baseVC.collectionView.checkArray = []
             baseVC.collectionView.reloadData()
         }
-        editToolbar.isHidden = true
+        //self.navigationController?.setToolbarHidden(false, animated: false)
+        
+        self.setToolbarItems(iconSizeChanger.items, animated: false)
     }
 }
 extension BasePageViewController: UIPageViewControllerDataSource {

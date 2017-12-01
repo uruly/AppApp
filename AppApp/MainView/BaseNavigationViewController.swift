@@ -22,6 +22,14 @@ class BaseNavigationViewController: UINavigationController {
         super.viewWillAppear(animated)
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+//    override init(navigationBarClass: AnyClass?, toolbarClass: AnyClass?) {
+//        <#code#>
+//    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         VersionManager.checkVersion()
@@ -37,5 +45,14 @@ class BaseNavigationViewController: UINavigationController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+//
+//    override var toolbar: UIToolbar! {
+//        get {
+//            return self.toolbar
+//        }
+//        set {
+//            self.toolbar = newValue
+//        }
+//    }
 
 }
