@@ -289,6 +289,9 @@ extension AppCollectionView:IconSizeChangerDelegate{
 
 extension AppCollectionView:UIScrollViewDelegate {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        if let view = self.appDelegate.baseVC.basePageVC.view.viewWithTag(543){
+            view.removeFromSuperview()
+        }
         lastContentOffsetY = scrollView.contentOffset.y
     }
     

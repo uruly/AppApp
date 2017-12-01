@@ -112,6 +112,21 @@ class BasePageViewController: UIPageViewController {
             if self.navigationItem.rightBarButtonItem != nil {
                 cancelEdit(sender:self.navigationItem.rightBarButtonItem!)
             }
+            
+            let userDefaults = UserDefaults.standard
+            if !userDefaults.bool(forKey:"editLabel"){
+                let rect = CGRect(x:15,y:self.selectionBar.frame.maxY,width:200,height:80)
+                let balloonView = BalloonView(frame: rect,color:UIColor.help())
+                balloonView.isDown = false
+                balloonView.tag = 543
+                balloonView.label.text = "編集したいときは\nラベルをダブルタップ"
+                balloonView.label.textColor = UIColor.white
+                self.view.addSubview(balloonView)
+                UIView.animate(withDuration: 0.5, delay: 0, options: [.repeat,.autoreverse,.curveEaseIn], animations: {
+                    balloonView.center.y += 5.0
+                }, completion: nil)
+                userDefaults.set(true,forKey:"editLabel")
+            }
         }
     }
     
@@ -282,6 +297,9 @@ extension BasePageViewController:UIPageViewControllerDelegate{
 extension BasePageViewController: UIScrollViewDelegate {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         print("Drag開始")
+        if let view = self.view.viewWithTag(543){
+            view.removeFromSuperview()
+        }
         isSelectionScroll = true
         lastContentOffsetX = scrollView.contentOffset.x
     }
@@ -304,4 +322,5 @@ extension BasePageViewController: UIScrollViewDelegate {
         //指が離れたとき、近い方にカテゴリを移動
         
     }
+
 }
