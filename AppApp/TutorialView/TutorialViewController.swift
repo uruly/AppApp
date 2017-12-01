@@ -63,7 +63,7 @@ class TutorialViewController: UIViewController {
         howtoBtn.addTarget(self, action: #selector(howtoBtnTapped), for: .touchUpInside)
         self.view.addSubview(howtoBtn)
         
-        let startBtn = NaviButton(frame:CGRect(x:howtoBtn.frame.maxX,y:navigationHeight - 40 + margin,width:width / 4,height:40))
+        let startBtn = NaviButton(frame:CGRect(x:howtoBtn.frame.maxX,y:navigationHeight - 40 + margin,width:( width / 4 ) - 20,height:40))
         startBtn.setTitle("START", for: .normal)
         startBtn.setTitleColor(UIColor.white, for: .normal)
         startBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
@@ -71,7 +71,7 @@ class TutorialViewController: UIViewController {
         startBtn.addTarget(self,action:#selector(startBtnTapped),for:.touchUpInside)
         self.view.addSubview(startBtn)
         
-        let helpBtn = NaviButton(frame:CGRect(x:startBtn.frame.maxX,y:navigationHeight - 40 + margin,width:width / 4,height:40))
+        let helpBtn = NaviButton(frame:CGRect(x:startBtn.frame.maxX,y:navigationHeight - 40 + margin,width:( width / 4 ) - 30,height:40))
         helpBtn.setTitle("HELP", for: .normal)
         helpBtn.setTitleColor(UIColor.white, for: .normal)
         helpBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
@@ -79,7 +79,13 @@ class TutorialViewController: UIViewController {
         helpBtn.addTarget(self, action: #selector(helpBtnTapped), for: .touchUpInside)
         self.view.addSubview(helpBtn)
 
-        
+        let closeBtn = NaviButton(frame:CGRect(x:helpBtn.frame.maxX,y:navigationHeight - 40 + margin,width:50,height:40))
+        closeBtn.setTitle("×", for: .normal)
+        closeBtn.setTitleColor(UIColor.white, for: .normal)
+        closeBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        closeBtn.backgroundColor = UIColor.plusBackground()
+        closeBtn.addTarget(self, action: #selector(closeTutorial), for: .touchUpInside)
+        self.view.addSubview(closeBtn)
     }
     
     func setupHelp(){
@@ -112,6 +118,7 @@ class TutorialViewController: UIViewController {
     @objc func helpBtnTapped(){
         helpView.isHidden = false
     }
+    
 
     @objc func pageControlTapped(sender:UIPageControl){
         print(sender.currentPage)
