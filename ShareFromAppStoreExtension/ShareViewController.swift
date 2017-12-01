@@ -201,6 +201,8 @@ class ShareViewController: SLComposeServiceViewController {
                     if let idRange = url?.range(of: "id"),let endIndex = url?.index(of: "?"){
                         id = String(url![idRange.lowerBound ..< endIndex])
                         //print("id\(id)")
+                    }else {
+                        self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
                     }
                     
                     if name != nil && developer != nil && id != nil && url != nil && image != nil {
@@ -269,6 +271,8 @@ class ShareViewController: SLComposeServiceViewController {
                         if name != nil && developer != nil && id != nil && url != nil && image != nil {
                             completion(name!,developer!,id!,url!,image!)
                         }
+                    }else {
+                        self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
                     }
                     print("error\(error)")
                 })
