@@ -43,9 +43,9 @@
 		660B57B91FD10F9500DBC823 /* StartViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 660B57B71FD10F9500DBC823 /* StartViewCell.xib */; };
 		660B57BB1FD1260800DBC823 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B57BA1FD1260800DBC823 /* HelpView.swift */; };
 		660B57BD1FD12A9B00DBC823 /* help.json in Resources */ = {isa = PBXBuildFile; fileRef = 660B57BC1FD12A9A00DBC823 /* help.json */; };
-		660B57C81FD14B0E00DBC823 /* tutorialMark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 660B57C61FD14B0D00DBC823 /* tutorialMark@2x.png */; };
-		660B57C91FD14B0E00DBC823 /* tutorialMark@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 660B57C71FD14B0E00DBC823 /* tutorialMark@3x.png */; };
 		660B57CB1FD1501100DBC823 /* BalloonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B57CA1FD1501100DBC823 /* BalloonView.swift */; };
+		660B57D31FD16DA700DBC823 /* tutorialMark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 660B57D11FD16DA700DBC823 /* tutorialMark@2x.png */; };
+		660B57D41FD16DA700DBC823 /* tutorialMark@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 660B57D21FD16DA700DBC823 /* tutorialMark@3x.png */; };
 		66498E281FC6651A00239B47 /* String+Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E271FC6651A00239B47 /* String+Path.swift */; };
 		66498E2A1FC666A400239B47 /* ShareAppLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E291FC666A400239B47 /* ShareAppLabel.swift */; };
 		66498E2C1FC67A6400239B47 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E2B1FC67A6400239B47 /* AppData.swift */; };
@@ -206,9 +206,9 @@
 		660B57B71FD10F9500DBC823 /* StartViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartViewCell.xib; sourceTree = "<group>"; };
 		660B57BA1FD1260800DBC823 /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
 		660B57BC1FD12A9A00DBC823 /* help.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = help.json; sourceTree = "<group>"; };
-		660B57C61FD14B0D00DBC823 /* tutorialMark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tutorialMark@2x.png"; sourceTree = "<group>"; };
-		660B57C71FD14B0E00DBC823 /* tutorialMark@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tutorialMark@3x.png"; sourceTree = "<group>"; };
 		660B57CA1FD1501100DBC823 /* BalloonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalloonView.swift; sourceTree = "<group>"; };
+		660B57D11FD16DA700DBC823 /* tutorialMark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tutorialMark@2x.png"; sourceTree = "<group>"; };
+		660B57D21FD16DA700DBC823 /* tutorialMark@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tutorialMark@3x.png"; sourceTree = "<group>"; };
 		66498E231FC5A69B00239B47 /* ShareFromAppStoreExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareFromAppStoreExtension.entitlements; sourceTree = "<group>"; };
 		66498E241FC5A6D700239B47 /* AppApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AppApp.entitlements; sourceTree = "<group>"; };
 		66498E271FC6651A00239B47 /* String+Path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Path.swift"; sourceTree = "<group>"; };
@@ -394,8 +394,8 @@
 				660B57971FD0466A00DBC823 /* logo.png */,
 				660B57931FD0173C00DBC823 /* logo2.png */,
 				660B57951FD019CE00DBC823 /* logo3.png */,
-				660B57C61FD14B0D00DBC823 /* tutorialMark@2x.png */,
-				660B57C71FD14B0E00DBC823 /* tutorialMark@3x.png */,
+				660B57D11FD16DA700DBC823 /* tutorialMark@2x.png */,
+				660B57D21FD16DA700DBC823 /* tutorialMark@3x.png */,
 				666E06B91FCBB3740043DCFF /* right_arrow@2x.png */,
 				666E06BC1FCBB3880043DCFF /* left_arrow@2x.png */,
 				6652DEEE1FCED72F00EB84F6 /* safari@2x.png */,
@@ -816,7 +816,7 @@
 				660B57BD1FD12A9B00DBC823 /* help.json in Resources */,
 				6676ED381FCD582200815BF8 /* DetailMemoViewCell.xib in Resources */,
 				6652DEEC1FCED46700EB84F6 /* check2@3x.png in Resources */,
-				660B57C81FD14B0E00DBC823 /* tutorialMark@2x.png in Resources */,
+				660B57D31FD16DA700DBC823 /* tutorialMark@2x.png in Resources */,
 				660B57741FCFC5F500DBC823 /* ColorSetViewCell.xib in Resources */,
 				666E06B51FCB9A880043DCFF /* MemoCell.xib in Resources */,
 				667ECE201FC36784009233DE /* Assets.xcassets in Resources */,
@@ -828,7 +828,7 @@
 				660B57A31FD06FDB00DBC823 /* WelcomeViewCell.xib in Resources */,
 				6652DEED1FCED46700EB84F6 /* check2@2x.png in Resources */,
 				660B57721FCFC5F500DBC823 /* ColorBaseCell.xib in Resources */,
-				660B57C91FD14B0E00DBC823 /* tutorialMark@3x.png in Resources */,
+				660B57D41FD16DA700DBC823 /* tutorialMark@3x.png in Resources */,
 				660B57941FD0173C00DBC823 /* logo2.png in Resources */,
 				66681CE21FCC1734009A0F55 /* DetailCommonViewCell.xib in Resources */,
 				6652DEF01FCED73000EB84F6 /* safari@2x.png in Resources */,
