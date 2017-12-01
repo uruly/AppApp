@@ -40,6 +40,23 @@ class TutorialViewController: UIViewController {
         pageControl.currentPageIndicatorTintColor = UIColor.darkGray
         pageControl.pageIndicatorTintColor = UIColor.lightGray
         pageControl.addTarget(self, action: #selector(self.pageControlTapped(sender:)), for: .touchUpInside)
+        pageControl.backgroundColor = UIColor.white
+        
+        //影をつける
+        pageControl.layer.masksToBounds = false
+        pageControl.layer.shadowColor = UIColor.darkGray.cgColor
+        pageControl.layer.shadowOffset = CGSize(width:1,height:-5)
+        pageControl.layer.shadowRadius = 1
+        pageControl.layer.shadowOpacity = 0.8
+        
+        //角丸をつける
+        let maskPath = UIBezierPath(roundedRect: pageControl.bounds,
+                                    byRoundingCorners: [.topLeft, .topRight],
+                                    cornerRadii: CGSize(width:20,height:20))
+        let maskLayer = CAShapeLayer()
+        maskLayer.frame = pageControl.bounds
+        maskLayer.path = maskPath.cgPath
+        pageControl.layer.mask = maskLayer
         self.view.addSubview(pageControl)
     }
     
@@ -170,8 +187,8 @@ class NaviButton:UIButton{
         //影をつける
         self.layer.masksToBounds = false
         self.layer.shadowColor = UIColor.darkGray.cgColor
-        self.layer.shadowOffset = CGSize(width:0,height:-1)
-        self.layer.shadowRadius = 2
-        self.layer.shadowOpacity = 0.2
+        self.layer.shadowOffset = CGSize(width:1,height:-4)
+        self.layer.shadowRadius = 5
+        self.layer.shadowOpacity = 0.8
     }
 }
