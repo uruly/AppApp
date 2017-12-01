@@ -129,7 +129,7 @@ class BasePageViewController: UIPageViewController {
                 userDefaults.set(true,forKey:"editLabel")
             }
         }
-        self.navigationController?.toolbar.isHidden = false
+        self.navigationController?.setToolbarHidden(false, animated: false)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

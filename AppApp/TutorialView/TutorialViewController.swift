@@ -42,12 +42,12 @@ class TutorialViewController: UIViewController {
         pageControl.addTarget(self, action: #selector(self.pageControlTapped(sender:)), for: .touchUpInside)
         pageControl.backgroundColor = UIColor.white
         
-        //影をつける
-        pageControl.layer.masksToBounds = false
-        pageControl.layer.shadowColor = UIColor.darkGray.cgColor
-        pageControl.layer.shadowOffset = CGSize(width:1,height:-5)
-        pageControl.layer.shadowRadius = 1
-        pageControl.layer.shadowOpacity = 0.8
+//        //影をつける
+//        pageControl.layer.masksToBounds = false
+//        pageControl.layer.shadowColor = UIColor.darkGray.cgColor
+//        pageControl.layer.shadowOffset = CGSize(width:1,height:-5)
+//        pageControl.layer.shadowRadius = 1
+//        pageControl.layer.shadowOpacity = 0.8
         
         //角丸をつける
         let maskPath = UIBezierPath(roundedRect: pageControl.bounds,
@@ -103,6 +103,17 @@ class TutorialViewController: UIViewController {
         closeBtn.backgroundColor = UIColor.plusBackground()
         closeBtn.addTarget(self, action: #selector(closeTutorial), for: .touchUpInside)
         self.view.addSubview(closeBtn)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if #available(iOS 11.0, *) {
+            let bottomMargin = self.view.safeAreaInsets.bottom
+            if bottomMargin != 0 {
+                pageControl.frame = CGRect(x:0,y:self.view.frame.height - 40 - bottomMargin,width:self.view.frame.width,height:40)
+                pageControl.backgroundColor = UIColor.clear
+            }
+        }
     }
     
     func setupHelp(){

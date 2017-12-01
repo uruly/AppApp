@@ -69,7 +69,7 @@ class DetailViewController: UIViewController {
         self.navigationController?.navigationBar.barTintColor = nil
         self.navigationController?.navigationBar.backgroundColor = self.appData.label.color.withAlphaComponent(0.8)
         self.view.backgroundColor = appData.label.color
-        
+        self.navigationController?.setToolbarHidden(true, animated: true)
     }
 
     override func viewWillAppear(_ animated: Bool) {

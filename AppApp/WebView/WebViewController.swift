@@ -60,7 +60,9 @@ class WebViewController: UIViewController {
         forward.tintColor = UIColor.lightGray
         let safari = UIBarButtonItem(image: UIImage(named:"safari.png"), style: .plain, target: self, action: #selector(self.goSafari))
         toolbar.items = [back,flexible,forward,flexible,refresh,flexible,safari]
-        self.view.addSubview(toolbar)
+        self.setToolbarItems(toolbar.items, animated: false)
+        self.navigationController?.setToolbarHidden(false, animated: true)
+        //self.view.addSubview(toolbar)
         
         
     }

@@ -27,7 +27,7 @@ class BaseNavigationViewController: UINavigationController {
     }
     
 //    override init(navigationBarClass: AnyClass?, toolbarClass: AnyClass?) {
-//        <#code#>
+//        
 //    }
     
     override func viewDidAppear(_ animated: Bool) {
