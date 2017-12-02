@@ -15,7 +15,7 @@ class CreateAppLabelViewController: UIViewController {
     var pickerView:LabelOrderPickerView!
     var isResetOrder = false
     //var currentRow:Int = AppLabel.count ?? 0
-    let pickerViewHeight:CGFloat = 200.0
+    var pickerViewHeight:CGFloat = 200.0
     
     var labelName:String?{
         didSet{
@@ -101,6 +101,16 @@ class CreateAppLabelViewController: UIViewController {
         //colorPickView.colorDelegate = self
         self.view.addSubview(colorPickView)
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if #available(iOS 11.0, *) {
+            let bottomMargin = self.view.safeAreaInsets.bottom
+            if bottomMargin != 0 {
+                self.pickerViewHeight = 200.0 + bottomMargin
+            }
+        }
     }
     
     func setTableView(){

@@ -94,7 +94,12 @@ class ColorBaseView: UIView {
     }
     
     func setupPageControl(){
-        pageControl = UIPageControl(frame: CGRect(x:0,y:self.frame.height - 40,width:self.frame.width,height:40))
+        let isiPhoneX = UIScreen.main.bounds.size == CGSize(width: 375, height: 812)
+        var bottomMargin:CGFloat = 0
+        if isiPhoneX{
+            bottomMargin = 16
+        }
+        pageControl = UIPageControl(frame: CGRect(x:0,y:self.frame.height - 40 - bottomMargin,width:self.frame.width,height:40))
         pageControl.currentPage = 0
         pageControl.currentPageIndicatorTintColor = UIColor.darkGray
         pageControl.pageIndicatorTintColor = UIColor.lightGray

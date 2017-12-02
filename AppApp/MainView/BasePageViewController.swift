@@ -27,6 +27,7 @@ class BasePageViewController: UIPageViewController {
     var iconSizeChanger:IconSizeChanger!
     var editToolbar:EditToolbar!
     var isGoDetail = false
+    var isAdjustTitle:Bool = false
     
     override init(transitionStyle style: UIPageViewControllerTransitionStyle, navigationOrientation: UIPageViewControllerNavigationOrientation, options: [String : Any]? = nil) {
         super.init(transitionStyle:.scroll,navigationOrientation:.horizontal,options:options)
@@ -91,7 +92,7 @@ class BasePageViewController: UIPageViewController {
         
         let scrollView = self.view.subviews.flatMap { $0 as? UIScrollView }.first
         scrollView?.delegate = self
-        
+        isAdjustTitle = true
         
     }
     
@@ -151,9 +152,10 @@ class BasePageViewController: UIPageViewController {
         super.viewDidLayoutSubviews()
         if #available(iOS 11.0, *) {
             let isiPhoneX = UIScreen.main.bounds.size == CGSize(width: 375, height: 812)
-            if isiPhoneX{
+            if isiPhoneX && isAdjustTitle{
                 if let titleLogo = self.navigationController?.navigationBar.viewWithTag(255){
-                    titleLogo.center.y -= 5
+                    titleLogo.center.y -= 10
+                    isAdjustTitle = false
                 }
             }
         }
