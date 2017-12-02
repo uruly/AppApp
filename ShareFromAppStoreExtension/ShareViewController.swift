@@ -202,6 +202,7 @@ class ShareViewController: SLComposeServiceViewController {
                         id = String(url![idRange.lowerBound ..< endIndex])
                         //print("id\(id)")
                     }else {
+                        print("idないよー")
                         self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
                     }
                     
@@ -233,6 +234,7 @@ class ShareViewController: SLComposeServiceViewController {
                 itemProvider.loadItem(forTypeIdentifier: "public.plain-text", options: nil, completionHandler: {
                     (item, error) in
                     
+                    //ここは２回呼ばれる
                     let text = item as! String
                     print(text)
                     if text.contains("App名"){
@@ -272,7 +274,12 @@ class ShareViewController: SLComposeServiceViewController {
                             completion(name!,developer!,id!,url!,image!)
                         }
                     }else {
-                        self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
+                        print("app名とbyないよ")
+                        if text != "" {
+                            self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
+                        }else {
+                            print("から文字だよ")
+                        }
                     }
                     print("error\(error)")
                 })
