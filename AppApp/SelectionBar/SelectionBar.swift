@@ -10,7 +10,7 @@ import UIKit
 
 class SelectionBar: UICollectionView {
     
-    var pageVC:BasePageViewController!
+    var pageVC:BasePageViewController! 
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -163,7 +163,11 @@ extension SelectionBar: UICollectionViewDelegate {
 extension SelectionBar: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
-            return pageVC.appLabel.array.count
+            if pageVC != nil {
+                return pageVC.appLabel.array.count
+            }else {
+                return 0
+            }
         }
         //＋ボタン
         if section == 1 {

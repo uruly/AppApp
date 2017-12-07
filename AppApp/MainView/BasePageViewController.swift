@@ -126,6 +126,9 @@ class BasePageViewController: UIPageViewController {
                 }, completion: nil)
                 userDefaults.set(true,forKey:"editLabel")
             }
+        }else {
+            appLabel.reloadLabelData()
+            selectionBar.reloadData()
         }
         self.navigationController?.setToolbarHidden(false, animated: false)
     }

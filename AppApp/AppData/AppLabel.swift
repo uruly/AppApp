@@ -50,10 +50,10 @@ class AppLabel {
     
     init(){
         self.migration()
-        self.reloadLabelData()
         if array.count == 0 {
             saveDefaultData()
         }
+        self.reloadLabelData()
     }
     
     func migration(){
