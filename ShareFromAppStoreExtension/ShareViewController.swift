@@ -92,6 +92,7 @@ class ShareViewController: SLComposeServiceViewController {
         let extensionItem: NSExtensionItem = self.extensionContext?.inputItems.first as! NSExtensionItem
        // var bool = false
         let itemProviders = extensionItem.attachments as! [NSItemProvider]
+        print(itemProviders)
         if !itemProviders.contains(where: { (itemProvider) -> Bool in
             return itemProvider.hasItemConformingToTypeIdentifier("public.url")
         }){
@@ -255,7 +256,27 @@ class ShareViewController: SLComposeServiceViewController {
                         if name != nil && developer != nil && id != nil && url != nil && image != nil {
                             completion(name!,developer!,id!,url!,image!)
                         }
-                    }else if text.contains("by") {
+                    }else if text.contains("」"){
+                        //let appLabelRange = text.range(of:"")
+                        let developLabelRange = text.range(of:"「")
+                        
+                        //App名
+                        var developString = text[..<developLabelRange!.lowerBound]
+                        //nameString.removeSubrange(appLabelRange!)
+                        print("develop\(developString)")
+                        developer = String(developString)
+                        developString.removeSubrange(..<developLabelRange!.lowerBound)
+                        
+                        //デベロッパ名
+                        var nameString = developString[..<text.endIndex]
+                        //print("develop\(developString)")
+                        nameString.removeLast()
+                        name = String(nameString)
+                        
+                        if name != nil && developer != nil && id != nil && url != nil && image != nil {
+                            completion(name!,developer!,id!,url!,image!)
+                        }
+                    }else if text.contains("by") {  // usStore
                         //let appLabelRange = text.range(of:"")
                         let developLabelRange = text.range(of:"by")
                         
