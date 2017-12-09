@@ -236,7 +236,7 @@ class ShareViewController: SLComposeServiceViewController {
                     (item, error) in
                     
                     //ここは２回呼ばれる
-                    let text = item as! String
+                    var text = item as! String
                     print(text)
                     if text.contains("App名"){
                         let appLabelRange = text.range(of:"App名: ")
@@ -256,21 +256,23 @@ class ShareViewController: SLComposeServiceViewController {
                         if name != nil && developer != nil && id != nil && url != nil && image != nil {
                             completion(name!,developer!,id!,url!,image!)
                         }
-                    }else if text.contains("」"){
+                    }else if text.contains("」") && text.contains("「"){  //ios10以下用
                         //let appLabelRange = text.range(of:"")
                         let developLabelRange = text.range(of:"「")
                         
-                        //App名
-                        var developString = text[..<developLabelRange!.lowerBound]
+                        //デベロッパ名
+                        let developString = text[..<developLabelRange!.lowerBound]
                         //nameString.removeSubrange(appLabelRange!)
                         print("develop\(developString)")
                         developer = String(developString)
-                        developString.removeSubrange(..<developLabelRange!.lowerBound)
-                        
-                        //デベロッパ名
-                        var nameString = developString[..<text.endIndex]
-                        //print("develop\(developString)")
-                        nameString.removeLast()
+                        text.removeSubrange(..<developLabelRange!.lowerBound)
+                        print("text\(text)")
+                        text.removeFirst()
+                        text.removeLast()
+                        //app名
+                        let nameString:String = text
+                        print("neme\(nameString)")
+                        //nameString.removeLast()
                         name = String(nameString)
                         
                         if name != nil && developer != nil && id != nil && url != nil && image != nil {
