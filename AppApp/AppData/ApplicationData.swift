@@ -123,6 +123,8 @@ class AppData {
             guard let app = realm.object(ofType: ApplicationData.self, forPrimaryKey: appList[i].id) else {
                 return
             }
+            //arrayの方を更新
+            appList[i].order = i
             try! realm.write {
                 app.order = i
                 realm.add(app,update:true)

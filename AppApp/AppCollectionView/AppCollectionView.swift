@@ -138,9 +138,17 @@ class AppCollectionView: UICollectionView {
                     self.appData.readAppData(label: self.checkArray[0].label){
                         self.appData.resetOrder()
                         DispatchQueue.main.async {
+                            let removeRows = self.checkArray.map{$0.order}
+                            var indexPaths:[IndexPath] = []
+                            for row in removeRows {
+                                let indexPath = IndexPath(row: row!, section: 0)
+                                print("row\(row)")
+                                indexPaths.append(indexPath)
+                            }
+                            self.deleteItems(at: indexPaths)
                             self.checkArray = []
-                            //print("reload")
-                            self.reloadData()
+                            //ここでorderが変わっているのを反映したい.
+                            
                             completion()
                         }
                     }
