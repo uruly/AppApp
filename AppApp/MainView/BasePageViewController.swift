@@ -147,7 +147,14 @@ class BasePageViewController: UIPageViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if let titleLogo = self.navigationController?.navigationBar.viewWithTag(255){
+            titleLogo.alpha = 0
             titleLogo.isHidden = false
+            UIView.animate(withDuration: 0.2, delay: 0, options: [.curveEaseIn], animations: {
+                titleLogo.alpha = 1.0
+                //titleLogo.transform.scaledBy(x: 1.5, y: 1.5)
+            }, completion: { (_) in
+                //titleLogo.transform.inverted()
+            })
         }
     }
     
