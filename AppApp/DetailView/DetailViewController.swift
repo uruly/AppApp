@@ -66,10 +66,7 @@ class DetailViewController: UIViewController {
         contentView.id = appData.app.id
         contentView.saveDate = convertDate(appData.app.date)
         
-        self.navigationController?.navigationBar.barTintColor = nil
-        self.navigationController?.navigationBar.backgroundColor = self.appData.label.color.withAlphaComponent(0.8)
         self.view.backgroundColor = appData.label.color
-        self.navigationController?.setToolbarHidden(true, animated: true)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -88,6 +85,9 @@ class DetailViewController: UIViewController {
             }, completion: nil)
             userDefaults.set(true,forKey:"search")
         }
+        self.navigationController?.navigationBar.barTintColor = nil
+        self.navigationController?.navigationBar.backgroundColor = self.appData.label.color.withAlphaComponent(0.8)
+        self.navigationController?.setToolbarHidden(true, animated: true)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
