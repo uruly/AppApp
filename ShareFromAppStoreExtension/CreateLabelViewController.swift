@@ -151,6 +151,7 @@ class CreateLabelViewController: UITableViewController {
             save {
                 //labelListVC.readLabelData()
                 //self.navigationController?.popViewController(animated: true)
+                LabelListTableViewController.isUnwindCreate = true
             }
         }
     }

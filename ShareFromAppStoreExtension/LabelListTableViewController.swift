@@ -17,6 +17,7 @@ class LabelListTableViewController: UITableViewController {
     
     var list:[AppLabelData] = []
     var delegate:LabelListTableViewControllerDelegate!
+    static var isUnwindCreate = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +47,9 @@ class LabelListTableViewController: UITableViewController {
                 let label = AppLabelData(name: name, color: color, id: id,order: obj.order)
                 self.list.append(label)
             }
+        }
+        if LabelListTableViewController.isUnwindCreate {
+            self.delegate.shareVC.labelList.append(self.list.last!)
         }
         self.tableView.reloadData()
     }
