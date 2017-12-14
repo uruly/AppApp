@@ -104,6 +104,7 @@ class SelectionBar: UICollectionView {
         switch(sender.state) {
             
         case .began:
+            //print("begin")
             guard let selectedIndexPath = self.indexPathForItem(at: sender.location(in:self)) else {
                 break
             }
@@ -119,12 +120,15 @@ class SelectionBar: UICollectionView {
         case .ended:
             //print("end")
             guard let nextIndexPath = self.indexPathForItem(at: sender.location(in: sender.view!)) else {
+                self.cancelInteractiveMovement()
                 break
             }
             //print(nextIndexPath)
             if nextIndexPath.section == 1 || nextIndexPath.row == 0{
+                //print("ここだとキャンセル")
                 self.cancelInteractiveMovement()
             }else {
+                //print("ここだとエンド")
                 self.endInteractiveMovement()
             }
             
