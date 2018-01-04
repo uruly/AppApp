@@ -17,7 +17,7 @@ class BottomView: UIView {
     let width:CGFloat
     let height:CGFloat
     let toolbarHeight:CGFloat = 56.0
-    let handleHeight:CGFloat = 40.0
+    let handleHeight:CGFloat = 15.0
     let maxY:CGFloat    //閉じられた状態
     let middleY:CGFloat
     let minY:CGFloat    //menuが開かれた状態
@@ -28,8 +28,7 @@ class BottomView: UIView {
     var baseView:BottomMenuBaseView!
     var toolbar:IconSizeChanger!
     var editToolbar:EditToolbar!
-    var barLayer:CAShapeLayer!
-
+    
     required init?(coder aDecoder: NSCoder) {
         self.width = 0
         self.height = 0
@@ -46,7 +45,7 @@ class BottomView: UIView {
         self.minY = frame.origin.y
         self.middleY = minY + ( frame.height / 2 )
         super.init(frame:frame)
-        //self.backgroundColor = UIColor.white
+        self.backgroundColor = UIColor.white
         
         //常に見えている部分(toolbar部分)
         setupToolbar()
@@ -64,53 +63,37 @@ class BottomView: UIView {
     }
     
     func setupToolbar() {
-        //ハンドル
-        let handleWidth:CGFloat = 50.0
-        let handle = UIView(frame: CGRect(x:2,y:10,width:handleWidth,height:handleHeight))
-        handle.backgroundColor = UIColor.white
-        //角丸をつける
-        handle.layer.cornerRadius = 10.0
-        
-        //影をつける
-        handle.layer.masksToBounds = false
-        handle.layer.shadowColor = UIColor.darkGray.cgColor
-        handle.layer.shadowOffset = CGSize(width:-1,height:1)
-        handle.layer.shadowRadius = 2
-        handle.layer.shadowOpacity = 0.2
-        
-        //shapeLayer
-        barLayer = CAShapeLayer()
-        barLayer.fillColor = UIColor.clear.cgColor
-        barLayer.strokeColor = UIColor.gray.cgColor
-        barLayer.lineWidth = 4.0
-        barLayer.lineCap = kCALineCapRound
-        barLayer.lineJoin = kCALineJoinRound
-        let margin:CGFloat = 16
-        let startPos = CGPoint(x:margin,y: handleHeight / 2)
-        let middlePos = CGPoint(x:handleWidth / 2,y:handleHeight / 2 + 5)
-        let endPos = CGPoint(x:handleWidth - margin,y:handleHeight / 2)
-        //let controlPos = CGPoint(x:handleWidth / 2,y:0)
-        let line = UIBezierPath()
-        line.move(to: startPos)
-        line.addLine(to:middlePos)
-        //line.addQuadCurve(to: endPos, controlPoint: controlPos)
-        line.addLine(to:endPos)
-        //line.close()
-        barLayer.path = line.cgPath
-        handle.layer.addSublayer(barLayer)
-        
-        self.addSubview(handle)
-        
-        //ツールバー
+        let handleWidth:CGFloat = 40.0
         toolbar = IconSizeChanger(frame:CGRect(x:0,y:handleHeight,width:self.width,height:toolbarHeight))
         self.addSubview(toolbar)
         editToolbar = EditToolbar(frame: toolbar.frame)
         editToolbar.isHidden = true
         self.addSubview(editToolbar)
+        
+        //ハンドル
+        let handle = CALayer()
+        handle.frame = CGRect(x:(self.width / 2) - ( handleWidth / 2 ),y:handleHeight / 2 - 2.5,width:handleWidth,height:5)
+        
+        let handleBar = CAShapeLayer()
+        //handleBar.frame = CGRect(x:width - 40,y:1,width:80,height:handleHeight - 2)
+        handleBar.fillColor = UIColor.lightGray.cgColor
+        handleBar.strokeColor = UIColor.lightGray.cgColor
+        handleBar.opacity = 0.7
+        handleBar.path = UIBezierPath(roundedRect: CGRect(x:0,y:0,width:handleWidth,height:5),  cornerRadius:( handleHeight - 2 ) / 2).cgPath
+        if let blurFilter = CIFilter(name: "CIGaussianBlur",
+                                     withInputParameters: [kCIInputRadiusKey: 2]) {
+            handleBar.backgroundFilters = [blurFilter]
+        }
+        
+        handle.addSublayer(handleBar)
+        self.layer.addSublayer(handle)
     }
     
     func setupPageView() {
-        baseView = BottomMenuBaseView(frame: CGRect(x:0,y:handleHeight + toolbarHeight,width:self.width,height:height - toolbarHeight - handleHeight))
+        baseView = BottomMenuBaseView(frame: CGRect(x:0,
+                                                    y:toolbarHeight + handleHeight,
+                                                    width:self.width,
+                                                    height:height - toolbarHeight - handleHeight))
         baseView.pageDelegate = self
         self.addSubview(baseView)
         
