@@ -76,6 +76,8 @@
 		6652DEED1FCED46700EB84F6 /* check2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6652DEEB1FCED46700EB84F6 /* check2@2x.png */; };
 		6652DEF01FCED73000EB84F6 /* safari@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6652DEEE1FCED72F00EB84F6 /* safari@2x.png */; };
 		6652DEF11FCED73000EB84F6 /* safari@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6652DEEF1FCED72F00EB84F6 /* safari@3x.png */; };
+		6662E11D1FFE98CA00FB30C7 /* BottomMenuBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662E11B1FFE98CA00FB30C7 /* BottomMenuBaseView.swift */; };
+		6662E11E1FFE98CA00FB30C7 /* BottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662E11C1FFE98CA00FB30C7 /* BottomView.swift */; };
 		66681CDA1FCC1501009A0F55 /* DetailContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66681CD91FCC1501009A0F55 /* DetailContentView.swift */; };
 		66681CE11FCC1734009A0F55 /* DetailCommonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66681CDF1FCC1734009A0F55 /* DetailCommonViewCell.swift */; };
 		66681CE21FCC1734009A0F55 /* DetailCommonViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66681CE01FCC1734009A0F55 /* DetailCommonViewCell.xib */; };
@@ -250,6 +252,8 @@
 		6652DEEB1FCED46700EB84F6 /* check2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check2@2x.png"; sourceTree = "<group>"; };
 		6652DEEE1FCED72F00EB84F6 /* safari@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "safari@2x.png"; sourceTree = "<group>"; };
 		6652DEEF1FCED72F00EB84F6 /* safari@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "safari@3x.png"; sourceTree = "<group>"; };
+		6662E11B1FFE98CA00FB30C7 /* BottomMenuBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomMenuBaseView.swift; sourceTree = "<group>"; };
+		6662E11C1FFE98CA00FB30C7 /* BottomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomView.swift; sourceTree = "<group>"; };
 		66681CD91FCC1501009A0F55 /* DetailContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailContentView.swift; sourceTree = "<group>"; };
 		66681CDF1FCC1734009A0F55 /* DetailCommonViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCommonViewCell.swift; sourceTree = "<group>"; };
 		66681CE01FCC1734009A0F55 /* DetailCommonViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailCommonViewCell.xib; sourceTree = "<group>"; };
@@ -440,6 +444,15 @@
 			path = images;
 			sourceTree = "<group>";
 		};
+		6662E11A1FFE98B300FB30C7 /* BottomMenu */ = {
+			isa = PBXGroup;
+			children = (
+				6662E11B1FFE98CA00FB30C7 /* BottomMenuBaseView.swift */,
+				6662E11C1FFE98CA00FB30C7 /* BottomView.swift */,
+			);
+			path = BottomMenu;
+			sourceTree = "<group>";
+		};
 		66681CD11FCC083A009A0F55 /* DetailView */ = {
 			isa = PBXGroup;
 			children = (
@@ -518,6 +531,7 @@
 			children = (
 				66AA1DF11FC543BA001C419E /* IconSizeChanger.swift */,
 				66498E3A1FC82F9000239B47 /* EditToolbar.swift */,
+				6662E11A1FFE98B300FB30C7 /* BottomMenu */,
 			);
 			path = ContentView;
 			sourceTree = "<group>";
@@ -927,6 +941,7 @@
 				6677FC241FCA6CE400CB105E /* AppListViewController.swift in Sources */,
 				667ECE641FC3A7BD009233DE /* CreateAppLabelViewController.swift in Sources */,
 				667ECE6B1FC3CB79009233DE /* ColorPicker.swift in Sources */,
+				6662E11E1FFE98CA00FB30C7 /* BottomView.swift in Sources */,
 				66498E341FC7BA3600239B47 /* UIApplication+Stack.swift in Sources */,
 				667ECE591FC388B9009233DE /* UIColor+AppColor.swift in Sources */,
 				66681CE11FCC1734009A0F55 /* DetailCommonViewCell.swift in Sources */,
@@ -940,6 +955,7 @@
 				660B57751FCFC5F500DBC823 /* RGBSliderCell.swift in Sources */,
 				660B57B51FD10F7900DBC823 /* StartView.swift in Sources */,
 				660B57A21FD06FDB00DBC823 /* WelcomeViewCell.swift in Sources */,
+				6662E11D1FFE98CA00FB30C7 /* BottomMenuBaseView.swift in Sources */,
 				660B576E1FCFC5F500DBC823 /* RGBSliderView.swift in Sources */,
 				660B57A91FD071EA00DBC823 /* HowToView.swift in Sources */,
 				666E06C31FCBC1E50043DCFF /* PassThroughIndicator.swift in Sources */,

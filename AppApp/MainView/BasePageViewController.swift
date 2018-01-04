@@ -70,19 +70,25 @@ class BasePageViewController: UIPageViewController {
         selectionBar = SelectionBar(frame:CGRect(x:0,y:navigationBarHeight,width:width,height:55),pageVC:self)
         self.view.addSubview(selectionBar)
         
-        //toolbarを配置
-        let toolbarHeight = self.navigationController?.toolbar.frame.height ?? 44
-        iconSizeChanger = IconSizeChanger(frame:CGRect(x:0,
-                                                       y:height - toolbarHeight,
-                                                       width:width,
-                                                       height:toolbarHeight))
-        //self.view.addSubview(iconSizeChanger)
-        self.navigationController?.setToolbarHidden(false, animated: false)
-
-        self.setToolbarItems(iconSizeChanger.items, animated: false)
-        //print(self.navigationController?.toolbar.items)
-        //同じ位置にEditToolbarを配置
-        editToolbar = EditToolbar(frame: iconSizeChanger.frame)
+//        //toolbarを配置
+//        let toolbarHeight = self.navigationController?.toolbar.frame.height ?? 44
+//        iconSizeChanger = IconSizeChanger(frame:CGRect(x:0,
+//                                                       y:height - toolbarHeight,
+//                                                       width:width,
+//                                                       height:toolbarHeight))
+//        //self.view.addSubview(iconSizeChanger)
+//        self.navigationController?.setToolbarHidden(false, animated: false)
+//
+//        self.setToolbarItems(iconSizeChanger.items, animated: false)
+//        //print(self.navigationController?.toolbar.items)
+//        //同じ位置にEditToolbarを配置
+//        editToolbar = EditToolbar(frame: iconSizeChanger.frame)
+        
+        //bottomMenuを配置
+        let bottomViewHeight = height - width
+        let bottomView = BottomView(frame: CGRect(x:0,y:height - bottomViewHeight,width:width,height:bottomViewHeight))
+        bottomView.delegate = self
+        self.view.addSubview(bottomView)
         
         if appLabel.array.count > 0 {
             self.setViewControllers([getBase(appLabel: appLabel.array[0])], direction: .forward, animated: true, completion: nil)
@@ -130,7 +136,7 @@ class BasePageViewController: UIPageViewController {
             appLabel.reloadLabelData()
             selectionBar.reloadData()
         }
-        self.navigationController?.setToolbarHidden(false, animated: false)
+        //self.navigationController?.setToolbarHidden(false, animated: false)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -357,4 +363,10 @@ extension BasePageViewController: UIScrollViewDelegate {
         
     }
 
+}
+
+extension BasePageViewController:BottomMenuDelegate{
+    var parentView: UIView {
+        return self.view
+    }
 }
