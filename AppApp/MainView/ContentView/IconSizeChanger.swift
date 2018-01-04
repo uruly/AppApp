@@ -62,18 +62,18 @@ class IconSizeChanger: UIToolbar {
         }else {
             setupList()
         }
-        self.backgroundColor = UIColor.clear
+        self.backgroundColor = UIColor.white
         self.barStyle = .default
         self.clipsToBounds = true
         self.barTintColor = UIColor.white
-        //角丸をつける
-        let maskPath = UIBezierPath(roundedRect: bounds,
-                                    byRoundingCorners: [.topLeft, .topRight],
-                                    cornerRadii: CGSize(width:10,height:10))
-        let maskLayer = CAShapeLayer()
-        maskLayer.frame = bounds
-        maskLayer.path = maskPath.cgPath
-        self.layer.mask = maskLayer
+//        //角丸をつける
+//        let maskPath = UIBezierPath(roundedRect: bounds,
+//                                    byRoundingCorners: [.topLeft, .topRight],
+//                                    cornerRadii: CGSize(width:10,height:10))
+//        let maskLayer = CAShapeLayer()
+//        maskLayer.frame = bounds
+//        maskLayer.path = maskPath.cgPath
+//        self.layer.mask = maskLayer
     }
     
     func setupCollect(){

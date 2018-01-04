@@ -30,6 +30,9 @@ class EditToolbar: UIToolbar {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.barTintColor = UIColor.white
+        self.backgroundColor = UIColor.white
+        self.barStyle = .default
+        self.clipsToBounds = true
         //setup()
     }
     
