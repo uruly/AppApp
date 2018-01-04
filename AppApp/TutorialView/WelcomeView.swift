@@ -33,7 +33,7 @@ class WelcomeView: UIView {
         explain.font = UIFont.boldSystemFont(ofSize: 20 + VersionManager.excess)
         explain.textColor = UIColor.white
         explain.numberOfLines = 0
-        explain.text = "はじめまして。\nAppAppは、AppStoreのアプリを整理・コレクションするためのアプリです。"
+        explain.text = "はじめまして。\nAppAppは、アイコンデザインを収集・閲覧するためのアプリです。"
         self.addSubview(explain)
     }
 
