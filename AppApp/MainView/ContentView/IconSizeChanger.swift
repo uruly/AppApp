@@ -62,6 +62,18 @@ class IconSizeChanger: UIToolbar {
         }else {
             setupList()
         }
+        self.backgroundColor = UIColor.clear
+        self.barStyle = .default
+        self.clipsToBounds = true
+        self.barTintColor = UIColor.white
+        //角丸をつける
+        let maskPath = UIBezierPath(roundedRect: bounds,
+                                    byRoundingCorners: [.topLeft, .topRight],
+                                    cornerRadii: CGSize(width:10,height:10))
+        let maskLayer = CAShapeLayer()
+        maskLayer.frame = bounds
+        maskLayer.path = maskPath.cgPath
+        self.layer.mask = maskLayer
     }
     
     func setupCollect(){
@@ -76,9 +88,9 @@ class IconSizeChanger: UIToolbar {
         
         let listBtn = UIBarButtonItem(image: UIImage(named:"list2.png"), style: .plain, target: self, action: #selector(self.changeMode(sender:)))
         
-        let smallIcon = UIBarButtonItem(image: UIImage(named:"small.png"), style: .plain, target: self, action: nil)
+        let smallIcon = UIBarButtonItem(image: UIImage(named:"small.png"), style: .plain, target: nil, action: nil)
         let bigIcon = UIBarButtonItem(image: UIImage(named:"big.png"),style:.plain,target:self,action:nil)
-        let flexibleIcon = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+        let flexibleIcon = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         smallIcon.tintColor = UIColor.lightGray
         bigIcon.tintColor = UIColor.lightGray
         
@@ -117,5 +129,16 @@ class IconSizeChanger: UIToolbar {
 //                sliderDelegate.collectionView.mode = .collect
 //            }
         }
+    }
+    
+    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        print("point")
+        for subview in subviews {
+            if !subview.isHidden && subview.alpha > 0 && subview.isUserInteractionEnabled && subview.point(inside: convert(point, to: subview), with: event) {
+                
+                return true
+            }
+        }
+        return false
     }
 }

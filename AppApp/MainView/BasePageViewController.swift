@@ -24,10 +24,11 @@ class BasePageViewController: UIPageViewController {
     var currentPageIndex:Int = 0
     var nextPageIndex:Int = 0
     var isSelectionScroll = true
-    var iconSizeChanger:IconSizeChanger!
-    var editToolbar:EditToolbar!
+    //var iconSizeChanger:IconSizeChanger!
+    //var editToolbar:EditToolbar!
     var isGoDetail = false
     var isAdjustTitle:Bool = false
+    var bottomView:BottomView!
     
     override init(transitionStyle style: UIPageViewControllerTransitionStyle, navigationOrientation: UIPageViewControllerNavigationOrientation, options: [String : Any]? = nil) {
         super.init(transitionStyle:.scroll,navigationOrientation:.horizontal,options:options)
@@ -86,7 +87,7 @@ class BasePageViewController: UIPageViewController {
         
         //bottomMenuを配置
         let bottomViewHeight = height - width
-        let bottomView = BottomView(frame: CGRect(x:0,y:height - bottomViewHeight,width:width,height:bottomViewHeight))
+        bottomView = BottomView(frame: CGRect(x:0,y:height - bottomViewHeight,width:width,height:bottomViewHeight))
         bottomView.delegate = self
         self.view.addSubview(bottomView)
         
@@ -244,7 +245,8 @@ class BasePageViewController: UIPageViewController {
             
             //edittoolbarを表示
             //self.navigationController?.setToolbarHidden(false, animated: false)
-            
+            self.bottomView.editToolbar.isHidden = false
+            self.bottomView.toolbar.isHidden = true
             //self.setToolbarItems(editToolbar.items, animated: false)
         }
         
@@ -261,6 +263,8 @@ class BasePageViewController: UIPageViewController {
         }
         //self.navigationController?.setToolbarHidden(false, animated: false)
         
+        self.bottomView.editToolbar.isHidden = true
+        self.bottomView.toolbar.isHidden = false
         //self.setToolbarItems(iconSizeChanger.items, animated: false)
     }
 }

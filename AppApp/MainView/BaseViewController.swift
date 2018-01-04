@@ -49,13 +49,13 @@ class BaseViewController: UIViewController {
         AppLabel.currentID = appLabel.id
         AppLabel.currentOrder = appLabel.order
         //delegateを設定
-        if self.basePageVC.iconSizeChanger != nil {
-            self.basePageVC.iconSizeChanger.sliderDelegate = collectionView
-            self.collectionView.mode = self.basePageVC.iconSizeChanger.toolbarMode
-            if self.basePageVC.iconSizeChanger.slider != nil {
+        if self.basePageVC.bottomView.toolbar != nil {
+            self.basePageVC.bottomView.toolbar.sliderDelegate = collectionView
+            self.collectionView.mode = self.basePageVC.bottomView.toolbar.toolbarMode
+            if self.basePageVC.bottomView.toolbar.slider != nil {
                 var value = CGFloat(UserDefaults.standard.float(forKey:"IconSize"))
                 if value == 0 { value = 50.0 }
-                self.basePageVC.iconSizeChanger.slider.value = Float(value)
+                self.basePageVC.bottomView.toolbar.slider.value = Float(value)
                 self.collectionView.itemSize = CGSize(width:value,height:value)
 //                if value > 160.0 {
 //                    self.collectionView.itemSize = CGSize(width:self.view.frame.width - 30,height:100)
@@ -66,8 +66,8 @@ class BaseViewController: UIViewController {
             }
         }
         
-        if self.basePageVC.editToolbar != nil {
-            self.basePageVC.editToolbar.editDelegate = self
+        if self.basePageVC.bottomView.editToolbar != nil {
+            self.basePageVC.bottomView.editToolbar.editDelegate = self
         }
         collectionView.appDelegate = self
         self.view.backgroundColor = appLabel.color

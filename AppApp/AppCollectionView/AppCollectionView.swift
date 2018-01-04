@@ -296,50 +296,50 @@ extension AppCollectionView:IconSizeChangerDelegate{
 }
 
 extension AppCollectionView:UIScrollViewDelegate {
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        if let view = self.appDelegate.baseVC.basePageVC.view.viewWithTag(543){
-            view.removeFromSuperview()
-        }
-        lastContentOffsetY = scrollView.contentOffset.y
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        //print("offsetY\(scrollView.contentOffset.y)")
-        let maxY = self.appDelegate.baseVC.view.frame.maxY
-        let middleHeight = self.appDelegate.baseVC.basePageVC.iconSizeChanger.frame.height / 2
-        let minY = maxY - ( middleHeight * 2 )
-        let diffX = fabs(lastContentOffsetY - scrollView.contentOffset.y)
-        let frameMinY = self.appDelegate.baseVC.basePageVC.iconSizeChanger.frame.minY
-        //let frameMaxY = self.appDelegate.baseVC.basePageVC.iconSizeChanger.frame.maxY
-        //let currentFrameCenterY = self.appDelegate.baseVC.basePageVC.iconSizeChanger.center.y
-        let frameMaxY = self.contentSize.height - (middleHeight * 2) - maxY
-        if scrollView.contentOffset.y > 0 && scrollView.contentOffset.y <= frameMaxY{
-            if scrollView.contentOffset.y > lastContentOffsetY {
-                //どんどん非表示
-                if ( frameMinY + diffX ) >= maxY {
-                    //非表示で固定
-                    self.appDelegate.baseVC.basePageVC.iconSizeChanger.center.y = maxY + middleHeight
-                }else {
-                    //移動させる
-                    self.appDelegate.baseVC.basePageVC.iconSizeChanger.center.y += diffX
-                }
-            }else {
-                //どんどん表示
-                if ( frameMinY + diffX ) <= minY || frameMinY <= minY{
-                    //表示で固定
-                    self.appDelegate.baseVC.basePageVC.iconSizeChanger.center.y = minY + middleHeight
-                }else {
-                    //移動させる
-                    self.appDelegate.baseVC.basePageVC.iconSizeChanger.center.y -= diffX
-                }
-            }
-        }else {
-            //表示で固定
-            self.appDelegate.baseVC.basePageVC.iconSizeChanger.center.y = minY + middleHeight
-        }
-        lastContentOffsetY = scrollView.contentOffset.y
-        //self.appDelegate.baseVC.basePageVC.iconSizeChanger.isHidden = true
-    }
-    
+//    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+//        if let view = self.appDelegate.baseVC.basePageVC.view.viewWithTag(543){
+//            view.removeFromSuperview()
+//        }
+//        lastContentOffsetY = scrollView.contentOffset.y
+//    }
+//    
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        //print("offsetY\(scrollView.contentOffset.y)")
+//        let maxY = self.appDelegate.baseVC.view.frame.maxY
+//        let middleHeight = self.appDelegate.baseVC.basePageVC.iconSizeChanger.frame.height / 2
+//        let minY = maxY - ( middleHeight * 2 )
+//        let diffX = fabs(lastContentOffsetY - scrollView.contentOffset.y)
+//        let frameMinY = self.appDelegate.baseVC.basePageVC.iconSizeChanger.frame.minY
+//        //let frameMaxY = self.appDelegate.baseVC.basePageVC.iconSizeChanger.frame.maxY
+//        //let currentFrameCenterY = self.appDelegate.baseVC.basePageVC.iconSizeChanger.center.y
+//        let frameMaxY = self.contentSize.height - (middleHeight * 2) - maxY
+//        if scrollView.contentOffset.y > 0 && scrollView.contentOffset.y <= frameMaxY{
+//            if scrollView.contentOffset.y > lastContentOffsetY {
+//                //どんどん非表示
+//                if ( frameMinY + diffX ) >= maxY {
+//                    //非表示で固定
+//                    self.appDelegate.baseVC.basePageVC.iconSizeChanger.center.y = maxY + middleHeight
+//                }else {
+//                    //移動させる
+//                    self.appDelegate.baseVC.basePageVC.iconSizeChanger.center.y += diffX
+//                }
+//            }else {
+//                //どんどん表示
+//                if ( frameMinY + diffX ) <= minY || frameMinY <= minY{
+//                    //表示で固定
+//                    self.appDelegate.baseVC.basePageVC.iconSizeChanger.center.y = minY + middleHeight
+//                }else {
+//                    //移動させる
+//                    self.appDelegate.baseVC.basePageVC.iconSizeChanger.center.y -= diffX
+//                }
+//            }
+//        }else {
+//            //表示で固定
+//            self.appDelegate.baseVC.basePageVC.iconSizeChanger.center.y = minY + middleHeight
+//        }
+//        lastContentOffsetY = scrollView.contentOffset.y
+//        //self.appDelegate.baseVC.basePageVC.iconSizeChanger.isHidden = true
+//    }
+//    
     
 }

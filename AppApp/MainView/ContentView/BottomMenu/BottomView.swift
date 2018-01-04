@@ -16,7 +16,7 @@ class BottomView: UIView {
     
     let width:CGFloat
     let height:CGFloat
-    let toolbarHeight:CGFloat = 62.0
+    let toolbarHeight:CGFloat = 66.0
     let handleHeight:CGFloat = 5.0
     let maxY:CGFloat    //閉じられた状態
     let middleY:CGFloat
@@ -26,6 +26,8 @@ class BottomView: UIView {
     let maxSpeed:CGFloat = 12.0
     var pageControl:UIPageControl!
     var baseView:BottomMenuBaseView!
+    var toolbar:IconSizeChanger!
+    var editToolbar:EditToolbar!
 
     required init?(coder aDecoder: NSCoder) {
         self.width = 0
@@ -62,8 +64,11 @@ class BottomView: UIView {
     
     func setupToolbar() {
         let handleWidth:CGFloat = 40.0
-        let view = UIView(frame:CGRect(x:0,y:handleHeight + 5,width:self.width,height:toolbarHeight))
-        //view.backgroundColor = UIColor.blue
+        toolbar = IconSizeChanger(frame:CGRect(x:0,y:0,width:self.width,height:toolbarHeight))
+        self.addSubview(toolbar)
+        editToolbar = EditToolbar(frame: toolbar.frame)
+        editToolbar.isHidden = true
+        self.addSubview(editToolbar)
         
         //ハンドル
         let handle = CALayer()
@@ -109,9 +114,9 @@ class BottomView: UIView {
     }
     
     //タッチイベントを取得
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         //super.touchesBegan(touches, with: event)
+        print("touch")
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
