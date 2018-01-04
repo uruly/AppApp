@@ -43,20 +43,27 @@ class BottomView: UIView {
         self.minY = frame.origin.y
         self.middleY = minY + ( frame.height / 2 )
         super.init(frame:frame)
-        self.backgroundColor = UIColor.blue
+        self.backgroundColor = UIColor.white
         
         //常に見えている部分(toolbar部分)
         setupToolbar()
         
         //下からにょっと出てくる部分
         setupPageView()
+        
+        self.layer.cornerRadius = 10.0
+        //影をつける
+        self.layer.masksToBounds = false
+        self.layer.shadowColor = UIColor.darkGray.cgColor
+        self.layer.shadowOffset = CGSize(width:0,height:-2)
+        self.layer.shadowRadius = 2
+        self.layer.shadowOpacity = 0.2
     }
     
     func setupToolbar() {
         let handleWidth:CGFloat = 40.0
         let view = UIView(frame:CGRect(x:0,y:handleHeight + 5,width:self.width,height:toolbarHeight))
-        view.backgroundColor = UIColor.blue
-        self.addSubview(view)
+        //view.backgroundColor = UIColor.blue
         
         //ハンドル
         let handle = CALayer()
@@ -64,9 +71,15 @@ class BottomView: UIView {
         
         let handleBar = CAShapeLayer()
         //handleBar.frame = CGRect(x:width - 40,y:1,width:80,height:handleHeight - 2)
-        handleBar.fillColor = UIColor.white.cgColor
-        handleBar.strokeColor = UIColor.white.cgColor
+        handleBar.fillColor = UIColor.lightGray.cgColor
+        handleBar.strokeColor = UIColor.lightGray.cgColor
+        handleBar.opacity = 0.7
         handleBar.path = UIBezierPath(roundedRect: CGRect(x:0,y:0,width:handleWidth,height:handleHeight - 2),  cornerRadius:( handleHeight - 2 ) / 2).cgPath
+        if let blurFilter = CIFilter(name: "CIGaussianBlur",
+                                     withInputParameters: [kCIInputRadiusKey: 2]) {
+            handleBar.backgroundFilters = [blurFilter]
+        }
+        
         handle.addSublayer(handleBar)
         self.layer.addSublayer(handle)
     }

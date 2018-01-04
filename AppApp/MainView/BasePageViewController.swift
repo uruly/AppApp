@@ -245,7 +245,7 @@ class BasePageViewController: UIPageViewController {
             //edittoolbarを表示
             //self.navigationController?.setToolbarHidden(false, animated: false)
             
-            self.setToolbarItems(editToolbar.items, animated: false)
+            //self.setToolbarItems(editToolbar.items, animated: false)
         }
         
     }
@@ -261,7 +261,7 @@ class BasePageViewController: UIPageViewController {
         }
         //self.navigationController?.setToolbarHidden(false, animated: false)
         
-        self.setToolbarItems(iconSizeChanger.items, animated: false)
+        //self.setToolbarItems(iconSizeChanger.items, animated: false)
     }
 }
 extension BasePageViewController: UIPageViewControllerDataSource {
