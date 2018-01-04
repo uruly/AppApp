@@ -82,6 +82,7 @@ class IconSizeChanger: UIToolbar {
         slider.maximumValue = Float(self.frame.width / 2) - 45
         let value = UserDefaults.standard.float(forKey:"IconSize")
         slider.value = value == 0 ? 50.0 : value
+        slider.tag = 100
         let sliderView = UIBarButtonItem(customView: slider)
         
         let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
@@ -131,14 +132,42 @@ class IconSizeChanger: UIToolbar {
         }
     }
     
-    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
-        print("point")
-        for subview in subviews {
-            if !subview.isHidden && subview.alpha > 0 && subview.isUserInteractionEnabled && subview.point(inside: convert(point, to: subview), with: event) {
-                
-                return true
+    
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        if let hitView = super.hitTest(point, with: event) {
+            print(hitView)
+            print(hitView.tag)
+            if hitView.tag == 100{
+                return hitView
             }
+            print(hitView.tintColor)
+            print(hitView.frame.width)
+            if hitView.tintColor != UIColor.lightGray && hitView.frame.width > 40{
+                print("通る")
+                return hitView
+            }
+            
+                
         }
-        return false
+        return nil
     }
+    
+//    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+//        print("point")
+//        guard let view = self.hitTest(point, with: event) else {
+//            return false
+//        }
+//
+//        if view.tag == 100 || view.tag == 5 || view.tag == 10 {
+//            return true
+//        }
+////        for subview in subviews {
+////            if !subview.isHidden && subview.alpha > 0 && subview.isUserInteractionEnabled && subview.point(inside: convert(point, to: subview), with: event) {
+////
+////                return true
+////            }
+////        }
+//        return false
+//    }
 }
+
