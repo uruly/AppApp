@@ -86,11 +86,15 @@ class CustomBackgroundCell:UICollectionViewCell {
 }
 
 class UploadViewCell:UICollectionViewCell {
+    var view:UploadView!
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        view = UploadView(frame:self.contentView.frame)
+        self.contentView.addSubview(view)
     }
 }
