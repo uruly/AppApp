@@ -29,6 +29,16 @@ class CustomBackgroundView: UIView {
         backColorLabel.font = UIFont.systemFont(ofSize: 14.0)
         self.addSubview(backColorLabel)
         
+        //履歴を削除ボタン
+        let resetBackColor = UIButton()
+        resetBackColor.frame = CGRect(x:self.frame.width - 100,y:margin,width:100,height:15)
+        resetBackColor.setTitle("履歴を削除", for: .normal)
+        resetBackColor.setTitleColor(UIColor.gray, for: .normal)
+        resetBackColor.titleLabel?.font = UIFont.systemFont(ofSize: 13.0)
+        resetBackColor.tag = 1
+        resetBackColor.addTarget(self, action: #selector(self.resetBtnTapped(sender:)), for: .touchUpInside)
+        self.addSubview(resetBackColor)
+        
         //コレクションビューを配置
         let backColorList = BackgroundColorListView(frame:CGRect(x:0,y:backColorLabel.frame.maxY,width:self.frame.width,height:80))
         self.addSubview(backColorList)
@@ -40,10 +50,27 @@ class CustomBackgroundView: UIView {
         backImageLabel.font = UIFont.systemFont(ofSize: 14.0)
         self.addSubview(backImageLabel)
         
+        //履歴を削除ボタン
+        let resetBackImage = UIButton()
+        resetBackImage.frame = CGRect(x:self.frame.width - 100,y:backColorList.frame.maxY + 5,width:100,height:15)
+        resetBackImage.setTitle("履歴を削除", for: .normal)
+        resetBackImage.setTitleColor(UIColor.gray, for: .normal)
+        resetBackImage.titleLabel?.font = UIFont.systemFont(ofSize: 13.0)
+        resetBackImage.tag = 2
+        resetBackImage.addTarget(self, action: #selector(self.resetBtnTapped(sender:)), for: .touchUpInside)
+        self.addSubview(resetBackImage)
+        
         //コレクションビューを配置
         let backImageList = BackgroundImageView(frame:CGRect(x:0,y:backImageLabel.frame.maxY,width:self.frame.width,height:80))
         self.addSubview(backImageList)
     }
     
+    @objc func resetBtnTapped(sender:UIButton){
+        if sender.tag == 1 { //背景色を消す
+            
+        }else {             //壁紙を消す
+            
+        }
+    }
     
 }
