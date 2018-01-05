@@ -32,7 +32,8 @@ class BottomMenuBaseView: UICollectionView {
         layout.minimumLineSpacing = 0
         self.init(frame: frame, collectionViewLayout: layout)
         
-        self.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "bottomView")
+        self.register(CustomBackgroundCell.self, forCellWithReuseIdentifier: "customBackView")
+        self.register(UploadViewCell.self, forCellWithReuseIdentifier: "uploadView")
         self.delegate = self
         self.dataSource = self
         self.isPagingEnabled = true
@@ -53,17 +54,41 @@ extension BottomMenuBaseView: UICollectionViewDataSource {
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "bottomView", for: indexPath)
         if indexPath.row == 0 {
-            cell.contentView.backgroundColor = UIColor.brown
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "customBackView", for: indexPath)
+            return cell
         }else {
-            cell.contentView.backgroundColor = UIColor.red
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "uploadView", for: indexPath)
+            return cell
         }
-        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         pageDelegate.movePage(count:indexPath.row)
     }
     
+}
+
+class CustomBackgroundCell:UICollectionViewCell {
+    var view:CustomBackgroundView!
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        view = CustomBackgroundView(frame:self.contentView.frame)
+        self.contentView.addSubview(view)
+    }
+}
+
+class UploadViewCell:UICollectionViewCell {
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
 }

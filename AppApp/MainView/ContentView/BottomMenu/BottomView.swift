@@ -119,7 +119,7 @@ class BottomView: UIView {
     //タッチイベントを取得
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         //super.touchesBegan(touches, with: event)
-        print("touch")
+        //print("touch")
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -177,7 +177,7 @@ class BottomView: UIView {
         UIView.animate(withDuration: 0.2, delay: 0, options: [.curveEaseOut], animations: {
             self.frame = frame
         }, completion: { (isCompletion) in
-            print(isCompletion)
+            //print(isCompletion)
         })
     }
 }
