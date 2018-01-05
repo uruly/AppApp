@@ -18,7 +18,7 @@ class EditImageView: UIImageView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.contentMode = .scaleAspectFit
-        
+        self.isUserInteractionEnabled = true
         self.layer.cornerRadius = 10.0
         
         //影をつける
