@@ -384,8 +384,22 @@ extension BasePageViewController:BottomMenuDelegate{
 extension BasePageViewController:UploadViewDelegate{
     func presentPicker() {
         let pickerController = UIImagePickerController()
+        pickerController.sourceType = .photoLibrary
+        pickerController.delegate = self
         self.present(pickerController, animated: true, completion: nil)
     }
+}
+
+extension BasePageViewController:UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
     
-    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        //容量の問題をここでみてポップアップを出す
+        
+        //登録画面に遷移
+        let setInfoVC = SetInfoViewController()
+        picker.pushViewController(setInfoVC, animated: true)
+    }
 }
