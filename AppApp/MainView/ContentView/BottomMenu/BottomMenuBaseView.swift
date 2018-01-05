@@ -32,6 +32,7 @@ class BottomMenuBaseView: UICollectionView {
         layout.minimumLineSpacing = 0
         self.init(frame: frame, collectionViewLayout: layout)
         
+        self.backgroundColor = UIColor.white
         self.register(CustomBackgroundCell.self, forCellWithReuseIdentifier: "customBackView")
         self.register(UploadViewCell.self, forCellWithReuseIdentifier: "uploadView")
         self.delegate = self
@@ -45,6 +46,7 @@ class BottomMenuBaseView: UICollectionView {
 }
 
 extension BottomMenuBaseView: UICollectionViewDelegate {
+    
 }
 
 extension BottomMenuBaseView: UICollectionViewDataSource {

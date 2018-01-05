@@ -23,18 +23,26 @@ class CustomBackgroundView: UIView {
     func setup() {
         let margin:CGFloat = 15
         //背景色ラベル
-        let backColorLabel = UILabel(frame:CGRect(x:margin,y:0,width:100,height:50))
+        let backColorLabel = UILabel(frame:CGRect(x:margin,y:margin,width:100,height:15))
         backColorLabel.text = "背景色"
         backColorLabel.textColor = UIColor.darkText
         backColorLabel.font = UIFont.systemFont(ofSize: 14.0)
         self.addSubview(backColorLabel)
         
+        //コレクションビューを配置
+        let backColorList = BackgroundColorListView(frame:CGRect(x:0,y:backColorLabel.frame.maxY,width:self.frame.width,height:80))
+        self.addSubview(backColorList)
+        
         //壁紙ラベル
-        let backImageLabel = UILabel(frame:CGRect(x:margin,y:self.frame.height / 2 - 25,width:100,height:50))
+        let backImageLabel = UILabel(frame:CGRect(x:margin,y:backColorList.frame.maxY,width:100,height:20))
         backImageLabel.text = "壁紙"
         backImageLabel.textColor = UIColor.darkText
         backImageLabel.font = UIFont.systemFont(ofSize: 14.0)
         self.addSubview(backImageLabel)
+        
+        //コレクションビューを配置
+        let backImageList = BackgroundImageView(frame:CGRect(x:0,y:backImageLabel.frame.maxY,width:self.frame.width,height:80))
+        self.addSubview(backImageList)
     }
     
     

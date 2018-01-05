@@ -87,6 +87,7 @@ class BottomView: UIView {
         
         handle.addSublayer(handleBar)
         self.layer.addSublayer(handle)
+        
     }
     
     func setupPageView() {
@@ -98,6 +99,12 @@ class BottomView: UIView {
         self.addSubview(baseView)
         
         setupPageControl()
+        
+        //bottomline
+        let bottomLine = UIView(frame:CGRect(x:0,y:handleHeight + toolbarHeight,
+                                             width:self.width,height:0.8))
+        bottomLine.backgroundColor = UIColor.backgroundGray()
+        self.addSubview(bottomLine)
     }
     
     func setupPageControl() {

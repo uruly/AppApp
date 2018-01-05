@@ -86,7 +86,8 @@ class BasePageViewController: UIPageViewController {
 //        editToolbar = EditToolbar(frame: iconSizeChanger.frame)
         
         //bottomMenuを配置
-        let bottomViewHeight = height - width
+        let handleHeight:CGFloat = 15.0
+        let bottomViewHeight = height - width + handleHeight
         bottomView = BottomView(frame: CGRect(x:0,y:height - bottomViewHeight,width:width,height:bottomViewHeight))
         bottomView.delegate = self
         self.view.addSubview(bottomView)
