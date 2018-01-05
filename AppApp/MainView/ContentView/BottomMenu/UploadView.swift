@@ -8,8 +8,14 @@
 
 import UIKit
 
+@objc protocol UploadViewDelegate {
+    func presentPicker()
+}
+
 class UploadView: UIView {
 
+    var delegate:UploadViewDelegate!
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -39,6 +45,7 @@ class UploadView: UIView {
         uploadBtn.layer.shadowOffset = CGSize(width:1,height:1)
         uploadBtn.layer.shadowRadius = 4
         uploadBtn.layer.shadowOpacity = 0.5
+        
     }
     
     @objc func uploadBtnTapped(sender:UIButton) {
@@ -48,6 +55,13 @@ class UploadView: UIView {
             UIView.animate(withDuration: 0.2, animations: {
                 sender.transform = CGAffineTransform.identity
             })
+        }
+        //delegateをつける
+        if delegate == nil,let pageVC:BasePageViewController = findViewController() {
+            self.delegate = pageVC
+        }
+        if delegate != nil {
+            delegate.presentPicker()
         }
     }
     

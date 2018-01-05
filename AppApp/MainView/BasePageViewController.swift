@@ -138,6 +138,11 @@ class BasePageViewController: UIPageViewController {
             appLabel.reloadLabelData()
             selectionBar.reloadData()
         }
+        
+//        //pickerにdelegateをつける
+//        if let uploadCell = bottomView.baseView.cellForItem(at: IndexPath(row: 1, section: 0)) as? UploadViewCell {
+//            uploadCell.view.delegate = self
+//        }
         //self.navigationController?.setToolbarHidden(false, animated: false)
     }
     
@@ -374,4 +379,13 @@ extension BasePageViewController:BottomMenuDelegate{
     var parentView: UIView {
         return self.view
     }
+}
+
+extension BasePageViewController:UploadViewDelegate{
+    func presentPicker() {
+        let pickerController = UIImagePickerController()
+        self.present(pickerController, animated: true, completion: nil)
+    }
+    
+    
 }

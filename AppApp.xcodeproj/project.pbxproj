@@ -86,6 +86,7 @@
 		6662E12D1FFFE9EE00FB30C7 /* BackgroundImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662E12B1FFFE9EE00FB30C7 /* BackgroundImageCell.swift */; };
 		6662E12E1FFFE9EE00FB30C7 /* BackgroundImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6662E12C1FFFE9EE00FB30C7 /* BackgroundImageCell.xib */; };
 		6662E1301FFFF06500FB30C7 /* UploadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662E12F1FFFF06500FB30C7 /* UploadView.swift */; };
+		6662E1322000055F00FB30C7 /* UIResponder+FindView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662E1312000055F00FB30C7 /* UIResponder+FindView.swift */; };
 		66681CDA1FCC1501009A0F55 /* DetailContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66681CD91FCC1501009A0F55 /* DetailContentView.swift */; };
 		66681CE11FCC1734009A0F55 /* DetailCommonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66681CDF1FCC1734009A0F55 /* DetailCommonViewCell.swift */; };
 		66681CE21FCC1734009A0F55 /* DetailCommonViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66681CE01FCC1734009A0F55 /* DetailCommonViewCell.xib */; };
@@ -270,6 +271,7 @@
 		6662E12B1FFFE9EE00FB30C7 /* BackgroundImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImageCell.swift; sourceTree = "<group>"; };
 		6662E12C1FFFE9EE00FB30C7 /* BackgroundImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BackgroundImageCell.xib; sourceTree = "<group>"; };
 		6662E12F1FFFF06500FB30C7 /* UploadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadView.swift; sourceTree = "<group>"; };
+		6662E1312000055F00FB30C7 /* UIResponder+FindView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIResponder+FindView.swift"; sourceTree = "<group>"; };
 		66681CD91FCC1501009A0F55 /* DetailContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailContentView.swift; sourceTree = "<group>"; };
 		66681CDF1FCC1734009A0F55 /* DetailCommonViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCommonViewCell.swift; sourceTree = "<group>"; };
 		66681CE01FCC1734009A0F55 /* DetailCommonViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailCommonViewCell.xib; sourceTree = "<group>"; };
@@ -541,6 +543,7 @@
 				66498E271FC6651A00239B47 /* String+Path.swift */,
 				666E06C41FCBCB260043DCFF /* UITextView+Placeholder.swift */,
 				66498E381FC810BF00239B47 /* Array+FindIndex.swift */,
+				6662E1312000055F00FB30C7 /* UIResponder+FindView.swift */,
 				66498E331FC7BA3600239B47 /* UIApplication+Stack.swift */,
 				667ECE581FC388B9009233DE /* UIColor+AppColor.swift */,
 			);
@@ -979,6 +982,7 @@
 				660B57A61FD071D500DBC823 /* HowToViewCell.swift in Sources */,
 				667ECE571FC3836C009233DE /* AppLabel.swift in Sources */,
 				6662E1201FFFD90200FB30C7 /* CustomBackgroundView.swift in Sources */,
+				6662E1322000055F00FB30C7 /* UIResponder+FindView.swift in Sources */,
 				667ECE4B1FC3690E009233DE /* BaseViewController.swift in Sources */,
 				667ECE471FC36850009233DE /* BaseNavigationViewController.swift in Sources */,
 				660B576D1FCFC5F500DBC823 /* ColorPageView.swift in Sources */,
