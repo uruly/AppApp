@@ -23,26 +23,33 @@ class SetInfoViewController: UIViewController {
         
         let navigationHeight:CGFloat = self.navigationController?.navigationBar.frame.maxY ?? 56.0
         //imageViewを置く
-        let imageView = EditImageView(frame: CGRect(x:0,y:navigationHeight,width:150,height:150))
+        let imageSize:CGFloat = 150
+        let imageView = EditImageView(frame: CGRect(x:0,y:navigationHeight,width:imageSize,height:imageSize))
         imageView.center = CGPoint(x:width / 2,y:navigationHeight + 150 / 2 + 30)
-        imageView.image = image
+        //imageView.image = image
+        let layer = CALayer()
+        layer.frame = CGRect(x:0,y:0,width:imageSize,height:imageSize)
+        layer.contents = image.cgImage
+        layer.name = "image"
+        //layer.masksToBounds = true
+        imageView.layer.addSublayer(layer)
         self.view.addSubview(imageView)
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        print("disappear")
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-       
-        if let vc = self.navigationController?.viewControllers ,vc.count - 2 >= 0{
-            self.navigationController?.popToViewController(vc[vc.count - 2], animated: true)
-        }else {
-            self.navigationController?.popToRootViewController(animated: true)
-        }
-    }
+//    override func viewDidDisappear(_ animated: Bool) {
+//        super.viewDidDisappear(animated)
+//        print("disappear")
+//    }
+//
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//
+////        if let vc = self.navigationController?.viewControllers ,vc.count - 2 >= 0{
+////            self.navigationController?.popToViewController(vc[vc.count - 2], animated: true)
+////        }else {
+////            self.navigationController?.popToRootViewController(animated: true)
+////        }
+//    }
     
 
     override func didReceiveMemoryWarning() {

@@ -386,7 +386,7 @@ extension BasePageViewController:UploadViewDelegate{
         let pickerController = UIImagePickerController()
         pickerController.sourceType = .photoLibrary
         pickerController.delegate = self
-        pickerController.allowsEditing = true
+        //pickerController.allowsEditing = true
         self.present(pickerController, animated: true, completion: nil)
     }
 }
@@ -398,8 +398,8 @@ extension BasePageViewController:UIImagePickerControllerDelegate,UINavigationCon
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         //容量の問題をここでみてポップアップを出す
-        //let image = info[UIImagePickerControllerOriginalImage] as? UIImage
-        let image = info[UIImagePickerControllerEditedImage] as? UIImage
+        let image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        //let image = info[UIImagePickerControllerEditedImage] as? UIImage
         //登録画面に遷移
         let setInfoVC = SetInfoViewController()
         setInfoVC.image = image
