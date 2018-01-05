@@ -386,6 +386,7 @@ extension BasePageViewController:UploadViewDelegate{
         let pickerController = UIImagePickerController()
         pickerController.sourceType = .photoLibrary
         pickerController.delegate = self
+        pickerController.allowsEditing = true
         self.present(pickerController, animated: true, completion: nil)
     }
 }
@@ -397,9 +398,29 @@ extension BasePageViewController:UIImagePickerControllerDelegate,UINavigationCon
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         //容量の問題をここでみてポップアップを出す
-        
+        //let image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        let image = info[UIImagePickerControllerEditedImage] as? UIImage
         //登録画面に遷移
         let setInfoVC = SetInfoViewController()
+        setInfoVC.image = image
         picker.pushViewController(setInfoVC, animated: true)
     }
+    
+//    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+//        if navigationController.viewControllers.count == 3 {
+//            print(viewController.view.superview)
+//        }
+//    }
+    
+//    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
+//        print("navigationController\(navigationController.viewControllers.count)")
+//        if navigationController.viewControllers.count == 3 {
+//            //3の時にここが呼ばれる
+//            print(viewController.view.isUserInteractionEnabled)
+//        }
+//        for vc in navigationController.viewControllers {
+//            print(vc.view.subviews)
+//        }
+//    }
+    
 }
