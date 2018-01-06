@@ -386,7 +386,8 @@ extension BasePageViewController:UploadViewDelegate{
         let pickerController = UIImagePickerController()
         pickerController.sourceType = .photoLibrary
         pickerController.delegate = self
-        //pickerController.allowsEditing = true
+        pickerController.allowsEditing = false
+        pickerController.mediaTypes = ["public.image"]
         self.present(pickerController, animated: true, completion: nil)
     }
 }
@@ -403,24 +404,22 @@ extension BasePageViewController:UIImagePickerControllerDelegate,UINavigationCon
         //登録画面に遷移
         let setInfoVC = SetInfoViewController()
         setInfoVC.image = image
+        if let url = info[UIImagePickerControllerReferenceURL] as? URL{
+            print(url.path)
+            if url.path.contains("GIF"){
+                setInfoVC.isEditView = true
+            }
+        }
+        if picker.viewControllers.contains(where: { (vc) -> Bool in
+            if let _:SetInfoViewController = vc as? SetInfoViewController {
+                return true
+            }
+            print(vc)
+            return false
+        }){
+            return
+        }
         picker.pushViewController(setInfoVC, animated: true)
     }
-    
-//    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-//        if navigationController.viewControllers.count == 3 {
-//            print(viewController.view.superview)
-//        }
-//    }
-    
-//    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
-//        print("navigationController\(navigationController.viewControllers.count)")
-//        if navigationController.viewControllers.count == 3 {
-//            //3の時にここが呼ばれる
-//            print(viewController.view.isUserInteractionEnabled)
-//        }
-//        for vc in navigationController.viewControllers {
-//            print(vc.view.subviews)
-//        }
-//    }
     
 }

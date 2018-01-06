@@ -11,6 +11,7 @@ import UIKit
 class SetInfoViewController: UIViewController {
     
     var image:UIImage!
+    var isEditView:Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,33 +24,42 @@ class SetInfoViewController: UIViewController {
         
         let navigationHeight:CGFloat = self.navigationController?.navigationBar.frame.maxY ?? 56.0
         //imageViewを置く
-        let imageSize:CGFloat = 150
+        let imageSize:CGFloat = 200
         let imageView = EditImageView(frame: CGRect(x:0,y:navigationHeight,width:imageSize,height:imageSize))
         imageView.center = CGPoint(x:width / 2,y:navigationHeight + 150 / 2 + 30)
         //imageView.image = image
+        
+        UIGraphicsBeginImageContextWithOptions(image.size, false, 0.0)
+        image.draw(in: CGRect(x:0,y:0,width:image.size.width,height:image.size.height))
+        image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
         let layer = CALayer()
         layer.frame = CGRect(x:0,y:0,width:imageSize,height:imageSize)
         layer.contents = image.cgImage
+        layer.contentsGravity = kCAGravityResizeAspectFill
         layer.name = "image"
         //layer.masksToBounds = true
         imageView.layer.addSublayer(layer)
         self.view.addSubview(imageView)
     }
     
-//    override func viewDidDisappear(_ animated: Bool) {
-//        super.viewDidDisappear(animated)
-//        print("disappear")
-//    }
-//
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
-//
-////        if let vc = self.navigationController?.viewControllers ,vc.count - 2 >= 0{
-////            self.navigationController?.popToViewController(vc[vc.count - 2], animated: true)
-////        }else {
-////            self.navigationController?.popToRootViewController(animated: true)
-////        }
-//    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        print("disappear")
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        if isEditView {
+            if let vc = self.navigationController?.viewControllers ,vc.count - 2 >= 0{
+                self.navigationController?.popToViewController(vc[vc.count - 2], animated: true)
+            }else {
+                self.navigationController?.popToRootViewController(animated: true)
+            }
+        }
+    }
     
 
     override func didReceiveMemoryWarning() {

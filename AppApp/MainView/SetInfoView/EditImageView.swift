@@ -13,6 +13,8 @@ class EditImageView: UIImageView {
 
     //var lastPoint:CGPoint = CGPoint.zero
     var selectLayer:CALayer?
+    var effectiveScale:CGFloat = 1
+    var beginGestureScale:CGFloat = 1
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -20,7 +22,7 @@ class EditImageView: UIImageView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.contentMode = .scaleAspectFit
+        self.contentMode = .scaleAspectFill
         self.isUserInteractionEnabled = true
         self.layer.cornerRadius = 10.0
         self.backgroundColor = UIColor.gray
@@ -30,6 +32,20 @@ class EditImageView: UIImageView {
         self.layer.shadowOffset = CGSize(width:1,height:1)
         self.layer.shadowRadius = 4
         self.layer.shadowOpacity = 0.5
+        
+        //zoom
+        let pinch = UIPinchGestureRecognizer(target: self, action: #selector(self.pinch(sender:)))
+        pinch.delegate = self
+        self.addGestureRecognizer(pinch)
+    }
+    
+    @objc func pinch(sender:UIPinchGestureRecognizer){
+        print(sender.scale)
+        effectiveScale = beginGestureScale * sender.scale
+        //選択されてるやつだけ
+        if (selectLayer != nil){
+            selectLayer!.setAffineTransform(CGAffineTransform(scaleX: effectiveScale,y:effectiveScale))
+        }
     }
     
     
@@ -76,5 +92,13 @@ class EditImageView: UIImageView {
         touchPoint = self.layer.convert(touchPoint, to: self.layer.superlayer)
         return self.layer.hitTest(touchPoint)!
     }
+}
 
+extension EditImageView:UIGestureRecognizerDelegate{
+    override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        if(gestureRecognizer.isKind(of:UIPinchGestureRecognizer.self)){
+            beginGestureScale = effectiveScale
+        }
+        return true
+    }
 }
