@@ -40,6 +40,9 @@ class InfoTableView: UITableView {
         
         let appLabel = AppLabel()
         labelArray = appLabel.array
+        if labelArray.count > 0 {   //all入れておく
+            checkArray.append(labelArray[0])
+        }
         self.estimatedRowHeight = 500
         self.rowHeight = UITableViewAutomaticDimension
     }
@@ -108,6 +111,9 @@ extension InfoTableView: UITableViewDelegate {
                 return data.name == ( cell.textLabel?.text ?? "" )
             })
             if indexArray.count > 0{
+                if checkArray[indexArray[0]].name == "ALL" {
+                    return
+                }
                 //外す
                 checkArray.remove(at:indexArray[0])
                 cell.accessoryType = .none
