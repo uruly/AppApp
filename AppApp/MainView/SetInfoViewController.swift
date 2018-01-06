@@ -12,6 +12,9 @@ class SetInfoViewController: UIViewController {
     
     var image:UIImage!
     var isEditView:Bool = false
+    var titleName:String!
+    var creator:String!
+    var memo:String!
     //var url:URL?
     //var urlString:String?
 
@@ -58,6 +61,7 @@ class SetInfoViewController: UIViewController {
         
         //テーブルビューをおく
         let tableView = InfoTableView(frame:CGRect(x:0,y:imageView.frame.maxY + 15,width:width,height:height - ( imageView.frame.maxY + 15 )))
+        tableView.infoDelegate = self
         self.view.addSubview(tableView)
         
         NotificationCenter.default.addObserver(
@@ -93,9 +97,17 @@ class SetInfoViewController: UIViewController {
     }
     
     @objc func doneBtnTapped() {
-
+        print("memo\(memo),title\(titleName)")
         self.dismiss(animated: true, completion: nil)
     }
+}
+
+extension SetInfoViewController: InfoTableViewDelegate {
+    var setVC: SetInfoViewController {
+        return self
+    }
+    
+    
 }
 
 //extension SetInfoViewController:UINavigationControllerDelegate {

@@ -8,14 +8,21 @@
 
 import UIKit
 @objc protocol InfoTableViewDelegate {
-    var pageVC:BasePageViewController { get }
+    var setVC:SetInfoViewController { get }
 }
 
 class InfoTableView: UITableView {
     
     var labelArray:[AppLabelData] = []
     var checkArray:[AppLabelData] = []
-    var memoText = ""
+    var infoDelegate:InfoTableViewDelegate?
+    var memoText = "" {
+        didSet {
+            if let setVC = infoDelegate?.setVC {
+                setVC.memo = memoText
+            }
+        }
+    }
     var commonTextArray = ["タイトル","作成者"]
     var commonPlaceholderArray = ["タイトルを記入","作成者を記入"]
     var keyboardHeight:CGFloat = 0
@@ -124,6 +131,17 @@ extension InfoTableView: UITableViewDelegate {
             }
         }
     }
+    
+    @objc func textFieldChangedValue(sender:UITextField){
+        if let setVC = infoDelegate?.setVC {
+            if sender.tag == 0 {
+                setVC.titleName = sender.text
+            }
+            if sender.tag == 1 {
+                setVC.creator = sender.text
+            }
+        }
+    }
 }
 
 extension InfoTableView: UITableViewDataSource {
@@ -142,6 +160,9 @@ extension InfoTableView: UITableViewDataSource {
             let cell:InfoTableViewCell = tableView.dequeueReusableCell(withIdentifier: "common", for: indexPath) as! InfoTableViewCell
             cell.nameLabel.text = commonTextArray[indexPath.row]
             cell.textField.placeholder = commonPlaceholderArray[indexPath.row]
+            cell.textField.delegate = self
+            cell.textField.addTarget(self, action: #selector(textFieldChangedValue(sender:)), for: .editingChanged)
+            cell.textField.tag = indexPath.row
             return cell
         }else if indexPath.section == 1 {
             let cell:MemoCell = tableView.dequeueReusableCell(withIdentifier: "memo", for: indexPath) as! MemoCell
@@ -235,6 +256,20 @@ extension InfoTableView:UITextViewDelegate {
     func textViewShouldReturn(_ textView: UITextView) -> Bool {
         textView.resignFirstResponder()
         return true
+    }
+}
+
+extension InfoTableView:UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.resignFirstResponder()
+        if let setVC = infoDelegate?.setVC {
+            if textField.tag == 0 {
+                setVC.titleName = textField.text
+            }
+            if textField.tag == 1 {
+                setVC.creator = textField.text
+            }
+        }
     }
 }
 
