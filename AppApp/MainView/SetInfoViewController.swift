@@ -12,6 +12,8 @@ class SetInfoViewController: UIViewController {
     
     var image:UIImage!
     var isEditView:Bool = false
+    //var url:URL?
+    //var urlString:String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,6 +93,7 @@ class SetInfoViewController: UIViewController {
     }
     
     @objc func doneBtnTapped() {
+
         self.dismiss(animated: true, completion: nil)
     }
 }

@@ -406,6 +406,7 @@ extension BasePageViewController:UIImagePickerControllerDelegate,UINavigationCon
         setInfoVC.image = image
         if let url = info[UIImagePickerControllerReferenceURL] as? URL{
             print(url.path)
+            //setInfoVC.url = url
             if url.path.contains("GIF"){
                 setInfoVC.isEditView = true
             }
