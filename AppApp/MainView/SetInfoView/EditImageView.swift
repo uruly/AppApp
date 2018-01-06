@@ -28,10 +28,7 @@ class EditImageView: UIImageView {
         self.backgroundColor = UIColor.gray
         //影をつける
         self.layer.masksToBounds = true
-        self.layer.shadowColor = UIColor.darkGray.cgColor
-        self.layer.shadowOffset = CGSize(width:1,height:1)
-        self.layer.shadowRadius = 4
-        self.layer.shadowOpacity = 0.5
+        self.layer.borderColor = UIColor.darkGray.cgColor
         
         //zoom
         let pinch = UIPinchGestureRecognizer(target: self, action: #selector(self.pinch(sender:)))

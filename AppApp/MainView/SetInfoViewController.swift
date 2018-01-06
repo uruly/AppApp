@@ -26,7 +26,7 @@ class SetInfoViewController: UIViewController {
         //imageViewを置く
         let imageSize:CGFloat = 200
         let imageView = EditImageView(frame: CGRect(x:0,y:navigationHeight,width:imageSize,height:imageSize))
-        imageView.center = CGPoint(x:width / 2,y:navigationHeight + 150 / 2 + 30)
+        imageView.center = CGPoint(x:width / 2,y:navigationHeight + imageSize / 2 + 30)
         //imageView.image = image
         
         UIGraphicsBeginImageContextWithOptions(image.size, false, 0.0)
@@ -41,6 +41,16 @@ class SetInfoViewController: UIViewController {
         layer.name = "image"
         //layer.masksToBounds = true
         imageView.layer.addSublayer(layer)
+        
+        let shadowView = UIView(frame:imageView.frame)
+        shadowView.backgroundColor = UIColor.white
+        shadowView.layer.cornerRadius = 20.0
+        shadowView.layer.masksToBounds = false
+        shadowView.layer.shadowColor = UIColor.darkGray.cgColor
+        shadowView.layer.shadowOffset = CGSize(width:1,height:1)
+        shadowView.layer.shadowRadius = 4
+        shadowView.layer.shadowOpacity = 0.5
+        self.view.addSubview(shadowView)
         self.view.addSubview(imageView)
     }
     
