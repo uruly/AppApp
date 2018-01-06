@@ -44,7 +44,7 @@ class SetInfoViewController: UIViewController {
         
         let shadowView = UIView(frame:imageView.frame)
         shadowView.backgroundColor = UIColor.white
-        shadowView.layer.cornerRadius = 20.0
+        shadowView.layer.cornerRadius = 40.0
         shadowView.layer.masksToBounds = false
         shadowView.layer.shadowColor = UIColor.darkGray.cgColor
         shadowView.layer.shadowOffset = CGSize(width:1,height:1)

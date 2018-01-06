@@ -24,7 +24,7 @@ class EditImageView: UIImageView {
         super.init(frame: frame)
         self.contentMode = .scaleAspectFill
         self.isUserInteractionEnabled = true
-        self.layer.cornerRadius = 10.0
+        self.layer.cornerRadius = 40.0
         self.backgroundColor = UIColor.gray
         //影をつける
         self.layer.masksToBounds = true
