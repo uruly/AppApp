@@ -12,8 +12,28 @@ class SetInfoViewController: UIViewController {
     
     var image:UIImage!
     var isEditView:Bool = false
-    var titleName:String!
-    var creator:String!
+    var titleName:String! {
+        didSet {
+            if let doneBtn = self.navigationItem.rightBarButtonItem {
+                if titleName == "" || creator == "" || creator == nil{
+                    doneBtn.tintColor = UIColor.lightGray
+                }else {
+                    doneBtn.tintColor = nil
+                }
+            }
+        }
+    }
+    var creator:String! {
+        didSet {
+            if let doneBtn = self.navigationItem.rightBarButtonItem {
+                if titleName == "" || creator == "" || titleName == nil{
+                    doneBtn.tintColor = UIColor.lightGray
+                }else {
+                    doneBtn.tintColor = nil
+                }
+            }
+        }
+    }
     var memo:String!
     //var url:URL?
     //var urlString:String?
@@ -24,6 +44,7 @@ class SetInfoViewController: UIViewController {
         let height = self.view.frame.height
         let doneBtn = UIBarButtonItem(title: "完了", style: .done, target: self, action: #selector(self.doneBtnTapped))
         self.navigationItem.rightBarButtonItem = doneBtn
+        doneBtn.tintColor = UIColor.lightGray
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         self.view.backgroundColor = UIColor.white
@@ -98,7 +119,14 @@ class SetInfoViewController: UIViewController {
     
     @objc func doneBtnTapped() {
         print("memo\(memo),title\(titleName)")
+        if let doneBtn = self.navigationItem.rightBarButtonItem,doneBtn.tintColor != nil {
+            return
+        }
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func save() {
+        
     }
 }
 
