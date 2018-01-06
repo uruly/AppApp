@@ -25,7 +25,7 @@ class SetInfoViewController: UIViewController {
         
         let navigationHeight:CGFloat = self.navigationController?.navigationBar.frame.maxY ?? 56.0
         //imageViewを置く
-        let imageSize:CGFloat = 200
+        let imageSize:CGFloat = 180
         let imageView = EditImageView(frame: CGRect(x:0,y:navigationHeight,width:imageSize,height:imageSize))
         imageView.center = CGPoint(x:width / 2,y:navigationHeight + imageSize / 2 + 30)
         
@@ -58,13 +58,18 @@ class SetInfoViewController: UIViewController {
         let tableView = InfoTableView(frame:CGRect(x:0,y:imageView.frame.maxY + 15,width:width,height:height - ( imageView.frame.maxY + 15 )))
         self.view.addSubview(tableView)
         
-        print(parent?.navigationController?.parent)
-        
+        NotificationCenter.default.addObserver(
+            tableView,
+            selector: #selector(tableView.showKeyboard(notification:)),
+            name: NSNotification.Name.UIKeyboardDidShow,
+            object: nil
+        )
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         print("disappear")
+        NotificationCenter.default.removeObserver(self)
     }
 
     override func viewWillDisappear(_ animated: Bool) {

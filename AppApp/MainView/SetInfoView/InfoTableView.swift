@@ -15,6 +15,13 @@ class InfoTableView: UITableView {
     
     var labelArray:[AppLabelData] = []
     var checkArray:[AppLabelData] = []
+    var memoText = ""
+    var keyboardHeight:CGFloat = 0
+    var memoView:UITextView! {
+        didSet {
+            setDoneBtn(memoView)
+        }
+    }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -24,16 +31,61 @@ class InfoTableView: UITableView {
         super.init(frame: frame, style: style)
         self.register(UITableViewCell.self, forCellReuseIdentifier: "common")
         self.register(UITableViewCell.self, forCellReuseIdentifier: "label")
+        self.register(UINib(nibName:"MemoCell",bundle:nil), forCellReuseIdentifier: "memo")
         self.delegate = self
         self.dataSource = self
         self.backgroundColor = UIColor.white
         
         let appLabel = AppLabel()
         labelArray = appLabel.array
+        self.estimatedRowHeight = 500
+        self.rowHeight = UITableViewAutomaticDimension
     }
     
     convenience init(frame:CGRect){
         self.init(frame:frame,style:.grouped)
+    }
+    
+    @objc func showKeyboard(notification: Notification) {
+        print("show")
+        if let userInfo = notification.userInfo {
+            if let keyboardFrameInfo = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue {
+                // キーボードの高さを取得
+                //print(keyboardFrameInfo.cgRectValue.height)
+                let keyboardHeight = keyboardFrameInfo.cgRectValue.height
+                self.keyboardHeight = keyboardHeight
+                let keyMinY = self.superview!.frame.height - keyboardHeight
+                if let range = memoView.selectedTextRange?.start{
+                    let rect = memoView.caretRect(for:range)
+                    let scrollRect = memoView.convert(rect, to: self.superview!)
+                    if scrollRect.maxY >= keyMinY {
+                        let diffY = scrollRect.maxY - keyMinY
+                        UIView.animate(withDuration: 0.2, animations: {
+                            self.contentOffset.y += diffY + 15
+                        })
+                    }
+                }
+            }
+        }
+    }
+    
+    func setDoneBtn(_ memoView:UITextView){
+        // 仮のサイズでツールバー生成
+        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 40))
+        toolBar.barStyle = .default  // スタイルを設定
+        toolBar.sizeToFit()  // 画面幅に合わせてサイズを変更
+        // スペーサー
+        let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        // 閉じるボタン
+        let commitButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.doneBtnTapped(sender:)))
+        toolBar.items = [spacer, commitButton]
+        
+        
+        memoView.inputAccessoryView = toolBar
+    }
+    
+    @objc func doneBtnTapped(sender:UIBarButtonItem){
+        memoView.resignFirstResponder()
     }
 
 }
@@ -45,6 +97,9 @@ extension InfoTableView: UITableViewDelegate {
         }
         cell.isSelected = false
         cell.isHighlighted = false
+        if let selectRow = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: selectRow, animated: false)
+        }
         
         if indexPath.section == 2 {
             let indexArray = checkArray.findIndex(includeElement: { (data) -> Bool in
@@ -81,9 +136,14 @@ extension InfoTableView: UITableViewDataSource {
             cell.isHighlighted = false
             return cell
         }else if indexPath.section == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "common", for: indexPath)
-            cell.isSelected = false
-            cell.isHighlighted = false
+            let cell:MemoCell = tableView.dequeueReusableCell(withIdentifier: "memo", for: indexPath) as! MemoCell
+            cell.memoView.placeholder = "ここにメモを記入します。"
+            cell.memoView.font = UIFont.systemFont(ofSize: 16)
+            cell.memoView.delegate = self
+            self.memoView = cell.memoView
+            if let placeholderLabel = cell.memoView.viewWithTag(100) as? UILabel {
+                placeholderLabel.font = UIFont.systemFont(ofSize:16)
+            }
             return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "label", for: indexPath)
@@ -120,5 +180,51 @@ extension InfoTableView: UITableViewDataSource {
         }
     }
     
-    
 }
+
+extension InfoTableView:UITextViewDelegate {
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        textView.resignFirstResponder()
+        if let text = textView.text{
+            self.memoText = text
+        }
+    }
+    func textViewDidChange(_ textView: UITextView) {
+        self.beginUpdates()
+        self.endUpdates()
+        //detailVC.contentView.memoViewFrame = CGSize(width:detailVC.view.frame.width,height:textView.frame.height + 70.0)
+        if let placeholderLabel = textView.viewWithTag(100) as? UILabel {
+            placeholderLabel.isHidden = textView.text.count > 0
+        }
+        if let text = textView.text{
+            self.memoText = text
+        }
+        
+        //カーソルがキーボードと被ってないかチェック
+        DispatchQueue.global().asyncAfter(deadline: DispatchTime.now() + 0.2, execute: {
+            DispatchQueue.main.async {
+                let keyMinY = self.superview!.frame.height - self.keyboardHeight
+                if let range = textView.selectedTextRange?.start{
+                    let rect = textView.caretRect(for:range)
+                    let scrollRect = textView.convert(rect, to: self.superview!)
+                    //print("scrollRect\(scrollRect),keyMinY\(keyMinY)")
+                    if scrollRect.maxY >= keyMinY {
+                        let diffY = scrollRect.maxY - keyMinY
+                        UIView.animate(withDuration: 0.2, animations: {
+                            print("ここ呼ばれているよ")
+                            self.contentOffset.y += diffY + 15
+                        })
+                    }
+                }
+            }
+        })
+    }
+    
+    
+    func textViewShouldReturn(_ textView: UITextView) -> Bool {
+        textView.resignFirstResponder()
+        return true
+    }
+}
+
