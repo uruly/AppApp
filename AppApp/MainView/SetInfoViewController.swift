@@ -16,6 +16,7 @@ class SetInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let width = self.view.frame.width
+        let height = self.view.frame.height
         let doneBtn = UIBarButtonItem(title: "完了", style: .done, target: self, action: #selector(self.doneBtnTapped))
         self.navigationItem.rightBarButtonItem = doneBtn
         self.navigationController?.setNavigationBarHidden(false, animated: true)
@@ -27,19 +28,19 @@ class SetInfoViewController: UIViewController {
         let imageSize:CGFloat = 200
         let imageView = EditImageView(frame: CGRect(x:0,y:navigationHeight,width:imageSize,height:imageSize))
         imageView.center = CGPoint(x:width / 2,y:navigationHeight + imageSize / 2 + 30)
-        //imageView.image = image
         
+        //向き調整
         UIGraphicsBeginImageContextWithOptions(image.size, false, 0.0)
         image.draw(in: CGRect(x:0,y:0,width:image.size.width,height:image.size.height))
         image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
+        //レイヤーを足す
         let layer = CALayer()
         layer.frame = CGRect(x:0,y:0,width:imageSize,height:imageSize)
         layer.contents = image.cgImage
         layer.contentsGravity = kCAGravityResizeAspectFill
         layer.name = "image"
-        //layer.masksToBounds = true
         imageView.layer.addSublayer(layer)
         
         let shadowView = UIView(frame:imageView.frame)
@@ -52,6 +53,13 @@ class SetInfoViewController: UIViewController {
         shadowView.layer.shadowOpacity = 0.5
         self.view.addSubview(shadowView)
         self.view.addSubview(imageView)
+        
+        //テーブルビューをおく
+        let tableView = InfoTableView(frame:CGRect(x:0,y:imageView.frame.maxY + 15,width:width,height:height - ( imageView.frame.maxY + 15 )))
+        self.view.addSubview(tableView)
+        
+        print(parent?.navigationController?.parent)
+        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
