@@ -16,6 +16,8 @@ class InfoTableView: UITableView {
     var labelArray:[AppLabelData] = []
     var checkArray:[AppLabelData] = []
     var memoText = ""
+    var commonTextArray = ["タイトル","作成者"]
+    var commonPlaceholderArray = ["タイトルを記入","作成者を記入"]
     var keyboardHeight:CGFloat = 0
     var memoView:UITextView! {
         didSet {
@@ -29,7 +31,7 @@ class InfoTableView: UITableView {
     
     override init(frame: CGRect, style: UITableViewStyle) {
         super.init(frame: frame, style: style)
-        self.register(UITableViewCell.self, forCellReuseIdentifier: "common")
+        self.register(UINib(nibName:"InfoTableViewCell",bundle:nil), forCellReuseIdentifier: "common")
         self.register(UITableViewCell.self, forCellReuseIdentifier: "label")
         self.register(UINib(nibName:"MemoCell",bundle:nil), forCellReuseIdentifier: "memo")
         self.delegate = self
@@ -61,7 +63,7 @@ class InfoTableView: UITableView {
                     if scrollRect.maxY >= keyMinY {
                         let diffY = scrollRect.maxY - keyMinY
                         UIView.animate(withDuration: 0.2, animations: {
-                            self.contentOffset.y += diffY + 15
+                            self.contentOffset.y += diffY
                         })
                     }
                 }
@@ -122,7 +124,7 @@ extension InfoTableView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case 0: return 2
+        case 0: return commonTextArray.count
         case 1: return 1
         case 2: return labelArray.count   //ここは可変がgoodかも
         default: return 0
@@ -131,18 +133,18 @@ extension InfoTableView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "common", for: indexPath)
-            cell.isSelected = false
-            cell.isHighlighted = false
+            let cell:InfoTableViewCell = tableView.dequeueReusableCell(withIdentifier: "common", for: indexPath) as! InfoTableViewCell
+            cell.nameLabel.text = commonTextArray[indexPath.row]
+            cell.textField.placeholder = commonPlaceholderArray[indexPath.row]
             return cell
         }else if indexPath.section == 1 {
             let cell:MemoCell = tableView.dequeueReusableCell(withIdentifier: "memo", for: indexPath) as! MemoCell
             cell.memoView.placeholder = "ここにメモを記入します。"
-            cell.memoView.font = UIFont.systemFont(ofSize: 16)
+            cell.memoView.font = UIFont.systemFont(ofSize: 14)
             cell.memoView.delegate = self
             self.memoView = cell.memoView
             if let placeholderLabel = cell.memoView.viewWithTag(100) as? UILabel {
-                placeholderLabel.font = UIFont.systemFont(ofSize:16)
+                placeholderLabel.font = UIFont.systemFont(ofSize:14)
             }
             return cell
         }else{
@@ -150,6 +152,7 @@ extension InfoTableView: UITableViewDataSource {
             cell.isSelected = false
             cell.isHighlighted = false
             cell.textLabel?.text = labelArray[indexPath.row].name
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 14)
             if checkArray.contains(where: { (data) -> Bool in
                 return data.name == labelArray[indexPath.row].name
             }){
@@ -163,6 +166,7 @@ extension InfoTableView: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         //基本情報、メモ、つけるラベル
+        
         return 3
     }
     
