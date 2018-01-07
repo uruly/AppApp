@@ -60,6 +60,18 @@ class AppLabel {
             
         }
     }
+    static var currentBackgroundImage:UIImage? {
+        didSet {
+            let userDefaults = UserDefaults.standard
+            if let image = AppLabel.currentBackgroundImage {
+                let data = NSKeyedArchiver.archivedData(withRootObject: image)
+                userDefaults.set(data, forKey: "backgroundImage")
+            }else {
+                userDefaults.removeObject(forKey: "backgroundImage")
+            }
+            
+        }
+    }
     
     init(){
         self.migration()

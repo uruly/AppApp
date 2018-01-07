@@ -26,6 +26,19 @@ class BaseViewController: UIViewController {
             self.collectionView.backgroundColor = newValue
         }
     }
+    var backgroundImage:UIImage?{
+        get {
+            return self.backgroundImage
+        }
+        set {
+            print(newValue)
+            if newValue == nil {
+                self.collectionView.backgroundColor = self.backgroundColor
+            }else {
+                self.collectionView.backgroundColor = UIColor(patternImage: newValue!)
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

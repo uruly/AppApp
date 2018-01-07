@@ -120,9 +120,6 @@ class AppCollectionView: UICollectionView {
                 }
             }
             
-            //仮
-            self.backgroundColor = UIColor(patternImage: UIImage(named:"SnowTree.png")!)
-            
             super.reloadData()
         }
     }

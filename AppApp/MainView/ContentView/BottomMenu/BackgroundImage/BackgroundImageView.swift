@@ -12,6 +12,7 @@ class BackgroundImageView: UICollectionView {
     
     var imageList:[UIImage] = []
     var currentIndexPath:IndexPath?
+    var currentImage:UIImage?
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -39,15 +40,30 @@ class BackgroundImageView: UICollectionView {
     }
     
     func changeBackgroundImage() {
+        //BackgroundColorListView.isDefaultColor = false
         if let basePageVC:BasePageViewController = findViewController() {
             print("basepageVCあるよ")
             if let baseVC:BaseViewController = basePageVC.viewControllers?.first as? BaseViewController {
+                AppLabel.currentBackgroundImage = currentImage
+                baseVC.backgroundImage = currentImage
             }
         }
     }
     
+    
+    
     override func reloadData() {
         readImage()
+        if let backgroundImage = UserDefaults.standard.data(forKey: "backgroundImage") {
+            if let data = NSKeyedUnarchiver.unarchiveObject(with: backgroundImage) as? UIImage {
+                let index = imageList.findIndex(includeElement: { (image) -> Bool in
+                    return image == data
+                })
+                if index.count > 0 {
+                    currentIndexPath = IndexPath(row:index[0],section:0)
+                }
+            }
+        }
         super.reloadData()
     }
     
@@ -69,6 +85,7 @@ class BackgroundImageView: UICollectionView {
                         continue
                     }
                     if let image = UIImage(named:name + "." + type) {
+                        //image.description = name
                         imageList.append(image)
                     }
                     
@@ -85,19 +102,30 @@ class BackgroundImageView: UICollectionView {
 extension BackgroundImageView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == 0 {
-//            if currentIndexPath == indexPath {
-//                return
-//            }
-            if let cell:BackgroundImageCell = collectionView.cellForItem(at: indexPath) as? BackgroundImageCell {
-                cell.checkImageView.isHidden = false
-                //currentColor = colorList[indexPath.row]
-            }
-            if currentIndexPath != nil {
+            print(currentIndexPath)
+            print(indexPath)
+            if currentIndexPath == indexPath {
                 if let previousCell:BackgroundImageCell = collectionView.cellForItem(at: currentIndexPath!) as? BackgroundImageCell{
                     previousCell.checkImageView.isHidden = true
                 }
+                //currentImage = nil
+                currentIndexPath = nil
+            }else{
+                if currentIndexPath != nil {
+                    if let previousCell:BackgroundImageCell = collectionView.cellForItem(at: currentIndexPath!) as? BackgroundImageCell{
+                        print("けすよ")
+                        previousCell.checkImageView.isHidden = true
+                    }
+                }
+                if let cell:BackgroundImageCell = collectionView.cellForItem(at: indexPath) as? BackgroundImageCell {
+                    print("みせるよ")
+                    cell.checkImageView.isHidden = false
+                    currentImage = imageList[indexPath.row]
+                    currentIndexPath = indexPath
+                }
             }
-            currentIndexPath = indexPath
+            
+            
             changeBackgroundImage()
         }else {
             //カラーピッカーを表示
@@ -117,8 +145,10 @@ extension BackgroundImageView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
             let cell:BackgroundImageCell = collectionView.dequeueReusableCell(withReuseIdentifier: "backImageSet", for: indexPath) as! BackgroundImageCell
-            
-            cell.contentView.backgroundColor = UIColor(patternImage: imageList[indexPath.row])
+            let color = UIColor(patternImage: imageList[indexPath.row])
+            //let colorName = color.value(forKey: "image") as? String ?? ""
+            //color.setValue(colorName, forKey: "image")
+            cell.contentView.backgroundColor = color
             if currentIndexPath == indexPath {
                 cell.checkImageView.isHidden = false
             }else {
