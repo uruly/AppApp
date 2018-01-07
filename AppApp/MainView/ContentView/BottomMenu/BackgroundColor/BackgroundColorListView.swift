@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 class BackgroundColorListView: UICollectionView {
 
     var colorList:[UIColor] = [.white]
@@ -17,6 +16,11 @@ class BackgroundColorListView: UICollectionView {
             return AppLabel.currentColor
         }
     }
+    static var isDefaultColor:Bool = true
+    var currentColor:UIColor!
+    var currentIndexPath:IndexPath!
+    
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -44,21 +48,62 @@ class BackgroundColorListView: UICollectionView {
         if labelColor != nil {
             colorList.append(labelColor!)
         }
+        currentIndexPath = IndexPath(row:0,section:0)
     }
 
     override func reloadData() {
+        //色を変更
         if self.colorList.count >= 2 && labelColor != nil{
             //上書き
             self.colorList[1] = labelColor!
+            
         }else if labelColor != nil{
             self.colorList.append(labelColor!)
         }
+        if labelColor != nil ,AppLabel.currentBackgroundColor == nil{
+            if UserDefaults.standard.bool(forKey: "isList"){
+                currentColor = labelColor!
+                AppLabel.currentBackgroundColor = currentColor
+                currentIndexPath = IndexPath(row:1,section:0)
+            }else {
+                currentColor = UIColor.white
+                AppLabel.currentBackgroundColor = currentColor
+                currentIndexPath = IndexPath(row:0,section:0)
+            }
+        }
         super.reloadData()
+    }
+    
+    func changeBackgroundColor() {
+        if let basePageVC:BasePageViewController = findViewController() {
+            print("basepageVCあるよ")
+            if let baseVC:BaseViewController = basePageVC.viewControllers?.first as? BaseViewController {
+                AppLabel.currentBackgroundColor = currentColor
+                baseVC.backgroundColor = currentColor
+            }
+        }
     }
 }
 
 extension BackgroundColorListView: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            if currentIndexPath == indexPath {
+                return
+            }
+            if let cell:BackgroundColorViewCell = collectionView.cellForItem(at: indexPath) as? BackgroundColorViewCell {
+                cell.checkImageView.isHidden = false
+                currentColor = colorList[indexPath.row]
+            }
+            if let previousCell:BackgroundColorViewCell = collectionView.cellForItem(at: currentIndexPath) as? BackgroundColorViewCell{
+                previousCell.checkImageView.isHidden = true
+                currentIndexPath = indexPath
+            }
+            changeBackgroundColor()
+        }else {
+            //カラーピッカーを表示
+        }
+    }
 }
 
 extension BackgroundColorListView: UICollectionViewDataSource {
@@ -72,8 +117,13 @@ extension BackgroundColorListView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "backColorSet", for: indexPath)
+            let cell:BackgroundColorViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "backColorSet", for: indexPath) as! BackgroundColorViewCell
             cell.contentView.backgroundColor = colorList[indexPath.row]
+            if currentIndexPath == indexPath {
+                cell.checkImageView.isHidden = false
+            }else {
+                cell.checkImageView.isHidden = true
+            }
             return cell
         }else {
             let cell:BackgroundPlusCell = collectionView.dequeueReusableCell(withReuseIdentifier: "plus", for: indexPath) as! BackgroundPlusCell
@@ -82,7 +132,8 @@ extension BackgroundColorListView: UICollectionViewDataSource {
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        //return 2      //plusボタンをつけるかどうか
+        return 1
     }
     
 

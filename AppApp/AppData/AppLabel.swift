@@ -48,6 +48,7 @@ class AppLabel {
     static var currentOrder:Int?
     static var count:Int?
     static var currentColor:UIColor?
+    static var currentBackgroundColor:UIColor?
     
     init(){
         self.migration()
@@ -226,9 +227,10 @@ class AppLabel {
         let realm = try! Realm(configuration: config)
         let objs = realm.objects(AppLabelRealmData.self)
         for obj in objs{
+            print("obj\(obj)")
             if let objColor = NSKeyedUnarchiver.unarchiveObject(with: obj.color!) as? UIColor{
                 if objColor == color{
-                    //print("同じ色")
+                    print("同じ色")
                     if isEdit {
                         //自身と同じ色ならcontinue
                         if obj.id == id {

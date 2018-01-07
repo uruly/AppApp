@@ -13,6 +13,7 @@ class BackgroundColorViewCell: UICollectionViewCell {
     @IBOutlet weak var checkImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
+        checkImageView.isHidden = true
         self.contentView.layer.cornerRadius = 10.0
         
         //影をつける

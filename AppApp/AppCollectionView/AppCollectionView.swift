@@ -104,7 +104,17 @@ class AppCollectionView: UICollectionView {
     
     override func reloadData(){
         if appData != nil {
-            self.backgroundColor = mode == .collect ? UIColor.white : self.appData.label.color
+            if let color = AppLabel.currentBackgroundColor{
+                if BackgroundColorListView.isDefaultColor && color != UIColor.white{ //whiteでないときはラベル色
+                    self.backgroundColor = self.appData.label.color
+                }else {
+                    self.backgroundColor = color
+                }
+            }else {
+                self.backgroundColor = mode == .collect ? UIColor.white : self.appData.label.color
+                AppLabel.currentBackgroundColor = self.backgroundColor
+            }
+            print("reloadAppCollectionView")
             //self.backgroundColor = UIColor.white
             super.reloadData()
         }

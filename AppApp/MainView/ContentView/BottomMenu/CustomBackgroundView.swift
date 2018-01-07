@@ -39,7 +39,7 @@ class CustomBackgroundView: UIView {
         resetBackColor.titleLabel?.font = UIFont.systemFont(ofSize: 13.0)
         resetBackColor.tag = 1
         resetBackColor.addTarget(self, action: #selector(self.resetBtnTapped(sender:)), for: .touchUpInside)
-        self.addSubview(resetBackColor)
+        //self.addSubview(resetBackColor)
         
         //コレクションビューを配置
         backColorList = BackgroundColorListView(frame:CGRect(x:0,y:backColorLabel.frame.maxY,width:self.frame.width,height:80))

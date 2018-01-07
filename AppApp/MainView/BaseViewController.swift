@@ -18,6 +18,14 @@ class BaseViewController: UIViewController {
     var appLabel:AppLabelData!
     var collectionView:AppCollectionView!
     //var colorListDelegate:ColorListDelegate!
+    var backgroundColor:UIColor{
+        get {
+            return self.backgroundColor
+        }
+        set {
+            self.collectionView.backgroundColor = newValue
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,11 +76,6 @@ class BaseViewController: UIViewController {
                 if value == 0 { value = 50.0 }
                 self.basePageVC.bottomView.toolbar.slider.value = Float(value)
                 self.collectionView.itemSize = CGSize(width:value,height:value)
-//                if value > 160.0 {
-//                    self.collectionView.itemSize = CGSize(width:self.view.frame.width - 30,height:100)
-//                }else {
-//                    self.collectionView.itemSize = CGSize(width:value,height:value)
-//                }
                 self.collectionView.collectionViewLayout.invalidateLayout()
             }
         }
