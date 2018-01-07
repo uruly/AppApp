@@ -31,6 +31,8 @@
 	<string>Main</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>デザインを追加する際に用います。</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>画像を保存する際に用います。</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
