@@ -104,6 +104,7 @@ class AppCollectionView: UICollectionView {
     
     override func reloadData(){
         if appData != nil {
+            //背景色をつける
             if let color = AppLabel.currentBackgroundColor{
                 if BackgroundColorListView.isDefaultColor && color != UIColor.white{ //whiteでないときはラベル色
                     self.backgroundColor = self.appData.label.color
@@ -118,6 +119,10 @@ class AppCollectionView: UICollectionView {
                 if let bottomBaseView = pageVC.bottomView.baseView{
                     bottomBaseView.reloadData()
                 }
+            }
+            if let backImage = AppLabel.currentBackgroundImage{
+                print("kononaka")
+                self.backgroundColor = UIColor(patternImage: backImage)
             }
             
             super.reloadData()

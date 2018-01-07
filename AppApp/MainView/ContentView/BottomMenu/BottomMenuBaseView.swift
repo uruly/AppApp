@@ -60,6 +60,7 @@ extension BottomMenuBaseView: UICollectionViewDataSource {
             let cell:CustomBackgroundCell = collectionView.dequeueReusableCell(withReuseIdentifier: "customBackView", for: indexPath) as! CustomBackgroundCell
             if cell.view.backColorList != nil {
                 cell.view.backColorList.reloadData()
+                cell.view.backImageList.reloadData()
             }
             return cell
         }else {

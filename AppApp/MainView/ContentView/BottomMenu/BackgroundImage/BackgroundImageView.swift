@@ -55,13 +55,12 @@ class BackgroundImageView: UICollectionView {
     override func reloadData() {
         readImage()
         if let backgroundImage = UserDefaults.standard.data(forKey: "backgroundImage") {
-            if let data = NSKeyedUnarchiver.unarchiveObject(with: backgroundImage) as? UIImage {
-                let index = imageList.findIndex(includeElement: { (image) -> Bool in
-                    return image == data
-                })
-                if index.count > 0 {
-                    currentIndexPath = IndexPath(row:index[0],section:0)
-                }
+            let index = imageList.findIndex(includeElement: { (image) -> Bool in
+                let imgListData = UIImagePNGRepresentation(image)
+                return imgListData == backgroundImage
+            })
+            if index.count > 0 {
+                currentIndexPath = IndexPath(row:index[0],section:0)
             }
         }
         super.reloadData()

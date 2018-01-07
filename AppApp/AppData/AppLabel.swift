@@ -64,7 +64,8 @@ class AppLabel {
         didSet {
             let userDefaults = UserDefaults.standard
             if let image = AppLabel.currentBackgroundImage {
-                let data = NSKeyedArchiver.archivedData(withRootObject: image)
+                let data = UIImagePNGRepresentation(image)
+                print("保存してるよ")
                 userDefaults.set(data, forKey: "backgroundImage")
             }else {
                 userDefaults.removeObject(forKey: "backgroundImage")
@@ -82,6 +83,10 @@ class AppLabel {
         let userDefaults = UserDefaults.standard
         if let colorData = userDefaults.data(forKey: "backgroundColor"){
             AppLabel.currentBackgroundColor = NSKeyedUnarchiver.unarchiveObject(with: colorData) as! UIColor
+        }
+        if let backImageData = userDefaults.data(forKey: "backgroundImage") {
+            print("imageDataあるよ")
+            AppLabel.currentBackgroundImage = UIImage(data:backImageData as! Data)
         }
     }
     
