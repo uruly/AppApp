@@ -94,6 +94,9 @@ class SetInfoViewController: UIViewController {
             name: NSNotification.Name.UIKeyboardDidShow,
             object: nil
         )
+        
+        //creatorがあれば
+        creator = UserDefaults.standard.string(forKey: "creator") ?? ""
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -129,7 +132,7 @@ class SetInfoViewController: UIViewController {
         let cropImage = imageView.snapshot()
         let imageData = UIImagePNGRepresentation(cropImage)!
         saveAppData(name: titleName,developer:creator,id:id,urlString:"",image:imageData)
-        UIImageWriteToSavedPhotosAlbum(cropImage, self, nil, nil)
+        //UIImageWriteToSavedPhotosAlbum(cropImage, self, nil, nil)  //ここいれたいけども
         self.dismiss(animated: true, completion: nil)
     }
     

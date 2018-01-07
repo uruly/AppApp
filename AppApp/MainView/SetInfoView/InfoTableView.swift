@@ -139,6 +139,7 @@ extension InfoTableView: UITableViewDelegate {
             }
             if sender.tag == 1 {
                 setVC.creator = sender.text
+                UserDefaults.standard.set(sender.text, forKey: "creator")
             }
         }
     }
@@ -163,6 +164,11 @@ extension InfoTableView: UITableViewDataSource {
             cell.textField.delegate = self
             cell.textField.addTarget(self, action: #selector(textFieldChangedValue(sender:)), for: .editingChanged)
             cell.textField.tag = indexPath.row
+            if indexPath.row == 1 { //クリエイター名を入れる
+                if let creator = UserDefaults.standard.string(forKey: "creator") {
+                    cell.textField.text = creator
+                }
+            }
             return cell
         }else if indexPath.section == 1 {
             let cell:MemoCell = tableView.dequeueReusableCell(withIdentifier: "memo", for: indexPath) as! MemoCell
