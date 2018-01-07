@@ -18,5 +18,10 @@ extension Array {
         }
         return indexArray
     }
+    
+    func findAll(includeElement: (Element) -> Bool) -> [(Int, Element)] {
+        let seq = zip(0..<self.count, self)
+        return seq.filter() { includeElement($0.1) }
+    }
 }
 

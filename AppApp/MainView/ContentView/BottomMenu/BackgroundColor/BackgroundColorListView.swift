@@ -70,6 +70,15 @@ class BackgroundColorListView: UICollectionView {
                 //AppLabel.currentBackgroundColor = currentColor
                 currentIndexPath = IndexPath(row:0,section:0)
             }
+        }else {
+            currentColor = AppLabel.currentBackgroundColor
+            let index = colorList.findIndex(includeElement: { (color) -> Bool in
+                return color == currentColor
+            })
+            if index.count > 0 {
+                currentIndexPath = IndexPath(row:index[0],section:0)
+            }
+            
         }
         print(labelColor)
         super.reloadData()

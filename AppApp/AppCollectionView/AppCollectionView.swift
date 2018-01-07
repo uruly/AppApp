@@ -114,10 +114,11 @@ class AppCollectionView: UICollectionView {
                 self.backgroundColor = mode == .collect ? UIColor.white : self.appData.label.color
                 //AppLabel.currentBackgroundColor = self.backgroundColor
             }
-            if let bottomBaseView = appDelegate.baseVC.basePageVC.bottomView.baseView{
-                bottomBaseView.reloadData()
+            if let pageVC:BasePageViewController = findViewController() {
+                if let bottomBaseView = pageVC.bottomView.baseView{
+                    bottomBaseView.reloadData()
+                }
             }
-            print("reloadAppCollectionView")
             //self.backgroundColor = UIColor.white
             super.reloadData()
         }

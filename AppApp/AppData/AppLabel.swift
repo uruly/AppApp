@@ -48,7 +48,18 @@ class AppLabel {
     static var currentOrder:Int?
     static var count:Int?
     static var currentColor:UIColor?
-    static var currentBackgroundColor:UIColor?
+    static var currentBackgroundColor:UIColor? {
+        didSet {
+            let userDefaults = UserDefaults.standard
+            if let color = AppLabel.currentBackgroundColor {
+                let data = NSKeyedArchiver.archivedData(withRootObject: color)
+                userDefaults.set(data, forKey: "backgroundColor")
+            }else {
+                userDefaults.removeObject(forKey: "backgroundColor")
+            }
+            
+        }
+    }
     
     init(){
         self.migration()
@@ -56,6 +67,10 @@ class AppLabel {
             saveDefaultData()
         }
         self.reloadLabelData()
+        let userDefaults = UserDefaults.standard
+        if let colorData = userDefaults.data(forKey: "backgroundColor"){
+            AppLabel.currentBackgroundColor = NSKeyedUnarchiver.unarchiveObject(with: colorData) as! UIColor
+        }
     }
     
     func migration(){
