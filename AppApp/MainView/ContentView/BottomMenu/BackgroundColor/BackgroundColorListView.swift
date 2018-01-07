@@ -28,12 +28,14 @@ class BackgroundColorListView: UICollectionView {
     convenience init(frame: CGRect){
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width:50,height:50)
-        layout.sectionInset = UIEdgeInsetsMake(15,15,15,15)
-        layout.minimumLineSpacing = 0
+        layout.sectionInset = UIEdgeInsetsMake(15,15,15,0)
+        layout.minimumLineSpacing = 15
         layout.minimumInteritemSpacing = 0
+        layout.scrollDirection = .horizontal
         self.init(frame: frame, collectionViewLayout: layout)
         
         self.register(UINib(nibName:"BackgroundColorViewCell",bundle:nil), forCellWithReuseIdentifier: "backColorSet")
+        self.register(BackgroundPlusCell.self, forCellWithReuseIdentifier: "plus")
         self.delegate = self
         self.dataSource = self
         self.backgroundColor = UIColor.white
@@ -61,13 +63,26 @@ extension BackgroundColorListView: UICollectionViewDelegate {
 
 extension BackgroundColorListView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return colorList.count
+        if section == 0 {
+            return colorList.count > 5 ? 5 : colorList.count
+        }else {
+            return 1
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "backColorSet", for: indexPath)
-        cell.contentView.backgroundColor = colorList[indexPath.row]
-        return cell
+        if indexPath.section == 0 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "backColorSet", for: indexPath)
+            cell.contentView.backgroundColor = colorList[indexPath.row]
+            return cell
+        }else {
+            let cell:BackgroundPlusCell = collectionView.dequeueReusableCell(withReuseIdentifier: "plus", for: indexPath) as! BackgroundPlusCell
+            return cell
+        }
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
     }
     
 
