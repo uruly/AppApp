@@ -57,7 +57,10 @@ extension BottomMenuBaseView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.row == 0 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "customBackView", for: indexPath)
+            let cell:CustomBackgroundCell = collectionView.dequeueReusableCell(withReuseIdentifier: "customBackView", for: indexPath) as! CustomBackgroundCell
+            if cell.view.backColorList != nil {
+                cell.view.backColorList.reloadData()
+            }
             return cell
         }else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "uploadView", for: indexPath)

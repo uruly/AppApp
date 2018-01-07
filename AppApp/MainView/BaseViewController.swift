@@ -9,10 +9,15 @@
 
 import UIKit
 
+//@objc protocol ColorListDelegate {
+//    func labelChanged(color:UIColor)
+//}
+
 class BaseViewController: UIViewController {
 
     var appLabel:AppLabelData!
     var collectionView:AppCollectionView!
+    //var colorListDelegate:ColorListDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,8 +43,6 @@ class BaseViewController: UIViewController {
         collectionView.appDelegate = self
         self.view.addSubview(collectionView)
         
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,6 +51,14 @@ class BaseViewController: UIViewController {
         //print("BaseViewWillAppear")
         AppLabel.currentID = appLabel.id
         AppLabel.currentOrder = appLabel.order
+        AppLabel.currentColor = appLabel.color
+        
+        //bottomMenuリロード
+        basePageVC.bottomView.baseView.reloadData()
+        //bottomMenuのカラー変更
+//        if colorListDelegate != nil {
+//            colorListDelegate.labelChanged(color: appLabel.color)
+//        }
         //delegateを設定
         if self.basePageVC.bottomView.toolbar != nil {
             self.basePageVC.bottomView.toolbar.sliderDelegate = collectionView

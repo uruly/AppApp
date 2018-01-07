@@ -8,8 +8,15 @@
 
 import UIKit
 
+
 class BackgroundColorListView: UICollectionView {
 
+    var colorList:[UIColor] = [.white]
+    var labelColor:UIColor? {
+        get {
+            return AppLabel.currentColor
+        }
+    }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -31,8 +38,21 @@ class BackgroundColorListView: UICollectionView {
         self.dataSource = self
         self.backgroundColor = UIColor.white
         
+        //真っ白とラベルカラーを入れておく
+        if labelColor != nil {
+            colorList.append(labelColor!)
+        }
     }
 
+    override func reloadData() {
+        if self.colorList.count >= 2 && labelColor != nil{
+            //上書き
+            self.colorList[1] = labelColor!
+        }else if labelColor != nil{
+            self.colorList.append(labelColor!)
+        }
+        super.reloadData()
+    }
 }
 
 extension BackgroundColorListView: UICollectionViewDelegate {
@@ -41,14 +61,26 @@ extension BackgroundColorListView: UICollectionViewDelegate {
 
 extension BackgroundColorListView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        return colorList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "backColorSet", for: indexPath)
-        cell.contentView.backgroundColor = UIColor.mainBlue()
+        cell.contentView.backgroundColor = colorList[indexPath.row]
         return cell
     }
     
 
 }
+
+//extension BackgroundColorListView:ColorListDelegate {
+//    func labelChanged(color: UIColor) {
+//        if self.colorList.count > 2 {
+//            //上書き
+//            self.colorList[1] = color
+//        }else {
+//            self.colorList.append(color)
+//        }
+//    }
+//}
+

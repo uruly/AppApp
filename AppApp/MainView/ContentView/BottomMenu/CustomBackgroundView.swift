@@ -9,6 +9,8 @@
 import UIKit
 
 class CustomBackgroundView: UIView {
+    
+    var backColorList:BackgroundColorListView!
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -40,7 +42,7 @@ class CustomBackgroundView: UIView {
         self.addSubview(resetBackColor)
         
         //コレクションビューを配置
-        let backColorList = BackgroundColorListView(frame:CGRect(x:0,y:backColorLabel.frame.maxY,width:self.frame.width,height:80))
+        backColorList = BackgroundColorListView(frame:CGRect(x:0,y:backColorLabel.frame.maxY,width:self.frame.width,height:80))
         self.addSubview(backColorList)
         
         //壁紙ラベル

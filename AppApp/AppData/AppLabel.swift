@@ -47,6 +47,7 @@ class AppLabel {
     static var currentID:String?
     static var currentOrder:Int?
     static var count:Int?
+    static var currentColor:UIColor?
     
     init(){
         self.migration()
