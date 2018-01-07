@@ -10,9 +10,10 @@ import UIKit
 
 extension UIView {
     func snapshot() -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(bounds.size, true, 0.0)
+        UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0.0)
         let context = UIGraphicsGetCurrentContext()!
-        context.setShouldAntialias(false)
+        context.setFillColor(UIColor.clear.cgColor)
+        context.setShouldAntialias(true)
         layer.render(in: context)
         let image = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()

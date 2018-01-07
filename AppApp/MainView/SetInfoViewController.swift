@@ -37,7 +37,7 @@ class SetInfoViewController: UIViewController {
             }
         }
     }
-    var memo:String!
+    var memo:String = ""
     //var url:URL?
     //var urlString:String?
 
@@ -126,66 +126,11 @@ class SetInfoViewController: UIViewController {
             return
         }
         let id = UUID().uuidString + "ROUNDCORNER"
-        //let cropImage = crop(image)
         let cropImage = imageView.snapshot()
-        //let imageData = NSKeyedArchiver.archivedData(withRootObject: cropImage)
-        //saveAppData(name: titleName,developer:creator,id:id,urlString:"",image:imageData)
+        let imageData = UIImagePNGRepresentation(cropImage)!
+        saveAppData(name: titleName,developer:creator,id:id,urlString:"",image:imageData)
         UIImageWriteToSavedPhotosAlbum(cropImage, self, nil, nil)
         self.dismiss(animated: true, completion: nil)
-    }
-    
-    func crop(_ image:UIImage) -> UIImage{
-        var cropImage = UIImage()
-        imageView.clipsToBounds = true
-        if let imageLayer = imageView.layer.sublayers?[0]{
-            imageLayer.masksToBounds = true
-            UIGraphicsBeginImageContextWithOptions(imageView.frame.size, false, 0.0)
-            let context = UIGraphicsGetCurrentContext()
-            context?.scaleBy(x: imageView.effectiveScale, y: imageView.effectiveScale)
-            print(imageLayer.position.x)
-            print(imageLayer.position.y)
-            print(imageView.frame.minX)
-            print(imageView.frame.minY)
-            let posX = imageLayer.position.x
-            let posY = imageLayer.position.y
-            //context?.translateBy(x: posX, y: posY)
-            imageLayer.render(in: context!)
-            cropImage = UIGraphicsGetImageFromCurrentImageContext()!
-            UIGraphicsEndImageContext()
-        }
-        //cgImage?.cropping(to: CGRect())
-        return cropImage.maskCorner(radius: 40.0)!
-//        // リサイズ処理
-//        let origWidth  = Int(image.size.width)
-//        let origHeight = Int(image.size.height)
-//        var resizeWidth:Int = 0, resizeHeight:Int = 0
-//        if (origWidth < origHeight) {
-//            resizeWidth = Int(contentSize.width)
-//            resizeHeight = origHeight * resizeWidth / origWidth
-//        } else {
-//            resizeHeight = Int(contentSize.height)
-//            resizeWidth = origWidth * resizeHeight / origHeight
-//        }
-//
-//        let resizeSize = CGSize(width:CGFloat(resizeWidth), height:CGFloat(resizeHeight))
-//        UIGraphicsBeginImageContext(resizeSize)
-//
-//        image.draw(in: CGRect(x:0,y: 0,width: CGFloat(resizeWidth), height:CGFloat(resizeHeight)))
-//
-//        let resizeImage = UIGraphicsGetImageFromCurrentImageContext()
-//        UIGraphicsEndImageContext()
-//
-//        // 切り抜き処理
-//
-//        let cropRect  = CGRect(
-//            x:CGFloat((resizeWidth - Int(contentSize.width)) / 2),
-//            y:CGFloat((resizeHeight - Int(contentSize.height)) / 2),
-//            width:contentSize.width, height:contentSize.height)
-//        let cropRef   = (resizeImage?.cgImage)!.cropping(to: cropRect)
-//        let cropImage = UIImage(cgImage: cropRef!)
-//
-//
-//        return cropImage
     }
     
     //AppのDataをセーブするよ
