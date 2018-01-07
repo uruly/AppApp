@@ -63,10 +63,10 @@ class AppLabel {
     
     init(){
         self.migration()
+        self.reloadLabelData()
         if array.count == 0 {
             saveDefaultData()
         }
-        self.reloadLabelData()
         let userDefaults = UserDefaults.standard
         if let colorData = userDefaults.data(forKey: "backgroundColor"){
             AppLabel.currentBackgroundColor = NSKeyedUnarchiver.unarchiveObject(with: colorData) as! UIColor

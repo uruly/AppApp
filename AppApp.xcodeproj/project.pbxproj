@@ -96,10 +96,10 @@
 		6662E1412001D76300FB30C7 /* UIView+SnapShot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662E1402001D76300FB30C7 /* UIView+SnapShot.swift */; };
 		6662E143200214F500FB30C7 /* BackgroundPlusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662E142200214F500FB30C7 /* BackgroundPlusCell.swift */; };
 		6662E14520024B1700FB30C7 /* backgroundImage.json in Resources */ = {isa = PBXBuildFile; fileRef = 6662E14420024B1700FB30C7 /* backgroundImage.json */; };
-		6662E14720024BCB00FB30C7 /* StarSplatters.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6662E14620024BCB00FB30C7 /* StarSplatters.jpg */; };
-		6662E14A20024C5B00FB30C7 /* SnowWhite.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6662E14920024C5B00FB30C7 /* SnowWhite.jpg */; };
-		6662E14C20024CEF00FB30C7 /* SnowTree.png in Resources */ = {isa = PBXBuildFile; fileRef = 6662E14B20024CEF00FB30C7 /* SnowTree.png */; };
-		6662E14E20024D1D00FB30C7 /* SnowTreeBig.png in Resources */ = {isa = PBXBuildFile; fileRef = 6662E14D20024D1D00FB30C7 /* SnowTreeBig.png */; };
+		6662E150200253D600FB30C7 /* StarSplatters.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6662E14F200253D500FB30C7 /* StarSplatters.jpg */; };
+		6662E1542002548C00FB30C7 /* SnowTree.png in Resources */ = {isa = PBXBuildFile; fileRef = 6662E1512002548B00FB30C7 /* SnowTree.png */; };
+		6662E1552002548C00FB30C7 /* SnowWhite.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6662E1522002548C00FB30C7 /* SnowWhite.jpg */; };
+		6662E1562002548C00FB30C7 /* SnowTreeBig.png in Resources */ = {isa = PBXBuildFile; fileRef = 6662E1532002548C00FB30C7 /* SnowTreeBig.png */; };
 		66681CDA1FCC1501009A0F55 /* DetailContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66681CD91FCC1501009A0F55 /* DetailContentView.swift */; };
 		66681CE11FCC1734009A0F55 /* DetailCommonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66681CDF1FCC1734009A0F55 /* DetailCommonViewCell.swift */; };
 		66681CE21FCC1734009A0F55 /* DetailCommonViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66681CE01FCC1734009A0F55 /* DetailCommonViewCell.xib */; };
@@ -294,10 +294,10 @@
 		6662E1402001D76300FB30C7 /* UIView+SnapShot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+SnapShot.swift"; sourceTree = "<group>"; };
 		6662E142200214F500FB30C7 /* BackgroundPlusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundPlusCell.swift; sourceTree = "<group>"; };
 		6662E14420024B1700FB30C7 /* backgroundImage.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = backgroundImage.json; sourceTree = "<group>"; };
-		6662E14620024BCB00FB30C7 /* StarSplatters.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = StarSplatters.jpg; sourceTree = "<group>"; };
-		6662E14920024C5B00FB30C7 /* SnowWhite.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SnowWhite.jpg; sourceTree = "<group>"; };
-		6662E14B20024CEF00FB30C7 /* SnowTree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SnowTree.png; sourceTree = "<group>"; };
-		6662E14D20024D1D00FB30C7 /* SnowTreeBig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SnowTreeBig.png; sourceTree = "<group>"; };
+		6662E14F200253D500FB30C7 /* StarSplatters.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = StarSplatters.jpg; sourceTree = "<group>"; };
+		6662E1512002548B00FB30C7 /* SnowTree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SnowTree.png; sourceTree = "<group>"; };
+		6662E1522002548C00FB30C7 /* SnowWhite.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SnowWhite.jpg; sourceTree = "<group>"; };
+		6662E1532002548C00FB30C7 /* SnowTreeBig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SnowTreeBig.png; sourceTree = "<group>"; };
 		66681CD91FCC1501009A0F55 /* DetailContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailContentView.swift; sourceTree = "<group>"; };
 		66681CDF1FCC1734009A0F55 /* DetailCommonViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCommonViewCell.swift; sourceTree = "<group>"; };
 		66681CE01FCC1734009A0F55 /* DetailCommonViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailCommonViewCell.xib; sourceTree = "<group>"; };
@@ -537,10 +537,10 @@
 		6662E14820024BD300FB30C7 /* backgroundImages */ = {
 			isa = PBXGroup;
 			children = (
-				6662E14620024BCB00FB30C7 /* StarSplatters.jpg */,
-				6662E14920024C5B00FB30C7 /* SnowWhite.jpg */,
-				6662E14B20024CEF00FB30C7 /* SnowTree.png */,
-				6662E14D20024D1D00FB30C7 /* SnowTreeBig.png */,
+				6662E14F200253D500FB30C7 /* StarSplatters.jpg */,
+				6662E1512002548B00FB30C7 /* SnowTree.png */,
+				6662E1532002548C00FB30C7 /* SnowTreeBig.png */,
+				6662E1522002548C00FB30C7 /* SnowWhite.jpg */,
 			);
 			path = backgroundImages;
 			sourceTree = "<group>";
@@ -925,7 +925,6 @@
 				6662E14520024B1700FB30C7 /* backgroundImage.json in Resources */,
 				6606168F1FCD35AE00667020 /* DeleteViewCell.xib in Resources */,
 				660B57AB1FD07C3700DBC823 /* iphone.png in Resources */,
-				6662E14C20024CEF00FB30C7 /* SnowTree.png in Resources */,
 				6662E12E1FFFE9EE00FB30C7 /* BackgroundImageCell.xib in Resources */,
 				666E06BA1FCBB3740043DCFF /* right_arrow@3x.png in Resources */,
 				666E06BB1FCBB3740043DCFF /* right_arrow@2x.png in Resources */,
@@ -940,7 +939,6 @@
 				660B57AF1FD0806900DBC823 /* screenShot1.jpeg in Resources */,
 				660B57981FD0466A00DBC823 /* logo.png in Resources */,
 				6652DEDD1FCEB7A800EB84F6 /* small@3x.png in Resources */,
-				6662E14A20024C5B00FB30C7 /* SnowWhite.jpg in Resources */,
 				660B57AD1FD07D9200DBC823 /* screenShot0.jpeg in Resources */,
 				6652DED11FCEAC9800EB84F6 /* collect@3x.png in Resources */,
 				666E06BE1FCBB3880043DCFF /* left_arrow@2x.png in Resources */,
@@ -955,6 +953,7 @@
 				6652DEE41FCECDA500EB84F6 /* list2@3x.png in Resources */,
 				660B57BD1FD12A9B00DBC823 /* help.json in Resources */,
 				6676ED381FCD582200815BF8 /* DetailMemoViewCell.xib in Resources */,
+				6662E150200253D600FB30C7 /* StarSplatters.jpg in Resources */,
 				6652DEEC1FCED46700EB84F6 /* check2@3x.png in Resources */,
 				660B57D31FD16DA700DBC823 /* tutorialMark@2x.png in Resources */,
 				660B57741FCFC5F500DBC823 /* ColorSetViewCell.xib in Resources */,
@@ -967,18 +966,19 @@
 				667ECE1E1FC36784009233DE /* Main.storyboard in Resources */,
 				660B57A71FD071D500DBC823 /* HowToViewCell.xib in Resources */,
 				6652DED81FCEAF6100EB84F6 /* list@2x.png in Resources */,
+				6662E1552002548C00FB30C7 /* SnowWhite.jpg in Resources */,
 				660B57A31FD06FDB00DBC823 /* WelcomeViewCell.xib in Resources */,
-				6662E14720024BCB00FB30C7 /* StarSplatters.jpg in Resources */,
 				6652DEED1FCED46700EB84F6 /* check2@2x.png in Resources */,
 				660B57721FCFC5F500DBC823 /* ColorBaseCell.xib in Resources */,
 				660B57D41FD16DA700DBC823 /* tutorialMark@3x.png in Resources */,
-				6662E14E20024D1D00FB30C7 /* SnowTreeBig.png in Resources */,
 				660B57941FD0173C00DBC823 /* logo2.png in Resources */,
 				660B57DA1FD1749F00DBC823 /* order_app.png in Resources */,
+				6662E1562002548C00FB30C7 /* SnowTreeBig.png in Resources */,
 				66681CE21FCC1734009A0F55 /* DetailCommonViewCell.xib in Resources */,
 				6652DEF01FCED73000EB84F6 /* safari@2x.png in Resources */,
 				660B57921FD013DD00DBC823 /* appapp_logo1.png in Resources */,
 				667ECE721FC4206F009233DE /* AppCollectionViewCell.xib in Resources */,
+				6662E1542002548C00FB30C7 /* SnowTree.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

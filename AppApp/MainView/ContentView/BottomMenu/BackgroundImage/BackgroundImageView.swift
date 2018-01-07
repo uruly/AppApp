@@ -11,7 +11,7 @@ import UIKit
 class BackgroundImageView: UICollectionView {
     
     var imageList:[UIImage] = []
-    var currentIndexPath:IndexPath = IndexPath(row:0,section:0)
+    var currentIndexPath:IndexPath?
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -45,6 +45,41 @@ class BackgroundImageView: UICollectionView {
             }
         }
     }
+    
+    override func reloadData() {
+        readImage()
+        super.reloadData()
+    }
+    
+    func readImage(){
+        self.imageList = []
+        let path = Bundle.main.path(forResource: "backgroundImage", ofType: "json")
+        do {
+            let jsonString = try String(contentsOfFile: path!)
+            let jsonData: Data =  jsonString.data(using: String.Encoding.utf8)!
+            do {
+                let json = try JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.allowFragments)
+                let top = json as! NSArray
+                for object in top {
+                    let set = object as! NSDictionary
+                    guard let name = set["Name"] as? String else {
+                        continue
+                    }
+                    guard let type = set["Type"] as? String else {
+                        continue
+                    }
+                    if let image = UIImage(named:name + "." + type) {
+                        imageList.append(image)
+                    }
+                    
+                }
+            } catch {
+                print(error)
+            }
+        }catch {
+            print(error)
+        }
+    }
 }
 
 extension BackgroundImageView: UICollectionViewDelegate {
@@ -53,14 +88,16 @@ extension BackgroundImageView: UICollectionViewDelegate {
 //            if currentIndexPath == indexPath {
 //                return
 //            }
-            if let cell:BackgroundColorViewCell = collectionView.cellForItem(at: indexPath) as? BackgroundColorViewCell {
+            if let cell:BackgroundImageCell = collectionView.cellForItem(at: indexPath) as? BackgroundImageCell {
                 cell.checkImageView.isHidden = false
                 //currentColor = colorList[indexPath.row]
             }
-            if let previousCell:BackgroundColorViewCell = collectionView.cellForItem(at: currentIndexPath) as? BackgroundColorViewCell{
-                previousCell.checkImageView.isHidden = true
-                currentIndexPath = indexPath
+            if currentIndexPath != nil {
+                if let previousCell:BackgroundImageCell = collectionView.cellForItem(at: currentIndexPath!) as? BackgroundImageCell{
+                    previousCell.checkImageView.isHidden = true
+                }
             }
+            currentIndexPath = indexPath
             changeBackgroundImage()
         }else {
             //カラーピッカーを表示
@@ -80,7 +117,8 @@ extension BackgroundImageView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
             let cell:BackgroundImageCell = collectionView.dequeueReusableCell(withReuseIdentifier: "backImageSet", for: indexPath) as! BackgroundImageCell
-            //cell.contentView.backgroundColor = colorList[indexPath.row]
+            
+            cell.contentView.backgroundColor = UIColor(patternImage: imageList[indexPath.row])
             if currentIndexPath == indexPath {
                 cell.checkImageView.isHidden = false
             }else {

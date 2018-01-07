@@ -119,7 +119,10 @@ class AppCollectionView: UICollectionView {
                     bottomBaseView.reloadData()
                 }
             }
-            //self.backgroundColor = UIColor.white
+            
+            //仮
+            self.backgroundColor = UIColor(patternImage: UIImage(named:"SnowTree.png")!)
+            
             super.reloadData()
         }
     }
