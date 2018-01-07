@@ -37,6 +37,7 @@ class UploadView: UIView {
         uploadBtn.addTarget(self, action: #selector(self.uploadBtnPressed(sender:)), for:.touchDown )
         uploadBtn.addTarget(self, action: #selector(self.uploadBtnReleased(sender:)), for: .touchDragExit)
         uploadBtn.backgroundColor = UIColor.mainBlue()
+        uploadBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16.0)
         self.addSubview(uploadBtn)
         uploadBtn.layer.cornerRadius = 10.0
         //影をつける

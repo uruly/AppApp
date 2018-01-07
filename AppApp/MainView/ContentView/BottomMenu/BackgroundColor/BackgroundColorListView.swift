@@ -63,18 +63,20 @@ class BackgroundColorListView: UICollectionView {
         if labelColor != nil ,AppLabel.currentBackgroundColor == nil{
             if UserDefaults.standard.bool(forKey: "isList"){
                 currentColor = labelColor!
-                AppLabel.currentBackgroundColor = currentColor
+                //AppLabel.currentBackgroundColor = currentColor
                 currentIndexPath = IndexPath(row:1,section:0)
             }else {
                 currentColor = UIColor.white
-                AppLabel.currentBackgroundColor = currentColor
+                //AppLabel.currentBackgroundColor = currentColor
                 currentIndexPath = IndexPath(row:0,section:0)
             }
         }
+        print(labelColor)
         super.reloadData()
     }
     
     func changeBackgroundColor() {
+        BackgroundColorListView.isDefaultColor = false
         if let basePageVC:BasePageViewController = findViewController() {
             print("basepageVCあるよ")
             if let baseVC:BaseViewController = basePageVC.viewControllers?.first as? BaseViewController {

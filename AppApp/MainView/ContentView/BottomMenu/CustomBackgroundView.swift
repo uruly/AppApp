@@ -31,15 +31,16 @@ class CustomBackgroundView: UIView {
         backColorLabel.font = UIFont.systemFont(ofSize: 14.0)
         self.addSubview(backColorLabel)
         
-        //履歴を削除ボタン
+        //デフォルトに戻す
         let resetBackColor = UIButton()
-        resetBackColor.frame = CGRect(x:self.frame.width - 100,y:margin,width:100,height:15)
-        resetBackColor.setTitle("履歴を削除", for: .normal)
+        resetBackColor.frame = CGRect(x:self.frame.width - 130,y:margin,width:130,height:15)
+        resetBackColor.setTitle("デフォルトに戻す", for: .normal)
         resetBackColor.setTitleColor(UIColor.gray, for: .normal)
         resetBackColor.titleLabel?.font = UIFont.systemFont(ofSize: 13.0)
+        resetBackColor.titleLabel?.textAlignment = .right
         resetBackColor.tag = 1
         resetBackColor.addTarget(self, action: #selector(self.resetBtnTapped(sender:)), for: .touchUpInside)
-        //self.addSubview(resetBackColor)
+        self.addSubview(resetBackColor)
         
         //コレクションビューを配置
         backColorList = BackgroundColorListView(frame:CGRect(x:0,y:backColorLabel.frame.maxY,width:self.frame.width,height:80))
@@ -68,11 +69,37 @@ class CustomBackgroundView: UIView {
     }
     
     @objc func resetBtnTapped(sender:UIButton){
-        if sender.tag == 1 { //背景色を消す
-            
+        if sender.tag == 1 { //背景色をデフォルトに戻す
+            //ポップアップを表示
+            BackgroundColorListView.isDefaultColor = true
+            AppLabel.currentBackgroundColor = nil
+            //更新
+            if let basePageVC:BasePageViewController = findViewController() {
+                confirmPopup(pageVC: basePageVC)
+                if let baseVC:BaseViewController = basePageVC.viewControllers?.first as? BaseViewController {
+                    if UserDefaults.standard.bool(forKey: "isList"){
+                        baseVC.backgroundColor = baseVC.appLabel.color
+                    }else {
+                        baseVC.backgroundColor = UIColor.white
+                    }
+                }
+            }
+            self.backColorList.reloadData()
         }else {             //壁紙を消す
             
         }
     }
     
+    func confirmPopup(pageVC:BasePageViewController){
+        //ポップアップを表示
+        let alertController = UIAlertController(title: "背景色をデフォルトに戻しました", message: "", preferredStyle: .alert)
+        let otherAction = UIAlertAction(title: "OK", style: .default) {
+            action in
+            NSLog("はいボタンが押されました")
+        }
+        
+        alertController.addAction(otherAction)
+        
+        pageVC.present(alertController, animated: true, completion: nil)
+    }
 }
