@@ -18,24 +18,18 @@ class BaseViewController: UIViewController {
     var appLabel:AppLabelData!
     var collectionView:AppCollectionView!
     //var colorListDelegate:ColorListDelegate!
-    var backgroundColor:UIColor{
-        get {
-            return self.backgroundColor
-        }
-        set {
-            self.collectionView.backgroundColor = newValue
+    var backgroundColor:UIColor?{
+        didSet {
+            self.collectionView.backgroundColor = self.backgroundColor
         }
     }
     var backgroundImage:UIImage?{
-        get {
-            return self.backgroundImage
-        }
-        set {
-            print(newValue)
-            if newValue == nil {
+        didSet {
+            if backgroundImage == nil {
                 self.collectionView.backgroundColor = self.backgroundColor
+                print(self.collectionView.backgroundColor)
             }else {
-                self.collectionView.backgroundColor = UIColor(patternImage: newValue!)
+                self.collectionView.backgroundColor = UIColor(patternImage: self.backgroundImage!)
             }
         }
     }
@@ -49,11 +43,11 @@ class BaseViewController: UIViewController {
         self.view.backgroundColor = UIColor.white
         
         //とりあえず仮のラベル
-        let label = UILabel()
-        label.frame = CGRect(x:0,y:0,width:100,height:50)
-        label.center = CGPoint(x:width / 2,y:height / 2)
-        label.text = appLabel.name
-        self.view.addSubview(label)
+//        let label = UILabel()
+//        label.frame = CGRect(x:0,y:0,width:100,height:50)
+//        label.center = CGPoint(x:width / 2,y:height / 2)
+//        label.text = appLabel.name
+//        self.view.addSubview(label)
         
         //コレクションビューを配置
         let topMargin = basePageVC.selectionBar.frame.maxY + 4  //+部分がラインになる

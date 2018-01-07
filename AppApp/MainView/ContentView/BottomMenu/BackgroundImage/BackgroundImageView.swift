@@ -108,7 +108,7 @@ extension BackgroundImageView: UICollectionViewDelegate {
                 if let previousCell:BackgroundImageCell = collectionView.cellForItem(at: currentIndexPath!) as? BackgroundImageCell{
                     previousCell.checkImageView.isHidden = true
                 }
-                //currentImage = nil
+                currentImage = nil
                 currentIndexPath = nil
             }else{
                 if currentIndexPath != nil {
@@ -162,7 +162,8 @@ extension BackgroundImageView: UICollectionViewDataSource {
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        //return 2
+        return 1
     }
     
     

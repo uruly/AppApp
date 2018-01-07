@@ -11,6 +11,7 @@ import UIKit
 class CustomBackgroundView: UIView {
     
     var backColorList:BackgroundColorListView!
+    var backImageList:BackgroundImageView!
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -61,10 +62,10 @@ class CustomBackgroundView: UIView {
         resetBackImage.titleLabel?.font = UIFont.systemFont(ofSize: 13.0)
         resetBackImage.tag = 2
         resetBackImage.addTarget(self, action: #selector(self.resetBtnTapped(sender:)), for: .touchUpInside)
-        self.addSubview(resetBackImage)
+        //self.addSubview(resetBackImage)
         
         //コレクションビューを配置
-        let backImageList = BackgroundImageView(frame:CGRect(x:0,y:backImageLabel.frame.maxY,width:self.frame.width,height:80))
+        backImageList = BackgroundImageView(frame:CGRect(x:0,y:backImageLabel.frame.maxY,width:self.frame.width,height:80))
         self.addSubview(backImageList)
     }
     
@@ -85,6 +86,9 @@ class CustomBackgroundView: UIView {
                 }
             }
             self.backColorList.reloadData()
+            self.backImageList.currentImage = nil
+            self.backImageList.currentIndexPath = nil
+            self.backImageList.reloadData()
         }else {             //壁紙を消す
             
         }
