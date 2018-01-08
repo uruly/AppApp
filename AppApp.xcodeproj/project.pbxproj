@@ -494,8 +494,8 @@
 		6662E11A1FFE98B300FB30C7 /* BottomMenu */ = {
 			isa = PBXGroup;
 			children = (
-				6662E11B1FFE98CA00FB30C7 /* BottomMenuBaseView.swift */,
 				6662E11C1FFE98CA00FB30C7 /* BottomView.swift */,
+				6662E11B1FFE98CA00FB30C7 /* BottomMenuBaseView.swift */,
 				6662E11F1FFFD90200FB30C7 /* CustomBackgroundView.swift */,
 				6662E12A1FFFE95600FB30C7 /* BackgroundColor */,
 				6662E1291FFFE94E00FB30C7 /* BackgroundImage */,

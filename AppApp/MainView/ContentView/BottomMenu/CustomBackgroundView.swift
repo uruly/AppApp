@@ -12,6 +12,7 @@ class CustomBackgroundView: UIView {
     
     var backColorList:BackgroundColorListView!
     var backImageList:BackgroundImageView!
+    var bottomView:BottomView!
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -45,6 +46,7 @@ class CustomBackgroundView: UIView {
         
         //コレクションビューを配置
         backColorList = BackgroundColorListView(frame:CGRect(x:0,y:backColorLabel.frame.maxY,width:self.frame.width,height:80))
+        
         self.addSubview(backColorList)
         
         //壁紙ラベル
@@ -109,5 +111,14 @@ class CustomBackgroundView: UIView {
         alertController.addAction(otherAction)
         
         pageVC.present(alertController, animated: true, completion: nil)
+    }
+    
+    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        for subview in subviews {
+            if !subview.isHidden && subview.alpha > 0 && subview.isUserInteractionEnabled && subview.point(inside: convert(point, to: subview), with: event) {
+                return true
+            }
+        }
+        return false
     }
 }

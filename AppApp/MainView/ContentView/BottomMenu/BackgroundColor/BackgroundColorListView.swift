@@ -7,6 +7,9 @@
 //
 
 import UIKit
+@objc protocol BottomViewDelegate{
+    func closeMenu()
+}
 
 class BackgroundColorListView: UICollectionView {
 
@@ -19,6 +22,7 @@ class BackgroundColorListView: UICollectionView {
     static var isDefaultColor:Bool = true
     var currentColor:UIColor!
     var currentIndexPath:IndexPath!
+    var bottomDelegate:BottomViewDelegate!
     
     
     required init?(coder aDecoder: NSCoder) {
@@ -49,7 +53,7 @@ class BackgroundColorListView: UICollectionView {
             colorList.append(labelColor!)
         }
         currentIndexPath = IndexPath(row:0,section:0)
-    }
+        }
 
     override func reloadData() {
         //色を変更
@@ -95,6 +99,16 @@ class BackgroundColorListView: UICollectionView {
             }
         }
     }
+    
+    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        for subview in subviews {
+            if !subview.isHidden && subview.alpha > 0 && subview.isUserInteractionEnabled && subview.point(inside: convert(point, to: subview), with: event) {
+                return true
+            }
+        }
+        return false
+    }
+    
 }
 
 extension BackgroundColorListView: UICollectionViewDelegate {

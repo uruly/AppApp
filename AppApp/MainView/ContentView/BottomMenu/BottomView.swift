@@ -60,6 +60,7 @@ class BottomView: UIView {
         self.layer.shadowOffset = CGSize(width:0,height:-2)
         self.layer.shadowRadius = 2
         self.layer.shadowOpacity = 0.2
+        
     }
     
     func setupToolbar() {
@@ -96,6 +97,7 @@ class BottomView: UIView {
                                                     width:self.width,
                                                     height:height - toolbarHeight - handleHeight))
         baseView.pageDelegate = self
+        baseView.bottomView = self
         self.addSubview(baseView)
         
         setupPageControl()
@@ -116,6 +118,7 @@ class BottomView: UIView {
         pageControl.addTarget(self, action: #selector(self.pageControlTapped(sender:)), for: .touchUpInside)
         self.addSubview(pageControl)
     }
+    
     
     @objc func pageControlTapped(sender:UIPageControl){
         //print(sender.currentPage)

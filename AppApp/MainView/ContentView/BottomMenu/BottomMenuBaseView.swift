@@ -15,6 +15,7 @@ import UIKit
 class BottomMenuBaseView: UICollectionView {
     
     var pageDelegate:BottomMenuPageControlDelegate!
+    var bottomView:BottomView!
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -40,9 +41,19 @@ class BottomMenuBaseView: UICollectionView {
         self.isPagingEnabled = true
         self.showsVerticalScrollIndicator = false
         self.showsHorizontalScrollIndicator = false
+        
+        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(self.swipe(sender:)))
+        swipe.direction = .down
+        self.addGestureRecognizer(swipe)
+        
     }
     
-    //物がないところはスルーして欲しい
+    @objc func swipe(sender:UISwipeGestureRecognizer){
+        if sender.direction == .down {
+            bottomView.closeBottomView()
+        }
+    }
+    
 }
 
 extension BottomMenuBaseView: UICollectionViewDelegate {
