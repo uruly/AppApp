@@ -20,7 +20,9 @@ class BaseViewController: UIViewController {
     //var colorListDelegate:ColorListDelegate!
     var backgroundColor:UIColor?{
         didSet {
-            self.collectionView.backgroundColor = self.backgroundColor
+            if self.backgroundImage == nil {
+                self.collectionView.backgroundColor = self.backgroundColor
+            }
         }
     }
     var backgroundImage:UIImage?{

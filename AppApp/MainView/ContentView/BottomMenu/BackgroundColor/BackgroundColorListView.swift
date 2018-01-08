@@ -85,7 +85,8 @@ class BackgroundColorListView: UICollectionView {
     }
     
     func changeBackgroundColor() {
-        BackgroundColorListView.isDefaultColor = false
+        //whiteとラベル色を選んだらこれをfalseにしたい
+        //BackgroundColorListView.isDefaultColor = false
         if let basePageVC:BasePageViewController = findViewController() {
             print("basepageVCあるよ")
             if let baseVC:BaseViewController = basePageVC.viewControllers?.first as? BaseViewController {

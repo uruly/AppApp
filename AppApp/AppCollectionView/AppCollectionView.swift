@@ -121,7 +121,6 @@ class AppCollectionView: UICollectionView {
                 }
             }
             if let backImage = AppLabel.currentBackgroundImage{
-                print("kononaka")
                 self.backgroundColor = UIColor(patternImage: backImage)
             }
             

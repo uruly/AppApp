@@ -74,6 +74,7 @@ class CustomBackgroundView: UIView {
             //ポップアップを表示
             BackgroundColorListView.isDefaultColor = true
             AppLabel.currentBackgroundColor = nil
+            AppLabel.currentBackgroundImage = nil
             //更新
             if let basePageVC:BasePageViewController = findViewController() {
                 confirmPopup(pageVC: basePageVC)
@@ -83,9 +84,12 @@ class CustomBackgroundView: UIView {
                     }else {
                         baseVC.backgroundColor = UIColor.white
                     }
+                    baseVC.backgroundImage = nil
                 }
             }
             self.backColorList.reloadData()
+            //壁紙の設定を戻す
+            UserDefaults.standard.removeObject(forKey: "backgroundImage")
             self.backImageList.currentImage = nil
             self.backImageList.currentIndexPath = nil
             self.backImageList.reloadData()
