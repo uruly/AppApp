@@ -13,11 +13,14 @@ class AppInfoView: UIView {
     var imageView:UIImageView!
     var appNameLabel:UILabel!
     
+    var url:String!
     var imageData:Data!
     var appName:String!
     var detailVC:DetailViewController!
     //var widthLayout:CGFloat!
     var canSetSubview = true
+    var isAppStore:Bool!
+    //var showStoreBtn:UIButton!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -63,7 +66,14 @@ class AppInfoView: UIView {
         showStoreBtn.frame = CGRect(x:imageView.frame.maxX + margin,y:imageView.frame.maxY - btnHeight,width:btnWidth,height:btnHeight)
         showStoreBtn.backgroundColor = UIColor.appStoreBlue()
         showStoreBtn.addTarget(detailVC, action: #selector(detailVC.showProductPage), for: .touchUpInside)
-        showStoreBtn.setTitle("AppStore", for: .normal)
+
+        if self.isAppStore {
+            showStoreBtn.setTitle("AppStore", for: .normal)
+        }else if url != ""{
+            showStoreBtn.setTitle("取得元を表示", for: .normal)
+        }else {
+            showStoreBtn.isHidden = true
+        }
         showStoreBtn.setTitleColor(UIColor.white, for: .normal)
         showStoreBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         showStoreBtn.layer.cornerRadius = btnHeight / 2

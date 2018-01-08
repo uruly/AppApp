@@ -16,6 +16,7 @@ class DetailContentView: UICollectionView {
     var memo:String!
     var developerName:String!
     var id:String!
+    var url:String!
     var saveDate:String!
     var memoDelegate:MemoDelegate!
     var topInfoFrame:CGSize = CGSize.zero {
@@ -77,6 +78,9 @@ extension DetailContentView: UICollectionViewDataSource {
 //            for subview in cell.infoView.subviews  {
 //                subview.removeFromSuperview()
 //            }
+
+            cell.infoView.isAppStore = self.url.contains("itunes.apple.com")
+            cell.infoView.url = self.url
             cell.infoView.appName = self.appName
             cell.infoView.imageData = self.imageData
             cell.infoView.detailVC = self.detailVC
@@ -87,6 +91,7 @@ extension DetailContentView: UICollectionViewDataSource {
         }
         else if indexPath.row == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "detailCommon", for: indexPath) as! DetailCommonViewCell
+            cell.tableView.isAppStore = self.url.contains("itunes.apple.com")
             cell.tableView.developerName = self.developerName
             cell.tableView.id = self.id
             cell.tableView.saveDate = self.saveDate

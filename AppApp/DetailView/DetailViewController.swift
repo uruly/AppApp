@@ -59,6 +59,8 @@ class DetailViewController: UIViewController {
         self.view.addSubview(contentView)
         contentView.backgroundColor = UIColor.white
         contentView.appName = appData.app.name
+        print("appData.app\(appData.app.urlString)")
+        contentView.url = appData.app.urlString
         contentView.imageData = appData.app.image
         contentView.detailVC = self
         contentView.memo = appData.memo

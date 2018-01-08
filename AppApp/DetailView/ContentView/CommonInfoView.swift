@@ -13,6 +13,7 @@ class CommonInfoView: UITableView {
     var developerName:String!
     var saveDate:String!
     var id:String!
+    var isAppStore:Bool!
     var headerTextList = ["基本情報"]
     var detailVC:DetailViewController!
     //var widthLayout:CGFloat!
@@ -68,7 +69,10 @@ extension CommonInfoView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {   //基本情報
-            return 3
+            if isAppStore == nil {
+                return 0
+            }
+            return isAppStore ? 3 : 2
         }
         return 0
     }
@@ -81,18 +85,31 @@ extension CommonInfoView: UITableViewDataSource {
             label.textAlignment = .right
             label.font = UIFont.systemFont(ofSize: 14)
             cell.accessoryView = label
-            switch indexPath.row {
-            case 0:
-                cell.textLabel?.text = "開発者"
-                label.text = developerName
-            case 1:
-                cell.textLabel?.text = "ID"
-                label.text = id
-            case 2:
-                cell.textLabel?.text = "保存日時"
-                label.text = saveDate
-            default:
-                cell.textLabel?.text = ""
+            if isAppStore != nil && isAppStore {
+                switch indexPath.row {
+                case 0:
+                    cell.textLabel?.text = "開発者"
+                    label.text = developerName
+                case 1:
+                    cell.textLabel?.text = "ID"
+                    label.text = id
+                case 2:
+                    cell.textLabel?.text = "保存日時"
+                    label.text = saveDate
+                default:
+                    cell.textLabel?.text = ""
+                }
+            }else {
+                switch indexPath.row {
+                case 0:
+                    cell.textLabel?.text = "作成者"
+                    label.text = developerName
+                case 1:
+                    cell.textLabel?.text = "保存日時"
+                    label.text = saveDate
+                default:
+                    cell.textLabel?.text = ""
+                }
             }
         }
         return cell
