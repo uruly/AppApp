@@ -80,7 +80,7 @@ class AppCollectionView: UICollectionView {
     convenience init(frame:CGRect){
         let layout = UICollectionViewFlowLayout()
         let margin:CGFloat = 15.0
-        layout.sectionInset = UIEdgeInsetsMake(margin,margin,margin + 56,margin)
+        layout.sectionInset = UIEdgeInsetsMake(margin,margin,margin + 71,margin)
         layout.minimumLineSpacing = margin
         layout.minimumInteritemSpacing = margin
         let iconSize = CGFloat(UserDefaults.standard.float(forKey:"IconSize"))
@@ -349,10 +349,12 @@ extension AppCollectionView:UIScrollViewDelegate {
                 }
             }else {
                 //どんどん表示
+                print("minY\(minY)")
+                print("frameMinY\(frameMinY)")
                 if ( frameMinY + diffX ) <= minY || frameMinY <= minY{
                     //表示で固定
 //                    self.appDelegate.baseVC.basePageVC.bottomView.center.y = maxY + middleHeight
-                    self.appDelegate.baseVC.basePageVC.bottomView.updateFrame()
+                    self.appDelegate.baseVC.basePageVC.bottomView.closeBottomView()
                     print("表示で固定する")
                 }else {
                     //移動させる
@@ -362,7 +364,7 @@ extension AppCollectionView:UIScrollViewDelegate {
             }
         }else {
             //表示で固定
-            self.appDelegate.baseVC.basePageVC.bottomView.updateFrame()
+            self.appDelegate.baseVC.basePageVC.bottomView.closeBottomView()
             //self.appDelegate.baseVC.basePageVC.bottomView.center.y = maxY + middleHeight
             print("else 表示で固定")
         }

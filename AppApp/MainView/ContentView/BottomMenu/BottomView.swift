@@ -187,6 +187,17 @@ class BottomView: UIView {
             //print(isCompletion)
         })
     }
+    
+    func closeBottomView(){
+        //近い方にスクロールする
+        var frame = self.frame
+        frame.origin.y = maxY
+        UIView.animate(withDuration: 0.2, delay: 0, options: [.curveEaseOut], animations: {
+            self.frame = frame
+        }, completion: { (isCompletion) in
+            //print(isCompletion)
+        })
+    }
 }
 
 extension BottomView: BottomMenuPageControlDelegate{
