@@ -66,6 +66,16 @@ class ShareViewController: SLComposeServiceViewController {
         
     }()
     
+    lazy var editImageItem:SLComposeSheetConfigurationItem? = {
+        guard let item = SLComposeSheetConfigurationItem() else {
+            return nil
+        }
+        item.title = "画像を編集"
+        item.tapHandler = self.showEditImageView
+        return item
+        
+    }()
+    
     var memoText:String = ""{
         didSet{
             memoItem?.value = memoText
@@ -93,6 +103,11 @@ class ShareViewController: SLComposeServiceViewController {
         pushConfigurationViewController(memoVC)
     }
     
+    func showEditImageView() {
+        let editVC = EditImageViewController()
+        pushConfigurationViewController(editVC)
+    }
+    
     override func viewDidLoad(){
         super.viewDidLoad()
         self.title = "Appを保存"
@@ -116,8 +131,17 @@ class ShareViewController: SLComposeServiceViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
     }
     
+    override func loadPreviewView() -> UIView! {
+        if image != nil {
+        var imagePreviewView = UIImageView(image: UIImage(named: "imageName"))
+            return imagePreviewView
+        }else {
+            return super.loadPreviewView()
+        }
+    }
     
     func isAppStore(_ completion:@escaping (Int)->()){
         let extensionItem: NSExtensionItem = self.extensionContext?.inputItems.first as! NSExtensionItem
@@ -160,26 +184,6 @@ class ShareViewController: SLComposeServiceViewController {
         }){
             completion()
         }
-//        for itemProvider in itemProviders {
-//            //print(itemProvider.registeredTypeIdentifiers)
-//            //URL
-//            if (itemProvider.hasItemConformingToTypeIdentifier("public.url")) {
-//                itemProvider.loadItem(forTypeIdentifier: "public.url", options: nil, completionHandler: {
-//                    (item, error) in
-//
-//                    let url = (item as? URL)!.absoluteString
-//                    if url.contains("itunes.apple.com"){
-//                        if url.contains("story"){
-//                            completion(2)
-//                        }else {
-//                            completion(0)
-//                        }
-//                    }else {
-//                        completion(1)
-//                    }
-//                })
-//            }
-//        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -189,6 +193,7 @@ class ShareViewController: SLComposeServiceViewController {
             if tag == 1 {
                 //AppStore以外
                 //self.showAlert()
+                self.showEditImageView()
                 self.title = "画像を保存"
             }else if tag == 2{
                 //AppStoreのストーリー
@@ -604,8 +609,16 @@ class ShareViewController: SLComposeServiceViewController {
     
     
     override func configurationItems() -> [Any]! {
-        
-        return [labelItem!,memoItem!]
+        var items:[SLComposeSheetConfigurationItem] = []
+//        isAppStore { (tag) in
+//            if tag == 0 {
+//                items = [self.labelItem!,self.memoItem!]
+//            }else {
+//                items = [self.editImageItem!,self.labelItem!,self.memoItem!]
+//            }
+//        }
+        items = [self.editImageItem!,self.labelItem!,self.memoItem!]
+        return items
     }
 
 }
