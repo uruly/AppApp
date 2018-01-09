@@ -78,6 +78,7 @@
 		6652DEF01FCED73000EB84F6 /* safari@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6652DEEE1FCED72F00EB84F6 /* safari@2x.png */; };
 		6652DEF11FCED73000EB84F6 /* safari@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6652DEEF1FCED72F00EB84F6 /* safari@3x.png */; };
 		66603BD020054BCB002F214D /* EditImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66603BCF20054BCB002F214D /* EditImageViewController.swift */; };
+		66603BD220055065002F214D /* EditImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66603BD120055065002F214D /* EditImageView.swift */; };
 		6662E11D1FFE98CA00FB30C7 /* BottomMenuBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662E11B1FFE98CA00FB30C7 /* BottomMenuBaseView.swift */; };
 		6662E11E1FFE98CA00FB30C7 /* BottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662E11C1FFE98CA00FB30C7 /* BottomView.swift */; };
 		6662E1201FFFD90200FB30C7 /* CustomBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662E11F1FFFD90200FB30C7 /* CustomBackgroundView.swift */; };
@@ -278,6 +279,7 @@
 		6652DEEE1FCED72F00EB84F6 /* safari@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "safari@2x.png"; sourceTree = "<group>"; };
 		6652DEEF1FCED72F00EB84F6 /* safari@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "safari@3x.png"; sourceTree = "<group>"; };
 		66603BCF20054BCB002F214D /* EditImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditImageViewController.swift; sourceTree = "<group>"; };
+		66603BD120055065002F214D /* EditImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditImageView.swift; sourceTree = "<group>"; };
 		6662E11B1FFE98CA00FB30C7 /* BottomMenuBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomMenuBaseView.swift; sourceTree = "<group>"; };
 		6662E11C1FFE98CA00FB30C7 /* BottomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomView.swift; sourceTree = "<group>"; };
 		6662E11F1FFFD90200FB30C7 /* CustomBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackgroundView.swift; sourceTree = "<group>"; };
@@ -772,6 +774,7 @@
 				66498E2B1FC67A6400239B47 /* AppData.swift */,
 				66AA1E0A1FC5919E001C419E /* MemoViewController.swift */,
 				66603BCF20054BCB002F214D /* EditImageViewController.swift */,
+				66603BD120055065002F214D /* EditImageView.swift */,
 				66AA1E081FC5900D001C419E /* LabelListTableViewController.swift */,
 				6677FC271FCA7F2000CB105E /* CreateLabelViewController.swift */,
 				6677FC291FCA882800CB105E /* ColorPicker.swift */,
@@ -1144,6 +1147,7 @@
 				6677FC281FCA7F2000CB105E /* CreateLabelViewController.swift in Sources */,
 				66AA1E0B1FC5919E001C419E /* MemoViewController.swift in Sources */,
 				66498E2C1FC67A6400239B47 /* AppData.swift in Sources */,
+				66603BD220055065002F214D /* EditImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

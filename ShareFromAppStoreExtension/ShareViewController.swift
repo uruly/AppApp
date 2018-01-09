@@ -17,6 +17,9 @@ class ShareViewController: SLComposeServiceViewController {
     var url:String = ""
     var developer = ""
     var image:Data?
+    var origImage:UIImage?
+    var scale:CGFloat?
+    var position:CGPoint?
     var saveItemCount = 0 {
         didSet {
             if saveItemCount >= 5 {
@@ -105,7 +108,24 @@ class ShareViewController: SLComposeServiceViewController {
     
     func showEditImageView() {
         let editVC = EditImageViewController()
-        pushConfigurationViewController(editVC)
+        editVC.shareVC = self
+        if self.image == nil {
+            getImageData { (image) in
+                self.origImage = image
+                editVC.image = image
+                DispatchQueue.main.sync {
+                    self.pushConfigurationViewController(editVC)
+                }
+            }
+        }else {
+            //originalImageを渡したい
+            if origImage != nil && position != nil ,scale != nil{
+                editVC.image = origImage
+                editVC.scale = scale
+                editVC.position = position
+            }
+            self.pushConfigurationViewController(editVC)
+        }
     }
     
     override func viewDidLoad(){
@@ -125,6 +145,7 @@ class ShareViewController: SLComposeServiceViewController {
     
     override func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text != nil && textView.text.count > 0 {
+            self.placeholder = "画像に名前をつけてください。"
             textView.resignFirstResponder()
         }
     }
@@ -134,15 +155,20 @@ class ShareViewController: SLComposeServiceViewController {
         
     }
     
-    override func loadPreviewView() -> UIView! {
-        if image != nil {
-        var imagePreviewView = UIImageView(image: UIImage(named: "imageName"))
-            return imagePreviewView
-        }else {
-            return super.loadPreviewView()
-        }
-    }
-    
+//    override func loadPreviewView() -> UIView! {
+//        if image != nil {
+//            print("これを返すよ")
+//            let view = super.loadPreviewView()
+//            let imagePreviewView = UIImageView(image: UIImage(named: "imageName"))
+//            imagePreviewView.frame = CGRect(x:0,y:0,width:90,height:90)
+//            view?.addSubview(imagePreviewView)
+//            return view!
+//        }else {
+//            print("おやだよおおおおお\(super.loadPreviewView())")
+//            return super.loadPreviewView()
+//        }
+//    }
+
     func isAppStore(_ completion:@escaping (Int)->()){
         let extensionItem: NSExtensionItem = self.extensionContext?.inputItems.first as! NSExtensionItem
        // var bool = false
@@ -174,6 +200,33 @@ class ShareViewController: SLComposeServiceViewController {
             }
         }
     }
+    
+    func getImageData(completion:@escaping (UIImage)->()) {
+        let extensionItem: NSExtensionItem = self.extensionContext?.inputItems.first as! NSExtensionItem
+        // var bool = false
+        let itemProviders = extensionItem.attachments as! [NSItemProvider]
+        for itemProvider in itemProviders {
+            //IMAGE
+            if (itemProvider.hasItemConformingToTypeIdentifier("public.image")) {
+                itemProvider.loadItem(forTypeIdentifier: "public.image", options: nil, completionHandler: {
+                    (item, error) in
+                    
+                    if let uiImage = item as? UIImage {
+                        completion(uiImage)
+                    }else if let imageURL = item as? URL{
+                        do {
+                            let imageData = try Data(contentsOf: imageURL)
+                            completion(UIImage(data:imageData)!)
+                        }catch {
+                            print(error)
+                        }
+                    }
+                    print("error\(error)")
+                })
+            }
+        }
+    }
+    
     func isContainImage(_ completion:()->()){
         let extensionItem: NSExtensionItem = self.extensionContext?.inputItems.first as! NSExtensionItem
         // var bool = false
@@ -203,6 +256,7 @@ class ShareViewController: SLComposeServiceViewController {
         isContainImage {
             self.showNoImageAlert()
         }
+        
     }
     
     func showNoImageAlert(){
@@ -293,11 +347,12 @@ class ShareViewController: SLComposeServiceViewController {
             }
             
             //IMAGE
-            if (itemProvider.hasItemConformingToTypeIdentifier("public.image")) {
+            if (itemProvider.hasItemConformingToTypeIdentifier("public.image")) && image == nil {
                 getImage(itemProvider)
             }else {
                 self.saveItemCount += 1
             }
+            print("self.previewActionItemsだよおお\(self.previewActionItems)")
 //            if itemProvider.hasItemConformingToTypeIdentifier("public.heic") {
 //                getHeic(itemProvider)
 //            }else {
