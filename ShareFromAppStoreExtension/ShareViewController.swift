@@ -12,6 +12,16 @@ import RealmSwift
 
 class ShareViewController: SLComposeServiceViewController {
     
+    var id:String?
+    var name:String?
+    var saveItemCount = 0 {
+        didSet {
+            if saveItemCount >= 5 {
+                //保存をする
+            }
+        }
+    }
+
     lazy var ratingItem: SLComposeSheetConfigurationItem? = {
         guard let item = SLComposeSheetConfigurationItem() else {
             return nil
@@ -75,12 +85,19 @@ class ShareViewController: SLComposeServiceViewController {
         let vc: UIViewController = self.navigationController!.viewControllers[0]
         vc.navigationItem.rightBarButtonItem!.title = "保存"
         self.textView.isUserInteractionEnabled = false
+        
+        print("self.contentText\(self.contentText)")
+        if self.contentText == "" {
+            self.textView.isUserInteractionEnabled = true
+        }
         //self.textView.canBecomeFirstResponder = false
     }
     
     
     override func textViewDidBeginEditing(_ textView: UITextView) {
-        textView.resignFirstResponder()
+        if textView.text != nil && textView.text.count > 0 {
+            textView.resignFirstResponder()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -119,18 +136,67 @@ class ShareViewController: SLComposeServiceViewController {
             }
         }
     }
-    
+    func isContainImage(_ completion:()->()){
+        let extensionItem: NSExtensionItem = self.extensionContext?.inputItems.first as! NSExtensionItem
+        // var bool = false
+        let itemProviders = extensionItem.attachments as! [NSItemProvider]
+        print(itemProviders)
+        if !itemProviders.contains(where: { (itemProvider) -> Bool in
+            return itemProvider.hasItemConformingToTypeIdentifier("public.image") || itemProvider.hasItemConformingToTypeIdentifier("public.jpeg")
+        }){
+            completion()
+        }
+//        for itemProvider in itemProviders {
+//            //print(itemProvider.registeredTypeIdentifiers)
+//            //URL
+//            if (itemProvider.hasItemConformingToTypeIdentifier("public.url")) {
+//                itemProvider.loadItem(forTypeIdentifier: "public.url", options: nil, completionHandler: {
+//                    (item, error) in
+//
+//                    let url = (item as? URL)!.absoluteString
+//                    if url.contains("itunes.apple.com"){
+//                        if url.contains("story"){
+//                            completion(2)
+//                        }else {
+//                            completion(0)
+//                        }
+//                    }else {
+//                        completion(1)
+//                    }
+//                })
+//            }
+//        }
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         //self.textView.resignFirstResponder()
         isAppStore { (tag) in
             if tag == 1 {
-                self.showAlert()
+                //AppStore以外
+                //self.showAlert()
+                self.title = "画像を保存"
             }else if tag == 2{
-                self.showStoryAlert()
+                //AppStoreのストーリー
+                //self.showStoryAlert()
             }
         }
+        isContainImage {
+            self.showNoImageAlert()
+        }
+    }
+    
+    func showNoImageAlert(){
+        //ポップアップを表示
+        let alertController = UIAlertController(title: "利用できません", message: "現在画像を共有できる場合にのみ利用できます。", preferredStyle: .alert)
+        let otherAction = UIAlertAction(title: "了解", style: .destructive) {
+            action in NSLog("はいボタンが押されました")
+            self.cancel()
+        }
+        
+        alertController.addAction(otherAction)
+        
+        self.present(alertController, animated: true, completion: nil)
     }
     
     func showAlert(){
@@ -140,34 +206,43 @@ class ShareViewController: SLComposeServiceViewController {
             action in NSLog("はいボタンが押されました")
             self.cancel()
         }
-        
+
         alertController.addAction(otherAction)
-        
+
         self.present(alertController, animated: true, completion: nil)
     }
-    func showStoryAlert(){
-        //ポップアップを表示
-        let alertController = UIAlertController(title: "利用できません", message: "ストーリーは保存できません。", preferredStyle: .alert)
-        let otherAction = UIAlertAction(title: "了解", style: .destructive) {
-            action in NSLog("はいボタンが押されました")
-            self.cancel()
-        }
-        
-        alertController.addAction(otherAction)
-        
-        self.present(alertController, animated: true, completion: nil)
-    }
+//    func showStoryAlert(){
+//        //ポップアップを表示
+//        let alertController = UIAlertController(title: "利用できません", message: "ストーリーは保存できません。", preferredStyle: .alert)
+//        let otherAction = UIAlertAction(title: "了解", style: .destructive) {
+//            action in NSLog("はいボタンが押されました")
+//            self.cancel()
+//        }
+//
+//        alertController.addAction(otherAction)
+//
+//        self.present(alertController, animated: true, completion: nil)
+//    }
     
     override func isContentValid() -> Bool {
         // Do validation of contentText and/or NSExtensionContext attachments here
         //ポストを無効にする条件を書く
         
+        self.charactersRemaining = self.contentText.characters.count as NSNumber!
+        
+        let canPost: Bool = self.contentText.count > 0
+        if canPost {
+            return true
+        }
         return true
     }
 
     override func didSelectPost() {
         let extensionItem: NSExtensionItem = self.extensionContext?.inputItems.first as! NSExtensionItem
         let itemProviders = extensionItem.attachments as! [NSItemProvider]
+        
+        //self.name = String(describing: extensionItem.attributedContentText)
+        //print("name\(self.name)")
         loadData(itemProviders: itemProviders) { (name, developer, id, url, image) in
             self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
             //print("この中きたよ")
@@ -180,15 +255,14 @@ class ShareViewController: SLComposeServiceViewController {
     }
     
     func loadData(itemProviders:[NSItemProvider],_ completion:@escaping (String,String,String,String,Data)->()){
-        var name:String?
+        //var name:String?
         var developer:String?
-        var id:String?
         var url:String?
         var image:Data?
         //var date = Date()
         
         for itemProvider in itemProviders {
-            print(itemProvider.registeredTypeIdentifiers)
+            print("itemProvider.registeredTypeIdentifiers\(itemProvider.registeredTypeIdentifiers)")
             //URL
             if (itemProvider.hasItemConformingToTypeIdentifier("public.url")) {
                 //print("ないの？")
@@ -200,15 +274,16 @@ class ShareViewController: SLComposeServiceViewController {
                     
                     //let urlText = url!.absoluteString
                     if let idRange = url?.range(of: "id"),let endIndex = url?.index(of: "?"){
-                        id = String(url![idRange.lowerBound ..< endIndex])
+                        self.id = String(url![idRange.lowerBound ..< endIndex])
                         //print("id\(id)")
                     }else {
                         print("idないよー")
-                        self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
+                        self.id = UUID().uuidString + "ROUNDCORNER" + "noStore"
+                        //self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
                     }
                     
-                    if name != nil && developer != nil && id != nil && url != nil && image != nil {
-                        completion(name!,developer!,id!,url!,image!)
+                    if self.name != nil && developer != nil && self.id != nil && url != nil && image != nil {
+                        completion(self.name!,developer!,self.id!,url!,image!)
                     }
                      print("error\(error)")
                 })
@@ -223,8 +298,8 @@ class ShareViewController: SLComposeServiceViewController {
                     let uiImage = item as! UIImage
                     image = UIImagePNGRepresentation(uiImage)
                     
-                    if name != nil && developer != nil && id != nil && url != nil && image != nil {
-                        completion(name!,developer!,id!,url!,image!)
+                    if self.name != nil && developer != nil && self.id != nil && url != nil && image != nil {
+                        completion(self.name!,developer!,self.id!,url!,image!)
                     }
                      print("error\(error)")
                 })
@@ -246,15 +321,15 @@ class ShareViewController: SLComposeServiceViewController {
                         var nameString = text[..<developLabelRange!.lowerBound]
                         nameString.removeSubrange(appLabelRange!)
                         print("name\(nameString)")
-                        name = String(nameString)
+                        self.name = String(nameString)
                         
                         //デベロッパ名
                         let developString = text[developLabelRange!.upperBound ..< text.endIndex]
                         //print("develop\(developString)")
                         developer = String(developString)
                         
-                        if name != nil && developer != nil && id != nil && url != nil && image != nil {
-                            completion(name!,developer!,id!,url!,image!)
+                        if self.name != nil && developer != nil && self.id != nil && url != nil && image != nil {
+                            completion(self.name!,developer!,self.id!,url!,image!)
                         }
                     }else if text.contains("」") && text.contains("「"){  //ios10以下用
                         //let appLabelRange = text.range(of:"")
@@ -273,10 +348,10 @@ class ShareViewController: SLComposeServiceViewController {
                         let nameString:String = text
                         print("neme\(nameString)")
                         //nameString.removeLast()
-                        name = String(nameString)
+                        self.name = String(nameString)
                         
-                        if name != nil && developer != nil && id != nil && url != nil && image != nil {
-                            completion(name!,developer!,id!,url!,image!)
+                        if self.name != nil && developer != nil && self.id != nil && url != nil && image != nil {
+                            completion(self.name!,developer!,self.id!,url!,image!)
                         }
                     }else if text.contains("by") {  // usStore
                         //let appLabelRange = text.range(of:"")
@@ -286,19 +361,20 @@ class ShareViewController: SLComposeServiceViewController {
                         let nameString = text[..<developLabelRange!.lowerBound]
                         //nameString.removeSubrange(appLabelRange!)
                         print("name\(nameString)")
-                        name = String(nameString)
+                        self.name = String(nameString)
                         
                         //デベロッパ名
                         let developString = text[developLabelRange!.upperBound ..< text.endIndex]
                         //print("develop\(developString)")
                         developer = String(developString)
                         
-                        if name != nil && developer != nil && id != nil && url != nil && image != nil {
-                            completion(name!,developer!,id!,url!,image!)
+                        if self.name != nil && developer != nil && self.id != nil && url != nil && image != nil {
+                            completion(self.name!,developer!,self.id!,url!,image!)
                         }
                     }else {
                         print("app名とbyないよ")
                         if text != "" {
+                            
                             self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
                         }else {
                             print("から文字だよ")
@@ -306,6 +382,12 @@ class ShareViewController: SLComposeServiceViewController {
                     }
                     print("error\(error)")
                 })
+            }
+            else {
+                developer = ""
+                if self.name != nil && developer != nil && self.id != nil && url != nil && image != nil {
+                    completion(self.name!,developer!,self.id!,url!,image!)
+                }
             }
         }
     }
