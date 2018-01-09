@@ -14,10 +14,24 @@ class ShareViewController: SLComposeServiceViewController {
     
     var id:String?
     var name:String?
+    var url:String = ""
+    var developer = ""
+    var image:Data?
     var saveItemCount = 0 {
         didSet {
             if saveItemCount >= 5 {
                 //保存をする
+                //print("この中きたよ")
+                if self.image != nil{
+                    print("saveするよ")
+                    self.saveAppData(name: self.name!, developer: self.developer, id: self.id!, urlString: self.url, image: self.image!)
+                    self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
+                }else {
+                    //ポップアップ
+                    print("Error")
+                    showError()
+                }
+                print("name\(name),url\(url)")
             }
         }
     }
@@ -199,6 +213,19 @@ class ShareViewController: SLComposeServiceViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
+    func showError(){
+        //ポップアップを表示
+        let alertController = UIAlertController(title: "失敗", message: "保存に失敗しました。", preferredStyle: .alert)
+        let otherAction = UIAlertAction(title: "了解", style: .destructive) {
+            action in NSLog("はいボタンが押されました")
+            self.cancel()
+            self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
+        }
+        
+        alertController.addAction(otherAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
     func showAlert(){
         //ポップアップを表示
         let alertController = UIAlertController(title: "利用できません", message: "この機能はAppStoreでのみ利用できます。", preferredStyle: .alert)
@@ -228,13 +255,13 @@ class ShareViewController: SLComposeServiceViewController {
         // Do validation of contentText and/or NSExtensionContext attachments here
         //ポストを無効にする条件を書く
         
-        self.charactersRemaining = self.contentText.characters.count as NSNumber!
+        //self.charactersRemaining = self.contentText.characters.count as NSNumber!
         
         let canPost: Bool = self.contentText.count > 0
         if canPost {
             return true
         }
-        return true
+        return false
     }
 
     override func didSelectPost() {
@@ -243,155 +270,182 @@ class ShareViewController: SLComposeServiceViewController {
         
         //self.name = String(describing: extensionItem.attributedContentText)
         //print("name\(self.name)")
-        loadData(itemProviders: itemProviders) { (name, developer, id, url, image) in
-            self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
-            //print("この中きたよ")
-            print("name\(name),url\(url)")
-            self.saveAppData(name: name, developer: developer, id: id, urlString: url, image: image)
-        }
+        loadData(itemProviders: itemProviders)
         //失敗したときにもこれ呼ばんと固まる
         //self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
         
     }
     
-    func loadData(itemProviders:[NSItemProvider],_ completion:@escaping (String,String,String,String,Data)->()){
-        //var name:String?
-        var developer:String?
-        var url:String?
-        var image:Data?
-        //var date = Date()
-        
+    func loadData(itemProviders:[NSItemProvider]){
         for itemProvider in itemProviders {
             print("itemProvider.registeredTypeIdentifiers\(itemProvider.registeredTypeIdentifiers)")
-            //URL
+            //URL と ID
             if (itemProvider.hasItemConformingToTypeIdentifier("public.url")) {
-                //print("ないの？")
-                itemProvider.loadItem(forTypeIdentifier: "public.url", options: nil, completionHandler: {
-                    (item, error) in
-                    
-                    url = (item as? URL)!.absoluteString
-                    print("url\(url)")
-                    
-                    //let urlText = url!.absoluteString
-                    if let idRange = url?.range(of: "id"),let endIndex = url?.index(of: "?"){
-                        self.id = String(url![idRange.lowerBound ..< endIndex])
-                        //print("id\(id)")
-                    }else {
-                        print("idないよー")
-                        self.id = UUID().uuidString + "ROUNDCORNER" + "noStore"
-                        //self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
-                    }
-                    
-                    if self.name != nil && developer != nil && self.id != nil && url != nil && image != nil {
-                        completion(self.name!,developer!,self.id!,url!,image!)
-                    }
-                     print("error\(error)")
-                })
+                getURL(itemProvider) //urlとidを取得
+            }else {
+                self.id = UUID().uuidString + "ROUNDCORNER" + "noStore"
+                self.saveItemCount += 2
             }
             
             //IMAGE
             if (itemProvider.hasItemConformingToTypeIdentifier("public.image")) {
-                itemProvider.loadItem(forTypeIdentifier: "public.image", options: nil, completionHandler: {
-                    (item, error) in
-                    
-                    // item にUIImageが入っている
-                    let uiImage = item as! UIImage
-                    image = UIImagePNGRepresentation(uiImage)
-                    
-                    if self.name != nil && developer != nil && self.id != nil && url != nil && image != nil {
-                        completion(self.name!,developer!,self.id!,url!,image!)
-                    }
-                     print("error\(error)")
-                })
+                getImage(itemProvider)
+            }else {
+                self.saveItemCount += 1
             }
+//            if itemProvider.hasItemConformingToTypeIdentifier("public.heic") {
+//                getHeic(itemProvider)
+//            }else {
+//                self.saveItemCount += 1
+//            }
             
             //PLAIN-TEXT
             if (itemProvider.hasItemConformingToTypeIdentifier("public.plain-text")) {
-                itemProvider.loadItem(forTypeIdentifier: "public.plain-text", options: nil, completionHandler: {
-                    (item, error) in
-                    
-                    //ここは２回呼ばれる
-                    var text = item as! String
-                    print(text)
-                    if text.contains("App名"){
-                        let appLabelRange = text.range(of:"App名: ")
-                        let developLabelRange = text.range(of:"、デベロッパ: ")
-                        
-                        //App名
-                        var nameString = text[..<developLabelRange!.lowerBound]
-                        nameString.removeSubrange(appLabelRange!)
-                        print("name\(nameString)")
-                        self.name = String(nameString)
-                        
-                        //デベロッパ名
-                        let developString = text[developLabelRange!.upperBound ..< text.endIndex]
-                        //print("develop\(developString)")
-                        developer = String(developString)
-                        
-                        if self.name != nil && developer != nil && self.id != nil && url != nil && image != nil {
-                            completion(self.name!,developer!,self.id!,url!,image!)
-                        }
-                    }else if text.contains("」") && text.contains("「"){  //ios10以下用
-                        //let appLabelRange = text.range(of:"")
-                        let developLabelRange = text.range(of:"「")
-                        
-                        //デベロッパ名
-                        let developString = text[..<developLabelRange!.lowerBound]
-                        //nameString.removeSubrange(appLabelRange!)
-                        print("develop\(developString)")
-                        developer = String(developString)
-                        text.removeSubrange(..<developLabelRange!.lowerBound)
-                        print("text\(text)")
-                        text.removeFirst()
-                        text.removeLast()
-                        //app名
-                        let nameString:String = text
-                        print("neme\(nameString)")
-                        //nameString.removeLast()
-                        self.name = String(nameString)
-                        
-                        if self.name != nil && developer != nil && self.id != nil && url != nil && image != nil {
-                            completion(self.name!,developer!,self.id!,url!,image!)
-                        }
-                    }else if text.contains("by") {  // usStore
-                        //let appLabelRange = text.range(of:"")
-                        let developLabelRange = text.range(of:"by")
-                        
-                        //App名
-                        let nameString = text[..<developLabelRange!.lowerBound]
-                        //nameString.removeSubrange(appLabelRange!)
-                        print("name\(nameString)")
-                        self.name = String(nameString)
-                        
-                        //デベロッパ名
-                        let developString = text[developLabelRange!.upperBound ..< text.endIndex]
-                        //print("develop\(developString)")
-                        developer = String(developString)
-                        
-                        if self.name != nil && developer != nil && self.id != nil && url != nil && image != nil {
-                            completion(self.name!,developer!,self.id!,url!,image!)
-                        }
-                    }else {
-                        print("app名とbyないよ")
-                        if text != "" {
-                            
-                            self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
-                        }else {
-                            print("から文字だよ")
-                        }
-                    }
-                    print("error\(error)")
-                })
-            }
-            else {
-                developer = ""
-                if self.name != nil && developer != nil && self.id != nil && url != nil && image != nil {
-                    completion(self.name!,developer!,self.id!,url!,image!)
-                }
+                getName(itemProvider)
+            }else {
+                self.name = self.contentText
+                self.developer = ""
+                self.saveItemCount += 2
             }
         }
     }
+    
+    func getHeic(_ itemProvider:NSItemProvider) {
+        itemProvider.loadItem(forTypeIdentifier: "public.heic", options: nil, completionHandler: {
+            (item, error) in
+            
+            // item にUIImageが入っている
+            if let uiImage = item as? UIImage {
+                self.image = UIImagePNGRepresentation(uiImage)
+            }else if let imageURL = item as? URL{
+                do {
+                    let imageData = try Data(contentsOf: imageURL)
+                    self.image = imageData
+                }catch {
+                    print(error)
+                }
+            }
+            
+            self.saveItemCount += 1
+            print("error\(error)")
+        })
+    }
+    
+    func getImage(_ itemProvider:NSItemProvider) {
+        itemProvider.loadItem(forTypeIdentifier: "public.image", options: nil, completionHandler: {
+            (item, error) in
+            
+            if let uiImage = item as? UIImage {
+                self.image = UIImagePNGRepresentation(uiImage)
+            }else if let imageURL = item as? URL{
+                do {
+                    let imageData = try Data(contentsOf: imageURL)
+                    self.image = imageData
+                }catch {
+                    print(error)
+                }
+            }
+            // item にUIImageが入っている
+//            let uiImage = item as! UIImage
+//            self.image = UIImagePNGRepresentation(uiImage)
+            
+            self.saveItemCount += 1
+            print("error\(error)")
+        })
+    }
 
+    
+    func getName(_ itemProvider:NSItemProvider) {
+        itemProvider.loadItem(forTypeIdentifier: "public.plain-text", options: nil, completionHandler: {
+            (item, error) in
+            
+            //ここは２回呼ばれる
+            var text = item as! String
+            print(text)
+            if text.contains("App名"){
+                let appLabelRange = text.range(of:"App名: ")
+                let developLabelRange = text.range(of:"、デベロッパ: ")
+                
+                //App名
+                var nameString = text[..<developLabelRange!.lowerBound]
+                nameString.removeSubrange(appLabelRange!)
+                print("name\(nameString)")
+                self.name = String(nameString)
+                
+                //デベロッパ名
+                let developString = text[developLabelRange!.upperBound ..< text.endIndex]
+                //print("develop\(developString)")
+                self.developer = String(developString)
+                
+                self.saveItemCount += 2
+            }else if text.contains("」") && text.contains("「"){  //ios10以下用
+                //let appLabelRange = text.range(of:"")
+                let developLabelRange = text.range(of:"「")
+                
+                //デベロッパ名
+                let developString = text[..<developLabelRange!.lowerBound]
+                //nameString.removeSubrange(appLabelRange!)
+                print("develop\(developString)")
+                self.developer = String(developString)
+                text.removeSubrange(..<developLabelRange!.lowerBound)
+                print("text\(text)")
+                text.removeFirst()
+                text.removeLast()
+                //app名
+                let nameString:String = text
+                print("neme\(nameString)")
+                //nameString.removeLast()
+                self.name = String(nameString)
+                
+                self.saveItemCount += 2
+            }else if text.contains("by") {  // usStore
+                //let appLabelRange = text.range(of:"")
+                let developLabelRange = text.range(of:"by")
+                
+                //App名
+                let nameString = text[..<developLabelRange!.lowerBound]
+                //nameString.removeSubrange(appLabelRange!)
+                print("name\(nameString)")
+                self.name = String(nameString)
+                
+                //デベロッパ名
+                let developString = text[developLabelRange!.upperBound ..< text.endIndex]
+                //print("develop\(developString)")
+                self.developer = String(developString)
+                
+                self.saveItemCount += 2
+            }else {
+                print("app名とbyないよ")
+                if text != "" {
+                    self.saveItemCount += 2
+                }else {
+                    print("から文字だよ")
+                }
+            }
+            print("error\(error)")
+        })
+    }
+    
+    func getURL(_ itemProvider:NSItemProvider) {
+        itemProvider.loadItem(forTypeIdentifier: "public.url", options: nil, completionHandler: {
+            (item, error) in
+            
+            self.url = (item as? URL)!.absoluteString
+            print("url\(self.url)")
+            
+            //let urlText = url!.absoluteString
+            if let idRange = self.url.range(of: "id"),let endIndex = self.url.index(of: "?"){
+                self.id = String(self.url[idRange.lowerBound ..< endIndex])
+                //print("id\(id)")
+            }else {
+                print("idないよー")
+                self.id = UUID().uuidString + "ROUNDCORNER" + "noStore"
+                //self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
+            }
+            self.saveItemCount += 2
+            print("error\(error)")
+        })
+    }
 
     
     //AppのDataをセーブするよ
