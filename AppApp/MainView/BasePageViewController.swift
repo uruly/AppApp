@@ -291,7 +291,7 @@ class BasePageViewController: UIPageViewController {
             UIView.animate(withDuration: 0.5, delay: 0, options: [.repeat,.autoreverse,.curveEaseIn], animations: {
                 balloonView.center.y += 5.0
             }, completion: nil)
-            //userDefaults.set(true,forKey:"bottomMenuTutorial")
+            userDefaults.set(true,forKey:"bottomMenuTutorial")
         }
     }
 }

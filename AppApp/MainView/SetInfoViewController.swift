@@ -99,6 +99,11 @@ class SetInfoViewController: UIViewController {
         creator = UserDefaults.standard.string(forKey: "creator") ?? ""
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        editImageTutorial()
+    }
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         print("disappear")
@@ -216,6 +221,25 @@ class SetInfoViewController: UIViewController {
         let objs = realm.objects(ApplicationData.self).filter("label == %@",labelData)
         //print("objs.count\(objs.count)")
         return objs.count
+    }
+    
+    func editImageTutorial(){
+        let userDefaults = UserDefaults.standard
+        if !userDefaults.bool(forKey:"editImageTutorial"){
+            let width = self.view.frame.width
+            let rect = CGRect(x:50,y:self.imageView.frame.maxY,width:width - 100,height:80)
+            let balloonView = BalloonView(frame: rect,color:UIColor.help())
+            let fakeView = FakeView(frame: self.view.frame)
+            self.view.addSubview(fakeView)
+            balloonView.isDown = false
+            balloonView.label.text = "ドラッグ・ピンチイン\nピンチアウトで調整"
+            balloonView.label.textColor = UIColor.white
+            fakeView.addSubview(balloonView)
+            UIView.animate(withDuration: 0.5, delay: 0, options: [.repeat,.autoreverse,.curveEaseIn], animations: {
+                balloonView.center.y += 5.0
+            }, completion: nil)
+            userDefaults.set(true,forKey:"editImageTutorial")
+        }
     }
 }
 

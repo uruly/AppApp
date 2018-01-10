@@ -61,6 +61,10 @@ class BottomView: UIView {
         self.layer.shadowRadius = 2
         self.layer.shadowOpacity = 0.2
         
+        let userDefaults = UserDefaults.standard
+        if userDefaults.bool(forKey:"bottomMenuTutorial"){
+            self.closeBottomView()
+        }
     }
     
     func setupToolbar() {

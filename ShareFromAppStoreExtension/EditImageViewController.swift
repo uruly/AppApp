@@ -54,7 +54,7 @@ class EditImageViewController: UIViewController {
         
         //ラベルを表示
         textLabel = UILabel(frame:CGRect(x:0,y:imageView.frame.maxY + 15,width:width,height:50))
-        textLabel.text = "ドラッグ・スワイプで調整"
+        textLabel.text = "ドラッグ・ピンチイン/アウトで調整"
         textLabel.font = UIFont.systemFont(ofSize: 14.0)
         textLabel.textAlignment = .center
         textLabel.textColor = UIColor.gray
