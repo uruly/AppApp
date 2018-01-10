@@ -94,6 +94,8 @@ class BaseViewController: UIViewController {
         }
         collectionView.appDelegate = self
         self.view.backgroundColor = appLabel.color
+        
+        GATrackingManager.sendScreenTracking(screenName: "\(appLabel.name!)ラベルページ")
     }
 
     override func didReceiveMemoryWarning() {

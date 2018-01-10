@@ -1,0 +1,10 @@
+{
+  "xcodeVersion" : "Xcode 9.2\nBuild version 9C40b",
+  "commitish" : "3.17",
+  "iOS" : [
+    {
+      "hash" : "42e5e754be77f84f4b63da247e914cdf36eb6dd8a080f33b9f1d0012b5577900",
+      "name" : "GoogleAnalytics"
+    }
+  ]
+}

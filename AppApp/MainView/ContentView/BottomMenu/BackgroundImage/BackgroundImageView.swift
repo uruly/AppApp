@@ -10,7 +10,7 @@ import UIKit
 
 class BackgroundImageView: UICollectionView {
     
-    var imageList:[UIImage] = []
+    var imageList:[(UIImage,String)] = []
     var currentIndexPath:IndexPath?
     var currentImage:UIImage?
 
@@ -56,7 +56,7 @@ class BackgroundImageView: UICollectionView {
         readImage()
         if let backgroundImage = UserDefaults.standard.data(forKey: "backgroundImage") {
             let index = imageList.findIndex(includeElement: { (image) -> Bool in
-                let imgListData = UIImagePNGRepresentation(image)
+                let imgListData = UIImagePNGRepresentation(image.0)
                 return imgListData == backgroundImage
             })
             if index.count > 0 {
@@ -83,9 +83,9 @@ class BackgroundImageView: UICollectionView {
                     guard let type = set["Type"] as? String else {
                         continue
                     }
-                    if let image = UIImage(named:name + "." + type) {
+                    if let image = UIImage(named:name + "_thumb." + type) {
                         //image.description = name
-                        imageList.append(image)
+                        imageList.append((image,(name + "." + type)))
                     }
                     
                 }
@@ -126,8 +126,9 @@ extension BackgroundImageView: UICollectionViewDelegate {
                 }
                 if let cell:BackgroundImageCell = collectionView.cellForItem(at: indexPath) as? BackgroundImageCell {
                     print("みせるよ")
+                    print("imageList[index]\(imageList[indexPath.row])")
                     cell.checkImageView.isHidden = false
-                    currentImage = imageList[indexPath.row]
+                    currentImage = UIImage(named:imageList[indexPath.row].1)
                     currentIndexPath = indexPath
                 }
             }
@@ -152,7 +153,7 @@ extension BackgroundImageView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
             let cell:BackgroundImageCell = collectionView.dequeueReusableCell(withReuseIdentifier: "backImageSet", for: indexPath) as! BackgroundImageCell
-            let color = UIColor(patternImage: imageList[indexPath.row])
+            let color = UIColor(patternImage: imageList[indexPath.row].0)
             //let colorName = color.value(forKey: "image") as? String ?? ""
             //color.setValue(colorName, forKey: "image")
             cell.contentView.backgroundColor = color

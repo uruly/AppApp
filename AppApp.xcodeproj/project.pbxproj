@@ -99,10 +99,6 @@
 		6662E1412001D76300FB30C7 /* UIView+SnapShot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662E1402001D76300FB30C7 /* UIView+SnapShot.swift */; };
 		6662E143200214F500FB30C7 /* BackgroundPlusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662E142200214F500FB30C7 /* BackgroundPlusCell.swift */; };
 		6662E14520024B1700FB30C7 /* backgroundImage.json in Resources */ = {isa = PBXBuildFile; fileRef = 6662E14420024B1700FB30C7 /* backgroundImage.json */; };
-		6662E150200253D600FB30C7 /* StarSplatters.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6662E14F200253D500FB30C7 /* StarSplatters.jpg */; };
-		6662E1542002548C00FB30C7 /* SnowTree.png in Resources */ = {isa = PBXBuildFile; fileRef = 6662E1512002548B00FB30C7 /* SnowTree.png */; };
-		6662E1552002548C00FB30C7 /* SnowWhite.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6662E1522002548C00FB30C7 /* SnowWhite.jpg */; };
-		6662E1562002548C00FB30C7 /* SnowTreeBig.png in Resources */ = {isa = PBXBuildFile; fileRef = 6662E1532002548C00FB30C7 /* SnowTreeBig.png */; };
 		66681CDA1FCC1501009A0F55 /* DetailContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66681CD91FCC1501009A0F55 /* DetailContentView.swift */; };
 		66681CE11FCC1734009A0F55 /* DetailCommonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66681CDF1FCC1734009A0F55 /* DetailCommonViewCell.swift */; };
 		66681CE21FCC1734009A0F55 /* DetailCommonViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66681CE01FCC1734009A0F55 /* DetailCommonViewCell.xib */; };
@@ -155,6 +151,17 @@
 		667ECE721FC4206F009233DE /* AppCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 667ECE701FC4206F009233DE /* AppCollectionViewCell.xib */; };
 		66983DE12005D206009C9AEF /* screenShot3.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 66983DE02005D206009C9AEF /* screenShot3.jpeg */; };
 		66983DE32005D35E009C9AEF /* screenShot4.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 66983DE22005D35E009C9AEF /* screenShot4.jpeg */; };
+		66983DE72005E1E6009C9AEF /* snowTreeBig_thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 66983DE62005E1E6009C9AEF /* snowTreeBig_thumb.png */; };
+		66983DE92005E263009C9AEF /* snowTreeBig.png in Resources */ = {isa = PBXBuildFile; fileRef = 66983DE82005E263009C9AEF /* snowTreeBig.png */; };
+		66983DEC2005E347009C9AEF /* dotSkyBlue_thumb.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 66983DEA2005E340009C9AEF /* dotSkyBlue_thumb.jpg */; };
+		66983DED2005E347009C9AEF /* dotSkyBlue.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 66983DEB2005E346009C9AEF /* dotSkyBlue.jpg */; };
+		66983DF02005E3FD009C9AEF /* snowBeige.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 66983DEE2005E3F7009C9AEF /* snowBeige.jpg */; };
+		66983DF12005E3FD009C9AEF /* snowBeige_thumb.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 66983DEF2005E3FD009C9AEF /* snowBeige_thumb.jpg */; };
+		66983DF42005E46C009C9AEF /* blackTree_thumb.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 66983DF22005E465009C9AEF /* blackTree_thumb.jpg */; };
+		66983DF52005E46C009C9AEF /* blackTree.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 66983DF32005E46C009C9AEF /* blackTree.jpg */; };
+		66983DF72005E8A1009C9AEF /* GoogleAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66983DF62005E8A0009C9AEF /* GoogleAnalytics.framework */; };
+		66983DF92005E974009C9AEF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 66983DF82005E973009C9AEF /* GoogleService-Info.plist */; };
+		66983DFB2005E9C8009C9AEF /* GATrackingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66983DFA2005E9C8009C9AEF /* GATrackingManager.swift */; };
 		66A3C3F91FCB66E7007EB295 /* AppInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A3C3F81FCB66E7007EB295 /* AppInfoView.swift */; };
 		66AA1DF21FC543BA001C419E /* IconSizeChanger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AA1DF11FC543BA001C419E /* IconSizeChanger.swift */; };
 		66AA1DFA1FC56519001C419E /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AA1DF91FC56519001C419E /* ShareViewController.swift */; };
@@ -302,10 +309,6 @@
 		6662E1402001D76300FB30C7 /* UIView+SnapShot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+SnapShot.swift"; sourceTree = "<group>"; };
 		6662E142200214F500FB30C7 /* BackgroundPlusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundPlusCell.swift; sourceTree = "<group>"; };
 		6662E14420024B1700FB30C7 /* backgroundImage.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = backgroundImage.json; sourceTree = "<group>"; };
-		6662E14F200253D500FB30C7 /* StarSplatters.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = StarSplatters.jpg; sourceTree = "<group>"; };
-		6662E1512002548B00FB30C7 /* SnowTree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SnowTree.png; sourceTree = "<group>"; };
-		6662E1522002548C00FB30C7 /* SnowWhite.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SnowWhite.jpg; sourceTree = "<group>"; };
-		6662E1532002548C00FB30C7 /* SnowTreeBig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SnowTreeBig.png; sourceTree = "<group>"; };
 		66681CD91FCC1501009A0F55 /* DetailContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailContentView.swift; sourceTree = "<group>"; };
 		66681CDF1FCC1734009A0F55 /* DetailCommonViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCommonViewCell.swift; sourceTree = "<group>"; };
 		66681CE01FCC1734009A0F55 /* DetailCommonViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailCommonViewCell.xib; sourceTree = "<group>"; };
@@ -364,6 +367,17 @@
 		667ECE701FC4206F009233DE /* AppCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppCollectionViewCell.xib; sourceTree = "<group>"; };
 		66983DE02005D206009C9AEF /* screenShot3.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = screenShot3.jpeg; sourceTree = "<group>"; };
 		66983DE22005D35E009C9AEF /* screenShot4.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = screenShot4.jpeg; sourceTree = "<group>"; };
+		66983DE62005E1E6009C9AEF /* snowTreeBig_thumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snowTreeBig_thumb.png; sourceTree = "<group>"; };
+		66983DE82005E263009C9AEF /* snowTreeBig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snowTreeBig.png; sourceTree = "<group>"; };
+		66983DEA2005E340009C9AEF /* dotSkyBlue_thumb.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dotSkyBlue_thumb.jpg; sourceTree = "<group>"; };
+		66983DEB2005E346009C9AEF /* dotSkyBlue.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dotSkyBlue.jpg; sourceTree = "<group>"; };
+		66983DEE2005E3F7009C9AEF /* snowBeige.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = snowBeige.jpg; sourceTree = "<group>"; };
+		66983DEF2005E3FD009C9AEF /* snowBeige_thumb.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = snowBeige_thumb.jpg; sourceTree = "<group>"; };
+		66983DF22005E465009C9AEF /* blackTree_thumb.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = blackTree_thumb.jpg; sourceTree = "<group>"; };
+		66983DF32005E46C009C9AEF /* blackTree.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = blackTree.jpg; sourceTree = "<group>"; };
+		66983DF62005E8A0009C9AEF /* GoogleAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleAnalytics.framework; path = Carthage/Build/iOS/GoogleAnalytics.framework; sourceTree = "<group>"; };
+		66983DF82005E973009C9AEF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		66983DFA2005E9C8009C9AEF /* GATrackingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GATrackingManager.swift; sourceTree = "<group>"; };
 		66A3C3F81FCB66E7007EB295 /* AppInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoView.swift; sourceTree = "<group>"; };
 		66AA1DF11FC543BA001C419E /* IconSizeChanger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IconSizeChanger.swift; path = AppApp/MainView/ContentView/IconSizeChanger.swift; sourceTree = SOURCE_ROOT; };
 		66AA1DF71FC56519001C419E /* ShareFromAppStoreExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ShareFromAppStoreExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -381,6 +395,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66983DF72005E8A1009C9AEF /* GoogleAnalytics.framework in Frameworks */,
 				666E06C71FCBDE9D0043DCFF /* StoreKit.framework in Frameworks */,
 				667ECE511FC382C7009233DE /* RealmSwift.framework in Frameworks */,
 				667ECE4F1FC382B9009233DE /* Realm.framework in Frameworks */,
@@ -549,10 +564,14 @@
 		6662E14820024BD300FB30C7 /* backgroundImages */ = {
 			isa = PBXGroup;
 			children = (
-				6662E14F200253D500FB30C7 /* StarSplatters.jpg */,
-				6662E1512002548B00FB30C7 /* SnowTree.png */,
-				6662E1532002548C00FB30C7 /* SnowTreeBig.png */,
-				6662E1522002548C00FB30C7 /* SnowWhite.jpg */,
+				66983DEA2005E340009C9AEF /* dotSkyBlue_thumb.jpg */,
+				66983DEB2005E346009C9AEF /* dotSkyBlue.jpg */,
+				66983DE82005E263009C9AEF /* snowTreeBig.png */,
+				66983DE62005E1E6009C9AEF /* snowTreeBig_thumb.png */,
+				66983DEF2005E3FD009C9AEF /* snowBeige_thumb.jpg */,
+				66983DEE2005E3F7009C9AEF /* snowBeige.jpg */,
+				66983DF22005E465009C9AEF /* blackTree_thumb.jpg */,
+				66983DF32005E46C009C9AEF /* blackTree.jpg */,
 			);
 			path = backgroundImages;
 			sourceTree = "<group>";
@@ -683,6 +702,7 @@
 				66498E241FC5A6D700239B47 /* AppApp.entitlements */,
 				667ECE181FC36784009233DE /* AppDelegate.swift */,
 				6677FC251FCA7E0400CB105E /* VersionManager.swift */,
+				66983DFA2005E9C8009C9AEF /* GATrackingManager.swift */,
 				660B57CC1FD1501500DBC823 /* BalloonView */,
 				660B579B1FD067E900DBC823 /* TutorialView */,
 				66681CD31FCC088D009A0F55 /* MainView */,
@@ -700,6 +720,7 @@
 				667ECE1F1FC36784009233DE /* Assets.xcassets */,
 				667ECE211FC36784009233DE /* LaunchScreen.storyboard */,
 				667ECE241FC36784009233DE /* Info.plist */,
+				66983DF82005E973009C9AEF /* GoogleService-Info.plist */,
 				660B57761FCFDB1000DBC823 /* colorData.json */,
 				660B57BC1FD12A9A00DBC823 /* help.json */,
 				6662E14420024B1700FB30C7 /* backgroundImage.json */,
@@ -728,6 +749,7 @@
 		667ECE4D1FC382B9009233DE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				66983DF62005E8A0009C9AEF /* GoogleAnalytics.framework */,
 				666E06C61FCBDE920043DCFF /* StoreKit.framework */,
 				667ECE501FC382C7009233DE /* RealmSwift.framework */,
 				667ECE4E1FC382B9009233DE /* Realm.framework */,
@@ -942,18 +964,24 @@
 				660B57AB1FD07C3700DBC823 /* iphone.png in Resources */,
 				6662E12E1FFFE9EE00FB30C7 /* BackgroundImageCell.xib in Resources */,
 				666E06BA1FCBB3740043DCFF /* right_arrow@3x.png in Resources */,
+				66983DEC2005E347009C9AEF /* dotSkyBlue_thumb.jpg in Resources */,
 				666E06BB1FCBB3740043DCFF /* right_arrow@2x.png in Resources */,
 				66681CE61FCC17E2009A0F55 /* DetailAppInfoViewCell.xib in Resources */,
+				66983DF12005E3FD009C9AEF /* snowBeige_thumb.jpg in Resources */,
+				66983DE92005E263009C9AEF /* snowTreeBig.png in Resources */,
 				6652DED01FCEAC9800EB84F6 /* collect@2x.png in Resources */,
+				66983DF52005E46C009C9AEF /* blackTree.jpg in Resources */,
 				6652DEF11FCED73000EB84F6 /* safari@3x.png in Resources */,
 				660B57DC1FD176D500DBC823 /* edit_label.png in Resources */,
 				6652DEE51FCECDA500EB84F6 /* list2@2x.png in Resources */,
+				66983DED2005E347009C9AEF /* dotSkyBlue.jpg in Resources */,
 				660B57771FCFDB1000DBC823 /* colorData.json in Resources */,
 				66498E371FC8067100239B47 /* check.png in Resources */,
 				660B57B91FD10F9500DBC823 /* StartViewCell.xib in Resources */,
 				660B57AF1FD0806900DBC823 /* screenShot1.jpeg in Resources */,
 				660B57981FD0466A00DBC823 /* logo.png in Resources */,
 				6652DEDD1FCEB7A800EB84F6 /* small@3x.png in Resources */,
+				66983DF92005E974009C9AEF /* GoogleService-Info.plist in Resources */,
 				660B57AD1FD07D9200DBC823 /* screenShot0.jpeg in Resources */,
 				6652DED11FCEAC9800EB84F6 /* collect@3x.png in Resources */,
 				666E06BE1FCBB3880043DCFF /* left_arrow@2x.png in Resources */,
@@ -961,14 +989,15 @@
 				660B57D81FD16F0B00DBC823 /* HelpViewCell.xib in Resources */,
 				660B57B11FD0811600DBC823 /* screenShot2.jpeg in Resources */,
 				6652DEE01FCEB7DA00EB84F6 /* big@3x.png in Resources */,
+				66983DF02005E3FD009C9AEF /* snowBeige.jpg in Resources */,
 				660B576C1FCFC5F500DBC823 /* RGBSliderCell.xib in Resources */,
+				66983DF42005E46C009C9AEF /* blackTree_thumb.jpg in Resources */,
 				6652DED91FCEAF6100EB84F6 /* list@3x.png in Resources */,
 				660B57B31FD083D600DBC823 /* screenShot5.jpeg in Resources */,
 				667ECE231FC36784009233DE /* LaunchScreen.storyboard in Resources */,
 				6652DEE41FCECDA500EB84F6 /* list2@3x.png in Resources */,
 				660B57BD1FD12A9B00DBC823 /* help.json in Resources */,
 				6676ED381FCD582200815BF8 /* DetailMemoViewCell.xib in Resources */,
-				6662E150200253D600FB30C7 /* StarSplatters.jpg in Resources */,
 				6652DEEC1FCED46700EB84F6 /* check2@3x.png in Resources */,
 				660B57D31FD16DA700DBC823 /* tutorialMark@2x.png in Resources */,
 				660B57741FCFC5F500DBC823 /* ColorSetViewCell.xib in Resources */,
@@ -981,7 +1010,6 @@
 				667ECE1E1FC36784009233DE /* Main.storyboard in Resources */,
 				660B57A71FD071D500DBC823 /* HowToViewCell.xib in Resources */,
 				6652DED81FCEAF6100EB84F6 /* list@2x.png in Resources */,
-				6662E1552002548C00FB30C7 /* SnowWhite.jpg in Resources */,
 				660B57A31FD06FDB00DBC823 /* WelcomeViewCell.xib in Resources */,
 				6652DEED1FCED46700EB84F6 /* check2@2x.png in Resources */,
 				66983DE32005D35E009C9AEF /* screenShot4.jpeg in Resources */,
@@ -989,13 +1017,12 @@
 				660B57D41FD16DA700DBC823 /* tutorialMark@3x.png in Resources */,
 				660B57941FD0173C00DBC823 /* logo2.png in Resources */,
 				660B57DA1FD1749F00DBC823 /* order_app.png in Resources */,
-				6662E1562002548C00FB30C7 /* SnowTreeBig.png in Resources */,
 				66681CE21FCC1734009A0F55 /* DetailCommonViewCell.xib in Resources */,
+				66983DE72005E1E6009C9AEF /* snowTreeBig_thumb.png in Resources */,
 				6652DEF01FCED73000EB84F6 /* safari@2x.png in Resources */,
 				660B57921FD013DD00DBC823 /* appapp_logo1.png in Resources */,
 				66983DE12005D206009C9AEF /* screenShot3.jpeg in Resources */,
 				667ECE721FC4206F009233DE /* AppCollectionViewCell.xib in Resources */,
-				6662E1542002548C00FB30C7 /* SnowTree.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1032,6 +1059,7 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/GoogleAnalytics.framework",
 			);
 			outputPaths = (
 			);
@@ -1061,6 +1089,7 @@
 				660B579F1FD06FBE00DBC823 /* WelcomeView.swift in Sources */,
 				660B57A61FD071D500DBC823 /* HowToViewCell.swift in Sources */,
 				667ECE571FC3836C009233DE /* AppLabel.swift in Sources */,
+				66983DFB2005E9C8009C9AEF /* GATrackingManager.swift in Sources */,
 				6662E1201FFFD90200FB30C7 /* CustomBackgroundView.swift in Sources */,
 				6662E1322000055F00FB30C7 /* UIResponder+FindView.swift in Sources */,
 				667ECE4B1FC3690E009233DE /* BaseViewController.swift in Sources */,

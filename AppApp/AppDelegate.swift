@@ -9,6 +9,7 @@
 import UIKit
 import Realm
 import RealmSwift
+import GoogleAnalytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,6 +21,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         
         //window?.rootViewController = DetailViewController()
+        // GoogleAnalyticsの設定
+        if let gai = GAI.sharedInstance() {
+            gai.trackUncaughtExceptions = true
+            
+            if let path = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist") {
+                if let propertyList = NSDictionary(contentsOfFile: path) as? [String: AnyObject] {
+                    let trackingID = propertyList["TRACKING_ID"] as! String
+                    gai.tracker(withTrackingId: trackingID)
+                }
+            }
+        }
         
         return true
     }

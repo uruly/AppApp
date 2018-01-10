@@ -1,17 +1,17 @@
  [{
-  "Name": "StarSplatters",
+  "Name": "dotSkyBlue",
   "Type": "jpg"
   },
   {
-  "Name": "SnowWhite",
+  "Name": "snowBeige",
   "Type": "jpg"
   },
   {
-  "Name": "SnowTree",
-  "Type": "png"
+  "Name": "blackTree",
+  "Type": "jpg"
   },
   {
-  "Name": "SnowTreeBig",
+  "Name": "snowTreeBig",
   "Type": "png"
   }
   ]
