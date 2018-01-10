@@ -18,7 +18,7 @@ class BottomView: UIView {
     let height:CGFloat
     let toolbarHeight:CGFloat = 56.0
     let handleHeight:CGFloat = 15.0
-    let maxY:CGFloat    //閉じられた状態
+    var maxY:CGFloat    //閉じられた状態
     let middleY:CGFloat
     let minY:CGFloat    //menuが開かれた状態
     var delegate:BottomMenuDelegate!
@@ -41,7 +41,12 @@ class BottomView: UIView {
     override init(frame: CGRect) {
         self.width = frame.width
         self.height = frame.height
-        self.maxY = frame.maxY - toolbarHeight - handleHeight
+        let isiPhoneX = UIScreen.main.bounds.size == CGSize(width: 375, height: 812)
+        if isiPhoneX {
+            self.maxY = frame.maxY - toolbarHeight - handleHeight - 34.0
+        }else {
+            self.maxY = frame.maxY - toolbarHeight - handleHeight
+        }
         self.minY = frame.origin.y
         self.middleY = minY + ( frame.height / 2 )
         super.init(frame:frame)
@@ -114,7 +119,9 @@ class BottomView: UIView {
     }
     
     func setupPageControl() {
-        pageControl = UIPageControl(frame: CGRect(x:0,y:self.frame.height - 40,width:self.frame.width,height:40))
+        let isiPhoneX = UIScreen.main.bounds.size == CGSize(width: 375, height: 812)
+        let pageControlHeight:CGFloat = isiPhoneX ? 40 + 34 : 40
+        pageControl = UIPageControl(frame: CGRect(x:0,y:self.frame.height - pageControlHeight,width:self.frame.width,height:40))
         pageControl.currentPage = 0
         pageControl.numberOfPages = 2
         pageControl.currentPageIndicatorTintColor = UIColor.darkGray
@@ -134,6 +141,7 @@ class BottomView: UIView {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         //super.touchesBegan(touches, with: event)
         //print("touch")
+        self.baseView.isHidden = false
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -192,6 +200,9 @@ class BottomView: UIView {
             self.frame = frame
         }, completion: { (isCompletion) in
             //print(isCompletion)
+            if self.frame.origin.y == self.maxY {
+                self.baseView.isHidden = true
+            }
         })
     }
     
@@ -203,6 +214,7 @@ class BottomView: UIView {
             self.frame = frame
         }, completion: { (isCompletion) in
             //print(isCompletion)
+            self.baseView.isHidden = true
         })
     }
 }
