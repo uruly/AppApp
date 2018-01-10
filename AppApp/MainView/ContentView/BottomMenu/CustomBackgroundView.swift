@@ -30,7 +30,7 @@ class CustomBackgroundView: UIView {
         let backColorLabel = UILabel(frame:CGRect(x:margin,y:margin,width:100,height:15))
         backColorLabel.text = "背景色"
         backColorLabel.textColor = UIColor.darkText
-        backColorLabel.font = UIFont.systemFont(ofSize: 14.0)
+        backColorLabel.font = UIFont.systemFont(ofSize: 14.0 + VersionManager.excess)
         self.addSubview(backColorLabel)
         
         //デフォルトに戻す
@@ -38,7 +38,7 @@ class CustomBackgroundView: UIView {
         resetBackColor.frame = CGRect(x:self.frame.width - 130,y:margin,width:130,height:15)
         resetBackColor.setTitle("デフォルトに戻す", for: .normal)
         resetBackColor.setTitleColor(UIColor.gray, for: .normal)
-        resetBackColor.titleLabel?.font = UIFont.systemFont(ofSize: 13.0)
+        resetBackColor.titleLabel?.font = UIFont.systemFont(ofSize: 13.0 + VersionManager.excess)
         resetBackColor.titleLabel?.textAlignment = .right
         resetBackColor.tag = 1
         resetBackColor.addTarget(self, action: #selector(self.resetBtnTapped(sender:)), for: .touchUpInside)
@@ -53,7 +53,7 @@ class CustomBackgroundView: UIView {
         let backImageLabel = UILabel(frame:CGRect(x:margin,y:backColorList.frame.maxY,width:100,height:20))
         backImageLabel.text = "壁紙"
         backImageLabel.textColor = UIColor.darkText
-        backImageLabel.font = UIFont.systemFont(ofSize: 14.0)
+        backImageLabel.font = UIFont.systemFont(ofSize: 14.0 + VersionManager.excess)
         self.addSubview(backImageLabel)
         
         //履歴を削除ボタン
@@ -61,7 +61,7 @@ class CustomBackgroundView: UIView {
         resetBackImage.frame = CGRect(x:self.frame.width - 100,y:backColorList.frame.maxY + 5,width:100,height:15)
         resetBackImage.setTitle("履歴を削除", for: .normal)
         resetBackImage.setTitleColor(UIColor.gray, for: .normal)
-        resetBackImage.titleLabel?.font = UIFont.systemFont(ofSize: 13.0)
+        resetBackImage.titleLabel?.font = UIFont.systemFont(ofSize: 13.0 + VersionManager.excess)
         resetBackImage.tag = 2
         resetBackImage.addTarget(self, action: #selector(self.resetBtnTapped(sender:)), for: .touchUpInside)
         //self.addSubview(resetBackImage)

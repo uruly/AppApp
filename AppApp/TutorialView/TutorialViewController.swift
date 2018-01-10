@@ -36,7 +36,7 @@ class TutorialViewController: UIViewController {
     func setupPageControl(){
         pageControl = UIPageControl(frame: CGRect(x:0,y:self.view.frame.height - 40,width:self.view.frame.width,height:40))
         pageControl.currentPage = 0
-        pageControl.numberOfPages = 6
+        pageControl.numberOfPages = 8
         pageControl.currentPageIndicatorTintColor = UIColor.darkGray
         pageControl.pageIndicatorTintColor = UIColor.lightGray
         pageControl.addTarget(self, action: #selector(self.pageControlTapped(sender:)), for: .touchUpInside)

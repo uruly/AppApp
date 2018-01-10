@@ -11,7 +11,7 @@ import UIKit
 class HowToView: UIView {
     
     var header:UILabel!
-    var headerTextArray = ["まずは、AppStoreで\n気になるアプリを見つけよう","AppAppアイコンを選択","Appを保存してみよう","ラベルをつけて整理しよう"] //4
+    var headerTextArray = ["まずは、AppStoreから保存してみよう！","AppAppアイコンを選択","Appを保存","スクリーンショットや外部のアプリから保存しよう","写真からアップロードしよう","ラベルをつけて整理しよう"] //4
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,6 +20,23 @@ class HowToView: UIView {
     }
     
     func setup(index:Int){
+        setupAppStore(index: index)
+        
+    }
+    
+    func setupList(){
+        let width = UIScreen.main.bounds.width
+        let height = UIScreen.main.bounds.height
+        let margin:CGFloat = 15.0
+        header = UILabel(frame:CGRect(x:margin,y:0,width:300,height:100))
+        header.font = UIFont.boldSystemFont(ofSize: 22 + VersionManager.excess)
+        header.textColor = UIColor.white
+        header.text = "アイコンデザインをAppApp外から保存しよう！"
+        header.numberOfLines = 0
+        self.addSubview(header)
+    }
+    
+    func setupAppStore(index:Int) {
         let width = UIScreen.main.bounds.width
         let height = UIScreen.main.bounds.height
         let margin:CGFloat = 15.0
@@ -70,8 +87,23 @@ class HowToView: UIView {
             balloonView.label.textColor = UIColor.white
             self.addSubview(balloonView)
             animation(balloonView)
+        }else if index == 3 {
+            let rect = CGRect(x:(width - 200) / 2,y:screenShot.frame.minY + screenShot.frame.width + margin,width:200,height:120)
+            let balloonView = BalloonView(frame: rect,color:UIColor.allLabel())
+            balloonView.isDown = false
+            balloonView.label.text = "画像共有ができるアプリからはトリミングして保存！"
+            balloonView.label.textColor = UIColor.white
+            self.addSubview(balloonView)
+            animation(balloonView)
+        }else if index == 4 {
+            let rect = CGRect(x:(width - 200) / 2,y:screenShot.frame.minY + screenShot.frame.width - 80,width:200,height:120)
+            let balloonView = BalloonView(frame: rect,color:UIColor.allLabel())
+            balloonView.isDown = true
+            balloonView.label.text = "下部メニューから\nアップロード可能！"
+            balloonView.label.textColor = UIColor.white
+            self.addSubview(balloonView)
+            animation(balloonView)
         }
-        
     }
     
     func animation(_ view:BalloonView){
@@ -79,6 +111,5 @@ class HowToView: UIView {
             view.center.y += 5.0
         }, completion: nil)
     }
-    
 
 }

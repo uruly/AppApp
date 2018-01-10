@@ -57,14 +57,14 @@ extension TutorialPageView: UICollectionViewDelegate {
 extension TutorialPageView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //ページ数
-        return 6
+        return 8
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.row == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "welcome", for: indexPath) as! WelcomeViewCell
             return cell
-        }else if indexPath.row < 5{
+        }else if indexPath.row < 7{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "howTo", for: indexPath) as! HowToViewCell
             for subview in cell.howToView.subviews{
                 subview.removeFromSuperview()

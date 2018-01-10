@@ -35,6 +35,8 @@ class WelcomeView: UIView {
         explain.numberOfLines = 0
         explain.text = "はじめまして。\nAppAppは、アイコンデザインを収集・閲覧するためのアプリです。"
         self.addSubview(explain)
+        
+        
     }
 
 }

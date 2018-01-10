@@ -37,7 +37,7 @@
 		660B57AD1FD07D9200DBC823 /* screenShot0.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 660B57AC1FD07D9200DBC823 /* screenShot0.jpeg */; };
 		660B57AF1FD0806900DBC823 /* screenShot1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 660B57AE1FD0806900DBC823 /* screenShot1.jpeg */; };
 		660B57B11FD0811600DBC823 /* screenShot2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 660B57B01FD0811600DBC823 /* screenShot2.jpeg */; };
-		660B57B31FD083D600DBC823 /* screenShot3.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 660B57B21FD083D600DBC823 /* screenShot3.jpeg */; };
+		660B57B31FD083D600DBC823 /* screenShot5.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 660B57B21FD083D600DBC823 /* screenShot5.jpeg */; };
 		660B57B51FD10F7900DBC823 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B57B41FD10F7900DBC823 /* StartView.swift */; };
 		660B57B81FD10F9500DBC823 /* StartViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B57B61FD10F9500DBC823 /* StartViewCell.swift */; };
 		660B57B91FD10F9500DBC823 /* StartViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 660B57B71FD10F9500DBC823 /* StartViewCell.xib */; };
@@ -153,6 +153,8 @@
 		667ECE6D1FC41F7E009233DE /* AppCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE6C1FC41F7E009233DE /* AppCollectionView.swift */; };
 		667ECE711FC4206F009233DE /* AppCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE6F1FC4206F009233DE /* AppCollectionViewCell.swift */; };
 		667ECE721FC4206F009233DE /* AppCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 667ECE701FC4206F009233DE /* AppCollectionViewCell.xib */; };
+		66983DE12005D206009C9AEF /* screenShot3.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 66983DE02005D206009C9AEF /* screenShot3.jpeg */; };
+		66983DE32005D35E009C9AEF /* screenShot4.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 66983DE22005D35E009C9AEF /* screenShot4.jpeg */; };
 		66A3C3F91FCB66E7007EB295 /* AppInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A3C3F81FCB66E7007EB295 /* AppInfoView.swift */; };
 		66AA1DF21FC543BA001C419E /* IconSizeChanger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AA1DF11FC543BA001C419E /* IconSizeChanger.swift */; };
 		66AA1DFA1FC56519001C419E /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AA1DF91FC56519001C419E /* ShareViewController.swift */; };
@@ -233,7 +235,7 @@
 		660B57AC1FD07D9200DBC823 /* screenShot0.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = screenShot0.jpeg; sourceTree = "<group>"; };
 		660B57AE1FD0806900DBC823 /* screenShot1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = screenShot1.jpeg; sourceTree = "<group>"; };
 		660B57B01FD0811600DBC823 /* screenShot2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = screenShot2.jpeg; sourceTree = "<group>"; };
-		660B57B21FD083D600DBC823 /* screenShot3.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = screenShot3.jpeg; sourceTree = "<group>"; };
+		660B57B21FD083D600DBC823 /* screenShot5.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = screenShot5.jpeg; sourceTree = "<group>"; };
 		660B57B41FD10F7900DBC823 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		660B57B61FD10F9500DBC823 /* StartViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewCell.swift; sourceTree = "<group>"; };
 		660B57B71FD10F9500DBC823 /* StartViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartViewCell.xib; sourceTree = "<group>"; };
@@ -360,6 +362,8 @@
 		667ECE6C1FC41F7E009233DE /* AppCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCollectionView.swift; sourceTree = "<group>"; };
 		667ECE6F1FC4206F009233DE /* AppCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCollectionViewCell.swift; sourceTree = "<group>"; };
 		667ECE701FC4206F009233DE /* AppCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppCollectionViewCell.xib; sourceTree = "<group>"; };
+		66983DE02005D206009C9AEF /* screenShot3.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = screenShot3.jpeg; sourceTree = "<group>"; };
+		66983DE22005D35E009C9AEF /* screenShot4.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = screenShot4.jpeg; sourceTree = "<group>"; };
 		66A3C3F81FCB66E7007EB295 /* AppInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoView.swift; sourceTree = "<group>"; };
 		66AA1DF11FC543BA001C419E /* IconSizeChanger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IconSizeChanger.swift; path = AppApp/MainView/ContentView/IconSizeChanger.swift; sourceTree = SOURCE_ROOT; };
 		66AA1DF71FC56519001C419E /* ShareFromAppStoreExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ShareFromAppStoreExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -465,7 +469,9 @@
 				660B57AC1FD07D9200DBC823 /* screenShot0.jpeg */,
 				660B57AE1FD0806900DBC823 /* screenShot1.jpeg */,
 				660B57B01FD0811600DBC823 /* screenShot2.jpeg */,
-				660B57B21FD083D600DBC823 /* screenShot3.jpeg */,
+				66983DE02005D206009C9AEF /* screenShot3.jpeg */,
+				66983DE22005D35E009C9AEF /* screenShot4.jpeg */,
+				660B57B21FD083D600DBC823 /* screenShot5.jpeg */,
 				660B57911FD013DD00DBC823 /* appapp_logo1.png */,
 				660B57971FD0466A00DBC823 /* logo.png */,
 				660B57931FD0173C00DBC823 /* logo2.png */,
@@ -957,7 +963,7 @@
 				6652DEE01FCEB7DA00EB84F6 /* big@3x.png in Resources */,
 				660B576C1FCFC5F500DBC823 /* RGBSliderCell.xib in Resources */,
 				6652DED91FCEAF6100EB84F6 /* list@3x.png in Resources */,
-				660B57B31FD083D600DBC823 /* screenShot3.jpeg in Resources */,
+				660B57B31FD083D600DBC823 /* screenShot5.jpeg in Resources */,
 				667ECE231FC36784009233DE /* LaunchScreen.storyboard in Resources */,
 				6652DEE41FCECDA500EB84F6 /* list2@3x.png in Resources */,
 				660B57BD1FD12A9B00DBC823 /* help.json in Resources */,
@@ -978,6 +984,7 @@
 				6662E1552002548C00FB30C7 /* SnowWhite.jpg in Resources */,
 				660B57A31FD06FDB00DBC823 /* WelcomeViewCell.xib in Resources */,
 				6652DEED1FCED46700EB84F6 /* check2@2x.png in Resources */,
+				66983DE32005D35E009C9AEF /* screenShot4.jpeg in Resources */,
 				660B57721FCFC5F500DBC823 /* ColorBaseCell.xib in Resources */,
 				660B57D41FD16DA700DBC823 /* tutorialMark@3x.png in Resources */,
 				660B57941FD0173C00DBC823 /* logo2.png in Resources */,
@@ -986,6 +993,7 @@
 				66681CE21FCC1734009A0F55 /* DetailCommonViewCell.xib in Resources */,
 				6652DEF01FCED73000EB84F6 /* safari@2x.png in Resources */,
 				660B57921FD013DD00DBC823 /* appapp_logo1.png in Resources */,
+				66983DE12005D206009C9AEF /* screenShot3.jpeg in Resources */,
 				667ECE721FC4206F009233DE /* AppCollectionViewCell.xib in Resources */,
 				6662E1542002548C00FB30C7 /* SnowTree.png in Resources */,
 			);

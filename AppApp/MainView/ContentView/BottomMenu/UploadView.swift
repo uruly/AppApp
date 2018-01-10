@@ -31,7 +31,7 @@ class UploadView: UIView {
         //ボタンを配置
         let uploadBtnWidth:CGFloat = self.frame.width - margin * 2
         let uploadBtn = UIButton(frame: CGRect(x:margin,y:margin,width:uploadBtnWidth,height:50))
-        uploadBtn.setTitle("データを追加する", for: .normal)
+        uploadBtn.setTitle("写真から追加する", for: .normal)
         uploadBtn.setTitleColor(UIColor.white, for: .normal)
         uploadBtn.addTarget(self, action: #selector(self.uploadBtnTapped(sender:)), for: .touchUpInside)
         uploadBtn.addTarget(self, action: #selector(self.uploadBtnPressed(sender:)), for:.touchDown )
