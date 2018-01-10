@@ -19,7 +19,11 @@ class FakeView: UIView {
         if self.delegate != nil {
             self.delegate.dismissPickerView(tag:pickerTag)
         }
+        UIView.animate(withDuration: 0.2, animations: {
+            self.alpha = 0.0
+        }) { (_) in
+             self.removeFromSuperview()
+        }
         //print("タップされているよ")
-        self.removeFromSuperview()
     }
 }

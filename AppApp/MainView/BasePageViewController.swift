@@ -169,6 +169,7 @@ class BasePageViewController: UIPageViewController {
                 //titleLogo.transform.inverted()
             })
         }
+        bottomMenuTutorial()
     }
     
     override func viewDidLayoutSubviews() {
@@ -272,6 +273,26 @@ class BasePageViewController: UIPageViewController {
         self.bottomView.editToolbar.isHidden = true
         self.bottomView.toolbar.isHidden = false
         //self.setToolbarItems(iconSizeChanger.items, animated: false)
+    }
+    
+    
+    func bottomMenuTutorial(){
+        let userDefaults = UserDefaults.standard
+        if !userDefaults.bool(forKey:"bottomMenuTutorial"){
+            let width = self.view.frame.width
+            let rect = CGRect(x:30,y:self.selectionBar.frame.maxY,width:width - 60,height:200)
+            let balloonView = BalloonView(frame: rect,color:UIColor.help())
+            let fakeView = FakeView(frame: self.view.frame)
+            self.view.addSubview(fakeView)
+            balloonView.isDown = true
+            balloonView.label.text = "下部メニューで壁紙の設定や\nデータをアップロードすることが\nできるようになりました！"
+            balloonView.label.textColor = UIColor.white
+            fakeView.addSubview(balloonView)
+            UIView.animate(withDuration: 0.5, delay: 0, options: [.repeat,.autoreverse,.curveEaseIn], animations: {
+                balloonView.center.y += 5.0
+            }, completion: nil)
+            //userDefaults.set(true,forKey:"bottomMenuTutorial")
+        }
     }
 }
 extension BasePageViewController: UIPageViewControllerDataSource {
