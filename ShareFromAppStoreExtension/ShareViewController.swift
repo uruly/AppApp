@@ -256,7 +256,6 @@ class ShareViewController: SLComposeServiceViewController {
         isContainImage {
             self.showNoImageAlert()
         }
-        
     }
     
     func showNoImageAlert(){
@@ -341,33 +340,41 @@ class ShareViewController: SLComposeServiceViewController {
             //URL と ID
             if (itemProvider.hasItemConformingToTypeIdentifier("public.url")) {
                 getURL(itemProvider) //urlとidを取得
-            }else {
-                self.id = UUID().uuidString + "ROUNDCORNER" + "noStore"
-                self.saveItemCount += 2
             }
             
             //IMAGE
-            if (itemProvider.hasItemConformingToTypeIdentifier("public.image")) && image == nil {
-                getImage(itemProvider)
-            }else {
-                self.saveItemCount += 1
+            if (itemProvider.hasItemConformingToTypeIdentifier("public.image")) {
+                if image == nil {
+                    getImage(itemProvider)
+                }else {
+                    self.saveItemCount += 1
+                }
             }
-            print("self.previewActionItemsだよおお\(self.previewActionItems)")
-//            if itemProvider.hasItemConformingToTypeIdentifier("public.heic") {
-//                getHeic(itemProvider)
-//            }else {
-//                self.saveItemCount += 1
-//            }
             
             //PLAIN-TEXT
             if (itemProvider.hasItemConformingToTypeIdentifier("public.plain-text")) {
                 getName(itemProvider)
-            }else {
-                self.name = self.contentText
-                self.developer = ""
-                self.saveItemCount += 2
             }
         }
+        if !itemProviders.contains(where: { (itemProvider) -> Bool in
+            return itemProvider.hasItemConformingToTypeIdentifier("public.url")
+        }){
+            self.id = UUID().uuidString + "ROUNDCORNER" + "noStore"
+            self.saveItemCount += 2
+        }
+        if !itemProviders.contains(where: { (itemProvider) -> Bool in
+            return itemProvider.hasItemConformingToTypeIdentifier("public.plain-text")
+        }){
+            self.name = self.contentText
+            self.developer = ""
+            self.saveItemCount += 2
+        }
+        
+//        if itemProviders.contains(where: { (itemProvider) -> Bool in
+//            itemProvider.hasItemConformingToTypeIdentifier("public.image")
+//        }){
+//            self.saveItemCount += 1
+//        }
     }
     
     func getHeic(_ itemProvider:NSItemProvider) {

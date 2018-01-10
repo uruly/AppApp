@@ -72,7 +72,10 @@ extension CommonInfoView: UITableViewDataSource {
             if isAppStore == nil {
                 return 0
             }
-            return isAppStore ? 3 : 2
+            var count = 1
+            if isAppStore { count += 1 }    //idを足す
+            if developerName != "" { count += 1}    //developerを足す
+            return count
         }
         return 0
     }
@@ -99,7 +102,7 @@ extension CommonInfoView: UITableViewDataSource {
                 default:
                     cell.textLabel?.text = ""
                 }
-            }else {
+            }else if developerName != ""{
                 switch indexPath.row {
                 case 0:
                     cell.textLabel?.text = "作成者"
@@ -110,6 +113,9 @@ extension CommonInfoView: UITableViewDataSource {
                 default:
                     cell.textLabel?.text = ""
                 }
+            }else {
+                cell.textLabel?.text = "保存日時"
+                label.text = saveDate
             }
         }
         return cell
