@@ -48,13 +48,16 @@ class CommonInfoView: UITableView {
 extension CommonInfoView: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)
-        cell?.isSelected = false
-        
-        if indexPath.row == 2 {
+        guard let cell = tableView.cellForRow(at: indexPath) else {
             return
         }
-        if let label = cell?.accessoryView as? UILabel {
+        
+        cell.isSelected = false
+        
+        if let text = cell.textLabel?.text , text == "保存日時"{
+            return
+        }
+        if let label = cell.accessoryView as? UILabel {
             detailVC.segueToWebView(label.text ?? "")
         }
     }
