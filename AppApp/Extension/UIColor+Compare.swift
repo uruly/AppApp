@@ -16,22 +16,22 @@ extension UIColor {
         var alpha = false
         let components = self.cgColor.components!
         let rhsComponents = rhs.cgColor.components!
-        print("components:\(components)")
-        print("rhsComponents:\(rhsComponents)")
+        //print("components:\(components)")
+        //print("rhsComponents:\(rhsComponents)")
         if floor(components[0]*100000) == floor(rhsComponents[0]*100000){
-            print("red一緒")
+            //print("red一緒")
             red = true
         }
         if floor(components[1]*100000) == floor(rhsComponents[1]*100000){
-            print("green一緒")
+            //print("green一緒")
             green = true
         }
         if floor(components[2]*100000) == floor(rhsComponents[2]*100000){
-            print("blue一緒")
+            //print("blue一緒")
             blue = true
         }
         if components[3] == rhsComponents[3]{
-            print("alpha一緒")
+            //print("alpha一緒")
             alpha = true
         }
         

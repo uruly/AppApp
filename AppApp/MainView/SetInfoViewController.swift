@@ -106,7 +106,7 @@ class SetInfoViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        print("disappear")
+        //print("disappear")
         NotificationCenter.default.removeObserver(self)
     }
 
@@ -129,7 +129,7 @@ class SetInfoViewController: UIViewController {
     }
     
     @objc func doneBtnTapped() {
-        print("memo\(memo),title\(titleName)")
+        //print("memo\(memo),title\(titleName)")
         if let doneBtn = self.navigationItem.rightBarButtonItem,doneBtn.tintColor != nil {
             return
         }

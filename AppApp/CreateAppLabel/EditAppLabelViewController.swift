@@ -189,7 +189,7 @@ class EditAppLabelViewController: CreateAppLabelViewController {
     }
 
     override func checkColor(_ color:UIColor) {
-        print("checkColor\(color)")
+        //print("checkColor\(color)")
         if AppLabel.contains(color: color,isEdit:true,id:self.id) {
             //ポップアップを表示
             let alertController = UIAlertController(title: "この色はすでに使われています", message: "", preferredStyle: .alert)

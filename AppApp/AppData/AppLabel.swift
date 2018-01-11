@@ -65,7 +65,7 @@ class AppLabel {
             let userDefaults = UserDefaults.standard
             if let image = AppLabel.currentBackgroundImage {
                 let data = UIImagePNGRepresentation(image)
-                print("保存してるよ")
+                //print("保存してるよ")
                 userDefaults.set(data, forKey: "backgroundImage")
             }else {
                 userDefaults.removeObject(forKey: "backgroundImage")
@@ -85,7 +85,7 @@ class AppLabel {
             AppLabel.currentBackgroundColor = NSKeyedUnarchiver.unarchiveObject(with: colorData) as? UIColor
         }
         if let backImageData = userDefaults.data(forKey: "backgroundImage") {
-            print("imageDataあるよ")
+            //print("imageDataあるよ")
             AppLabel.currentBackgroundImage = UIImage(data:backImageData )
         }
     }
@@ -261,7 +261,7 @@ class AppLabel {
         for obj in objs{
             if let objColor = NSKeyedUnarchiver.unarchiveObject(with: obj.color!) as? UIColor{
                 if objColor.compare(color){
-                    print("同じ色")
+                    //print("同じ色")
                     if isEdit {
                         //自身と同じ色ならcontinue
                         if obj.id == id {
@@ -276,7 +276,7 @@ class AppLabel {
                 }
             }
         }
-        print("先にfalse呼ばれてる？")
+        //print("先にfalse呼ばれてる？")
         return false
     }
     

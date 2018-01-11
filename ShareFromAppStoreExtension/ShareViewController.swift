@@ -26,7 +26,7 @@ class ShareViewController: SLComposeServiceViewController {
                 //保存をする
                 //print("この中きたよ")
                 if self.image != nil{
-                    print("saveするよ")
+                    //print("saveするよ")
                     self.saveAppData(name: self.name!, developer: self.developer, id: self.id!, urlString: self.url, image: self.image!)
                     self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
                 }else {
@@ -135,7 +135,7 @@ class ShareViewController: SLComposeServiceViewController {
         vc.navigationItem.rightBarButtonItem!.title = "保存"
         self.textView.isUserInteractionEnabled = false
         
-        print("self.contentText\(self.contentText)")
+        //print("self.contentText\(self.contentText)")
         if self.contentText == "" {
             self.textView.isUserInteractionEnabled = true
         }
@@ -173,7 +173,7 @@ class ShareViewController: SLComposeServiceViewController {
         let extensionItem: NSExtensionItem = self.extensionContext?.inputItems.first as! NSExtensionItem
        // var bool = false
         let itemProviders = extensionItem.attachments as! [NSItemProvider]
-        print(itemProviders)
+        //print(itemProviders)
         if !itemProviders.contains(where: { (itemProvider) -> Bool in
             return itemProvider.hasItemConformingToTypeIdentifier("public.url")
         }){
@@ -231,7 +231,7 @@ class ShareViewController: SLComposeServiceViewController {
         let extensionItem: NSExtensionItem = self.extensionContext?.inputItems.first as! NSExtensionItem
         // var bool = false
         let itemProviders = extensionItem.attachments as! [NSItemProvider]
-        print(itemProviders)
+        //print(itemProviders)
         if !itemProviders.contains(where: { (itemProvider) -> Bool in
             return itemProvider.hasItemConformingToTypeIdentifier("public.image") || itemProvider.hasItemConformingToTypeIdentifier("public.jpeg")
         }){
@@ -436,7 +436,7 @@ class ShareViewController: SLComposeServiceViewController {
                 //App名
                 var nameString = text[..<developLabelRange!.lowerBound]
                 nameString.removeSubrange(appLabelRange!)
-                print("name\(nameString)")
+                //print("name\(nameString)")
                 self.name = String(nameString)
                 
                 //デベロッパ名
@@ -452,15 +452,15 @@ class ShareViewController: SLComposeServiceViewController {
                 //デベロッパ名
                 let developString = text[..<developLabelRange!.lowerBound]
                 //nameString.removeSubrange(appLabelRange!)
-                print("develop\(developString)")
+                //print("develop\(developString)")
                 self.developer = String(developString)
                 text.removeSubrange(..<developLabelRange!.lowerBound)
-                print("text\(text)")
+                //print("text\(text)")
                 text.removeFirst()
                 text.removeLast()
                 //app名
                 let nameString:String = text
-                print("neme\(nameString)")
+                //print("neme\(nameString)")
                 //nameString.removeLast()
                 self.name = String(nameString)
                 
@@ -472,7 +472,7 @@ class ShareViewController: SLComposeServiceViewController {
                 //App名
                 let nameString = text[..<developLabelRange!.lowerBound]
                 //nameString.removeSubrange(appLabelRange!)
-                print("name\(nameString)")
+                //print("name\(nameString)")
                 self.name = String(nameString)
                 
                 //デベロッパ名
@@ -482,7 +482,7 @@ class ShareViewController: SLComposeServiceViewController {
                 
                 self.saveItemCount += 2
             }else {
-                print("app名とbyないよ")
+                //print("app名とbyないよ")
                 if text != "" {
                     self.saveItemCount += 2
                 }else {
@@ -498,14 +498,14 @@ class ShareViewController: SLComposeServiceViewController {
             (item, error) in
             
             self.url = (item as? URL)!.absoluteString
-            print("url\(self.url)")
+            //print("url\(self.url)")
             
             //let urlText = url!.absoluteString
             if let idRange = self.url.range(of: "id"),let endIndex = self.url.index(of: "?"){
                 self.id = String(self.url[idRange.lowerBound ..< endIndex])
                 //print("id\(id)")
             }else {
-                print("idないよー")
+                //print("idないよー")
                 self.id = UUID().uuidString + "ROUNDCORNER" + "noStore"
                 //self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
             }

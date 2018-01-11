@@ -32,6 +32,8 @@ class InfoTableView: UITableView {
         }
     }
 
+    var creatorTextField:UITextField?
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -59,7 +61,10 @@ class InfoTableView: UITableView {
     }
     
     @objc func showKeyboard(notification: Notification) {
-        print("show")
+        //print("show")
+        if memoView == nil {
+            return
+        }
         if let userInfo = notification.userInfo {
             if let keyboardFrameInfo = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue {
                 // キーボードの高さを取得
@@ -112,7 +117,11 @@ extension InfoTableView: UITableViewDelegate {
         if let selectRow = tableView.indexPathForSelectedRow {
             tableView.deselectRow(at: selectRow, animated: false)
         }
-        
+        if indexPath.section == 0 {
+            if let infoCell:InfoTableViewCell = cell as? InfoTableViewCell {
+                infoCell.textField.becomeFirstResponder()
+            }
+        }
         if indexPath.section == 2 {
             let indexArray = checkArray.findIndex(includeElement: { (data) -> Bool in
                 return data.name == ( cell.textLabel?.text ?? "" )
@@ -164,10 +173,14 @@ extension InfoTableView: UITableViewDataSource {
             cell.textField.delegate = self
             cell.textField.addTarget(self, action: #selector(textFieldChangedValue(sender:)), for: .editingChanged)
             cell.textField.tag = indexPath.row
+            if indexPath.row == 0 {
+                cell.textField.becomeFirstResponder()
+            }
             if indexPath.row == 1 { //クリエイター名を入れる
                 if let creator = UserDefaults.standard.string(forKey: "creator") {
                     cell.textField.text = creator
                 }
+                creatorTextField = cell.textField
             }
             return cell
         }else if indexPath.section == 1 {
@@ -249,7 +262,7 @@ extension InfoTableView:UITextViewDelegate {
                     if scrollRect.maxY >= keyMinY {
                         let diffY = scrollRect.maxY - keyMinY
                         UIView.animate(withDuration: 0.2, animations: {
-                            print("ここ呼ばれているよ")
+                            //print("ここ呼ばれているよ")
                             self.contentOffset.y += diffY + 15
                         })
                     }
@@ -276,6 +289,14 @@ extension InfoTableView:UITextFieldDelegate {
                 setVC.creator = textField.text
             }
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if let nextField = creatorTextField{
+            nextField.becomeFirstResponder()
+        }
+        textField.resignFirstResponder()
+        return true
     }
 }
 

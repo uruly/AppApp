@@ -42,7 +42,7 @@ class BackgroundImageView: UICollectionView {
     func changeBackgroundImage() {
         //BackgroundColorListView.isDefaultColor = false
         if let basePageVC:BasePageViewController = findViewController() {
-            print("basepageVCあるよ")
+            //print("basepageVCあるよ")
             if let baseVC:BaseViewController = basePageVC.viewControllers?.first as? BaseViewController {
                 AppLabel.currentBackgroundImage = currentImage
                 baseVC.backgroundImage = currentImage
@@ -120,13 +120,13 @@ extension BackgroundImageView: UICollectionViewDelegate {
             }else{
                 if currentIndexPath != nil {
                     if let previousCell:BackgroundImageCell = collectionView.cellForItem(at: currentIndexPath!) as? BackgroundImageCell{
-                        print("けすよ")
+                        //print("けすよ")
                         previousCell.checkImageView.isHidden = true
                     }
                 }
                 if let cell:BackgroundImageCell = collectionView.cellForItem(at: indexPath) as? BackgroundImageCell {
-                    print("みせるよ")
-                    print("imageList[index]\(imageList[indexPath.row])")
+                    //print("みせるよ")
+                    //print("imageList[index]\(imageList[indexPath.row])")
                     cell.checkImageView.isHidden = false
                     currentImage = UIImage(named:imageList[indexPath.row].1)
                     currentIndexPath = indexPath

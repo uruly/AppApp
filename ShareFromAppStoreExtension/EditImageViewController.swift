@@ -60,7 +60,7 @@ class EditImageViewController: UIViewController {
         textLabel.textColor = UIColor.gray
         self.view.addSubview(textLabel)
         
-        print("subview\(shareVC)")
+        //print("subview\(shareVC)")
         
     }
 
@@ -113,13 +113,13 @@ class EditImageViewController: UIViewController {
         if let layer = imageView.layer.sublayers?.first {
             shareVC.position = layer.position
         }
-        print("saveしてるよ")
-        print("プレビューアクション相手ｍす\(shareVC.previewActionItems)")
+        //print("saveしてるよ")
+        //print("プレビューアクション相手ｍす\(shareVC.previewActionItems)")
         //print("shareVC.loadPreviewView\(shareVC.loadPreviewView())")
         if let view = shareVC.loadPreviewView(){
-            print(view)
+            //print(view)
             if let preview = view.subviews.first as? UIImageView {
-                print("preview")
+                //print("preview")
                 preview.image = cropImage
             }
             //print("imageView.subviews:\(view.subviews),imageView:isKind\(preview)")

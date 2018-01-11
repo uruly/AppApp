@@ -37,7 +37,7 @@ class EditImageView: UIImageView {
     }
     
     @objc func pinch(sender:UIPinchGestureRecognizer){
-        print(sender.scale)
+        //print(sender.scale)
         effectiveScale = beginGestureScale * sender.scale
         //選択されてるやつだけ
         if (selectLayer != nil){
@@ -47,7 +47,7 @@ class EditImageView: UIImageView {
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("touchesBega")
+        //print("touchesBega")
         if let touch = touches.first {
             let layer = hitLayer(touch: touch)
             if layer.name == "image" {
@@ -58,7 +58,7 @@ class EditImageView: UIImageView {
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("moved")
+        //print("moved")
         if selectLayer == nil {
             return
         }

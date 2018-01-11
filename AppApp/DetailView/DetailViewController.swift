@@ -59,7 +59,7 @@ class DetailViewController: UIViewController {
         self.view.addSubview(contentView)
         contentView.backgroundColor = UIColor.white
         contentView.appName = appData.app.name
-        print("appData.app\(appData.app.urlString)")
+        //print("appData.app\(appData.app.urlString)")
         contentView.url = appData.app.urlString
         contentView.imageData = appData.app.image
         contentView.detailVC = self
@@ -167,7 +167,10 @@ class DetailViewController: UIViewController {
 //                if !bool {
 //                    productVC.dismiss(animated: true, completion: nil)
 //                }
-                print(error)
+                if error != nil {
+                    productVC.dismiss(animated: true, completion: nil)
+                }
+                //print(error)
             }
         }
     }

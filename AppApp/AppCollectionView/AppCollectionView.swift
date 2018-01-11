@@ -345,32 +345,32 @@ extension AppCollectionView:UIScrollViewDelegate {
                 if ( frameMinY + diffX ) >= maxY {
                     //非表示で固定
                     self.appDelegate.baseVC.basePageVC.bottomView.center.y = maxY + middleHeight
-                    print("非表示で固定")
+                    //print("非表示で固定")
                 }else {
                     //移動させる
                     self.appDelegate.baseVC.basePageVC.bottomView.center.y += diffX
-                    print("どんどん非表示にする")
+                    //print("どんどん非表示にする")
                 }
             }else {
                 //どんどん表示
-                print("minY\(minY)")
-                print("frameMinY\(frameMinY)")
+                //print("minY\(minY)")
+                //print("frameMinY\(frameMinY)")
                 if ( frameMinY + diffX ) <= minY || frameMinY <= minY{
                     //表示で固定
 //                    self.appDelegate.baseVC.basePageVC.bottomView.center.y = maxY + middleHeight
                     self.appDelegate.baseVC.basePageVC.bottomView.closeBottomView()
-                    print("表示で固定する")
+                    //print("表示で固定する")
                 }else {
                     //移動させる
                     self.appDelegate.baseVC.basePageVC.bottomView.center.y -= diffX
-                    print("どんどん表示する")
+                    //print("どんどん表示する")
                 }
             }
         }else {
             //表示で固定
             self.appDelegate.baseVC.basePageVC.bottomView.closeBottomView()
             //self.appDelegate.baseVC.basePageVC.bottomView.center.y = maxY + middleHeight
-            print("else 表示で固定")
+            //print("else 表示で固定")
         }
         lastContentOffsetY = scrollView.contentOffset.y
         //self.appDelegate.baseVC.basePageVC.iconSizeChanger.isHidden = true

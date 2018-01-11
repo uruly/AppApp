@@ -37,6 +37,7 @@ class InfoTableViewCell: UITableViewCell {
         
         
         textField.inputAccessoryView = toolBar
+        textField.returnKeyType = .done
     }
     
     @objc func doneBtnTapped(sender:UIBarButtonItem) {
