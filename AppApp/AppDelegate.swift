@@ -20,6 +20,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        // GoogleAnalyticsの設定
+        if let gai = GAI.sharedInstance() {
+            gai.trackUncaughtExceptions = true
+            
+            if let path = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist") {
+                if let propertyList = NSDictionary(contentsOfFile: path) as? [String: AnyObject] {
+                    let trackingID = propertyList["TRACKING_ID"] as! String
+                    gai.tracker(withTrackingId: trackingID)
+                }
+            }
+        }
+        
+        
         let receiptValidator = ReceiptValidator()
         let validationResult = receiptValidator.validateReceipt()
         switch validationResult {
@@ -39,18 +52,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         //window?.rootViewController = DetailViewController()
-        // GoogleAnalyticsの設定
-        if let gai = GAI.sharedInstance() {
-            gai.trackUncaughtExceptions = true
-            
-            if let path = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist") {
-                if let propertyList = NSDictionary(contentsOfFile: path) as? [String: AnyObject] {
-                    let trackingID = propertyList["TRACKING_ID"] as! String
-                    gai.tracker(withTrackingId: trackingID)
-                }
-            }
-        }
-        
         return true
     }
 
