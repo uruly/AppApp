@@ -3,7 +3,7 @@
   "commitish" : "3.17",
   "iOS" : [
     {
-      "hash" : "42e5e754be77f84f4b63da247e914cdf36eb6dd8a080f33b9f1d0012b5577900",
+      "hash" : "ff707a95225d65e69da8c5f23abc7d0ebefb9d1108d83b6b51fb7209279137f8",
       "name" : "GoogleAnalytics"
     }
   ]
