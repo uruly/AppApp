@@ -160,7 +160,7 @@ class AppCollectionView: UICollectionView {
                             var indexPaths:[IndexPath] = []
                             for row in removeRows {
                                 let indexPath = IndexPath(row: row!, section: 0)
-                                print("row\(row)")
+                                //print("row\(row)")
                                 indexPaths.append(indexPath)
                             }
                             self.deleteItems(at: indexPaths)

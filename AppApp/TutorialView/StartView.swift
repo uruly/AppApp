@@ -26,7 +26,7 @@ class StartView: UIView {
     
     func setup(){
         let width = UIScreen.main.bounds.width
-        let height = UIScreen.main.bounds.height
+        //let height = UIScreen.main.bounds.height
         let margin:CGFloat = 15.0
         
         let header = UILabel(frame:CGRect(x:margin,y:0,width:300,height:100))

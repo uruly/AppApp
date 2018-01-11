@@ -15,20 +15,25 @@ let RESOLUTION:String = "@" + String(Int(UIScreen.main.scale)) + "x"
 
 struct VersionManager {
     
-    static var alertController:UIAlertController?
+    //var alertController:UIAlertController?
     
-    init(){
-        VersionManager.checkVersion()
+    init(vc:UIViewController){
+        self.checkVersion(vc)
     }
     
     /****************** Version Check *********************/
-    static func checkVersion(){
+    func checkVersion(_ vc:UIViewController){
         let url = "https://itunes.apple.com/jp/lookup?id=\(APPLE_ID)"
         let req = URLRequest(url: URL(string: url)!, cachePolicy: NSURLRequest.CachePolicy.useProtocolCachePolicy, timeoutInterval: 60.0)
-        NSURLConnection.sendAsynchronousRequest(req,queue: OperationQueue.main,completionHandler:{(data,response,error) in
+        let configuration = URLSessionConfiguration.default
+        let session = URLSession(configuration: configuration, delegate:nil, delegateQueue:OperationQueue.main)
+//        NSURLConnection.sendAsynchronousRequest(req,queue: OperationQueue.main,completionHandler:{(data,response,error) in
+        let task = session.dataTask(with: req, completionHandler: {
+            (data, response, error) -> Void in
             do{
-                if response != nil{
-                    let dic = try JSONSerialization.jsonObject(with: response!, options: .mutableContainers) as! NSDictionary
+                if data != nil{
+//                    let dic = try JSONSerialization.jsonObject(with: response!, options: .mutableContainers) as! NSDictionary
+                    let dic = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) as! NSDictionary
                     let resultsArray = dic.object(forKey: "results") as! NSArray
                     if resultsArray.count > 0{
                         let results = resultsArray[0] as! NSDictionary
@@ -37,7 +42,7 @@ struct VersionManager {
                         print("latest version : \(storeVersion)")
                         if storeVersion.compare(currentVersion, options: NSString.CompareOptions.numeric) == ComparisonResult.orderedDescending {
                             print("store version is newer!")
-                            self.versionAlert()
+                            self.versionAlert(vc)
                         } else if storeVersion.compare(currentVersion, options: NSString.CompareOptions.numeric) == ComparisonResult.orderedSame{
                             print("store version is equal")
                         } else {
@@ -50,21 +55,27 @@ struct VersionManager {
             }
             
         })
+        task.resume()
     }
-    static func versionAlert(){
-        alertController = UIAlertController(title: "新しいバージョンがあります。", message: "", preferredStyle: .alert)
+    
+    func versionAlert(_ vc:UIViewController){
+        let alertController = UIAlertController(title: "新しいバージョンがあります。", message: "", preferredStyle: .alert)
         let otherAction = UIAlertAction(title: "アップデートする", style: .destructive) {
             action in NSLog("はいボタンが押されました")
             let urlString = "itms-apps://itunes.apple.com/app/id\(APPLE_ID)"
-            let url = NSURL(string: urlString)
-            UIApplication.shared.openURL(url! as URL)
+            if let url = NSURL(string: urlString) {
+                UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
+            }
         }
         let cancelAction = UIAlertAction(title: "あとで", style: .cancel) {
             action in NSLog("いいえボタンが押されました")
         }
         
-        alertController!.addAction(otherAction)
-        alertController!.addAction(cancelAction)
+        alertController.addAction(otherAction)
+        alertController.addAction(cancelAction)
+        
+        vc.present(alertController, animated: true, completion: nil)
+        
     }
     
 //    static func tabSizeHeight() ->  CGFloat{

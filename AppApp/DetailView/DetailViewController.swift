@@ -167,7 +167,7 @@ class DetailViewController: UIViewController {
 //                if !bool {
 //                    productVC.dismiss(animated: true, completion: nil)
 //                }
-                print(error ?? nil)
+                print(error)
             }
         }
     }

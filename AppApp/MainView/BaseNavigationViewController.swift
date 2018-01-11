@@ -32,7 +32,7 @@ class BaseNavigationViewController: UINavigationController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        VersionManager.checkVersion()
+        let _ = VersionManager(vc:self)
         let userDefaults = UserDefaults.standard
         if !userDefaults.bool(forKey:"FirstLaunch"){
             let tutorialVC = TutorialViewController()

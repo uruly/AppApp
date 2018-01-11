@@ -84,7 +84,7 @@ class BackgroundColorListView: UICollectionView {
             }
             
         }
-        print(labelColor)
+        //print(labelColor)
         super.reloadData()
     }
     

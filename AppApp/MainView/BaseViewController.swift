@@ -29,7 +29,7 @@ class BaseViewController: UIViewController {
         didSet {
             if backgroundImage == nil {
                 self.collectionView.backgroundColor = self.backgroundColor
-                print(self.collectionView.backgroundColor)
+                //print(self.collectionView.backgroundColor)
             }else {
                 self.collectionView.backgroundColor = UIColor(patternImage: self.backgroundImage!)
             }

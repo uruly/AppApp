@@ -119,7 +119,7 @@ class WebViewController: UIViewController {
     @objc func goSafari(){
         if let url = webView.url{
             let app:UIApplication = UIApplication.shared
-            app.openURL(url)
+            app.open(url, options: [:], completionHandler: nil)
         }
     }
     
@@ -155,7 +155,7 @@ extension WebViewController:WKNavigationDelegate{
         //print("ここ")
         if isMatch(input: urlString,pattern: "\\/\\/itunes\\.apple\\.com\\/") {
             // AppStoreのリンクなら、ストアアプリで開く
-            UIApplication.shared.openURL(url!)
+            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
             decisionHandler(WKNavigationActionPolicy.cancel)
         }else {
             decisionHandler(WKNavigationActionPolicy.allow)

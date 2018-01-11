@@ -18,7 +18,7 @@ class WelcomeView: UIView {
     
     func setup(){
         let width = UIScreen.main.bounds.width
-        let height = UIScreen.main.bounds.height
+        //let height = UIScreen.main.bounds.height
         let margin:CGFloat = 30.0
         //画像を置く
         let logoView = UIImageView(frame:CGRect(x:margin,y:margin,width:250,height:70))

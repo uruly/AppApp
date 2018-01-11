@@ -82,11 +82,11 @@ class AppLabel {
         }
         let userDefaults = UserDefaults.standard
         if let colorData = userDefaults.data(forKey: "backgroundColor"){
-            AppLabel.currentBackgroundColor = NSKeyedUnarchiver.unarchiveObject(with: colorData) as! UIColor
+            AppLabel.currentBackgroundColor = NSKeyedUnarchiver.unarchiveObject(with: colorData) as? UIColor
         }
         if let backImageData = userDefaults.data(forKey: "backgroundImage") {
             print("imageDataあるよ")
-            AppLabel.currentBackgroundImage = UIImage(data:backImageData as! Data)
+            AppLabel.currentBackgroundImage = UIImage(data:backImageData )
         }
     }
     

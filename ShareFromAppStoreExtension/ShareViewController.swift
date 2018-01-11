@@ -34,7 +34,7 @@ class ShareViewController: SLComposeServiceViewController {
                     print("Error")
                     showError()
                 }
-                print("name\(name),url\(url)")
+                //print("name\(name),url\(url)")
             }
         }
     }

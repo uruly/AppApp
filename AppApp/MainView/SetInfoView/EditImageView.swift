@@ -69,12 +69,12 @@ class EditImageView: UIImageView {
             let diffX = point.x - previousPoint.x
             let diffY = point.y - previousPoint.y
 
-            print(selectLayer?.frame.maxX)
+            //print(selectLayer?.frame.maxX)
             //レイヤーを移動させる
             CATransaction.begin()
             CATransaction.setDisableActions(true)
-            let nextPointX = selectLayer!.position.x + diffX
-            let nextPointY = selectLayer!.position.y + diffY
+            //let nextPointX = selectLayer!.position.x + diffX
+            //let nextPointY = selectLayer!.position.y + diffY
             
             selectLayer!.position.x += diffX
             selectLayer!.position.y += diffY

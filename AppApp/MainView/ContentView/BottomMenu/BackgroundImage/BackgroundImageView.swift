@@ -109,8 +109,8 @@ class BackgroundImageView: UICollectionView {
 extension BackgroundImageView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == 0 {
-            print(currentIndexPath)
-            print(indexPath)
+            //print(currentIndexPath)
+            //print(indexPath)
             if currentIndexPath == indexPath {
                 if let previousCell:BackgroundImageCell = collectionView.cellForItem(at: currentIndexPath!) as? BackgroundImageCell{
                     previousCell.checkImageView.isHidden = true

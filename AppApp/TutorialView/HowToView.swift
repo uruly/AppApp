@@ -25,8 +25,8 @@ class HowToView: UIView {
     }
     
     func setupList(){
-        let width = UIScreen.main.bounds.width
-        let height = UIScreen.main.bounds.height
+        //let width = UIScreen.main.bounds.width
+        //let height = UIScreen.main.bounds.height
         let margin:CGFloat = 15.0
         header = UILabel(frame:CGRect(x:margin,y:0,width:300,height:100))
         header.font = UIFont.boldSystemFont(ofSize: 22 + VersionManager.excess)
@@ -38,7 +38,7 @@ class HowToView: UIView {
     
     func setupAppStore(index:Int) {
         let width = UIScreen.main.bounds.width
-        let height = UIScreen.main.bounds.height
+        //let height = UIScreen.main.bounds.height
         let margin:CGFloat = 15.0
         header = UILabel(frame:CGRect(x:margin,y:0,width:300,height:100))
         header.font = UIFont.boldSystemFont(ofSize: 22 + VersionManager.excess)
