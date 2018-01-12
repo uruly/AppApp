@@ -139,7 +139,7 @@ class TutorialViewController: UIViewController {
     
     @objc func startBtnTapped(){
         helpView.isHidden = true
-        let indexPath = IndexPath(row: 5, section: 0)
+        let indexPath = IndexPath(row: 7, section: 0)
         pageView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
     }
     
