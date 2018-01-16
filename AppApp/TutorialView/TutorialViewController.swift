@@ -14,13 +14,23 @@ class TutorialViewController: UIViewController {
     var pageControl:UIPageControl!
     var helpView:HelpView!
     static var isFirst:Bool = true
+    var navigationHeight:CGFloat {
+        get {
+            if UIDevice.current.model.range(of: "iPad") != nil {
+                print("iPad")
+                return 40
+            }else {
+                return 80.0
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         let width = self.view.frame.width
         let height = self.view.frame.height
-        let navigationHeight:CGFloat = 80.0
+        //let navigationHeight:CGFloat = 80.0
         let margin:CGFloat = 15.0
         self.view.backgroundColor = UIColor.backgroundGray()
         pageView = TutorialPageView(frame: CGRect(x:0,y:navigationHeight + margin,width:width,height:height - navigationHeight - margin))
@@ -34,7 +44,8 @@ class TutorialViewController: UIViewController {
     }
     
     func setupPageControl(){
-        pageControl = UIPageControl(frame: CGRect(x:0,y:self.view.frame.height - 40,width:self.view.frame.width,height:40))
+        let pageControlHeight:CGFloat = (UIDevice.current.model.range(of: "iPad") != nil ) ? 20 : 40
+        pageControl = UIPageControl(frame: CGRect(x:0,y:self.view.frame.height - pageControlHeight,width:self.view.frame.width,height:pageControlHeight))
         pageControl.currentPage = 0
         pageControl.numberOfPages = 8
         pageControl.currentPageIndicatorTintColor = UIColor.darkGray
@@ -62,9 +73,14 @@ class TutorialViewController: UIViewController {
     
     func setupNaviBtn(){
         let width = self.view.frame.width
-        let navigationHeight:CGFloat = 80.0
+        //var navigationHeight:CGFloat = 80.0
+        var btnHeight:CGFloat = 40.0
+        if UIDevice.current.model.range(of: "iPad") != nil {
+            print("iPad")
+            btnHeight = 30.0
+        }
         let margin:CGFloat = 15.0
-        let welcomeBtn = NaviButton(frame:CGRect(x:0,y:navigationHeight - 40 + margin,width:width / 4,height:40))
+        let welcomeBtn = NaviButton(frame:CGRect(x:0,y:navigationHeight - btnHeight + margin,width:width / 4,height:btnHeight))
         welcomeBtn.setTitle("WELCOME", for: .normal)
         welcomeBtn.setTitleColor(UIColor.white, for: .normal)
         welcomeBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
@@ -72,7 +88,7 @@ class TutorialViewController: UIViewController {
         welcomeBtn.addTarget(self, action: #selector(welcomeBtnTapped), for: .touchUpInside)
         self.view.addSubview(welcomeBtn)
         
-        let howtoBtn = NaviButton(frame:CGRect(x:welcomeBtn.frame.maxX,y:navigationHeight - 40 + margin,width:width / 4,height:40))
+        let howtoBtn = NaviButton(frame:CGRect(x:welcomeBtn.frame.maxX,y:navigationHeight - btnHeight + margin,width:width / 4,height:btnHeight))
         howtoBtn.setTitle("HOW TO", for: .normal)
         howtoBtn.setTitleColor(UIColor.white, for: .normal)
         howtoBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
@@ -80,7 +96,7 @@ class TutorialViewController: UIViewController {
         howtoBtn.addTarget(self, action: #selector(howtoBtnTapped), for: .touchUpInside)
         self.view.addSubview(howtoBtn)
         
-        let startBtn = NaviButton(frame:CGRect(x:howtoBtn.frame.maxX,y:navigationHeight - 40 + margin,width:( width / 4 ) - 20,height:40))
+        let startBtn = NaviButton(frame:CGRect(x:howtoBtn.frame.maxX,y:navigationHeight - btnHeight + margin,width:( width / 4 ) - 20,height:btnHeight))
         startBtn.setTitle("START", for: .normal)
         startBtn.setTitleColor(UIColor.white, for: .normal)
         startBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
@@ -88,7 +104,7 @@ class TutorialViewController: UIViewController {
         startBtn.addTarget(self,action:#selector(startBtnTapped),for:.touchUpInside)
         self.view.addSubview(startBtn)
         
-        let helpBtn = NaviButton(frame:CGRect(x:startBtn.frame.maxX,y:navigationHeight - 40 + margin,width:( width / 4 ) - 30,height:40))
+        let helpBtn = NaviButton(frame:CGRect(x:startBtn.frame.maxX,y:navigationHeight - btnHeight + margin,width:( width / 4 ) - 30,height:btnHeight))
         helpBtn.setTitle("HELP", for: .normal)
         helpBtn.setTitleColor(UIColor.white, for: .normal)
         helpBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
@@ -96,7 +112,7 @@ class TutorialViewController: UIViewController {
         helpBtn.addTarget(self, action: #selector(helpBtnTapped), for: .touchUpInside)
         self.view.addSubview(helpBtn)
 
-        let closeBtn = NaviButton(frame:CGRect(x:helpBtn.frame.maxX,y:navigationHeight - 40 + margin,width:50,height:40))
+        let closeBtn = NaviButton(frame:CGRect(x:helpBtn.frame.maxX,y:navigationHeight - btnHeight + margin,width:50,height:btnHeight))
         closeBtn.setTitle("×", for: .normal)
         closeBtn.setTitleColor(UIColor.white, for: .normal)
         closeBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
@@ -119,7 +135,7 @@ class TutorialViewController: UIViewController {
     func setupHelp(){
         let width = self.view.frame.width
         let height = self.view.frame.height
-        let navigationHeight:CGFloat = 80.0
+        //let navigationHeight:CGFloat = 80.0
         let margin:CGFloat = 15.0
         helpView = HelpView(frame: CGRect(x:0,y:navigationHeight + margin,width:width,height:height - navigationHeight - margin), style:.grouped )
         helpView.isHidden = TutorialViewController.isFirst

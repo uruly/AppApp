@@ -40,14 +40,17 @@ class HowToView: UIView {
         let width = UIScreen.main.bounds.width
         //let height = UIScreen.main.bounds.height
         let margin:CGFloat = 15.0
-        header = UILabel(frame:CGRect(x:margin,y:0,width:300,height:100))
+        let posY:CGFloat = (UIDevice.current.model.range(of: "iPad") != nil ) ? -30 : 0
+
+        header = UILabel(frame:CGRect(x:margin,y:0,width:300,height:70))
         header.font = UIFont.boldSystemFont(ofSize: 22 + VersionManager.excess)
         header.textColor = UIColor.white
         header.text = headerTextArray[index]
         header.numberOfLines = 0
         self.addSubview(header)
         
-        let iphone = UIImageView(frame:CGRect(x:0,y:0,width:width,height:width * 2))
+        
+        let iphone = UIImageView(frame:CGRect(x:0,y:posY,width:width,height:width * 2))
         let iphonePath = Bundle.main.path(forResource: "iphone", ofType: "png")
         iphone.image = UIImage(contentsOfFile:iphonePath!)?.withRenderingMode(.alwaysTemplate)
         iphone.contentMode = .scaleAspectFit
@@ -55,7 +58,7 @@ class HowToView: UIView {
         self.addSubview(iphone)
         
         //スクリーンショットを乗せる
-        let screenShot = UIImageView(frame:CGRect(x:0,y:0,width:width * 2 / 3 - margin,height:width * 2 / 3 * 2))
+        let screenShot = UIImageView(frame:CGRect(x:0,y:posY,width:width * 2 / 3 - margin,height:width * 2 / 3 * 2))
         screenShot.center = CGPoint(x:iphone.center.x,y:iphone.center.y)
         let ssPath = Bundle.main.path(forResource: "screenShot\(index)", ofType: "jpeg")
         screenShot.image = UIImage(contentsOfFile:ssPath!)
@@ -64,7 +67,7 @@ class HowToView: UIView {
         
         //吹き出しを設置
         if index == 0 {
-            let rect = CGRect(x:screenShot.frame.maxX - 180,y:screenShot.frame.minY + screenShot.frame.width - 80,width:200,height:80)
+            let rect = CGRect(x:screenShot.frame.maxX - 180,y:screenShot.frame.minY + screenShot.frame.width - 80,width:200,height:80 + VersionManager.excessiPad * 5)
             let balloonView = BalloonView(frame: rect,color:UIColor.allLabel())
             balloonView.isDown = false
             balloonView.label.text = "ここをタップ"
@@ -72,7 +75,7 @@ class HowToView: UIView {
             self.addSubview(balloonView)
             animation(balloonView)
         }else if index == 1 {
-            let rect = CGRect(x:margin * 3,y:screenShot.frame.minY + screenShot.frame.width - 80,width:200,height:120)
+            let rect = CGRect(x:margin * 3,y:screenShot.frame.minY + screenShot.frame.width - 80,width:200,height:120 + VersionManager.excessiPad * 10)
             let balloonView = BalloonView(frame: rect,color:UIColor.allLabel())
             balloonView.isDown = true
             balloonView.label.text = "長押しで順番を入れ替え\nすると使いやすい！"
@@ -80,7 +83,7 @@ class HowToView: UIView {
             self.addSubview(balloonView)
             animation(balloonView)
         }else if index == 2 {
-            let rect = CGRect(x:(width - 200) / 2,y:screenShot.frame.minY + screenShot.frame.width + margin,width:200,height:120)
+            let rect = CGRect(x:(width - 200) / 2,y:screenShot.frame.minY + screenShot.frame.width + margin,width:200,height:120 + VersionManager.excessiPad * 10)
             let balloonView = BalloonView(frame: rect,color:UIColor.allLabel())
             balloonView.isDown = false
             balloonView.label.text = "メモやラベルは後から変更可能！"
@@ -88,7 +91,7 @@ class HowToView: UIView {
             self.addSubview(balloonView)
             animation(balloonView)
         }else if index == 3 {
-            let rect = CGRect(x:(width - 200) / 2,y:screenShot.frame.minY + screenShot.frame.width + margin,width:200,height:120)
+            let rect = CGRect(x:(width - 200) / 2,y:screenShot.frame.minY + screenShot.frame.width + margin,width:200,height:120 + VersionManager.excessiPad * 10)
             let balloonView = BalloonView(frame: rect,color:UIColor.allLabel())
             balloonView.isDown = false
             balloonView.label.text = "画像共有ができるアプリからはトリミングして保存！"
@@ -96,7 +99,7 @@ class HowToView: UIView {
             self.addSubview(balloonView)
             animation(balloonView)
         }else if index == 4 {
-            let rect = CGRect(x:(width - 200) / 2,y:screenShot.frame.minY + screenShot.frame.width - 80,width:200,height:120)
+            let rect = CGRect(x:(width - 200) / 2,y:screenShot.frame.minY + screenShot.frame.width - 80,width:200,height:120 + VersionManager.excessiPad * 10)
             let balloonView = BalloonView(frame: rect,color:UIColor.allLabel())
             balloonView.isDown = true
             balloonView.label.text = "下部メニューから\nアップロード可能！"
@@ -104,6 +107,7 @@ class HowToView: UIView {
             self.addSubview(balloonView)
             animation(balloonView)
         }
+        
     }
     
     func animation(_ view:BalloonView){

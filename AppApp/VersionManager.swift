@@ -109,13 +109,21 @@ struct VersionManager {
     static var excess:CGFloat {
         let screenWidth = UIScreen.main.bounds.width
         if screenWidth <= 320.0{
-            return -2
+            return -2 + VersionManager.excessiPad
         }else if screenWidth <= 375.0{
-            return 0
+            return 0 + VersionManager.excessiPad
         }else if screenWidth > 376.0{
-            return 2
+            return 2 + VersionManager.excessiPad
         }else {
-            return 2
+            return 2 + VersionManager.excessiPad
+        }
+    }
+    
+    static var excessiPad:CGFloat {
+        if UIDevice.current.model.range(of: "iPad") != nil {
+            return -2
+        }else {
+            return 0
         }
     }
 }

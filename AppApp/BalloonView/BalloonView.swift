@@ -45,7 +45,7 @@ class BalloonView: UIView {
         label.text = "タップでお気に入りに登録"
         label.textAlignment = .center
         label.textColor = UIColor.darkGray
-        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.font = UIFont.boldSystemFont(ofSize: 16 + VersionManager.excessiPad)
         label.numberOfLines = 0
         self.addSubview(label)
     }
