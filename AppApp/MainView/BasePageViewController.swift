@@ -88,8 +88,9 @@ class BasePageViewController: UIPageViewController {
         //bottomMenuを配置
         let handleHeight:CGFloat = 15.0
         var bottomViewHeight:CGFloat = height - width + handleHeight
-        if UIDevice.current.model.range(of: "iPad") != nil  {
-            bottomViewHeight = 320
+        print("bottomViewHeight\(bottomViewHeight)")
+        if bottomViewHeight < 300 {
+            bottomViewHeight = 310
         }
         bottomView = BottomView(frame: CGRect(x:0,y:height - bottomViewHeight,width:width,height:bottomViewHeight))
         bottomView.delegate = self

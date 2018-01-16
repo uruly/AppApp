@@ -41,8 +41,8 @@ class HowToView: UIView {
         //let height = UIScreen.main.bounds.height
         let margin:CGFloat = 15.0
         let posY:CGFloat = (UIDevice.current.model.range(of: "iPad") != nil ) ? -30 : 0
-
-        header = UILabel(frame:CGRect(x:margin,y:0,width:300,height:70))
+        let headerHeight:CGFloat = (UIDevice.current.model.range(of: "iPad") != nil ) ? 70 : 100
+        header = UILabel(frame:CGRect(x:margin,y:0,width:300,height:headerHeight))
         header.font = UIFont.boldSystemFont(ofSize: 22 + VersionManager.excess)
         header.textColor = UIColor.white
         header.text = headerTextArray[index]

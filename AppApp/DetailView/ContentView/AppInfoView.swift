@@ -72,7 +72,7 @@ class AppInfoView: UIView {
         }else if url != ""{
             showStoreBtn.setTitle("取得元を表示", for: .normal)
         }else {
-            showStoreBtn.isHidden = true
+            //showStoreBtn.isHidden = true
         }
         showStoreBtn.setTitleColor(UIColor.white, for: .normal)
         showStoreBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
