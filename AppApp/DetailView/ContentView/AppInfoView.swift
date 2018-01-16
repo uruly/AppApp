@@ -42,7 +42,7 @@ class AppInfoView: UIView {
             return
         }
         let margin:CGFloat = 15.0
-        let width = self.frame.width
+        let width = UIScreen.main.bounds.width
         //let height = self.frame.height
         
         //イメージビューを配置
@@ -72,7 +72,7 @@ class AppInfoView: UIView {
         }else if url != ""{
             showStoreBtn.setTitle("取得元を表示", for: .normal)
         }else {
-            //showStoreBtn.isHidden = true
+            showStoreBtn.isHidden = true
         }
         showStoreBtn.setTitleColor(UIColor.white, for: .normal)
         showStoreBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
@@ -81,7 +81,7 @@ class AppInfoView: UIView {
         
         //Webで見るボタン
         let webSearchBtn = UIButton()
-        webSearchBtn.frame = CGRect(x:width - 50 + 10,y:imageView.frame.maxY - btnHeight,width:50,height:btnHeight)
+        webSearchBtn.frame = CGRect(x:width - 50 - margin,y:imageView.frame.maxY - btnHeight,width:50,height:btnHeight)
         webSearchBtn.backgroundColor = UIColor.appStoreBlue()
         webSearchBtn.addTarget(self, action: #selector(self.showWebPage), for: .touchUpInside)
         webSearchBtn.setTitle("Web", for: .normal)
