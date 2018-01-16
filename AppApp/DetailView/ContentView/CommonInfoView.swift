@@ -85,11 +85,11 @@ extension CommonInfoView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AppInfo", for: indexPath)
-        cell.textLabel?.font = UIFont.systemFont(ofSize: 14)
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 14 + VersionManager.excess)
         if indexPath.section == 0 {
-            let label = UILabel(frame:CGRect(x:0,y:0,width:250,height:cell.contentView.frame.height))
+            let label = UILabel(frame:CGRect(x:0,y:0,width:220,height:cell.contentView.frame.height))
             label.textAlignment = .right
-            label.font = UIFont.systemFont(ofSize: 14)
+            label.font = UIFont.systemFont(ofSize: 14 + VersionManager.excess)
             cell.accessoryView = label
             if isAppStore != nil && isAppStore {
                 switch indexPath.row {
