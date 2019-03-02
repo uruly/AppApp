@@ -1,0 +1,4 @@
+github "akashivskyy/GoogleAnalytics-Framework" "3.17"
+github "jspahrsummers/xcconfigs" "0.11"
+github "krzyzanowskim/OpenSSL" "1.0.2.13"
+github "realm/realm-cocoa" "v3.0.2"

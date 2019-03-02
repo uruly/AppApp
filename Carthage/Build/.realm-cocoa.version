@@ -1,0 +1,14 @@
+{
+  "xcodeVersion" : "Xcode 9.2\nBuild version 9C40b",
+  "commitish" : "v3.0.2",
+  "iOS" : [
+    {
+      "hash" : "800f44072833b21e14a382ccfb7057ca8ad77f6206761dc550ecbeb84004a140",
+      "name" : "RealmSwift"
+    },
+    {
+      "hash" : "a9ac415b119703e760000c90eb9d9b2121a68acbf912295c894a165e246a68cd",
+      "name" : "Realm"
+    }
+  ]
+}
