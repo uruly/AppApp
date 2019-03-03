@@ -64,7 +64,7 @@ struct VersionManager {
             action in NSLog("はいボタンが押されました")
             let urlString = "itms-apps://itunes.apple.com/app/id\(APPLE_ID)"
             if let url = NSURL(string: urlString) {
-                UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
+                UIApplication.shared.open(url as URL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
             }
         }
         let cancelAction = UIAlertAction(title: "あとで", style: .cancel) {
@@ -128,3 +128,8 @@ struct VersionManager {
     }
 }
 
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
+}

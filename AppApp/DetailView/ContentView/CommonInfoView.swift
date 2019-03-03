@@ -22,7 +22,7 @@ class CommonInfoView: UITableView {
         super.init(coder: aDecoder)
     }
     
-    override init(frame: CGRect, style: UITableViewStyle) {
+    override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
         //print("ここ呼ばれている？？？？")
     }

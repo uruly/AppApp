@@ -383,7 +383,7 @@ class ShareViewController: SLComposeServiceViewController {
             
             // item にUIImageが入っている
             if let uiImage = item as? UIImage {
-                self.image = UIImagePNGRepresentation(uiImage)
+                self.image = uiImage.pngData()
             }else if let imageURL = item as? URL{
                 do {
                     let imageData = try Data(contentsOf: imageURL)
@@ -403,7 +403,7 @@ class ShareViewController: SLComposeServiceViewController {
             (item, error) in
             
             if let uiImage = item as? UIImage {
-                self.image = UIImagePNGRepresentation(uiImage)
+                self.image = uiImage.pngData()
             }else if let imageURL = item as? URL{
                 do {
                     let imageData = try Data(contentsOf: imageURL)

@@ -80,7 +80,7 @@ class AppCollectionView: UICollectionView {
     convenience init(frame:CGRect){
         let layout = UICollectionViewFlowLayout()
         let margin:CGFloat = 15.0
-        layout.sectionInset = UIEdgeInsetsMake(margin,margin,margin + 71,margin)
+        layout.sectionInset = UIEdgeInsets.init(top: margin,left: margin,bottom: margin + 71,right: margin)
         layout.minimumLineSpacing = margin
         layout.minimumInteritemSpacing = margin
         let iconSize = CGFloat(UserDefaults.standard.float(forKey:"IconSize"))

@@ -91,7 +91,7 @@ class BottomView: UIView {
         handleBar.opacity = 0.7
         handleBar.path = UIBezierPath(roundedRect: CGRect(x:0,y:0,width:handleWidth,height:5),  cornerRadius:( handleHeight - 2 ) / 2).cgPath
         if let blurFilter = CIFilter(name: "CIGaussianBlur",
-                                     withInputParameters: [kCIInputRadiusKey: 2]) {
+                                     parameters: [kCIInputRadiusKey: 2]) {
             handleBar.backgroundFilters = [blurFilter]
         }
         

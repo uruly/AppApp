@@ -71,7 +71,7 @@ class CreateLabelViewController: UITableViewController {
         super.viewWillDisappear(animated)
     }
     
-    override init(style: UITableViewStyle) {
+    override init(style: UITableView.Style) {
         super.init(style:style)
     }
 
@@ -114,7 +114,7 @@ class CreateLabelViewController: UITableViewController {
             textField = UITextField(frame:cell.contentView.frame)
             textField.leftView = UIView(frame: CGRect(x:0,y:0,
                                                       width:15,height:cell.contentView.frame.height))
-            textField.leftViewMode = UITextFieldViewMode.always
+            textField.leftViewMode = UITextField.ViewMode.always
             textField.delegate = self
             textField.returnKeyType = .done
             //textField.viewWithTag(5)

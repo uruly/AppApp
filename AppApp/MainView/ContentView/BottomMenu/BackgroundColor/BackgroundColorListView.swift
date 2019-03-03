@@ -36,7 +36,7 @@ class BackgroundColorListView: UICollectionView {
     convenience init(frame: CGRect){
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width:50,height:50)
-        layout.sectionInset = UIEdgeInsetsMake(15,15,15,0)
+        layout.sectionInset = UIEdgeInsets.init(top: 15,left: 15,bottom: 15,right: 0)
         layout.minimumLineSpacing = 15
         layout.minimumInteritemSpacing = 0
         layout.scrollDirection = .horizontal

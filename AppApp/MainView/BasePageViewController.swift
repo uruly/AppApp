@@ -30,8 +30,11 @@ class BasePageViewController: UIPageViewController {
     var isAdjustTitle:Bool = false
     var bottomView:BottomView!
     
-    override init(transitionStyle style: UIPageViewControllerTransitionStyle, navigationOrientation: UIPageViewControllerNavigationOrientation, options: [String : Any]? = nil) {
-        super.init(transitionStyle:.scroll,navigationOrientation:.horizontal,options:options)
+    override init(transitionStyle style: UIPageViewController.TransitionStyle, navigationOrientation: UIPageViewController.NavigationOrientation, options: [UIPageViewController.OptionsKey : Any]? = nil) {
+// Local variable inserted by Swift 4.2 migrator.
+let options = convertFromOptionalUIPageViewControllerOptionsKeyDictionary(options)
+
+        super.init(transitionStyle:.scroll,navigationOrientation:.horizontal,options:convertToOptionalUIPageViewControllerOptionsKeyDictionary(options))
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -102,7 +105,7 @@ class BasePageViewController: UIPageViewController {
         self.dataSource = self
         self.delegate = self as UIPageViewControllerDelegate
         
-        let scrollView = self.view.subviews.flatMap { $0 as? UIScrollView }.first
+        let scrollView = self.view.subviews.compactMap { $0 as? UIScrollView }.first
         scrollView?.delegate = self
         isAdjustTitle = true
         
@@ -247,7 +250,7 @@ class BasePageViewController: UIPageViewController {
             AppCollectionView.isWhileEditing = true
             sender.title = "キャンセル"
             //スクロールできないようにする
-            let scrollView = self.view.subviews.flatMap { $0 as? UIScrollView }.first
+            let scrollView = self.view.subviews.compactMap { $0 as? UIScrollView }.first
             scrollView?.isScrollEnabled = false
             if let baseVC:BaseViewController = self.viewControllers?[0] as? BaseViewController{
                 baseVC.collectionView.checkArray = []
@@ -265,7 +268,7 @@ class BasePageViewController: UIPageViewController {
     func cancelEdit(sender:UIBarButtonItem){
         //編集中を解除する
         AppCollectionView.isWhileEditing = false
-        let scrollView = self.view.subviews.flatMap { $0 as? UIScrollView }.first
+        let scrollView = self.view.subviews.compactMap { $0 as? UIScrollView }.first
         scrollView?.isScrollEnabled = true
         sender.title = "選択"
         if let baseVC:BaseViewController = self.viewControllers?[0] as? BaseViewController{
@@ -422,14 +425,17 @@ extension BasePageViewController:UIImagePickerControllerDelegate,UINavigationCon
         picker.dismiss(animated: true, completion: nil)
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+// Local variable inserted by Swift 4.2 migrator.
+let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+
         //容量の問題をここでみてポップアップを出す
-        let image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        let image = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as? UIImage
         //let image = info[UIImagePickerControllerEditedImage] as? UIImage
         //登録画面に遷移
         let setInfoVC = SetInfoViewController()
         setInfoVC.image = image
-        if let url = info[UIImagePickerControllerReferenceURL] as? URL{
+        if let url = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.referenceURL)] as? URL{
             //print(url.path)
             //setInfoVC.url = url
             if url.path.contains("GIF"){
@@ -448,4 +454,26 @@ extension BasePageViewController:UIImagePickerControllerDelegate,UINavigationCon
         picker.pushViewController(setInfoVC, animated: true)
     }
     
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromOptionalUIPageViewControllerOptionsKeyDictionary(_ input: [UIPageViewController.OptionsKey: Any]?) -> [String: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalUIPageViewControllerOptionsKeyDictionary(_ input: [String: Any]?) -> [UIPageViewController.OptionsKey: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIPageViewController.OptionsKey(rawValue: key), value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
+	return input.rawValue
 }
