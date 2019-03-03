@@ -36,7 +36,7 @@ class EditImageViewController: UIViewController {
         let layer = CALayer()
         layer.frame = CGRect(x:0,y:0,width:imageSize,height:imageSize)
         layer.contents = image.cgImage
-        layer.contentsGravity = kCAGravityResizeAspectFill
+        layer.contentsGravity = CALayerContentsGravity.resizeAspectFill
         layer.name = "image"
         imageView.layer.addSublayer(layer)
         
@@ -107,7 +107,7 @@ class EditImageViewController: UIViewController {
     
     func saveImage(){
         let cropImage = imageView.snapshot()
-        let imageData = UIImagePNGRepresentation(cropImage)!
+        let imageData = cropImage.pngData()!
         shareVC.image = imageData
         shareVC.scale = imageView.effectiveScale
         if let layer = imageView.layer.sublayers?.first {
@@ -140,7 +140,7 @@ extension UIView {
         layer.render(in: context)
         let image = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
-        let png = UIImagePNGRepresentation(image)!
+        let png = image.pngData()!
         let pngImage = UIImage(data: png)!
         return pngImage
     }

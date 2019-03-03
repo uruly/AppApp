@@ -80,7 +80,7 @@ class AppCollectionView: UICollectionView {
     convenience init(frame:CGRect){
         let layout = UICollectionViewFlowLayout()
         let margin:CGFloat = 15.0
-        layout.sectionInset = UIEdgeInsetsMake(margin,margin,margin + 71,margin)
+        layout.sectionInset = UIEdgeInsets.init(top: margin,left: margin,bottom: margin + 71,right: margin)
         layout.minimumLineSpacing = margin
         layout.minimumInteritemSpacing = margin
         let iconSize = CGFloat(UserDefaults.standard.float(forKey:"IconSize"))
@@ -329,7 +329,7 @@ extension AppCollectionView:UIScrollViewDelegate {
         let middleHeight = self.appDelegate.baseVC.basePageVC.bottomView.frame.height / 2
         //let minY = maxY - ( middleHeight * 2 )
         let minY = maxY - toolbarHeight
-        let diffX = fabs(lastContentOffsetY - scrollView.contentOffset.y)
+        let diffX = abs(lastContentOffsetY - scrollView.contentOffset.y)
         let frameMinY = self.appDelegate.baseVC.basePageVC.bottomView.frame.minY
         let isiPhoneX = UIScreen.main.bounds.size == CGSize(width: 375, height: 812)
         if isiPhoneX {

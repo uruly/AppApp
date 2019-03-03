@@ -25,7 +25,7 @@ class LabelAppInfoView: UITableView {
         super.init(coder: aDecoder)
     }
     
-    override init(frame: CGRect, style: UITableViewStyle) {
+    override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: .grouped)
     }
 
@@ -38,7 +38,7 @@ class LabelAppInfoView: UITableView {
         self.register(UITableViewCell.self, forCellReuseIdentifier: "AppInfo")
         self.register(UINib(nibName:"MemoCell",bundle:nil), forCellReuseIdentifier: "MemoCell")
         self.estimatedRowHeight = 500
-        self.rowHeight = UITableViewAutomaticDimension
+        self.rowHeight = UITableView.automaticDimension
         self.contentInset.bottom = 15
         //print("awake")
         
@@ -54,7 +54,7 @@ class LabelAppInfoView: UITableView {
     @objc func showKeyboard(notification: Notification) {
         
         if let userInfo = notification.userInfo {
-            if let keyboardFrameInfo = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue {
+            if let keyboardFrameInfo = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
                 // キーボードの高さを取得
                 //print(keyboardFrameInfo.cgRectValue.height)
                 let keyboardHeight = keyboardFrameInfo.cgRectValue.height

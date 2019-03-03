@@ -41,7 +41,7 @@ extension ColorSetView: UICollectionViewDelegateFlowLayout {
         return CGSize(width:50,height:50)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsetsMake(15, 15, 15, 15)
+        return UIEdgeInsets.init(top: 15, left: 15, bottom: 15, right: 15)
     }
 }
 

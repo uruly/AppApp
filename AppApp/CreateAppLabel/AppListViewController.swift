@@ -32,7 +32,7 @@ class AppListViewController: UIViewController {
         //コレクションビューで追加するアプリを表示したい
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width:50,height:50)
-        layout.sectionInset = UIEdgeInsetsMake(20, 15, 20, 15)
+        layout.sectionInset = UIEdgeInsets.init(top: 20, left: 15, bottom: 20, right: 15)
         let naviBarHeight = self.navigationController?.navigationBar.frame.height ?? 57.0
         collectionView = UICollectionView(frame: CGRect(x:0,y:naviBarHeight,width:width,height:height - naviBarHeight), collectionViewLayout: layout)
         collectionView.delegate = self

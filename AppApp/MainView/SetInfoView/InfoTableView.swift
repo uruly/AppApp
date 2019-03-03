@@ -38,7 +38,7 @@ class InfoTableView: UITableView {
         super.init(coder: aDecoder)
     }
     
-    override init(frame: CGRect, style: UITableViewStyle) {
+    override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
         self.register(UINib(nibName:"InfoTableViewCell",bundle:nil), forCellReuseIdentifier: "common")
         self.register(UITableViewCell.self, forCellReuseIdentifier: "label")
@@ -53,7 +53,7 @@ class InfoTableView: UITableView {
             checkArray.append(labelArray[0])
         }
         self.estimatedRowHeight = 500
-        self.rowHeight = UITableViewAutomaticDimension
+        self.rowHeight = UITableView.automaticDimension
     }
     
     convenience init(frame:CGRect){
@@ -66,7 +66,7 @@ class InfoTableView: UITableView {
             return
         }
         if let userInfo = notification.userInfo {
-            if let keyboardFrameInfo = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue {
+            if let keyboardFrameInfo = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
                 // キーボードの高さを取得
                 //print(keyboardFrameInfo.cgRectValue.height)
                 let keyboardHeight = keyboardFrameInfo.cgRectValue.height

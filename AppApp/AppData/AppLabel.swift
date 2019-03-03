@@ -64,7 +64,7 @@ class AppLabel {
         didSet {
             let userDefaults = UserDefaults.standard
             if let image = AppLabel.currentBackgroundImage {
-                let data = UIImagePNGRepresentation(image)
+                let data = image.pngData()
                 //print("保存してるよ")
                 userDefaults.set(data, forKey: "backgroundImage")
             }else {

@@ -43,7 +43,7 @@ class WebViewController: UIViewController {
         self.view.addSubview(webView)
         
         
-        indicator = PassThroughIndicator(activityIndicatorStyle: .gray)
+        indicator = PassThroughIndicator(style: .gray)
         indicator.frame = self.view.frame
         indicator.startAnimating()
         indicator.isHidden = true
@@ -72,8 +72,8 @@ class WebViewController: UIViewController {
             let transition:CATransition = CATransition()
             transition.startProgress = 0
             transition.endProgress = 1.0
-            transition.type = kCATransitionMoveIn
-            transition.subtype = kCATransitionFromLeft
+            transition.type = CATransitionType.moveIn
+            transition.subtype = CATransitionSubtype.fromLeft
             transition.duration = 0.3
             self.webView.layer.add(transition, forKey: nil)
             self.webView.goBack()
@@ -103,8 +103,8 @@ class WebViewController: UIViewController {
             let transition:CATransition = CATransition()
             transition.startProgress = 0
             transition.endProgress = 1.0
-            transition.type = kCATransitionMoveIn
-            transition.subtype = kCATransitionFromRight
+            transition.type = CATransitionType.moveIn
+            transition.subtype = CATransitionSubtype.fromRight
             transition.duration = 0.3
             self.webView.layer.add(transition, forKey: nil)
             self.webView.goForward()
@@ -119,7 +119,7 @@ class WebViewController: UIViewController {
     @objc func goSafari(){
         if let url = webView.url{
             let app:UIApplication = UIApplication.shared
-            app.open(url, options: [:], completionHandler: nil)
+            app.open(url, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
         }
     }
     
@@ -155,7 +155,7 @@ extension WebViewController:WKNavigationDelegate{
         //print("ここ")
         if isMatch(input: urlString,pattern: "\\/\\/itunes\\.apple\\.com\\/") {
             // AppStoreのリンクなら、ストアアプリで開く
-            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+            UIApplication.shared.open(url!, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
             decisionHandler(WKNavigationActionPolicy.cancel)
         }else {
             decisionHandler(WKNavigationActionPolicy.allow)
@@ -197,7 +197,7 @@ extension WebViewController:UIScrollViewDelegate {
         let toolBarHeight:CGFloat = 44.0
         let middleHeight = toolBarHeight / 2
         let minY = maxY - ( middleHeight * 2 )
-        let diffX = fabs(lastContentOffsetY - scrollView.contentOffset.y)
+        let diffX = abs(lastContentOffsetY - scrollView.contentOffset.y)
         let frameMinY = self.toolbar.frame.minY
         //let frameMaxY = self.toolbar.frame.maxY
         //let currentFrameCenterY = self.toolbar.center.y
@@ -233,3 +233,8 @@ extension WebViewController:UIScrollViewDelegate {
     
 }
 
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
+}

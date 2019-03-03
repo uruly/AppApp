@@ -22,14 +22,14 @@ class CreateAppLabelTableView: UITableView {
         super.init(coder: aDecoder)
     }
     
-    override init(frame: CGRect, style: UITableViewStyle) {
+    override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
         self.delegate = self
         self.dataSource = self
         self.register(UITableViewCell.self, forCellReuseIdentifier: "createAppLabel")
         self.register(UINib(nibName:"MemoCell",bundle:nil), forCellReuseIdentifier: "memo")
         self.estimatedRowHeight = 500
-        self.rowHeight = UITableViewAutomaticDimension
+        self.rowHeight = UITableView.automaticDimension
     }
     
     convenience init(frame:CGRect,createAppLabelVC:CreateAppLabelViewController){
@@ -103,7 +103,7 @@ extension CreateAppLabelTableView:UITableViewDataSource {
                     let textField = UITextField(frame:cell.contentView.frame)
                     textField.leftView = UIView(frame: CGRect(x:0,y:0,
                                                               width:15,height:cell.contentView.frame.height))
-                    textField.leftViewMode = UITextFieldViewMode.always
+                    textField.leftViewMode = UITextField.ViewMode.always
                     textField.delegate = self
                     textField.returnKeyType = .done
                     //textField.viewWithTag(5)

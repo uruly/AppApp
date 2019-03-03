@@ -68,7 +68,7 @@ class SetInfoViewController: UIViewController {
         let layer = CALayer()
         layer.frame = CGRect(x:0,y:0,width:imageSize,height:imageSize)
         layer.contents = image.cgImage
-        layer.contentsGravity = kCAGravityResizeAspectFill
+        layer.contentsGravity = CALayerContentsGravity.resizeAspectFill
         layer.name = "image"
         imageView.layer.addSublayer(layer)
         
@@ -91,7 +91,7 @@ class SetInfoViewController: UIViewController {
         NotificationCenter.default.addObserver(
             tableView,
             selector: #selector(tableView.showKeyboard(notification:)),
-            name: NSNotification.Name.UIKeyboardDidShow,
+            name: UIResponder.keyboardDidShowNotification,
             object: nil
         )
         
@@ -135,7 +135,7 @@ class SetInfoViewController: UIViewController {
         }
         let id = UUID().uuidString + "ROUNDCORNER"
         let cropImage = imageView.snapshot()
-        let imageData = UIImagePNGRepresentation(cropImage)!
+        let imageData = cropImage.pngData()!
         saveAppData(name: titleName,developer:creator,id:id,urlString:"",image:imageData)
         //UIImageWriteToSavedPhotosAlbum(cropImage, self, nil, nil)  //ここいれたいけども
         self.dismiss(animated: true, completion: nil)

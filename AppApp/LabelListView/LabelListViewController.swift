@@ -58,7 +58,7 @@ class LabelListViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width:50,height:50)
         layout.scrollDirection = .horizontal
-        layout.sectionInset = UIEdgeInsetsMake(0, 15, 0, 15)
+        layout.sectionInset = UIEdgeInsets.init(top: 0, left: 15, bottom: 0, right: 15)
         collectionView = UICollectionView(frame: CGRect(x:0,y:naviBarHeight,width:width,height:70), collectionViewLayout: layout)
         collectionView.delegate = self
         collectionView.dataSource = self

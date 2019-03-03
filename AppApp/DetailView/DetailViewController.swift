@@ -20,13 +20,13 @@ class DetailViewController: UIViewController {
                 NotificationCenter.default.addObserver(
                     delegate,
                     selector: #selector(delegate.labelAppInfoView.showKeyboard(notification:)),
-                    name: NSNotification.Name.UIKeyboardDidShow,
+                    name: UIResponder.keyboardDidShowNotification,
                     object: nil
                 )
                 NotificationCenter.default.addObserver(
                     delegate,
                     selector: #selector(delegate.labelAppInfoView.dismissKeyboard(notification:)),
-                    name: NSNotification.Name.UIKeyboardDidHide,
+                    name: UIResponder.keyboardDidHideNotification,
                     object: nil
                 )
                 canSetObserver = false
@@ -54,7 +54,7 @@ class DetailViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         //layout.estimatedItemSize = CGSize(width:width - (margin * 2),height:200)
         layout.itemSize = CGSize(width:self.view.frame.width,height:500)
-        layout.sectionInset = UIEdgeInsetsMake(15, 0, 50, 0)
+        layout.sectionInset = UIEdgeInsets.init(top: 15, left: 0, bottom: 50, right: 0)
         contentView = DetailContentView(frame: CGRect(x:0,y:0,width:width,height:height), collectionViewLayout: layout)
         self.view.addSubview(contentView)
         contentView.backgroundColor = UIColor.white
