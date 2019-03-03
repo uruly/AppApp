@@ -197,7 +197,7 @@ extension WebViewController:UIScrollViewDelegate {
         let toolBarHeight:CGFloat = 44.0
         let middleHeight = toolBarHeight / 2
         let minY = maxY - ( middleHeight * 2 )
-        let diffX = fabs(lastContentOffsetY - scrollView.contentOffset.y)
+        let diffX = abs(lastContentOffsetY - scrollView.contentOffset.y)
         let frameMinY = self.toolbar.frame.minY
         //let frameMaxY = self.toolbar.frame.maxY
         //let currentFrameCenterY = self.toolbar.center.y

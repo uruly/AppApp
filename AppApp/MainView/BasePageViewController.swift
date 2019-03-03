@@ -385,7 +385,7 @@ extension BasePageViewController: UIScrollViewDelegate {
         //print("スクロール中\(scrollView.contentOffset.x)")
         //ここでカテゴリバーを移動させる
         let diffX = scrollView.contentOffset.x - lastContentOffsetX
-        if fabs(diffX) < 200 && isSelectionScroll{
+        if abs(diffX) < 200 && isSelectionScroll{
             //selectionBar.scrollToHorizontallyCenter(index:self.nextPageIndex ,x:diffX)
         }
         lastContentOffsetX = scrollView.contentOffset.x

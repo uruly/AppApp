@@ -172,7 +172,7 @@ class ShareViewController: SLComposeServiceViewController {
     func isAppStore(_ completion:@escaping (Int)->()){
         let extensionItem: NSExtensionItem = self.extensionContext?.inputItems.first as! NSExtensionItem
        // var bool = false
-        let itemProviders = extensionItem.attachments as! [NSItemProvider]
+        guard let itemProviders = extensionItem.attachments else { return }
         //print(itemProviders)
         if !itemProviders.contains(where: { (itemProvider) -> Bool in
             return itemProvider.hasItemConformingToTypeIdentifier("public.url")
@@ -204,7 +204,7 @@ class ShareViewController: SLComposeServiceViewController {
     func getImageData(completion:@escaping (UIImage)->()) {
         let extensionItem: NSExtensionItem = self.extensionContext?.inputItems.first as! NSExtensionItem
         // var bool = false
-        let itemProviders = extensionItem.attachments as! [NSItemProvider]
+        guard let itemProviders = extensionItem.attachments else { return }
         for itemProvider in itemProviders {
             //IMAGE
             if (itemProvider.hasItemConformingToTypeIdentifier("public.image")) {
@@ -221,7 +221,7 @@ class ShareViewController: SLComposeServiceViewController {
                             print(error)
                         }
                     }
-                    print("error\(error)")
+//                    print("error\(error)")
                 })
             }
         }
@@ -230,7 +230,7 @@ class ShareViewController: SLComposeServiceViewController {
     func isContainImage(_ completion:()->()){
         let extensionItem: NSExtensionItem = self.extensionContext?.inputItems.first as! NSExtensionItem
         // var bool = false
-        let itemProviders = extensionItem.attachments as! [NSItemProvider]
+        guard let itemProviders = extensionItem.attachments else { return }
         //print(itemProviders)
         if !itemProviders.contains(where: { (itemProvider) -> Bool in
             return itemProvider.hasItemConformingToTypeIdentifier("public.image") || itemProvider.hasItemConformingToTypeIdentifier("public.jpeg")
@@ -324,7 +324,7 @@ class ShareViewController: SLComposeServiceViewController {
 
     override func didSelectPost() {
         let extensionItem: NSExtensionItem = self.extensionContext?.inputItems.first as! NSExtensionItem
-        let itemProviders = extensionItem.attachments as! [NSItemProvider]
+        guard let itemProviders = extensionItem.attachments else { return }
         
         //self.name = String(describing: extensionItem.attributedContentText)
         //print("name\(self.name)")
@@ -394,7 +394,7 @@ class ShareViewController: SLComposeServiceViewController {
             }
             
             self.saveItemCount += 1
-            print("error\(error)")
+//            print("error\(error)")
         })
     }
     
@@ -417,7 +417,7 @@ class ShareViewController: SLComposeServiceViewController {
 //            self.image = UIImagePNGRepresentation(uiImage)
             
             self.saveItemCount += 1
-            print("error\(error)")
+//            print("error\(error)")
         })
     }
 
@@ -489,7 +489,7 @@ class ShareViewController: SLComposeServiceViewController {
                     print("から文字だよ")
                 }
             }
-            print("error\(error)")
+//            print("error\(error)")
         })
     }
     
@@ -510,7 +510,7 @@ class ShareViewController: SLComposeServiceViewController {
                 //self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
             }
             self.saveItemCount += 2
-            print("error\(error)")
+//            print("error\(error)")
         })
     }
 

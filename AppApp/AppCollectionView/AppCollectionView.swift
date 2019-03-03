@@ -329,7 +329,7 @@ extension AppCollectionView:UIScrollViewDelegate {
         let middleHeight = self.appDelegate.baseVC.basePageVC.bottomView.frame.height / 2
         //let minY = maxY - ( middleHeight * 2 )
         let minY = maxY - toolbarHeight
-        let diffX = fabs(lastContentOffsetY - scrollView.contentOffset.y)
+        let diffX = abs(lastContentOffsetY - scrollView.contentOffset.y)
         let frameMinY = self.appDelegate.baseVC.basePageVC.bottomView.frame.minY
         let isiPhoneX = UIScreen.main.bounds.size == CGSize(width: 375, height: 812)
         if isiPhoneX {
