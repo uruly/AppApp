@@ -161,12 +161,6 @@
 		66983DF72005E8A1009C9AEF /* GoogleAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66983DF62005E8A0009C9AEF /* GoogleAnalytics.framework */; };
 		66983DF92005E974009C9AEF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 66983DF82005E973009C9AEF /* GoogleService-Info.plist */; };
 		66983DFB2005E9C8009C9AEF /* GATrackingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66983DFA2005E9C8009C9AEF /* GATrackingManager.swift */; };
-		66983E3B2006FFCC009C9AEF /* SwiftyLocalReceiptValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66983E3A2006FFCC009C9AEF /* SwiftyLocalReceiptValidator.swift */; };
-		66983E3D20070103009C9AEF /* AppleIncRootCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 66983E3C20070102009C9AEF /* AppleIncRootCertificate.cer */; };
-		66983E4620070FCF009C9AEF /* pkcs7_union_accessors.c in Sources */ = {isa = PBXBuildFile; fileRef = 66983E4520070FCF009C9AEF /* pkcs7_union_accessors.c */; };
-		66983E4920071306009C9AEF /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66983E4720071305009C9AEF /* libcrypto.a */; };
-		66983E4A20071306009C9AEF /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66983E4820071306009C9AEF /* libssl.a */; };
-		66983E4C200719F4009C9AEF /* SwiftyReceiptValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66983E4B200719F4009C9AEF /* SwiftyReceiptValidator.swift */; };
 		66A3C3F91FCB66E7007EB295 /* AppInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A3C3F81FCB66E7007EB295 /* AppInfoView.swift */; };
 		66AA1DF21FC543BA001C419E /* IconSizeChanger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AA1DF11FC543BA001C419E /* IconSizeChanger.swift */; };
 		66AA1DFA1FC56519001C419E /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AA1DF91FC56519001C419E /* ShareViewController.swift */; };
@@ -382,15 +376,9 @@
 		66983DF62005E8A0009C9AEF /* GoogleAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleAnalytics.framework; path = Carthage/Build/iOS/GoogleAnalytics.framework; sourceTree = "<group>"; };
 		66983DF82005E973009C9AEF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		66983DFA2005E9C8009C9AEF /* GATrackingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GATrackingManager.swift; sourceTree = "<group>"; };
-		66983E3A2006FFCC009C9AEF /* SwiftyLocalReceiptValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyLocalReceiptValidator.swift; sourceTree = "<group>"; };
-		66983E3C20070102009C9AEF /* AppleIncRootCertificate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleIncRootCertificate.cer; sourceTree = "<group>"; };
-		66983E3E20070A54009C9AEF /* AppApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		66983E4120070C08009C9AEF /* openssl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = openssl.framework; path = Carthage/Checkouts/OpenSSL/Frameworks/ios/openssl.framework; sourceTree = "<group>"; };
-		66983E4420070FCF009C9AEF /* pkcs7_union_accessors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pkcs7_union_accessors.h; sourceTree = "<group>"; };
-		66983E4520070FCF009C9AEF /* pkcs7_union_accessors.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = pkcs7_union_accessors.c; sourceTree = "<group>"; };
 		66983E4720071305009C9AEF /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "Carthage/Checkouts/OpenSSL/lib-ios/libcrypto.a"; sourceTree = "<group>"; };
 		66983E4820071306009C9AEF /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = "Carthage/Checkouts/OpenSSL/lib-ios/libssl.a"; sourceTree = "<group>"; };
-		66983E4B200719F4009C9AEF /* SwiftyReceiptValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyReceiptValidator.swift; sourceTree = "<group>"; };
 		66A3C3F81FCB66E7007EB295 /* AppInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoView.swift; sourceTree = "<group>"; };
 		66AA1DF11FC543BA001C419E /* IconSizeChanger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IconSizeChanger.swift; path = AppApp/MainView/ContentView/IconSizeChanger.swift; sourceTree = SOURCE_ROOT; };
 		66AA1DF71FC56519001C419E /* ShareFromAppStoreExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ShareFromAppStoreExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -408,8 +396,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66983E4920071306009C9AEF /* libcrypto.a in Frameworks */,
-				66983E4A20071306009C9AEF /* libssl.a in Frameworks */,
 				66983DF72005E8A1009C9AEF /* GoogleAnalytics.framework in Frameworks */,
 				666E06C71FCBDE9D0043DCFF /* StoreKit.framework in Frameworks */,
 				667ECE511FC382C7009233DE /* RealmSwift.framework in Frameworks */,
@@ -714,11 +700,8 @@
 			isa = PBXGroup;
 			children = (
 				66498E241FC5A6D700239B47 /* AppApp.entitlements */,
-				66983E3C20070102009C9AEF /* AppleIncRootCertificate.cer */,
 				667ECE181FC36784009233DE /* AppDelegate.swift */,
 				6677FC251FCA7E0400CB105E /* VersionManager.swift */,
-				66983E3A2006FFCC009C9AEF /* SwiftyLocalReceiptValidator.swift */,
-				66983E4B200719F4009C9AEF /* SwiftyReceiptValidator.swift */,
 				66983DFA2005E9C8009C9AEF /* GATrackingManager.swift */,
 				660B57CC1FD1501500DBC823 /* BalloonView */,
 				660B579B1FD067E900DBC823 /* TutorialView */,
@@ -741,9 +724,6 @@
 				660B57761FCFDB1000DBC823 /* colorData.json */,
 				660B57BC1FD12A9A00DBC823 /* help.json */,
 				6662E14420024B1700FB30C7 /* backgroundImage.json */,
-				66983E3E20070A54009C9AEF /* AppApp-Bridging-Header.h */,
-				66983E4420070FCF009C9AEF /* pkcs7_union_accessors.h */,
-				66983E4520070FCF009C9AEF /* pkcs7_union_accessors.c */,
 			);
 			path = AppApp;
 			sourceTree = "<group>";
@@ -1004,7 +984,6 @@
 				66983DED2005E347009C9AEF /* dotSkyBlue.jpg in Resources */,
 				660B57771FCFDB1000DBC823 /* colorData.json in Resources */,
 				66498E371FC8067100239B47 /* check.png in Resources */,
-				66983E3D20070103009C9AEF /* AppleIncRootCertificate.cer in Resources */,
 				660B57B91FD10F9500DBC823 /* StartViewCell.xib in Resources */,
 				660B57AF1FD0806900DBC823 /* screenShot1.jpeg in Resources */,
 				660B57981FD0466A00DBC823 /* logo.png in Resources */,
@@ -1122,12 +1101,10 @@
 				6662E1322000055F00FB30C7 /* UIResponder+FindView.swift in Sources */,
 				667ECE4B1FC3690E009233DE /* BaseViewController.swift in Sources */,
 				667ECE471FC36850009233DE /* BaseNavigationViewController.swift in Sources */,
-				66983E4620070FCF009C9AEF /* pkcs7_union_accessors.c in Sources */,
 				660B576D1FCFC5F500DBC823 /* ColorPageView.swift in Sources */,
 				6606168E1FCD35AE00667020 /* DeleteViewCell.swift in Sources */,
 				6677FC241FCA6CE400CB105E /* AppListViewController.swift in Sources */,
 				667ECE641FC3A7BD009233DE /* CreateAppLabelViewController.swift in Sources */,
-				66983E4C200719F4009C9AEF /* SwiftyReceiptValidator.swift in Sources */,
 				667ECE6B1FC3CB79009233DE /* ColorPicker.swift in Sources */,
 				6662E11E1FFE98CA00FB30C7 /* BottomView.swift in Sources */,
 				66498E341FC7BA3600239B47 /* UIApplication+Stack.swift in Sources */,
@@ -1165,7 +1142,6 @@
 				6662E1412001D76300FB30C7 /* UIView+SnapShot.swift in Sources */,
 				666E06B41FCB9A880043DCFF /* MemoCell.swift in Sources */,
 				660B57D71FD16F0B00DBC823 /* HelpViewCell.swift in Sources */,
-				66983E3B2006FFCC009C9AEF /* SwiftyLocalReceiptValidator.swift in Sources */,
 				6662E1392000652000FB30C7 /* InfoTableView.swift in Sources */,
 				660B57B81FD10F9500DBC823 /* StartViewCell.swift in Sources */,
 				66498E2E1FC6B92C00239B47 /* ApplicationData.swift in Sources */,
@@ -1395,7 +1371,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Carthage/Checkouts/OpenSSL/Frameworks/ios",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = AppApp/Info.plist;
@@ -1407,7 +1382,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.uruly.AppApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "AppApp/AppApp-Bridging-Header.h";
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1427,7 +1404,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Carthage/Checkouts/OpenSSL/Frameworks/ios",
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = AppApp/Info.plist;
@@ -1439,7 +1415,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.uruly.AppApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "AppApp/AppApp-Bridging-Header.h";
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
