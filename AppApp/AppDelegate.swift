@@ -31,27 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
         }
-        
-        
-        let receiptValidator = ReceiptValidator()
-        let validationResult = receiptValidator.validateReceipt()
-        switch validationResult {
-        case .success(let receipt):
-            let appVersion = receipt.appVersion ?? ""
-            let date = receipt.expirationDate
-            let origAppVersion = receipt.originalAppVersion ?? ""
-            GATrackingManager.sendEventTracking(category: "APP VERSION:\(appVersion)", action: "DATE:\(String(describing: date))", label: "ORIGINAL VERSION:\(origAppVersion)")
-        case .error(let error):
-            // Handle receipt validation failure. Possibilities might be...
-            // use StoreKit to request a new receipt
-            // enter a "grace period"
-            // disable a feature of your app
-            // etc...
-            GATrackingManager.sendEventTracking(category: "レシートないよ", action: "\(error)", label: "")
-            print(error)
-        }
-        
-        //window?.rootViewController = DetailViewController()
+
         return true
     }
 
