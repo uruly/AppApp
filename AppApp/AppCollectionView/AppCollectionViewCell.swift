@@ -11,23 +11,23 @@ import UIKit
 class AppCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var imageView: UIImageView!
-    
+
     @IBOutlet weak var checkImageView: UIImageView!
-    
-    var imageMaskView:UIView!
+
+    var imageMaskView: UIView!
     //var checkView:UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         //checkImageView.image = UIImage(named:"check2.png")?.withRenderingMode(.alwaysTemplate)
         //checkImageView.tintColor = UIColor.checkBtn()
-        
+
         checkImageView.isHidden = true
-        
+
         //影をつけるかどうか
         self.layer.masksToBounds = false
         self.layer.shadowColor = UIColor.darkGray.cgColor
-        self.layer.shadowOffset = CGSize(width:2,height:2)
+        self.layer.shadowOffset = CGSize(width: 2, height: 2)
         self.layer.shadowRadius = 4
         self.layer.shadowOpacity = 0.5
     }

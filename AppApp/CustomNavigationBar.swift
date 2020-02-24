@@ -12,7 +12,7 @@ class CustomNavigationBar: UINavigationBar {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        
+
         if #available(iOS 11.0, *) {
             for subview in self.subviews {
                 let stringFromClass = NSStringFromClass(subview.classForCoder)

@@ -11,19 +11,19 @@ import UIKit
 class DeleteAppView: UITableView {
 
     var headerTextList = ["Appを削除"]
-    var labelName:String = ""
-    var detailVC:DetailViewController!
+    var labelName: String = ""
+    var detailVC: DetailViewController!
     //var widthLayout:CGFloat!
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
+
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
         //print("ここ呼ばれている？？？？")
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         self.delegate = self
@@ -34,29 +34,29 @@ class DeleteAppView: UITableView {
         //self.estimatedRowHeight = 150
         //self.rowHeight = UITableViewAutomaticDimension
     }
-    
+
     override func reloadData() {
         super.reloadData()
         if detailVC != nil {
-            if detailVC.appData.label.id == "0"  {
-                detailVC.contentView.deleteViewFrame = CGSize(width:detailVC.view.frame.width,height:100)
-            }else {
-                detailVC.contentView.deleteViewFrame = CGSize(width:detailVC.view.frame.width,height:150)
+            if detailVC.appData.label.id == "0" {
+                detailVC.contentView.deleteViewFrame = CGSize(width: detailVC.view.frame.width, height: 100)
+            } else {
+                detailVC.contentView.deleteViewFrame = CGSize(width: detailVC.view.frame.width, height: 150)
             }
         }
     }
 
 }
 extension DeleteAppView: UITableViewDelegate {
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         cell?.isSelected = false
-        
-        if detailVC.appData.label.id == "0"  {
+
+        if detailVC.appData.label.id == "0" {
             detailVC.deleteAppAllData()
-        }else {
-            if indexPath.row == 0{
+        } else {
+            if indexPath.row == 0 {
                 detailVC.deleteAppLabelData()
             }
             if indexPath.row == 1 {
@@ -72,18 +72,18 @@ extension DeleteAppView: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return headerTextList.count
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {   //基本情報
             if detailVC.appData.label.id == "0" {
                 return 1
-            }else {
+            } else {
                 return 2
             }
         }
         return 0
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AppInfo", for: indexPath)
         cell.textLabel?.font = UIFont.systemFont(ofSize: 14)
@@ -96,7 +96,7 @@ extension DeleteAppView: UITableViewDataSource {
             default:
                 cell.textLabel?.text = ""
             }
-        }else {
+        } else {
             cell.textLabel?.text = "全てのラベルからAppを削除する"
         }
         return cell

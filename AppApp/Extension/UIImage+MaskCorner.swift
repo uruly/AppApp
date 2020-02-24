@@ -13,9 +13,9 @@ extension UIImage {
         UIGraphicsBeginImageContextWithOptions(self.size, true, 0.0)
         let rect = CGRect(origin: CGPoint.zero, size: self.size)
         UIBezierPath(roundedRect: rect, cornerRadius: r).addClip()
-        draw(in:rect)
+        draw(in: rect)
         let clippedImage = UIGraphicsGetImageFromCurrentImageContext()
-        
+
         UIGraphicsEndImageContext()
         return clippedImage
     }

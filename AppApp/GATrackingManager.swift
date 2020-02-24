@@ -9,7 +9,7 @@
 import GoogleAnalytics
 
 class GATrackingManager {
-    
+
     //スクリーントラッキング
     class func sendScreenTracking(screenName: String) {
         if let tracker = GAI.sharedInstance().defaultTracker {
@@ -18,12 +18,12 @@ class GATrackingManager {
             tracker.set(kGAIScreenName, value: nil)
         }
     }
-    
+
     //イベントトラッキング
     class func sendEventTracking(category: String, action: String, label: String) {
         if let tracker = GAI.sharedInstance().defaultTracker {
             tracker.send(GAIDictionaryBuilder.createEvent(withCategory: category, action: action, label: label, value: nil).build() as [NSObject: AnyObject])
         }
     }
-    
+
 }

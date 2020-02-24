@@ -15,6 +15,5 @@ class WelcomeViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-    
 
 }
