@@ -943,6 +943,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = 667ECE0C1FC36784009233DE;
 			productRefGroup = 667ECE161FC36784009233DE /* Products */;
