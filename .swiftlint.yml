@@ -1,0 +1,25 @@
+disabled_rules:
+  - force_cast
+
+included:
+  - AppApp
+
+excluded:
+  - Carthage
+
+line_length: 200
+large_tuple: 5
+
+file_length:
+  warning: 500
+  error: 1200
+
+nesting:
+  type_level:
+    warning: 2
+
+identifier_name:
+  excluded:
+    - id
+    - URL
+cyclomatic_complexity: 20
