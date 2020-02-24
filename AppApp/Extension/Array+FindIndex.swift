@@ -10,7 +10,7 @@ import UIKit
 
 extension Array {
     func findIndex(includeElement: (Element) -> Bool) -> [Int] {
-        var indexArray:[Int] = []
+        var indexArray: [Int] = []
         for (index, element) in enumerated() {
             if includeElement(element) {
                 indexArray.append(index)
@@ -18,10 +18,9 @@ extension Array {
         }
         return indexArray
     }
-    
+
     func findAll(includeElement: (Element) -> Bool) -> [(Int, Element)] {
         let seq = zip(0..<self.count, self)
-        return seq.filter() { includeElement($0.1) }
+        return seq.filter { includeElement($0.1) }
     }
 }
-

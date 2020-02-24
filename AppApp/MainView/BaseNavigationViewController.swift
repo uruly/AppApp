@@ -21,38 +21,38 @@ class BaseNavigationViewController: UINavigationController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
-//    override init(navigationBarClass: AnyClass?, toolbarClass: AnyClass?) {
-//        
-//    }
-    
+
+    //    override init(navigationBarClass: AnyClass?, toolbarClass: AnyClass?) {
+    //
+    //    }
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let _ = VersionManager(vc:self)
+        _ = VersionManager(vc: self)
         let userDefaults = UserDefaults.standard
-        if !userDefaults.bool(forKey:"FirstLaunch"){
+        if !userDefaults.bool(forKey: "FirstLaunch") {
             let tutorialVC = TutorialViewController()
             //print("First")
             self.present(tutorialVC, animated: true, completion: nil)
-            userDefaults.set(true,forKey:"FirstLaunch")
+            userDefaults.set(true, forKey: "FirstLaunch")
         }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-//
-//    override var toolbar: UIToolbar! {
-//        get {
-//            return self.toolbar
-//        }
-//        set {
-//            self.toolbar = newValue
-//        }
-//    }
+    //
+    //    override var toolbar: UIToolbar! {
+    //        get {
+    //            return self.toolbar
+    //        }
+    //        set {
+    //            self.toolbar = newValue
+    //        }
+    //    }
 
 }

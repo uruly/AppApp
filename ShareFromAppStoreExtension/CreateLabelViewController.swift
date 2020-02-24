@@ -171,7 +171,7 @@ class CreateLabelViewController: UITableViewController {
                                              "order":order
             ])
         try! realm.write {
-            realm.add(label,update:true)
+            realm.add(label, update: .all)
         }
         completion()
 

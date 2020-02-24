@@ -17,13 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
+
         // GoogleAnalyticsの設定
         if let gai = GAI.sharedInstance() {
             gai.trackUncaughtExceptions = true
-            
+
             if let path = Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist") {
                 if let propertyList = NSDictionary(contentsOfFile: path) as? [String: AnyObject] {
                     let trackingID = propertyList["TRACKING_ID"] as! String
@@ -42,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        
+
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -61,6 +60,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
 }
-

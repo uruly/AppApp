@@ -11,65 +11,62 @@ import WebKit
 
 class WebViewController: UIViewController {
 
-    var searchWord:String = ""
-    var webView:WKWebView!
-    var toolbar:WebPageToolbar!
-    var lastContentOffsetY:CGFloat = 0
-    var indicator:PassThroughIndicator!
-    
+    var searchWord: String = ""
+    var webView: WKWebView!
+    var toolbar: WebPageToolbar!
+    var lastContentOffsetY: CGFloat = 0
+    var indicator: PassThroughIndicator!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.view.backgroundColor = UIColor.backgroundGray()
-        let toolBarHeight:CGFloat = 44.0
+        let toolBarHeight: CGFloat = 44.0
         let width = self.view.frame.width
         let height = self.view.frame.height
-        
+
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        
-        webView = WKWebView(frame: CGRect(x:0,y:0,width:width,height:height))
+
+        webView = WKWebView(frame: CGRect(x: 0, y: 0, width: width, height: height))
         webView.scrollView.contentInset.bottom = toolBarHeight
         webView.navigationDelegate = self
         webView.uiDelegate = self
         webView.scrollView.delegate = self
         webView.allowsBackForwardNavigationGestures = true
-        
+
         let urlString = "https://www.google.co.jp/search?&q=\(searchWord)"
-        let encodedUrlString = urlString.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.urlQueryAllowed)
-        
+        let encodedUrlString = urlString.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
+
         let url = NSURL(string: encodedUrlString!)
         let request = NSURLRequest(url: url! as URL)
         webView.load(request as URLRequest)
         self.view.addSubview(webView)
-        
-        
+
         indicator = PassThroughIndicator(style: .gray)
         indicator.frame = self.view.frame
         indicator.startAnimating()
         indicator.isHidden = true
         self.view.addSubview(indicator)
-        
-        
+
         //ツールバーを表示
-        toolbar = WebPageToolbar(frame:CGRect(x:0,y:height - toolBarHeight,width:width,height:toolBarHeight))
-        let back = UIBarButtonItem(image: UIImage(named:"left_arrow.png"), style: .plain, target: self, action: #selector(self.goBack))
-        let forward = UIBarButtonItem(image: UIImage(named:"right_arrow.png"), style: .plain, target: self, action: #selector(self.goForward))
+        toolbar = WebPageToolbar(frame: CGRect(x: 0, y: height - toolBarHeight, width: width, height: toolBarHeight))
+        let back = UIBarButtonItem(image: UIImage(named: "left_arrow.png"), style: .plain, target: self, action: #selector(self.goBack))
+        let forward = UIBarButtonItem(image: UIImage(named: "right_arrow.png"), style: .plain, target: self, action: #selector(self.goForward))
         let refresh = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(self.refreshView))
         let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         back.tintColor = UIColor.lightGray
         forward.tintColor = UIColor.lightGray
-        let safari = UIBarButtonItem(image: UIImage(named:"safari.png"), style: .plain, target: self, action: #selector(self.goSafari))
-        toolbar.items = [back,flexible,forward,flexible,refresh,flexible,safari]
+        let safari = UIBarButtonItem(image: UIImage(named: "safari.png"), style: .plain, target: self, action: #selector(self.goSafari))
+        toolbar.items = [back, flexible, forward, flexible, refresh, flexible, safari]
         self.setToolbarItems(toolbar.items, animated: false)
         self.navigationController?.setToolbarHidden(false, animated: true)
         //self.view.addSubview(toolbar)
-        
-        
+
     }
-    
-    @objc func goBack(){
-        if(self.webView.canGoBack){
-            let transition:CATransition = CATransition()
+
+    @objc func goBack() {
+        if self.webView.canGoBack {
+            let transition: CATransition = CATransition()
             transition.startProgress = 0
             transition.endProgress = 1.0
             transition.type = CATransitionType.moveIn
@@ -80,27 +77,27 @@ class WebViewController: UIViewController {
             self.resetToolbar()
         }
     }
-    
-    func resetToolbar(){
-        if let item = toolbar?.items?[0]{
+
+    func resetToolbar() {
+        if let item = toolbar?.items?[0] {
             if self.webView.canGoBack {
                 item.tintColor = nil
-            }else {
+            } else {
                 item.tintColor = UIColor.lightGray
             }
         }
-        if let item = toolbar?.items?[1]{
+        if let item = toolbar?.items?[1] {
             if self.webView.canGoForward {
                 item.tintColor = nil
-            }else {
+            } else {
                 item.tintColor = UIColor.lightGray
             }
         }
     }
-    
-    @objc func goForward(){
-        if(self.webView.canGoForward){
-            let transition:CATransition = CATransition()
+
+    @objc func goForward() {
+        if self.webView.canGoForward {
+            let transition: CATransition = CATransition()
             transition.startProgress = 0
             transition.endProgress = 1.0
             transition.type = CATransitionType.moveIn
@@ -111,28 +108,26 @@ class WebViewController: UIViewController {
             self.resetToolbar()
         }
     }
-    
-    @objc func refreshView(){
+
+    @objc func refreshView() {
         self.webView.reload()
     }
-    
-    @objc func goSafari(){
-        if let url = webView.url{
-            let app:UIApplication = UIApplication.shared
+
+    @objc func goSafari() {
+        if let url = webView.url {
+            let app: UIApplication = UIApplication.shared
             app.open(url, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
         }
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
 
 }
 
-extension WebViewController:WKNavigationDelegate{
+extension WebViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         self.indicator.startAnimating()
         self.indicator.isHidden = false
@@ -148,93 +143,91 @@ extension WebViewController:WKNavigationDelegate{
         //print("commit")
         self.resetToolbar()
     }
-    
+
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         let url = navigationAction.request.url
         let urlString = ((url) != nil) ? url!.absoluteString : ""
         //print("ここ")
-        if isMatch(input: urlString,pattern: "\\/\\/itunes\\.apple\\.com\\/") {
+        if isMatch(input: urlString, pattern: "\\/\\/itunes\\.apple\\.com\\/") {
             // AppStoreのリンクなら、ストアアプリで開く
             UIApplication.shared.open(url!, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
             decisionHandler(WKNavigationActionPolicy.cancel)
-        }else {
+        } else {
             decisionHandler(WKNavigationActionPolicy.allow)
         }
     }
-    
+
     // MARK: - 正規表現でマッチング
-    func isMatch(input: String, pattern:String) -> Bool {
+    func isMatch(input: String, pattern: String) -> Bool {
         let regex = try! NSRegularExpression( pattern: pattern, options: NSRegularExpression.Options.caseInsensitive)
-        let matches = regex.matches( in: input, options: [], range:NSMakeRange(0, input.count) )
+        let matches = regex.matches( in: input, options: [], range: NSRange(location: 0, length: input.count) )
         return matches.count > 0
     }
 }
-extension WebViewController:WKUIDelegate {
+extension WebViewController: WKUIDelegate {
     func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
         //print("ここ")
         guard let url = navigationAction.request.url else {
             //print("nil")
             return nil
         }
-        
+
         guard let targetFrame = navigationAction.targetFrame, targetFrame.isMainFrame else {
             webView.load(URLRequest(url: url))
             return nil
         }
         return nil
     }
-    
+
 }
 
-extension WebViewController:UIScrollViewDelegate {
+extension WebViewController: UIScrollViewDelegate {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         lastContentOffsetY = scrollView.contentOffset.y
     }
-    
+
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         //print("offsetY\(scrollView.contentOffset.y)")
         let maxY = self.view.frame.maxY
-        let toolBarHeight:CGFloat = 44.0
+        let toolBarHeight: CGFloat = 44.0
         let middleHeight = toolBarHeight / 2
         let minY = maxY - ( middleHeight * 2 )
         let diffX = abs(lastContentOffsetY - scrollView.contentOffset.y)
         let frameMinY = self.toolbar.frame.minY
         //let frameMaxY = self.toolbar.frame.maxY
         //let currentFrameCenterY = self.toolbar.center.y
-        
+
         if scrollView.contentOffset.y > 0 {
             if scrollView.contentOffset.y > lastContentOffsetY {
                 //どんどん非表示
                 if ( frameMinY + diffX ) >= maxY {
                     //非表示で固定
                     self.toolbar.center.y = maxY + middleHeight
-                }else {
+                } else {
                     //移動させる
                     self.toolbar.center.y += diffX
                 }
-            }else {
+            } else {
                 //どんどん表示
-                if ( frameMinY + diffX ) <= minY || frameMinY <= minY{
+                if ( frameMinY + diffX ) <= minY || frameMinY <= minY {
                     //表示で固定
                     self.toolbar.center.y = minY + middleHeight
-                }else {
+                } else {
                     //移動させる
                     self.toolbar.center.y -= diffX
                 }
             }
-        }else {
+        } else {
             //表示で固定
             self.toolbar.center.y = minY + middleHeight
         }
         lastContentOffsetY = scrollView.contentOffset.y
         //self.appDelegate.baseVC.basePageVC.iconSizeChanger.isHidden = true
     }
-    
-    
+
 }
 
-
 // Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
-	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
+private func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+    return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }

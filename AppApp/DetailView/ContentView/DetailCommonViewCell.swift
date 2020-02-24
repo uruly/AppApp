@@ -10,7 +10,7 @@ import UIKit
 
 class DetailCommonViewCell: UICollectionViewCell {
     @IBOutlet weak var tableView: CommonInfoView!
-    
+
     @IBOutlet weak var widthLayout: NSLayoutConstraint!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -19,5 +19,5 @@ class DetailCommonViewCell: UICollectionViewCell {
         //tableView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - 30)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "AppInfo")
     }
-    
+
 }

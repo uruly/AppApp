@@ -9,24 +9,24 @@
 import UIKit
 
 class CommonInfoView: UITableView {
-    
-    var developerName:String!
-    var saveDate:String!
-    var id:String!
-    var isAppStore:Bool!
+
+    var developerName: String!
+    var saveDate: String!
+    var id: String!
+    var isAppStore: Bool!
     var headerTextList = ["基本情報"]
-    var detailVC:DetailViewController!
+    var detailVC: DetailViewController!
     //var widthLayout:CGFloat!
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
+
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
         //print("ここ呼ばれている？？？？")
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         self.delegate = self
@@ -35,26 +35,26 @@ class CommonInfoView: UITableView {
         self.isScrollEnabled = false
         self.register(UITableViewCell.self, forCellReuseIdentifier: "AppInfo")
     }
-    
+
     override func reloadData() {
         super.reloadData()
         if detailVC != nil {
-            detailVC.contentView.commonInfoFrame = CGSize(width:detailVC.view.frame.width,height:200)
+            detailVC.contentView.commonInfoFrame = CGSize(width: detailVC.view.frame.width, height: 200)
         }
     }
 
 }
 
 extension CommonInfoView: UITableViewDelegate {
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) else {
             return
         }
-        
+
         cell.isSelected = false
-        
-        if let text = cell.textLabel?.text , text == "保存日時"{
+
+        if let text = cell.textLabel?.text, text == "保存日時"{
             return
         }
         if let label = cell.accessoryView as? UILabel {
@@ -69,7 +69,7 @@ extension CommonInfoView: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return headerTextList.count
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {   //基本情報
             if isAppStore == nil {
@@ -82,12 +82,12 @@ extension CommonInfoView: UITableViewDataSource {
         }
         return 0
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AppInfo", for: indexPath)
         cell.textLabel?.font = UIFont.systemFont(ofSize: 14 + VersionManager.excess)
         if indexPath.section == 0 {
-            let label = UILabel(frame:CGRect(x:0,y:0,width:220,height:cell.contentView.frame.height))
+            let label = UILabel(frame: CGRect(x: 0, y: 0, width: 220, height: cell.contentView.frame.height))
             label.textAlignment = .right
             label.font = UIFont.systemFont(ofSize: 14 + VersionManager.excess)
             cell.accessoryView = label
@@ -105,7 +105,7 @@ extension CommonInfoView: UITableViewDataSource {
                 default:
                     cell.textLabel?.text = ""
                 }
-            }else if developerName != ""{
+            } else if developerName != ""{
                 switch indexPath.row {
                 case 0:
                     cell.textLabel?.text = "作成者"
@@ -116,7 +116,7 @@ extension CommonInfoView: UITableViewDataSource {
                 default:
                     cell.textLabel?.text = ""
                 }
-            }else {
+            } else {
                 cell.textLabel?.text = "保存日時"
                 label.text = saveDate
             }
