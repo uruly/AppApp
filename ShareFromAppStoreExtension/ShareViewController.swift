@@ -501,7 +501,7 @@ class ShareViewController: SLComposeServiceViewController {
             //print("url\(self.url)")
             
             //let urlText = url!.absoluteString
-            if let idRange = self.url.range(of: "id"),let endIndex = self.url.index(of: "?"){
+            if let idRange = self.url.range(of: "id"),let endIndex = self.url.firstIndex(of: "?"){
                 self.id = String(self.url[idRange.lowerBound ..< endIndex])
                 //print("id\(id)")
             }else {
@@ -549,7 +549,7 @@ class ShareViewController: SLComposeServiceViewController {
                                            "image":image,
                                            "date":date])
         try! realm.write {
-            realm.add(appData,update:true)
+            realm.add(appData, update: .all)
         }
         saveLabelAppData(appData:appData)
     }
@@ -589,7 +589,7 @@ class ShareViewController: SLComposeServiceViewController {
                                            "memo":memoText])
         
         try! realm.write {
-            realm.add(data,update:true)
+            realm.add(data, update: .all)
         }
         print("seikou?")
     }
@@ -632,7 +632,7 @@ class ShareViewController: SLComposeServiceViewController {
                                                "memo":memoText])
             
             try! realm.write {
-                realm.add(data,update:true)
+                realm.add(data, update: .all)
             }
             print("成功?")
         }

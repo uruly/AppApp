@@ -126,7 +126,7 @@ class AppData {
             appList[i].order = i
             try! realm.write {
                 app.order = i
-                realm.add(app, update: true)
+                realm.add(app, update: .all)
             }
 
         }
@@ -179,7 +179,7 @@ class AppData {
                                                      "order": appCount,
                                                      "memo": ""])
                 try! realm.write {
-                    realm.add(object, update: true)
+                    realm.add(object, update: .all)
                 }
             }
         }
@@ -207,7 +207,7 @@ class AppData {
                                                  "order": appCount,
                                                  "memo": ""])
             try! realm.write {
-                realm.add(object, update: true)
+                realm.add(object, update: .all)
             }
         }
         completion()

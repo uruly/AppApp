@@ -146,7 +146,7 @@ class AppLabel {
 
         let realm = try! Realm(configuration: config)
         try! realm.write {
-            realm.add(label, update: true)
+            realm.add(label, update: .all)
         }
 
         array.append(AppLabelData(name: name, color: UIColor.allLabel(), id: "0", order: 0, explain: "全てのApp"))
@@ -172,12 +172,12 @@ class AppLabel {
             for i in order ..< objects.count {
                 try! realm.write {
                     objects[i].order = i + 1
-                    realm.add(objects[i], update: true)
+                    realm.add(objects[i], update: .all)
                 }
             }
         }
         try! realm.write {
-            realm.add(label, update: true)
+            realm.add(label, update: .all)
         }
         completion()
 
@@ -203,7 +203,7 @@ class AppLabel {
 
         if currentObject.order == order {
             try! realm.write {
-                realm.add(label, update: true)
+                realm.add(label, update: .all)
             }
         } else {
             //ほかの並びを更新
@@ -213,20 +213,20 @@ class AppLabel {
                 for i in order ... currentObject.order {
                     try! realm.write {
                         objects[i].order = i + 1
-                        realm.add(objects[i], update: true)
+                        realm.add(objects[i], update: .all)
                     }
                 }
             } else {
                 for i in currentObject.order ... order {
                     try! realm.write {
                         objects[i].order = i - 1
-                        realm.add(objects[i], update: true)
+                        realm.add(objects[i], update: .all)
                     }
                 }
             }
 
             try! realm.write {
-                realm.add(label, update: true)
+                realm.add(label, update: .all)
             }
         }
 
@@ -303,7 +303,7 @@ class AppLabel {
             if label.order > deleteOrder {
                 try! realm.write {
                     label.order = label.order - 1
-                    realm.add(label, update: true)
+                    realm.add(label, update: .all)
                 }
             }
         }
@@ -325,7 +325,7 @@ class AppLabel {
             //print(array[i].name)
             try! realm.write {
                 label.order = i
-                realm.add(label, update: true)
+                realm.add(label, update: .all)
             }
             array[i].order = i
 

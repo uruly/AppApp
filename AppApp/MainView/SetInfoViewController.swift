@@ -174,7 +174,7 @@ class SetInfoViewController: UIViewController {
                                            "image": image,
                                            "date": date])
         try! realm.write {
-            realm.add(appData, update: true)
+            realm.add(appData, update: .all)
         }
         saveLabelAppData(appData: appData)
     }
@@ -201,7 +201,7 @@ class SetInfoViewController: UIViewController {
                                                "memo": memo])
 
             try! realm.write {
-                realm.add(data, update: true)
+                realm.add(data, update: .all)
             }
             print("成功?")
         }

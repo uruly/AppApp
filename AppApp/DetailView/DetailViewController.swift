@@ -148,7 +148,7 @@ class DetailViewController: UIViewController {
         }
         try! realm.write {
             obj.memo = text
-            realm.add(obj, update: true)
+            realm.add(obj, update: .all)
         }
     }
 
