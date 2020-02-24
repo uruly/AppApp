@@ -1,5 +1,6 @@
 disabled_rules:
   - force_cast
+  - force_try
 
 included:
   - AppApp

@@ -186,9 +186,9 @@ class SetInfoViewController: UIViewController {
             //print("label.name:\(label.name)")
             let colorData = NSKeyedArchiver.archivedData(withRootObject: label.color)
             let labelRealm = AppLabelRealmData(value: ["name": label.name,
-                                                      "color": colorData,
-                                                      "id": label.id,
-                                                      "order": label.order
+                                                       "color": colorData,
+                                                       "id": label.id,
+                                                       "order": label.order
             ])
             let id = UUID().uuidString
             let order = self.dataCount(label: labelRealm)

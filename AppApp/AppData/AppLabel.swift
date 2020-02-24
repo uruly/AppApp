@@ -136,9 +136,9 @@ class AppLabel {
         let name = "ALL"
         let colorData = NSKeyedArchiver.archivedData(withRootObject: UIColor.allLabel())
         let label = AppLabelRealmData(value: ["name": name,
-                                             "color": colorData,
-                                             "id": "0",
-                                             "order": 0
+                                              "color": colorData,
+                                              "id": "0",
+                                              "order": 0
         ])
         var config = Realm.Configuration(schemaVersion: SCHEMA_VERSION)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
@@ -152,13 +152,13 @@ class AppLabel {
         array.append(AppLabelData(name: name, color: UIColor.allLabel(), id: "0", order: 0, explain: "全てのApp"))
     }
 
-    static func saveLabelData(name: String, color: UIColor, id: String, order: Int, explain: String?, _ completion:()->Void) {
+    static func saveLabelData(name: String, color: UIColor, id: String, order: Int, explain: String?, _ completion:() -> Void) {
         let colorData = NSKeyedArchiver.archivedData(withRootObject: color)
         let label = AppLabelRealmData(value: ["name": name,
-                                             "color": colorData,
-                                             "id": id,
-                                             "order": order,
-                                             "explain": explain ?? ""
+                                              "color": colorData,
+                                              "id": id,
+                                              "order": order,
+                                              "explain": explain ?? ""
         ])
         var config = Realm.Configuration(schemaVersion: SCHEMA_VERSION)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
@@ -183,13 +183,13 @@ class AppLabel {
 
     }
 
-    static func updateLabelData(name: String, color: UIColor, id: String, order: Int, explain: String?, _ completion:()->Void) {
+    static func updateLabelData(name: String, color: UIColor, id: String, order: Int, explain: String?, _ completion:() -> Void) {
         let colorData = NSKeyedArchiver.archivedData(withRootObject: color)
         let label = AppLabelRealmData(value: ["name": name,
-                                             "color": colorData,
-                                             "id": id,
-                                             "order": order,
-                                             "explain": explain ?? ""
+                                              "color": colorData,
+                                              "id": id,
+                                              "order": order,
+                                              "explain": explain ?? ""
         ])
         var config = Realm.Configuration(schemaVersion: SCHEMA_VERSION)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
@@ -278,7 +278,7 @@ class AppLabel {
         return false
     }
 
-    static func deleteLabelData(labelID: String, _ completion:()->Void) {
+    static func deleteLabelData(labelID: String, _ completion:() -> Void) {
         var config = Realm.Configuration(schemaVersion: SCHEMA_VERSION)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
         config.fileURL = url.appendingPathComponent("db.realm")

@@ -79,7 +79,7 @@ class AppData {
     //    }
 
     //読み込み
-    func readAppData(label: AppLabelData, _ completion:@escaping ()->Void) {
+    func readAppData(label: AppLabelData, _ completion:@escaping () -> Void) {
         appList = []
 
         var config = Realm.Configuration(schemaVersion: SCHEMA_VERSION)
@@ -133,7 +133,7 @@ class AppData {
     }
 
     //delete
-    func deleteAppData(appList: [ApplicationStruct], _ completion:()->Void) {
+    func deleteAppData(appList: [ApplicationStruct], _ completion:() -> Void) {
         for app in appList {
             var config = Realm.Configuration(schemaVersion: SCHEMA_VERSION)
             let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
@@ -151,7 +151,7 @@ class AppData {
     }
 
     //save
-    static func saveAppData(appList: [ApplicationStruct], labelList: [AppLabelData], _ completion:()->Void) {
+    static func saveAppData(appList: [ApplicationStruct], labelList: [AppLabelData], _ completion:() -> Void) {
         for labelData in labelList {
             var config = Realm.Configuration(schemaVersion: SCHEMA_VERSION)
             let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
@@ -186,7 +186,7 @@ class AppData {
         completion()
     }
 
-    static func saveAppData(appList: [AppStruct], labelID: String, _ completion:()->Void) {
+    static func saveAppData(appList: [AppStruct], labelID: String, _ completion:() -> Void) {
         var config = Realm.Configuration(schemaVersion: SCHEMA_VERSION)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
         config.fileURL = url.appendingPathComponent("db.realm")
@@ -213,7 +213,7 @@ class AppData {
         completion()
     }
 
-    static func deleteAppData(app: ApplicationStruct, _ completion:()->Void) {
+    static func deleteAppData(app: ApplicationStruct, _ completion:() -> Void) {
         //ラベルについているAppのみを消すよ
         var config = Realm.Configuration(schemaVersion: SCHEMA_VERSION)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
@@ -229,7 +229,7 @@ class AppData {
         completion()
     }
 
-    static func deleteAppAllData(app: AppStruct, _ completion:()->Void) {
+    static func deleteAppAllData(app: AppStruct, _ completion:() -> Void) {
         var config = Realm.Configuration(schemaVersion: SCHEMA_VERSION)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
         config.fileURL = url.appendingPathComponent("db.realm")

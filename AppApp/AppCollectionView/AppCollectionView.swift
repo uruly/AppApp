@@ -148,7 +148,7 @@ class AppCollectionView: UICollectionView {
         }
     }
 
-    func deleteAppData(_ completion:@escaping ()->Void) {
+    func deleteAppData(_ completion:@escaping () -> Void) {
         DispatchQueue.global().async {
             //print(self.checkArray)
             self.appData.deleteAppData(appList: self.checkArray) {

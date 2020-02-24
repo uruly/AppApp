@@ -84,7 +84,7 @@ class ColorBaseView: UIView {
 
     func setupPageView() {
         pageView = ColorPageView(frame: CGRect(x: 0, y: toolbarHeight, width: self.frame.width,
-                                              height: self.frame.height - toolbarHeight))
+                                               height: self.frame.height - toolbarHeight))
         pageView.colorPageDelegate = self
         //print(self.createAppLabelVC)
         pageView.colorDelegate = self.createAppLabelVC
