@@ -68,18 +68,14 @@ class SelectionBar: UICollectionView {
         }
     }
 
-    func scrollToHorizontallyCenter(index: Int, x: CGFloat) {
-        //print(diffX)
-        //print(x)
-        //print("contentSize\(self.contentSize)")
-        //print("contentOffset.x\(self.contentOffset.x)")
-        if self.contentOffset.x + (diffX * x) < 0 {
+    func scrollToHorizontallyCenter(targetX: CGFloat) {
+        if contentOffset.x + (diffX * targetX) < 0 {
             return
         }
-        if self.contentOffset.x + (diffX * x) > contentSize.width - self.frame.width {
+        if contentOffset.x + (diffX * targetX) > contentSize.width - frame.width {
             return
         }
-        self.contentOffset.x += (diffX * x)
+        contentOffset.x += (diffX * targetX)
     }
 
     func scrollAdjust(index: Int) {

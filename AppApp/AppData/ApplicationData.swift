@@ -112,23 +112,22 @@ class AppData {
 
     //並び順を更新
     func resetOrder() {
-        for i in 0 ..< appList.count {
+        for (index, app) in appList.enumerated() {
             //appの並びを更新
             var config = Realm.Configuration(schemaVersion: SCHEMA_VERSION)
             let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
             config.fileURL = url.appendingPathComponent("db.realm")
 
             let realm = try! Realm(configuration: config)
-            guard let app = realm.object(ofType: ApplicationData.self, forPrimaryKey: appList[i].id) else {
+            guard let app = realm.object(ofType: ApplicationData.self, forPrimaryKey: app.id) else {
                 return
             }
             //arrayの方を更新
-            appList[i].order = i
+            app.order = index
             try! realm.write {
-                app.order = i
+                app.order = index
                 realm.add(app, update: .all)
             }
-
         }
     }
 

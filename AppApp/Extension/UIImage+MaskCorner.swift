@@ -9,10 +9,11 @@
 import UIKit
 
 extension UIImage {
-    func maskCorner(radius r: CGFloat) -> UIImage? {
-        UIGraphicsBeginImageContextWithOptions(self.size, true, 0.0)
-        let rect = CGRect(origin: CGPoint.zero, size: self.size)
-        UIBezierPath(roundedRect: rect, cornerRadius: r).addClip()
+
+    func maskCorner(radius: CGFloat) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(size, true, 0.0)
+        let rect = CGRect(origin: CGPoint.zero, size: size)
+        UIBezierPath(roundedRect: rect, cornerRadius: radius).addClip()
         draw(in: rect)
         let clippedImage = UIGraphicsGetImageFromCurrentImageContext()
 
