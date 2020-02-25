@@ -104,9 +104,7 @@ class SetInfoViewController: UIViewController {
         editImageTutorial()
     }
 
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        //print("disappear")
+    deinit {
         NotificationCenter.default.removeObserver(self)
     }
 

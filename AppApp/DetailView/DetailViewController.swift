@@ -92,14 +92,10 @@ class DetailViewController: UIViewController {
         self.navigationController?.setToolbarHidden(true, animated: true)
     }
 
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
+    deinit {
         NotificationCenter.default.removeObserver(self)
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
     override func viewWillDisappear(_ animated: Bool) {
         if let viewControllers = self.navigationController?.viewControllers {
             var existsSelfInViewControllers = true
