@@ -45,14 +45,8 @@ class SetInfoViewController: UIViewController {
         super.viewDidLoad()
         let width = self.view.frame.width
         let height = self.view.frame.height
-        let doneBtn = UIBarButtonItem(title: "完了", style: .done, target: self, action: #selector(self.doneBtnTapped))
-        self.navigationItem.rightBarButtonItem = doneBtn
-        doneBtn.tintColor = UIColor.lightGray
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
-        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-        self.view.backgroundColor = UIColor.white
-
         let navigationHeight: CGFloat = self.navigationController?.navigationBar.frame.maxY ?? 56.0
+        setupNavigationBar()
         //imageViewを置く
         let imageSize: CGFloat = 180
         imageView = EditImageView(frame: CGRect(x: 0, y: navigationHeight, width: imageSize, height: imageSize))
@@ -120,9 +114,13 @@ class SetInfoViewController: UIViewController {
         }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    private func setupNavigationBar() {
+        let doneBtn = UIBarButtonItem(title: "完了", style: .done, target: self, action: #selector(self.doneBtnTapped))
+        navigationItem.rightBarButtonItem = doneBtn
+        doneBtn.tintColor = UIColor.lightGray
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        view.backgroundColor = UIColor.white
     }
 
     @objc func doneBtnTapped() {

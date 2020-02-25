@@ -15,9 +15,7 @@ class BackgroundColorListView: UICollectionView {
 
     var colorList: [UIColor] = [.white]
     var labelColor: UIColor? {
-        get {
-            return AppLabel.currentColor
-        }
+        return AppLabel.currentColor
     }
     static var isDefaultColor: Bool = true
     var currentColor: UIColor!

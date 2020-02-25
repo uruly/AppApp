@@ -30,7 +30,8 @@ class BasePageViewController: UIPageViewController {
     var isAdjustTitle: Bool = false
     var bottomView: BottomView!
 
-    override init(transitionStyle style: UIPageViewController.TransitionStyle, navigationOrientation: UIPageViewController.NavigationOrientation, options: [UIPageViewController.OptionsKey: Any]? = nil) {
+    override init(transitionStyle style: UIPageViewController.TransitionStyle, navigationOrientation: UIPageViewController.NavigationOrientation,
+                  options: [UIPageViewController.OptionsKey: Any]? = nil) {
         // Local variable inserted by Swift 4.2 migrator.
         let options = convertFromOptionalUIPageViewControllerOptionsKeyDictionary(options)
 
