@@ -9,8 +9,6 @@
 import UIKit
 import RealmSwift
 
-let SCHEMA_VERSION: UInt64 = 5
-
 //保存するアプリデータ
 class AppRealmData: Object {
     @objc dynamic var name: String!      //アプリの名前
@@ -82,7 +80,7 @@ class AppData {
     func readAppData(label: AppLabelData, _ completion:@escaping () -> Void) {
         appList = []
 
-        var config = Realm.Configuration(schemaVersion: SCHEMA_VERSION)
+        var config = Realm.Configuration(schemaVersion: .schemaVersion)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
         config.fileURL = url.appendingPathComponent("db.realm")
 
@@ -112,30 +110,29 @@ class AppData {
 
     //並び順を更新
     func resetOrder() {
-        for i in 0 ..< appList.count {
+        for (index, app) in appList.enumerated() {
             //appの並びを更新
-            var config = Realm.Configuration(schemaVersion: SCHEMA_VERSION)
+            var config = Realm.Configuration(schemaVersion: .schemaVersion)
             let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
             config.fileURL = url.appendingPathComponent("db.realm")
 
             let realm = try! Realm(configuration: config)
-            guard let app = realm.object(ofType: ApplicationData.self, forPrimaryKey: appList[i].id) else {
+            guard let app = realm.object(ofType: ApplicationData.self, forPrimaryKey: app.id) else {
                 return
             }
             //arrayの方を更新
-            appList[i].order = i
+            app.order = index
             try! realm.write {
-                app.order = i
+                app.order = index
                 realm.add(app, update: .all)
             }
-
         }
     }
 
     //delete
     func deleteAppData(appList: [ApplicationStruct], _ completion:() -> Void) {
         for app in appList {
-            var config = Realm.Configuration(schemaVersion: SCHEMA_VERSION)
+            var config = Realm.Configuration(schemaVersion: .schemaVersion)
             let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
             config.fileURL = url.appendingPathComponent("db.realm")
 
@@ -153,7 +150,7 @@ class AppData {
     //save
     static func saveAppData(appList: [ApplicationStruct], labelList: [AppLabelData], _ completion:() -> Void) {
         for labelData in labelList {
-            var config = Realm.Configuration(schemaVersion: SCHEMA_VERSION)
+            var config = Realm.Configuration(schemaVersion: .schemaVersion)
             let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
             config.fileURL = url.appendingPathComponent("db.realm")
 
@@ -187,7 +184,7 @@ class AppData {
     }
 
     static func saveAppData(appList: [AppStruct], labelID: String, _ completion:() -> Void) {
-        var config = Realm.Configuration(schemaVersion: SCHEMA_VERSION)
+        var config = Realm.Configuration(schemaVersion: .schemaVersion)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
         config.fileURL = url.appendingPathComponent("db.realm")
         let realm = try! Realm(configuration: config)
@@ -215,7 +212,7 @@ class AppData {
 
     static func deleteAppData(app: ApplicationStruct, _ completion:() -> Void) {
         //ラベルについているAppのみを消すよ
-        var config = Realm.Configuration(schemaVersion: SCHEMA_VERSION)
+        var config = Realm.Configuration(schemaVersion: .schemaVersion)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
         config.fileURL = url.appendingPathComponent("db.realm")
 
@@ -230,7 +227,7 @@ class AppData {
     }
 
     static func deleteAppAllData(app: AppStruct, _ completion:() -> Void) {
-        var config = Realm.Configuration(schemaVersion: SCHEMA_VERSION)
+        var config = Realm.Configuration(schemaVersion: .schemaVersion)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
         config.fileURL = url.appendingPathComponent("db.realm")
 

@@ -15,13 +15,10 @@ class TutorialViewController: UIViewController {
     var helpView: HelpView!
     static var isFirst: Bool = true
     var navigationHeight: CGFloat {
-        get {
-            if UIDevice.current.model.range(of: "iPad") != nil {
-                print("iPad")
-                return 40
-            } else {
-                return 80.0
-            }
+        if UIDevice.current.model.range(of: "iPad") != nil {
+            return 40
+        } else {
+            return 80.0
         }
     }
 
@@ -72,11 +69,9 @@ class TutorialViewController: UIViewController {
     }
 
     func setupNaviBtn() {
-        let width = self.view.frame.width
-        //var navigationHeight:CGFloat = 80.0
+        let width = view.frame.width
         var btnHeight: CGFloat = 40.0
         if UIDevice.current.model.range(of: "iPad") != nil {
-            print("iPad")
             btnHeight = 30.0
         }
         let margin: CGFloat = 15.0
@@ -86,7 +81,7 @@ class TutorialViewController: UIViewController {
         welcomeBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         welcomeBtn.backgroundColor = UIColor.allLabel()
         welcomeBtn.addTarget(self, action: #selector(welcomeBtnTapped), for: .touchUpInside)
-        self.view.addSubview(welcomeBtn)
+        view.addSubview(welcomeBtn)
 
         let howtoBtn = NaviButton(frame: CGRect(x: welcomeBtn.frame.maxX, y: navigationHeight - btnHeight + margin, width: width / 4, height: btnHeight))
         howtoBtn.setTitle("HOW TO", for: .normal)
@@ -94,7 +89,7 @@ class TutorialViewController: UIViewController {
         howtoBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         howtoBtn.backgroundColor = UIColor.howto()
         howtoBtn.addTarget(self, action: #selector(howtoBtnTapped), for: .touchUpInside)
-        self.view.addSubview(howtoBtn)
+        view.addSubview(howtoBtn)
 
         let startBtn = NaviButton(frame: CGRect(x: howtoBtn.frame.maxX, y: navigationHeight - btnHeight + margin, width: ( width / 4 ) - 20, height: btnHeight))
         startBtn.setTitle("START", for: .normal)
@@ -102,7 +97,7 @@ class TutorialViewController: UIViewController {
         startBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         startBtn.backgroundColor = UIColor.start()
         startBtn.addTarget(self, action: #selector(startBtnTapped), for: .touchUpInside)
-        self.view.addSubview(startBtn)
+        view.addSubview(startBtn)
 
         let helpBtn = NaviButton(frame: CGRect(x: startBtn.frame.maxX, y: navigationHeight - btnHeight + margin, width: ( width / 4 ) - 30, height: btnHeight))
         helpBtn.setTitle("HELP", for: .normal)
@@ -110,7 +105,7 @@ class TutorialViewController: UIViewController {
         helpBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         helpBtn.backgroundColor = UIColor.help()
         helpBtn.addTarget(self, action: #selector(helpBtnTapped), for: .touchUpInside)
-        self.view.addSubview(helpBtn)
+        view.addSubview(helpBtn)
 
         let closeBtn = NaviButton(frame: CGRect(x: helpBtn.frame.maxX, y: navigationHeight - btnHeight + margin, width: 50, height: btnHeight))
         closeBtn.setTitle("×", for: .normal)
@@ -118,7 +113,7 @@ class TutorialViewController: UIViewController {
         closeBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         closeBtn.backgroundColor = UIColor.plusBackground()
         closeBtn.addTarget(self, action: #selector(closeTutorial), for: .touchUpInside)
-        self.view.addSubview(closeBtn)
+        view.addSubview(closeBtn)
     }
 
     override func viewDidLayoutSubviews() {

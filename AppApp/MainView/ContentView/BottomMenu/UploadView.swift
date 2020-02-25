@@ -52,11 +52,11 @@ class UploadView: UIView {
     @objc func uploadBtnTapped(sender: UIButton) {
         UIView.animate(withDuration: 0.2, animations: {
             sender.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
-        }) { (_) in
+        }, completion: { (_) in
             UIView.animate(withDuration: 0.2, animations: {
                 sender.transform = CGAffineTransform.identity
             })
-        }
+        })
         //delegateをつける
         if delegate == nil, let pageVC: BasePageViewController = findViewController() {
             self.delegate = pageVC

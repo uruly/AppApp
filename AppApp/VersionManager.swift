@@ -8,27 +8,22 @@
 
 import UIKit
 
-//アプリの番号
-let APPLE_ID = "1319908151" //自分のアプリの番号
-let RESOLUTION: String = "@" + String(Int(UIScreen.main.scale)) + "x"
-
 struct VersionManager {
 
     //var alertController:UIAlertController?
 
-    init(vc: UIViewController) {
-        self.checkVersion(vc)
+    init(viewController: UIViewController) {
+        self.checkVersion(viewController)
     }
 
     /****************** Version Check *********************/
-    func checkVersion(_ vc: UIViewController) {
-        let url = "https://itunes.apple.com/jp/lookup?id=\(APPLE_ID)"
+    func checkVersion(_ viewController: UIViewController) {
+        let url = "https://itunes.apple.com/jp/lookup?id=\(String.appleID)"
         let req = URLRequest(url: URL(string: url)!, cachePolicy: NSURLRequest.CachePolicy.useProtocolCachePolicy, timeoutInterval: 60.0)
         let configuration = URLSessionConfiguration.default
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
         //        NSURLConnection.sendAsynchronousRequest(req,queue: OperationQueue.main,completionHandler:{(data,response,error) in
-        let task = session.dataTask(with: req, completionHandler: {
-            (data, _, error) -> Void in
+        let task = session.dataTask(with: req, completionHandler: { (data, _, error) -> Void in
             do {
                 if data != nil {
                     //                    let dic = try JSONSerialization.jsonObject(with: response!, options: .mutableContainers) as! NSDictionary
@@ -41,7 +36,7 @@ struct VersionManager {
                         print("latest version : \(storeVersion)")
                         if storeVersion.compare(currentVersion, options: NSString.CompareOptions.numeric) == ComparisonResult.orderedDescending {
                             print("store version is newer!")
-                            self.versionAlert(vc)
+                            self.versionAlert(viewController)
                         } else if storeVersion.compare(currentVersion, options: NSString.CompareOptions.numeric) == ComparisonResult.orderedSame {
                             print("store version is equal")
                         } else {
@@ -57,23 +52,16 @@ struct VersionManager {
         task.resume()
     }
 
-    func versionAlert(_ vc: UIViewController) {
+    func versionAlert(_ viewController: UIViewController) {
         let alertController = UIAlertController(title: "新しいバージョンがあります。", message: "", preferredStyle: .alert)
-        let otherAction = UIAlertAction(title: "アップデートする", style: .destructive) {
-            _ in NSLog("はいボタンが押されました")
-            let urlString = "itms-apps://itunes.apple.com/app/id\(APPLE_ID)"
+        alertController.addAction(UIAlertAction(title: "アップデートする", style: .destructive) { _ in
+            let urlString = "itms-apps://itunes.apple.com/app/id\(String.appleID)"
             if let url = NSURL(string: urlString) {
                 UIApplication.shared.open(url as URL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
             }
-        }
-        let cancelAction = UIAlertAction(title: "あとで", style: .cancel) {
-            _ in NSLog("いいえボタンが押されました")
-        }
-
-        alertController.addAction(otherAction)
-        alertController.addAction(cancelAction)
-
-        vc.present(alertController, animated: true, completion: nil)
+        })
+        alertController.addAction(UIAlertAction(title: "あとで", style: .cancel))
+        viewController.present(alertController, animated: true, completion: nil)
 
     }
 

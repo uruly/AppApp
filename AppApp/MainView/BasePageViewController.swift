@@ -9,7 +9,8 @@
 
 import UIKit
 
-protocol BasePageViewControllerDelegate {
+protocol BasePageViewControllerDelegate: AnyObject {
+
     var basePageVC: BasePageViewController { get }
 }
 
@@ -29,7 +30,8 @@ class BasePageViewController: UIPageViewController {
     var isAdjustTitle: Bool = false
     var bottomView: BottomView!
 
-    override init(transitionStyle style: UIPageViewController.TransitionStyle, navigationOrientation: UIPageViewController.NavigationOrientation, options: [UIPageViewController.OptionsKey: Any]? = nil) {
+    override init(transitionStyle style: UIPageViewController.TransitionStyle, navigationOrientation: UIPageViewController.NavigationOrientation,
+                  options: [UIPageViewController.OptionsKey: Any]? = nil) {
         // Local variable inserted by Swift 4.2 migrator.
         let options = convertFromOptionalUIPageViewControllerOptionsKeyDictionary(options)
 
@@ -440,8 +442,8 @@ extension BasePageViewController: UIImagePickerControllerDelegate, UINavigationC
                 setInfoVC.isEditView = true
             }
         }
-        if picker.viewControllers.contains(where: { (vc) -> Bool in
-            if let _:SetInfoViewController = vc as? SetInfoViewController {
+        if picker.viewControllers.contains(where: { (viewController) -> Bool in
+            if let _:SetInfoViewController = viewController as? SetInfoViewController {
                 return true
             }
             //print(vc)

@@ -68,18 +68,14 @@ class SelectionBar: UICollectionView {
         }
     }
 
-    func scrollToHorizontallyCenter(index: Int, x: CGFloat) {
-        //print(diffX)
-        //print(x)
-        //print("contentSize\(self.contentSize)")
-        //print("contentOffset.x\(self.contentOffset.x)")
-        if self.contentOffset.x + (diffX * x) < 0 {
+    func scrollToHorizontallyCenter(targetX: CGFloat) {
+        if contentOffset.x + (diffX * targetX) < 0 {
             return
         }
-        if self.contentOffset.x + (diffX * x) > contentSize.width - self.frame.width {
+        if contentOffset.x + (diffX * targetX) > contentSize.width - frame.width {
             return
         }
-        self.contentOffset.x += (diffX * x)
+        contentOffset.x += (diffX * targetX)
     }
 
     func scrollAdjust(index: Int) {
@@ -220,28 +216,3 @@ extension SelectionBar: UIScrollViewDelegate {
         //print("セレクションバースクロール中\(scrollView.contentOffset.x)")
     }
 }
-
-//extension UICollectionViewFlowLayout {
-//
-//    open override func invalidationContext(forInteractivelyMovingItems targetIndexPaths: [IndexPath], withTargetPosition targetPosition: CGPoint, previousIndexPaths: [IndexPath], previousPosition: CGPoint) -> UICollectionViewLayoutInvalidationContext {
-//
-//        let context = super.invalidationContext(forInteractivelyMovingItems: targetIndexPaths, withTargetPosition: targetPosition, previousIndexPaths: previousIndexPaths, previousPosition: previousPosition)
-//
-//        //Check that the movement has actually happeneds
-//        if previousIndexPaths.first!.item != targetIndexPaths.first!.item {
-//            collectionView?.dataSource?.collectionView?(collectionView!, moveItemAt: previousIndexPaths.first!, to: targetIndexPaths.last!)
-//        }
-//
-//        return context
-//    }
-//
-//    open override func invalidationContextForEndingInteractiveMovementOfItems(toFinalIndexPaths indexPaths: [IndexPath], previousIndexPaths: [IndexPath], movementCancelled: Bool) -> UICollectionViewLayoutInvalidationContext {
-//        return super.invalidationContextForEndingInteractiveMovementOfItems(toFinalIndexPaths: indexPaths, previousIndexPaths: previousIndexPaths, movementCancelled: movementCancelled)
-//    }
-//
-//    open override func layoutAttributesForInteractivelyMovingItem(at indexPath: IndexPath, withTargetPosition position: CGPoint) -> UICollectionViewLayoutAttributes {
-//        let attributes = super.layoutAttributesForInteractivelyMovingItem(at: indexPath, withTargetPosition: position)
-//        attributes.alpha = 0.8
-//        return attributes
-//    }
-//}

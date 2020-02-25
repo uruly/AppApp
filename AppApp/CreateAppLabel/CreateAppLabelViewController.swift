@@ -163,14 +163,10 @@ class CreateAppLabelViewController: UIViewController {
         if AppLabel.contains(color: color, isEdit: false, id: "") {
             //ポップアップを表示
             let alertController = UIAlertController(title: "この色はすでに使われています", message: "", preferredStyle: .alert)
-            let otherAction = UIAlertAction(title: "このまま保存する", style: .default) {
-                _ in
-                NSLog("はいボタンが押されました")
+            let otherAction = UIAlertAction(title: "このまま保存する", style: .default) { _ in
                 self.saveLabelData()
             }
-            let cancelAction = UIAlertAction(title: "修正する", style: .cancel) {
-                _ in NSLog("いいえボタンが押されました")
-            }
+            let cancelAction = UIAlertAction(title: "修正する", style: .cancel)
 
             alertController.addAction(otherAction)
             alertController.addAction(cancelAction)

@@ -149,21 +149,12 @@ class EditAppLabelViewController: CreateAppLabelViewController {
     }
 
     @objc func deleteBtnTapped() {
-        //ポップアップを表示
         let alertController = UIAlertController(title: "ラベルを削除します。", message: "", preferredStyle: .alert)
-        let otherAction = UIAlertAction(title: "削除する", style: .default) {
-            _ in
-            NSLog("はいボタンが押されました")
+        alertController.addAction(UIAlertAction(title: "削除する", style: .default) { _ in
             self.deleteLabel()
-        }
-        let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel) {
-            _ in NSLog("いいえボタンが押されました")
-        }
-
-        alertController.addAction(otherAction)
-        alertController.addAction(cancelAction)
-
-        self.present(alertController, animated: true, completion: nil)
+        })
+        alertController.addAction(UIAlertAction(title: "キャンセル", style: .cancel))
+        present(alertController, animated: true, completion: nil)
     }
 
     func deleteLabel() {
@@ -188,28 +179,20 @@ class EditAppLabelViewController: CreateAppLabelViewController {
     }
 
     override func checkColor(_ color: UIColor) {
-        //print("checkColor\(color)")
         if AppLabel.contains(color: color, isEdit: true, id: self.id) {
             //ポップアップを表示
             let alertController = UIAlertController(title: "この色はすでに使われています", message: "", preferredStyle: .alert)
-            let otherAction = UIAlertAction(title: "このまま保存する", style: .default) {
-                _ in
-                NSLog("はいボタンが押されました")
+            alertController.addAction(UIAlertAction(title: "このまま保存する", style: .default) { _ in
                 AppLabel.updateLabelData(name: self.labelName!, color: self.color, id: self.id, order: self.order, explain: self.explain) {
                     AppData.saveAppData(appList: self.appList, labelID: self.id) {
                         BasePageViewController.isUnwind = true
                         self.dismiss(animated: true, completion: nil)
                     }
                 }
-            }
-            let cancelAction = UIAlertAction(title: "修正する", style: .cancel) {
-                _ in NSLog("いいえボタンが押されました")
-            }
+            })
+            alertController.addAction(UIAlertAction(title: "修正する", style: .cancel))
+            present(alertController, animated: true, completion: nil)
 
-            alertController.addAction(otherAction)
-            alertController.addAction(cancelAction)
-
-            self.present(alertController, animated: true, completion: nil)
         } else {
             AppLabel.updateLabelData(name: labelName!, color: color, id: id, order: order, explain: explain) {
                 AppData.saveAppData(appList: appList, labelID: id) {

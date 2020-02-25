@@ -38,13 +38,9 @@ class AppInfoView: UIView {
     }
 
     func setSubviews() {
-        if canSetSubview == false {
-            return
-        }
+        guard canSetSubview else { return }
         let margin: CGFloat = 15.0
         let width = UIScreen.main.bounds.width
-        //let height = self.frame.height
-
         //イメージビューを配置
         imageView = UIImageView(frame: CGRect(x: margin, y: margin, width: width / 3, height: width / 3))
         imageView.image = UIImage(data: imageData)
@@ -62,14 +58,13 @@ class AppInfoView: UIView {
         let showStoreBtn = UIButton()
         let btnWidth: CGFloat = 100.0
         let btnHeight: CGFloat = 30.0
-        //width - imageView.frame.width - (margin * 2)
         showStoreBtn.frame = CGRect(x: imageView.frame.maxX + margin, y: imageView.frame.maxY - btnHeight, width: btnWidth, height: btnHeight)
         showStoreBtn.backgroundColor = UIColor.appStoreBlue()
         showStoreBtn.addTarget(detailVC, action: #selector(detailVC.showProductPage), for: .touchUpInside)
 
-        if self.isAppStore {
+        if isAppStore {
             showStoreBtn.setTitle("AppStore", for: .normal)
-        } else if url != ""{
+        } else if url != "" {
             showStoreBtn.setTitle("取得元を表示", for: .normal)
         } else {
             showStoreBtn.isHidden = true
@@ -79,7 +74,6 @@ class AppInfoView: UIView {
         showStoreBtn.layer.cornerRadius = btnHeight / 2
         self.addSubview(showStoreBtn)
 
-        //Webで見るボタン
         let webSearchBtn = UIButton()
         webSearchBtn.frame = CGRect(x: width - 50 - margin, y: imageView.frame.maxY - btnHeight, width: 50, height: btnHeight)
         webSearchBtn.backgroundColor = UIColor.appStoreBlue()
@@ -91,7 +85,6 @@ class AppInfoView: UIView {
         self.addSubview(webSearchBtn)
 
         if appNameLabel.frame.maxY > showStoreBtn.frame.minY {
-            //print("被っているよ")
             appNameLabel.font = UIFont.boldSystemFont(ofSize: 16)
             appNameLabel.sizeThatFits(CGSize(width: appNameLabel.frame.width, height: showStoreBtn.frame.minY - appNameLabel.frame.minY))
             showStoreBtn.frame = CGRect(x: imageView.frame.maxX + margin, y: appNameLabel.frame.maxY, width: btnWidth, height: btnHeight)

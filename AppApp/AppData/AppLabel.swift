@@ -92,7 +92,7 @@ class AppLabel {
 
     func migration() {
         var config =  Realm.Configuration(
-            schemaVersion: SCHEMA_VERSION,
+            schemaVersion: .schemaVersion,
             migrationBlock: { migration, oldSchemaVersion in
                 //print(oldSchemaVersion)
                 if oldSchemaVersion < 4 {
@@ -115,7 +115,7 @@ class AppLabel {
     func reloadLabelData() {
         //ラベルを読み込む処理
         self.array = []
-        var config = Realm.Configuration(schemaVersion: SCHEMA_VERSION)
+        var config = Realm.Configuration(schemaVersion: .schemaVersion)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
         config.fileURL = url.appendingPathComponent("db.realm")
 
@@ -140,7 +140,7 @@ class AppLabel {
                                               "id": "0",
                                               "order": 0
         ])
-        var config = Realm.Configuration(schemaVersion: SCHEMA_VERSION)
+        var config = Realm.Configuration(schemaVersion: .schemaVersion)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
         config.fileURL = url.appendingPathComponent("db.realm")
 
@@ -160,7 +160,7 @@ class AppLabel {
                                               "order": order,
                                               "explain": explain ?? ""
         ])
-        var config = Realm.Configuration(schemaVersion: SCHEMA_VERSION)
+        var config = Realm.Configuration(schemaVersion: .schemaVersion)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
         config.fileURL = url.appendingPathComponent("db.realm")
 
@@ -169,10 +169,13 @@ class AppLabel {
             //ほかの並びを更新
             let sortProperties = [SortDescriptor(keyPath: "order", ascending: true) ]
             let objects = realm.objects(AppLabelRealmData.self).sorted(by: sortProperties)
-            for i in order ..< objects.count {
-                try! realm.write {
-                    objects[i].order = i + 1
-                    realm.add(objects[i], update: .all)
+            try! realm.write {
+                objects.map { object in
+                    // 変更した order より大きいものだけ並び替える
+                    if object.order > order { return }
+                    let newObject = object
+                    newObject.order = object.order + 1
+                    realm.add(newObject, update: .all)
                 }
             }
         }
@@ -191,7 +194,7 @@ class AppLabel {
                                               "order": order,
                                               "explain": explain ?? ""
         ])
-        var config = Realm.Configuration(schemaVersion: SCHEMA_VERSION)
+        var config = Realm.Configuration(schemaVersion: .schemaVersion)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
         config.fileURL = url.appendingPathComponent("db.realm")
 
@@ -210,17 +213,21 @@ class AppLabel {
             let sortProperties = [SortDescriptor(keyPath: "order", ascending: true) ]
             let objects = realm.objects(AppLabelRealmData.self).sorted(by: sortProperties)
             if order < currentObject.order {
-                for i in order ... currentObject.order {
-                    try! realm.write {
-                        objects[i].order = i + 1
-                        realm.add(objects[i], update: .all)
+                try! realm.write {
+                    objects.map { object in
+                        if object.order < currentObject.order { return }
+                        let newObject = object
+                        newObject.order += 1
+                        realm.add(object, update: .all)
                     }
                 }
             } else {
-                for i in currentObject.order ... order {
-                    try! realm.write {
-                        objects[i].order = i - 1
-                        realm.add(objects[i], update: .all)
+                try! realm.write {
+                    objects.map { object in
+                        if object.order >= currentObject.order { return }
+                        let newObject = object
+                        newObject.order -= 1
+                        realm.add(object, update: .all)
                     }
                 }
             }
@@ -235,22 +242,20 @@ class AppLabel {
     }
 
     static func contains(name: String) -> Bool {
-        var config = Realm.Configuration(schemaVersion: SCHEMA_VERSION)
+        var config = Realm.Configuration(schemaVersion: .schemaVersion)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
         config.fileURL = url.appendingPathComponent("db.realm")
 
         let realm = try! Realm(configuration: config)
         let objs = realm.objects(AppLabelRealmData.self)
-        for obj in objs {
-            if obj.name == name {
-                return true
-            }
+        for obj in objs where obj.name == name {
+            return true
         }
         return false
     }
 
     static func contains(color: UIColor, isEdit: Bool, id: String) -> Bool {
-        var config = Realm.Configuration(schemaVersion: SCHEMA_VERSION)
+        var config = Realm.Configuration(schemaVersion: .schemaVersion)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
         config.fileURL = url.appendingPathComponent("db.realm")
 
@@ -279,7 +284,7 @@ class AppLabel {
     }
 
     static func deleteLabelData(labelID: String, _ completion:() -> Void) {
-        var config = Realm.Configuration(schemaVersion: SCHEMA_VERSION)
+        var config = Realm.Configuration(schemaVersion: .schemaVersion)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
         config.fileURL = url.appendingPathComponent("db.realm")
 
@@ -297,14 +302,12 @@ class AppLabel {
         try! realm.write {
             realm.delete(labelData)
         }
-        //orderを直す
+        // orderを直す
         let labelList = realm.objects(AppLabelRealmData.self)
-        for label in labelList {
-            if label.order > deleteOrder {
-                try! realm.write {
-                    label.order = label.order - 1
-                    realm.add(label, update: .all)
-                }
+        for label in labelList where label.order > deleteOrder {
+            try! realm.write {
+                label.order -= 1
+                realm.add(label, update: .all)
             }
         }
         completion()
@@ -312,23 +315,22 @@ class AppLabel {
 
     //並び順を更新
     func resetOrder() {
-        for i in 1 ..< array.count {
-            //appの並びを更新
-            var config = Realm.Configuration(schemaVersion: SCHEMA_VERSION)
+        for (index, app) in array.enumerated() {
+            if index == 0 { continue }
+            var config = Realm.Configuration(schemaVersion: .schemaVersion)
             let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
             config.fileURL = url.appendingPathComponent("db.realm")
 
             let realm = try! Realm(configuration: config)
-            guard let label = realm.object(ofType: AppLabelRealmData.self, forPrimaryKey: array[i].id) else {
+            guard let label = realm.object(ofType: AppLabelRealmData.self, forPrimaryKey: app.id) else {
                 return
             }
             //print(array[i].name)
             try! realm.write {
-                label.order = i
+                label.order = index
                 realm.add(label, update: .all)
             }
-            array[i].order = i
-
+            array[index].order = index
         }
     }
 }

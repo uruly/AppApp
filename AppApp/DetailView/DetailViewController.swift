@@ -92,23 +92,17 @@ class DetailViewController: UIViewController {
         self.navigationController?.setToolbarHidden(true, animated: true)
     }
 
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
+    deinit {
         NotificationCenter.default.removeObserver(self)
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
     override func viewWillDisappear(_ animated: Bool) {
         if let viewControllers = self.navigationController?.viewControllers {
             var existsSelfInViewControllers = true
-            for viewController in viewControllers {
-                if viewController == self {
-                    existsSelfInViewControllers = false
-                    // selfが存在した時点で処理を終える
-                    break
-                }
+            for viewController in viewControllers where viewController == self {
+                existsSelfInViewControllers = false
+                // selfが存在した時点で処理を終える
+                break
             }
 
             if existsSelfInViewControllers {
@@ -138,7 +132,7 @@ class DetailViewController: UIViewController {
 
     func saveAppLabelMemo(_ text: String ) {
         //print("saveMemo")
-        var config = Realm.Configuration(schemaVersion: SCHEMA_VERSION)
+        var config = Realm.Configuration(schemaVersion: .schemaVersion)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
         config.fileURL = url.appendingPathComponent("db.realm")
         let realm = try! Realm(configuration: config)
@@ -175,43 +169,25 @@ class DetailViewController: UIViewController {
     }
 
     func deleteAppAllData() {
-        //ポップアップを表示
         let alertController = UIAlertController(title: "Appを全て削除", message: "全てのラベルからAppを削除します", preferredStyle: .alert)
-        let otherAction = UIAlertAction(title: "削除する", style: .default) {
-            _ in
-            NSLog("はいボタンが押されました")
+        alertController.addAction(UIAlertAction(title: "削除する", style: .default) { _ in
             AppData.deleteAppAllData(app: self.appData.app, {
                 self.navigationController?.popViewController(animated: true)
             })
-        }
-        let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel) {
-            _ in NSLog("いいえボタンが押されました")
-        }
-
-        alertController.addAction(otherAction)
-        alertController.addAction(cancelAction)
-
-        self.present(alertController, animated: true, completion: nil)
+        })
+        alertController.addAction(UIAlertAction(title: "キャンセル", style: .cancel))
+        present(alertController, animated: true, completion: nil)
     }
 
     func deleteAppLabelData() {
-        //ポップアップを表示
         let alertController = UIAlertController(title: "\(appData.label.name!)からAppを削除", message: "", preferredStyle: .alert)
-        let otherAction = UIAlertAction(title: "削除する", style: .default) {
-            _ in
-            NSLog("はいボタンが押されました")
+        alertController.addAction(UIAlertAction(title: "削除する", style: .default) { _ in
             AppData.deleteAppData(app: self.appData, {
                 self.navigationController?.popViewController(animated: true)
             })
-        }
-        let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel) {
-            _ in NSLog("いいえボタンが押されました")
-        }
-
-        alertController.addAction(otherAction)
-        alertController.addAction(cancelAction)
-
-        self.present(alertController, animated: true, completion: nil)
+        })
+        alertController.addAction(UIAlertAction(title: "キャンセル", style: .cancel))
+        present(alertController, animated: true, completion: nil)
     }
 }
 

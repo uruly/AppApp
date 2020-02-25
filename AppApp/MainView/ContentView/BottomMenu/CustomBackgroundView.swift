@@ -101,15 +101,8 @@ class CustomBackgroundView: UIView {
     }
 
     func confirmPopup(pageVC: BasePageViewController) {
-        //ポップアップを表示
         let alertController = UIAlertController(title: "背景色をデフォルトに戻しました", message: "", preferredStyle: .alert)
-        let otherAction = UIAlertAction(title: "OK", style: .default) {
-            _ in
-            NSLog("はいボタンが押されました")
-        }
-
-        alertController.addAction(otherAction)
-
+        alertController.addAction(UIAlertAction(title: "OK", style: .default))
         pageVC.present(alertController, animated: true, completion: nil)
     }
 

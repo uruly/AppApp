@@ -12,7 +12,10 @@ class HelpView: UITableView {
 
     var questionAnswer: [(String, String, String)] = []
     var currentTag: Int?
-    var links: [(String, String, String, String)] = [("このアプリのレビューを投稿する", "いつもご利用ありがとうございます。以下のボタンよりレビューページへ飛ぶことができます。", "レビューページへ", "https://itunes.apple.com/us/app/itunes-u/id\(APPLE_ID)?action=write-review"), ("お問い合わせをする", "何かご意見・ご要望・感想等ありましたら、以下のボタンより、開発者サイトに飛ぶことができます。お気軽にご連絡ください。", "開発者サイトへ", "http://uruly.xyz/contact/")]
+    var links: [(String, String, String, String)] = [("このアプリのレビューを投稿する", "いつもご利用ありがとうございます。以下のボタンよりレビューページへ飛ぶことができます。", "レビューページへ",
+                                                      "https://itunes.apple.com/us/app/itunes-u/id\(String.appleID)?action=write-review"),
+                                                     ("お問い合わせをする", "何かご意見・ご要望・感想等ありましたら、以下のボタンより、開発者サイトに飛ぶことができます。お気軽にご連絡ください。",
+                                                      "開発者サイトへ", "http://uruly.xyz/contact/")]
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -185,7 +188,7 @@ extension HelpView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == currentTag {
             if indexPath.section < questionAnswer.count {
-                if let _ = Bundle.main.path(forResource: questionAnswer[indexPath.section].2, ofType: "png") {
+                if Bundle.main.path(forResource: questionAnswer[indexPath.section].2, ofType: "png") != nil {
                     return 300
                 } else {
                     return 150
