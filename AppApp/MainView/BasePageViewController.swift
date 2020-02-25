@@ -9,7 +9,8 @@
 
 import UIKit
 
-protocol BasePageViewControllerDelegate {
+protocol BasePageViewControllerDelegate: AnyObject {
+
     var basePageVC: BasePageViewController { get }
 }
 
