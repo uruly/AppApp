@@ -185,7 +185,7 @@ extension HelpView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == currentTag {
             if indexPath.section < questionAnswer.count {
-                if let _ = Bundle.main.path(forResource: questionAnswer[indexPath.section].2, ofType: "png") {
+                if Bundle.main.path(forResource: questionAnswer[indexPath.section].2, ofType: "png") != nil {
                     return 300
                 } else {
                     return 150
