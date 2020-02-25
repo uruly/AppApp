@@ -15,13 +15,10 @@ class TutorialViewController: UIViewController {
     var helpView: HelpView!
     static var isFirst: Bool = true
     var navigationHeight: CGFloat {
-        get {
-            if UIDevice.current.model.range(of: "iPad") != nil {
-                print("iPad")
-                return 40
-            } else {
-                return 80.0
-            }
+        if UIDevice.current.model.range(of: "iPad") != nil {
+            return 40
+        } else {
+            return 80.0
         }
     }
 
