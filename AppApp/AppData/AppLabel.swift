@@ -248,10 +248,8 @@ class AppLabel {
 
         let realm = try! Realm(configuration: config)
         let objs = realm.objects(AppLabelRealmData.self)
-        for obj in objs {
-            if obj.name == name {
-                return true
-            }
+        for obj in objs where obj.name == name {
+            return true
         }
         return false
     }
@@ -304,14 +302,12 @@ class AppLabel {
         try! realm.write {
             realm.delete(labelData)
         }
-        //orderを直す
+        // orderを直す
         let labelList = realm.objects(AppLabelRealmData.self)
-        for label in labelList {
-            if label.order > deleteOrder {
-                try! realm.write {
-                    label.order -= 1
-                    realm.add(label, update: .all)
-                }
+        for label in labelList where label.order > deleteOrder {
+            try! realm.write {
+                label.order -= 1
+                realm.add(label, update: .all)
             }
         }
         completion()

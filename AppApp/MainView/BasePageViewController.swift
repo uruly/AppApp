@@ -440,8 +440,8 @@ extension BasePageViewController: UIImagePickerControllerDelegate, UINavigationC
                 setInfoVC.isEditView = true
             }
         }
-        if picker.viewControllers.contains(where: { (vc) -> Bool in
-            if let _:SetInfoViewController = vc as? SetInfoViewController {
+        if picker.viewControllers.contains(where: { (viewController) -> Bool in
+            if let _:SetInfoViewController = viewController as? SetInfoViewController {
                 return true
             }
             //print(vc)

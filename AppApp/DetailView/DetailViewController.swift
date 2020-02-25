@@ -103,12 +103,10 @@ class DetailViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         if let viewControllers = self.navigationController?.viewControllers {
             var existsSelfInViewControllers = true
-            for viewController in viewControllers {
-                if viewController == self {
-                    existsSelfInViewControllers = false
-                    // selfが存在した時点で処理を終える
-                    break
-                }
+            for viewController in viewControllers where viewController == self {
+                existsSelfInViewControllers = false
+                // selfが存在した時点で処理を終える
+                break
             }
 
             if existsSelfInViewControllers {
