@@ -55,20 +55,13 @@ struct VersionManager {
 
     func versionAlert(_ vc: UIViewController) {
         let alertController = UIAlertController(title: "新しいバージョンがあります。", message: "", preferredStyle: .alert)
-        let otherAction = UIAlertAction(title: "アップデートする", style: .destructive) {
-            _ in NSLog("はいボタンが押されました")
+        alertController.addAction(UIAlertAction(title: "アップデートする", style: .destructive) { _ in
             let urlString = "itms-apps://itunes.apple.com/app/id\(String.appleID)"
             if let url = NSURL(string: urlString) {
                 UIApplication.shared.open(url as URL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
             }
-        }
-        let cancelAction = UIAlertAction(title: "あとで", style: .cancel) {
-            _ in NSLog("いいえボタンが押されました")
-        }
-
-        alertController.addAction(otherAction)
-        alertController.addAction(cancelAction)
-
+        })
+        alertController.addAction(UIAlertAction(title: "あとで", style: .cancel))
         vc.present(alertController, animated: true, completion: nil)
 
     }

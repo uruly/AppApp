@@ -175,43 +175,25 @@ class DetailViewController: UIViewController {
     }
 
     func deleteAppAllData() {
-        //ポップアップを表示
         let alertController = UIAlertController(title: "Appを全て削除", message: "全てのラベルからAppを削除します", preferredStyle: .alert)
-        let otherAction = UIAlertAction(title: "削除する", style: .default) {
-            _ in
-            NSLog("はいボタンが押されました")
+        alertController.addAction(UIAlertAction(title: "削除する", style: .default) { _ in
             AppData.deleteAppAllData(app: self.appData.app, {
                 self.navigationController?.popViewController(animated: true)
             })
-        }
-        let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel) {
-            _ in NSLog("いいえボタンが押されました")
-        }
-
-        alertController.addAction(otherAction)
-        alertController.addAction(cancelAction)
-
-        self.present(alertController, animated: true, completion: nil)
+        })
+        alertController.addAction(UIAlertAction(title: "キャンセル", style: .cancel))
+        present(alertController, animated: true, completion: nil)
     }
 
     func deleteAppLabelData() {
-        //ポップアップを表示
         let alertController = UIAlertController(title: "\(appData.label.name!)からAppを削除", message: "", preferredStyle: .alert)
-        let otherAction = UIAlertAction(title: "削除する", style: .default) {
-            _ in
-            NSLog("はいボタンが押されました")
+        alertController.addAction(UIAlertAction(title: "削除する", style: .default) { _ in
             AppData.deleteAppData(app: self.appData, {
                 self.navigationController?.popViewController(animated: true)
             })
-        }
-        let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel) {
-            _ in NSLog("いいえボタンが押されました")
-        }
-
-        alertController.addAction(otherAction)
-        alertController.addAction(cancelAction)
-
-        self.present(alertController, animated: true, completion: nil)
+        })
+        alertController.addAction(UIAlertAction(title: "キャンセル", style: .cancel))
+        present(alertController, animated: true, completion: nil)
     }
 }
 
