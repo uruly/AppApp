@@ -104,6 +104,7 @@
 		66681CE51FCC17E2009A0F55 /* DetailAppInfoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66681CE31FCC17E2009A0F55 /* DetailAppInfoViewCell.swift */; };
 		66681CE61FCC17E2009A0F55 /* DetailAppInfoViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66681CE41FCC17E2009A0F55 /* DetailAppInfoViewCell.xib */; };
 		66686B712405019F005A22A3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66686B702405019F005A22A3 /* Constants.swift */; };
+		66686B7324052B37005A22A3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66686B702405019F005A22A3 /* Constants.swift */; };
 		666E06AF1FCB94DF0043DCFF /* CommonInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666E06AE1FCB94DF0043DCFF /* CommonInfoView.swift */; };
 		666E06B41FCB9A880043DCFF /* MemoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666E06B21FCB9A880043DCFF /* MemoCell.swift */; };
 		666E06B51FCB9A880043DCFF /* MemoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 666E06B31FCB9A880043DCFF /* MemoCell.xib */; };
@@ -1220,6 +1221,7 @@
 				66AA1DFA1FC56519001C419E /* ShareViewController.swift in Sources */,
 				6677FC2A1FCA882800CB105E /* ColorPicker.swift in Sources */,
 				66498E2A1FC666A400239B47 /* ShareAppLabel.swift in Sources */,
+				66686B7324052B37005A22A3 /* Constants.swift in Sources */,
 				6677FC281FCA7F2000CB105E /* CreateLabelViewController.swift in Sources */,
 				66AA1E0B1FC5919E001C419E /* MemoViewController.swift in Sources */,
 				66498E2C1FC67A6400239B47 /* AppData.swift in Sources */,

@@ -4,6 +4,7 @@ disabled_rules:
 
 included:
   - AppApp
+  - ShareFromAppStoreExtension
 
 excluded:
   - Carthage
