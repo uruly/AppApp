@@ -143,7 +143,7 @@ class SetInfoViewController: UIViewController {
     //AppのDataをセーブするよ
     func saveAppData(name: String, developer: String, id: String, urlString: String, image: Data) {
         var config =  Realm.Configuration(
-            schemaVersion: SCHEMA_VERSION,
+            schemaVersion: .schemaVersion,
             migrationBlock: { migration, oldSchemaVersion in
                 //print(oldSchemaVersion)
                 if oldSchemaVersion < 4 {
@@ -208,7 +208,7 @@ class SetInfoViewController: UIViewController {
     }
 
     func dataCount(label: AppLabelRealmData) -> Int {
-        var config = Realm.Configuration(schemaVersion: SCHEMA_VERSION)
+        var config = Realm.Configuration(schemaVersion: .schemaVersion)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
         config.fileURL = url.appendingPathComponent("db.realm")
 

@@ -9,8 +9,6 @@
 import UIKit
 import RealmSwift
 
-let SCHEMA_VERSION: UInt64 = 5
-
 //保存するアプリデータ
 class AppRealmData: Object {
     @objc dynamic var name: String!      //アプリの名前
@@ -82,7 +80,7 @@ class AppData {
     func readAppData(label: AppLabelData, _ completion:@escaping () -> Void) {
         appList = []
 
-        var config = Realm.Configuration(schemaVersion: SCHEMA_VERSION)
+        var config = Realm.Configuration(schemaVersion: .schemaVersion)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
         config.fileURL = url.appendingPathComponent("db.realm")
 
@@ -114,7 +112,7 @@ class AppData {
     func resetOrder() {
         for (index, app) in appList.enumerated() {
             //appの並びを更新
-            var config = Realm.Configuration(schemaVersion: SCHEMA_VERSION)
+            var config = Realm.Configuration(schemaVersion: .schemaVersion)
             let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
             config.fileURL = url.appendingPathComponent("db.realm")
 
@@ -134,7 +132,7 @@ class AppData {
     //delete
     func deleteAppData(appList: [ApplicationStruct], _ completion:() -> Void) {
         for app in appList {
-            var config = Realm.Configuration(schemaVersion: SCHEMA_VERSION)
+            var config = Realm.Configuration(schemaVersion: .schemaVersion)
             let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
             config.fileURL = url.appendingPathComponent("db.realm")
 
@@ -152,7 +150,7 @@ class AppData {
     //save
     static func saveAppData(appList: [ApplicationStruct], labelList: [AppLabelData], _ completion:() -> Void) {
         for labelData in labelList {
-            var config = Realm.Configuration(schemaVersion: SCHEMA_VERSION)
+            var config = Realm.Configuration(schemaVersion: .schemaVersion)
             let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
             config.fileURL = url.appendingPathComponent("db.realm")
 
@@ -186,7 +184,7 @@ class AppData {
     }
 
     static func saveAppData(appList: [AppStruct], labelID: String, _ completion:() -> Void) {
-        var config = Realm.Configuration(schemaVersion: SCHEMA_VERSION)
+        var config = Realm.Configuration(schemaVersion: .schemaVersion)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
         config.fileURL = url.appendingPathComponent("db.realm")
         let realm = try! Realm(configuration: config)
@@ -214,7 +212,7 @@ class AppData {
 
     static func deleteAppData(app: ApplicationStruct, _ completion:() -> Void) {
         //ラベルについているAppのみを消すよ
-        var config = Realm.Configuration(schemaVersion: SCHEMA_VERSION)
+        var config = Realm.Configuration(schemaVersion: .schemaVersion)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
         config.fileURL = url.appendingPathComponent("db.realm")
 
@@ -229,7 +227,7 @@ class AppData {
     }
 
     static func deleteAppAllData(app: AppStruct, _ completion:() -> Void) {
-        var config = Realm.Configuration(schemaVersion: SCHEMA_VERSION)
+        var config = Realm.Configuration(schemaVersion: .schemaVersion)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
         config.fileURL = url.appendingPathComponent("db.realm")
 

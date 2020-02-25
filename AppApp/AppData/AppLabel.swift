@@ -92,7 +92,7 @@ class AppLabel {
 
     func migration() {
         var config =  Realm.Configuration(
-            schemaVersion: SCHEMA_VERSION,
+            schemaVersion: .schemaVersion,
             migrationBlock: { migration, oldSchemaVersion in
                 //print(oldSchemaVersion)
                 if oldSchemaVersion < 4 {
@@ -115,7 +115,7 @@ class AppLabel {
     func reloadLabelData() {
         //ラベルを読み込む処理
         self.array = []
-        var config = Realm.Configuration(schemaVersion: SCHEMA_VERSION)
+        var config = Realm.Configuration(schemaVersion: .schemaVersion)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
         config.fileURL = url.appendingPathComponent("db.realm")
 
@@ -140,7 +140,7 @@ class AppLabel {
                                               "id": "0",
                                               "order": 0
         ])
-        var config = Realm.Configuration(schemaVersion: SCHEMA_VERSION)
+        var config = Realm.Configuration(schemaVersion: .schemaVersion)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
         config.fileURL = url.appendingPathComponent("db.realm")
 
@@ -160,7 +160,7 @@ class AppLabel {
                                               "order": order,
                                               "explain": explain ?? ""
         ])
-        var config = Realm.Configuration(schemaVersion: SCHEMA_VERSION)
+        var config = Realm.Configuration(schemaVersion: .schemaVersion)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
         config.fileURL = url.appendingPathComponent("db.realm")
 
@@ -194,7 +194,7 @@ class AppLabel {
                                               "order": order,
                                               "explain": explain ?? ""
         ])
-        var config = Realm.Configuration(schemaVersion: SCHEMA_VERSION)
+        var config = Realm.Configuration(schemaVersion: .schemaVersion)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
         config.fileURL = url.appendingPathComponent("db.realm")
 
@@ -242,7 +242,7 @@ class AppLabel {
     }
 
     static func contains(name: String) -> Bool {
-        var config = Realm.Configuration(schemaVersion: SCHEMA_VERSION)
+        var config = Realm.Configuration(schemaVersion: .schemaVersion)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
         config.fileURL = url.appendingPathComponent("db.realm")
 
@@ -257,7 +257,7 @@ class AppLabel {
     }
 
     static func contains(color: UIColor, isEdit: Bool, id: String) -> Bool {
-        var config = Realm.Configuration(schemaVersion: SCHEMA_VERSION)
+        var config = Realm.Configuration(schemaVersion: .schemaVersion)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
         config.fileURL = url.appendingPathComponent("db.realm")
 
@@ -286,7 +286,7 @@ class AppLabel {
     }
 
     static func deleteLabelData(labelID: String, _ completion:() -> Void) {
-        var config = Realm.Configuration(schemaVersion: SCHEMA_VERSION)
+        var config = Realm.Configuration(schemaVersion: .schemaVersion)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
         config.fileURL = url.appendingPathComponent("db.realm")
 
@@ -321,7 +321,7 @@ class AppLabel {
     func resetOrder() {
         for (index, app) in array.enumerated() {
             if index == 0 { continue }
-            var config = Realm.Configuration(schemaVersion: SCHEMA_VERSION)
+            var config = Realm.Configuration(schemaVersion: .schemaVersion)
             let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
             config.fileURL = url.appendingPathComponent("db.realm")
 

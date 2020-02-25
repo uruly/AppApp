@@ -8,10 +8,6 @@
 
 import UIKit
 
-//アプリの番号
-let APPLE_ID = "1319908151" //自分のアプリの番号
-let RESOLUTION: String = "@" + String(Int(UIScreen.main.scale)) + "x"
-
 struct VersionManager {
 
     //var alertController:UIAlertController?
@@ -22,7 +18,7 @@ struct VersionManager {
 
     /****************** Version Check *********************/
     func checkVersion(_ vc: UIViewController) {
-        let url = "https://itunes.apple.com/jp/lookup?id=\(APPLE_ID)"
+        let url = "https://itunes.apple.com/jp/lookup?id=\(String.appleID)"
         let req = URLRequest(url: URL(string: url)!, cachePolicy: NSURLRequest.CachePolicy.useProtocolCachePolicy, timeoutInterval: 60.0)
         let configuration = URLSessionConfiguration.default
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
@@ -61,7 +57,7 @@ struct VersionManager {
         let alertController = UIAlertController(title: "新しいバージョンがあります。", message: "", preferredStyle: .alert)
         let otherAction = UIAlertAction(title: "アップデートする", style: .destructive) {
             _ in NSLog("はいボタンが押されました")
-            let urlString = "itms-apps://itunes.apple.com/app/id\(APPLE_ID)"
+            let urlString = "itms-apps://itunes.apple.com/app/id\(String.appleID)"
             if let url = NSURL(string: urlString) {
                 UIApplication.shared.open(url as URL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
             }
