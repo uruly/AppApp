@@ -21,12 +21,12 @@ class HelpLinkCell: UITableViewCell {
         //影をつける
         self.linkBtn.layer.masksToBounds = false
         self.linkBtn.layer.shadowColor = UIColor.darkGray.cgColor
-        self.linkBtn.layer.shadowOffset = CGSize(width:3,height:3)
+        self.linkBtn.layer.shadowOffset = CGSize(width: 3, height: 3)
         self.linkBtn.layer.shadowRadius = 4
         self.linkBtn.layer.shadowOpacity = 0.5
-        
+
         self.contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        
+
         self.answerLabel.text = ""
     }
 
@@ -35,5 +35,5 @@ class HelpLinkCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
 }

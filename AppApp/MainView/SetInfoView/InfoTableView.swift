@@ -8,14 +8,14 @@
 
 import UIKit
 @objc protocol InfoTableViewDelegate {
-    var setVC:SetInfoViewController { get }
+    var setVC: SetInfoViewController { get }
 }
 
 class InfoTableView: UITableView {
-    
-    var labelArray:[AppLabelData] = []
-    var checkArray:[AppLabelData] = []
-    var infoDelegate:InfoTableViewDelegate?
+
+    var labelArray: [AppLabelData] = []
+    var checkArray: [AppLabelData] = []
+    weak var infoDelegate: InfoTableViewDelegate?
     var memoText = "" {
         didSet {
             if let setVC = infoDelegate?.setVC {
@@ -23,30 +23,30 @@ class InfoTableView: UITableView {
             }
         }
     }
-    var commonTextArray = ["タイトル","作成者"]
-    var commonPlaceholderArray = ["タイトルを記入","作成者を記入"]
-    var keyboardHeight:CGFloat = 0
-    var memoView:UITextView! {
+    var commonTextArray = ["タイトル", "作成者"]
+    var commonPlaceholderArray = ["タイトルを記入", "作成者を記入"]
+    var keyboardHeight: CGFloat = 0
+    var memoView: UITextView! {
         didSet {
             setDoneBtn(memoView)
         }
     }
 
-    var creatorTextField:UITextField?
-    
+    var creatorTextField: UITextField?
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
+
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
-        self.register(UINib(nibName:"InfoTableViewCell",bundle:nil), forCellReuseIdentifier: "common")
+        self.register(UINib(nibName: "InfoTableViewCell", bundle: nil), forCellReuseIdentifier: "common")
         self.register(UITableViewCell.self, forCellReuseIdentifier: "label")
-        self.register(UINib(nibName:"MemoCell",bundle:nil), forCellReuseIdentifier: "memo")
+        self.register(UINib(nibName: "MemoCell", bundle: nil), forCellReuseIdentifier: "memo")
         self.delegate = self
         self.dataSource = self
         self.backgroundColor = UIColor.white
-        
+
         let appLabel = AppLabel()
         labelArray = appLabel.array
         if labelArray.count > 0 {   //all入れておく
@@ -55,11 +55,11 @@ class InfoTableView: UITableView {
         self.estimatedRowHeight = 500
         self.rowHeight = UITableView.automaticDimension
     }
-    
-    convenience init(frame:CGRect){
-        self.init(frame:frame,style:.grouped)
+
+    convenience init(frame: CGRect) {
+        self.init(frame: frame, style: .grouped)
     }
-    
+
     @objc func showKeyboard(notification: Notification) {
         //print("show")
         if memoView == nil {
@@ -72,8 +72,8 @@ class InfoTableView: UITableView {
                 let keyboardHeight = keyboardFrameInfo.cgRectValue.height
                 self.keyboardHeight = keyboardHeight
                 let keyMinY = self.superview!.frame.height - keyboardHeight
-                if let range = memoView.selectedTextRange?.start{
-                    let rect = memoView.caretRect(for:range)
+                if let range = memoView.selectedTextRange?.start {
+                    let rect = memoView.caretRect(for: range)
                     let scrollRect = memoView.convert(rect, to: self.superview!)
                     if scrollRect.maxY >= keyMinY {
                         let diffY = scrollRect.maxY - keyMinY
@@ -85,8 +85,8 @@ class InfoTableView: UITableView {
             }
         }
     }
-    
-    func setDoneBtn(_ memoView:UITextView){
+
+    func setDoneBtn(_ memoView: UITextView) {
         // 仮のサイズでツールバー生成
         let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 40))
         toolBar.barStyle = .default  // スタイルを設定
@@ -96,12 +96,11 @@ class InfoTableView: UITableView {
         // 閉じるボタン
         let commitButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.doneBtnTapped(sender:)))
         toolBar.items = [spacer, commitButton]
-        
-        
+
         memoView.inputAccessoryView = toolBar
     }
-    
-    @objc func doneBtnTapped(sender:UIBarButtonItem){
+
+    @objc func doneBtnTapped(sender: UIBarButtonItem) {
         memoView.resignFirstResponder()
     }
 
@@ -118,7 +117,7 @@ extension InfoTableView: UITableViewDelegate {
             tableView.deselectRow(at: selectRow, animated: false)
         }
         if indexPath.section == 0 {
-            if let infoCell:InfoTableViewCell = cell as? InfoTableViewCell {
+            if let infoCell: InfoTableViewCell = cell as? InfoTableViewCell {
                 infoCell.textField.becomeFirstResponder()
             }
         }
@@ -126,22 +125,22 @@ extension InfoTableView: UITableViewDelegate {
             let indexArray = checkArray.findIndex(includeElement: { (data) -> Bool in
                 return data.name == ( cell.textLabel?.text ?? "" )
             })
-            if indexArray.count > 0{
+            if indexArray.count > 0 {
                 if checkArray[indexArray[0]].name == "ALL" {
                     return
                 }
                 //外す
-                checkArray.remove(at:indexArray[0])
+                checkArray.remove(at: indexArray[0])
                 cell.accessoryType = .none
-            }else {
+            } else {
                 //つける
                 checkArray.append(labelArray[indexPath.row])
                 cell.accessoryType = .checkmark
             }
         }
     }
-    
-    @objc func textFieldChangedValue(sender:UITextField){
+
+    @objc func textFieldChangedValue(sender: UITextField) {
         if let setVC = infoDelegate?.setVC {
             if sender.tag == 0 {
                 setVC.titleName = sender.text
@@ -155,7 +154,7 @@ extension InfoTableView: UITableViewDelegate {
 }
 
 extension InfoTableView: UITableViewDataSource {
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0: return commonTextArray.count
@@ -164,10 +163,10 @@ extension InfoTableView: UITableViewDataSource {
         default: return 0
         }
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell:InfoTableViewCell = tableView.dequeueReusableCell(withIdentifier: "common", for: indexPath) as! InfoTableViewCell
+            let cell: InfoTableViewCell = tableView.dequeueReusableCell(withIdentifier: "common", for: indexPath) as! InfoTableViewCell
             cell.nameLabel.text = commonTextArray[indexPath.row]
             cell.textField.placeholder = commonPlaceholderArray[indexPath.row]
             cell.textField.delegate = self
@@ -183,17 +182,17 @@ extension InfoTableView: UITableViewDataSource {
                 creatorTextField = cell.textField
             }
             return cell
-        }else if indexPath.section == 1 {
-            let cell:MemoCell = tableView.dequeueReusableCell(withIdentifier: "memo", for: indexPath) as! MemoCell
+        } else if indexPath.section == 1 {
+            let cell: MemoCell = tableView.dequeueReusableCell(withIdentifier: "memo", for: indexPath) as! MemoCell
             cell.memoView.placeholder = "ここにメモを記入します。"
             cell.memoView.font = UIFont.systemFont(ofSize: 14)
             cell.memoView.delegate = self
             self.memoView = cell.memoView
             if let placeholderLabel = cell.memoView.viewWithTag(100) as? UILabel {
-                placeholderLabel.font = UIFont.systemFont(ofSize:14)
+                placeholderLabel.font = UIFont.systemFont(ofSize: 14)
             }
             return cell
-        }else{
+        } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "label", for: indexPath)
             cell.isSelected = false
             cell.isHighlighted = false
@@ -201,21 +200,21 @@ extension InfoTableView: UITableViewDataSource {
             cell.textLabel?.font = UIFont.systemFont(ofSize: 14)
             if checkArray.contains(where: { (data) -> Bool in
                 return data.name == labelArray[indexPath.row].name
-            }){
+            }) {
                 cell.accessoryType = .checkmark
-            }else {
+            } else {
                 cell.accessoryType = .none
             }
             return cell
         }
     }
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         //基本情報、メモ、つけるラベル
-        
+
         return 3
     }
-    
+
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         self.tableHeaderView?.backgroundColor = UIColor.white
         self.tableFooterView?.backgroundColor = UIColor.white
@@ -229,14 +228,14 @@ extension InfoTableView: UITableViewDataSource {
         default: return ""
         }
     }
-    
+
 }
 
-extension InfoTableView:UITextViewDelegate {
-    
+extension InfoTableView: UITextViewDelegate {
+
     func textViewDidEndEditing(_ textView: UITextView) {
         textView.resignFirstResponder()
-        if let text = textView.text{
+        if let text = textView.text {
             self.memoText = text
         }
     }
@@ -247,16 +246,16 @@ extension InfoTableView:UITextViewDelegate {
         if let placeholderLabel = textView.viewWithTag(100) as? UILabel {
             placeholderLabel.isHidden = textView.text.count > 0
         }
-        if let text = textView.text{
+        if let text = textView.text {
             self.memoText = text
         }
-        
+
         //カーソルがキーボードと被ってないかチェック
         DispatchQueue.global().asyncAfter(deadline: DispatchTime.now() + 0.2, execute: {
             DispatchQueue.main.async {
                 let keyMinY = self.superview!.frame.height - self.keyboardHeight
-                if let range = textView.selectedTextRange?.start{
-                    let rect = textView.caretRect(for:range)
+                if let range = textView.selectedTextRange?.start {
+                    let rect = textView.caretRect(for: range)
                     let scrollRect = textView.convert(rect, to: self.superview!)
                     //print("scrollRect\(scrollRect),keyMinY\(keyMinY)")
                     if scrollRect.maxY >= keyMinY {
@@ -270,15 +269,14 @@ extension InfoTableView:UITextViewDelegate {
             }
         })
     }
-    
-    
+
     func textViewShouldReturn(_ textView: UITextView) -> Bool {
         textView.resignFirstResponder()
         return true
     }
 }
 
-extension InfoTableView:UITextFieldDelegate {
+extension InfoTableView: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         textField.resignFirstResponder()
         if let setVC = infoDelegate?.setVC {
@@ -290,13 +288,12 @@ extension InfoTableView:UITextFieldDelegate {
             }
         }
     }
-    
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if let nextField = creatorTextField{
+        if let nextField = creatorTextField {
             nextField.becomeFirstResponder()
         }
         textField.resignFirstResponder()
         return true
     }
 }
-

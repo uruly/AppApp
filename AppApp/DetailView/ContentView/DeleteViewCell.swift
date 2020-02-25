@@ -18,11 +18,11 @@ class DeleteViewCell: UICollectionViewCell {
         //widthLayout.constant = UIScreen.main.bounds.width - 30
         //tableView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - 30)
     }
-//    override func layoutSubviews() {
-//        super.layoutSubviews()
-//        //ここでcellの大きさを変えたい
-//        self.sizeToFit()
-//        print("layoutSubviewだよ")
-//    }
+    //    override func layoutSubviews() {
+    //        super.layoutSubviews()
+    //        //ここでcellの大きさを変えたい
+    //        self.sizeToFit()
+    //        print("layoutSubviewだよ")
+    //    }
 
 }

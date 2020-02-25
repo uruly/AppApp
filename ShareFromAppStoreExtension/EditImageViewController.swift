@@ -10,86 +10,84 @@ import UIKit
 
 class EditImageViewController: UIViewController {
 
-    var imageView:EditImageView!
-    var image:UIImage!
-    var textLabel:UILabel!
-    var shareVC:ShareViewController!
-    var position:CGPoint?
-    var scale:CGFloat?
-    
+    var imageView: EditImageView!
+    var image: UIImage!
+    var textLabel: UILabel!
+    var shareVC: ShareViewController!
+    var position: CGPoint?
+    var scale: CGFloat?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.view.backgroundColor = UIColor.blue
         let width = self.view.bounds.width
         //imageViewを置く
-        let imageSize:CGFloat = 180
-        imageView = EditImageView(frame:CGRect(x:0,y:15,width:imageSize,height:imageSize))
-        imageView.center = CGPoint(x:width / 2 - 15,y:15 + imageSize / 2)
-        
+        let imageSize: CGFloat = 180
+        imageView = EditImageView(frame: CGRect(x: 0, y: 15, width: imageSize, height: imageSize))
+        imageView.center = CGPoint(x: width / 2 - 15, y: 15 + imageSize / 2)
+
         //向き調整
         UIGraphicsBeginImageContextWithOptions(image.size, false, 0.0)
-        image.draw(in: CGRect(x:0,y:0,width:image.size.width,height:image.size.height))
+        image.draw(in: CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height))
         image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        
+
         //レイヤーを足す
         let layer = CALayer()
-        layer.frame = CGRect(x:0,y:0,width:imageSize,height:imageSize)
+        layer.frame = CGRect(x: 0, y: 0, width: imageSize, height: imageSize)
         layer.contents = image.cgImage
         layer.contentsGravity = CALayerContentsGravity.resizeAspectFill
         layer.name = "image"
         imageView.layer.addSublayer(layer)
-        
-        let shadowView = UIView(frame:imageView.frame)
+
+        let shadowView = UIView(frame: imageView.frame)
         shadowView.backgroundColor = UIColor.white
         shadowView.layer.cornerRadius = 40.0
         shadowView.layer.masksToBounds = false
         shadowView.layer.shadowColor = UIColor.darkGray.cgColor
-        shadowView.layer.shadowOffset = CGSize(width:1,height:1)
+        shadowView.layer.shadowOffset = CGSize(width: 1, height: 1)
         shadowView.layer.shadowRadius = 4
         shadowView.layer.shadowOpacity = 0.5
         self.view.addSubview(shadowView)
         self.view.addSubview(imageView)
         // Do any additional setup after loading the view.
-        
+
         //ラベルを表示
-        textLabel = UILabel(frame:CGRect(x:0,y:imageView.frame.maxY + 15,width:width,height:50))
+        textLabel = UILabel(frame: CGRect(x: 0, y: imageView.frame.maxY + 15, width: width, height: 50))
         textLabel.text = "ドラッグ・ピンチイン/アウトで調整"
         textLabel.font = UIFont.systemFont(ofSize: 14.0)
         textLabel.textAlignment = .center
         textLabel.textColor = UIColor.gray
         self.view.addSubview(textLabel)
-        
+
         //print("subview\(shareVC)")
-        
+
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        let imageSize:CGFloat = 180.0
-        imageView.center = CGPoint(x:self.view.frame.width / 2,y:15 + imageSize / 2)
-        textLabel.frame = CGRect(x:0,y:imageView.frame.maxY + 15,width:self.view.frame.width,height:50)
+        let imageSize: CGFloat = 180.0
+        imageView.center = CGPoint(x: self.view.frame.width / 2, y: 15 + imageSize / 2)
+        textLabel.frame = CGRect(x: 0, y: imageView.frame.maxY + 15, width: self.view.frame.width, height: 50)
         if scale != nil && position != nil {
             updateImagePosition()
         }
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         if let viewControllers = self.navigationController?.viewControllers {
             var existsSelfInViewControllers = true
-            for viewController in viewControllers {
-                if viewController == self {
-                    existsSelfInViewControllers = false
-                    // selfが存在した時点で処理を終える
-                    break
-                }
+            for viewController in viewControllers where viewController == self {
+                existsSelfInViewControllers = false
+                // selfが存在した時点で処理を終える
+                break
             }
-            
+
             if existsSelfInViewControllers {
                 //print("前の画面に戻る処理が行われました")
                 self.saveImage()
@@ -97,15 +95,15 @@ class EditImageViewController: UIViewController {
         }
         super.viewWillDisappear(animated)
     }
-    
+
     func updateImagePosition() {
         if let layer = imageView.layer.sublayers?.first {
             layer.position = position!
-            layer.setAffineTransform(CGAffineTransform(scaleX: scale!,y:scale!))
+            layer.setAffineTransform(CGAffineTransform(scaleX: scale!, y: scale!))
         }
     }
-    
-    func saveImage(){
+
+    func saveImage() {
         let cropImage = imageView.snapshot()
         let imageData = cropImage.pngData()!
         shareVC.image = imageData
@@ -116,7 +114,7 @@ class EditImageViewController: UIViewController {
         //print("saveしてるよ")
         //print("プレビューアクション相手ｍす\(shareVC.previewActionItems)")
         //print("shareVC.loadPreviewView\(shareVC.loadPreviewView())")
-        if let view = shareVC.loadPreviewView(){
+        if let view = shareVC.loadPreviewView() {
             //print(view)
             if let preview = view.subviews.first as? UIImageView {
                 //print("preview")
@@ -125,8 +123,7 @@ class EditImageViewController: UIViewController {
             //print("imageView.subviews:\(view.subviews),imageView:isKind\(preview)")
             //imageView.image = cropImage
         }
-        
-        
+
     }
 
 }

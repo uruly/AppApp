@@ -10,7 +10,7 @@ import UIKit
 
 class InfoTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
-    
+
     @IBOutlet weak var textField: UITextField!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,8 +23,8 @@ class InfoTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
-    func setDoneBtn(_ textField:UITextField){
+
+    func setDoneBtn(_ textField: UITextField) {
         // 仮のサイズでツールバー生成
         let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 40))
         toolBar.barStyle = .default  // スタイルを設定
@@ -34,14 +34,13 @@ class InfoTableViewCell: UITableViewCell {
         // 閉じるボタン
         let commitButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.doneBtnTapped(sender:)))
         toolBar.items = [spacer, commitButton]
-        
-        
+
         textField.inputAccessoryView = toolBar
         textField.returnKeyType = .done
     }
-    
-    @objc func doneBtnTapped(sender:UIBarButtonItem) {
+
+    @objc func doneBtnTapped(sender: UIBarButtonItem) {
         textField.resignFirstResponder()
     }
-    
+
 }

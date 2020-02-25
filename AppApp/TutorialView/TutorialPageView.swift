@@ -9,42 +9,41 @@
 import UIKit
 
 @objc protocol TutorialPageControlDelegate {
-    func movePage(count:Int)
-    var tutorialVC:TutorialViewController { get }
+    func movePage(count: Int)
+    var tutorialVC: TutorialViewController { get }
 }
 
 class TutorialPageView: UICollectionView {
 
-    var pageDelegate:TutorialPageControlDelegate!
-    
+    weak var pageDelegate: TutorialPageControlDelegate!
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
-    
+
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
         self.delegate = self
         self.dataSource = self
-        self.register(UINib(nibName:"WelcomeViewCell",bundle:nil), forCellWithReuseIdentifier: "welcome")
-        self.register(UINib(nibName:"HowToViewCell",bundle:nil), forCellWithReuseIdentifier: "howTo")
-        self.register(UINib(nibName:"StartViewCell",bundle:nil), forCellWithReuseIdentifier: "start")
+        self.register(UINib(nibName: "WelcomeViewCell", bundle: nil), forCellWithReuseIdentifier: "welcome")
+        self.register(UINib(nibName: "HowToViewCell", bundle: nil), forCellWithReuseIdentifier: "howTo")
+        self.register(UINib(nibName: "StartViewCell", bundle: nil), forCellWithReuseIdentifier: "start")
     }
-    
-    convenience init(frame: CGRect){
+
+    convenience init(frame: CGRect) {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width:frame.width,height:frame.height)
+        layout.itemSize = CGSize(width: frame.width, height: frame.height)
         layout.scrollDirection = .horizontal
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
-        
+
         self.init(frame: frame, collectionViewLayout: layout)
         self.isPagingEnabled = true
         self.showsVerticalScrollIndicator = false
         self.showsHorizontalScrollIndicator = false
         self.backgroundColor = UIColor.mainBlue()
     }
-    
+
 }
 
 extension TutorialPageView: UICollectionViewDelegate {
@@ -59,25 +58,25 @@ extension TutorialPageView: UICollectionViewDataSource {
         //ページ数
         return 8
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.row == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "welcome", for: indexPath) as! WelcomeViewCell
             return cell
-        }else if indexPath.row < 7{
+        } else if indexPath.row < 7 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "howTo", for: indexPath) as! HowToViewCell
-            for subview in cell.howToView.subviews{
+            for subview in cell.howToView.subviews {
                 subview.removeFromSuperview()
             }
             cell.howToView.setup(index: indexPath.row - 1)
             return cell
-        }else {
+        } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "start", for: indexPath) as! StartViewCell
             cell.startView.tutorialVC = pageDelegate.tutorialVC
             return cell
         }
     }
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        pageDelegate.movePage(count:indexPath.row)
+        pageDelegate.movePage(count: indexPath.row)
     }
 }

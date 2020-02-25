@@ -13,7 +13,7 @@ class HelpViewCell: UITableViewCell {
     @IBOutlet weak var answerLabel: UILabel!
 
     @IBOutlet weak var explainImageView: UIImageView!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -25,5 +25,5 @@ class HelpViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
 }

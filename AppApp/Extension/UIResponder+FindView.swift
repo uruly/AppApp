@@ -9,7 +9,7 @@
 import UIKit
 
 extension UIResponder {
-    
+
     func findViewController<T: UIViewController>() -> T? {
         var responder = self.next
         while responder != nil {
@@ -20,7 +20,5 @@ extension UIResponder {
         }
         return nil
     }
-    
-    
-}
 
+}
