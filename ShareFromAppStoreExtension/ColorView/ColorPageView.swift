@@ -9,7 +9,7 @@
 import UIKit
 
 @objc protocol ColorPageControlDelegate {
-    func movePage(count:Int)
+    func movePage(count: Int)
 }
 
 enum ColorMode {
@@ -20,54 +20,53 @@ enum ColorMode {
 class ColorPageView: UICollectionView {
 
     //var colors:[UIColor] = [UIColor.purple,UIColor.blue,UIColor.brown,UIColor.yellow,UIColor.red]
-    var colorPageDelegate:ColorPageControlDelegate!
-    var colorDelegate:ColorDelegate!
-    var colorMode:ColorMode = .set {
-        didSet{
+    weak var colorPageDelegate: ColorPageControlDelegate!
+    weak var colorDelegate: ColorDelegate!
+    var colorMode: ColorMode = .set {
+        didSet {
             self.reloadData()
         }
     }
-    
-    var colorSet:[String:[UIColor]] = [:]
-    var colorKeys:[String] = []
-    
+
+    var colorSet: [String: [UIColor]] = [:]
+    var colorKeys: [String] = []
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
 
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
-        self.register(UINib(nibName:"ColorBaseCell",bundle:nil), forCellWithReuseIdentifier: "base")
-        self.register(UINib(nibName:"RGBSliderCell",bundle:nil), forCellWithReuseIdentifier: "customBase")
+        self.register(UINib(nibName: "ColorBaseCell", bundle: nil), forCellWithReuseIdentifier: "base")
+        self.register(UINib(nibName: "RGBSliderCell", bundle: nil), forCellWithReuseIdentifier: "customBase")
         self.delegate = self
         self.dataSource = self
     }
-    
-    convenience init(frame: CGRect){
+
+    convenience init(frame: CGRect) {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width:frame.width,height:frame.height)
+        layout.itemSize = CGSize(width: frame.width, height: frame.height)
         layout.scrollDirection = .horizontal
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
-        
+
         self.init(frame: frame, collectionViewLayout: layout)
         self.isPagingEnabled = true
         self.showsVerticalScrollIndicator = false
         self.showsHorizontalScrollIndicator = false
         self.backgroundColor = UIColor.appStoreBlue()
     }
-    
-    override func reloadData(){
+
+    override func reloadData() {
         if colorMode == .set {
             readColorSet()
             super.reloadData()
-        }else {
+        } else {
             super.reloadData()
         }
     }
-    
-    func readColorSet(){
+
+    func readColorSet() {
         self.colorSet = [:]
         self.colorKeys = []
         let path = Bundle.main.path(forResource: "colorData", ofType: "json")
@@ -100,11 +99,11 @@ class ColorPageView: UICollectionView {
             } catch {
                 print(error)
             }
-        }catch {
+        } catch {
             print(error)
         }
     }
-    
+
 }
 
 extension ColorPageView: UICollectionViewDelegate {
@@ -118,11 +117,11 @@ extension ColorPageView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if colorMode == .set {  //ページ数
             return colorSet.keys.count
-        }else {
+        } else {
             return 1
         }
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if colorMode == .set {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "base", for: indexPath) as! ColorBaseCell
@@ -131,9 +130,9 @@ extension ColorPageView: UICollectionViewDataSource {
             print(colorDelegate)
             cell.colorSetView.colorDelegate = colorDelegate
             cell.colorSetView.reloadData()
-            
+
             return cell
-        }else {
+        } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "customBase", for: indexPath) as! RGBSliderCell
             cell.sliderView.colorDelegate = colorDelegate
             print(colorDelegate)
@@ -141,6 +140,6 @@ extension ColorPageView: UICollectionViewDataSource {
         }
     }
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        colorPageDelegate.movePage(count:indexPath.row)
+        colorPageDelegate.movePage(count: indexPath.row)
     }
 }

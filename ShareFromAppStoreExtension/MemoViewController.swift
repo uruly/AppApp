@@ -8,33 +8,32 @@
 
 import UIKit
 
-@objc protocol MemoViewDelegate{
-    var shareVC:ShareViewController { get }
+@objc protocol MemoViewDelegate {
+    var shareVC: ShareViewController { get }
 }
 
 class MemoViewController: UIViewController {
-    
-    var textView:UITextView!
-    var delegate:MemoViewDelegate!
+
+    var textView: UITextView!
+    weak var delegate: MemoViewDelegate!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.title = "メモ"
 
-        let margin:CGFloat = 15.0
-        
-        textView = UITextView(frame: CGRect(x:margin,y:margin,
-                                            width:self.view.bounds.width - (margin * 4),
-                                            height:200))
+        let margin: CGFloat = 15.0
+
+        textView = UITextView(frame: CGRect(x: margin, y: margin,
+                                            width: self.view.bounds.width - (margin * 4),
+                                            height: 200))
         textView.becomeFirstResponder()
-        textView.font = UIFont.systemFont(ofSize:UIFont.systemFontSize)
+        textView.font = UIFont.systemFont(ofSize: UIFont.systemFontSize)
         textView.backgroundColor = UIColor.clear
         textView.delegate = self
         textView.text = delegate.shareVC.memoText
         self.view.addSubview(textView)
-        
-        
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,7 +43,7 @@ class MemoViewController: UIViewController {
 
 }
 
-extension MemoViewController:UITextViewDelegate {
+extension MemoViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         //print(textView.text)
         delegate.shareVC.memoText = textView.text
