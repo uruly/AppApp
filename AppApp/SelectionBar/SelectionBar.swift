@@ -216,28 +216,3 @@ extension SelectionBar: UIScrollViewDelegate {
         //print("セレクションバースクロール中\(scrollView.contentOffset.x)")
     }
 }
-
-//extension UICollectionViewFlowLayout {
-//
-//    open override func invalidationContext(forInteractivelyMovingItems targetIndexPaths: [IndexPath], withTargetPosition targetPosition: CGPoint, previousIndexPaths: [IndexPath], previousPosition: CGPoint) -> UICollectionViewLayoutInvalidationContext {
-//
-//        let context = super.invalidationContext(forInteractivelyMovingItems: targetIndexPaths, withTargetPosition: targetPosition, previousIndexPaths: previousIndexPaths, previousPosition: previousPosition)
-//
-//        //Check that the movement has actually happeneds
-//        if previousIndexPaths.first!.item != targetIndexPaths.first!.item {
-//            collectionView?.dataSource?.collectionView?(collectionView!, moveItemAt: previousIndexPaths.first!, to: targetIndexPaths.last!)
-//        }
-//
-//        return context
-//    }
-//
-//    open override func invalidationContextForEndingInteractiveMovementOfItems(toFinalIndexPaths indexPaths: [IndexPath], previousIndexPaths: [IndexPath], movementCancelled: Bool) -> UICollectionViewLayoutInvalidationContext {
-//        return super.invalidationContextForEndingInteractiveMovementOfItems(toFinalIndexPaths: indexPaths, previousIndexPaths: previousIndexPaths, movementCancelled: movementCancelled)
-//    }
-//
-//    open override func layoutAttributesForInteractivelyMovingItem(at indexPath: IndexPath, withTargetPosition position: CGPoint) -> UICollectionViewLayoutAttributes {
-//        let attributes = super.layoutAttributesForInteractivelyMovingItem(at: indexPath, withTargetPosition: position)
-//        attributes.alpha = 0.8
-//        return attributes
-//    }
-//}

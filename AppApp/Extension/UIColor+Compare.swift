@@ -44,7 +44,7 @@ extension UIColor {
 
 }
 
-func ==(lhs: UIColor, rhs: UIColor) -> Bool {
+func == (lhs: UIColor, rhs: UIColor) -> Bool {
     var lhsRed: CGFloat = 0.0
     var lhsGreen: CGFloat = 0.0
     var lhsBlue: CGFloat = 0.0

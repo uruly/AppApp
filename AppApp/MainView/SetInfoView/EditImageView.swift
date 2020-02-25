@@ -57,7 +57,6 @@ class EditImageView: UIImageView {
     }
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        //print("moved")
         if selectLayer == nil {
             return
         }
@@ -67,40 +66,13 @@ class EditImageView: UIImageView {
 
             let diffX = point.x - previousPoint.x
             let diffY = point.y - previousPoint.y
-
-            //print(selectLayer?.frame.maxX)
             //レイヤーを移動させる
             CATransaction.begin()
             CATransaction.setDisableActions(true)
-            //let nextPointX = selectLayer!.position.x + diffX
-            //let nextPointY = selectLayer!.position.y + diffY
 
             selectLayer!.position.x += diffX
             selectLayer!.position.y += diffY
-            //            print("nextPointX\(nextPointX)")
-            //            print("nextPointY\(nextPointY)")
-            //            if nextPointX > selectLayer!.frame.width / 2 && nextPointX < self.frame.maxX - ( selectLayer!.frame.width / 2 ){
-            //                selectLayer!.position.x += diffX
-            //            }
-            //
-            //            if nextPointY > selectLayer!.frame.height / 2 && nextPointY < self.frame.maxY - ( selectLayer!.frame.height / 2) {
-            //                selectLayer!.position.y += diffY
-            //            }
-            ////            if selectLayer!.frame.minX <= 0{
-            //                //selectLayer!.position.x = selectLayer!.frame.width / 2
-            //            }else if selectLayer!.frame.maxX < self.frame.maxX{
-            //                //selectLayer!.position.x = self.frame.maxX - (selectLayer!.frame.width / 2)
-            //            }else {
-            //                selectLayer!.position.x += diffX
-            //            }
-            //
-            //            if selectLayer!.frame.minY <= 0 {
-            //                //selectLayer!.position.y = selectLayer!.frame.height / 2
-            //            }else if selectLayer!.frame.maxY < self.frame.maxY {
-            //                //selectLayer!.position.y = self.frame.maxY - (selectLayer!.frame.height / 2)
-            //            }else {
-            //                selectLayer!.position.y += diffY
-            //            }
+
             CATransaction.commit()
         }
     }
