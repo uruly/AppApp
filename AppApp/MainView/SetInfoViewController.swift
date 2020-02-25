@@ -114,8 +114,8 @@ class SetInfoViewController: UIViewController {
         super.viewWillDisappear(animated)
 
         if isEditView {
-            if let vc = self.navigationController?.viewControllers, vc.count - 2 >= 0 {
-                self.navigationController?.popToViewController(vc[vc.count - 2], animated: true)
+            if let viewControllers = self.navigationController?.viewControllers, viewControllers.count - 2 >= 0 {
+                self.navigationController?.popToViewController(viewControllers[viewControllers.count - 2], animated: true)
             } else {
                 self.navigationController?.popToRootViewController(animated: true)
             }

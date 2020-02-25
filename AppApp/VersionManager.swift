@@ -12,12 +12,12 @@ struct VersionManager {
 
     //var alertController:UIAlertController?
 
-    init(vc: UIViewController) {
-        self.checkVersion(vc)
+    init(viewController: UIViewController) {
+        self.checkVersion(viewController)
     }
 
     /****************** Version Check *********************/
-    func checkVersion(_ vc: UIViewController) {
+    func checkVersion(_ viewController: UIViewController) {
         let url = "https://itunes.apple.com/jp/lookup?id=\(String.appleID)"
         let req = URLRequest(url: URL(string: url)!, cachePolicy: NSURLRequest.CachePolicy.useProtocolCachePolicy, timeoutInterval: 60.0)
         let configuration = URLSessionConfiguration.default
@@ -36,7 +36,7 @@ struct VersionManager {
                         print("latest version : \(storeVersion)")
                         if storeVersion.compare(currentVersion, options: NSString.CompareOptions.numeric) == ComparisonResult.orderedDescending {
                             print("store version is newer!")
-                            self.versionAlert(vc)
+                            self.versionAlert(viewController)
                         } else if storeVersion.compare(currentVersion, options: NSString.CompareOptions.numeric) == ComparisonResult.orderedSame {
                             print("store version is equal")
                         } else {
@@ -52,7 +52,7 @@ struct VersionManager {
         task.resume()
     }
 
-    func versionAlert(_ vc: UIViewController) {
+    func versionAlert(_ viewController: UIViewController) {
         let alertController = UIAlertController(title: "新しいバージョンがあります。", message: "", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "アップデートする", style: .destructive) { _ in
             let urlString = "itms-apps://itunes.apple.com/app/id\(String.appleID)"
@@ -61,7 +61,7 @@ struct VersionManager {
             }
         })
         alertController.addAction(UIAlertAction(title: "あとで", style: .cancel))
-        vc.present(alertController, animated: true, completion: nil)
+        viewController.present(alertController, animated: true, completion: nil)
 
     }
 
