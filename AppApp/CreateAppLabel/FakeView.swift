@@ -14,15 +14,13 @@ class FakeView: UIView {
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-        //print("多ｔｔぷ")
         if self.delegate != nil {
             self.delegate.dismissPickerView(tag: pickerTag)
         }
         UIView.animate(withDuration: 0.2, animations: {
             self.alpha = 0.0
-        }) { (_) in
+        }, completion: { (_) in
             self.removeFromSuperview()
-        }
-        //print("タップされているよ")
+        })
     }
 }

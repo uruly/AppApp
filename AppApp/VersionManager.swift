@@ -23,8 +23,7 @@ struct VersionManager {
         let configuration = URLSessionConfiguration.default
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
         //        NSURLConnection.sendAsynchronousRequest(req,queue: OperationQueue.main,completionHandler:{(data,response,error) in
-        let task = session.dataTask(with: req, completionHandler: {
-            (data, _, error) -> Void in
+        let task = session.dataTask(with: req, completionHandler: { (data, _, error) -> Void in
             do {
                 if data != nil {
                     //                    let dic = try JSONSerialization.jsonObject(with: response!, options: .mutableContainers) as! NSDictionary
