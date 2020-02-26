@@ -511,7 +511,7 @@
 				666081AD24064F7700001A9C /* Model */,
 				666081AC24064F6D00001A9C /* Entity */,
 				666081732406483A00001A9C /* UIViewController */,
-				66681CD41FCC08A6009A0F55 /* Extension */,
+				66681CD41FCC08A6009A0F55 /* Extensions */,
 			);
 			path = Scripts;
 			sourceTree = "<group>";
@@ -1085,7 +1085,7 @@
 			path = backgroundImages;
 			sourceTree = "<group>";
 		};
-		66681CD41FCC08A6009A0F55 /* Extension */ = {
+		66681CD41FCC08A6009A0F55 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				666E06C41FCBCB260043DCFF /* UITextView+Placeholder.swift */,
@@ -1097,7 +1097,7 @@
 				667ECE581FC388B9009233DE /* UIColor+AppColor.swift */,
 				660B88332003C67A0064EFFE /* UIColor+Compare.swift */,
 			);
-			path = Extension;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		66686B6F2405018B005A22A3 /* Common */ = {
