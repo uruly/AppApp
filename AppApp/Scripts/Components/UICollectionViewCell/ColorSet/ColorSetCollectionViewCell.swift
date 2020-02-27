@@ -1,5 +1,5 @@
 //
-//  ColorSetViewCell.swift
+//  ColorSetCollectionViewCell.swift
 //  ColorView
 //
 //  Created by 久保　玲於奈 on 2017/11/30.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ColorSetViewCell: UICollectionViewCell {
+class ColorSetCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var checkImageView: UIImageView!
     override func awakeFromNib() {

@@ -17,8 +17,8 @@
 		660B57701FCFC5F500DBC823 /* ColorBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B57661FCFC5F400DBC823 /* ColorBaseCell.swift */; };
 		660B57711FCFC5F500DBC823 /* ColorSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B57671FCFC5F400DBC823 /* ColorSetView.swift */; };
 		660B57721FCFC5F500DBC823 /* ColorBaseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 660B57681FCFC5F400DBC823 /* ColorBaseCell.xib */; };
-		660B57731FCFC5F500DBC823 /* ColorSetViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B57691FCFC5F400DBC823 /* ColorSetViewCell.swift */; };
-		660B57741FCFC5F500DBC823 /* ColorSetViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 660B576A1FCFC5F400DBC823 /* ColorSetViewCell.xib */; };
+		660B57731FCFC5F500DBC823 /* ColorSetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B57691FCFC5F400DBC823 /* ColorSetCollectionViewCell.swift */; };
+		660B57741FCFC5F500DBC823 /* ColorSetCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 660B576A1FCFC5F400DBC823 /* ColorSetCollectionViewCell.xib */; };
 		660B57751FCFC5F500DBC823 /* RGBSliderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B576B1FCFC5F400DBC823 /* RGBSliderCollectionViewCell.swift */; };
 		660B57771FCFDB1000DBC823 /* colorData.json in Resources */ = {isa = PBXBuildFile; fileRef = 660B57761FCFDB1000DBC823 /* colorData.json */; };
 		660B57921FD013DD00DBC823 /* appapp_logo1.png in Resources */ = {isa = PBXBuildFile; fileRef = 660B57911FD013DD00DBC823 /* appapp_logo1.png */; };
@@ -225,8 +225,8 @@
 		660B57661FCFC5F400DBC823 /* ColorBaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorBaseCell.swift; sourceTree = "<group>"; };
 		660B57671FCFC5F400DBC823 /* ColorSetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSetView.swift; sourceTree = "<group>"; };
 		660B57681FCFC5F400DBC823 /* ColorBaseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ColorBaseCell.xib; sourceTree = "<group>"; };
-		660B57691FCFC5F400DBC823 /* ColorSetViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSetViewCell.swift; sourceTree = "<group>"; };
-		660B576A1FCFC5F400DBC823 /* ColorSetViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ColorSetViewCell.xib; sourceTree = "<group>"; };
+		660B57691FCFC5F400DBC823 /* ColorSetCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSetCollectionViewCell.swift; sourceTree = "<group>"; };
+		660B576A1FCFC5F400DBC823 /* ColorSetCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ColorSetCollectionViewCell.xib; sourceTree = "<group>"; };
 		660B576B1FCFC5F400DBC823 /* RGBSliderCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RGBSliderCollectionViewCell.swift; sourceTree = "<group>"; };
 		660B57761FCFDB1000DBC823 /* colorData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = colorData.json; sourceTree = "<group>"; };
 		660B57911FD013DD00DBC823 /* appapp_logo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appapp_logo1.png; sourceTree = "<group>"; };
@@ -905,8 +905,8 @@
 		6660819924064DFD00001A9C /* ColorSet */ = {
 			isa = PBXGroup;
 			children = (
-				660B57691FCFC5F400DBC823 /* ColorSetViewCell.swift */,
-				660B576A1FCFC5F400DBC823 /* ColorSetViewCell.xib */,
+				660B57691FCFC5F400DBC823 /* ColorSetCollectionViewCell.swift */,
+				660B576A1FCFC5F400DBC823 /* ColorSetCollectionViewCell.xib */,
 			);
 			path = ColorSet;
 			sourceTree = "<group>";
@@ -1407,7 +1407,7 @@
 				6676ED381FCD582200815BF8 /* DetailMemoViewCell.xib in Resources */,
 				6652DEEC1FCED46700EB84F6 /* check2@3x.png in Resources */,
 				660B57D31FD16DA700DBC823 /* tutorialMark@2x.png in Resources */,
-				660B57741FCFC5F500DBC823 /* ColorSetViewCell.xib in Resources */,
+				660B57741FCFC5F500DBC823 /* ColorSetCollectionViewCell.xib in Resources */,
 				6662E13D20007E7300FB30C7 /* InfoTableViewCell.xib in Resources */,
 				666E06B51FCB9A880043DCFF /* MemoCell.xib in Resources */,
 				660B57E01FD1774D00DBC823 /* HelpLinkCell.xib in Resources */,
@@ -1585,7 +1585,7 @@
 				660B57B81FD10F9500DBC823 /* StartViewCell.swift in Sources */,
 				66498E2E1FC6B92C00239B47 /* ApplicationData.swift in Sources */,
 				66FD458C1FC96B2A0093BB83 /* LabelListViewController.swift in Sources */,
-				660B57731FCFC5F500DBC823 /* ColorSetViewCell.swift in Sources */,
+				660B57731FCFC5F500DBC823 /* ColorSetCollectionViewCell.swift in Sources */,
 				6662E13420000AE200FB30C7 /* SetInfoViewController.swift in Sources */,
 				667ECE711FC4206F009233DE /* AppListCollectionViewCell.swift in Sources */,
 				660B579A1FD067E500DBC823 /* TutorialViewController.swift in Sources */,
