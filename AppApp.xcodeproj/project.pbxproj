@@ -50,8 +50,8 @@
 		660B57D81FD16F0B00DBC823 /* HelpViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 660B57D61FD16F0B00DBC823 /* HelpViewCell.xib */; };
 		660B57DA1FD1749F00DBC823 /* order_app.png in Resources */ = {isa = PBXBuildFile; fileRef = 660B57D91FD1749F00DBC823 /* order_app.png */; };
 		660B57DC1FD176D500DBC823 /* edit_label.png in Resources */ = {isa = PBXBuildFile; fileRef = 660B57DB1FD176D500DBC823 /* edit_label.png */; };
-		660B57DF1FD1774D00DBC823 /* HelpLinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B57DD1FD1774D00DBC823 /* HelpLinkCell.swift */; };
-		660B57E01FD1774D00DBC823 /* HelpLinkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 660B57DE1FD1774D00DBC823 /* HelpLinkCell.xib */; };
+		660B57DF1FD1774D00DBC823 /* HelpLinkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B57DD1FD1774D00DBC823 /* HelpLinkTableViewCell.swift */; };
+		660B57E01FD1774D00DBC823 /* HelpLinkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 660B57DE1FD1774D00DBC823 /* HelpLinkTableViewCell.xib */; };
 		660B88342003C67A0064EFFE /* UIColor+Compare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B88332003C67A0064EFFE /* UIColor+Compare.swift */; };
 		66498E2A1FC666A400239B47 /* ShareAppLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E291FC666A400239B47 /* ShareAppLabel.swift */; };
 		66498E2C1FC67A6400239B47 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E2B1FC67A6400239B47 /* AppData.swift */; };
@@ -259,8 +259,8 @@
 		660B57D61FD16F0B00DBC823 /* HelpViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HelpViewCell.xib; sourceTree = "<group>"; };
 		660B57D91FD1749F00DBC823 /* order_app.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = order_app.png; sourceTree = "<group>"; };
 		660B57DB1FD176D500DBC823 /* edit_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit_label.png; sourceTree = "<group>"; };
-		660B57DD1FD1774D00DBC823 /* HelpLinkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpLinkCell.swift; sourceTree = "<group>"; };
-		660B57DE1FD1774D00DBC823 /* HelpLinkCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HelpLinkCell.xib; sourceTree = "<group>"; };
+		660B57DD1FD1774D00DBC823 /* HelpLinkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpLinkTableViewCell.swift; sourceTree = "<group>"; };
+		660B57DE1FD1774D00DBC823 /* HelpLinkTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HelpLinkTableViewCell.xib; sourceTree = "<group>"; };
 		660B57E11FD19E7500DBC823 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		660B57E21FD19E7500DBC823 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		660B57E31FD19E7600DBC823 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/MainInterface.strings; sourceTree = "<group>"; };
@@ -1257,8 +1257,8 @@
 		66A30A1F240806A60016F34D /* HelpLink */ = {
 			isa = PBXGroup;
 			children = (
-				660B57DD1FD1774D00DBC823 /* HelpLinkCell.swift */,
-				660B57DE1FD1774D00DBC823 /* HelpLinkCell.xib */,
+				660B57DD1FD1774D00DBC823 /* HelpLinkTableViewCell.swift */,
+				660B57DE1FD1774D00DBC823 /* HelpLinkTableViewCell.xib */,
 			);
 			path = HelpLink;
 			sourceTree = "<group>";
@@ -1486,7 +1486,7 @@
 				6662E13D20007E7300FB30C7 /* InfoTableViewCell.xib in Resources */,
 				666E06B51FCB9A880043DCFF /* MemoCell.xib in Resources */,
 				66A30A15240804B30016F34D /* BackgroundPlusCollectionViewCell.xib in Resources */,
-				660B57E01FD1774D00DBC823 /* HelpLinkCell.xib in Resources */,
+				660B57E01FD1774D00DBC823 /* HelpLinkTableViewCell.xib in Resources */,
 				667ECE201FC36784009233DE /* Assets.xcassets in Resources */,
 				666E06BF1FCBB3880043DCFF /* left_arrow@3x.png in Resources */,
 				6677FC301FCAB72F00CB105E /* AppInfoListCollectionViewCell.xib in Resources */,
@@ -1645,7 +1645,7 @@
 				666E06C31FCBC1E50043DCFF /* PassThroughIndicator.swift in Sources */,
 				6677FC261FCA7E0400CB105E /* VersionManager.swift in Sources */,
 				660B579D1FD06C6400DBC823 /* TutorialPageView.swift in Sources */,
-				660B57DF1FD1774D00DBC823 /* HelpLinkCell.swift in Sources */,
+				660B57DF1FD1774D00DBC823 /* HelpLinkTableViewCell.swift in Sources */,
 				666081702406463300001A9C /* IconSizeChanger.swift in Sources */,
 				6677FC2F1FCAB72F00CB105E /* AppInfoListCollectionViewCell.swift in Sources */,
 				66681CE51FCC17E2009A0F55 /* DetailAppInfoCollectionViewCell.swift in Sources */,

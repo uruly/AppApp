@@ -1,5 +1,5 @@
 //
-//  HelpLinkCell.swift
+//  HelpLinkTableViewCell.swift
 //  AppApp
 //
 //  Created by 久保　玲於奈 on 2017/12/01.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HelpLinkCell: UITableViewCell {
+final class HelpLinkTableViewCell: UITableViewCell {
 
     @IBOutlet weak var answerLabel: UILabel!
     @IBOutlet weak var linkBtn: UIButton!

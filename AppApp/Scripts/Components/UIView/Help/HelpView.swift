@@ -25,7 +25,7 @@ class HelpView: UITableView {
         self.delegate = self
         self.dataSource = self
         self.register(UINib(nibName: "HelpViewCell", bundle: nil), forCellReuseIdentifier: "help")
-        self.register(UINib(nibName: "HelpLinkCell", bundle: nil), forCellReuseIdentifier: "helpLink")
+        register(R.nib.helpLinkTableViewCell)
         self.backgroundColor = UIColor.help()
         self.separatorColor = UIColor.white
         self.sectionFooterHeight = 1
@@ -122,7 +122,7 @@ extension HelpView: UITableViewDataSource {
             }
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "helpLink", for: indexPath) as! HelpLinkCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.helpLinkTableViewCell, for: indexPath)!
             let index = indexPath.section - ( questionAnswer.count)
             if index >= 0 {
                 cell.answerLabel.text = links[index].1
