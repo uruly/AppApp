@@ -20,7 +20,7 @@ class SelectionBar: UICollectionView {
         super.init(frame: frame, collectionViewLayout: layout)
         self.delegate = self
         self.dataSource = self
-        self.register(UINib(nibName: "SelectionBarCell", bundle: nil), forCellWithReuseIdentifier: "selection")
+        register(R.nib.selectionBarCollectionViewCell)
         self.backgroundColor = UIColor.backgroundGray()
         self.showsHorizontalScrollIndicator = false
 
@@ -176,7 +176,7 @@ extension SelectionBar: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "selection", for: indexPath) as! SelectionBarCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.selectionBarCollectionViewCell, for: indexPath)!
         if indexPath.section == 0 {
             cell.label.text = pageVC.appLabel.array[indexPath.row].name
             cell.contentView.backgroundColor = pageVC.appLabel.array[indexPath.row].color

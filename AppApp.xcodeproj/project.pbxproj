@@ -145,8 +145,8 @@
 		667ECE571FC3836C009233DE /* AppLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE561FC3836C009233DE /* AppLabel.swift */; };
 		667ECE591FC388B9009233DE /* UIColor+AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE581FC388B9009233DE /* UIColor+AppColor.swift */; };
 		667ECE5B1FC3958D009233DE /* SelectionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE5A1FC3958D009233DE /* SelectionBar.swift */; };
-		667ECE5F1FC395C2009233DE /* SelectionBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE5D1FC395C2009233DE /* SelectionBarCell.swift */; };
-		667ECE601FC395C2009233DE /* SelectionBarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 667ECE5E1FC395C2009233DE /* SelectionBarCell.xib */; };
+		667ECE5F1FC395C2009233DE /* SelectionBarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE5D1FC395C2009233DE /* SelectionBarCollectionViewCell.swift */; };
+		667ECE601FC395C2009233DE /* SelectionBarCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 667ECE5E1FC395C2009233DE /* SelectionBarCollectionViewCell.xib */; };
 		667ECE641FC3A7BD009233DE /* CreateAppLabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE631FC3A7BD009233DE /* CreateAppLabelViewController.swift */; };
 		667ECE661FC3ADCA009233DE /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE651FC3ADCA009233DE /* CustomNavigationBar.swift */; };
 		667ECE691FC3B454009233DE /* CreateAppLabelTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE681FC3B454009233DE /* CreateAppLabelTableView.swift */; };
@@ -361,8 +361,8 @@
 		667ECE561FC3836C009233DE /* AppLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLabel.swift; sourceTree = "<group>"; };
 		667ECE581FC388B9009233DE /* UIColor+AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+AppColor.swift"; sourceTree = "<group>"; };
 		667ECE5A1FC3958D009233DE /* SelectionBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionBar.swift; sourceTree = "<group>"; };
-		667ECE5D1FC395C2009233DE /* SelectionBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionBarCell.swift; sourceTree = "<group>"; };
-		667ECE5E1FC395C2009233DE /* SelectionBarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectionBarCell.xib; sourceTree = "<group>"; };
+		667ECE5D1FC395C2009233DE /* SelectionBarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionBarCollectionViewCell.swift; sourceTree = "<group>"; };
+		667ECE5E1FC395C2009233DE /* SelectionBarCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectionBarCollectionViewCell.xib; sourceTree = "<group>"; };
 		667ECE631FC3A7BD009233DE /* CreateAppLabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAppLabelViewController.swift; sourceTree = "<group>"; };
 		667ECE651FC3ADCA009233DE /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		667ECE681FC3B454009233DE /* CreateAppLabelTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAppLabelTableView.swift; sourceTree = "<group>"; };
@@ -1182,8 +1182,8 @@
 		667ECE5C1FC39594009233DE /* SelectionBar */ = {
 			isa = PBXGroup;
 			children = (
-				667ECE5D1FC395C2009233DE /* SelectionBarCell.swift */,
-				667ECE5E1FC395C2009233DE /* SelectionBarCell.xib */,
+				667ECE5D1FC395C2009233DE /* SelectionBarCollectionViewCell.swift */,
+				667ECE5E1FC395C2009233DE /* SelectionBarCollectionViewCell.xib */,
 			);
 			path = SelectionBar;
 			sourceTree = "<group>";
@@ -1392,7 +1392,7 @@
 				660B57AD1FD07D9200DBC823 /* screenShot0.jpeg in Resources */,
 				6652DED11FCEAC9800EB84F6 /* collect@3x.png in Resources */,
 				666E06BE1FCBB3880043DCFF /* left_arrow@2x.png in Resources */,
-				667ECE601FC395C2009233DE /* SelectionBarCell.xib in Resources */,
+				667ECE601FC395C2009233DE /* SelectionBarCollectionViewCell.xib in Resources */,
 				660B57D81FD16F0B00DBC823 /* HelpViewCell.xib in Resources */,
 				660B57B11FD0811600DBC823 /* screenShot2.jpeg in Resources */,
 				6652DEE01FCEB7DA00EB84F6 /* big@3x.png in Resources */,
@@ -1554,7 +1554,7 @@
 				660B57701FCFC5F500DBC823 /* ColorBaseCollectionViewCell.swift in Sources */,
 				66498E391FC810BF00239B47 /* Array+FindIndex.swift in Sources */,
 				6662E1221FFFDE9000FB30C7 /* BackgroundColorListView.swift in Sources */,
-				667ECE5F1FC395C2009233DE /* SelectionBarCell.swift in Sources */,
+				667ECE5F1FC395C2009233DE /* SelectionBarCollectionViewCell.swift in Sources */,
 				66686B712405019F005A22A3 /* Constants.swift in Sources */,
 				660B57CB1FD1501100DBC823 /* BalloonView.swift in Sources */,
 				660B57751FCFC5F500DBC823 /* RGBSliderCollectionViewCell.swift in Sources */,

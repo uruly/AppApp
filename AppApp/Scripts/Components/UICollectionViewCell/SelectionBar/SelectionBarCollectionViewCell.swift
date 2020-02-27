@@ -1,5 +1,5 @@
 //
-//  SelectionBarCell.swift
+//  SelectionBarCollectionViewCell.swift
 //  AppApp
 //
 //  Created by 久保　玲於奈 on 2017/11/21.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SelectionBarCell: UICollectionViewCell {
+class SelectionBarCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var label: UILabel!
 
