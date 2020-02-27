@@ -40,7 +40,7 @@ class InfoTableView: UITableView {
 
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
-        self.register(UINib(nibName: "InfoTableViewCell", bundle: nil), forCellReuseIdentifier: "common")
+        register(R.nib.infoTableViewCell)
         self.register(UITableViewCell.self, forCellReuseIdentifier: "label")
         self.register(UINib(nibName: "MemoCell", bundle: nil), forCellReuseIdentifier: "memo")
         self.delegate = self
@@ -166,7 +166,7 @@ extension InfoTableView: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell: InfoTableViewCell = tableView.dequeueReusableCell(withIdentifier: "common", for: indexPath) as! InfoTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.infoTableViewCell, for: indexPath)!
             cell.nameLabel.text = commonTextArray[indexPath.row]
             cell.textField.placeholder = commonPlaceholderArray[indexPath.row]
             cell.textField.delegate = self
