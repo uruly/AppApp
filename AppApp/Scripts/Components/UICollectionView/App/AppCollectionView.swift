@@ -59,7 +59,7 @@ class AppCollectionView: UICollectionView {
         delegate = self
         dataSource = self
         register(R.nib.appInfoListCollectionViewCell)
-        self.register(UINib(nibName: "AppInfoCell", bundle: nil), forCellWithReuseIdentifier: "AppInfo")
+        register(R.nib.appListCollectionViewCell)
         self.backgroundColor = UIColor.white
 
         //モードを決めておく
@@ -180,7 +180,7 @@ extension AppCollectionView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if AppCollectionView.isWhileEditing {
             if mode == .collect {
-                let cell: AppCollectionViewCell = collectionView.cellForItem(at: indexPath) as! AppCollectionViewCell
+                let cell: AppListCollectionViewCell = collectionView.cellForItem(at: indexPath) as! AppListCollectionViewCell
 
                 let id = appData.appList[indexPath.row].id
                 let index = checkArray.findIndex(includeElement: {$0.id == id})
@@ -219,7 +219,7 @@ extension AppCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         if mode == .collect {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.appInfoListCollectionViewCell, for: indexPath)!
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.appListCollectionViewCell, for: indexPath)!
             if appData == nil {
                 return cell
             }

@@ -1,5 +1,5 @@
 //
-//  AppCollectionViewCell.swift
+//  AppListCollectionViewCell.swift
 //  AppApp
 //
 //  Created by 久保　玲於奈 on 2017/11/21.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AppCollectionViewCell: UICollectionViewCell {
+class AppListCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var imageView: UIImageView!
 

@@ -101,7 +101,7 @@ class AppListViewController: UIViewController {
 
 extension AppListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell: AppCollectionViewCell = collectionView.cellForItem(at: indexPath) as! AppCollectionViewCell
+        let cell: AppListCollectionViewCell = collectionView.cellForItem(at: indexPath) as! AppListCollectionViewCell
 
         let id = appList[indexPath.row].id
         let index = checkArray.findIndex(includeElement: {$0.id == id})
@@ -123,7 +123,7 @@ extension AppListViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: AppCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "app", for: indexPath) as! AppCollectionViewCell
+        let cell: AppListCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "app", for: indexPath) as! AppListCollectionViewCell
 
         cell.imageView.image = UIImage(data: appList[indexPath.row].image)
 
