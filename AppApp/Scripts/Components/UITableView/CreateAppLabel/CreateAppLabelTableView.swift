@@ -26,7 +26,7 @@ class CreateAppLabelTableView: UITableView {
         self.delegate = self
         self.dataSource = self
         self.register(UITableViewCell.self, forCellReuseIdentifier: "createAppLabel")
-        self.register(UINib(nibName: "MemoCell", bundle: nil), forCellReuseIdentifier: "memo")
+        register(R.nib.memoTableViewCell)
         self.estimatedRowHeight = 500
         self.rowHeight = UITableView.automaticDimension
     }
@@ -79,7 +79,7 @@ extension CreateAppLabelTableView: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 && indexPath.row == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "memo", for: indexPath) as! MemoCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.memoTableViewCell, for: indexPath)!
             cell.memoView.placeholder = "ラベルの説明(任意)"
             cell.memoView.font = UIFont.systemFont(ofSize: 16)
             cell.memoView.delegate = self

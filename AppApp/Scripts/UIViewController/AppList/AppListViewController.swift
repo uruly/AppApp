@@ -37,7 +37,7 @@ class AppListViewController: UIViewController {
         collectionView = UICollectionView(frame: CGRect(x: 0, y: naviBarHeight, width: width, height: height - naviBarHeight), collectionViewLayout: layout)
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(UINib(nibName: "AppCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "app")
+        collectionView.register(R.nib.appListCollectionViewCell)
         collectionView.backgroundColor = UIColor.backgroundGray()
         self.view.addSubview(collectionView)
 

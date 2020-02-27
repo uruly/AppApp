@@ -42,7 +42,7 @@ class InfoTableView: UITableView {
         super.init(frame: frame, style: style)
         register(R.nib.infoTableViewCell)
         self.register(UITableViewCell.self, forCellReuseIdentifier: "label")
-        self.register(UINib(nibName: "MemoCell", bundle: nil), forCellReuseIdentifier: "memo")
+        register(R.nib.memoTableViewCell)
         self.delegate = self
         self.dataSource = self
         self.backgroundColor = UIColor.white
@@ -183,7 +183,7 @@ extension InfoTableView: UITableViewDataSource {
             }
             return cell
         } else if indexPath.section == 1 {
-            let cell: MemoCell = tableView.dequeueReusableCell(withIdentifier: "memo", for: indexPath) as! MemoCell
+            let cell: MemoTableViewCell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.memoTableViewCell, for: indexPath)!
             cell.memoView.placeholder = "ここにメモを記入します。"
             cell.memoView.font = UIFont.systemFont(ofSize: 14)
             cell.memoView.delegate = self
