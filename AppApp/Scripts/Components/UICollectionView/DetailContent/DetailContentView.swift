@@ -49,7 +49,7 @@ class DetailContentView: UICollectionView {
         super.init(frame: frame, collectionViewLayout: layout)
         self.delegate = self
         self.dataSource = self
-        self.register(UINib(nibName: "DetailMemoViewCell", bundle: nil), forCellWithReuseIdentifier: "detailMemo")
+        register(R.nib.detailMemoCollectionViewCell)
         self.register(UINib(nibName: "DetailCommonViewCell", bundle: nil), forCellWithReuseIdentifier: "detailCommon")
         self.register(UINib(nibName: "DetailAppInfoViewCell", bundle: nil), forCellWithReuseIdentifier: "detailAppInfo")
         self.register(UINib(nibName: "DeleteViewCell", bundle: nil), forCellWithReuseIdentifier: "deleteApp")
@@ -99,8 +99,7 @@ extension DetailContentView: UICollectionViewDataSource {
 
             return cell
         } else if indexPath.row == 2 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "detailMemo", for: indexPath) as! DetailMemoViewCell
-            //print("ここにはきてる")
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.detailMemoCollectionViewCell, for: indexPath)!
             self.detailVC.delegate = cell.tableView
             cell.tableView.detailVC = self.detailVC
             cell.tableView.memo = memo
