@@ -52,7 +52,7 @@ class DetailContentView: UICollectionView {
         register(R.nib.detailMemoCollectionViewCell)
         self.register(UINib(nibName: "DetailCommonViewCell", bundle: nil), forCellWithReuseIdentifier: "detailCommon")
         self.register(UINib(nibName: "DetailAppInfoViewCell", bundle: nil), forCellWithReuseIdentifier: "detailAppInfo")
-        self.register(UINib(nibName: "DeleteViewCell", bundle: nil), forCellWithReuseIdentifier: "deleteApp")
+        register(R.nib.detailCollectionViewCell)
     }
 
     func scrollToMemoView() {
@@ -109,7 +109,7 @@ extension DetailContentView: UICollectionViewDataSource {
 
             return cell
         } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "deleteApp", for: indexPath) as! DeleteViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.detailCollectionViewCell, for: indexPath)!
             cell.tableView.detailVC = self.detailVC
             cell.tableView.labelName = self.detailVC.appData.label.name
 
