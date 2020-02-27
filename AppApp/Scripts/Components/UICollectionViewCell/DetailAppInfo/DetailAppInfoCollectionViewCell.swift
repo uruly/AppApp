@@ -1,5 +1,5 @@
 //
-//  DetailAppInfoViewCell.swift
+//  DetailAppInfoCollectionViewCell.swift
 //  AppApp
 //
 //  Created by 久保　玲於奈 on 2017/11/27.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailAppInfoViewCell: UICollectionViewCell {
+class DetailAppInfoCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var widthLayout: NSLayoutConstraint!
     @IBOutlet weak var infoView: AppInfoView!

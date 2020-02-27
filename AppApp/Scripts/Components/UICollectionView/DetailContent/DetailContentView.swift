@@ -47,11 +47,11 @@ class DetailContentView: UICollectionView {
 
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
-        self.delegate = self
-        self.dataSource = self
+        delegate = self
+        dataSource = self
         register(R.nib.detailMemoCollectionViewCell)
         register(R.nib.detailCommonCollectionViewCell)
-        self.register(UINib(nibName: "DetailAppInfoViewCell", bundle: nil), forCellWithReuseIdentifier: "detailAppInfo")
+        register(R.nib.detailAppInfoCollectionViewCell)
         register(R.nib.detailCollectionViewCell)
     }
 
@@ -73,10 +73,7 @@ extension DetailContentView: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.row == 0 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "detailAppInfo", for: indexPath) as! DetailAppInfoViewCell
-            //            for subview in cell.infoView.subviews  {
-            //                subview.removeFromSuperview()
-            //            }
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.detailAppInfoCollectionViewCell, for: indexPath)!
 
             cell.infoView.isAppStore = self.url.contains("itunes.apple.com")
             cell.infoView.url = self.url
@@ -84,7 +81,6 @@ extension DetailContentView: UICollectionViewDataSource {
             cell.infoView.imageData = self.imageData
             cell.infoView.detailVC = self.detailVC
             cell.infoView.setSubviews()
-            //cell.infoView.widthLayout = self.frame.width - 30
 
             return cell
         } else if indexPath.row == 1 {
