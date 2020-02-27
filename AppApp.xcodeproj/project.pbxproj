@@ -710,8 +710,6 @@
 		6660818424064AEE00001A9C /* UITableView */ = {
 			isa = PBXGroup;
 			children = (
-				66A30A1F240806A60016F34D /* HelpLink */,
-				66A30A1E2408069D0016F34D /* Help */,
 				666081A124064ED100001A9C /* LabelAppInfo */,
 				666081A024064EC700001A9C /* CommonInfo */,
 				6660819F24064EBE00001A9C /* DeleteApp */,
@@ -725,6 +723,8 @@
 		6660818524064B0100001A9C /* UITableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				66A30A1F240806A60016F34D /* HelpLink */,
+				66A30A1E2408069D0016F34D /* Help */,
 				6660818624064B0A00001A9C /* Info */,
 			);
 			path = UITableViewCell;
