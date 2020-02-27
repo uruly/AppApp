@@ -10,7 +10,7 @@
 		6606168B1FCD348100667020 /* DeleteAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6606168A1FCD348100667020 /* DeleteAppView.swift */; };
 		6606168E1FCD35AE00667020 /* DeleteViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6606168C1FCD35AE00667020 /* DeleteViewCell.swift */; };
 		6606168F1FCD35AE00667020 /* DeleteViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6606168D1FCD35AE00667020 /* DeleteViewCell.xib */; };
-		660B576C1FCFC5F500DBC823 /* RGBSliderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 660B57621FCFC5F200DBC823 /* RGBSliderCell.xib */; };
+		660B576C1FCFC5F500DBC823 /* RGBSliderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 660B57621FCFC5F200DBC823 /* RGBSliderCollectionViewCell.xib */; };
 		660B576D1FCFC5F500DBC823 /* ColorPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B57631FCFC5F300DBC823 /* ColorPageView.swift */; };
 		660B576E1FCFC5F500DBC823 /* RGBSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B57641FCFC5F300DBC823 /* RGBSliderView.swift */; };
 		660B576F1FCFC5F500DBC823 /* ColorBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B57651FCFC5F300DBC823 /* ColorBaseView.swift */; };
@@ -19,7 +19,7 @@
 		660B57721FCFC5F500DBC823 /* ColorBaseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 660B57681FCFC5F400DBC823 /* ColorBaseCell.xib */; };
 		660B57731FCFC5F500DBC823 /* ColorSetViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B57691FCFC5F400DBC823 /* ColorSetViewCell.swift */; };
 		660B57741FCFC5F500DBC823 /* ColorSetViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 660B576A1FCFC5F400DBC823 /* ColorSetViewCell.xib */; };
-		660B57751FCFC5F500DBC823 /* RGBSliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B576B1FCFC5F400DBC823 /* RGBSliderCell.swift */; };
+		660B57751FCFC5F500DBC823 /* RGBSliderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B576B1FCFC5F400DBC823 /* RGBSliderCollectionViewCell.swift */; };
 		660B57771FCFDB1000DBC823 /* colorData.json in Resources */ = {isa = PBXBuildFile; fileRef = 660B57761FCFDB1000DBC823 /* colorData.json */; };
 		660B57921FD013DD00DBC823 /* appapp_logo1.png in Resources */ = {isa = PBXBuildFile; fileRef = 660B57911FD013DD00DBC823 /* appapp_logo1.png */; };
 		660B57941FD0173C00DBC823 /* logo2.png in Resources */ = {isa = PBXBuildFile; fileRef = 660B57931FD0173C00DBC823 /* logo2.png */; };
@@ -218,7 +218,7 @@
 		6606168A1FCD348100667020 /* DeleteAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAppView.swift; sourceTree = "<group>"; };
 		6606168C1FCD35AE00667020 /* DeleteViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteViewCell.swift; sourceTree = "<group>"; };
 		6606168D1FCD35AE00667020 /* DeleteViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeleteViewCell.xib; sourceTree = "<group>"; };
-		660B57621FCFC5F200DBC823 /* RGBSliderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RGBSliderCell.xib; sourceTree = "<group>"; };
+		660B57621FCFC5F200DBC823 /* RGBSliderCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RGBSliderCollectionViewCell.xib; sourceTree = "<group>"; };
 		660B57631FCFC5F300DBC823 /* ColorPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPageView.swift; sourceTree = "<group>"; };
 		660B57641FCFC5F300DBC823 /* RGBSliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RGBSliderView.swift; sourceTree = "<group>"; };
 		660B57651FCFC5F300DBC823 /* ColorBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorBaseView.swift; sourceTree = "<group>"; };
@@ -227,7 +227,7 @@
 		660B57681FCFC5F400DBC823 /* ColorBaseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ColorBaseCell.xib; sourceTree = "<group>"; };
 		660B57691FCFC5F400DBC823 /* ColorSetViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSetViewCell.swift; sourceTree = "<group>"; };
 		660B576A1FCFC5F400DBC823 /* ColorSetViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ColorSetViewCell.xib; sourceTree = "<group>"; };
-		660B576B1FCFC5F400DBC823 /* RGBSliderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RGBSliderCell.swift; sourceTree = "<group>"; };
+		660B576B1FCFC5F400DBC823 /* RGBSliderCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RGBSliderCollectionViewCell.swift; sourceTree = "<group>"; };
 		660B57761FCFDB1000DBC823 /* colorData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = colorData.json; sourceTree = "<group>"; };
 		660B57911FD013DD00DBC823 /* appapp_logo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appapp_logo1.png; sourceTree = "<group>"; };
 		660B57931FD0173C00DBC823 /* logo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo2.png; sourceTree = "<group>"; };
@@ -922,8 +922,8 @@
 		6660819B24064E3B00001A9C /* RGBSlider */ = {
 			isa = PBXGroup;
 			children = (
-				660B576B1FCFC5F400DBC823 /* RGBSliderCell.swift */,
-				660B57621FCFC5F200DBC823 /* RGBSliderCell.xib */,
+				660B576B1FCFC5F400DBC823 /* RGBSliderCollectionViewCell.swift */,
+				660B57621FCFC5F200DBC823 /* RGBSliderCollectionViewCell.xib */,
 			);
 			path = RGBSlider;
 			sourceTree = "<group>";
@@ -1397,7 +1397,7 @@
 				660B57B11FD0811600DBC823 /* screenShot2.jpeg in Resources */,
 				6652DEE01FCEB7DA00EB84F6 /* big@3x.png in Resources */,
 				66983DF02005E3FD009C9AEF /* snowBeige.jpg in Resources */,
-				660B576C1FCFC5F500DBC823 /* RGBSliderCell.xib in Resources */,
+				660B576C1FCFC5F500DBC823 /* RGBSliderCollectionViewCell.xib in Resources */,
 				66983DF42005E46C009C9AEF /* blackTree_thumb.jpg in Resources */,
 				6652DED91FCEAF6100EB84F6 /* list@3x.png in Resources */,
 				660B57B31FD083D600DBC823 /* screenShot5.jpeg in Resources */,
@@ -1557,7 +1557,7 @@
 				667ECE5F1FC395C2009233DE /* SelectionBarCell.swift in Sources */,
 				66686B712405019F005A22A3 /* Constants.swift in Sources */,
 				660B57CB1FD1501100DBC823 /* BalloonView.swift in Sources */,
-				660B57751FCFC5F500DBC823 /* RGBSliderCell.swift in Sources */,
+				660B57751FCFC5F500DBC823 /* RGBSliderCollectionViewCell.swift in Sources */,
 				660B57B51FD10F7900DBC823 /* StartView.swift in Sources */,
 				660B57A21FD06FDB00DBC823 /* WelcomeViewCell.swift in Sources */,
 				6662E11D1FFE98CA00FB30C7 /* BottomMenuBaseView.swift in Sources */,
