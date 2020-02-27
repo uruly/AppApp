@@ -1,5 +1,5 @@
 //
-//  WelcomeViewCell.swift
+//  WelcomeCollectionViewCell.swift
 //  AppApp
 //
 //  Created by 久保　玲於奈 on 2017/12/01.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WelcomeViewCell: UICollectionViewCell {
+class WelcomeCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var welcomeView: WelcomeView!
     override func awakeFromNib() {

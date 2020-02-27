@@ -23,9 +23,9 @@ class TutorialPageView: UICollectionView {
 
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
-        self.delegate = self
-        self.dataSource = self
-        self.register(UINib(nibName: "WelcomeViewCell", bundle: nil), forCellWithReuseIdentifier: "welcome")
+        delegate = self
+        dataSource = self
+        register(R.nib.welcomeCollectionViewCell)
         self.register(UINib(nibName: "HowToViewCell", bundle: nil), forCellWithReuseIdentifier: "howTo")
         register(R.nib.startCollectionViewCell)
     }
@@ -61,7 +61,7 @@ extension TutorialPageView: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.row == 0 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "welcome", for: indexPath) as! WelcomeViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.welcomeCollectionViewCell, for: indexPath)!
             return cell
         } else if indexPath.row < 7 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "howTo", for: indexPath) as! HowToViewCell
