@@ -38,7 +38,7 @@ class ColorPageView: UICollectionView {
 
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
-        self.register(UINib(nibName: "ColorBaseCell", bundle: nil), forCellWithReuseIdentifier: "base")
+        register(R.nib.colorBaseCollectionViewCell)
         register(R.nib.rgbSliderCollectionViewCell)
         self.delegate = self
         self.dataSource = self
@@ -128,10 +128,8 @@ extension ColorPageView: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if colorMode == .set {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "base", for: indexPath) as! ColorBaseCell
-            //cell.backgroundColor = colors[indexPath.row]
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.colorBaseCollectionViewCell, for: indexPath)!
             cell.colorSetView.colorSet = colorSet[colorKeys[indexPath.row]] ?? []
-            //print(colorDelegate)
             cell.colorSetView.colorDelegate = colorDelegate
             cell.colorSetView.reloadData()
 
