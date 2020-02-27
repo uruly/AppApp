@@ -30,8 +30,8 @@
 		660B579F1FD06FBE00DBC823 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B579E1FD06FBE00DBC823 /* WelcomeView.swift */; };
 		660B57A21FD06FDB00DBC823 /* WelcomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B57A01FD06FDB00DBC823 /* WelcomeCollectionViewCell.swift */; };
 		660B57A31FD06FDB00DBC823 /* WelcomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 660B57A11FD06FDB00DBC823 /* WelcomeCollectionViewCell.xib */; };
-		660B57A61FD071D500DBC823 /* HowToViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B57A41FD071D500DBC823 /* HowToViewCell.swift */; };
-		660B57A71FD071D500DBC823 /* HowToViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 660B57A51FD071D500DBC823 /* HowToViewCell.xib */; };
+		660B57A61FD071D500DBC823 /* HowToCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B57A41FD071D500DBC823 /* HowToCollectionViewCell.swift */; };
+		660B57A71FD071D500DBC823 /* HowToCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 660B57A51FD071D500DBC823 /* HowToCollectionViewCell.xib */; };
 		660B57A91FD071EA00DBC823 /* HowToView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B57A81FD071EA00DBC823 /* HowToView.swift */; };
 		660B57AB1FD07C3700DBC823 /* iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 660B57AA1FD07C3700DBC823 /* iphone.png */; };
 		660B57AD1FD07D9200DBC823 /* screenShot0.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 660B57AC1FD07D9200DBC823 /* screenShot0.jpeg */; };
@@ -239,8 +239,8 @@
 		660B579E1FD06FBE00DBC823 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		660B57A01FD06FDB00DBC823 /* WelcomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		660B57A11FD06FDB00DBC823 /* WelcomeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeCollectionViewCell.xib; sourceTree = "<group>"; };
-		660B57A41FD071D500DBC823 /* HowToViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToViewCell.swift; sourceTree = "<group>"; };
-		660B57A51FD071D500DBC823 /* HowToViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HowToViewCell.xib; sourceTree = "<group>"; };
+		660B57A41FD071D500DBC823 /* HowToCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToCollectionViewCell.swift; sourceTree = "<group>"; };
+		660B57A51FD071D500DBC823 /* HowToCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HowToCollectionViewCell.xib; sourceTree = "<group>"; };
 		660B57A81FD071EA00DBC823 /* HowToView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToView.swift; sourceTree = "<group>"; };
 		660B57AA1FD07C3700DBC823 /* iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iphone.png; sourceTree = "<group>"; };
 		660B57AC1FD07D9200DBC823 /* screenShot0.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = screenShot0.jpeg; sourceTree = "<group>"; };
@@ -1205,8 +1205,8 @@
 		66A30A192408063A0016F34D /* HowTo */ = {
 			isa = PBXGroup;
 			children = (
-				660B57A41FD071D500DBC823 /* HowToViewCell.swift */,
-				660B57A51FD071D500DBC823 /* HowToViewCell.xib */,
+				660B57A41FD071D500DBC823 /* HowToCollectionViewCell.swift */,
+				660B57A51FD071D500DBC823 /* HowToCollectionViewCell.xib */,
 			);
 			path = HowTo;
 			sourceTree = "<group>";
@@ -1491,7 +1491,7 @@
 				666E06BF1FCBB3880043DCFF /* left_arrow@3x.png in Resources */,
 				6677FC301FCAB72F00CB105E /* AppInfoListCollectionViewCell.xib in Resources */,
 				667ECE1E1FC36784009233DE /* Main.storyboard in Resources */,
-				660B57A71FD071D500DBC823 /* HowToViewCell.xib in Resources */,
+				660B57A71FD071D500DBC823 /* HowToCollectionViewCell.xib in Resources */,
 				6652DED81FCEAF6100EB84F6 /* list@2x.png in Resources */,
 				660B57A31FD06FDB00DBC823 /* WelcomeCollectionViewCell.xib in Resources */,
 				6652DEED1FCED46700EB84F6 /* check2@2x.png in Resources */,
@@ -1610,7 +1610,7 @@
 				660B57BB1FD1260800DBC823 /* HelpView.swift in Sources */,
 				6662E13F2001D31700FB30C7 /* UIImage+MaskCorner.swift in Sources */,
 				660B579F1FD06FBE00DBC823 /* WelcomeView.swift in Sources */,
-				660B57A61FD071D500DBC823 /* HowToViewCell.swift in Sources */,
+				660B57A61FD071D500DBC823 /* HowToCollectionViewCell.swift in Sources */,
 				667ECE571FC3836C009233DE /* AppLabel.swift in Sources */,
 				66983DFB2005E9C8009C9AEF /* GATrackingManager.swift in Sources */,
 				6662E1201FFFD90200FB30C7 /* CustomBackgroundView.swift in Sources */,

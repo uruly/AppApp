@@ -1,5 +1,5 @@
 //
-//  HowToViewCell.swift
+//  HowToCollectionViewCell.swift
 //  AppApp
 //
 //  Created by 久保　玲於奈 on 2017/12/01.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HowToViewCell: UICollectionViewCell {
+class HowToCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var howToView: HowToView!
     override func awakeFromNib() {

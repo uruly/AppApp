@@ -26,7 +26,7 @@ class TutorialPageView: UICollectionView {
         delegate = self
         dataSource = self
         register(R.nib.welcomeCollectionViewCell)
-        self.register(UINib(nibName: "HowToViewCell", bundle: nil), forCellWithReuseIdentifier: "howTo")
+        register(R.nib.howToCollectionViewCell)
         register(R.nib.startCollectionViewCell)
     }
 
@@ -64,7 +64,7 @@ extension TutorialPageView: UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.welcomeCollectionViewCell, for: indexPath)!
             return cell
         } else if indexPath.row < 7 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "howTo", for: indexPath) as! HowToViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.howToCollectionViewCell, for: indexPath)!
             for subview in cell.howToView.subviews {
                 subview.removeFromSuperview()
             }
