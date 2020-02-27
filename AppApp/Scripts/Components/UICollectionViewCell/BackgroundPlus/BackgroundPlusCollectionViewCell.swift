@@ -1,5 +1,5 @@
 //
-//  BackgroundPlusCell.swift
+//  BackgroundPlusCollectionViewCell.swift
 //  AppApp
 //
 //  Created by 久保　玲於奈 on 2018/01/07.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BackgroundPlusCell: UICollectionViewCell {
+class BackgroundPlusCollectionViewCell: UICollectionViewCell {
 
     var textLabel: UILabel!
 

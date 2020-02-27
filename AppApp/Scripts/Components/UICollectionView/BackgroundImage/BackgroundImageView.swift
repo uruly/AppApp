@@ -32,7 +32,7 @@ class BackgroundImageView: UICollectionView {
         self.init(frame: frame, collectionViewLayout: layout)
 
         register(R.nib.backgroundImageCollectionViewCell)
-        self.register(BackgroundPlusCell.self, forCellWithReuseIdentifier: "plus")
+        self.register(BackgroundPlusCollectionViewCell.self, forCellWithReuseIdentifier: "plus")
         self.delegate = self
         self.dataSource = self
         self.backgroundColor = UIColor.white
@@ -161,7 +161,7 @@ extension BackgroundImageView: UICollectionViewDataSource {
             }
             return cell
         } else {
-            let cell: BackgroundPlusCell = collectionView.dequeueReusableCell(withReuseIdentifier: "plus", for: indexPath) as! BackgroundPlusCell
+            let cell: BackgroundPlusCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "plus", for: indexPath) as! BackgroundPlusCollectionViewCell
             return cell
         }
     }

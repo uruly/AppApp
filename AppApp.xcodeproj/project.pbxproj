@@ -100,7 +100,6 @@
 		6662E13D20007E7300FB30C7 /* InfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6662E13B20007E7300FB30C7 /* InfoTableViewCell.xib */; };
 		6662E13F2001D31700FB30C7 /* UIImage+MaskCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662E13E2001D31700FB30C7 /* UIImage+MaskCorner.swift */; };
 		6662E1412001D76300FB30C7 /* UIView+SnapShot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662E1402001D76300FB30C7 /* UIView+SnapShot.swift */; };
-		6662E143200214F500FB30C7 /* BackgroundPlusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662E142200214F500FB30C7 /* BackgroundPlusCell.swift */; };
 		6662E14520024B1700FB30C7 /* backgroundImage.json in Resources */ = {isa = PBXBuildFile; fileRef = 6662E14420024B1700FB30C7 /* backgroundImage.json */; };
 		66681CDA1FCC1501009A0F55 /* DetailContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66681CD91FCC1501009A0F55 /* DetailContentView.swift */; };
 		66681CE11FCC1734009A0F55 /* DetailCommonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66681CDF1FCC1734009A0F55 /* DetailCommonCollectionViewCell.swift */; };
@@ -166,6 +165,8 @@
 		66983DF92005E974009C9AEF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 66983DF82005E973009C9AEF /* GoogleService-Info.plist */; };
 		66983DFB2005E9C8009C9AEF /* GATrackingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66983DFA2005E9C8009C9AEF /* GATrackingManager.swift */; };
 		66A30A11240803BC0016F34D /* BackgroundColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A30A10240803BC0016F34D /* BackgroundColorCollectionViewCell.swift */; };
+		66A30A14240804B30016F34D /* BackgroundPlusCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A30A12240804B30016F34D /* BackgroundPlusCollectionViewCell.swift */; };
+		66A30A15240804B30016F34D /* BackgroundPlusCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66A30A13240804B30016F34D /* BackgroundPlusCollectionViewCell.xib */; };
 		66A3C3F91FCB66E7007EB295 /* AppInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A3C3F81FCB66E7007EB295 /* AppInfoView.swift */; };
 		66AA1DFA1FC56519001C419E /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AA1DF91FC56519001C419E /* ShareViewController.swift */; };
 		66AA1DFD1FC56519001C419E /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66AA1DFB1FC56519001C419E /* MainInterface.storyboard */; };
@@ -311,7 +312,6 @@
 		6662E13B20007E7300FB30C7 /* InfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoTableViewCell.xib; sourceTree = "<group>"; };
 		6662E13E2001D31700FB30C7 /* UIImage+MaskCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+MaskCorner.swift"; sourceTree = "<group>"; };
 		6662E1402001D76300FB30C7 /* UIView+SnapShot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+SnapShot.swift"; sourceTree = "<group>"; };
-		6662E142200214F500FB30C7 /* BackgroundPlusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundPlusCell.swift; sourceTree = "<group>"; };
 		6662E14420024B1700FB30C7 /* backgroundImage.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = backgroundImage.json; sourceTree = "<group>"; };
 		66681CD91FCC1501009A0F55 /* DetailContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailContentView.swift; sourceTree = "<group>"; };
 		66681CDF1FCC1734009A0F55 /* DetailCommonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCommonCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -385,6 +385,8 @@
 		66983E4720071305009C9AEF /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "Carthage/Checkouts/OpenSSL/lib-ios/libcrypto.a"; sourceTree = "<group>"; };
 		66983E4820071306009C9AEF /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = "Carthage/Checkouts/OpenSSL/lib-ios/libssl.a"; sourceTree = "<group>"; };
 		66A30A10240803BC0016F34D /* BackgroundColorCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundColorCollectionViewCell.swift; sourceTree = "<group>"; };
+		66A30A12240804B30016F34D /* BackgroundPlusCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundPlusCollectionViewCell.swift; sourceTree = "<group>"; };
+		66A30A13240804B30016F34D /* BackgroundPlusCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BackgroundPlusCollectionViewCell.xib; sourceTree = "<group>"; };
 		66A3C3F81FCB66E7007EB295 /* AppInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoView.swift; sourceTree = "<group>"; };
 		66AA1DF71FC56519001C419E /* ShareFromAppStoreExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ShareFromAppStoreExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		66AA1DF91FC56519001C419E /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
@@ -753,7 +755,8 @@
 		6660818724064B4D00001A9C /* BackgroundPlus */ = {
 			isa = PBXGroup;
 			children = (
-				6662E142200214F500FB30C7 /* BackgroundPlusCell.swift */,
+				66A30A12240804B30016F34D /* BackgroundPlusCollectionViewCell.swift */,
+				66A30A13240804B30016F34D /* BackgroundPlusCollectionViewCell.xib */,
 			);
 			path = BackgroundPlus;
 			sourceTree = "<group>";
@@ -1410,6 +1413,7 @@
 				660B57741FCFC5F500DBC823 /* ColorSetCollectionViewCell.xib in Resources */,
 				6662E13D20007E7300FB30C7 /* InfoTableViewCell.xib in Resources */,
 				666E06B51FCB9A880043DCFF /* MemoCell.xib in Resources */,
+				66A30A15240804B30016F34D /* BackgroundPlusCollectionViewCell.xib in Resources */,
 				660B57E01FD1774D00DBC823 /* HelpLinkCell.xib in Resources */,
 				667ECE201FC36784009233DE /* Assets.xcassets in Resources */,
 				666E06BF1FCBB3880043DCFF /* left_arrow@3x.png in Resources */,
@@ -1525,6 +1529,7 @@
 				6662E12D1FFFE9EE00FB30C7 /* BackgroundImageCollectionViewCell.swift in Sources */,
 				667ECE661FC3ADCA009233DE /* CustomNavigationBar.swift in Sources */,
 				660B88342003C67A0064EFFE /* UIColor+Compare.swift in Sources */,
+				66A30A14240804B30016F34D /* BackgroundPlusCollectionViewCell.swift in Sources */,
 				66681CDA1FCC1501009A0F55 /* DetailContentView.swift in Sources */,
 				666081B42407B54900001A9C /* R.generated.swift in Sources */,
 				6662E1301FFFF06500FB30C7 /* UploadView.swift in Sources */,
@@ -1598,7 +1603,6 @@
 				666E06C51FCBCB260043DCFF /* UITextView+Placeholder.swift in Sources */,
 				660B576F1FCFC5F500DBC823 /* ColorBaseView.swift in Sources */,
 				666081722406465C00001A9C /* FakeView.swift in Sources */,
-				6662E143200214F500FB30C7 /* BackgroundPlusCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

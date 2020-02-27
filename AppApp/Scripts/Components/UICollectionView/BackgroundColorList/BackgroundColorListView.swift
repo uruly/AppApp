@@ -40,7 +40,7 @@ class BackgroundColorListView: UICollectionView {
         self.init(frame: frame, collectionViewLayout: layout)
 
         register(R.nib.backgroundColorCollectionViewCell)
-        self.register(BackgroundPlusCell.self, forCellWithReuseIdentifier: "plus")
+        register(R.nib.backgroundPlusCollectionViewCell)
         self.delegate = self
         self.dataSource = self
         self.backgroundColor = UIColor.white
@@ -149,7 +149,7 @@ extension BackgroundColorListView: UICollectionViewDataSource {
             }
             return cell
         } else {
-            let cell: BackgroundPlusCell = collectionView.dequeueReusableCell(withReuseIdentifier: "plus", for: indexPath) as! BackgroundPlusCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.backgroundPlusCollectionViewCell, for: indexPath)!
             return cell
         }
     }
