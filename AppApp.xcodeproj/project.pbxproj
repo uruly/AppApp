@@ -435,28 +435,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		660B579B1FD067E900DBC823 /* Tutorial */ = {
-			isa = PBXGroup;
-			children = (
-				660B579C1FD06C6400DBC823 /* TutorialPageView.swift */,
-				660B57A41FD071D500DBC823 /* HowToViewCell.swift */,
-				660B57A51FD071D500DBC823 /* HowToViewCell.xib */,
-				660B57A81FD071EA00DBC823 /* HowToView.swift */,
-				660B579E1FD06FBE00DBC823 /* WelcomeView.swift */,
-				660B57A01FD06FDB00DBC823 /* WelcomeViewCell.swift */,
-				660B57A11FD06FDB00DBC823 /* WelcomeViewCell.xib */,
-				660B57B41FD10F7900DBC823 /* StartView.swift */,
-				660B57B61FD10F9500DBC823 /* StartViewCell.swift */,
-				660B57B71FD10F9500DBC823 /* StartViewCell.xib */,
-				660B57BA1FD1260800DBC823 /* HelpView.swift */,
-				660B57D51FD16F0B00DBC823 /* HelpViewCell.swift */,
-				660B57D61FD16F0B00DBC823 /* HelpViewCell.xib */,
-				660B57DD1FD1774D00DBC823 /* HelpLinkCell.swift */,
-				660B57DE1FD1774D00DBC823 /* HelpLinkCell.xib */,
-			);
-			path = Tutorial;
-			sourceTree = "<group>";
-		};
 		660B57CC1FD1501500DBC823 /* Balloon */ = {
 			isa = PBXGroup;
 			children = (
@@ -590,6 +568,10 @@
 		666081772406489500001A9C /* UIView */ = {
 			isa = PBXGroup;
 			children = (
+				66A30A1D240806720016F34D /* Help */,
+				66A30A1B240806550016F34D /* Start */,
+				66A30A18240806270016F34D /* Welcome */,
+				66A30A17240806190016F34D /* HowTo */,
 				666081AB24064F5500001A9C /* CustomBackground */,
 				666081AA24064F4400001A9C /* RGBSlider */,
 				666081A924064F3700001A9C /* ColorBase */,
@@ -597,7 +579,6 @@
 				666081A724064F2400001A9C /* Upload */,
 				666081A624064F1C00001A9C /* AppInfo */,
 				6660818924064B7500001A9C /* Bottom */,
-				660B579B1FD067E900DBC823 /* Tutorial */,
 				660B57CC1FD1501500DBC823 /* Balloon */,
 			);
 			path = UIView;
@@ -672,6 +653,7 @@
 		6660818024064A8C00001A9C /* UICollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				66A30A16240805FE0016F34D /* Tutorial */,
 				666081A524064F0D00001A9C /* SelectionBar */,
 				666081A424064F0000001A9C /* App */,
 				666081A324064EF600001A9C /* ColorSet */,
@@ -687,6 +669,9 @@
 		6660818124064A9400001A9C /* UICollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				66A30A1C240806610016F34D /* Start */,
+				66A30A1A240806450016F34D /* Welcome */,
+				66A30A192408063A0016F34D /* HowTo */,
 				6660819D24064E7900001A9C /* AppInfoList */,
 				6660819C24064E6F00001A9C /* App */,
 				6660819B24064E3B00001A9C /* RGBSlider */,
@@ -725,6 +710,8 @@
 		6660818424064AEE00001A9C /* UITableView */ = {
 			isa = PBXGroup;
 			children = (
+				66A30A1F240806A60016F34D /* HelpLink */,
+				66A30A1E2408069D0016F34D /* Help */,
 				666081A124064ED100001A9C /* LabelAppInfo */,
 				666081A024064EC700001A9C /* CommonInfo */,
 				6660819F24064EBE00001A9C /* DeleteApp */,
@@ -1189,6 +1176,91 @@
 				667ECE5E1FC395C2009233DE /* SelectionBarCollectionViewCell.xib */,
 			);
 			path = SelectionBar;
+			sourceTree = "<group>";
+		};
+		66A30A16240805FE0016F34D /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				660B579C1FD06C6400DBC823 /* TutorialPageView.swift */,
+			);
+			path = Tutorial;
+			sourceTree = "<group>";
+		};
+		66A30A17240806190016F34D /* HowTo */ = {
+			isa = PBXGroup;
+			children = (
+				660B57A81FD071EA00DBC823 /* HowToView.swift */,
+			);
+			path = HowTo;
+			sourceTree = "<group>";
+		};
+		66A30A18240806270016F34D /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				660B579E1FD06FBE00DBC823 /* WelcomeView.swift */,
+			);
+			path = Welcome;
+			sourceTree = "<group>";
+		};
+		66A30A192408063A0016F34D /* HowTo */ = {
+			isa = PBXGroup;
+			children = (
+				660B57A41FD071D500DBC823 /* HowToViewCell.swift */,
+				660B57A51FD071D500DBC823 /* HowToViewCell.xib */,
+			);
+			path = HowTo;
+			sourceTree = "<group>";
+		};
+		66A30A1A240806450016F34D /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				660B57A01FD06FDB00DBC823 /* WelcomeViewCell.swift */,
+				660B57A11FD06FDB00DBC823 /* WelcomeViewCell.xib */,
+			);
+			path = Welcome;
+			sourceTree = "<group>";
+		};
+		66A30A1B240806550016F34D /* Start */ = {
+			isa = PBXGroup;
+			children = (
+				660B57B41FD10F7900DBC823 /* StartView.swift */,
+			);
+			path = Start;
+			sourceTree = "<group>";
+		};
+		66A30A1C240806610016F34D /* Start */ = {
+			isa = PBXGroup;
+			children = (
+				660B57B61FD10F9500DBC823 /* StartViewCell.swift */,
+				660B57B71FD10F9500DBC823 /* StartViewCell.xib */,
+			);
+			path = Start;
+			sourceTree = "<group>";
+		};
+		66A30A1D240806720016F34D /* Help */ = {
+			isa = PBXGroup;
+			children = (
+				660B57BA1FD1260800DBC823 /* HelpView.swift */,
+			);
+			path = Help;
+			sourceTree = "<group>";
+		};
+		66A30A1E2408069D0016F34D /* Help */ = {
+			isa = PBXGroup;
+			children = (
+				660B57D51FD16F0B00DBC823 /* HelpViewCell.swift */,
+				660B57D61FD16F0B00DBC823 /* HelpViewCell.xib */,
+			);
+			path = Help;
+			sourceTree = "<group>";
+		};
+		66A30A1F240806A60016F34D /* HelpLink */ = {
+			isa = PBXGroup;
+			children = (
+				660B57DD1FD1774D00DBC823 /* HelpLinkCell.swift */,
+				660B57DE1FD1774D00DBC823 /* HelpLinkCell.xib */,
+			);
+			path = HelpLink;
 			sourceTree = "<group>";
 		};
 		66AA1DF81FC56519001C419E /* ShareFromAppStoreExtension */ = {
