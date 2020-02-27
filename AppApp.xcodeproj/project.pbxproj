@@ -104,8 +104,8 @@
 		6662E143200214F500FB30C7 /* BackgroundPlusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662E142200214F500FB30C7 /* BackgroundPlusCell.swift */; };
 		6662E14520024B1700FB30C7 /* backgroundImage.json in Resources */ = {isa = PBXBuildFile; fileRef = 6662E14420024B1700FB30C7 /* backgroundImage.json */; };
 		66681CDA1FCC1501009A0F55 /* DetailContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66681CD91FCC1501009A0F55 /* DetailContentView.swift */; };
-		66681CE11FCC1734009A0F55 /* DetailCommonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66681CDF1FCC1734009A0F55 /* DetailCommonViewCell.swift */; };
-		66681CE21FCC1734009A0F55 /* DetailCommonViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66681CE01FCC1734009A0F55 /* DetailCommonViewCell.xib */; };
+		66681CE11FCC1734009A0F55 /* DetailCommonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66681CDF1FCC1734009A0F55 /* DetailCommonCollectionViewCell.swift */; };
+		66681CE21FCC1734009A0F55 /* DetailCommonCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66681CE01FCC1734009A0F55 /* DetailCommonCollectionViewCell.xib */; };
 		66681CE51FCC17E2009A0F55 /* DetailAppInfoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66681CE31FCC17E2009A0F55 /* DetailAppInfoViewCell.swift */; };
 		66681CE61FCC17E2009A0F55 /* DetailAppInfoViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66681CE41FCC17E2009A0F55 /* DetailAppInfoViewCell.xib */; };
 		66686B712405019F005A22A3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66686B702405019F005A22A3 /* Constants.swift */; };
@@ -315,8 +315,8 @@
 		6662E142200214F500FB30C7 /* BackgroundPlusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundPlusCell.swift; sourceTree = "<group>"; };
 		6662E14420024B1700FB30C7 /* backgroundImage.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = backgroundImage.json; sourceTree = "<group>"; };
 		66681CD91FCC1501009A0F55 /* DetailContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailContentView.swift; sourceTree = "<group>"; };
-		66681CDF1FCC1734009A0F55 /* DetailCommonViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCommonViewCell.swift; sourceTree = "<group>"; };
-		66681CE01FCC1734009A0F55 /* DetailCommonViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailCommonViewCell.xib; sourceTree = "<group>"; };
+		66681CDF1FCC1734009A0F55 /* DetailCommonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCommonCollectionViewCell.swift; sourceTree = "<group>"; };
+		66681CE01FCC1734009A0F55 /* DetailCommonCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailCommonCollectionViewCell.xib; sourceTree = "<group>"; };
 		66681CE31FCC17E2009A0F55 /* DetailAppInfoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAppInfoViewCell.swift; sourceTree = "<group>"; };
 		66681CE41FCC17E2009A0F55 /* DetailAppInfoViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailAppInfoViewCell.xib; sourceTree = "<group>"; };
 		66686B702405019F005A22A3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -853,8 +853,8 @@
 		6660819324064CBC00001A9C /* DetailCommon */ = {
 			isa = PBXGroup;
 			children = (
-				66681CDF1FCC1734009A0F55 /* DetailCommonViewCell.swift */,
-				66681CE01FCC1734009A0F55 /* DetailCommonViewCell.xib */,
+				66681CDF1FCC1734009A0F55 /* DetailCommonCollectionViewCell.swift */,
+				66681CE01FCC1734009A0F55 /* DetailCommonCollectionViewCell.xib */,
 			);
 			path = DetailCommon;
 			sourceTree = "<group>";
@@ -1424,7 +1424,7 @@
 				660B57D41FD16DA700DBC823 /* tutorialMark@3x.png in Resources */,
 				660B57941FD0173C00DBC823 /* logo2.png in Resources */,
 				660B57DA1FD1749F00DBC823 /* order_app.png in Resources */,
-				66681CE21FCC1734009A0F55 /* DetailCommonViewCell.xib in Resources */,
+				66681CE21FCC1734009A0F55 /* DetailCommonCollectionViewCell.xib in Resources */,
 				66983DE72005E1E6009C9AEF /* snowTreeBig_thumb.png in Resources */,
 				6652DEF01FCED73000EB84F6 /* safari@2x.png in Resources */,
 				660B57921FD013DD00DBC823 /* appapp_logo1.png in Resources */,
@@ -1547,7 +1547,7 @@
 				6662E11E1FFE98CA00FB30C7 /* BottomView.swift in Sources */,
 				66498E341FC7BA3600239B47 /* UIApplication+Stack.swift in Sources */,
 				667ECE591FC388B9009233DE /* UIColor+AppColor.swift in Sources */,
-				66681CE11FCC1734009A0F55 /* DetailCommonViewCell.swift in Sources */,
+				66681CE11FCC1734009A0F55 /* DetailCommonCollectionViewCell.swift in Sources */,
 				6662E13620000FFD00FB30C7 /* EditImageView.swift in Sources */,
 				66498E3B1FC82F9000239B47 /* EditToolbar.swift in Sources */,
 				66498E321FC7B5AA00239B47 /* EditAppLabelViewController.swift in Sources */,

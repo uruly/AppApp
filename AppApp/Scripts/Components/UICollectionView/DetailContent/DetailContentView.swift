@@ -50,7 +50,7 @@ class DetailContentView: UICollectionView {
         self.delegate = self
         self.dataSource = self
         register(R.nib.detailMemoCollectionViewCell)
-        self.register(UINib(nibName: "DetailCommonViewCell", bundle: nil), forCellWithReuseIdentifier: "detailCommon")
+        register(R.nib.detailCommonCollectionViewCell)
         self.register(UINib(nibName: "DetailAppInfoViewCell", bundle: nil), forCellWithReuseIdentifier: "detailAppInfo")
         register(R.nib.detailCollectionViewCell)
     }
@@ -88,7 +88,7 @@ extension DetailContentView: UICollectionViewDataSource {
 
             return cell
         } else if indexPath.row == 1 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "detailCommon", for: indexPath) as! DetailCommonViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.detailCommonCollectionViewCell, for: indexPath)!
             cell.tableView.isAppStore = self.url.contains("itunes.apple.com")
             cell.tableView.developerName = self.developerName
             cell.tableView.id = self.id
