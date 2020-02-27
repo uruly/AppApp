@@ -31,7 +31,7 @@ class BackgroundImageView: UICollectionView {
         layout.scrollDirection = .horizontal
         self.init(frame: frame, collectionViewLayout: layout)
 
-        self.register(UINib(nibName: "BackgroundImageCell", bundle: nil), forCellWithReuseIdentifier: "backImageSet")
+        register(R.nib.backgroundImageCollectionViewCell)
         self.register(BackgroundPlusCell.self, forCellWithReuseIdentifier: "plus")
         self.delegate = self
         self.dataSource = self
@@ -110,19 +110,19 @@ extension BackgroundImageView: UICollectionViewDelegate {
             //print(currentIndexPath)
             //print(indexPath)
             if currentIndexPath == indexPath {
-                if let previousCell: BackgroundImageCell = collectionView.cellForItem(at: currentIndexPath!) as? BackgroundImageCell {
+                if let previousCell: BackgroundImageCollectionViewCell = collectionView.cellForItem(at: currentIndexPath!) as? BackgroundImageCollectionViewCell {
                     previousCell.checkImageView.isHidden = true
                 }
                 currentImage = nil
                 currentIndexPath = nil
             } else {
                 if currentIndexPath != nil {
-                    if let previousCell: BackgroundImageCell = collectionView.cellForItem(at: currentIndexPath!) as? BackgroundImageCell {
+                    if let previousCell: BackgroundImageCollectionViewCell = collectionView.cellForItem(at: currentIndexPath!) as? BackgroundImageCollectionViewCell {
                         //print("けすよ")
                         previousCell.checkImageView.isHidden = true
                     }
                 }
-                if let cell: BackgroundImageCell = collectionView.cellForItem(at: indexPath) as? BackgroundImageCell {
+                if let cell: BackgroundImageCollectionViewCell = collectionView.cellForItem(at: indexPath) as? BackgroundImageCollectionViewCell {
                     //print("みせるよ")
                     //print("imageList[index]\(imageList[indexPath.row])")
                     cell.checkImageView.isHidden = false
@@ -149,7 +149,7 @@ extension BackgroundImageView: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
-            let cell: BackgroundImageCell = collectionView.dequeueReusableCell(withReuseIdentifier: "backImageSet", for: indexPath) as! BackgroundImageCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.backgroundImageCollectionViewCell, for: indexPath)!
             let color = UIColor(patternImage: imageList[indexPath.row].0)
             //let colorName = color.value(forKey: "image") as? String ?? ""
             //color.setValue(colorName, forKey: "image")
