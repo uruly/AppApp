@@ -1214,13 +1214,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 667ECE3D1FC36784009233DE /* Build configuration list for PBXNativeTarget "AppApp" */;
 			buildPhases = (
+				666081B22407B00600001A9C /* R.swift */,
 				667ECE111FC36784009233DE /* Sources */,
 				667ECE121FC36784009233DE /* Frameworks */,
 				667ECE131FC36784009233DE /* Resources */,
 				66686B6E2404520F005A22A3 /* SwiftLint */,
 				667ECE4C1FC3826D009233DE /* Carthage */,
 				66AA1E051FC56519001C419E /* Embed App Extensions */,
-				666081B22407B00600001A9C /* R.swift */,
 			);
 			buildRules = (
 			);
