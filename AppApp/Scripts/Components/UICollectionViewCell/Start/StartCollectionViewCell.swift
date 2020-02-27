@@ -1,5 +1,5 @@
 //
-//  StartViewCell.swift
+//  StartCollectionViewCell.swift
 //  AppApp
 //
 //  Created by 久保　玲於奈 on 2017/12/01.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StartViewCell: UICollectionViewCell {
+class StartCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var startView: StartView!
     override func awakeFromNib() {

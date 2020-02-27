@@ -27,7 +27,7 @@ class TutorialPageView: UICollectionView {
         self.dataSource = self
         self.register(UINib(nibName: "WelcomeViewCell", bundle: nil), forCellWithReuseIdentifier: "welcome")
         self.register(UINib(nibName: "HowToViewCell", bundle: nil), forCellWithReuseIdentifier: "howTo")
-        self.register(UINib(nibName: "StartViewCell", bundle: nil), forCellWithReuseIdentifier: "start")
+        register(R.nib.startCollectionViewCell)
     }
 
     convenience init(frame: CGRect) {
@@ -71,7 +71,7 @@ extension TutorialPageView: UICollectionViewDataSource {
             cell.howToView.setup(index: indexPath.row - 1)
             return cell
         } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "start", for: indexPath) as! StartViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.startCollectionViewCell, for: indexPath)!
             cell.startView.tutorialVC = pageDelegate.tutorialVC
             return cell
         }
