@@ -87,8 +87,7 @@
 		6662E11E1FFE98CA00FB30C7 /* BottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662E11C1FFE98CA00FB30C7 /* BottomView.swift */; };
 		6662E1201FFFD90200FB30C7 /* CustomBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662E11F1FFFD90200FB30C7 /* CustomBackgroundView.swift */; };
 		6662E1221FFFDE9000FB30C7 /* BackgroundColorListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662E1211FFFDE9000FB30C7 /* BackgroundColorListView.swift */; };
-		6662E1251FFFDEB900FB30C7 /* BackgroundColorViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662E1231FFFDEB900FB30C7 /* BackgroundColorViewCell.swift */; };
-		6662E1261FFFDEB900FB30C7 /* BackgroundColorViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6662E1241FFFDEB900FB30C7 /* BackgroundColorViewCell.xib */; };
+		6662E1261FFFDEB900FB30C7 /* BackgroundColorCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6662E1241FFFDEB900FB30C7 /* BackgroundColorCollectionViewCell.xib */; };
 		6662E1281FFFE94400FB30C7 /* BackgroundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662E1271FFFE94400FB30C7 /* BackgroundImageView.swift */; };
 		6662E12D1FFFE9EE00FB30C7 /* BackgroundImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662E12B1FFFE9EE00FB30C7 /* BackgroundImageCollectionViewCell.swift */; };
 		6662E12E1FFFE9EE00FB30C7 /* BackgroundImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6662E12C1FFFE9EE00FB30C7 /* BackgroundImageCollectionViewCell.xib */; };
@@ -166,6 +165,7 @@
 		66983DF72005E8A1009C9AEF /* GoogleAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66983DF62005E8A0009C9AEF /* GoogleAnalytics.framework */; };
 		66983DF92005E974009C9AEF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 66983DF82005E973009C9AEF /* GoogleService-Info.plist */; };
 		66983DFB2005E9C8009C9AEF /* GATrackingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66983DFA2005E9C8009C9AEF /* GATrackingManager.swift */; };
+		66A30A11240803BC0016F34D /* BackgroundColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A30A10240803BC0016F34D /* BackgroundColorCollectionViewCell.swift */; };
 		66A3C3F91FCB66E7007EB295 /* AppInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A3C3F81FCB66E7007EB295 /* AppInfoView.swift */; };
 		66AA1DFA1FC56519001C419E /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AA1DF91FC56519001C419E /* ShareViewController.swift */; };
 		66AA1DFD1FC56519001C419E /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66AA1DFB1FC56519001C419E /* MainInterface.storyboard */; };
@@ -298,8 +298,7 @@
 		6662E11C1FFE98CA00FB30C7 /* BottomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomView.swift; sourceTree = "<group>"; };
 		6662E11F1FFFD90200FB30C7 /* CustomBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackgroundView.swift; sourceTree = "<group>"; };
 		6662E1211FFFDE9000FB30C7 /* BackgroundColorListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundColorListView.swift; sourceTree = "<group>"; };
-		6662E1231FFFDEB900FB30C7 /* BackgroundColorViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundColorViewCell.swift; sourceTree = "<group>"; };
-		6662E1241FFFDEB900FB30C7 /* BackgroundColorViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BackgroundColorViewCell.xib; sourceTree = "<group>"; };
+		6662E1241FFFDEB900FB30C7 /* BackgroundColorCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BackgroundColorCollectionViewCell.xib; sourceTree = "<group>"; };
 		6662E1271FFFE94400FB30C7 /* BackgroundImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImageView.swift; sourceTree = "<group>"; };
 		6662E12B1FFFE9EE00FB30C7 /* BackgroundImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		6662E12C1FFFE9EE00FB30C7 /* BackgroundImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BackgroundImageCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -385,6 +384,7 @@
 		66983E4120070C08009C9AEF /* openssl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = openssl.framework; path = Carthage/Checkouts/OpenSSL/Frameworks/ios/openssl.framework; sourceTree = "<group>"; };
 		66983E4720071305009C9AEF /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "Carthage/Checkouts/OpenSSL/lib-ios/libcrypto.a"; sourceTree = "<group>"; };
 		66983E4820071306009C9AEF /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = "Carthage/Checkouts/OpenSSL/lib-ios/libssl.a"; sourceTree = "<group>"; };
+		66A30A10240803BC0016F34D /* BackgroundColorCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundColorCollectionViewCell.swift; sourceTree = "<group>"; };
 		66A3C3F81FCB66E7007EB295 /* AppInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoView.swift; sourceTree = "<group>"; };
 		66AA1DF71FC56519001C419E /* ShareFromAppStoreExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ShareFromAppStoreExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		66AA1DF91FC56519001C419E /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
@@ -761,8 +761,8 @@
 		6660818824064B5900001A9C /* BackgroundColor */ = {
 			isa = PBXGroup;
 			children = (
-				6662E1231FFFDEB900FB30C7 /* BackgroundColorViewCell.swift */,
-				6662E1241FFFDEB900FB30C7 /* BackgroundColorViewCell.xib */,
+				66A30A10240803BC0016F34D /* BackgroundColorCollectionViewCell.swift */,
+				6662E1241FFFDEB900FB30C7 /* BackgroundColorCollectionViewCell.xib */,
 			);
 			path = BackgroundColor;
 			sourceTree = "<group>";
@@ -1364,7 +1364,7 @@
 			files = (
 				6652DEDC1FCEB7A800EB84F6 /* small@2x.png in Resources */,
 				660B57961FD019CE00DBC823 /* logo3.png in Resources */,
-				6662E1261FFFDEB900FB30C7 /* BackgroundColorViewCell.xib in Resources */,
+				6662E1261FFFDEB900FB30C7 /* BackgroundColorCollectionViewCell.xib in Resources */,
 				6652DEE11FCEB7DA00EB84F6 /* big@2x.png in Resources */,
 				6662E14520024B1700FB30C7 /* backgroundImage.json in Resources */,
 				6606168F1FCD35AE00667020 /* DetailCollectionViewCell.xib in Resources */,
@@ -1540,6 +1540,7 @@
 				6662E1322000055F00FB30C7 /* UIResponder+FindView.swift in Sources */,
 				667ECE4B1FC3690E009233DE /* BaseViewController.swift in Sources */,
 				667ECE471FC36850009233DE /* BaseNavigationViewController.swift in Sources */,
+				66A30A11240803BC0016F34D /* BackgroundColorCollectionViewCell.swift in Sources */,
 				660B576D1FCFC5F500DBC823 /* ColorPageView.swift in Sources */,
 				6606168E1FCD35AE00667020 /* DetailCollectionViewCell.swift in Sources */,
 				6677FC241FCA6CE400CB105E /* AppListViewController.swift in Sources */,
@@ -1595,7 +1596,6 @@
 				667ECE5B1FC3958D009233DE /* SelectionBar.swift in Sources */,
 				66A3C3F91FCB66E7007EB295 /* AppInfoView.swift in Sources */,
 				666E06C51FCBCB260043DCFF /* UITextView+Placeholder.swift in Sources */,
-				6662E1251FFFDEB900FB30C7 /* BackgroundColorViewCell.swift in Sources */,
 				660B576F1FCFC5F500DBC823 /* ColorBaseView.swift in Sources */,
 				666081722406465C00001A9C /* FakeView.swift in Sources */,
 				6662E143200214F500FB30C7 /* BackgroundPlusCell.swift in Sources */,

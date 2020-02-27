@@ -1,5 +1,5 @@
 //
-//  BackgroundColorViewCell.swift
+//  BackgroundColorCollectionViewCell.swift
 //  AppApp
 //
 //  Created by 久保　玲於奈 on 2018/01/06.
@@ -8,9 +8,10 @@
 
 import UIKit
 
-class BackgroundColorViewCell: UICollectionViewCell {
+final class BackgroundColorCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var checkImageView: UIImageView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         checkImageView.isHidden = true

@@ -39,7 +39,7 @@ class BackgroundColorListView: UICollectionView {
         layout.scrollDirection = .horizontal
         self.init(frame: frame, collectionViewLayout: layout)
 
-        self.register(UINib(nibName: "BackgroundColorViewCell", bundle: nil), forCellWithReuseIdentifier: "backColorSet")
+        register(R.nib.backgroundColorCollectionViewCell)
         self.register(BackgroundPlusCell.self, forCellWithReuseIdentifier: "plus")
         self.delegate = self
         self.dataSource = self
@@ -114,11 +114,11 @@ extension BackgroundColorListView: UICollectionViewDelegate {
             if currentIndexPath == indexPath {
                 return
             }
-            if let cell: BackgroundColorViewCell = collectionView.cellForItem(at: indexPath) as? BackgroundColorViewCell {
+            if let cell: BackgroundColorCollectionViewCell = collectionView.cellForItem(at: indexPath) as? BackgroundColorCollectionViewCell {
                 cell.checkImageView.isHidden = false
                 currentColor = colorList[indexPath.row]
             }
-            if let previousCell: BackgroundColorViewCell = collectionView.cellForItem(at: currentIndexPath) as? BackgroundColorViewCell {
+            if let previousCell: BackgroundColorCollectionViewCell = collectionView.cellForItem(at: currentIndexPath) as? BackgroundColorCollectionViewCell {
                 previousCell.checkImageView.isHidden = true
                 currentIndexPath = indexPath
             }
@@ -140,7 +140,7 @@ extension BackgroundColorListView: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
-            let cell: BackgroundColorViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "backColorSet", for: indexPath) as! BackgroundColorViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.backgroundColorCollectionViewCell, for: indexPath)!
             cell.contentView.backgroundColor = colorList[indexPath.row]
             if currentIndexPath == indexPath {
                 cell.checkImageView.isHidden = false
