@@ -7,6 +7,7 @@ included:
   - ShareFromAppStoreExtension
 
 excluded:
+  - AppApp/Scripts/R.generated.swift
   - Carthage
 
 line_length: 200
