@@ -46,8 +46,8 @@
 		660B57CB1FD1501100DBC823 /* BalloonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B57CA1FD1501100DBC823 /* BalloonView.swift */; };
 		660B57D31FD16DA700DBC823 /* tutorialMark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 660B57D11FD16DA700DBC823 /* tutorialMark@2x.png */; };
 		660B57D41FD16DA700DBC823 /* tutorialMark@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 660B57D21FD16DA700DBC823 /* tutorialMark@3x.png */; };
-		660B57D71FD16F0B00DBC823 /* HelpViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B57D51FD16F0B00DBC823 /* HelpViewCell.swift */; };
-		660B57D81FD16F0B00DBC823 /* HelpViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 660B57D61FD16F0B00DBC823 /* HelpViewCell.xib */; };
+		660B57D71FD16F0B00DBC823 /* HelpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B57D51FD16F0B00DBC823 /* HelpTableViewCell.swift */; };
+		660B57D81FD16F0B00DBC823 /* HelpTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 660B57D61FD16F0B00DBC823 /* HelpTableViewCell.xib */; };
 		660B57DA1FD1749F00DBC823 /* order_app.png in Resources */ = {isa = PBXBuildFile; fileRef = 660B57D91FD1749F00DBC823 /* order_app.png */; };
 		660B57DC1FD176D500DBC823 /* edit_label.png in Resources */ = {isa = PBXBuildFile; fileRef = 660B57DB1FD176D500DBC823 /* edit_label.png */; };
 		660B57DF1FD1774D00DBC823 /* HelpLinkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B57DD1FD1774D00DBC823 /* HelpLinkTableViewCell.swift */; };
@@ -255,8 +255,8 @@
 		660B57CA1FD1501100DBC823 /* BalloonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalloonView.swift; sourceTree = "<group>"; };
 		660B57D11FD16DA700DBC823 /* tutorialMark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tutorialMark@2x.png"; sourceTree = "<group>"; };
 		660B57D21FD16DA700DBC823 /* tutorialMark@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tutorialMark@3x.png"; sourceTree = "<group>"; };
-		660B57D51FD16F0B00DBC823 /* HelpViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewCell.swift; sourceTree = "<group>"; };
-		660B57D61FD16F0B00DBC823 /* HelpViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HelpViewCell.xib; sourceTree = "<group>"; };
+		660B57D51FD16F0B00DBC823 /* HelpTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpTableViewCell.swift; sourceTree = "<group>"; };
+		660B57D61FD16F0B00DBC823 /* HelpTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HelpTableViewCell.xib; sourceTree = "<group>"; };
 		660B57D91FD1749F00DBC823 /* order_app.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = order_app.png; sourceTree = "<group>"; };
 		660B57DB1FD176D500DBC823 /* edit_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit_label.png; sourceTree = "<group>"; };
 		660B57DD1FD1774D00DBC823 /* HelpLinkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpLinkTableViewCell.swift; sourceTree = "<group>"; };
@@ -1248,8 +1248,8 @@
 		66A30A1E2408069D0016F34D /* Help */ = {
 			isa = PBXGroup;
 			children = (
-				660B57D51FD16F0B00DBC823 /* HelpViewCell.swift */,
-				660B57D61FD16F0B00DBC823 /* HelpViewCell.xib */,
+				660B57D51FD16F0B00DBC823 /* HelpTableViewCell.swift */,
+				660B57D61FD16F0B00DBC823 /* HelpTableViewCell.xib */,
 			);
 			path = Help;
 			sourceTree = "<group>";
@@ -1468,7 +1468,7 @@
 				6652DED11FCEAC9800EB84F6 /* collect@3x.png in Resources */,
 				666E06BE1FCBB3880043DCFF /* left_arrow@2x.png in Resources */,
 				667ECE601FC395C2009233DE /* SelectionBarCollectionViewCell.xib in Resources */,
-				660B57D81FD16F0B00DBC823 /* HelpViewCell.xib in Resources */,
+				660B57D81FD16F0B00DBC823 /* HelpTableViewCell.xib in Resources */,
 				660B57B11FD0811600DBC823 /* screenShot2.jpeg in Resources */,
 				6652DEE01FCEB7DA00EB84F6 /* big@3x.png in Resources */,
 				66983DF02005E3FD009C9AEF /* snowBeige.jpg in Resources */,
@@ -1658,7 +1658,7 @@
 				6676ED371FCD582200815BF8 /* DetailMemoCollectionViewCell.swift in Sources */,
 				6662E1412001D76300FB30C7 /* UIView+SnapShot.swift in Sources */,
 				666E06B41FCB9A880043DCFF /* MemoCell.swift in Sources */,
-				660B57D71FD16F0B00DBC823 /* HelpViewCell.swift in Sources */,
+				660B57D71FD16F0B00DBC823 /* HelpTableViewCell.swift in Sources */,
 				6662E1392000652000FB30C7 /* InfoTableView.swift in Sources */,
 				660B57B81FD10F9500DBC823 /* StartViewCell.swift in Sources */,
 				66498E2E1FC6B92C00239B47 /* ApplicationData.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  HelpViewCell.swift
+//  HelpTableViewCell.swift
 //  AppApp
 //
 //  Created by 久保　玲於奈 on 2017/12/01.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HelpViewCell: UITableViewCell {
+class HelpTableViewCell: UITableViewCell {
 
     @IBOutlet weak var answerLabel: UILabel!
 

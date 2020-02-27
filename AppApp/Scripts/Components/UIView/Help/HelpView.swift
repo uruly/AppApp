@@ -24,7 +24,7 @@ class HelpView: UITableView {
         super.init(frame: frame, style: style)
         self.delegate = self
         self.dataSource = self
-        self.register(UINib(nibName: "HelpViewCell", bundle: nil), forCellReuseIdentifier: "help")
+        register(R.nib.helpTableViewCell)
         register(R.nib.helpLinkTableViewCell)
         self.backgroundColor = UIColor.help()
         self.separatorColor = UIColor.white
@@ -113,7 +113,7 @@ extension HelpView: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section < questionAnswer.count {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "help", for: indexPath) as! HelpViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.helpTableViewCell, for: indexPath)!
             cell.answerLabel.text = questionAnswer[indexPath.section].1
             if let imagePath = Bundle.main.path(forResource: questionAnswer[indexPath.section].2, ofType: "png") {
                 cell.explainImageView.image = UIImage(contentsOfFile: imagePath)
