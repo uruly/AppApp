@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AppInfoCell: UICollectionViewCell {
+class AppInfoListCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
