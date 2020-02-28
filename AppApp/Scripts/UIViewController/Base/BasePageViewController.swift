@@ -46,7 +46,7 @@ class BasePageViewController: UIPageViewController {
         super.viewDidLoad()
         let width = self.view.frame.width
         let height = self.view.frame.height
-        self.view.backgroundColor = UIColor.backgroundGray()
+        self.view.backgroundColor = R.color.whiteFlowerColor()!
         appLabel = AppLabel()
         self.automaticallyAdjustsScrollViewInsets = false
         //ナビゲーションバーをカスタマイズ

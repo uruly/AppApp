@@ -20,7 +20,7 @@ class WebViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = UIColor.backgroundGray()
+        self.view.backgroundColor = R.color.whiteFlowerColor()!
         let toolBarHeight: CGFloat = 44.0
         let width = self.view.frame.width
         let height = self.view.frame.height

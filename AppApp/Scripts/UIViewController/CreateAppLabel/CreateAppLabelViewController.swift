@@ -72,7 +72,7 @@ class CreateAppLabelViewController: UIViewController {
 
         let width = self.view.frame.width
         let height = self.view.frame.height
-        self.view.backgroundColor = UIColor.backgroundGray()
+        self.view.backgroundColor = R.color.whiteFlowerColor()!
 
         //ナビゲーションバーを設置
         //let naviBarHeight = UIApplication.shared.statusBarFrame.height + 47.0

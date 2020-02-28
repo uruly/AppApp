@@ -134,7 +134,7 @@ class AppLabel {
     //一番最初に呼ばれる予定のデータ。Allが入る
     func saveDefaultData() {
         let name = "ALL"
-        let colorData = NSKeyedArchiver.archivedData(withRootObject: UIColor.allLabel())
+        let colorData = NSKeyedArchiver.archivedData(withRootObject: R.color.mainBlueColor())
         let label = AppLabelRealmData(value: ["name": name,
                                               "color": colorData,
                                               "id": "0",
@@ -149,7 +149,7 @@ class AppLabel {
             realm.add(label, update: .all)
         }
 
-        array.append(AppLabelData(name: name, color: UIColor.allLabel(), id: "0", order: 0, explain: "全てのApp"))
+        array.append(AppLabelData(name: name, color: R.color.mainBlueColor(), id: "0", order: 0, explain: "全てのApp"))
     }
 
     static func saveLabelData(name: String, color: UIColor, id: String, order: Int, explain: String?, _ completion:() -> Void) {

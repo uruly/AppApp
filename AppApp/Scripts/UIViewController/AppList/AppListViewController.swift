@@ -26,7 +26,7 @@ class AppListViewController: UIViewController {
 
         let width = self.view.frame.width
         let height = self.view.frame.height
-        self.view.backgroundColor = UIColor.backgroundGray()
+        self.view.backgroundColor = R.color.whiteFlowerColor()!
         self.navigationController?.navigationBar.isHidden = false
         self.title = "Appを追加"
         //コレクションビューで追加するアプリを表示したい
@@ -38,7 +38,7 @@ class AppListViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(R.nib.appListCollectionViewCell)
-        collectionView.backgroundColor = UIColor.backgroundGray()
+        collectionView.backgroundColor = R.color.whiteFlowerColor()!
         self.view.addSubview(collectionView)
 
         readData()

@@ -12,7 +12,7 @@ class WelcomeView: UIView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.backgroundColor = UIColor.allLabel()
+        self.backgroundColor = R.color.mainBlueColor()
         setup()
     }
 

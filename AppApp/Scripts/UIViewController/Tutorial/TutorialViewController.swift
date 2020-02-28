@@ -29,7 +29,7 @@ class TutorialViewController: UIViewController {
         let height = self.view.frame.height
         //let navigationHeight:CGFloat = 80.0
         let margin: CGFloat = 15.0
-        self.view.backgroundColor = UIColor.backgroundGray()
+        self.view.backgroundColor = R.color.whiteFlowerColor()!
         pageView = TutorialPageView(frame: CGRect(x: 0, y: navigationHeight + margin, width: width, height: height - navigationHeight - margin))
         pageView.pageDelegate = self
         self.view.addSubview(pageView)
@@ -79,7 +79,7 @@ class TutorialViewController: UIViewController {
         welcomeBtn.setTitle("WELCOME", for: .normal)
         welcomeBtn.setTitleColor(UIColor.white, for: .normal)
         welcomeBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
-        welcomeBtn.backgroundColor = UIColor.allLabel()
+        welcomeBtn.backgroundColor = R.color.mainBlueColor()
         welcomeBtn.addTarget(self, action: #selector(welcomeBtnTapped), for: .touchUpInside)
         view.addSubview(welcomeBtn)
 

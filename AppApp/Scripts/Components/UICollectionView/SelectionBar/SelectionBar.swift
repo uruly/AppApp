@@ -21,7 +21,7 @@ class SelectionBar: UICollectionView {
         self.delegate = self
         self.dataSource = self
         register(R.nib.selectionBarCollectionViewCell)
-        self.backgroundColor = UIColor.backgroundGray()
+        self.backgroundColor = R.color.whiteFlowerColor()!
         self.showsHorizontalScrollIndicator = false
 
         //長押しで
