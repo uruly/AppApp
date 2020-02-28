@@ -40,6 +40,7 @@
 		660B57DF1FD1774D00DBC823 /* HelpLinkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B57DD1FD1774D00DBC823 /* HelpLinkTableViewCell.swift */; };
 		660B57E01FD1774D00DBC823 /* HelpLinkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 660B57DE1FD1774D00DBC823 /* HelpLinkTableViewCell.xib */; };
 		660B88342003C67A0064EFFE /* UIColor+Compare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B88332003C67A0064EFFE /* UIColor+Compare.swift */; };
+		660D7A8F2409229E00DEC2C8 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 660D7A8E2409229E00DEC2C8 /* Settings.bundle */; };
 		66498E2A1FC666A400239B47 /* ShareAppLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E291FC666A400239B47 /* ShareAppLabel.swift */; };
 		66498E2C1FC67A6400239B47 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E2B1FC67A6400239B47 /* AppData.swift */; };
 		66498E2E1FC6B92C00239B47 /* ApplicationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E2D1FC6B92C00239B47 /* ApplicationData.swift */; };
@@ -86,7 +87,6 @@
 		666E06C11FCBB5E90043DCFF /* WebPageToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666E06C01FCBB5E90043DCFF /* WebPageToolbar.swift */; };
 		666E06C31FCBC1E50043DCFF /* PassThroughIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666E06C21FCBC1E50043DCFF /* PassThroughIndicator.swift */; };
 		666E06C51FCBCB260043DCFF /* UITextView+Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666E06C41FCBCB260043DCFF /* UITextView+Placeholder.swift */; };
-		666E06C71FCBDE9D0043DCFF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 666E06C61FCBDE920043DCFF /* StoreKit.framework */; };
 		6676ED371FCD582200815BF8 /* DetailMemoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6676ED351FCD582100815BF8 /* DetailMemoCollectionViewCell.swift */; };
 		6676ED381FCD582200815BF8 /* DetailMemoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6676ED361FCD582200815BF8 /* DetailMemoCollectionViewCell.xib */; };
 		6676ED3A1FCD584200815BF8 /* LabelAppInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6676ED391FCD584200815BF8 /* LabelAppInfoView.swift */; };
@@ -117,7 +117,6 @@
 		667ECE6D1FC41F7E009233DE /* AppCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE6C1FC41F7E009233DE /* AppCollectionView.swift */; };
 		667ECE711FC4206F009233DE /* AppListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE6F1FC4206F009233DE /* AppListCollectionViewCell.swift */; };
 		667ECE721FC4206F009233DE /* AppListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 667ECE701FC4206F009233DE /* AppListCollectionViewCell.xib */; };
-		66983DF72005E8A1009C9AEF /* GoogleAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66983DF62005E8A0009C9AEF /* GoogleAnalytics.framework */; };
 		66A30A11240803BC0016F34D /* BackgroundColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A30A10240803BC0016F34D /* BackgroundColorCollectionViewCell.swift */; };
 		66A30A14240804B30016F34D /* BackgroundPlusCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A30A12240804B30016F34D /* BackgroundPlusCollectionViewCell.swift */; };
 		66A30A15240804B30016F34D /* BackgroundPlusCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66A30A13240804B30016F34D /* BackgroundPlusCollectionViewCell.xib */; };
@@ -206,6 +205,7 @@
 		660B57E21FD19E7500DBC823 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		660B57E31FD19E7600DBC823 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/MainInterface.strings; sourceTree = "<group>"; };
 		660B88332003C67A0064EFFE /* UIColor+Compare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Compare.swift"; sourceTree = "<group>"; };
+		660D7A8E2409229E00DEC2C8 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		66498E231FC5A69B00239B47 /* ShareFromAppStoreExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareFromAppStoreExtension.entitlements; sourceTree = "<group>"; };
 		66498E241FC5A6D700239B47 /* AppApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AppApp.entitlements; sourceTree = "<group>"; };
 		66498E291FC666A400239B47 /* ShareAppLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareAppLabel.swift; sourceTree = "<group>"; };
@@ -314,8 +314,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				666081B72407B7CB00001A9C /* Rswift in Frameworks */,
-				66983DF72005E8A1009C9AEF /* GoogleAnalytics.framework in Frameworks */,
-				666E06C71FCBDE9D0043DCFF /* StoreKit.framework in Frameworks */,
 				667ECE511FC382C7009233DE /* RealmSwift.framework in Frameworks */,
 				667ECE4F1FC382B9009233DE /* Realm.framework in Frameworks */,
 			);
@@ -375,6 +373,7 @@
 				66498E241FC5A6D700239B47 /* AppApp.entitlements */,
 				667ECE1F1FC36784009233DE /* Assets.xcassets */,
 				667ECE241FC36784009233DE /* Info.plist */,
+				660D7A8E2409229E00DEC2C8 /* Settings.bundle */,
 				665B394F24090B55007260A3 /* Carthage.xcfilelist */,
 			);
 			path = Resources;
@@ -1146,6 +1145,7 @@
 				66686B6E2404520F005A22A3 /* SwiftLint */,
 				667ECE4C1FC3826D009233DE /* Carthage */,
 				66AA1E051FC56519001C419E /* Embed App Extensions */,
+				660D7A8B24091C1C00DEC2C8 /* LicencePlist */,
 			);
 			buildRules = (
 			);
@@ -1312,6 +1312,7 @@
 				660B57A31FD06FDB00DBC823 /* WelcomeCollectionViewCell.xib in Resources */,
 				660B57721FCFC5F500DBC823 /* ColorBaseCollectionViewCell.xib in Resources */,
 				66681CE21FCC1734009A0F55 /* DetailCommonCollectionViewCell.xib in Resources */,
+				660D7A8F2409229E00DEC2C8 /* Settings.bundle in Resources */,
 				667ECE721FC4206F009233DE /* AppListCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1341,6 +1342,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		660D7A8B24091C1C00DEC2C8 /* LicencePlist */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = LicencePlist;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if mint list | grep -q \"LicensePlist\"; then\n  if [[ $CONFIGURATION = \"Debug\" ]]; then\n      mint run LicensePlist license-plist --output-path ${SRCROOT}/AppApp/Resources/Settings.bundle \\\n      --prefix xyz.uruly.AppApp \\\n      --suppress-opening-directory \\\n      --force\n  fi\nelse\n  echo \"error: LicensePlist not installed; run 'mint bootstrap' to install\"\nfi\n";
+		};
 		666081B22407B00600001A9C /* R.swift */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1384,15 +1403,17 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
+			inputFileListPaths = (
 				"$(SRCROOT)/AppApp/Resources/Carthage.xcfilelist",
+			);
+			inputPaths = (
 			);
 			name = Carthage;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+			shellScript = "mint run carthage copy-frameworks\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
