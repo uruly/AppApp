@@ -41,6 +41,7 @@
 		660B57E01FD1774D00DBC823 /* HelpLinkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 660B57DE1FD1774D00DBC823 /* HelpLinkTableViewCell.xib */; };
 		660B88342003C67A0064EFFE /* UIColor+Compare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B88332003C67A0064EFFE /* UIColor+Compare.swift */; };
 		660D7A8F2409229E00DEC2C8 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 660D7A8E2409229E00DEC2C8 /* Settings.bundle */; };
+		660D7A912409275D00DEC2C8 /* license_plist.yml in Resources */ = {isa = PBXBuildFile; fileRef = 660D7A902409275D00DEC2C8 /* license_plist.yml */; };
 		66498E2A1FC666A400239B47 /* ShareAppLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E291FC666A400239B47 /* ShareAppLabel.swift */; };
 		66498E2C1FC67A6400239B47 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E2B1FC67A6400239B47 /* AppData.swift */; };
 		66498E2E1FC6B92C00239B47 /* ApplicationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E2D1FC6B92C00239B47 /* ApplicationData.swift */; };
@@ -206,6 +207,7 @@
 		660B57E31FD19E7600DBC823 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/MainInterface.strings; sourceTree = "<group>"; };
 		660B88332003C67A0064EFFE /* UIColor+Compare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Compare.swift"; sourceTree = "<group>"; };
 		660D7A8E2409229E00DEC2C8 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		660D7A902409275D00DEC2C8 /* license_plist.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = license_plist.yml; sourceTree = "<group>"; };
 		66498E231FC5A69B00239B47 /* ShareFromAppStoreExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareFromAppStoreExtension.entitlements; sourceTree = "<group>"; };
 		66498E241FC5A6D700239B47 /* AppApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AppApp.entitlements; sourceTree = "<group>"; };
 		66498E291FC666A400239B47 /* ShareAppLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareAppLabel.swift; sourceTree = "<group>"; };
@@ -373,6 +375,7 @@
 				66498E241FC5A6D700239B47 /* AppApp.entitlements */,
 				667ECE1F1FC36784009233DE /* Assets.xcassets */,
 				667ECE241FC36784009233DE /* Info.plist */,
+				660D7A902409275D00DEC2C8 /* license_plist.yml */,
 				660D7A8E2409229E00DEC2C8 /* Settings.bundle */,
 				665B394F24090B55007260A3 /* Carthage.xcfilelist */,
 			);
@@ -1310,6 +1313,7 @@
 				667ECE1E1FC36784009233DE /* Main.storyboard in Resources */,
 				660B57A71FD071D500DBC823 /* HowToCollectionViewCell.xib in Resources */,
 				660B57A31FD06FDB00DBC823 /* WelcomeCollectionViewCell.xib in Resources */,
+				660D7A912409275D00DEC2C8 /* license_plist.yml in Resources */,
 				660B57721FCFC5F500DBC823 /* ColorBaseCollectionViewCell.xib in Resources */,
 				66681CE21FCC1734009A0F55 /* DetailCommonCollectionViewCell.xib in Resources */,
 				660D7A8F2409229E00DEC2C8 /* Settings.bundle in Resources */,
@@ -1358,7 +1362,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if mint list | grep -q \"LicensePlist\"; then\n  if [[ $CONFIGURATION = \"Debug\" ]]; then\n      mint run LicensePlist license-plist --output-path ${SRCROOT}/AppApp/Resources/Settings.bundle \\\n      --prefix xyz.uruly.AppApp \\\n      --suppress-opening-directory \\\n      --force\n  fi\nelse\n  echo \"error: LicensePlist not installed; run 'mint bootstrap' to install\"\nfi\n";
+			shellScript = "if mint list | grep -q \"LicensePlist\"; then\n  if [[ $CONFIGURATION = \"Debug\" ]]; then\n      mint run LicensePlist license-plist --output-path ${SRCROOT}/AppApp/Resources/Settings.bundle \\\n      --config-path ${SRCROOT}/AppApp/Resources/license_plist.yml \\\n      --prefix xyz.uruly.AppApp \\\n      --suppress-opening-directory \\\n      --force\n  fi\nelse\n  echo \"error: LicensePlist not installed; run 'mint bootstrap' to install\"\nfi\n";
+			showEnvVarsInLog = 0;
 		};
 		666081B22407B00600001A9C /* R.swift */ = {
 			isa = PBXShellScriptBuildPhase;
