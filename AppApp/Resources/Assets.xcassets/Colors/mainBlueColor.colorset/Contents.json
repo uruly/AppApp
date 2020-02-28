@@ -9,10 +9,28 @@
       "color" : {
         "color-space" : "display-p3",
         "components" : {
-          "red" : "10",
+          "red" : "63",
           "alpha" : "1.000",
-          "blue" : "255",
-          "green" : "195"
+          "blue" : "216",
+          "green" : "158"
+        }
+      }
+    },
+    {
+      "idiom" : "universal",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "color" : {
+        "color-space" : "display-p3",
+        "components" : {
+          "red" : "0.039",
+          "alpha" : "1.000",
+          "blue" : "0.756",
+          "green" : "0.485"
         }
       }
     }
