@@ -1148,7 +1148,7 @@
 				66686B6E2404520F005A22A3 /* SwiftLint */,
 				667ECE4C1FC3826D009233DE /* Carthage */,
 				66AA1E051FC56519001C419E /* Embed App Extensions */,
-				660D7A8B24091C1C00DEC2C8 /* LicencePlist */,
+				660D7A8B24091C1C00DEC2C8 /* LicensePlist */,
 			);
 			buildRules = (
 			);
@@ -1346,7 +1346,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		660D7A8B24091C1C00DEC2C8 /* LicencePlist */ = {
+		660D7A8B24091C1C00DEC2C8 /* LicensePlist */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1355,7 +1355,7 @@
 			);
 			inputPaths = (
 			);
-			name = LicencePlist;
+			name = LicensePlist;
 			outputFileListPaths = (
 			);
 			outputPaths = (
