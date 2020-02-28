@@ -55,14 +55,13 @@ class BasePageViewController: UIPageViewController {
         let editBtn = UIBarButtonItem(title: "選択", style: .plain, target: self, action: #selector(self.editTapped(sender:)))
         self.navigationItem.rightBarButtonItem = editBtn
 
-        let tutorial = UIBarButtonItem(image: UIImage(named: "tutorialMark.png")!.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(self.showTutorial))
+        let tutorial = UIBarButtonItem(image: R.image.tutorial_mark()!.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(self.showTutorial))
 
         self.navigationItem.leftBarButtonItem = tutorial
         let navigationBarHeight = self.navigationController?.navigationBar.frame.maxY ?? 56
         //let statusBarHeight = UIApplication.shared.statusBarFrame.height
         //ロゴを乗せる
-        let titlePath = Bundle.main.path(forResource: "logo3", ofType: "png")
-        let titleLogo =  UIImageView(image: UIImage(contentsOfFile: titlePath!)?.withRenderingMode(.alwaysTemplate))
+        let titleLogo =  UIImageView(image: R.image.small_logo()!.withRenderingMode(.alwaysTemplate))
         titleLogo.frame = CGRect(x: (width - 200) / 2, y: -10, width: 200, height: navigationBarHeight)
         titleLogo.contentMode = .scaleAspectFit
         titleLogo.tintColor = UIColor.darkGray

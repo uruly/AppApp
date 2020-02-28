@@ -50,8 +50,7 @@ class HowToView: UIView {
         self.addSubview(header)
 
         let iphone = UIImageView(frame: CGRect(x: 0, y: posY, width: width, height: width * 2))
-        let iphonePath = Bundle.main.path(forResource: "iphone", ofType: "png")
-        iphone.image = UIImage(contentsOfFile: iphonePath!)?.withRenderingMode(.alwaysTemplate)
+        iphone.image = R.image.iphone()!.withRenderingMode(.alwaysTemplate)
         iphone.contentMode = .scaleAspectFit
         iphone.tintColor = UIColor.darkGray
         self.addSubview(iphone)

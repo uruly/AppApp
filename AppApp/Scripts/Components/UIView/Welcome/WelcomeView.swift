@@ -22,8 +22,7 @@ class WelcomeView: UIView {
         let margin: CGFloat = 30.0
         //画像を置く
         let logoView = UIImageView(frame: CGRect(x: margin, y: margin, width: 250, height: 70))
-        let titlePath = Bundle.main.path(forResource: "appapp_logo1", ofType: "png")
-        logoView.image = UIImage(contentsOfFile: titlePath!)?.withRenderingMode(.alwaysTemplate)
+        logoView.image = R.image.small_logo()!.withRenderingMode(.alwaysTemplate)
         logoView.tintColor = UIColor.white
         logoView.contentMode = .scaleAspectFit
         self.addSubview(logoView)

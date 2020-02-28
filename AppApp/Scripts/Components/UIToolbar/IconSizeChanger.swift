@@ -86,10 +86,9 @@ class IconSizeChanger: UIToolbar {
 
         let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
 
-        let listBtn = UIBarButtonItem(image: UIImage(named: "list2.png"), style: .plain, target: self, action: #selector(self.changeMode(sender:)))
-
-        let smallIcon = UIBarButtonItem(image: UIImage(named: "small.png"), style: .plain, target: nil, action: nil)
-        let bigIcon = UIBarButtonItem(image: UIImage(named: "big.png"), style: .plain, target: self, action: nil)
+        let listBtn = UIBarButtonItem(image: R.image.list_icon()!, style: .plain, target: self, action: #selector(changeMode(sender:)))
+        let smallIcon = UIBarButtonItem(image: R.image.small_slider_icon()!, style: .plain, target: nil, action: nil)
+        let bigIcon = UIBarButtonItem(image: R.image.big_slider_icon()!, style: .plain, target: self, action: nil)
         let flexibleIcon = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         smallIcon.tintColor = UIColor.lightGray
         bigIcon.tintColor = UIColor.lightGray
@@ -105,7 +104,7 @@ class IconSizeChanger: UIToolbar {
     func setupList() {
         let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
 
-        let listBtn = UIBarButtonItem(image: UIImage(named: "collect.png"), style: .plain, target: self, action: #selector(self.changeMode(sender:)))
+        let listBtn = UIBarButtonItem(image: R.image.collect_icon()!, style: .plain, target: self, action: #selector(changeMode(sender:)))
         listBtn.tag = 10
         self.items = [flexible, listBtn]
     }
