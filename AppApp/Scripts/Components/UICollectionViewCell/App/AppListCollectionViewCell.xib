@@ -20,7 +20,7 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bxh-tQ-d4Y">
                         <rect key="frame" x="0.0" y="0.0" width="113" height="112"/>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check2.png" translatesAutoresizingMaskIntoConstraints="NO" id="Vhx-LZ-8RK">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check2" translatesAutoresizingMaskIntoConstraints="NO" id="Vhx-LZ-8RK">
                         <rect key="frame" x="41.5" y="41" width="30" height="30"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="30" id="1C0-ax-Uqb"/>
@@ -47,6 +47,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="check2.png" width="44" height="44"/>
+        <image name="check2" width="44" height="44"/>
     </resources>
 </document>
