@@ -216,6 +216,7 @@
 		66498E331FC7BA3600239B47 /* UIApplication+Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Stack.swift"; sourceTree = "<group>"; };
 		66498E381FC810BF00239B47 /* Array+FindIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+FindIndex.swift"; sourceTree = "<group>"; };
 		66498E3A1FC82F9000239B47 /* EditToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditToolbar.swift; sourceTree = "<group>"; };
+		665B394F24090B55007260A3 /* Carthage.xcfilelist */ = {isa = PBXFileReference; lastKnownFileType = text.xcfilelist; path = Carthage.xcfilelist; sourceTree = "<group>"; };
 		66603BCF20054BCB002F214D /* EditImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditImageViewController.swift; sourceTree = "<group>"; };
 		66603BD120055065002F214D /* EditImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditImageView.swift; sourceTree = "<group>"; };
 		6660816F2406463300001A9C /* IconSizeChanger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconSizeChanger.swift; sourceTree = "<group>"; };
@@ -374,6 +375,7 @@
 				66498E241FC5A6D700239B47 /* AppApp.entitlements */,
 				667ECE1F1FC36784009233DE /* Assets.xcassets */,
 				667ECE241FC36784009233DE /* Info.plist */,
+				665B394F24090B55007260A3 /* Carthage.xcfilelist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1383,9 +1385,7 @@
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/GoogleAnalytics.framework",
+				"$(SRCROOT)/AppApp/Resources/Carthage.xcfilelist",
 			);
 			name = Carthage;
 			outputPaths = (
