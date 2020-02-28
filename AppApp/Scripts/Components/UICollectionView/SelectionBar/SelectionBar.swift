@@ -183,7 +183,7 @@ extension SelectionBar: UICollectionViewDataSource {
         }
         if indexPath.section == 1 {
             cell.label.text = "＋"
-            cell.contentView.backgroundColor = UIColor.plusBackground()
+            cell.contentView.backgroundColor = R.color.darkGrayColor()!
             cell.label.textColor = UIColor.white
         }
 

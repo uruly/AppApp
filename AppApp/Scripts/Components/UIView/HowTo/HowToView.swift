@@ -15,7 +15,7 @@ class HowToView: UIView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.backgroundColor = UIColor.howto()
+        self.backgroundColor = R.color.blueGreenColor()
         //setup()
     }
 

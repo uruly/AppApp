@@ -59,7 +59,7 @@ class AppInfoView: UIView {
         let btnWidth: CGFloat = 100.0
         let btnHeight: CGFloat = 30.0
         showStoreBtn.frame = CGRect(x: imageView.frame.maxX + margin, y: imageView.frame.maxY - btnHeight, width: btnWidth, height: btnHeight)
-        showStoreBtn.backgroundColor = UIColor.appStoreBlue()
+        showStoreBtn.backgroundColor = R.color.appStoreBlueColor()
         showStoreBtn.addTarget(detailVC, action: #selector(detailVC.showProductPage), for: .touchUpInside)
 
         if isAppStore {
@@ -76,7 +76,7 @@ class AppInfoView: UIView {
 
         let webSearchBtn = UIButton()
         webSearchBtn.frame = CGRect(x: width - 50 - margin, y: imageView.frame.maxY - btnHeight, width: 50, height: btnHeight)
-        webSearchBtn.backgroundColor = UIColor.appStoreBlue()
+        webSearchBtn.backgroundColor = R.color.appStoreBlueColor()
         webSearchBtn.addTarget(self, action: #selector(self.showWebPage), for: .touchUpInside)
         webSearchBtn.setTitle("Web", for: .normal)
         webSearchBtn.setTitleColor(UIColor.white, for: .normal)

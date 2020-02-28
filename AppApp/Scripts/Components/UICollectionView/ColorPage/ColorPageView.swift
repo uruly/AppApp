@@ -55,7 +55,7 @@ class ColorPageView: UICollectionView {
         self.isPagingEnabled = true
         self.showsVerticalScrollIndicator = false
         self.showsHorizontalScrollIndicator = false
-        self.backgroundColor = UIColor.appStoreBlue()
+        self.backgroundColor = R.color.appStoreBlueColor()
     }
 
     override func reloadData() {

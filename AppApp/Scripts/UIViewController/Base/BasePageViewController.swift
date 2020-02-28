@@ -130,7 +130,7 @@ class BasePageViewController: UIPageViewController {
             let userDefaults = UserDefaults.standard
             if !userDefaults.bool(forKey: "editLabel") {
                 let rect = CGRect(x: 15, y: self.selectionBar.frame.maxY, width: 200, height: 80)
-                let balloonView = BalloonView(frame: rect, color: UIColor.help())
+                let balloonView = BalloonView(frame: rect, color: R.color.yellowColor()!)
                 balloonView.isDown = false
                 balloonView.tag = 543
                 balloonView.label.text = "編集したいときは\nラベルをダブルタップ"
@@ -287,7 +287,7 @@ class BasePageViewController: UIPageViewController {
         if !userDefaults.bool(forKey: "bottomMenuTutorial") {
             let width = self.view.frame.width
             let rect = CGRect(x: 30, y: self.selectionBar.frame.maxY, width: width - 60, height: 200)
-            let balloonView = BalloonView(frame: rect, color: UIColor.help())
+            let balloonView = BalloonView(frame: rect, color: R.color.yellowColor()!)
             let fakeView = FakeView(frame: self.view.frame)
             self.view.addSubview(fakeView)
             balloonView.isDown = true

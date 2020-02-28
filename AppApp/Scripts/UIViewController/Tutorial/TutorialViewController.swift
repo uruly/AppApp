@@ -87,7 +87,7 @@ class TutorialViewController: UIViewController {
         howtoBtn.setTitle("HOW TO", for: .normal)
         howtoBtn.setTitleColor(UIColor.white, for: .normal)
         howtoBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
-        howtoBtn.backgroundColor = UIColor.howto()
+        howtoBtn.backgroundColor = R.color.blueGreenColor()
         howtoBtn.addTarget(self, action: #selector(howtoBtnTapped), for: .touchUpInside)
         view.addSubview(howtoBtn)
 
@@ -95,7 +95,7 @@ class TutorialViewController: UIViewController {
         startBtn.setTitle("START", for: .normal)
         startBtn.setTitleColor(UIColor.white, for: .normal)
         startBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
-        startBtn.backgroundColor = UIColor.start()
+        startBtn.backgroundColor = R.color.darkBlueColor()
         startBtn.addTarget(self, action: #selector(startBtnTapped), for: .touchUpInside)
         view.addSubview(startBtn)
 
@@ -103,7 +103,7 @@ class TutorialViewController: UIViewController {
         helpBtn.setTitle("HELP", for: .normal)
         helpBtn.setTitleColor(UIColor.white, for: .normal)
         helpBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
-        helpBtn.backgroundColor = UIColor.help()
+        helpBtn.backgroundColor = R.color.yellowColor()
         helpBtn.addTarget(self, action: #selector(helpBtnTapped), for: .touchUpInside)
         view.addSubview(helpBtn)
 
@@ -111,7 +111,7 @@ class TutorialViewController: UIViewController {
         closeBtn.setTitle("×", for: .normal)
         closeBtn.setTitleColor(UIColor.white, for: .normal)
         closeBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        closeBtn.backgroundColor = UIColor.plusBackground()
+        closeBtn.backgroundColor = R.color.darkGrayColor()!
         closeBtn.addTarget(self, action: #selector(closeTutorial), for: .touchUpInside)
         view.addSubview(closeBtn)
     }
