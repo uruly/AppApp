@@ -47,12 +47,12 @@ class DetailContentView: UICollectionView {
 
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
-        self.delegate = self
-        self.dataSource = self
-        self.register(UINib(nibName: "DetailMemoViewCell", bundle: nil), forCellWithReuseIdentifier: "detailMemo")
-        self.register(UINib(nibName: "DetailCommonViewCell", bundle: nil), forCellWithReuseIdentifier: "detailCommon")
-        self.register(UINib(nibName: "DetailAppInfoViewCell", bundle: nil), forCellWithReuseIdentifier: "detailAppInfo")
-        self.register(UINib(nibName: "DeleteViewCell", bundle: nil), forCellWithReuseIdentifier: "deleteApp")
+        delegate = self
+        dataSource = self
+        register(R.nib.detailMemoCollectionViewCell)
+        register(R.nib.detailCommonCollectionViewCell)
+        register(R.nib.detailAppInfoCollectionViewCell)
+        register(R.nib.detailCollectionViewCell)
     }
 
     func scrollToMemoView() {
@@ -73,10 +73,7 @@ extension DetailContentView: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.row == 0 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "detailAppInfo", for: indexPath) as! DetailAppInfoViewCell
-            //            for subview in cell.infoView.subviews  {
-            //                subview.removeFromSuperview()
-            //            }
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.detailAppInfoCollectionViewCell, for: indexPath)!
 
             cell.infoView.isAppStore = self.url.contains("itunes.apple.com")
             cell.infoView.url = self.url
@@ -84,11 +81,10 @@ extension DetailContentView: UICollectionViewDataSource {
             cell.infoView.imageData = self.imageData
             cell.infoView.detailVC = self.detailVC
             cell.infoView.setSubviews()
-            //cell.infoView.widthLayout = self.frame.width - 30
 
             return cell
         } else if indexPath.row == 1 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "detailCommon", for: indexPath) as! DetailCommonViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.detailCommonCollectionViewCell, for: indexPath)!
             cell.tableView.isAppStore = self.url.contains("itunes.apple.com")
             cell.tableView.developerName = self.developerName
             cell.tableView.id = self.id
@@ -99,8 +95,7 @@ extension DetailContentView: UICollectionViewDataSource {
 
             return cell
         } else if indexPath.row == 2 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "detailMemo", for: indexPath) as! DetailMemoViewCell
-            //print("ここにはきてる")
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.detailMemoCollectionViewCell, for: indexPath)!
             self.detailVC.delegate = cell.tableView
             cell.tableView.detailVC = self.detailVC
             cell.tableView.memo = memo
@@ -110,7 +105,7 @@ extension DetailContentView: UICollectionViewDataSource {
 
             return cell
         } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "deleteApp", for: indexPath) as! DeleteViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.detailCollectionViewCell, for: indexPath)!
             cell.tableView.detailVC = self.detailVC
             cell.tableView.labelName = self.detailVC.appData.label.name
 

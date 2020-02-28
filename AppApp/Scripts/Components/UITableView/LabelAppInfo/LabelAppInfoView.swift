@@ -36,7 +36,7 @@ class LabelAppInfoView: UITableView {
         self.backgroundColor = UIColor.white
         self.isScrollEnabled = false
         self.register(UITableViewCell.self, forCellReuseIdentifier: "AppInfo")
-        self.register(UINib(nibName: "MemoCell", bundle: nil), forCellReuseIdentifier: "MemoCell")
+        register(R.nib.memoTableViewCell)
         self.estimatedRowHeight = 500
         self.rowHeight = UITableView.automaticDimension
         self.contentInset.bottom = 15
@@ -109,7 +109,7 @@ extension LabelAppInfoView: UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "MemoCell", for: indexPath) as! MemoCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.memoTableViewCell, for: indexPath)!
             cell.memoView.delegate = self
             cell.memoView.text = memo
             cell.memoView.placeholder = "ラベルごとにメモを残せます"

@@ -62,7 +62,7 @@ class LabelListViewController: UIViewController {
         collectionView = UICollectionView(frame: CGRect(x: 0, y: naviBarHeight, width: width, height: 70), collectionViewLayout: layout)
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(UINib(nibName: "AppCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "app")
+        collectionView.register(R.nib.appListCollectionViewCell)
         collectionView.backgroundColor = UIColor.backgroundGray()
         self.view.addSubview(collectionView)
 
@@ -182,7 +182,7 @@ extension LabelListViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: AppCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "app", for: indexPath) as! AppCollectionViewCell
+        let cell: AppListCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "app", for: indexPath) as! AppListCollectionViewCell
 
         cell.imageView.image = UIImage(data: appList[indexPath.row].app.image)
 

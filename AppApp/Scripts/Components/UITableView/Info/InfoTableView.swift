@@ -40,9 +40,9 @@ class InfoTableView: UITableView {
 
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
-        self.register(UINib(nibName: "InfoTableViewCell", bundle: nil), forCellReuseIdentifier: "common")
+        register(R.nib.infoTableViewCell)
         self.register(UITableViewCell.self, forCellReuseIdentifier: "label")
-        self.register(UINib(nibName: "MemoCell", bundle: nil), forCellReuseIdentifier: "memo")
+        register(R.nib.memoTableViewCell)
         self.delegate = self
         self.dataSource = self
         self.backgroundColor = UIColor.white
@@ -166,7 +166,7 @@ extension InfoTableView: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell: InfoTableViewCell = tableView.dequeueReusableCell(withIdentifier: "common", for: indexPath) as! InfoTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.infoTableViewCell, for: indexPath)!
             cell.nameLabel.text = commonTextArray[indexPath.row]
             cell.textField.placeholder = commonPlaceholderArray[indexPath.row]
             cell.textField.delegate = self
@@ -183,7 +183,7 @@ extension InfoTableView: UITableViewDataSource {
             }
             return cell
         } else if indexPath.section == 1 {
-            let cell: MemoCell = tableView.dequeueReusableCell(withIdentifier: "memo", for: indexPath) as! MemoCell
+            let cell: MemoTableViewCell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.memoTableViewCell, for: indexPath)!
             cell.memoView.placeholder = "ここにメモを記入します。"
             cell.memoView.font = UIFont.systemFont(ofSize: 14)
             cell.memoView.delegate = self

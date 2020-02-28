@@ -56,10 +56,10 @@ class AppCollectionView: UICollectionView {
 
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
-        self.delegate = self
-        self.dataSource = self
-        self.register(UINib(nibName: "AppCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "imageCollection")
-        self.register(UINib(nibName: "AppInfoCell", bundle: nil), forCellWithReuseIdentifier: "AppInfo")
+        delegate = self
+        dataSource = self
+        register(R.nib.appInfoListCollectionViewCell)
+        register(R.nib.appListCollectionViewCell)
         self.backgroundColor = UIColor.white
 
         //モードを決めておく
@@ -180,7 +180,7 @@ extension AppCollectionView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if AppCollectionView.isWhileEditing {
             if mode == .collect {
-                let cell: AppCollectionViewCell = collectionView.cellForItem(at: indexPath) as! AppCollectionViewCell
+                let cell: AppListCollectionViewCell = collectionView.cellForItem(at: indexPath) as! AppListCollectionViewCell
 
                 let id = appData.appList[indexPath.row].id
                 let index = checkArray.findIndex(includeElement: {$0.id == id})
@@ -194,7 +194,7 @@ extension AppCollectionView: UICollectionViewDelegate {
                     cell.imageView.alpha = 0.5
                 }
             } else {
-                let cell: AppInfoCell = collectionView.cellForItem(at: indexPath) as! AppInfoCell
+                let cell: AppInfoListCollectionViewCell = collectionView.cellForItem(at: indexPath) as! AppInfoListCollectionViewCell
 
                 let id = appData.appList[indexPath.row].id
                 let index = checkArray.findIndex(includeElement: {$0.id == id})
@@ -219,7 +219,7 @@ extension AppCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         if mode == .collect {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCollection", for: indexPath) as! AppCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.appListCollectionViewCell, for: indexPath)!
             if appData == nil {
                 return cell
             }
@@ -238,7 +238,7 @@ extension AppCollectionView: UICollectionViewDataSource {
             }
             return cell
         } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AppInfo", for: indexPath) as! AppInfoCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.appInfoListCollectionViewCell, for: indexPath)!
             cell.imageView.image = nil
             if let imageData = appData.appList[indexPath.row].app.image {
                 cell.imageView.image = UIImage(data: imageData)

@@ -18,14 +18,14 @@ class ColorSetView: UICollectionView {
         self.delegate = self
         self.dataSource = self
         self.backgroundColor = UIColor.white
-        self.register(UINib(nibName: "ColorSetViewCell", bundle: nil), forCellWithReuseIdentifier: "color")
+        register(R.nib.colorSetCollectionViewCell)
     }
 
 }
 
 extension ColorSetView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as! ColorSetViewCell
+        let cell = collectionView.cellForItem(at: indexPath) as! ColorSetCollectionViewCell
         cell.isSelected = true
 
         //print(colorDelegate)
@@ -50,7 +50,7 @@ extension ColorSetView: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "color", for: indexPath) as! ColorSetViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.colorSetCollectionViewCell, for: indexPath)!
         cell.contentView.backgroundColor = colorSet[indexPath.row]
         return cell
     }
