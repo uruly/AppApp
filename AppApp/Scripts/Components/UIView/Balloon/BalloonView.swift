@@ -91,7 +91,7 @@ class BalloonView: UIView {
         let width = self.frame.width
         let height = self.frame.height
         tag.strokeColor = UIColor.clear.cgColor
-        tag.fillColor = UIColor.customColorView().cgColor
+        tag.fillColor = R.color.flowerLeavesColor()!.cgColor
         tag.lineWidth = 1.0
 
         let rect = UIBezierPath(roundedRect: CGRect(x: 0, y: 20, width: width, height: height - 20), cornerRadius: 20)

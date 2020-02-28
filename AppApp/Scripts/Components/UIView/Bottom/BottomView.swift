@@ -114,7 +114,7 @@ class BottomView: UIView {
         //bottomline
         let bottomLine = UIView(frame: CGRect(x: 0, y: handleHeight + toolbarHeight,
                                               width: self.width, height: 0.8))
-        bottomLine.backgroundColor = UIColor.backgroundGray()
+        bottomLine.backgroundColor = R.color.whiteFlowerColor()!
         self.addSubview(bottomLine)
     }
 

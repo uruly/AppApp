@@ -40,7 +40,7 @@ class LabelListViewController: UIViewController {
 
         let width = self.view.frame.width
         let height = self.view.frame.height
-        self.view.backgroundColor = UIColor.backgroundGray()
+        self.view.backgroundColor = R.color.whiteFlowerColor()!
         //ナビゲーションバーを設置
         let naviBarHeight = UIApplication.shared.statusBarFrame.height + 47.0
         //print(naviBarHeight)
@@ -63,7 +63,7 @@ class LabelListViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(R.nib.appListCollectionViewCell)
-        collectionView.backgroundColor = UIColor.backgroundGray()
+        collectionView.backgroundColor = R.color.whiteFlowerColor()!
         self.view.addSubview(collectionView)
 
         tableView = UITableView(frame: CGRect(x: 0, y: collectionView.frame.maxY, width: width, height: height - collectionView.frame.maxY), style: .grouped)
@@ -71,7 +71,7 @@ class LabelListViewController: UIViewController {
         tableView.allowsMultipleSelection = true
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.backgroundColor = UIColor.backgroundGray()
+        tableView.backgroundColor = R.color.whiteFlowerColor()!
         //tableView.sectionHeaderHeight = 0
         //tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
         self.view.addSubview(tableView)

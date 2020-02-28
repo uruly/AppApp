@@ -45,7 +45,7 @@ class ColorBaseView: UIView {
         colorSetBtn.frame = CGRect(x: 0, y: 0, width: 130, height: toolbarHeight)
         colorSetBtn.setTitle("カラーセット", for: .normal)
         colorSetBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
-        colorSetBtn.backgroundColor = UIColor.appStoreBlue()
+        colorSetBtn.backgroundColor = R.color.appStoreBlueColor()
         colorSetBtn.addTarget(self, action: #selector(self.changeMode), for: .touchUpInside)
         self.addSubview(colorSetBtn)
 
@@ -53,7 +53,7 @@ class ColorBaseView: UIView {
         customBtn.frame = CGRect(x: colorSetBtn.frame.maxX, y: 0, width: 80, height: toolbarHeight)
         customBtn.setTitle("カスタム", for: .normal)
         customBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
-        customBtn.backgroundColor = UIColor.customColorView()
+        customBtn.backgroundColor = R.color.flowerLeavesColor()!
         customBtn.addTarget(self, action: #selector(self.changeMode), for: .touchUpInside)
         self.addSubview(customBtn)
 
@@ -126,11 +126,11 @@ class ColorBaseView: UIView {
         let currentMode = pageView.colorMode
         if currentMode == .set {
             pageView.colorMode = .custom
-            pageView.backgroundColor = UIColor.customColorView()
+            pageView.backgroundColor = R.color.flowerLeavesColor()!
             pageControl.isHidden = true
         } else {
             pageView.colorMode = .set
-            pageView.backgroundColor = UIColor.appStoreBlue()
+            pageView.backgroundColor = R.color.appStoreBlueColor()
             pageControl.isHidden = false
         }
     }

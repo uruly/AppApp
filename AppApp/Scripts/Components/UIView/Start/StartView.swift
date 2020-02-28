@@ -21,7 +21,7 @@ class StartView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         setup()
-        self.backgroundColor = UIColor.start()
+        self.backgroundColor = R.color.darkBlueColor()
     }
 
     func setup() {

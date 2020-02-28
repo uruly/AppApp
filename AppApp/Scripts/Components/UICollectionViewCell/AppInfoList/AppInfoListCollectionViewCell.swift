@@ -19,8 +19,6 @@ class AppInfoListCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
         self.contentView.backgroundColor = UIColor.white
-        //checkImageView.image = UIImage(named:"check2.png")?.withRenderingMode(.alwaysTemplate)
-        //checkImageView.tintColor = UIColor.checkBtn()
 
         checkImageView.isHidden = true
 

@@ -21,7 +21,7 @@ class SelectionBar: UICollectionView {
         self.delegate = self
         self.dataSource = self
         register(R.nib.selectionBarCollectionViewCell)
-        self.backgroundColor = UIColor.backgroundGray()
+        self.backgroundColor = R.color.whiteFlowerColor()!
         self.showsHorizontalScrollIndicator = false
 
         //長押しで
@@ -183,7 +183,7 @@ extension SelectionBar: UICollectionViewDataSource {
         }
         if indexPath.section == 1 {
             cell.label.text = "＋"
-            cell.contentView.backgroundColor = UIColor.plusBackground()
+            cell.contentView.backgroundColor = R.color.darkGrayColor()!
             cell.label.textColor = UIColor.white
         }
 

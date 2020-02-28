@@ -15,7 +15,7 @@ class HowToView: UIView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.backgroundColor = UIColor.howto()
+        self.backgroundColor = R.color.blueGreenColor()
         //setup()
     }
 
@@ -50,8 +50,7 @@ class HowToView: UIView {
         self.addSubview(header)
 
         let iphone = UIImageView(frame: CGRect(x: 0, y: posY, width: width, height: width * 2))
-        let iphonePath = Bundle.main.path(forResource: "iphone", ofType: "png")
-        iphone.image = UIImage(contentsOfFile: iphonePath!)?.withRenderingMode(.alwaysTemplate)
+        iphone.image = R.image.iphone()!.withRenderingMode(.alwaysTemplate)
         iphone.contentMode = .scaleAspectFit
         iphone.tintColor = UIColor.darkGray
         self.addSubview(iphone)
@@ -59,7 +58,7 @@ class HowToView: UIView {
         //スクリーンショットを乗せる
         let screenShot = UIImageView(frame: CGRect(x: 0, y: posY, width: width * 2 / 3 - margin, height: width * 2 / 3 * 2))
         screenShot.center = CGPoint(x: iphone.center.x, y: iphone.center.y)
-        let ssPath = Bundle.main.path(forResource: "screenShot\(index)", ofType: "jpeg")
+        let ssPath = Bundle.main.path(forResource: "screenshot\(index)", ofType: "jpeg")
         screenShot.image = UIImage(contentsOfFile: ssPath!)
         screenShot.contentMode = .scaleAspectFit
         self.addSubview(screenShot)
@@ -67,7 +66,7 @@ class HowToView: UIView {
         //吹き出しを設置
         if index == 0 {
             let rect = CGRect(x: screenShot.frame.maxX - 180, y: screenShot.frame.minY + screenShot.frame.width - 80, width: 200, height: 80 + VersionManager.excessiPad * 5)
-            let balloonView = BalloonView(frame: rect, color: UIColor.allLabel())
+            let balloonView = BalloonView(frame: rect, color: R.color.mainBlueColor()!)
             balloonView.isDown = false
             balloonView.label.text = "ここをタップ"
             balloonView.label.textColor = UIColor.white
@@ -75,7 +74,7 @@ class HowToView: UIView {
             animation(balloonView)
         } else if index == 1 {
             let rect = CGRect(x: margin * 3, y: screenShot.frame.minY + screenShot.frame.width - 80, width: 200, height: 120 + VersionManager.excessiPad * 10)
-            let balloonView = BalloonView(frame: rect, color: UIColor.allLabel())
+            let balloonView = BalloonView(frame: rect, color: R.color.mainBlueColor()!)
             balloonView.isDown = true
             balloonView.label.text = "長押しで順番を入れ替え\nすると使いやすい！"
             balloonView.label.textColor = UIColor.white
@@ -83,7 +82,7 @@ class HowToView: UIView {
             animation(balloonView)
         } else if index == 2 {
             let rect = CGRect(x: (width - 200) / 2, y: screenShot.frame.minY + screenShot.frame.width + margin, width: 200, height: 120 + VersionManager.excessiPad * 10)
-            let balloonView = BalloonView(frame: rect, color: UIColor.allLabel())
+            let balloonView = BalloonView(frame: rect, color: R.color.mainBlueColor()!)
             balloonView.isDown = false
             balloonView.label.text = "メモやラベルは後から変更可能！"
             balloonView.label.textColor = UIColor.white
@@ -91,7 +90,7 @@ class HowToView: UIView {
             animation(balloonView)
         } else if index == 3 {
             let rect = CGRect(x: (width - 200) / 2, y: screenShot.frame.minY + screenShot.frame.width + margin, width: 200, height: 120 + VersionManager.excessiPad * 10)
-            let balloonView = BalloonView(frame: rect, color: UIColor.allLabel())
+            let balloonView = BalloonView(frame: rect, color: R.color.mainBlueColor()!)
             balloonView.isDown = false
             balloonView.label.text = "画像共有ができるアプリからはトリミングして保存！"
             balloonView.label.textColor = UIColor.white
@@ -99,7 +98,7 @@ class HowToView: UIView {
             animation(balloonView)
         } else if index == 4 {
             let rect = CGRect(x: (width - 200) / 2, y: screenShot.frame.minY + screenShot.frame.width - 80, width: 200, height: 120 + VersionManager.excessiPad * 10)
-            let balloonView = BalloonView(frame: rect, color: UIColor.allLabel())
+            let balloonView = BalloonView(frame: rect, color: R.color.mainBlueColor()!)
             balloonView.isDown = true
             balloonView.label.text = "下部メニューから\nアップロード可能！"
             balloonView.label.textColor = UIColor.white

@@ -76,7 +76,7 @@ class DetailViewController: UIViewController {
         let userDefaults = UserDefaults.standard
         if !userDefaults.bool(forKey: "search") {
             let rect = CGRect(x: self.view.frame.width - 315, y: self.view.frame.height * 1 / 3, width: 300, height: 60)
-            let balloonView = BalloonView(frame: rect, color: UIColor.help())
+            let balloonView = BalloonView(frame: rect, color: R.color.yellowColor()!)
             balloonView.isDown = true
             balloonView.tag = 543
             balloonView.label.text = "タップすると開発者名やIDをWebで検索"

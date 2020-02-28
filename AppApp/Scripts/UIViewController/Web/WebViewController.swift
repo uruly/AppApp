@@ -20,7 +20,7 @@ class WebViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = UIColor.backgroundGray()
+        self.view.backgroundColor = R.color.whiteFlowerColor()!
         let toolBarHeight: CGFloat = 44.0
         let width = self.view.frame.width
         let height = self.view.frame.height
@@ -50,13 +50,13 @@ class WebViewController: UIViewController {
 
         //ツールバーを表示
         toolbar = WebPageToolbar(frame: CGRect(x: 0, y: height - toolBarHeight, width: width, height: toolBarHeight))
-        let back = UIBarButtonItem(image: UIImage(named: "left_arrow.png"), style: .plain, target: self, action: #selector(self.goBack))
-        let forward = UIBarButtonItem(image: UIImage(named: "right_arrow.png"), style: .plain, target: self, action: #selector(self.goForward))
-        let refresh = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(self.refreshView))
+        let back = UIBarButtonItem(image: R.image.left_arrow()!, style: .plain, target: self, action: #selector(goBack))
+        let forward = UIBarButtonItem(image: R.image.right_arrow()!, style: .plain, target: self, action: #selector(goForward))
+        let refresh = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refreshView))
         let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         back.tintColor = UIColor.lightGray
         forward.tintColor = UIColor.lightGray
-        let safari = UIBarButtonItem(image: UIImage(named: "safari.png"), style: .plain, target: self, action: #selector(self.goSafari))
+        let safari = UIBarButtonItem(image: R.image.safari()!, style: .plain, target: self, action: #selector(goSafari))
         toolbar.items = [back, flexible, forward, flexible, refresh, flexible, safari]
         self.setToolbarItems(toolbar.items, animated: false)
         self.navigationController?.setToolbarHidden(false, animated: true)

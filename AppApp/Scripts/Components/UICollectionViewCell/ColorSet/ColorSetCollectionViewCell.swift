@@ -16,7 +16,7 @@ class ColorSetCollectionViewCell: UICollectionViewCell {
         // Initialization code
         checkImageView.isHidden = true
 
-        checkImageView.image = UIImage(named: "check.png")?.withRenderingMode(.alwaysTemplate)
+        checkImageView.image = R.image.check()!.withRenderingMode(.alwaysTemplate)
         checkImageView.tintColor = UIColor.white
         self.contentView.layer.cornerRadius = 10.0
 

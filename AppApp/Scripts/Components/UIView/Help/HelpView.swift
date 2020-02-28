@@ -26,7 +26,7 @@ class HelpView: UITableView {
         self.dataSource = self
         register(R.nib.helpTableViewCell)
         register(R.nib.helpLinkTableViewCell)
-        self.backgroundColor = UIColor.help()
+        self.backgroundColor = R.color.yellowColor()
         self.separatorColor = UIColor.white
         self.sectionFooterHeight = 1
     }
@@ -150,7 +150,7 @@ extension HelpView: UITableViewDataSource {
             }
         }
         let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 60))
-        view.backgroundColor = UIColor.help()
+        view.backgroundColor = R.color.yellowColor()
         view.tag = section
         //タップジェスチャを登録 //
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(sectionTapped(sender:)))
@@ -175,7 +175,7 @@ extension HelpView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         if section == questionAnswer.count + links.count - 1 {
             let view = UIView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: 100))
-            view.backgroundColor = UIColor.help()
+            view.backgroundColor = R.color.yellowColor()
             return view
         }
         return nil

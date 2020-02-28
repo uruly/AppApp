@@ -46,7 +46,7 @@ class BasePageViewController: UIPageViewController {
         super.viewDidLoad()
         let width = self.view.frame.width
         let height = self.view.frame.height
-        self.view.backgroundColor = UIColor.backgroundGray()
+        self.view.backgroundColor = R.color.whiteFlowerColor()!
         appLabel = AppLabel()
         self.automaticallyAdjustsScrollViewInsets = false
         //ナビゲーションバーをカスタマイズ
@@ -55,14 +55,13 @@ class BasePageViewController: UIPageViewController {
         let editBtn = UIBarButtonItem(title: "選択", style: .plain, target: self, action: #selector(self.editTapped(sender:)))
         self.navigationItem.rightBarButtonItem = editBtn
 
-        let tutorial = UIBarButtonItem(image: UIImage(named: "tutorialMark.png")!.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(self.showTutorial))
+        let tutorial = UIBarButtonItem(image: R.image.tutorial_mark()!.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(self.showTutorial))
 
         self.navigationItem.leftBarButtonItem = tutorial
         let navigationBarHeight = self.navigationController?.navigationBar.frame.maxY ?? 56
         //let statusBarHeight = UIApplication.shared.statusBarFrame.height
         //ロゴを乗せる
-        let titlePath = Bundle.main.path(forResource: "logo3", ofType: "png")
-        let titleLogo =  UIImageView(image: UIImage(contentsOfFile: titlePath!)?.withRenderingMode(.alwaysTemplate))
+        let titleLogo =  UIImageView(image: R.image.small_logo()!.withRenderingMode(.alwaysTemplate))
         titleLogo.frame = CGRect(x: (width - 200) / 2, y: -10, width: 200, height: navigationBarHeight)
         titleLogo.contentMode = .scaleAspectFit
         titleLogo.tintColor = UIColor.darkGray
@@ -131,7 +130,7 @@ class BasePageViewController: UIPageViewController {
             let userDefaults = UserDefaults.standard
             if !userDefaults.bool(forKey: "editLabel") {
                 let rect = CGRect(x: 15, y: self.selectionBar.frame.maxY, width: 200, height: 80)
-                let balloonView = BalloonView(frame: rect, color: UIColor.help())
+                let balloonView = BalloonView(frame: rect, color: R.color.yellowColor()!)
                 balloonView.isDown = false
                 balloonView.tag = 543
                 balloonView.label.text = "編集したいときは\nラベルをダブルタップ"
@@ -288,7 +287,7 @@ class BasePageViewController: UIPageViewController {
         if !userDefaults.bool(forKey: "bottomMenuTutorial") {
             let width = self.view.frame.width
             let rect = CGRect(x: 30, y: self.selectionBar.frame.maxY, width: width - 60, height: 200)
-            let balloonView = BalloonView(frame: rect, color: UIColor.help())
+            let balloonView = BalloonView(frame: rect, color: R.color.yellowColor()!)
             let fakeView = FakeView(frame: self.view.frame)
             self.view.addSubview(fakeView)
             balloonView.isDown = true

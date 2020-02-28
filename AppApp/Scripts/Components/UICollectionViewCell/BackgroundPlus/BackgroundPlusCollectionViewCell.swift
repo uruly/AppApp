@@ -24,7 +24,7 @@ class BackgroundPlusCollectionViewCell: UICollectionViewCell {
         textLabel.font = UIFont.boldSystemFont(ofSize: 16)
         textLabel.textAlignment = .center
         textLabel.textColor = UIColor.white
-        self.contentView.backgroundColor = UIColor.plusBackground()
+        self.contentView.backgroundColor = R.color.darkGrayColor()!
         self.contentView.addSubview(textLabel)
 
         self.contentView.layer.cornerRadius = 10.0

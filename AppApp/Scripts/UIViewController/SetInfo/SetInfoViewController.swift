@@ -223,7 +223,7 @@ class SetInfoViewController: UIViewController {
         if !userDefaults.bool(forKey: "editImageTutorial") {
             let width = self.view.frame.width
             let rect = CGRect(x: 50, y: self.imageView.frame.maxY, width: width - 100, height: 80)
-            let balloonView = BalloonView(frame: rect, color: UIColor.help())
+            let balloonView = BalloonView(frame: rect, color: R.color.yellowColor()!)
             let fakeView = FakeView(frame: self.view.frame)
             self.view.addSubview(fakeView)
             balloonView.isDown = false
