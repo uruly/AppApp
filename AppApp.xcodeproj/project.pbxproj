@@ -40,6 +40,8 @@
 		660B57DF1FD1774D00DBC823 /* HelpLinkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B57DD1FD1774D00DBC823 /* HelpLinkTableViewCell.swift */; };
 		660B57E01FD1774D00DBC823 /* HelpLinkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 660B57DE1FD1774D00DBC823 /* HelpLinkTableViewCell.xib */; };
 		660B88342003C67A0064EFFE /* UIColor+Compare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B88332003C67A0064EFFE /* UIColor+Compare.swift */; };
+		660D7A8F2409229E00DEC2C8 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 660D7A8E2409229E00DEC2C8 /* Settings.bundle */; };
+		660D7A912409275D00DEC2C8 /* license_plist.yml in Resources */ = {isa = PBXBuildFile; fileRef = 660D7A902409275D00DEC2C8 /* license_plist.yml */; };
 		66498E2A1FC666A400239B47 /* ShareAppLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E291FC666A400239B47 /* ShareAppLabel.swift */; };
 		66498E2C1FC67A6400239B47 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E2B1FC67A6400239B47 /* AppData.swift */; };
 		66498E2E1FC6B92C00239B47 /* ApplicationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E2D1FC6B92C00239B47 /* ApplicationData.swift */; };
@@ -52,7 +54,6 @@
 		66603BD220055065002F214D /* EditImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66603BD120055065002F214D /* EditImageView.swift */; };
 		666081702406463300001A9C /* IconSizeChanger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6660816F2406463300001A9C /* IconSizeChanger.swift */; };
 		666081722406465C00001A9C /* FakeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666081712406465C00001A9C /* FakeView.swift */; };
-		666081762406488A00001A9C /* GATrackingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66983DFA2005E9C8009C9AEF /* GATrackingManager.swift */; };
 		666081B42407B54900001A9C /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666081B32407B54800001A9C /* R.generated.swift */; };
 		666081B72407B7CB00001A9C /* Rswift in Frameworks */ = {isa = PBXBuildFile; productRef = 666081B62407B7CB00001A9C /* Rswift */; };
 		6662E11D1FFE98CA00FB30C7 /* BottomMenuBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662E11B1FFE98CA00FB30C7 /* BottomMenuBaseView.swift */; };
@@ -87,7 +88,6 @@
 		666E06C11FCBB5E90043DCFF /* WebPageToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666E06C01FCBB5E90043DCFF /* WebPageToolbar.swift */; };
 		666E06C31FCBC1E50043DCFF /* PassThroughIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666E06C21FCBC1E50043DCFF /* PassThroughIndicator.swift */; };
 		666E06C51FCBCB260043DCFF /* UITextView+Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666E06C41FCBCB260043DCFF /* UITextView+Placeholder.swift */; };
-		666E06C71FCBDE9D0043DCFF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 666E06C61FCBDE920043DCFF /* StoreKit.framework */; };
 		6676ED371FCD582200815BF8 /* DetailMemoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6676ED351FCD582100815BF8 /* DetailMemoCollectionViewCell.swift */; };
 		6676ED381FCD582200815BF8 /* DetailMemoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6676ED361FCD582200815BF8 /* DetailMemoCollectionViewCell.xib */; };
 		6676ED3A1FCD584200815BF8 /* LabelAppInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6676ED391FCD584200815BF8 /* LabelAppInfoView.swift */; };
@@ -118,9 +118,6 @@
 		667ECE6D1FC41F7E009233DE /* AppCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE6C1FC41F7E009233DE /* AppCollectionView.swift */; };
 		667ECE711FC4206F009233DE /* AppListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE6F1FC4206F009233DE /* AppListCollectionViewCell.swift */; };
 		667ECE721FC4206F009233DE /* AppListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 667ECE701FC4206F009233DE /* AppListCollectionViewCell.xib */; };
-		66983DF72005E8A1009C9AEF /* GoogleAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66983DF62005E8A0009C9AEF /* GoogleAnalytics.framework */; };
-		66983DF92005E974009C9AEF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 66983DF82005E973009C9AEF /* GoogleService-Info.plist */; };
-		66983DFB2005E9C8009C9AEF /* GATrackingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66983DFA2005E9C8009C9AEF /* GATrackingManager.swift */; };
 		66A30A11240803BC0016F34D /* BackgroundColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A30A10240803BC0016F34D /* BackgroundColorCollectionViewCell.swift */; };
 		66A30A14240804B30016F34D /* BackgroundPlusCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A30A12240804B30016F34D /* BackgroundPlusCollectionViewCell.swift */; };
 		66A30A15240804B30016F34D /* BackgroundPlusCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66A30A13240804B30016F34D /* BackgroundPlusCollectionViewCell.xib */; };
@@ -209,6 +206,8 @@
 		660B57E21FD19E7500DBC823 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		660B57E31FD19E7600DBC823 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/MainInterface.strings; sourceTree = "<group>"; };
 		660B88332003C67A0064EFFE /* UIColor+Compare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Compare.swift"; sourceTree = "<group>"; };
+		660D7A8E2409229E00DEC2C8 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		660D7A902409275D00DEC2C8 /* license_plist.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = license_plist.yml; sourceTree = "<group>"; };
 		66498E231FC5A69B00239B47 /* ShareFromAppStoreExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareFromAppStoreExtension.entitlements; sourceTree = "<group>"; };
 		66498E241FC5A6D700239B47 /* AppApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AppApp.entitlements; sourceTree = "<group>"; };
 		66498E291FC666A400239B47 /* ShareAppLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareAppLabel.swift; sourceTree = "<group>"; };
@@ -219,6 +218,7 @@
 		66498E331FC7BA3600239B47 /* UIApplication+Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Stack.swift"; sourceTree = "<group>"; };
 		66498E381FC810BF00239B47 /* Array+FindIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+FindIndex.swift"; sourceTree = "<group>"; };
 		66498E3A1FC82F9000239B47 /* EditToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditToolbar.swift; sourceTree = "<group>"; };
+		665B394F24090B55007260A3 /* Carthage.xcfilelist */ = {isa = PBXFileReference; lastKnownFileType = text.xcfilelist; path = Carthage.xcfilelist; sourceTree = "<group>"; };
 		66603BCF20054BCB002F214D /* EditImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditImageViewController.swift; sourceTree = "<group>"; };
 		66603BD120055065002F214D /* EditImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditImageView.swift; sourceTree = "<group>"; };
 		6660816F2406463300001A9C /* IconSizeChanger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconSizeChanger.swift; sourceTree = "<group>"; };
@@ -293,8 +293,6 @@
 		667ECE6F1FC4206F009233DE /* AppListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppListCollectionViewCell.swift; sourceTree = "<group>"; };
 		667ECE701FC4206F009233DE /* AppListCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppListCollectionViewCell.xib; sourceTree = "<group>"; };
 		66983DF62005E8A0009C9AEF /* GoogleAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleAnalytics.framework; path = Carthage/Build/iOS/GoogleAnalytics.framework; sourceTree = "<group>"; };
-		66983DF82005E973009C9AEF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		66983DFA2005E9C8009C9AEF /* GATrackingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GATrackingManager.swift; sourceTree = "<group>"; };
 		66983E4120070C08009C9AEF /* openssl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = openssl.framework; path = Carthage/Checkouts/OpenSSL/Frameworks/ios/openssl.framework; sourceTree = "<group>"; };
 		66983E4720071305009C9AEF /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "Carthage/Checkouts/OpenSSL/lib-ios/libcrypto.a"; sourceTree = "<group>"; };
 		66983E4820071306009C9AEF /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = "Carthage/Checkouts/OpenSSL/lib-ios/libssl.a"; sourceTree = "<group>"; };
@@ -318,8 +316,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				666081B72407B7CB00001A9C /* Rswift in Frameworks */,
-				66983DF72005E8A1009C9AEF /* GoogleAnalytics.framework in Frameworks */,
-				666E06C71FCBDE9D0043DCFF /* StoreKit.framework in Frameworks */,
 				667ECE511FC382C7009233DE /* RealmSwift.framework in Frameworks */,
 				667ECE4F1FC382B9009233DE /* Realm.framework in Frameworks */,
 			);
@@ -379,7 +375,9 @@
 				66498E241FC5A6D700239B47 /* AppApp.entitlements */,
 				667ECE1F1FC36784009233DE /* Assets.xcassets */,
 				667ECE241FC36784009233DE /* Info.plist */,
-				66983DF82005E973009C9AEF /* GoogleService-Info.plist */,
+				660D7A902409275D00DEC2C8 /* license_plist.yml */,
+				660D7A8E2409229E00DEC2C8 /* Settings.bundle */,
+				665B394F24090B55007260A3 /* Carthage.xcfilelist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -953,7 +951,6 @@
 			isa = PBXGroup;
 			children = (
 				6677FC251FCA7E0400CB105E /* VersionManager.swift */,
-				66983DFA2005E9C8009C9AEF /* GATrackingManager.swift */,
 				66686B702405019F005A22A3 /* Constants.swift */,
 			);
 			path = Common;
@@ -1151,6 +1148,7 @@
 				66686B6E2404520F005A22A3 /* SwiftLint */,
 				667ECE4C1FC3826D009233DE /* Carthage */,
 				66AA1E051FC56519001C419E /* Embed App Extensions */,
+				660D7A8B24091C1C00DEC2C8 /* LicensePlist */,
 			);
 			buildRules = (
 			);
@@ -1299,7 +1297,6 @@
 				66681CE61FCC17E2009A0F55 /* DetailAppInfoCollectionViewCell.xib in Resources */,
 				660B57771FCFDB1000DBC823 /* colorData.json in Resources */,
 				660B57B91FD10F9500DBC823 /* StartCollectionViewCell.xib in Resources */,
-				66983DF92005E974009C9AEF /* GoogleService-Info.plist in Resources */,
 				667ECE601FC395C2009233DE /* SelectionBarCollectionViewCell.xib in Resources */,
 				660B57D81FD16F0B00DBC823 /* HelpTableViewCell.xib in Resources */,
 				660B576C1FCFC5F500DBC823 /* RGBSliderCollectionViewCell.xib in Resources */,
@@ -1316,8 +1313,10 @@
 				667ECE1E1FC36784009233DE /* Main.storyboard in Resources */,
 				660B57A71FD071D500DBC823 /* HowToCollectionViewCell.xib in Resources */,
 				660B57A31FD06FDB00DBC823 /* WelcomeCollectionViewCell.xib in Resources */,
+				660D7A912409275D00DEC2C8 /* license_plist.yml in Resources */,
 				660B57721FCFC5F500DBC823 /* ColorBaseCollectionViewCell.xib in Resources */,
 				66681CE21FCC1734009A0F55 /* DetailCommonCollectionViewCell.xib in Resources */,
+				660D7A8F2409229E00DEC2C8 /* Settings.bundle in Resources */,
 				667ECE721FC4206F009233DE /* AppListCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1347,6 +1346,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		660D7A8B24091C1C00DEC2C8 /* LicensePlist */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = LicensePlist;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if mint list | grep -q \"LicensePlist\"; then\n  if [[ $CONFIGURATION = \"Debug\" ]]; then\n      mint run LicensePlist license-plist --output-path ${SRCROOT}/AppApp/Resources/Settings.bundle \\\n      --config-path ${SRCROOT}/AppApp/Resources/license_plist.yml \\\n      --prefix xyz.uruly.AppApp \\\n      --suppress-opening-directory \\\n      --force\n  fi\nelse\n  echo \"error: LicensePlist not installed; run 'mint bootstrap' to install\"\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		666081B22407B00600001A9C /* R.swift */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1390,17 +1408,17 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputFileListPaths = (
+				"$(SRCROOT)/AppApp/Resources/Carthage.xcfilelist",
+			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/GoogleAnalytics.framework",
 			);
 			name = Carthage;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+			shellScript = "mint run carthage copy-frameworks\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1425,7 +1443,6 @@
 				660B579F1FD06FBE00DBC823 /* WelcomeView.swift in Sources */,
 				660B57A61FD071D500DBC823 /* HowToCollectionViewCell.swift in Sources */,
 				667ECE571FC3836C009233DE /* AppLabel.swift in Sources */,
-				66983DFB2005E9C8009C9AEF /* GATrackingManager.swift in Sources */,
 				6662E1201FFFD90200FB30C7 /* CustomBackgroundView.swift in Sources */,
 				6662E1322000055F00FB30C7 /* UIResponder+FindView.swift in Sources */,
 				667ECE4B1FC3690E009233DE /* BaseViewController.swift in Sources */,
@@ -1510,7 +1527,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				666081762406488A00001A9C /* GATrackingManager.swift in Sources */,
 				66603BD020054BCB002F214D /* EditImageViewController.swift in Sources */,
 				66AA1E091FC5900D001C419E /* LabelListTableViewController.swift in Sources */,
 				66AA1DFA1FC56519001C419E /* ShareViewController.swift in Sources */,

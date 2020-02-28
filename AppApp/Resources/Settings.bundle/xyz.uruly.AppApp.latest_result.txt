@@ -1,0 +1,27 @@
+name: Carthage, nameSpecified: , owner: Carthage, version: 0.34.0
+
+name: LicensePlist, nameSpecified: , owner: mono0926, version: 2.13.0
+
+name: Mint, nameSpecified: , owner: yonaskolb, version: 0.14.1
+
+name: R.swift, nameSpecified: , owner: mac-cain13, version: v5.1.0
+
+name: realm-cocoa, nameSpecified: , owner: realm, version: v4.3.2
+
+name: SwiftLint, nameSpecified: , owner: realm, version: 0.39.1
+
+name: R.swift, nameSpecified: , owner: mac-cain13, version: v5.1.0
+
+name: LicensePlist, nameSpecified: , owner: mono0926, version: 2.13.0
+
+name: SwiftLint, nameSpecified: , owner: realm, version: 0.39.1
+
+name: Mint, nameSpecified: , owner: yonaskolb, version: 0.14.1
+
+name: Carthage, nameSpecified: , owner: Carthage, version: 0.34.0
+
+name: R.swift.Library, nameSpecified: , owner: mac-cain13, version: 5.1.0
+
+add-version-numbers: false
+
+LicensePlist Version: 2.12.0

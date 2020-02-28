@@ -94,14 +94,11 @@ class BaseViewController: UIViewController {
         }
         collectionView.appDelegate = self
         self.view.backgroundColor = appLabel.color
-
-        GATrackingManager.sendScreenTracking(screenName: "\(appLabel.name!)ラベルページ")
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if collectionView.contentSize.height < self.view.frame.size.height {
-            print("大きいよ")
             self.basePageVC.bottomView.closeBottomView()
         }
     }
