@@ -41,7 +41,7 @@ class TutorialPageView: UICollectionView {
         self.isPagingEnabled = true
         self.showsVerticalScrollIndicator = false
         self.showsHorizontalScrollIndicator = false
-        self.backgroundColor = UIColor.mainBlue()
+        backgroundColor = R.color.mainBlueColor()
     }
 
 }
