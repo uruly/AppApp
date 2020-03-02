@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-//保存するデータ
+// 保存するデータ
 class AppLabelRealmData: Object {
     @objc dynamic var name: String?      //ラベルの名前
     @objc dynamic var color: Data?    //ラベルの色
@@ -22,17 +22,12 @@ class AppLabelRealmData: Object {
     }
 }
 
-//
 struct AppLabelData {
     var name: String!
     var color: UIColor!
     var id: String!
     var order: Int!
     var explain: String?
-
-    //    var idNumber:Int? {
-    //        return Int(id)
-    //    }
 }
 
 class AppLabel {
