@@ -43,6 +43,7 @@
 		660C9CDE240CFFEE00C1C863 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660C9CDD240CFFEE00C1C863 /* Label.swift */; };
 		660D7A8F2409229E00DEC2C8 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 660D7A8E2409229E00DEC2C8 /* Settings.bundle */; };
 		660D7A912409275D00DEC2C8 /* license_plist.yml in Resources */ = {isa = PBXBuildFile; fileRef = 660D7A902409275D00DEC2C8 /* license_plist.yml */; };
+		662AAF5024139FB300283AF2 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662AAF4F24139FB300283AF2 /* DatabaseManager.swift */; };
 		66498E2A1FC666A400239B47 /* ShareAppLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E291FC666A400239B47 /* ShareAppLabel.swift */; };
 		66498E2C1FC67A6400239B47 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E2B1FC67A6400239B47 /* AppData.swift */; };
 		66498E2E1FC6B92C00239B47 /* ApplicationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E2D1FC6B92C00239B47 /* ApplicationData.swift */; };
@@ -210,6 +211,7 @@
 		660C9CDD240CFFEE00C1C863 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		660D7A8E2409229E00DEC2C8 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		660D7A902409275D00DEC2C8 /* license_plist.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = license_plist.yml; sourceTree = "<group>"; };
+		662AAF4F24139FB300283AF2 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		66498E231FC5A69B00239B47 /* ShareFromAppStoreExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareFromAppStoreExtension.entitlements; sourceTree = "<group>"; };
 		66498E241FC5A6D700239B47 /* AppApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AppApp.entitlements; sourceTree = "<group>"; };
 		66498E291FC666A400239B47 /* ShareAppLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareAppLabel.swift; sourceTree = "<group>"; };
@@ -355,11 +357,20 @@
 			path = Balloon;
 			sourceTree = "<group>";
 		};
+		662AAF4E24139F9800283AF2 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				662AAF4F24139FB300283AF2 /* DatabaseManager.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
 		6660816B24063DF200001A9C /* Scripts */ = {
 			isa = PBXGroup;
 			children = (
 				667ECE181FC36784009233DE /* AppDelegate.swift */,
 				666081B32407B54800001A9C /* R.generated.swift */,
+				662AAF4E24139F9800283AF2 /* Database */,
 				66686B6F2405018B005A22A3 /* Common */,
 				666081742406484600001A9C /* Components */,
 				666081AD24064F7700001A9C /* Model */,
@@ -1497,6 +1508,7 @@
 				66498E2E1FC6B92C00239B47 /* ApplicationData.swift in Sources */,
 				66FD458C1FC96B2A0093BB83 /* LabelListViewController.swift in Sources */,
 				660B57731FCFC5F500DBC823 /* ColorSetCollectionViewCell.swift in Sources */,
+				662AAF5024139FB300283AF2 /* DatabaseManager.swift in Sources */,
 				6662E13420000AE200FB30C7 /* SetInfoViewController.swift in Sources */,
 				667ECE711FC4206F009233DE /* AppListCollectionViewCell.swift in Sources */,
 				660B579A1FD067E500DBC823 /* TutorialViewController.swift in Sources */,
