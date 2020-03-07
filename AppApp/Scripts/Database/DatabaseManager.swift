@@ -9,17 +9,27 @@
 import Foundation
 import RealmSwift
 
-struct DatabaseManager {
+final class DatabaseManager {
 
     static let shared = DatabaseManager()
 
+    private let schemaVersion: UInt64 = 5
+
     private var realm: Realm {
         do {
-            return try Realm()
+            return try Realm(configuration: configuration)
         } catch {
             fatalError(error.localizedDescription)
         }
     }
+
+    private lazy var configuration: Realm.Configuration = {
+        var configuration = Realm.Configuration(schemaVersion: .schemaVersion)
+        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: .groupID)!
+        configuration.fileURL = url.appendingPathComponent("db.realm")
+
+        return configuration
+    }()
 }
 
 extension DatabaseManager {
