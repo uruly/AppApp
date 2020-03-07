@@ -87,6 +87,12 @@ class AppLabel {
     }
 
     func reloadLabelData() {
+        DispatchQueue.main.async {
+            let sortProperties = [SortDescriptor(keyPath: "order", ascending: true)]
+            let objects = DatabaseManager.shared.objects(AppLabelRealmData.self, filter: nil, sortedBy: sortProperties)
+            print(objects)
+            self.array = Array(objects)
+        }
         //        //ラベルを読み込む処理
         //        self.array = []
         //        var config = Realm.Configuration(schemaVersion: .schemaVersion)

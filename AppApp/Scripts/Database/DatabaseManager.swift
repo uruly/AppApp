@@ -60,7 +60,7 @@ extension DatabaseManager {
         return results.isEmpty ? nil : results.first
     }
 
-    func objects<T: Object>(_ type: T.Type, filter predicate: NSPredicate? = nil, sortBy propertiesSort: [String: Bool]? = nil) -> Results<T> {
+    func objects<T: Object>(_ type: T.Type, filter predicate: NSPredicate? = nil, sortedBy properties: [SortDescriptor]? = nil) -> Results<T> {
         var results: Results<T>
         if let predicate = predicate {
             results = realm.objects(type).filter(predicate)
@@ -68,17 +68,15 @@ extension DatabaseManager {
             results = realm.objects(type)
         }
 
-        if let propertiesSort = propertiesSort {
-            for property in propertiesSort {
-                results = results.sorted(byKeyPath: property.0, ascending: property.1)
-            }
+        if let propertiesSort = properties {
+            results = results.sorted(by: propertiesSort)
         }
         return results
     }
 
     // MARK: - Add
 
-    func addObject<T: Object>(_ object: T) {
+    func add<T: Object>(_ object: T) {
         do {
             realm.beginWrite()
             realm.add(object, update: .all)
@@ -88,7 +86,7 @@ extension DatabaseManager {
         }
     }
 
-    func addObjects<T: RealmSwift.Object, S: Sequence>(_ objects: S) where S.Iterator.Element == T {
+    func add<T: RealmSwift.Object, S: Sequence>(_ objects: S) where S.Iterator.Element == T {
         do {
             realm.beginWrite()
             for item in objects {
@@ -102,7 +100,7 @@ extension DatabaseManager {
 
     // MARK: - Delete
 
-    func deleteObject<T: Object>(_ object: T) {
+    func delete<T: Object>(_ object: T) {
         do {
             try realm.write {
                 realm.delete(object)
@@ -112,7 +110,7 @@ extension DatabaseManager {
         }
     }
 
-    func deleteObjects<T: RealmSwift.Object, S: Sequence>(_ objects: S) where S.Iterator.Element == T {
+    func delete<T: RealmSwift.Object, S: Sequence>(_ objects: S) where S.Iterator.Element == T {
         do {
             try realm.write {
                 realm.delete(objects)
