@@ -11,12 +11,12 @@ import RealmSwift
 
 final class AppRealmData: Object {
 
-    @objc dynamic var name: String!      //アプリの名前
-    @objc dynamic var developer: String!    //デベロッパ名
-    @objc dynamic var id: String!        //アプリのid
-    @objc dynamic var urlString: String!    //url
-    @objc dynamic var image: Data!   //アイコンの画像
-    @objc dynamic var date: Date!    //アプリを登録した日付
+    @objc dynamic var id: String = ""
+    @objc dynamic var name: String = ""
+    @objc dynamic var developer: String = ""
+    @objc dynamic var urlString: String = ""
+    @objc dynamic var image: Data?
+    @objc dynamic var date: Date = Date()
 
     override static func primaryKey() -> String? {
         return "id"
