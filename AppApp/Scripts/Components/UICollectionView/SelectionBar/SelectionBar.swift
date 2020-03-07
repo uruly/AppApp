@@ -179,7 +179,7 @@ extension SelectionBar: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.selectionBarCollectionViewCell, for: indexPath)!
         if indexPath.section == 0 {
             cell.label.text = pageVC.appLabel.array[indexPath.row].name
-            cell.contentView.backgroundColor = pageVC.appLabel.array[indexPath.row].color
+            //            cell.contentView.backgroundColor = pageVC.appLabel.array[indexPath.row].color
         }
         if indexPath.section == 1 {
             cell.label.text = "＋"

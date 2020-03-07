@@ -107,12 +107,12 @@ class AppCollectionView: UICollectionView {
             //背景色をつける
             if let color = AppLabel.currentBackgroundColor {
                 if BackgroundColorListView.isDefaultColor && color != UIColor.white { //whiteでないときはラベル色
-                    self.backgroundColor = self.appData.label.color
+                    //                    self.backgroundColor = self.appData.label.color
                 } else {
                     self.backgroundColor = color
                 }
             } else {
-                self.backgroundColor = mode == .collect ? UIColor.white : self.appData.label.color
+                //                self.backgroundColor = mode == .collect ? UIColor.white : self.appData.label.color
                 //AppLabel.currentBackgroundColor = self.backgroundColor
             }
             if let pageVC: BasePageViewController = findViewController() {

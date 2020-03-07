@@ -82,7 +82,7 @@ class CustomBackgroundView: UIView {
                 confirmPopup(pageVC: basePageVC)
                 if let baseVC: BaseViewController = basePageVC.viewControllers?.first as? BaseViewController {
                     if UserDefaults.standard.bool(forKey: "isList") {
-                        baseVC.backgroundColor = baseVC.appLabel.color
+                        //                        baseVC.backgroundColor = baseVC.appLabel.color
                     } else {
                         baseVC.backgroundColor = UIColor.white
                     }

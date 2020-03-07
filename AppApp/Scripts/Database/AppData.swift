@@ -13,11 +13,11 @@ import RealmSwift
 class AppData {
 
     //label
-    var label: AppLabelData!
+    var label: AppLabelRealmData!
 
     var appList: [ApplicationData]!
 
-    init(label: AppLabelData) {
+    init(label: AppLabelRealmData) {
         self.label = label
         readAppData(label: label) {
             //print("読み込み完了")
@@ -30,7 +30,7 @@ class AppData {
     //    }
 
     //読み込み
-    func readAppData(label: AppLabelData, _ completion:@escaping () -> Void) {
+    func readAppData(label: AppLabelRealmData, _ completion:@escaping () -> Void) {
         appList = []
 
         var config = Realm.Configuration(schemaVersion: .schemaVersion)
@@ -100,7 +100,7 @@ class AppData {
     }
 
     //save
-    static func saveAppData(appList: [ApplicationData], labelList: [AppLabelData], _ completion:() -> Void) {
+    static func saveAppData(appList: [ApplicationData], labelList: [AppLabelRealmData], _ completion:() -> Void) {
         for labelData in labelList {
             var config = Realm.Configuration(schemaVersion: .schemaVersion)
             let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!

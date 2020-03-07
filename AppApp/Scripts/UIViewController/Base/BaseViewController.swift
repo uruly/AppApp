@@ -15,7 +15,7 @@ import UIKit
 
 class BaseViewController: UIViewController {
 
-    var appLabel: AppLabelData!
+    var appLabel: AppLabelRealmData!
     var collectionView: AppCollectionView!
     //var colorListDelegate:ColorListDelegate!
     var backgroundColor: UIColor? {
@@ -68,7 +68,7 @@ class BaseViewController: UIViewController {
         //print("BaseViewWillAppear")
         AppLabel.currentID = appLabel.id
         AppLabel.currentOrder = appLabel.order
-        AppLabel.currentColor = appLabel.color
+        //        AppLabel.currentColor = appLabel.color
 
         //bottomMenuリロード
         basePageVC.bottomView.baseView.reloadData()
@@ -93,7 +93,7 @@ class BaseViewController: UIViewController {
             self.basePageVC.bottomView.editToolbar.editDelegate = self
         }
         collectionView.appDelegate = self
-        self.view.backgroundColor = appLabel.color
+        //        self.view.backgroundColor = appLabel.color
     }
 
     override func viewDidAppear(_ animated: Bool) {
