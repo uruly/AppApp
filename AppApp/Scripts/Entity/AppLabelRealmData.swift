@@ -11,11 +11,11 @@ import RealmSwift
 
 final class AppLabelRealmData: Object {
 
-    @objc dynamic var name: String?      //ラベルの名前
-    @objc dynamic var color: Data?    //ラベルの色
-    @objc dynamic var id: String?        //id
-    @objc dynamic var order = 0     //順番
-    @objc dynamic var explain: String?
+    @objc dynamic var id: String = ""
+    @objc dynamic var name: String = ""
+    @objc dynamic var color: Data?
+    @objc dynamic var order: Int = 0
+    @objc dynamic var explain: String = ""
 
     override static func primaryKey() -> String? {
         return "id"

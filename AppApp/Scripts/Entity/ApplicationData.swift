@@ -11,12 +11,12 @@ import RealmSwift
 
 final class ApplicationData: Object {
 
-    @objc dynamic var app: AppRealmData?         //アプリデータ
-    @objc dynamic var label: AppLabelRealmData?       //らベルデータ
-    @objc dynamic var id: String!        //固有id UUID
-    @objc dynamic var rate: Double = 0   //ラベルでのレート
-    @objc dynamic var order: Int = 0     //ラベルでの場所
-    @objc dynamic var memo: String?      //ラベルでのメモ
+    @objc dynamic var id: String = ""
+    @objc dynamic var app: AppRealmData?
+    @objc dynamic var label: AppLabelRealmData?
+    @objc dynamic var rate: Double = 0
+    @objc dynamic var order: Int = 0
+    @objc dynamic var memo: String = ""
 
     override static func primaryKey() -> String? {
         return "id"
