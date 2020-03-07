@@ -153,23 +153,23 @@ class AppCollectionView: UICollectionView {
             //print(self.checkArray)
             self.appData.deleteAppData(appList: self.checkArray) {
                 if self.checkArray.count > 0 {
-//                    self.appData.readAppData(label: self.checkArray[0].label) {
-//                        self.appData.resetOrder()
-//                        DispatchQueue.main.async {
-//                            let removeRows = self.checkArray.map {$0.order}
-//                            var indexPaths: [IndexPath] = []
-//                            for row in removeRows {
-//                                let indexPath = IndexPath(row: row!, section: 0)
-//                                //print("row\(row)")
-//                                indexPaths.append(indexPath)
-//                            }
-//                            self.deleteItems(at: indexPaths)
-//                            self.checkArray = []
-//                            //ここでorderが変わっているのを反映したい.
-//
-//                            completion()
-//                        }
-//                    }
+                    //                    self.appData.readAppData(label: self.checkArray[0].label) {
+                    //                        self.appData.resetOrder()
+                    //                        DispatchQueue.main.async {
+                    //                            let removeRows = self.checkArray.map {$0.order}
+                    //                            var indexPaths: [IndexPath] = []
+                    //                            for row in removeRows {
+                    //                                let indexPath = IndexPath(row: row!, section: 0)
+                    //                                //print("row\(row)")
+                    //                                indexPaths.append(indexPath)
+                    //                            }
+                    //                            self.deleteItems(at: indexPaths)
+                    //                            self.checkArray = []
+                    //                            //ここでorderが変わっているのを反映したい.
+                    //
+                    //                            completion()
+                    //                        }
+                    //                    }
                 }
             }
         }
