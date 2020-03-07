@@ -15,7 +15,7 @@ class AppData {
     //label
     var label: AppLabelData!
 
-    var appList: [ApplicationStruct]!
+    var appList: [ApplicationData]!
 
     init(label: AppLabelData) {
         self.label = label
@@ -49,7 +49,8 @@ class AppData {
             guard let app = obj.app else { return }
             let appData = AppStruct(name: app.name, developer: app.developer, id: app.id, urlString: app.urlString, image: app.image, date: app.date)
 
-            let appLabel = ApplicationStruct(app: appData, label: label, id: obj.id, rate: obj.rate, order: obj.order, memo: obj.memo)
+            
+            let appLabel = ApplicationData(app: appData, label: label, id: obj.id, rate: obj.rate, order: obj.order, memo: obj.memo)
 
             self.appList.append(appLabel)
         }
@@ -81,7 +82,7 @@ class AppData {
     }
 
     //delete
-    func deleteAppData(appList: [ApplicationStruct], _ completion:() -> Void) {
+    func deleteAppData(appList: [ApplicationData], _ completion:() -> Void) {
         for app in appList {
             var config = Realm.Configuration(schemaVersion: .schemaVersion)
             let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
@@ -99,7 +100,7 @@ class AppData {
     }
 
     //save
-    static func saveAppData(appList: [ApplicationStruct], labelList: [AppLabelData], _ completion:() -> Void) {
+    static func saveAppData(appList: [ApplicationData], labelList: [AppLabelData], _ completion:() -> Void) {
         for labelData in labelList {
             var config = Realm.Configuration(schemaVersion: .schemaVersion)
             let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
@@ -107,7 +108,7 @@ class AppData {
 
             let realm = try! Realm(configuration: config)
             for appData in appList {
-                guard let app = realm.object(ofType: AppRealmData.self, forPrimaryKey: appData.app.id) else {
+                guard let app = realm.object(ofType: AppRealmData.self, forPrimaryKey: appData.app?.id) else {
                     continue
                 }
                 guard let label = realm.object(ofType: AppLabelRealmData.self, forPrimaryKey: labelData.id) else {
@@ -161,7 +162,7 @@ class AppData {
         completion()
     }
 
-    static func deleteAppData(app: ApplicationStruct, _ completion:() -> Void) {
+    static func deleteAppData(app: ApplicationData, _ completion:() -> Void) {
         //ラベルについているAppのみを消すよ
         var config = Realm.Configuration(schemaVersion: .schemaVersion)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!

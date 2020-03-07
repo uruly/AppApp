@@ -6,7 +6,8 @@
 //  Copyright © 2020 Reona Kubo. All rights reserved.
 //
 
-import Foundation
+import RealmSwift
+import UIKit
 
 class AppLabel {
     //全てのラベルデータを入れる
