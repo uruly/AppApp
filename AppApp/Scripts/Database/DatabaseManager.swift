@@ -21,3 +21,20 @@ struct DatabaseManager {
         }
     }
 }
+
+extension DatabaseManager {
+
+    func object<T: Object>(_ type: T.Type, filter predicate: NSPredicate? = nil) -> T? {
+        let results: Results<T>
+        if let pre = predicate {
+            results = realm.objects(type).filter(pre)
+        } else {
+            results = realm.objects(type)
+        }
+
+        guard !results.isEmpty else {
+            return nil
+        }
+        return results.first
+    }
+}
