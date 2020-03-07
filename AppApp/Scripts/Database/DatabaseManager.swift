@@ -32,8 +32,15 @@ final class DatabaseManager {
     }()
 
     private lazy var migrationBlock: RealmSwift.MigrationBlock? = {
-        return .init { (migration, schema) in
-            // マイグレーション処理
+        return .init { (migration, oldSchemaVersion) in
+            if oldSchemaVersion < 4 {
+                migration.enumerateObjects(ofType: AppRealmData.className()) { _, newObject in
+                    newObject!["urlString"] = ""
+                }
+                migration.enumerateObjects(ofType: AppLabelRealmData.className()) { _, newObject in
+                    newObject!["explain"] = ""
+                }
+            }
         }
     }()
 }
