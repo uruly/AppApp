@@ -11,7 +11,7 @@ import UIKit
 
 class AppLabel {
     //全てのラベルデータを入れる
-    var array: [AppLabelData] = [] {
+    var array: [AppLabelRealmData] = [] {
         didSet {
             AppLabel.count = array.count
         }
@@ -87,22 +87,22 @@ class AppLabel {
     }
 
     func reloadLabelData() {
-        //ラベルを読み込む処理
-        self.array = []
-        var config = Realm.Configuration(schemaVersion: .schemaVersion)
-        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
-        config.fileURL = url.appendingPathComponent("db.realm")
-
-        let realm = try! Realm(configuration: config)
-        let sortProperties = [SortDescriptor(keyPath: "order", ascending: true) ]
-        let objs = realm.objects(AppLabelRealmData.self).sorted(by: sortProperties)
-        for obj in objs {
-            if let name = obj.name, let colorData = obj.color, let id = obj.id {
-                let color = NSKeyedUnarchiver.unarchiveObject(with: colorData) as! UIColor
-                let label = AppLabelData(name: name, color: color, id: id, order: obj.order, explain: obj.explain)
-                self.array.append(label)
-            }
-        }
+        //        //ラベルを読み込む処理
+        //        self.array = []
+        //        var config = Realm.Configuration(schemaVersion: .schemaVersion)
+        //        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
+        //        config.fileURL = url.appendingPathComponent("db.realm")
+        //
+        //        let realm = try! Realm(configuration: config)
+        //        let sortProperties = [SortDescriptor(keyPath: "order", ascending: true) ]
+        //        let objs = realm.objects(AppLabelRealmData.self).sorted(by: sortProperties)
+        //        for obj in objs {
+        //            if let name = obj.name, let colorData = obj.color, let id = obj.id {
+        //                let color = NSKeyedUnarchiver.unarchiveObject(with: colorData) as! UIColor
+        //                let label = AppLabelData(name: name, color: color, id: id, order: obj.order, explain: obj.explain)
+        //                self.array.append(label)
+        //            }
+        //        }
     }
 
     //一番最初に呼ばれる予定のデータ。Allが入る
@@ -123,7 +123,7 @@ class AppLabel {
             realm.add(label, update: .all)
         }
 
-        array.append(AppLabelData(name: name, color: R.color.mainBlueColor(), id: "0", order: 0, explain: "全てのApp"))
+        //        array.append(AppLabelData(name: name, color: R.color.mainBlueColor(), id: "0", order: 0, explain: "全てのApp"))
     }
 
     static func saveLabelData(name: String, color: UIColor, id: String, order: Int, explain: String?, _ completion:() -> Void) {

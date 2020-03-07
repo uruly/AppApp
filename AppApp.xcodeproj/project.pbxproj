@@ -109,7 +109,6 @@
 		667ECE4B1FC3690E009233DE /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE4A1FC3690E009233DE /* BaseViewController.swift */; };
 		667ECE4F1FC382B9009233DE /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 667ECE4E1FC382B9009233DE /* Realm.framework */; };
 		667ECE511FC382C7009233DE /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 667ECE501FC382C7009233DE /* RealmSwift.framework */; };
-		667ECE571FC3836C009233DE /* AppLabelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE561FC3836C009233DE /* AppLabelData.swift */; };
 		667ECE5B1FC3958D009233DE /* SelectionBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE5A1FC3958D009233DE /* SelectionBar.swift */; };
 		667ECE5F1FC395C2009233DE /* SelectionBarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE5D1FC395C2009233DE /* SelectionBarCollectionViewCell.swift */; };
 		667ECE601FC395C2009233DE /* SelectionBarCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 667ECE5E1FC395C2009233DE /* SelectionBarCollectionViewCell.xib */; };
@@ -288,7 +287,6 @@
 		667ECE4A1FC3690E009233DE /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		667ECE4E1FC382B9009233DE /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		667ECE501FC382C7009233DE /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
-		667ECE561FC3836C009233DE /* AppLabelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLabelData.swift; sourceTree = "<group>"; };
 		667ECE5A1FC3958D009233DE /* SelectionBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionBar.swift; sourceTree = "<group>"; };
 		667ECE5D1FC395C2009233DE /* SelectionBarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionBarCollectionViewCell.swift; sourceTree = "<group>"; };
 		667ECE5E1FC395C2009233DE /* SelectionBarCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectionBarCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -943,7 +941,6 @@
 			children = (
 				66498E2D1FC6B92C00239B47 /* ApplicationData.swift */,
 				66E54DCE2413A5E000069082 /* AppRealmData.swift */,
-				667ECE561FC3836C009233DE /* AppLabelData.swift */,
 				66E54DCC2413A59600069082 /* AppLabelRealmData.swift */,
 			);
 			path = Entity;
@@ -1465,7 +1462,6 @@
 				6662E13F2001D31700FB30C7 /* UIImage+MaskCorner.swift in Sources */,
 				660B579F1FD06FBE00DBC823 /* WelcomeView.swift in Sources */,
 				660B57A61FD071D500DBC823 /* HowToCollectionViewCell.swift in Sources */,
-				667ECE571FC3836C009233DE /* AppLabelData.swift in Sources */,
 				6662E1201FFFD90200FB30C7 /* CustomBackgroundView.swift in Sources */,
 				6662E1322000055F00FB30C7 /* UIResponder+FindView.swift in Sources */,
 				667ECE4B1FC3690E009233DE /* BaseViewController.swift in Sources */,
