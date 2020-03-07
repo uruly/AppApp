@@ -22,12 +22,3 @@ final class ApplicationData: Object {
         return "id"
     }
 }
-
-struct AppStruct {
-    var name: String!
-    var developer: String!
-    var id: String!
-    var urlString: String!
-    var image: Data!
-    var date: Date!
-}

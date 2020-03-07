@@ -11,12 +11,12 @@ import RealmSwift
 
 class AppListViewController: UIViewController {
 
-    var checkArray: [AppStruct] = [] {
+    var checkArray: [AppRealmData] = [] {
         didSet {
             createAppLabelVC.appList = checkArray
         }
     }
-    var appList: [AppStruct] = []
+    var appList: [AppRealmData] = []
     var collectionView: UICollectionView!
     //var naviBar:CustomNavigationBar!
     var createAppLabelVC: CreateAppLabelViewController!
@@ -59,21 +59,21 @@ class AppListViewController: UIViewController {
         let objs = realm.objects(ApplicationData.self).filter("label == %@", label)
         for obj in objs {
             guard let app = obj.app else { return }
-            let appData = AppStruct(name: app.name, developer: app.developer, id: app.id, urlString: app.urlString, image: app.image, date: app.date)
-
-            //現在のappを表示
-            if let editVC = createAppLabelVC as? EditAppLabelViewController {
-                let labelID = editVC.id
-                if let currentLabel = realm.object(ofType: AppLabelRealmData.self, forPrimaryKey: labelID) {
-                    let currentLabelApp = realm.objects(ApplicationData.self).filter("label == %@ && app == %@", currentLabel, obj.app!)
-                    if currentLabelApp.count > 0 {
-                        //print("すでにあるよ")
-                        continue
-                    }
-                }
-            }
-
-            appList.append(appData)
+            //            let appData = AppStruct(name: app.name, developer: app.developer, id: app.id, urlString: app.urlString, image: app.image, date: app.date)
+            //
+            //            //現在のappを表示
+            //            if let editVC = createAppLabelVC as? EditAppLabelViewController {
+            //                let labelID = editVC.id
+            //                if let currentLabel = realm.object(ofType: AppLabelRealmData.self, forPrimaryKey: labelID) {
+            //                    let currentLabelApp = realm.objects(ApplicationData.self).filter("label == %@ && app == %@", currentLabel, obj.app!)
+            //                    if currentLabelApp.count > 0 {
+            //                        //print("すでにあるよ")
+            //                        continue
+            //                    }
+            //                }
+            //            }
+            //
+            //            appList.append(appData)
         }
     }
 

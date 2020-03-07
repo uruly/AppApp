@@ -66,9 +66,9 @@ class DetailViewController: UIViewController {
         contentView.memo = appData.memo
         contentView.developerName = appData.app?.developer
         contentView.id = appData.app?.id
-        contentView.saveDate = convertDate(appData.app?.date)
+        contentView.saveDate = convertDate(appData.app?.date ?? Date())
 
-        self.view.backgroundColor = appData.label?.color
+        //        self.view.backgroundColor = appData.label?.color
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -88,7 +88,7 @@ class DetailViewController: UIViewController {
             userDefaults.set(true, forKey: "search")
         }
         self.navigationController?.navigationBar.barTintColor = nil
-        self.navigationController?.navigationBar.backgroundColor = self.appData.label?.color.withAlphaComponent(0.8)
+        //        self.navigationController?.navigationBar.backgroundColor = self.appData.label?.color.withAlphaComponent(0.8)
         self.navigationController?.setToolbarHidden(true, animated: true)
     }
 
@@ -169,15 +169,15 @@ class DetailViewController: UIViewController {
     }
 
     func deleteAppAllData() {
-        let alertController = UIAlertController(title: "Appを全て削除", message: "全てのラベルからAppを削除します", preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "削除する", style: .default) { [weak self] _ in
-            guard let appData = self?.appData else { return }
-            AppData.deleteAppAllData(app: appData, {
-                self.navigationController?.popViewController(animated: true)
-            })
-        })
-        alertController.addAction(UIAlertAction(title: "キャンセル", style: .cancel))
-        present(alertController, animated: true, completion: nil)
+        //        let alertController = UIAlertController(title: "Appを全て削除", message: "全てのラベルからAppを削除します", preferredStyle: .alert)
+        //        alertController.addAction(UIAlertAction(title: "削除する", style: .default) { [weak self] _ in
+        //            guard let appData = self?.appData else { return }
+        //            AppData.deleteAppAllData(app: appData, {
+        //                self.navigationController?.popViewController(animated: true)
+        //            })
+        //        })
+        //        alertController.addAction(UIAlertAction(title: "キャンセル", style: .cancel))
+        //        present(alertController, animated: true, completion: nil)
     }
 
     func deleteAppLabelData() {

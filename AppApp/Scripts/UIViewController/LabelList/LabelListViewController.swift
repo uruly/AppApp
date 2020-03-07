@@ -184,7 +184,7 @@ extension LabelListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: AppListCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "app", for: indexPath) as! AppListCollectionViewCell
 
-        cell.imageView.image = UIImage(data: appList[indexPath.row].app?.image)
+        cell.imageView.image = UIImage(data: appList[indexPath.row].app!.image)
 
         return cell
     }

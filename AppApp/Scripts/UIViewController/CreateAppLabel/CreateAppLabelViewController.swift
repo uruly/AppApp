@@ -62,7 +62,7 @@ class CreateAppLabelViewController: UIViewController {
 
     var explain: String?
 
-    var appList: [AppStruct] = []
+    var appList: [AppRealmData] = []
 
     //var colorPickerView:ColorPicker!
     var colorPickView: ColorBaseView!

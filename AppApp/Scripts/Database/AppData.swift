@@ -42,18 +42,18 @@ class AppData {
         guard let labelObject = realm.object(ofType: AppLabelRealmData.self, forPrimaryKey: label.id) else {
             return
         }
-        let sortProperties = [SortDescriptor(keyPath: "order", ascending: true) ]
-        let objs = realm.objects(ApplicationData.self).filter("label == %@", labelObject).sorted(by: sortProperties)
-        for obj in objs {
-            //applicationStruct
-            guard let app = obj.app else { return }
-            let appData = AppStruct(name: app.name, developer: app.developer, id: app.id, urlString: app.urlString, image: app.image, date: app.date)
-
-            
-            let appLabel = ApplicationData(app: appData, label: label, id: obj.id, rate: obj.rate, order: obj.order, memo: obj.memo)
-
-            self.appList.append(appLabel)
-        }
+        //        let sortProperties = [SortDescriptor(keyPath: "order", ascending: true) ]
+        //        let objs = realm.objects(ApplicationData.self).filter("label == %@", labelObject).sorted(by: sortProperties)
+        //        for obj in objs {
+        //            //applicationStruct
+        //            guard let app = obj.app else { return }
+        //            let appData = AppStruct(name: app.name, developer: app.developer, id: app.id, urlString: app.urlString, image: app.image, date: app.date)
+        //
+        //
+        //            let appLabel = ApplicationData(app: appData, label: label, id: obj.id, rate: obj.rate, order: obj.order, memo: obj.memo)
+        //
+        //            self.appList.append(appLabel)
+        //        }
         //reloadしたいなー
         completion()
         //}
@@ -135,7 +135,7 @@ class AppData {
         completion()
     }
 
-    static func saveAppData(appList: [AppStruct], labelID: String, _ completion:() -> Void) {
+    static func saveAppData(appList: [AppRealmData], labelID: String, _ completion:() -> Void) {
         var config = Realm.Configuration(schemaVersion: .schemaVersion)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
         config.fileURL = url.appendingPathComponent("db.realm")
@@ -178,7 +178,7 @@ class AppData {
         completion()
     }
 
-    static func deleteAppAllData(app: AppStruct, _ completion:() -> Void) {
+    static func deleteAppAllData(app: AppRealmData, _ completion:() -> Void) {
         var config = Realm.Configuration(schemaVersion: .schemaVersion)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
         config.fileURL = url.appendingPathComponent("db.realm")
