@@ -42,7 +42,7 @@ class AppCollectionView: UICollectionView {
         }
     }
 
-    var checkArray: [ApplicationStruct] = []
+    var checkArray: [ApplicationData] = []
 
     var mode: ToolbarMode! {
         didSet {
@@ -153,23 +153,23 @@ class AppCollectionView: UICollectionView {
             //print(self.checkArray)
             self.appData.deleteAppData(appList: self.checkArray) {
                 if self.checkArray.count > 0 {
-                    self.appData.readAppData(label: self.checkArray[0].label) {
-                        self.appData.resetOrder()
-                        DispatchQueue.main.async {
-                            let removeRows = self.checkArray.map {$0.order}
-                            var indexPaths: [IndexPath] = []
-                            for row in removeRows {
-                                let indexPath = IndexPath(row: row!, section: 0)
-                                //print("row\(row)")
-                                indexPaths.append(indexPath)
-                            }
-                            self.deleteItems(at: indexPaths)
-                            self.checkArray = []
-                            //ここでorderが変わっているのを反映したい.
-
-                            completion()
-                        }
-                    }
+//                    self.appData.readAppData(label: self.checkArray[0].label) {
+//                        self.appData.resetOrder()
+//                        DispatchQueue.main.async {
+//                            let removeRows = self.checkArray.map {$0.order}
+//                            var indexPaths: [IndexPath] = []
+//                            for row in removeRows {
+//                                let indexPath = IndexPath(row: row!, section: 0)
+//                                //print("row\(row)")
+//                                indexPaths.append(indexPath)
+//                            }
+//                            self.deleteItems(at: indexPaths)
+//                            self.checkArray = []
+//                            //ここでorderが変わっているのを反映したい.
+//
+//                            completion()
+//                        }
+//                    }
                 }
             }
         }
@@ -233,18 +233,18 @@ extension AppCollectionView: UICollectionViewDataSource {
                 }
             }
             cell.imageView.image = nil
-            if let imageData = appData.appList[indexPath.row].app.image {
+            if let imageData = appData.appList[indexPath.row].app?.image {
                 cell.imageView.image = UIImage(data: imageData)
             }
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.appInfoListCollectionViewCell, for: indexPath)!
             cell.imageView.image = nil
-            if let imageData = appData.appList[indexPath.row].app.image {
+            if let imageData = appData.appList[indexPath.row].app?.image {
                 cell.imageView.image = UIImage(data: imageData)
             }
-            cell.nameLabel.text = appData.appList[indexPath.row].app.name
-            cell.developerLabel.text = appData.appList[indexPath.row].app.developer
+            cell.nameLabel.text = appData.appList[indexPath.row].app?.name
+            cell.developerLabel.text = appData.appList[indexPath.row].app?.developer
 
             //チェックマーク
             cell.checkImageView.isHidden = true

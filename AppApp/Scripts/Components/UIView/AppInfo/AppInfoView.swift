@@ -96,7 +96,7 @@ class AppInfoView: UIView {
     }
 
     @objc func showWebPage() {
-        detailVC.segueToWebView(detailVC.appData.app.name)
+        detailVC.segueToWebView(detailVC.appData.app?.name)
     }
 
 }

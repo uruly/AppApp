@@ -12,7 +12,7 @@ import StoreKit
 
 class DetailViewController: UIViewController {
 
-    var appData: ApplicationStruct!
+    var appData: ApplicationData!
     var canSetObserver = true
     var delegate: MemoDelegate! {
         didSet {
@@ -46,7 +46,7 @@ class DetailViewController: UIViewController {
         let height = self.view.frame.height
 
         //self.view.backgroundColor = UIColor.white
-        self.title = appData.label.name
+        self.title = appData.label?.name
 
         //let naviBarHeight = self.navigationController?.navigationBar.frame.maxY ?? 57.0
         //let margin:CGFloat = 15.0
@@ -58,17 +58,17 @@ class DetailViewController: UIViewController {
         contentView = DetailContentView(frame: CGRect(x: 0, y: 0, width: width, height: height), collectionViewLayout: layout)
         self.view.addSubview(contentView)
         contentView.backgroundColor = UIColor.white
-        contentView.appName = appData.app.name
+        contentView.appName = appData.app?.name
         //print("appData.app\(appData.app.urlString)")
-        contentView.url = appData.app.urlString
-        contentView.imageData = appData.app.image
+        contentView.url = appData.app?.urlString
+        contentView.imageData = appData.app?.image
         contentView.detailVC = self
         contentView.memo = appData.memo
-        contentView.developerName = appData.app.developer
-        contentView.id = appData.app.id
-        contentView.saveDate = convertDate(appData.app.date)
+        contentView.developerName = appData.app?.developer
+        contentView.id = appData.app?.id
+        contentView.saveDate = convertDate(appData.app?.date)
 
-        self.view.backgroundColor = appData.label.color
+        self.view.backgroundColor = appData.label?.color
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -88,7 +88,7 @@ class DetailViewController: UIViewController {
             userDefaults.set(true, forKey: "search")
         }
         self.navigationController?.navigationBar.barTintColor = nil
-        self.navigationController?.navigationBar.backgroundColor = self.appData.label.color.withAlphaComponent(0.8)
+        self.navigationController?.navigationBar.backgroundColor = self.appData.label?.color.withAlphaComponent(0.8)
         self.navigationController?.setToolbarHidden(true, animated: true)
     }
 
@@ -150,7 +150,7 @@ class DetailViewController: UIViewController {
         let productVC = SKStoreProductViewController()
         productVC.delegate = self
 
-        guard var id = appData.app.id else { return }
+        guard var id = appData.app?.id else { return }
         if let range = id.range(of: "id") {
             // 置換する(変数を直接操作する)
             id.replaceSubrange(range, with: "")
@@ -170,8 +170,9 @@ class DetailViewController: UIViewController {
 
     func deleteAppAllData() {
         let alertController = UIAlertController(title: "Appを全て削除", message: "全てのラベルからAppを削除します", preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "削除する", style: .default) { _ in
-            AppData.deleteAppAllData(app: self.appData.app, {
+        alertController.addAction(UIAlertAction(title: "削除する", style: .default) { [weak self] _ in
+            guard let appData = self?.appData else { return }
+            AppData.deleteAppAllData(app: appData, {
                 self.navigationController?.popViewController(animated: true)
             })
         })
@@ -180,7 +181,7 @@ class DetailViewController: UIViewController {
     }
 
     func deleteAppLabelData() {
-        let alertController = UIAlertController(title: "\(appData.label.name!)からAppを削除", message: "", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "\(appData.label?.name!)からAppを削除", message: "", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "削除する", style: .default) { _ in
             AppData.deleteAppData(app: self.appData, {
                 self.navigationController?.popViewController(animated: true)

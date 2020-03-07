@@ -31,12 +31,3 @@ struct AppStruct {
     var image: Data!
     var date: Date!
 }
-
-struct ApplicationStruct {
-    var app: AppStruct!
-    var label: AppLabelData!
-    var id: String!
-    var rate: Double?
-    var order: Int!
-    var memo: String?
-}
