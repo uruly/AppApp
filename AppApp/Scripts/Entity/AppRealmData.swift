@@ -22,3 +22,19 @@ final class AppRealmData: Object {
         return "id"
     }
 }
+
+extension AppRealmData {
+
+    static func getAll() -> Results<AppRealmData> {
+        let objects = DatabaseManager.shared.objects(AppRealmData.self)
+        return objects
+    }
+
+    static func get(_ label: AppLabelRealmData) -> [AppRealmData] {
+        let sortProperties = [SortDescriptor(keyPath: "order", ascending: true)]
+        let filter = NSPredicate(format: "label == %@", label)
+        let objects = DatabaseManager.shared.objects(AppRealmData.self, filter: filter, sortedBy: sortProperties)
+        return Array(objects)
+    }
+
+}
