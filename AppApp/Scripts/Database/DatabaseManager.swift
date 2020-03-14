@@ -37,7 +37,7 @@ final class DatabaseManager {
                 migration.enumerateObjects(ofType: AppRealmData.className()) { _, newObject in
                     newObject!["urlString"] = ""
                 }
-                migration.enumerateObjects(ofType: AppLabelRealmData.className()) { _, newObject in
+                migration.enumerateObjects(ofType: Label.className()) { _, newObject in
                     newObject!["explain"] = ""
                 }
             }

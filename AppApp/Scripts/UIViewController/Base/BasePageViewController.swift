@@ -202,7 +202,7 @@ class BasePageViewController: UIPageViewController {
         self.setViewControllers([getBase(appLabel: appLabel.array[order])], direction: .forward, animated: false, completion: nil)
     }
 
-    func getBase(appLabel: AppLabelRealmData) -> BaseViewController {
+    func getBase(appLabel: Label) -> BaseViewController {
         let baseView = BaseViewController()
         baseView.appLabel = appLabel
         return baseView
@@ -219,7 +219,7 @@ class BasePageViewController: UIPageViewController {
         self.present(naviVC, animated: true, completion: nil)
     }
 
-    func editAppLabel(label: AppLabelRealmData) {
+    func editAppLabel(label: Label) {
         if isGoDetail {
             return
         }

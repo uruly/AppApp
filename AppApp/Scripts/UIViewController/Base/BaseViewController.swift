@@ -15,7 +15,7 @@ import UIKit
 
 class BaseViewController: UIViewController {
 
-    var appLabel: AppLabelRealmData!
+    var appLabel: Label!
     var collectionView: AppCollectionView!
     //var colorListDelegate:ColorListDelegate!
     var backgroundColor: UIColor? {

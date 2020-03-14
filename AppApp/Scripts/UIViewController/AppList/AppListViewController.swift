@@ -53,7 +53,7 @@ class AppListViewController: UIViewController {
         let realm = try! Realm(configuration: config)
 
         //全てのデータを取り出す
-        guard let label = realm.object(ofType: AppLabelRealmData.self, forPrimaryKey: "0") else {
+        guard let label = realm.object(ofType: Label.self, forPrimaryKey: "0") else {
             return
         }
         let objs = realm.objects(ApplicationData.self).filter("label == %@", label)
@@ -64,7 +64,7 @@ class AppListViewController: UIViewController {
             //            //現在のappを表示
             //            if let editVC = createAppLabelVC as? EditAppLabelViewController {
             //                let labelID = editVC.id
-            //                if let currentLabel = realm.object(ofType: AppLabelRealmData.self, forPrimaryKey: labelID) {
+            //                if let currentLabel = realm.object(ofType: Label.self, forPrimaryKey: labelID) {
             //                    let currentLabelApp = realm.objects(ApplicationData.self).filter("label == %@ && app == %@", currentLabel, obj.app!)
             //                    if currentLabelApp.count > 0 {
             //                        //print("すでにあるよ")

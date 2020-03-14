@@ -13,7 +13,7 @@ final class ApplicationData: Object {
 
     @objc dynamic var id: String = ""
     @objc dynamic var app: AppRealmData?
-    @objc dynamic var label: AppLabelRealmData?
+    @objc dynamic var label: Label?
     @objc dynamic var rate: Double = 0
     @objc dynamic var order: Int = 0
     @objc dynamic var memo: String = ""
@@ -30,7 +30,7 @@ extension ApplicationData {
         return objects
     }
 
-    static func get(_ label: AppLabelRealmData) -> [ApplicationData] {
+    static func get(_ label: Label) -> [ApplicationData] {
         let sortProperties = [SortDescriptor(keyPath: "order", ascending: true)]
         let filter = NSPredicate(format: "label == %@", label)
         let objects = DatabaseManager.shared.objects(ApplicationData.self, filter: filter, sortedBy: sortProperties)
