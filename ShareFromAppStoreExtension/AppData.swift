@@ -17,7 +17,7 @@ class AppRealmData: Object {
     @objc dynamic var urlString: String!    //url
     @objc dynamic var image: Data!   //アイコンの画像
     @objc dynamic var date: Date!    //アプリを登録した日付
-    //var labelList:List<AppLabelRealmData>?  //ラベルのリスト
+    //var labelList:List<Label>?  //ラベルのリスト
 
     override static func primaryKey() -> String? {
         return "id"

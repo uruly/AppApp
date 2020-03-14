@@ -1,5 +1,5 @@
 //
-//  AppLabelRealmData.swift
+//  Label.swift
 //  AppApp
 //
 //  Created by Reona Kubo on 2020/03/07.
@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-final class AppLabelRealmData: Object {
+final class Label: Object {
 
     @objc dynamic var id: String = ""
     @objc dynamic var name: String = ""

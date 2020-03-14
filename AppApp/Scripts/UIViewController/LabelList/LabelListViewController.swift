@@ -15,8 +15,8 @@ import RealmSwift
 
 class LabelListViewController: UIViewController {
 
-    var list: [AppLabelRealmData] = []
-    var checkArray: [AppLabelRealmData] = [] {
+    var list: [Label] = []
+    var checkArray: [Label] = [] {
         didSet {
             if checkArray.count > 0 {
                 if (self.naviBar.items?.count ?? 0) > 0 {
@@ -86,14 +86,14 @@ class LabelListViewController: UIViewController {
         config.fileURL = url.appendingPathComponent("db.realm")
 
         let realm = try! Realm(configuration: config)
-        let objs = realm.objects(AppLabelRealmData.self)
+        let objs = realm.objects(Label.self)
         for obj in objs {
             if obj.id == "0" {
                 continue
             }
             //            if let name = obj.name, let colorData = obj.color, let id = obj.id {
             //                let color = NSKeyedUnarchiver.unarchiveObject(with: colorData) as! UIColor
-            //                //                let label = AppLabelRealmData(name: name, color: color, id: id, order: obj.order, explain: obj.explain)
+            //                //                let label = Label(name: name, color: color, id: id, order: obj.order, explain: obj.explain)
             //                //                self.list.append(label)
             //            }
         }

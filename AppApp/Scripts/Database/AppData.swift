@@ -13,11 +13,11 @@ import RealmSwift
 class AppData {
 
     //label
-    var label: AppLabelRealmData!
+    var label: Label!
 
     var appList: [ApplicationData]!
 
-    init(label: AppLabelRealmData) {
+    init(label: Label) {
         self.label = label
         readAppData(label: label) {
             //print("読み込み完了")
@@ -30,7 +30,7 @@ class AppData {
     //    }
 
     //読み込み
-    func readAppData(label: AppLabelRealmData, _ completion:@escaping () -> Void) {
+    func readAppData(label: Label, _ completion:@escaping () -> Void) {
         appList = Array(ApplicationData.getAll())
 
         //        var config = Realm.Configuration(schemaVersion: .schemaVersion)
@@ -39,7 +39,7 @@ class AppData {
         //        let realm = try! Realm(configuration: config)
         //
         //        //先にラベルを取得
-        //        guard let labelObject = realm.object(ofType: AppLabelRealmData.self, forPrimaryKey: label.id) else {
+        //        guard let labelObject = realm.object(ofType: Label.self, forPrimaryKey: label.id) else {
         //            return
         //        }
         //        let sortProperties = [SortDescriptor(keyPath: "order", ascending: true) ]
@@ -100,7 +100,7 @@ class AppData {
     }
 
     //save
-    static func saveAppData(appList: [ApplicationData], labelList: [AppLabelRealmData], _ completion:() -> Void) {
+    static func saveAppData(appList: [ApplicationData], labelList: [Label], _ completion:() -> Void) {
         for labelData in labelList {
             var config = Realm.Configuration(schemaVersion: .schemaVersion)
             let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
@@ -111,7 +111,7 @@ class AppData {
                 guard let app = realm.object(ofType: AppRealmData.self, forPrimaryKey: appData.app?.id) else {
                     continue
                 }
-                guard let label = realm.object(ofType: AppLabelRealmData.self, forPrimaryKey: labelData.id) else {
+                guard let label = realm.object(ofType: Label.self, forPrimaryKey: labelData.id) else {
                     continue
                 }
                 let applicationData = realm.objects(ApplicationData.self).filter("label == %@ && app == %@", label, app)
@@ -140,7 +140,7 @@ class AppData {
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
         config.fileURL = url.appendingPathComponent("db.realm")
         let realm = try! Realm(configuration: config)
-        guard let label = realm.object(ofType: AppLabelRealmData.self, forPrimaryKey: labelID) else {
+        guard let label = realm.object(ofType: Label.self, forPrimaryKey: labelID) else {
             return
         }
         for app in appList {

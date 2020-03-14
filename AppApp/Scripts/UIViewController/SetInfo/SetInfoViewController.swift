@@ -148,7 +148,7 @@ class SetInfoViewController: UIViewController {
 
                         newObject!["urlString"] = ""
                     }
-                    migration.enumerateObjects(ofType: AppLabelRealmData.className()) { _, newObject in
+                    migration.enumerateObjects(ofType: Label.className()) { _, newObject in
                         newObject!["explain"] = ""
                     }
                 }
@@ -181,7 +181,7 @@ class SetInfoViewController: UIViewController {
         for label in tableView.checkArray {
             //print("label.name:\(label.name)")
             let colorData = NSKeyedArchiver.archivedData(withRootObject: label.color)
-            let labelRealm = AppLabelRealmData(value: ["name": label.name,
+            let labelRealm = Label(value: ["name": label.name,
                                                        "color": colorData,
                                                        "id": label.id,
                                                        "order": label.order
@@ -203,13 +203,13 @@ class SetInfoViewController: UIViewController {
         }
     }
 
-    func dataCount(label: AppLabelRealmData) -> Int {
+    func dataCount(label: Label) -> Int {
         var config = Realm.Configuration(schemaVersion: .schemaVersion)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
         config.fileURL = url.appendingPathComponent("db.realm")
 
         let realm = try! Realm(configuration: config)
-        guard let labelData = realm.object(ofType: AppLabelRealmData.self, forPrimaryKey: label.id) else {
+        guard let labelData = realm.object(ofType: Label.self, forPrimaryKey: label.id) else {
             return 0
         }
 
