@@ -129,7 +129,7 @@
 		66AA1E0B1FC5919E001C419E /* MemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AA1E0A1FC5919E001C419E /* MemoViewController.swift */; };
 		66DF587E1FC92D3F00CD71DC /* LabelOrderPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DF587D1FC92D3F00CD71DC /* LabelOrderPickerView.swift */; };
 		66E54DCD2413A59600069082 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E54DCC2413A59600069082 /* Label.swift */; };
-		66E54DCF2413A5E000069082 /* AppRealmData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E54DCE2413A5E000069082 /* AppRealmData.swift */; };
+		66E54DCF2413A5E000069082 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E54DCE2413A5E000069082 /* App.swift */; };
 		66E54DD12413A6B700069082 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E54DD02413A6B700069082 /* AppData.swift */; };
 		66E54DD32413A6E000069082 /* AppLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E54DD22413A6E000069082 /* AppLabel.swift */; };
 		66FD458C1FC96B2A0093BB83 /* LabelListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FD458B1FC96B2A0093BB83 /* LabelListViewController.swift */; };
@@ -312,7 +312,7 @@
 		66AA1E0A1FC5919E001C419E /* MemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoViewController.swift; sourceTree = "<group>"; };
 		66DF587D1FC92D3F00CD71DC /* LabelOrderPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelOrderPickerView.swift; sourceTree = "<group>"; };
 		66E54DCC2413A59600069082 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
-		66E54DCE2413A5E000069082 /* AppRealmData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRealmData.swift; sourceTree = "<group>"; };
+		66E54DCE2413A5E000069082 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		66E54DD02413A6B700069082 /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
 		66E54DD22413A6E000069082 /* AppLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLabel.swift; sourceTree = "<group>"; };
 		66FD458B1FC96B2A0093BB83 /* LabelListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelListViewController.swift; sourceTree = "<group>"; };
@@ -940,7 +940,7 @@
 			isa = PBXGroup;
 			children = (
 				66498E2D1FC6B92C00239B47 /* ApplicationData.swift */,
-				66E54DCE2413A5E000069082 /* AppRealmData.swift */,
+				66E54DCE2413A5E000069082 /* App.swift */,
 				66E54DCC2413A59600069082 /* Label.swift */,
 			);
 			path = Entity;
@@ -1471,7 +1471,7 @@
 				6606168E1FCD35AE00667020 /* DetailCollectionViewCell.swift in Sources */,
 				6677FC241FCA6CE400CB105E /* AppListViewController.swift in Sources */,
 				667ECE641FC3A7BD009233DE /* CreateAppLabelViewController.swift in Sources */,
-				66E54DCF2413A5E000069082 /* AppRealmData.swift in Sources */,
+				66E54DCF2413A5E000069082 /* App.swift in Sources */,
 				6662E11E1FFE98CA00FB30C7 /* BottomView.swift in Sources */,
 				66498E341FC7BA3600239B47 /* UIApplication+Stack.swift in Sources */,
 				66681CE11FCC1734009A0F55 /* DetailCommonCollectionViewCell.swift in Sources */,

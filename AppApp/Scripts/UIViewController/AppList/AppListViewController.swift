@@ -11,12 +11,12 @@ import RealmSwift
 
 class AppListViewController: UIViewController {
 
-    var checkArray: [AppRealmData] = [] {
+    var checkArray: [App] = [] {
         didSet {
             createAppLabelVC.appList = checkArray
         }
     }
-    var appList: [AppRealmData] = []
+    var appList: [App] = []
     var collectionView: UICollectionView!
     //var naviBar:CustomNavigationBar!
     var createAppLabelVC: CreateAppLabelViewController!
