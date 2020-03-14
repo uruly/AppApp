@@ -143,7 +143,7 @@ class SetInfoViewController: UIViewController {
             migrationBlock: { migration, oldSchemaVersion in
                 //print(oldSchemaVersion)
                 if oldSchemaVersion < 4 {
-                    migration.enumerateObjects(ofType: AppRealmData.className()) { _, newObject in
+                    migration.enumerateObjects(ofType: App.className()) { _, newObject in
                         //print("migration")
 
                         newObject!["urlString"] = ""
@@ -160,10 +160,10 @@ class SetInfoViewController: UIViewController {
 
         var date = Date()
         let realm = try! Realm()
-        if let object = realm.object(ofType: AppRealmData.self, forPrimaryKey: id) {
+        if let object = realm.object(ofType: App.self, forPrimaryKey: id) {
             date = object.date
         }
-        let appData = AppRealmData(value: ["name": name,
+        let appData = App(value: ["name": name,
                                            "developer": developer,
                                            "id": id,
                                            "urlString": urlString,
@@ -176,7 +176,7 @@ class SetInfoViewController: UIViewController {
     }
 
     //Appとラベルを紐づけたのを保存するよ
-    func saveLabelAppData(appData: AppRealmData) {
+    func saveLabelAppData(appData: App) {
 
         for label in tableView.checkArray {
             //print("label.name:\(label.name)")

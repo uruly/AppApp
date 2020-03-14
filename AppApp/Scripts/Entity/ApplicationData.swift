@@ -12,7 +12,7 @@ import RealmSwift
 final class ApplicationData: Object {
 
     @objc dynamic var id: String = ""
-    @objc dynamic var app: AppRealmData?
+    @objc dynamic var app: App?
     @objc dynamic var label: Label?
     @objc dynamic var rate: Double = 0
     @objc dynamic var order: Int = 0

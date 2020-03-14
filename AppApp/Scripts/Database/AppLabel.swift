@@ -70,7 +70,7 @@ class AppLabel {
             migrationBlock: { migration, oldSchemaVersion in
                 //print(oldSchemaVersion)
                 if oldSchemaVersion < 4 {
-                    migration.enumerateObjects(ofType: AppRealmData.className()) { _, newObject in
+                    migration.enumerateObjects(ofType: App.className()) { _, newObject in
                         //print("migration")
 
                         newObject!["urlString"] = ""

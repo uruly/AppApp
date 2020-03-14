@@ -108,7 +108,7 @@ class AppData {
 
             let realm = try! Realm(configuration: config)
             for appData in appList {
-                guard let app = realm.object(ofType: AppRealmData.self, forPrimaryKey: appData.app?.id) else {
+                guard let app = realm.object(ofType: App.self, forPrimaryKey: appData.app?.id) else {
                     continue
                 }
                 guard let label = realm.object(ofType: Label.self, forPrimaryKey: labelData.id) else {
@@ -135,7 +135,7 @@ class AppData {
         completion()
     }
 
-    static func saveAppData(appList: [AppRealmData], labelID: String, _ completion:() -> Void) {
+    static func saveAppData(appList: [App], labelID: String, _ completion:() -> Void) {
         var config = Realm.Configuration(schemaVersion: .schemaVersion)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
         config.fileURL = url.appendingPathComponent("db.realm")
@@ -145,7 +145,7 @@ class AppData {
         }
         for app in appList {
             let id = UUID().uuidString
-            guard let appData = realm.object(ofType: AppRealmData.self, forPrimaryKey: app.id) else {
+            guard let appData = realm.object(ofType: App.self, forPrimaryKey: app.id) else {
                 continue
             }
             let appCount = realm.objects(ApplicationData.self).filter("label == %@", label).count
@@ -178,13 +178,13 @@ class AppData {
         completion()
     }
 
-    static func deleteAppAllData(app: AppRealmData, _ completion:() -> Void) {
+    static func deleteAppAllData(app: App, _ completion:() -> Void) {
         var config = Realm.Configuration(schemaVersion: .schemaVersion)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
         config.fileURL = url.appendingPathComponent("db.realm")
 
         let realm = try! Realm(configuration: config)
-        guard let appData = realm.object(ofType: AppRealmData.self, forPrimaryKey: app.id) else {
+        guard let appData = realm.object(ofType: App.self, forPrimaryKey: app.id) else {
             return
         }
         let objects = realm.objects(ApplicationData.self).filter("app == %@", appData)
