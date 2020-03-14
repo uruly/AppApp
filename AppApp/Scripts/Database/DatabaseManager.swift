@@ -13,7 +13,7 @@ final class DatabaseManager {
 
     static let shared = DatabaseManager()
 
-    private let schemaVersion: UInt64 = 5
+    private let schemaVersion: UInt64 = 6
 
     private var realm: Realm {
         do {
@@ -24,7 +24,7 @@ final class DatabaseManager {
     }
 
     private lazy var configuration: Realm.Configuration = {
-        var configuration = Realm.Configuration(schemaVersion: .schemaVersion, migrationBlock: migrationBlock)
+        var configuration = Realm.Configuration(schemaVersion: schemaVersion, migrationBlock: migrationBlock)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: .groupID)
         configuration.fileURL = url?.appendingPathComponent("db.realm")
 

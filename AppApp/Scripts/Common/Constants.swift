@@ -17,5 +17,5 @@ extension String {
 
 extension UInt64 {
 
-    static let schemaVersion: UInt64 = 5
+    static let schemaVersion: UInt64 = 6
 }

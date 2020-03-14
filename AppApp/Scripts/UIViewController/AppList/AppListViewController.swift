@@ -125,7 +125,7 @@ extension AppListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: AppListCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "app", for: indexPath) as! AppListCollectionViewCell
 
-        cell.imageView.image = UIImage(data: appList[indexPath.row].image)
+        //        cell.imageView.image = UIImage(data: appList[indexPath.row].image)
 
         if createAppLabelVC.appList.contains(where: {$0.id == appList[indexPath.row].id}) {
             cell.checkImageView.isHidden = false

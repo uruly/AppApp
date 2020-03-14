@@ -181,7 +181,7 @@ class DetailViewController: UIViewController {
     }
 
     func deleteAppLabelData() {
-        let alertController = UIAlertController(title: "\(appData.label?.name!)からAppを削除", message: "", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "からAppを削除", message: "", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "削除する", style: .default) { _ in
             AppData.deleteAppData(app: self.appData, {
                 self.navigationController?.popViewController(animated: true)
