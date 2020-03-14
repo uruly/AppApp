@@ -189,7 +189,7 @@ extension AppCollectionView: UICollectionViewDelegate {
                     cell.checkImageView.isHidden = true
                     cell.imageView.alpha = 1.0
                 } else {
-                    self.checkArray.append(appData.appList[indexPath.row])
+                    //                    self.checkArray.append(appData.appList[indexPath.row])
                     cell.checkImageView.isHidden = false
                     cell.imageView.alpha = 0.5
                 }
@@ -203,14 +203,14 @@ extension AppCollectionView: UICollectionViewDelegate {
                     cell.checkImageView.isHidden = true
                     cell.imageView.alpha = 1.0
                 } else {
-                    self.checkArray.append(appData.appList[indexPath.row])
+                    //                    self.checkArray.append(appData.appList[indexPath.row])
                     cell.checkImageView.isHidden = false
                     cell.imageView.alpha = 0.5
                 }
             }
         } else {
             //画面遷移をする
-            self.appDelegate.baseVC.toDetailViewController(appData: appData.appList[indexPath.row])
+            //            self.appDelegate.baseVC.toDetailViewController(appData: appData.appList[indexPath.row])
         }
     }
 }

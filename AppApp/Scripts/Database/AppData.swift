@@ -31,17 +31,17 @@ class AppData {
 
     //読み込み
     func readAppData(label: AppLabelRealmData, _ completion:@escaping () -> Void) {
-        appList = []
+        appList = Array(ApplicationData.getAll())
 
-        var config = Realm.Configuration(schemaVersion: .schemaVersion)
-        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
-        config.fileURL = url.appendingPathComponent("db.realm")
-        let realm = try! Realm(configuration: config)
-
-        //先にラベルを取得
-        guard let labelObject = realm.object(ofType: AppLabelRealmData.self, forPrimaryKey: label.id) else {
-            return
-        }
+        //        var config = Realm.Configuration(schemaVersion: .schemaVersion)
+        //        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
+        //        config.fileURL = url.appendingPathComponent("db.realm")
+        //        let realm = try! Realm(configuration: config)
+        //
+        //        //先にラベルを取得
+        //        guard let labelObject = realm.object(ofType: AppLabelRealmData.self, forPrimaryKey: label.id) else {
+        //            return
+        //        }
         //        let sortProperties = [SortDescriptor(keyPath: "order", ascending: true) ]
         //        let objs = realm.objects(ApplicationData.self).filter("label == %@", labelObject).sorted(by: sortProperties)
         //        for obj in objs {

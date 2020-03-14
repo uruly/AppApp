@@ -51,9 +51,9 @@ class AppLabel {
     init() {
         self.migration()
         self.reloadLabelData()
-        if array.count == 0 {
-            saveDefaultData()
-        }
+        //        if array.count == 0 {
+        //            saveDefaultData()
+        //        }
         let userDefaults = UserDefaults.standard
         if let colorData = userDefaults.data(forKey: "backgroundColor") {
             AppLabel.currentBackgroundColor = NSKeyedUnarchiver.unarchiveObject(with: colorData) as? UIColor
@@ -113,21 +113,21 @@ class AppLabel {
 
     //一番最初に呼ばれる予定のデータ。Allが入る
     func saveDefaultData() {
-        let name = "ALL"
-        let colorData = NSKeyedArchiver.archivedData(withRootObject: R.color.mainBlueColor())
-        let label = AppLabelRealmData(value: ["name": name,
-                                              "color": colorData,
-                                              "id": "0",
-                                              "order": 0
-        ])
-        var config = Realm.Configuration(schemaVersion: .schemaVersion)
-        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
-        config.fileURL = url.appendingPathComponent("db.realm")
-
-        let realm = try! Realm(configuration: config)
-        try! realm.write {
-            realm.add(label, update: .all)
-        }
+        //        let name = "ALL"
+        //        let colorData = NSKeyedArchiver.archivedData(withRootObject: R.color.mainBlueColor())
+        //        let label = AppLabelRealmData(value: ["name": name,
+        //                                              "color": colorData,
+        //                                              "id": "0",
+        //                                              "order": 0
+        //        ])
+        //        var config = Realm.Configuration(schemaVersion: .schemaVersion)
+        //        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
+        //        config.fileURL = url.appendingPathComponent("db.realm")
+        //
+        //        let realm = try! Realm(configuration: config)
+        //        try! realm.write {
+        //            realm.add(label, update: .all)
+        //        }
 
         //        array.append(AppLabelData(name: name, color: R.color.mainBlueColor(), id: "0", order: 0, explain: "全てのApp"))
     }

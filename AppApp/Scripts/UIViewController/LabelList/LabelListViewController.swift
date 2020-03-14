@@ -91,11 +91,11 @@ class LabelListViewController: UIViewController {
             if obj.id == "0" {
                 continue
             }
-            if let name = obj.name, let colorData = obj.color, let id = obj.id {
-                let color = NSKeyedUnarchiver.unarchiveObject(with: colorData) as! UIColor
-                //                let label = AppLabelRealmData(name: name, color: color, id: id, order: obj.order, explain: obj.explain)
-                //                self.list.append(label)
-            }
+            //            if let name = obj.name, let colorData = obj.color, let id = obj.id {
+            //                let color = NSKeyedUnarchiver.unarchiveObject(with: colorData) as! UIColor
+            //                //                let label = AppLabelRealmData(name: name, color: color, id: id, order: obj.order, explain: obj.explain)
+            //                //                self.list.append(label)
+            //            }
         }
     }
 
@@ -184,7 +184,7 @@ extension LabelListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: AppListCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "app", for: indexPath) as! AppListCollectionViewCell
 
-        cell.imageView.image = UIImage(data: appList[indexPath.row].app!.image)
+        //        cell.imageView.image = UIImage(data: appList[indexPath.row].app!.image)
 
         return cell
     }
