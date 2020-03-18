@@ -89,7 +89,7 @@ class AppData {
             config.fileURL = url.appendingPathComponent("db.realm")
 
             let realm = try! Realm(configuration: config)
-            guard let obj = realm.object(ofType: App.self, forPrimaryKey: app.id) else {
+            guard let obj = realm.object(ofType: App.self, forPrimaryKey: app.uid) else {
                 return
             }
             try! realm.write {

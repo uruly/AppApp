@@ -69,21 +69,22 @@ extension DatabaseManager {
             label["order"] = old?["order"]
             label["explain"] = old?["explain"] ?? ""
         }
-        migration.enumerateObjects(ofType: "AppRealmData") { (old, _) in
-            let app = migration.create(App.className())
-            app["id"] = old?["id"]
-            app["name"] = old?["name"] ?? ""
-            app["developer"] = old?["developer"] ?? ""
-            app["urlString"] = old?["urlString"] ?? ""
-            app["image"] = old?["image"]
-            app["date"] = old?["date"]
-        }
+        //        migration.enumerateObjects(ofType: "AppRealmData") { (old, _) in
+        //            let app = migration.create(App.className())
+        //            app["id"] = old?["id"]
+        //            app["name"] = old?["name"] ?? ""
+        //            app["developer"] = old?["developer"] ?? ""
+        //            app["urlString"] = old?["urlString"] ?? ""
+        //            app["image"] = old?["image"]
+        //            app["date"] = old?["date"]
+        //        }
         migration.enumerateObjects(ofType: "ApplicationData") { (old, _) in
             guard let oldApp = old?["app"] as? MigrationObject else {
                 fatalError("Label not found")
             }
             let app = migration.create(App.className())
-            app["id"] = oldApp["id"]
+            app["uid"] = UUID().uuidString
+            app["appStoreID"] = oldApp["id"]
             app["name"] = oldApp["name"]
             app["developer"] = oldApp["developer"]
             app["urlString"] = oldApp["urlString"]
