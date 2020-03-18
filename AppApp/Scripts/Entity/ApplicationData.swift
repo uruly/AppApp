@@ -9,32 +9,32 @@
 import UIKit
 import RealmSwift
 
-final class ApplicationData: Object {
-
-    @objc dynamic var id: String = ""
-    @objc dynamic var app: App?
-    @objc dynamic var label: Label?
-    @objc dynamic var rate: Double = 0
-    @objc dynamic var order: Int = 0
-    @objc dynamic var memo: String = ""
-
-    override static func primaryKey() -> String? {
-        return "id"
-    }
-}
-
-extension ApplicationData {
-
-    static func getAll() -> Results<ApplicationData> {
-        let objects = DatabaseManager.shared.objects(ApplicationData.self)
-        return objects
-    }
-
-    static func get(_ label: Label) -> [ApplicationData] {
-        let sortProperties = [SortDescriptor(keyPath: "order", ascending: true)]
-        let filter = NSPredicate(format: "label == %@", label)
-        let objects = DatabaseManager.shared.objects(ApplicationData.self, filter: filter, sortedBy: sortProperties)
-        return Array(objects)
-    }
-
-}
+//final class ApplicationData: Object {
+//
+//    @objc dynamic var app: AppRealmData?
+//    @objc dynamic var label: AppLabelRealmData?       //らベルデータ
+//    @objc dynamic var id: String!        //固有id UUID
+//    @objc dynamic var rate: Double = 0   //ラベルでのレート
+//    @objc dynamic var order: Int = 0     //ラベルでの場所
+//    @objc dynamic var memo: String?      //ラベルでのメモ
+//
+//    override static func primaryKey() -> String? {
+//        return "id"
+//    }
+//}
+//
+//extension ApplicationData {
+//
+//    static func getAll() -> Results<ApplicationData> {
+//        let objects = DatabaseManager.shared.objects(ApplicationData.self)
+//        return objects
+//    }
+//
+//    static func get(_ label: Label) -> [ApplicationData] {
+//        let sortProperties = [SortDescriptor(keyPath: "order", ascending: true)]
+//        let filter = NSPredicate(format: "label == %@", label)
+//        let objects = DatabaseManager.shared.objects(ApplicationData.self, filter: filter, sortedBy: sortProperties)
+//        return Array(objects)
+//    }
+//
+//}

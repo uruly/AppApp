@@ -42,7 +42,7 @@ class AppCollectionView: UICollectionView {
         }
     }
 
-    var checkArray: [ApplicationData] = []
+    var checkArray: [App] = []
 
     var mode: ToolbarMode! {
         didSet {
@@ -178,40 +178,40 @@ class AppCollectionView: UICollectionView {
 
 extension AppCollectionView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if AppCollectionView.isWhileEditing {
-            if mode == .collect {
-                let cell: AppListCollectionViewCell = collectionView.cellForItem(at: indexPath) as! AppListCollectionViewCell
-
-                let id = appData.appList[indexPath.row].id
-                let index = checkArray.findIndex(includeElement: {$0.id == id})
-                if index.count > 0 {
-                    self.checkArray.remove(at: index[0])
-                    cell.checkImageView.isHidden = true
-                    cell.imageView.alpha = 1.0
-                } else {
-                    //                    self.checkArray.append(appData.appList[indexPath.row])
-                    cell.checkImageView.isHidden = false
-                    cell.imageView.alpha = 0.5
-                }
-            } else {
-                let cell: AppInfoListCollectionViewCell = collectionView.cellForItem(at: indexPath) as! AppInfoListCollectionViewCell
-
-                let id = appData.appList[indexPath.row].id
-                let index = checkArray.findIndex(includeElement: {$0.id == id})
-                if index.count > 0 {
-                    self.checkArray.remove(at: index[0])
-                    cell.checkImageView.isHidden = true
-                    cell.imageView.alpha = 1.0
-                } else {
-                    //                    self.checkArray.append(appData.appList[indexPath.row])
-                    cell.checkImageView.isHidden = false
-                    cell.imageView.alpha = 0.5
-                }
-            }
-        } else {
-            //画面遷移をする
-            //            self.appDelegate.baseVC.toDetailViewController(appData: appData.appList[indexPath.row])
-        }
+        //        if AppCollectionView.isWhileEditing {
+        //            if mode == .collect {
+        //                let cell: AppListCollectionViewCell = collectionView.cellForItem(at: indexPath) as! AppListCollectionViewCell
+        //
+        //                let id = appData.appList[indexPath.row].id
+        //                let index = checkArray.findIndex(includeElement: {$0.id == id})
+        //                if index.count > 0 {
+        //                    self.checkArray.remove(at: index[0])
+        //                    cell.checkImageView.isHidden = true
+        //                    cell.imageView.alpha = 1.0
+        //                } else {
+        //                    //                    self.checkArray.append(appData.appList[indexPath.row])
+        //                    cell.checkImageView.isHidden = false
+        //                    cell.imageView.alpha = 0.5
+        //                }
+        //            } else {
+        //                let cell: AppInfoListCollectionViewCell = collectionView.cellForItem(at: indexPath) as! AppInfoListCollectionViewCell
+        //
+        //                let id = appData.appList[indexPath.row].id
+        //                let index = checkArray.findIndex(includeElement: {$0.id == id})
+        //                if index.count > 0 {
+        //                    self.checkArray.remove(at: index[0])
+        //                    cell.checkImageView.isHidden = true
+        //                    cell.imageView.alpha = 1.0
+        //                } else {
+        //                    //                    self.checkArray.append(appData.appList[indexPath.row])
+        //                    cell.checkImageView.isHidden = false
+        //                    cell.imageView.alpha = 0.5
+        //                }
+        //            }
+        //        } else {
+        //            //画面遷移をする
+        //            //            self.appDelegate.baseVC.toDetailViewController(appData: appData.appList[indexPath.row])
+        //        }
     }
 }
 
@@ -226,36 +226,36 @@ extension AppCollectionView: UICollectionViewDataSource {
             cell.checkImageView.isHidden = true
             cell.imageView.alpha = 1.0
             //編集中かどうか
-            if AppCollectionView.isWhileEditing {
-                if checkArray.contains(where: {$0.id == appData.appList[indexPath.row].id}) {
-                    cell.checkImageView.isHidden = false
-                    cell.imageView.alpha = 0.5
-                }
-            }
-            cell.imageView.image = nil
-            if let imageData = appData.appList[indexPath.row].app?.image {
-                cell.imageView.image = UIImage(data: imageData)
-            }
+            //            if AppCollectionView.isWhileEditing {
+            //                if checkArray.contains({$0.id == appData.appList[indexPath.row].id}) {
+            //                    cell.checkImageView.isHidden = false
+            //                    cell.imageView.alpha = 0.5
+            //                }
+            //            }
+            //            cell.imageView.image = nil
+            //            if let imageData = appData.appList[indexPath.row].app?.image {
+            //                cell.imageView.image = UIImage(data: imageData)
+            //            }
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.appInfoListCollectionViewCell, for: indexPath)!
-            cell.imageView.image = nil
-            if let imageData = appData.appList[indexPath.row].app?.image {
-                cell.imageView.image = UIImage(data: imageData)
-            }
-            cell.nameLabel.text = appData.appList[indexPath.row].app?.name
-            cell.developerLabel.text = appData.appList[indexPath.row].app?.developer
-
-            //チェックマーク
-            cell.checkImageView.isHidden = true
-            cell.imageView.alpha = 1.0
-            //編集中かどうか
-            if AppCollectionView.isWhileEditing {
-                if checkArray.contains(where: {$0.id == appData.appList[indexPath.row].id}) {
-                    cell.checkImageView.isHidden = false
-                    cell.imageView.alpha = 0.5
-                }
-            }
+            //            cell.imageView.image = nil
+            //            if let imageData = appData.appList[indexPath.row].app?.image {
+            //                cell.imageView.image = UIImage(data: imageData)
+            //            }
+            //            cell.nameLabel.text = appData.appList[indexPath.row].app?.name
+            //            cell.developerLabel.text = appData.appList[indexPath.row].app?.developer
+            //
+            //            //チェックマーク
+            //            cell.checkImageView.isHidden = true
+            //            cell.imageView.alpha = 1.0
+            //            //編集中かどうか
+            //            if AppCollectionView.isWhileEditing {
+            //                if checkArray.contains(where: {$0.id == appData.appList[indexPath.row].id}) {
+            //                    cell.checkImageView.isHidden = false
+            //                    cell.imageView.alpha = 0.5
+            //                }
+            //            }
 
             return cell
         }
@@ -265,14 +265,14 @@ extension AppCollectionView: UICollectionViewDataSource {
         if appData == nil {
             return 0
         }
-        return appData.appList.count
+        return 0
     }
 
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let tempNumber = appData.appList.remove(at: sourceIndexPath.item)
-        appData.appList.insert(tempNumber, at: destinationIndexPath.item)
-        //appDataのorderを更新
-        appData.resetOrder()
+        //        let tempNumber = appData.appList.remove(at: sourceIndexPath.item)
+        //        appData.appList.insert(tempNumber, at: destinationIndexPath.item)
+        //        //appDataのorderを更新
+        //        appData.resetOrder()
     }
 }
 

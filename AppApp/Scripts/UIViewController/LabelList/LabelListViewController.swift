@@ -30,7 +30,7 @@ class LabelListViewController: UIViewController {
         }
     }
     var tableView: UITableView!
-    var appList: [ApplicationData] = []
+    var appList: [App] = []
     var collectionView: UICollectionView!
     var naviBar: CustomNavigationBar!
     var baseVC: BaseViewController!

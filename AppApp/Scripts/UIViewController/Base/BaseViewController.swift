@@ -60,6 +60,10 @@ class BaseViewController: UIViewController {
         collectionView.appDelegate = self
         self.view.addSubview(collectionView)
 
+        let labels = DatabaseManager.shared.objects(Label.self)
+        print(labels)
+        let apps = DatabaseManager.shared.objects(App.self)
+        print(apps)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -108,7 +112,7 @@ class BaseViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    func toDetailViewController(appData: ApplicationData) {
+    func toDetailViewController(appData: App) {
         let detailVC = DetailViewController()
         detailVC.appData = appData
 

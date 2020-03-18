@@ -15,7 +15,7 @@ class AppData {
     //label
     var label: Label!
 
-    var appList: [ApplicationData]!
+    //    var appList: [ApplicationData]!
 
     init(label: Label) {
         self.label = label
@@ -31,7 +31,7 @@ class AppData {
 
     //読み込み
     func readAppData(label: Label, _ completion:@escaping () -> Void) {
-        appList = Array(ApplicationData.getAll())
+        //        appList = Array(ApplicationData.getAll())
 
         //        var config = Realm.Configuration(schemaVersion: .schemaVersion)
         //        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
@@ -62,34 +62,34 @@ class AppData {
 
     //並び順を更新
     func resetOrder() {
-        for (index, app) in appList.enumerated() {
-            //appの並びを更新
-            var config = Realm.Configuration(schemaVersion: .schemaVersion)
-            let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
-            config.fileURL = url.appendingPathComponent("db.realm")
-
-            let realm = try! Realm(configuration: config)
-            guard let app = realm.object(ofType: ApplicationData.self, forPrimaryKey: app.id) else {
-                return
-            }
-            //arrayの方を更新
-            app.order = index
-            try! realm.write {
-                app.order = index
-                realm.add(app, update: .all)
-            }
-        }
+        //        for (index, app) in appList.enumerated() {
+        //            //appの並びを更新
+        //            var config = Realm.Configuration(schemaVersion: .schemaVersion)
+        //            let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
+        //            config.fileURL = url.appendingPathComponent("db.realm")
+        //
+        //            let realm = try! Realm(configuration: config)
+        //            guard let app = realm.object(ofType: ApplicationData.self, forPrimaryKey: app.id) else {
+        //                return
+        //            }
+        //            //arrayの方を更新
+        //            app.order = index
+        //            try! realm.write {
+        //                app.order = index
+        //                realm.add(app, update: .all)
+        //            }
+        //        }
     }
 
     //delete
-    func deleteAppData(appList: [ApplicationData], _ completion:() -> Void) {
+    func deleteAppData(appList: [App], _ completion:() -> Void) {
         for app in appList {
             var config = Realm.Configuration(schemaVersion: .schemaVersion)
             let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
             config.fileURL = url.appendingPathComponent("db.realm")
 
             let realm = try! Realm(configuration: config)
-            guard let obj = realm.object(ofType: ApplicationData.self, forPrimaryKey: app.id) else {
+            guard let obj = realm.object(ofType: App.self, forPrimaryKey: app.id) else {
                 return
             }
             try! realm.write {
@@ -100,42 +100,42 @@ class AppData {
     }
 
     //save
-    static func saveAppData(appList: [ApplicationData], labelList: [Label], _ completion:() -> Void) {
+    static func saveAppData(appList: [App], labelList: [Label], _ completion:() -> Void) {
         for labelData in labelList {
             var config = Realm.Configuration(schemaVersion: .schemaVersion)
             let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
             config.fileURL = url.appendingPathComponent("db.realm")
 
             let realm = try! Realm(configuration: config)
-            for appData in appList {
-                guard let app = realm.object(ofType: App.self, forPrimaryKey: appData.app?.id) else {
-                    continue
-                }
-                guard let label = realm.object(ofType: Label.self, forPrimaryKey: labelData.id) else {
-                    continue
-                }
-                let applicationData = realm.objects(ApplicationData.self).filter("label == %@ && app == %@", label, app)
-                if applicationData.count > 0 {
-                    //print("すでにラベルにあるよ")
-                    continue
-                }
-                let id = UUID().uuidString
-                let appCount = realm.objects(ApplicationData.self).filter("label == %@", label).count
-                let object = ApplicationData(value: ["app": app,
-                                                     "label": label,
-                                                     "id": id,
-                                                     "rate": 0,
-                                                     "order": appCount,
-                                                     "memo": ""])
-                try! realm.write {
-                    realm.add(object, update: .all)
-                }
-            }
+            //            for appData in appList {
+            //                guard let app = realm.object(ofType: App.self, forPrimaryKey: appData.app?.id) else {
+            //                    continue
+            //                }
+            //                guard let label = realm.object(ofType: Label.self, forPrimaryKey: labelData.id) else {
+            //                    continue
+            //                }
+            //                let applicationData = realm.objects(ApplicationData.self).filter("label == %@ && app == %@", label, app)
+            //                if applicationData.count > 0 {
+            //                    //print("すでにラベルにあるよ")
+            //                    continue
+            //                }
+            //                let id = UUID().uuidString
+            //                let appCount = realm.objects(ApplicationData.self).filter("label == %@", label).count
+            //                let object = ApplicationData(value: ["app": app,
+            //                                                     "label": label,
+            //                                                     "id": id,
+            //                                                     "rate": 0,
+            //                                                     "order": appCount,
+            //                                                     "memo": ""])
+            //                try! realm.write {
+            //                    realm.add(object, update: .all)
+            //                }
+            //            }
         }
         completion()
     }
 
-    static func saveAppData(appList: [App], labelID: String, _ completion:() -> Void) {
+    func saveAppData(appList: [App], labelID: String, _ completion:() -> Void) {
         var config = Realm.Configuration(schemaVersion: .schemaVersion)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
         config.fileURL = url.appendingPathComponent("db.realm")
@@ -143,60 +143,60 @@ class AppData {
         guard let label = realm.object(ofType: Label.self, forPrimaryKey: labelID) else {
             return
         }
-        for app in appList {
-            let id = UUID().uuidString
-            guard let appData = realm.object(ofType: App.self, forPrimaryKey: app.id) else {
-                continue
-            }
-            let appCount = realm.objects(ApplicationData.self).filter("label == %@", label).count
-            let object = ApplicationData(value: ["app": appData,
-                                                 "label": label,
-                                                 "id": id,
-                                                 "rate": 0,
-                                                 "order": appCount,
-                                                 "memo": ""])
-            try! realm.write {
-                realm.add(object, update: .all)
-            }
-        }
+        //        for app in appList {
+        //            let id = UUID().uuidString
+        //            guard let appData = realm.object(ofType: App.self, forPrimaryKey: app.id) else {
+        //                continue
+        //            }
+        //            let appCount = realm.objects(ApplicationData.self).filter("label == %@", label).count
+        //            let object = ApplicationData(value: ["app": appData,
+        //                                                 "label": label,
+        //                                                 "id": id,
+        //                                                 "rate": 0,
+        //                                                 "order": appCount,
+        //                                                 "memo": ""])
+        //            try! realm.write {
+        //                realm.add(object, update: .all)
+        //            }
+        //        }
         completion()
     }
 
-    static func deleteAppData(app: ApplicationData, _ completion:() -> Void) {
+    func deleteAppData(app: App, _ completion:() -> Void) {
         //ラベルについているAppのみを消すよ
-        var config = Realm.Configuration(schemaVersion: .schemaVersion)
-        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
-        config.fileURL = url.appendingPathComponent("db.realm")
-
-        let realm = try! Realm(configuration: config)
-        guard let obj = realm.object(ofType: ApplicationData.self, forPrimaryKey: app.id) else {
-            return
-        }
-        try! realm.write {
-            realm.delete(obj)
-        }
+        //        var config = Realm.Configuration(schemaVersion: .schemaVersion)
+        //        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
+        //        config.fileURL = url.appendingPathComponent("db.realm")
+        //
+        //        let realm = try! Realm(configuration: config)
+        //        guard let obj = realm.object(ofType: ApplicationData.self, forPrimaryKey: app.id) else {
+        //            return
+        //        }
+        //        try! realm.write {
+        //            realm.delete(obj)
+        //        }
         completion()
     }
 
-    static func deleteAppAllData(app: App, _ completion:() -> Void) {
-        var config = Realm.Configuration(schemaVersion: .schemaVersion)
-        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
-        config.fileURL = url.appendingPathComponent("db.realm")
-
-        let realm = try! Realm(configuration: config)
-        guard let appData = realm.object(ofType: App.self, forPrimaryKey: app.id) else {
-            return
-        }
-        let objects = realm.objects(ApplicationData.self).filter("app == %@", appData)
-        for obj in objects {
-            try! realm.write {
-                realm.delete(obj)
-
-            }
-        }
-        try! realm.write {
-            realm.delete(appData)
-        }
-        completion()
+    func deleteAppAllData(app: App, _ completion:() -> Void) {
+        //        var config = Realm.Configuration(schemaVersion: .schemaVersion)
+        //        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
+        //        config.fileURL = url.appendingPathComponent("db.realm")
+        //
+        //        let realm = try! Realm(configuration: config)
+        //        guard let appData = realm.object(ofType: App.self, forPrimaryKey: app.id) else {
+        //            return
+        //        }
+        //        let objects = realm.objects(ApplicationData.self).filter("app == %@", appData)
+        //        for obj in objects {
+        //            try! realm.write {
+        //                realm.delete(obj)
+        //
+        //            }
+        //        }
+        //        try! realm.write {
+        //            realm.delete(appData)
+        //        }
+        //        completion()
     }
 }

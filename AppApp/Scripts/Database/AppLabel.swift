@@ -135,10 +135,10 @@ class AppLabel {
     static func saveLabelData(name: String, color: UIColor, id: String, order: Int, explain: String?, _ completion:() -> Void) {
         let colorData = NSKeyedArchiver.archivedData(withRootObject: color)
         let label = Label(value: ["name": name,
-                                              "color": colorData,
-                                              "id": id,
-                                              "order": order,
-                                              "explain": explain ?? ""
+                                  "color": colorData,
+                                  "id": id,
+                                  "order": order,
+                                  "explain": explain ?? ""
         ])
         var config = Realm.Configuration(schemaVersion: .schemaVersion)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
@@ -169,10 +169,10 @@ class AppLabel {
     static func updateLabelData(name: String, color: UIColor, id: String, order: Int, explain: String?, _ completion:() -> Void) {
         let colorData = NSKeyedArchiver.archivedData(withRootObject: color)
         let label = Label(value: ["name": name,
-                                              "color": colorData,
-                                              "id": id,
-                                              "order": order,
-                                              "explain": explain ?? ""
+                                  "color": colorData,
+                                  "id": id,
+                                  "order": order,
+                                  "explain": explain ?? ""
         ])
         var config = Realm.Configuration(schemaVersion: .schemaVersion)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
@@ -264,32 +264,32 @@ class AppLabel {
     }
 
     static func deleteLabelData(labelID: String, _ completion:() -> Void) {
-        var config = Realm.Configuration(schemaVersion: .schemaVersion)
-        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
-        config.fileURL = url.appendingPathComponent("db.realm")
-
-        let realm = try! Realm(configuration: config)
-        guard let labelData = realm.object(ofType: Label.self, forPrimaryKey: labelID) else {
-            return
-        }
-        let appObjects = realm.objects(ApplicationData.self).filter("label == %@", labelData)
-        for object in appObjects {
-            try! realm.write {
-                realm.delete(object)
-            }
-        }
-        let deleteOrder = labelData.order
-        try! realm.write {
-            realm.delete(labelData)
-        }
-        // orderを直す
-        let labelList = realm.objects(Label.self)
-        for label in labelList where label.order > deleteOrder {
-            try! realm.write {
-                label.order -= 1
-                realm.add(label, update: .all)
-            }
-        }
+        //        var config = Realm.Configuration(schemaVersion: .schemaVersion)
+        //        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
+        //        config.fileURL = url.appendingPathComponent("db.realm")
+        //
+        //        let realm = try! Realm(configuration: config)
+        //        guard let labelData = realm.object(ofType: Label.self, forPrimaryKey: labelID) else {
+        //            return
+        //        }
+        //        let appObjects = realm.objects(ApplicationData.self).filter("label == %@", labelData)
+        //        for object in appObjects {
+        //            try! realm.write {
+        //                realm.delete(object)
+        //            }
+        //        }
+        //        let deleteOrder = labelData.order
+        //        try! realm.write {
+        //            realm.delete(labelData)
+        //        }
+        //        // orderを直す
+        //        let labelList = realm.objects(Label.self)
+        //        for label in labelList where label.order > deleteOrder {
+        //            try! realm.write {
+        //                label.order -= 1
+        //                realm.add(label, update: .all)
+        //            }
+        //        }
         completion()
     }
 
