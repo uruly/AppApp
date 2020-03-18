@@ -46,7 +46,7 @@ class DetailViewController: UIViewController {
         let height = self.view.frame.height
 
         //self.view.backgroundColor = UIColor.white
-        self.title = appData.label?.name
+        //        self.title = appData.label.name
 
         //let naviBarHeight = self.navigationController?.navigationBar.frame.maxY ?? 57.0
         //let margin:CGFloat = 15.0
@@ -137,7 +137,7 @@ class DetailViewController: UIViewController {
         config.fileURL = url.appendingPathComponent("db.realm")
         let realm = try! Realm(configuration: config)
 
-        guard let obj = realm.object(ofType: App.self, forPrimaryKey: appData.appStoreID) else {
+        guard let obj = realm.object(ofType: App.self, forPrimaryKey: appData.id) else {
             return
         }
         try! realm.write {

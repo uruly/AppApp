@@ -107,7 +107,7 @@ extension DetailContentView: UICollectionViewDataSource {
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.detailCollectionViewCell, for: indexPath)!
             cell.tableView.detailVC = self.detailVC
-            cell.tableView.labelName = self.detailVC.appData.label?.name ?? ""
+            //            cell.tableView.labelName = self.detailVC.appData.label.name ?? ""
 
             return cell
         }

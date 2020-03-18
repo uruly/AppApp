@@ -16,6 +16,7 @@ final class Label: Object {
     @objc dynamic var color: Data?
     @objc dynamic var order: Int = 0
     @objc dynamic var explain: String = ""
+    let apps: List<App> = .init()
 
     override static func primaryKey() -> String? {
         return "id"
