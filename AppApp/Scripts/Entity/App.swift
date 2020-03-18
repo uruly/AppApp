@@ -11,7 +11,8 @@ import RealmSwift
 
 final class App: Object {
 
-    @objc dynamic var id: String = ""
+    @objc dynamic var uid: String = ""
+    @objc dynamic var appStoreID: String = ""
     @objc dynamic var name: String = ""
     @objc dynamic var developer: String = ""
     @objc dynamic var urlString: String = ""
@@ -22,6 +23,6 @@ final class App: Object {
     @objc dynamic var date: Date = Date()
 
     override static func primaryKey() -> String? {
-        return "id"
+        return "uid"
     }
 }

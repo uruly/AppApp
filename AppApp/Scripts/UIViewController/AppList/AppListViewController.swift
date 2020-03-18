@@ -103,8 +103,8 @@ extension AppListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell: AppListCollectionViewCell = collectionView.cellForItem(at: indexPath) as! AppListCollectionViewCell
 
-        let id = appList[indexPath.row].id
-        let index = checkArray.findIndex(includeElement: {$0.id == id})
+        let id = appList[indexPath.row].uid
+        let index = checkArray.findIndex(includeElement: {$0.uid == id})
         if index.count > 0 {
             self.checkArray.remove(at: index[0])
             cell.checkImageView.isHidden = true
