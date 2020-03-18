@@ -90,7 +90,7 @@ class AppLabel {
         DispatchQueue.main.async {
             let sortProperties = [SortDescriptor(keyPath: "order", ascending: true)]
             let objects = DatabaseManager.shared.objects(Label.self, filter: nil, sortedBy: sortProperties)
-            print(objects)
+            //            print(objects)
             self.array = Array(objects)
         }
         //        //ラベルを読み込む処理

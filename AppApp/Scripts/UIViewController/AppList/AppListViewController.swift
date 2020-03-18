@@ -103,8 +103,8 @@ extension AppListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell: AppListCollectionViewCell = collectionView.cellForItem(at: indexPath) as! AppListCollectionViewCell
 
-        let id = appList[indexPath.row].id
-        let index = checkArray.findIndex(includeElement: {$0.id == id})
+        let id = appList[indexPath.row].appStoreID
+        let index = checkArray.findIndex(includeElement: {$0.uid == id})
         if index.count > 0 {
             self.checkArray.remove(at: index[0])
             cell.checkImageView.isHidden = true
@@ -127,13 +127,13 @@ extension AppListViewController: UICollectionViewDataSource {
 
         //        cell.imageView.image = UIImage(data: appList[indexPath.row].image)
 
-        if createAppLabelVC.appList.contains(where: {$0.id == appList[indexPath.row].id}) {
-            cell.checkImageView.isHidden = false
-            cell.imageView.alpha = 0.5
-        } else {
-            cell.checkImageView.isHidden = true
-            cell.imageView.alpha = 1
-        }
+        //        if createAppLabelVC.appList.contains(where: {$0.appStoreID == appList[indexPath.row].id}) {
+        //            cell.checkImageView.isHidden = false
+        //            cell.imageView.alpha = 0.5
+        //        } else {
+        //            cell.checkImageView.isHidden = true
+        //            cell.imageView.alpha = 1
+        //        }
 
         return cell
     }
