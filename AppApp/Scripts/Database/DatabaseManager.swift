@@ -13,7 +13,7 @@ final class DatabaseManager {
 
     static let shared = DatabaseManager()
 
-    private let schemaVersion: UInt64 = 6
+    private let schemaVersion: UInt64 = 7
 
     private var realm: Realm {
         do {
@@ -32,17 +32,73 @@ final class DatabaseManager {
     }()
 
     private lazy var migrationBlock: RealmSwift.MigrationBlock? = {
-        return .init { (migration, oldSchemaVersion) in
-            if oldSchemaVersion < 4 {
-                migration.enumerateObjects(ofType: App.className()) { _, newObject in
-                    newObject!["urlString"] = ""
-                }
-                migration.enumerateObjects(ofType: Label.className()) { _, newObject in
-                    newObject!["explain"] = ""
-                }
-            }
+        return .init { [weak self] (migration, oldSchemaVersion) in
+            self?.migration(migration, from: oldSchemaVersion)
         }
     }()
+}
+
+// MARK: - Migration
+
+extension DatabaseManager {
+
+    private func migration(_ migration: Migration, from oldSchemaVersion: UInt64) {
+        if oldSchemaVersion < 4 {
+            migrationTo4(migration)
+        }
+        if oldSchemaVersion < 7 {
+            migrationTo7(migration)
+        }
+        if oldSchemaVersion < 8 {
+            migrationTo8(migration)
+        }
+    }
+
+    private func migrationTo4(_ migration: Migration) {
+        migration.enumerateObjects(ofType: "AppRealmData") { _, new in
+            new!["urlString"] = ""
+        }
+        migration.enumerateObjects(ofType: "AppLabelRealmData") { _, new in
+            new!["explain"] = ""
+        }
+    }
+
+    private func migrationTo7(_ migration: Migration) {
+        migration.enumerateObjects(ofType: "AppLabelRealmData") { (old, _) in
+            let label = migration.create(Label.className())
+            label["id"] = old?["id"]
+            label["name"] = old?["name"]
+            label["color"] = old?["color"]
+            label["order"] = old?["order"]
+            label["explain"] = old?["explain"]
+        }
+    }
+
+    private func migrationTo8(_ migration: Migration) {
+        migration.enumerateObjects(ofType: "AppRealmData") { (old, _) in
+            let app = migration.create(App.className())
+            app["id"] = old?["id"]
+            app["name"] = old?["name"]
+            app["developer"] = old?["developer"]
+            app["urlString"] = old?["urlString"]
+            app["image"] = old?["image"]
+            app["date"] = old?["date"]
+        }
+    }
+
+    private func migraitonTo9(_ migration: Migration) {
+        migration.enumerateObjects(ofType: "ApplicationData") { (old, _) in
+            let app = migration.create(App.className())
+            print("このなかきてるよ！", old)
+            guard let oldApp = old?["app"] as? App else {
+                fatalError("Not Found")
+            }
+            app["label"] = old?["label"]
+            app["rate"] = old?["rate"]
+            app["order"] = old?["order"]
+            app["memo"] = old?["memo"]
+        }
+    }
 }
 
 extension DatabaseManager {
