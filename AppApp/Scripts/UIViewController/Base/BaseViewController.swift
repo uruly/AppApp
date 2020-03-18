@@ -60,10 +60,10 @@ class BaseViewController: UIViewController {
         collectionView.appDelegate = self
         self.view.addSubview(collectionView)
 
-        let labels = DatabaseManager.shared.objects(Label.self)
-        print(labels)
-        let apps = DatabaseManager.shared.objects(App.self)
-        print(apps)
+        //        let labels = DatabaseManager.shared.objects(Label.self)
+        //        print(labels)
+        //        let apps = DatabaseManager.shared.objects(App.self)
+        //        print("ｐあぷり", apps)
     }
 
     override func viewWillAppear(_ animated: Bool) {
