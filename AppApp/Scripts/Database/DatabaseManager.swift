@@ -43,22 +43,10 @@ final class DatabaseManager {
 extension DatabaseManager {
 
     private func migration(_ migration: Migration, from oldSchemaVersion: UInt64) {
-        //        if oldSchemaVersion < 4 {
-        //            migrationTo4(migration)
-        //        }
         if oldSchemaVersion < 6 {
             migrationTo6(migration)
         }
     }
-
-    //    private func migrationTo4(_ migration: Migration) {
-    //        migration.enumerateObjects(ofType: "AppRealmData") { _, new in
-    //            new!["urlString"] = ""
-    //        }
-    //        migration.enumerateObjects(ofType: "AppLabelRealmData") { _, new in
-    //            new!["explain"] = ""
-    //        }
-    //    }
 
     private func migrationTo6(_ migration: Migration) {
         migration.enumerateObjects(ofType: "AppLabelRealmData") { (old, _) in
@@ -69,15 +57,7 @@ extension DatabaseManager {
             label["order"] = old?["order"]
             label["explain"] = old?["explain"] ?? ""
         }
-        //        migration.enumerateObjects(ofType: "AppRealmData") { (old, _) in
-        //            let app = migration.create(App.className())
-        //            app["id"] = old?["id"]
-        //            app["name"] = old?["name"] ?? ""
-        //            app["developer"] = old?["developer"] ?? ""
-        //            app["urlString"] = old?["urlString"] ?? ""
-        //            app["image"] = old?["image"]
-        //            app["date"] = old?["date"]
-        //        }
+
         migration.enumerateObjects(ofType: "ApplicationData") { (old, _) in
             guard let oldApp = old?["app"] as? MigrationObject else {
                 fatalError("Label not found")
@@ -94,19 +74,14 @@ extension DatabaseManager {
             app["rate"] = old?["rate"]
             app["order"] = old?["order"]
             app["memo"] = old?["memo"]
+
+            // ラベルに App を紐づける
             migration.enumerateObjects(ofType: Label.className()) { (_, newLabel) in
-                guard let labelID = newLabel?["id"] as? String else {
-                    print("むり")
-                    return
-                }
-                guard let oldLabel = old?["label"] as? MigrationObject, let oldLabelID = oldLabel["id"] as? String else {
-                    print("やっぱむり")
-                    return
-                }
-                print("こっこ", labelID, oldLabelID)
-                if let apps = newLabel?["apps"] as? List<MigrationObject> {
-                    newLabel?["apps"] = apps + [app] as Any
-                }
+                guard let labelID = newLabel?["id"] as? String else { return }
+                guard let oldLabel = old?["label"] as? MigrationObject, let oldLabelID = oldLabel["id"] as? String else { return }
+                guard labelID == oldLabelID else { return }
+                guard let apps = newLabel?["apps"] as? List<MigrationObject> else { return }
+                newLabel?["apps"] = apps + [app] as Any
             }
         }
         migration.deleteData(forType: "ApplicationData")
@@ -114,36 +89,6 @@ extension DatabaseManager {
         migration.deleteData(forType: "AppLabelRealmData")
     }
 
-    //    private func migrationTo7(_ migration: Migration) {
-    //        migration.deleteData(forType: "AppRealmData")
-    //    }
-    //
-    //        private func migrationTo6(_ migration: Migration) {
-    //            migration.enumerateObjects(ofType: "ApplicationData") { (old, _) in
-    //                guard let oldApp = old?["app"] as? MigrationObject else {
-    //                    fatalError("Label not found")
-    //                }
-    //                let app = migration.create(App.className())
-    //                app["uid"] = UUID().uuidString
-    //                app["appStoreID"] = oldApp["id"]
-    //                app["name"] = oldApp["name"]
-    //                app["developer"] = oldApp["developer"]
-    //                app["urlString"] = oldApp["urlString"]
-    //                app["image"] = oldApp["image"]
-    //                app["date"] = oldApp["date"]
-    //
-    //                app["rate"] = old?["rate"]
-    //                app["order"] = old?["order"]
-    //                app["memo"] = old?["memo"]
-    //
-    //                guard let oldLabel = old?["label"] as? MigrationObject else {
-    //                    fatalError("Label not found")
-    //                }
-    //                app["label"] = label
-    //                print("きたよ！", old)
-    //            }
-    //            migration.deleteData(forType: "ApplicationData")
-    //        }
 }
 
 extension DatabaseManager {
