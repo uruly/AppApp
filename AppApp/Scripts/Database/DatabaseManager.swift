@@ -94,8 +94,17 @@ extension DatabaseManager {
             app["rate"] = old?["rate"]
             app["order"] = old?["order"]
             app["memo"] = old?["memo"]
-            migration.enumerateObjects(ofType: Label.className()) { (oldLabel, newLabel) in
-                if let apps = newLabel?["label"] as? List<MigrationObject> {
+            migration.enumerateObjects(ofType: Label.className()) { (_, newLabel) in
+                guard let labelID = newLabel?["id"] as? String else {
+                    print("むり")
+                    return
+                }
+                guard let oldLabel = old?["label"] as? MigrationObject, let oldLabelID = oldLabel["id"] as? String else {
+                    print("やっぱむり")
+                    return
+                }
+                print("こっこ", labelID, oldLabelID)
+                if let apps = newLabel?["apps"] as? List<MigrationObject> {
                     newLabel?["apps"] = apps + [app] as Any
                 }
             }
