@@ -38,11 +38,11 @@ class DeleteAppView: UITableView {
     override func reloadData() {
         super.reloadData()
         if detailVC != nil {
-            if detailVC.appData.label?.id == "0" {
-                detailVC.contentView.deleteViewFrame = CGSize(width: detailVC.view.frame.width, height: 100)
-            } else {
-                detailVC.contentView.deleteViewFrame = CGSize(width: detailVC.view.frame.width, height: 150)
-            }
+            //            if detailVC.appData.label.id == "0" {
+            //                detailVC.contentView.deleteViewFrame = CGSize(width: detailVC.view.frame.width, height: 100)
+            //            } else {
+            //                detailVC.contentView.deleteViewFrame = CGSize(width: detailVC.view.frame.width, height: 150)
+            //            }
         }
     }
 
@@ -53,16 +53,16 @@ extension DeleteAppView: UITableViewDelegate {
         let cell = tableView.cellForRow(at: indexPath)
         cell?.isSelected = false
 
-        if detailVC.appData.label?.id == "0" {
-            detailVC.deleteAppAllData()
-        } else {
-            if indexPath.row == 0 {
-                detailVC.deleteAppLabelData()
-            }
-            if indexPath.row == 1 {
-                detailVC.deleteAppAllData()
-            }
-        }
+        //        if detailVC.appData.label.id == "0" {
+        //            detailVC.deleteAppAllData()
+        //        } else {
+        //            if indexPath.row == 0 {
+        //                detailVC.deleteAppLabelData()
+        //            }
+        //            if indexPath.row == 1 {
+        //                detailVC.deleteAppAllData()
+        //            }
+        //        }
     }
 }
 extension DeleteAppView: UITableViewDataSource {
@@ -75,11 +75,11 @@ extension DeleteAppView: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {   //基本情報
-            if detailVC.appData.label?.id == "0" {
-                return 1
-            } else {
-                return 2
-            }
+            //            if detailVC.appData.label?.id == "0" {
+            //                return 1
+            //            } else {
+            //                return 2
+            //            }
         }
         return 0
     }
@@ -87,18 +87,18 @@ extension DeleteAppView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AppInfo", for: indexPath)
         cell.textLabel?.font = UIFont.systemFont(ofSize: 14)
-        if indexPath.section == 0 && detailVC.appData.label?.id != "0" {
-            switch indexPath.row {
-            case 0:
-                cell.textLabel?.text = "Appを「\(labelName)」から削除する"
-            case 1:
-                cell.textLabel?.text = "全てのラベルからAppを削除する"
-            default:
-                cell.textLabel?.text = ""
-            }
-        } else {
-            cell.textLabel?.text = "全てのラベルからAppを削除する"
-        }
+        //        if indexPath.section == 0 && detailVC.appData.label?.id != "0" {
+        //            switch indexPath.row {
+        //            case 0:
+        //                cell.textLabel?.text = "Appを「\(labelName)」から削除する"
+        //            case 1:
+        //                cell.textLabel?.text = "全てのラベルからAppを削除する"
+        //            default:
+        //                cell.textLabel?.text = ""
+        //            }
+        //        } else {
+        //            cell.textLabel?.text = "全てのラベルからAppを削除する"
+        //        }
         return cell
     }
 }
