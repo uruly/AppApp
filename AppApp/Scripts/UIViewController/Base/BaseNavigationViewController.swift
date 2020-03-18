@@ -19,6 +19,8 @@ class BaseNavigationViewController: UINavigationController {
 
         let labels = DatabaseManager.shared.objects(Label.self)
         print("らべる", labels)
+        let ids: [String] = labels.first?.apps.compactMap { $0.uid } ?? []
+        print("ラベルのアプリ", ids)
         let apps = DatabaseManager.shared.objects(App.self)
         print("ｐあぷり", apps)
     }
