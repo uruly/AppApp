@@ -184,10 +184,10 @@ class EditAppLabelViewController: CreateAppLabelViewController {
             let alertController = UIAlertController(title: "この色はすでに使われています", message: "", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "このまま保存する", style: .default) { _ in
                 AppLabel.updateLabelData(name: self.labelName!, color: self.color, id: self.id, order: self.order, explain: self.explain) {
-                    AppData.saveAppData(appList: self.appList, labelID: self.id) {
-                        BasePageViewController.isUnwind = true
-                        self.dismiss(animated: true, completion: nil)
-                    }
+                    //                    AppData.saveAppData(appList: self.appList, labelID: self.id) {
+                    //                        BasePageViewController.isUnwind = true
+                    //                        self.dismiss(animated: true, completion: nil)
+                    //                    }
                 }
             })
             alertController.addAction(UIAlertAction(title: "修正する", style: .cancel))
@@ -195,10 +195,10 @@ class EditAppLabelViewController: CreateAppLabelViewController {
 
         } else {
             AppLabel.updateLabelData(name: labelName!, color: color, id: id, order: order, explain: explain) {
-                AppData.saveAppData(appList: appList, labelID: id) {
-                    BasePageViewController.isUnwind = true
-                    self.dismiss(animated: true, completion: nil)
-                }
+                //                AppData.saveAppData(appList: appList, labelID: id) {
+                //                    BasePageViewController.isUnwind = true
+                //                    self.dismiss(animated: true, completion: nil)
+                //                }
             }
         }
     }

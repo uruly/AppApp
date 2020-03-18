@@ -56,9 +56,9 @@ class AppListViewController: UIViewController {
         guard let label = realm.object(ofType: Label.self, forPrimaryKey: "0") else {
             return
         }
-        let objs = realm.objects(ApplicationData.self).filter("label == %@", label)
+        let objs = realm.objects(App.self).filter("label == %@", label)
         for obj in objs {
-            guard let app = obj.app else { return }
+            //            guard let app = obj.app else { return }
             //            let appData = AppStruct(name: app.name, developer: app.developer, id: app.id, urlString: app.urlString, image: app.image, date: app.date)
             //
             //            //現在のappを表示

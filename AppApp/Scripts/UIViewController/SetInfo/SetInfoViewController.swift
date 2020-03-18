@@ -164,11 +164,11 @@ class SetInfoViewController: UIViewController {
             date = object.date
         }
         let appData = App(value: ["name": name,
-                                           "developer": developer,
-                                           "id": id,
-                                           "urlString": urlString,
-                                           "image": image,
-                                           "date": date])
+                                  "developer": developer,
+                                  "id": id,
+                                  "urlString": urlString,
+                                  "image": image,
+                                  "date": date])
         try! realm.write {
             realm.add(appData, update: .all)
         }
@@ -178,44 +178,45 @@ class SetInfoViewController: UIViewController {
     //Appとラベルを紐づけたのを保存するよ
     func saveLabelAppData(appData: App) {
 
-        for label in tableView.checkArray {
-            //print("label.name:\(label.name)")
-            let colorData = NSKeyedArchiver.archivedData(withRootObject: label.color)
-            let labelRealm = Label(value: ["name": label.name,
-                                                       "color": colorData,
-                                                       "id": label.id,
-                                                       "order": label.order
-            ])
-            let id = UUID().uuidString
-            let order = self.dataCount(label: labelRealm)
-            let realm = try! Realm()
-            let data = ApplicationData(value: ["app": appData,
-                                               "label": labelRealm,
-                                               "id": id,
-                                               "rate": 0,
-                                               "order": order,
-                                               "memo": memo])
-
-            try! realm.write {
-                realm.add(data, update: .all)
-            }
-            print("成功?")
-        }
+        //        for label in tableView.checkArray {
+        //            //print("label.name:\(label.name)")
+        //            let colorData = NSKeyedArchiver.archivedData(withRootObject: label.color)
+        //            let labelRealm = Label(value: ["name": label.name,
+        //                                                       "color": colorData,
+        //                                                       "id": label.id,
+        //                                                       "order": label.order
+        //            ])
+        //            let id = UUID().uuidString
+        //            let order = self.dataCount(label: labelRealm)
+        //            let realm = try! Realm()
+        //            let data = ApplicationData(value: ["app": appData,
+        //                                               "label": labelRealm,
+        //                                               "id": id,
+        //                                               "rate": 0,
+        //                                               "order": order,
+        //                                               "memo": memo])
+        //
+        //            try! realm.write {
+        //                realm.add(data, update: .all)
+        //            }
+        //            print("成功?")
+        //        }
     }
 
     func dataCount(label: Label) -> Int {
-        var config = Realm.Configuration(schemaVersion: .schemaVersion)
-        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
-        config.fileURL = url.appendingPathComponent("db.realm")
-
-        let realm = try! Realm(configuration: config)
-        guard let labelData = realm.object(ofType: Label.self, forPrimaryKey: label.id) else {
-            return 0
-        }
-
-        let objs = realm.objects(ApplicationData.self).filter("label == %@", labelData)
-        //print("objs.count\(objs.count)")
-        return objs.count
+        return 0
+        //        var config = Realm.Configuration(schemaVersion: .schemaVersion)
+        //        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
+        //        config.fileURL = url.appendingPathComponent("db.realm")
+        //
+        //        let realm = try! Realm(configuration: config)
+        //        guard let labelData = realm.object(ofType: Label.self, forPrimaryKey: label.id) else {
+        //            return 0
+        //        }
+        //
+        //        let objs = realm.objects(ApplicationData.self).filter("label == %@", labelData)
+        //        //print("objs.count\(objs.count)")
+        //        return objs.count
     }
 
     func editImageTutorial() {
