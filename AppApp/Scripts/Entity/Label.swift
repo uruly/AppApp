@@ -19,6 +19,11 @@ final class Label: Object {
 
     let apps: List<App> = .init()
 
+    var uiColor: UIColor? {
+        guard let color = color else { return nil }
+        return try? NSKeyedUnarchiver.unarchivedObject(ofClass: UIColor.self, from: color)
+    }
+
     override static func primaryKey() -> String? {
         return "id"
     }
@@ -26,8 +31,9 @@ final class Label: Object {
 
 extension Label {
 
-    static func getAll() -> Results<Label> {
-        return DatabaseManager.shared.objects(Label.self)
+    static func getAll() -> [Label] {
+        let sortProperties = [SortDescriptor(keyPath: "order", ascending: true)]
+        return .init(DatabaseManager.shared.objects(Label.self, filter: nil, sortedBy: sortProperties))
     }
 
     static func add(_ label: Label) throws {
