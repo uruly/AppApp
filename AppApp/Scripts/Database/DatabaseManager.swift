@@ -122,47 +122,31 @@ extension DatabaseManager {
 
     // MARK: - Add
 
-    func add<T: Object>(_ object: T) {
-        do {
-            realm.beginWrite()
-            realm.add(object, update: .all)
-            try realm.commitWrite()
-        } catch let error {
-            print(error.localizedDescription)
-        }
+    func add<T: Object>(_ object: T) throws {
+        realm.beginWrite()
+        realm.add(object, update: .all)
+        try realm.commitWrite()
     }
 
-    func add<T: RealmSwift.Object, S: Sequence>(_ objects: S) where S.Iterator.Element == T {
-        do {
-            realm.beginWrite()
-            for item in objects {
-                realm.add(item, update: .all)
-            }
-            try realm.commitWrite()
-        } catch let error {
-            print(error.localizedDescription)
+    func add<T: RealmSwift.Object, S: Sequence>(_ objects: S) throws where S.Iterator.Element == T {
+        realm.beginWrite()
+        for item in objects {
+            realm.add(item, update: .all)
         }
+        try realm.commitWrite()
     }
 
     // MARK: - Delete
 
-    func delete<T: Object>(_ object: T) {
-        do {
-            try realm.write {
-                realm.delete(object)
-            }
-        } catch {
-            print(error.localizedDescription)
+    func delete<T: Object>(_ object: T) throws {
+        try realm.write {
+            realm.delete(object)
         }
     }
 
-    func delete<T: RealmSwift.Object, S: Sequence>(_ objects: S) where S.Iterator.Element == T {
-        do {
-            try realm.write {
-                realm.delete(objects)
-            }
-        } catch {
-            print(error.localizedDescription)
+    func delete<T: RealmSwift.Object, S: Sequence>(_ objects: S) throws where S.Iterator.Element == T {
+        try realm.write {
+            realm.delete(objects)
         }
     }
 }
