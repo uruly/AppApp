@@ -11,6 +11,7 @@ import UIKit
 class SelectionBar: UICollectionView {
 
     var pageVC: BasePageViewController!
+    var labels: [Label] = []
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -33,6 +34,7 @@ class SelectionBar: UICollectionView {
         let doubleTap = UITapGestureRecognizer(target: self, action: #selector(cellDoubleTapped(sender:)))
         doubleTap.numberOfTapsRequired = 2
         self.addGestureRecognizer(doubleTap)
+        labels = Label.getAll()
     }
 
     convenience init(frame: CGRect, pageVC: BasePageViewController) {
@@ -162,11 +164,7 @@ extension SelectionBar: UICollectionViewDelegate {
 extension SelectionBar: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
-            if pageVC != nil {
-                return pageVC.appLabel.array.count
-            } else {
-                return 0
-            }
+            return labels.count
         }
         //＋ボタン
         if section == 1 {
@@ -178,7 +176,8 @@ extension SelectionBar: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.selectionBarCollectionViewCell, for: indexPath)!
         if indexPath.section == 0 {
-            cell.label.text = pageVC.appLabel.array[indexPath.row].name
+            cell.label.text = labels[indexPath.row].name
+            cell.contentView.backgroundColor = labels[indexPath.row].uiColor
             //            cell.contentView.backgroundColor = pageVC.appLabel.array[indexPath.row].color
         }
         if indexPath.section == 1 {
