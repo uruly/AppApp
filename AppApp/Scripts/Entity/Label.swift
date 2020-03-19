@@ -23,3 +23,18 @@ final class Label: Object {
         return "id"
     }
 }
+
+extension Label {
+
+    static func getAll() -> Results<Label> {
+        return DatabaseManager.shared.objects(Label.self)
+    }
+
+    static func add(_ label: Label) throws {
+        try DatabaseManager.shared.add(label)
+    }
+
+    static func remove(_ label: Label) throws {
+        try DatabaseManager.shared.delete(label)
+    }
+}
