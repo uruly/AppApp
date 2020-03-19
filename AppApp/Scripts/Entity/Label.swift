@@ -19,13 +19,16 @@ final class Label: Object {
 
     let apps: List<App> = .init()
 
+    override static func primaryKey() -> String? {
+        return "id"
+    }
+}
+
+extension Label {
+
     var uiColor: UIColor? {
         guard let color = color else { return nil }
         return try? NSKeyedUnarchiver.unarchivedObject(ofClass: UIColor.self, from: color)
-    }
-
-    override static func primaryKey() -> String? {
-        return "id"
     }
 }
 

@@ -178,7 +178,6 @@ extension SelectionBar: UICollectionViewDataSource {
         if indexPath.section == 0 {
             cell.label.text = labels[indexPath.row].name
             cell.contentView.backgroundColor = labels[indexPath.row].uiColor
-            //            cell.contentView.backgroundColor = pageVC.appLabel.array[indexPath.row].color
         }
         if indexPath.section == 1 {
             cell.label.text = "＋"
