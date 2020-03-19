@@ -12,7 +12,7 @@ import StoreKit
 
 class DetailViewController: UIViewController {
 
-    var appData: ApplicationStruct!
+    var appData: App!
     var canSetObserver = true
     var delegate: MemoDelegate! {
         didSet {
@@ -46,7 +46,7 @@ class DetailViewController: UIViewController {
         let height = self.view.frame.height
 
         //self.view.backgroundColor = UIColor.white
-        self.title = appData.label.name
+        //        self.title = appData.label.name
 
         //let naviBarHeight = self.navigationController?.navigationBar.frame.maxY ?? 57.0
         //let margin:CGFloat = 15.0
@@ -57,18 +57,18 @@ class DetailViewController: UIViewController {
         layout.sectionInset = UIEdgeInsets.init(top: 15, left: 0, bottom: 50, right: 0)
         contentView = DetailContentView(frame: CGRect(x: 0, y: 0, width: width, height: height), collectionViewLayout: layout)
         self.view.addSubview(contentView)
-        contentView.backgroundColor = UIColor.white
-        contentView.appName = appData.app.name
-        //print("appData.app\(appData.app.urlString)")
-        contentView.url = appData.app.urlString
-        contentView.imageData = appData.app.image
-        contentView.detailVC = self
-        contentView.memo = appData.memo
-        contentView.developerName = appData.app.developer
-        contentView.id = appData.app.id
-        contentView.saveDate = convertDate(appData.app.date)
+        //        contentView.backgroundColor = UIColor.white
+        //        contentView.appName = appData.app?.name
+        //        //print("appData.app\(appData.app.urlString)")
+        //        contentView.url = appData.app?.urlString
+        //        contentView.imageData = appData.app?.image
+        //        contentView.detailVC = self
+        //        contentView.memo = appData.memo
+        //        contentView.developerName = appData.app?.developer
+        //        contentView.id = appData.app?.id
+        //        contentView.saveDate = convertDate(appData.app?.date ?? Date())
 
-        self.view.backgroundColor = appData.label.color
+        //        self.view.backgroundColor = appData.label?.color
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -88,7 +88,7 @@ class DetailViewController: UIViewController {
             userDefaults.set(true, forKey: "search")
         }
         self.navigationController?.navigationBar.barTintColor = nil
-        self.navigationController?.navigationBar.backgroundColor = self.appData.label.color.withAlphaComponent(0.8)
+        //        self.navigationController?.navigationBar.backgroundColor = self.appData.label?.color.withAlphaComponent(0.8)
         self.navigationController?.setToolbarHidden(true, animated: true)
     }
 
@@ -137,7 +137,7 @@ class DetailViewController: UIViewController {
         config.fileURL = url.appendingPathComponent("db.realm")
         let realm = try! Realm(configuration: config)
 
-        guard let obj = realm.object(ofType: ApplicationData.self, forPrimaryKey: appData.id) else {
+        guard let obj = realm.object(ofType: App.self, forPrimaryKey: appData.uid) else {
             return
         }
         try! realm.write {
@@ -149,42 +149,43 @@ class DetailViewController: UIViewController {
     @objc func showProductPage() {
         let productVC = SKStoreProductViewController()
         productVC.delegate = self
-
-        guard var id = appData.app.id else { return }
-        if let range = id.range(of: "id") {
-            // 置換する(変数を直接操作する)
-            id.replaceSubrange(range, with: "")
-        }
-        self.present(productVC, animated: true) {
-            productVC.loadProduct(withParameters: [SKStoreProductParameterITunesItemIdentifier: id]) { (_, error) in
-                //                if !bool {
-                //                    productVC.dismiss(animated: true, completion: nil)
-                //                }
-                if error != nil {
-                    productVC.dismiss(animated: true, completion: nil)
-                }
-                //print(error)
-            }
-        }
+        //
+        //        guard var id = appData.app?.id else { return }
+        //        if let range = id.range(of: "id") {
+        //            // 置換する(変数を直接操作する)
+        //            id.replaceSubrange(range, with: "")
+        //        }
+        //        self.present(productVC, animated: true) {
+        //            productVC.loadProduct(withParameters: [SKStoreProductParameterITunesItemIdentifier: id]) { (_, error) in
+        //                //                if !bool {
+        //                //                    productVC.dismiss(animated: true, completion: nil)
+        //                //                }
+        //                if error != nil {
+        //                    productVC.dismiss(animated: true, completion: nil)
+        //                }
+        //                //print(error)
+        //            }
+        //        }
     }
 
     func deleteAppAllData() {
-        let alertController = UIAlertController(title: "Appを全て削除", message: "全てのラベルからAppを削除します", preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "削除する", style: .default) { _ in
-            AppData.deleteAppAllData(app: self.appData.app, {
-                self.navigationController?.popViewController(animated: true)
-            })
-        })
-        alertController.addAction(UIAlertAction(title: "キャンセル", style: .cancel))
-        present(alertController, animated: true, completion: nil)
+        //        let alertController = UIAlertController(title: "Appを全て削除", message: "全てのラベルからAppを削除します", preferredStyle: .alert)
+        //        alertController.addAction(UIAlertAction(title: "削除する", style: .default) { [weak self] _ in
+        //            guard let appData = self?.appData else { return }
+        //            AppData.deleteAppAllData(app: appData, {
+        //                self.navigationController?.popViewController(animated: true)
+        //            })
+        //        })
+        //        alertController.addAction(UIAlertAction(title: "キャンセル", style: .cancel))
+        //        present(alertController, animated: true, completion: nil)
     }
 
     func deleteAppLabelData() {
-        let alertController = UIAlertController(title: "\(appData.label.name!)からAppを削除", message: "", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "からAppを削除", message: "", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "削除する", style: .default) { _ in
-            AppData.deleteAppData(app: self.appData, {
-                self.navigationController?.popViewController(animated: true)
-            })
+            //            AppData.deleteAppData(app: self.appData, {
+            //                self.navigationController?.popViewController(animated: true)
+            //            })
         })
         alertController.addAction(UIAlertAction(title: "キャンセル", style: .cancel))
         present(alertController, animated: true, completion: nil)

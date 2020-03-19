@@ -16,6 +16,13 @@ class BaseNavigationViewController: UINavigationController {
         self.navigationBar.barTintColor = UIColor.white
         let pageView = BasePageViewController()
         self.viewControllers = [pageView]
+
+        let labels = DatabaseManager.shared.objects(Label.self)
+        print("らべる", labels)
+        let ids: [String] = labels.first?.apps.compactMap { $0.uid } ?? []
+        print("ラベルのアプリ", ids)
+        let apps = DatabaseManager.shared.objects(App.self)
+        print("ｐあぷり", apps)
     }
 
     override func viewWillAppear(_ animated: Bool) {

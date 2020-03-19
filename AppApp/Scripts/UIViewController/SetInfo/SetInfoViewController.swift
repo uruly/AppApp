@@ -143,12 +143,12 @@ class SetInfoViewController: UIViewController {
             migrationBlock: { migration, oldSchemaVersion in
                 //print(oldSchemaVersion)
                 if oldSchemaVersion < 4 {
-                    migration.enumerateObjects(ofType: AppRealmData.className()) { _, newObject in
+                    migration.enumerateObjects(ofType: App.className()) { _, newObject in
                         //print("migration")
 
                         newObject!["urlString"] = ""
                     }
-                    migration.enumerateObjects(ofType: AppLabelRealmData.className()) { _, newObject in
+                    migration.enumerateObjects(ofType: Label.className()) { _, newObject in
                         newObject!["explain"] = ""
                     }
                 }
@@ -160,15 +160,15 @@ class SetInfoViewController: UIViewController {
 
         var date = Date()
         let realm = try! Realm()
-        if let object = realm.object(ofType: AppRealmData.self, forPrimaryKey: id) {
+        if let object = realm.object(ofType: App.self, forPrimaryKey: id) {
             date = object.date
         }
-        let appData = AppRealmData(value: ["name": name,
-                                           "developer": developer,
-                                           "id": id,
-                                           "urlString": urlString,
-                                           "image": image,
-                                           "date": date])
+        let appData = App(value: ["name": name,
+                                  "developer": developer,
+                                  "id": id,
+                                  "urlString": urlString,
+                                  "image": image,
+                                  "date": date])
         try! realm.write {
             realm.add(appData, update: .all)
         }
@@ -176,46 +176,47 @@ class SetInfoViewController: UIViewController {
     }
 
     //Appとラベルを紐づけたのを保存するよ
-    func saveLabelAppData(appData: AppRealmData) {
+    func saveLabelAppData(appData: App) {
 
-        for label in tableView.checkArray {
-            //print("label.name:\(label.name)")
-            let colorData = NSKeyedArchiver.archivedData(withRootObject: label.color)
-            let labelRealm = AppLabelRealmData(value: ["name": label.name,
-                                                       "color": colorData,
-                                                       "id": label.id,
-                                                       "order": label.order
-            ])
-            let id = UUID().uuidString
-            let order = self.dataCount(label: labelRealm)
-            let realm = try! Realm()
-            let data = ApplicationData(value: ["app": appData,
-                                               "label": labelRealm,
-                                               "id": id,
-                                               "rate": 0,
-                                               "order": order,
-                                               "memo": memo])
-
-            try! realm.write {
-                realm.add(data, update: .all)
-            }
-            print("成功?")
-        }
+        //        for label in tableView.checkArray {
+        //            //print("label.name:\(label.name)")
+        //            let colorData = NSKeyedArchiver.archivedData(withRootObject: label.color)
+        //            let labelRealm = Label(value: ["name": label.name,
+        //                                                       "color": colorData,
+        //                                                       "id": label.id,
+        //                                                       "order": label.order
+        //            ])
+        //            let id = UUID().uuidString
+        //            let order = self.dataCount(label: labelRealm)
+        //            let realm = try! Realm()
+        //            let data = ApplicationData(value: ["app": appData,
+        //                                               "label": labelRealm,
+        //                                               "id": id,
+        //                                               "rate": 0,
+        //                                               "order": order,
+        //                                               "memo": memo])
+        //
+        //            try! realm.write {
+        //                realm.add(data, update: .all)
+        //            }
+        //            print("成功?")
+        //        }
     }
 
-    func dataCount(label: AppLabelRealmData) -> Int {
-        var config = Realm.Configuration(schemaVersion: .schemaVersion)
-        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
-        config.fileURL = url.appendingPathComponent("db.realm")
-
-        let realm = try! Realm(configuration: config)
-        guard let labelData = realm.object(ofType: AppLabelRealmData.self, forPrimaryKey: label.id) else {
-            return 0
-        }
-
-        let objs = realm.objects(ApplicationData.self).filter("label == %@", labelData)
-        //print("objs.count\(objs.count)")
-        return objs.count
+    func dataCount(label: Label) -> Int {
+        return 0
+        //        var config = Realm.Configuration(schemaVersion: .schemaVersion)
+        //        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
+        //        config.fileURL = url.appendingPathComponent("db.realm")
+        //
+        //        let realm = try! Realm(configuration: config)
+        //        guard let labelData = realm.object(ofType: Label.self, forPrimaryKey: label.id) else {
+        //            return 0
+        //        }
+        //
+        //        let objs = realm.objects(ApplicationData.self).filter("label == %@", labelData)
+        //        //print("objs.count\(objs.count)")
+        //        return objs.count
     }
 
     func editImageTutorial() {

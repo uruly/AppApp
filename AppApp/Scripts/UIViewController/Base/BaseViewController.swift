@@ -15,7 +15,7 @@ import UIKit
 
 class BaseViewController: UIViewController {
 
-    var appLabel: AppLabelData!
+    var appLabel: Label!
     var collectionView: AppCollectionView!
     //var colorListDelegate:ColorListDelegate!
     var backgroundColor: UIColor? {
@@ -60,6 +60,10 @@ class BaseViewController: UIViewController {
         collectionView.appDelegate = self
         self.view.addSubview(collectionView)
 
+        //        let labels = DatabaseManager.shared.objects(Label.self)
+        //        print(labels)
+        //        let apps = DatabaseManager.shared.objects(App.self)
+        //        print("ｐあぷり", apps)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -68,7 +72,7 @@ class BaseViewController: UIViewController {
         //print("BaseViewWillAppear")
         AppLabel.currentID = appLabel.id
         AppLabel.currentOrder = appLabel.order
-        AppLabel.currentColor = appLabel.color
+        //        AppLabel.currentColor = appLabel.color
 
         //bottomMenuリロード
         basePageVC.bottomView.baseView.reloadData()
@@ -93,7 +97,7 @@ class BaseViewController: UIViewController {
             self.basePageVC.bottomView.editToolbar.editDelegate = self
         }
         collectionView.appDelegate = self
-        self.view.backgroundColor = appLabel.color
+        //        self.view.backgroundColor = appLabel.color
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -108,7 +112,7 @@ class BaseViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    func toDetailViewController(appData: ApplicationStruct) {
+    func toDetailViewController(appData: App) {
         let detailVC = DetailViewController()
         detailVC.appData = appData
 

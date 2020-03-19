@@ -2,42 +2,16 @@
 //  AppLabel.swift
 //  AppApp
 //
-//  Created by 久保　玲於奈 on 2017/11/21.
-//  Copyright © 2017年 Reona Kubo. All rights reserved.
+//  Created by Reona Kubo on 2020/03/07.
+//  Copyright © 2020 Reona Kubo. All rights reserved.
 //
 
-import UIKit
 import RealmSwift
-
-//保存するデータ
-class AppLabelRealmData: Object {
-    @objc dynamic var name: String?      //ラベルの名前
-    @objc dynamic var color: Data?    //ラベルの色
-    @objc dynamic var id: String?        //id
-    @objc dynamic var order = 0     //順番
-    @objc dynamic var explain: String?
-
-    override static func primaryKey() -> String? {
-        return "id"
-    }
-}
-
-//
-struct AppLabelData {
-    var name: String!
-    var color: UIColor!
-    var id: String!
-    var order: Int!
-    var explain: String?
-
-    //    var idNumber:Int? {
-    //        return Int(id)
-    //    }
-}
+import UIKit
 
 class AppLabel {
     //全てのラベルデータを入れる
-    var array: [AppLabelData] = [] {
+    var array: [Label] = [] {
         didSet {
             AppLabel.count = array.count
         }
@@ -77,9 +51,9 @@ class AppLabel {
     init() {
         self.migration()
         self.reloadLabelData()
-        if array.count == 0 {
-            saveDefaultData()
-        }
+        //        if array.count == 0 {
+        //            saveDefaultData()
+        //        }
         let userDefaults = UserDefaults.standard
         if let colorData = userDefaults.data(forKey: "backgroundColor") {
             AppLabel.currentBackgroundColor = NSKeyedUnarchiver.unarchiveObject(with: colorData) as? UIColor
@@ -96,12 +70,12 @@ class AppLabel {
             migrationBlock: { migration, oldSchemaVersion in
                 //print(oldSchemaVersion)
                 if oldSchemaVersion < 4 {
-                    migration.enumerateObjects(ofType: AppRealmData.className()) { _, newObject in
+                    migration.enumerateObjects(ofType: App.className()) { _, newObject in
                         //print("migration")
 
                         newObject!["urlString"] = ""
                     }
-                    migration.enumerateObjects(ofType: AppLabelRealmData.className()) { _, newObject in
+                    migration.enumerateObjects(ofType: Label.className()) { _, newObject in
                         newObject!["explain"] = ""
                     }
                 }
@@ -113,52 +87,58 @@ class AppLabel {
     }
 
     func reloadLabelData() {
-        //ラベルを読み込む処理
-        self.array = []
-        var config = Realm.Configuration(schemaVersion: .schemaVersion)
-        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
-        config.fileURL = url.appendingPathComponent("db.realm")
-
-        let realm = try! Realm(configuration: config)
-        let sortProperties = [SortDescriptor(keyPath: "order", ascending: true) ]
-        let objs = realm.objects(AppLabelRealmData.self).sorted(by: sortProperties)
-        for obj in objs {
-            if let name = obj.name, let colorData = obj.color, let id = obj.id {
-                let color = NSKeyedUnarchiver.unarchiveObject(with: colorData) as! UIColor
-                let label = AppLabelData(name: name, color: color, id: id, order: obj.order, explain: obj.explain)
-                self.array.append(label)
-            }
+        DispatchQueue.main.async {
+            let sortProperties = [SortDescriptor(keyPath: "order", ascending: true)]
+            let objects = DatabaseManager.shared.objects(Label.self, filter: nil, sortedBy: sortProperties)
+            //            print(objects)
+            self.array = Array(objects)
         }
+        //        //ラベルを読み込む処理
+        //        self.array = []
+        //        var config = Realm.Configuration(schemaVersion: .schemaVersion)
+        //        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
+        //        config.fileURL = url.appendingPathComponent("db.realm")
+        //
+        //        let realm = try! Realm(configuration: config)
+        //        let sortProperties = [SortDescriptor(keyPath: "order", ascending: true) ]
+        //        let objs = realm.objects(AppLabelRealmData.self).sorted(by: sortProperties)
+        //        for obj in objs {
+        //            if let name = obj.name, let colorData = obj.color, let id = obj.id {
+        //                let color = NSKeyedUnarchiver.unarchiveObject(with: colorData) as! UIColor
+        //                let label = AppLabelData(name: name, color: color, id: id, order: obj.order, explain: obj.explain)
+        //                self.array.append(label)
+        //            }
+        //        }
     }
 
     //一番最初に呼ばれる予定のデータ。Allが入る
     func saveDefaultData() {
-        let name = "ALL"
-        let colorData = NSKeyedArchiver.archivedData(withRootObject: R.color.mainBlueColor())
-        let label = AppLabelRealmData(value: ["name": name,
-                                              "color": colorData,
-                                              "id": "0",
-                                              "order": 0
-        ])
-        var config = Realm.Configuration(schemaVersion: .schemaVersion)
-        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
-        config.fileURL = url.appendingPathComponent("db.realm")
+        //        let name = "ALL"
+        //        let colorData = NSKeyedArchiver.archivedData(withRootObject: R.color.mainBlueColor())
+        //        let label = AppLabelRealmData(value: ["name": name,
+        //                                              "color": colorData,
+        //                                              "id": "0",
+        //                                              "order": 0
+        //        ])
+        //        var config = Realm.Configuration(schemaVersion: .schemaVersion)
+        //        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
+        //        config.fileURL = url.appendingPathComponent("db.realm")
+        //
+        //        let realm = try! Realm(configuration: config)
+        //        try! realm.write {
+        //            realm.add(label, update: .all)
+        //        }
 
-        let realm = try! Realm(configuration: config)
-        try! realm.write {
-            realm.add(label, update: .all)
-        }
-
-        array.append(AppLabelData(name: name, color: R.color.mainBlueColor(), id: "0", order: 0, explain: "全てのApp"))
+        //        array.append(AppLabelData(name: name, color: R.color.mainBlueColor(), id: "0", order: 0, explain: "全てのApp"))
     }
 
     static func saveLabelData(name: String, color: UIColor, id: String, order: Int, explain: String?, _ completion:() -> Void) {
         let colorData = NSKeyedArchiver.archivedData(withRootObject: color)
-        let label = AppLabelRealmData(value: ["name": name,
-                                              "color": colorData,
-                                              "id": id,
-                                              "order": order,
-                                              "explain": explain ?? ""
+        let label = Label(value: ["name": name,
+                                  "color": colorData,
+                                  "id": id,
+                                  "order": order,
+                                  "explain": explain ?? ""
         ])
         var config = Realm.Configuration(schemaVersion: .schemaVersion)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
@@ -168,7 +148,7 @@ class AppLabel {
         if order != AppLabel.count {
             //ほかの並びを更新
             let sortProperties = [SortDescriptor(keyPath: "order", ascending: true) ]
-            let objects = realm.objects(AppLabelRealmData.self).sorted(by: sortProperties)
+            let objects = realm.objects(Label.self).sorted(by: sortProperties)
             try! realm.write {
                 objects.map { object in
                     // 変更した order より大きいものだけ並び替える
@@ -188,11 +168,11 @@ class AppLabel {
 
     static func updateLabelData(name: String, color: UIColor, id: String, order: Int, explain: String?, _ completion:() -> Void) {
         let colorData = NSKeyedArchiver.archivedData(withRootObject: color)
-        let label = AppLabelRealmData(value: ["name": name,
-                                              "color": colorData,
-                                              "id": id,
-                                              "order": order,
-                                              "explain": explain ?? ""
+        let label = Label(value: ["name": name,
+                                  "color": colorData,
+                                  "id": id,
+                                  "order": order,
+                                  "explain": explain ?? ""
         ])
         var config = Realm.Configuration(schemaVersion: .schemaVersion)
         let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
@@ -200,7 +180,7 @@ class AppLabel {
 
         let realm = try! Realm(configuration: config)
 
-        guard let currentObject = realm.object(ofType: AppLabelRealmData.self, forPrimaryKey: id) else {
+        guard let currentObject = realm.object(ofType: Label.self, forPrimaryKey: id) else {
             return
         }
 
@@ -211,7 +191,7 @@ class AppLabel {
         } else {
             //ほかの並びを更新
             let sortProperties = [SortDescriptor(keyPath: "order", ascending: true) ]
-            let objects = realm.objects(AppLabelRealmData.self).sorted(by: sortProperties)
+            let objects = realm.objects(Label.self).sorted(by: sortProperties)
             if order < currentObject.order {
                 try! realm.write {
                     objects.map { object in
@@ -247,7 +227,7 @@ class AppLabel {
         config.fileURL = url.appendingPathComponent("db.realm")
 
         let realm = try! Realm(configuration: config)
-        let objs = realm.objects(AppLabelRealmData.self)
+        let objs = realm.objects(Label.self)
         for obj in objs where obj.name == name {
             return true
         }
@@ -260,7 +240,7 @@ class AppLabel {
         config.fileURL = url.appendingPathComponent("db.realm")
 
         let realm = try! Realm(configuration: config)
-        let objs = realm.objects(AppLabelRealmData.self)
+        let objs = realm.objects(Label.self)
         for obj in objs {
             if let objColor = NSKeyedUnarchiver.unarchiveObject(with: obj.color!) as? UIColor {
                 if objColor.compare(color) {
@@ -284,32 +264,32 @@ class AppLabel {
     }
 
     static func deleteLabelData(labelID: String, _ completion:() -> Void) {
-        var config = Realm.Configuration(schemaVersion: .schemaVersion)
-        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
-        config.fileURL = url.appendingPathComponent("db.realm")
-
-        let realm = try! Realm(configuration: config)
-        guard let labelData = realm.object(ofType: AppLabelRealmData.self, forPrimaryKey: labelID) else {
-            return
-        }
-        let appObjects = realm.objects(ApplicationData.self).filter("label == %@", labelData)
-        for object in appObjects {
-            try! realm.write {
-                realm.delete(object)
-            }
-        }
-        let deleteOrder = labelData.order
-        try! realm.write {
-            realm.delete(labelData)
-        }
-        // orderを直す
-        let labelList = realm.objects(AppLabelRealmData.self)
-        for label in labelList where label.order > deleteOrder {
-            try! realm.write {
-                label.order -= 1
-                realm.add(label, update: .all)
-            }
-        }
+        //        var config = Realm.Configuration(schemaVersion: .schemaVersion)
+        //        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
+        //        config.fileURL = url.appendingPathComponent("db.realm")
+        //
+        //        let realm = try! Realm(configuration: config)
+        //        guard let labelData = realm.object(ofType: Label.self, forPrimaryKey: labelID) else {
+        //            return
+        //        }
+        //        let appObjects = realm.objects(ApplicationData.self).filter("label == %@", labelData)
+        //        for object in appObjects {
+        //            try! realm.write {
+        //                realm.delete(object)
+        //            }
+        //        }
+        //        let deleteOrder = labelData.order
+        //        try! realm.write {
+        //            realm.delete(labelData)
+        //        }
+        //        // orderを直す
+        //        let labelList = realm.objects(Label.self)
+        //        for label in labelList where label.order > deleteOrder {
+        //            try! realm.write {
+        //                label.order -= 1
+        //                realm.add(label, update: .all)
+        //            }
+        //        }
         completion()
     }
 
@@ -322,7 +302,7 @@ class AppLabel {
             config.fileURL = url.appendingPathComponent("db.realm")
 
             let realm = try! Realm(configuration: config)
-            guard let label = realm.object(ofType: AppLabelRealmData.self, forPrimaryKey: app.id) else {
+            guard let label = realm.object(ofType: Label.self, forPrimaryKey: app.id) else {
                 return
             }
             //print(array[i].name)

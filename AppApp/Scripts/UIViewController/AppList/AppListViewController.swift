@@ -11,12 +11,12 @@ import RealmSwift
 
 class AppListViewController: UIViewController {
 
-    var checkArray: [AppStruct] = [] {
+    var checkArray: [App] = [] {
         didSet {
             createAppLabelVC.appList = checkArray
         }
     }
-    var appList: [AppStruct] = []
+    var appList: [App] = []
     var collectionView: UICollectionView!
     //var naviBar:CustomNavigationBar!
     var createAppLabelVC: CreateAppLabelViewController!
@@ -53,27 +53,27 @@ class AppListViewController: UIViewController {
         let realm = try! Realm(configuration: config)
 
         //全てのデータを取り出す
-        guard let label = realm.object(ofType: AppLabelRealmData.self, forPrimaryKey: "0") else {
+        guard let label = realm.object(ofType: Label.self, forPrimaryKey: "0") else {
             return
         }
-        let objs = realm.objects(ApplicationData.self).filter("label == %@", label)
+        let objs = realm.objects(App.self).filter("label == %@", label)
         for obj in objs {
-            guard let app = obj.app else { return }
-            let appData = AppStruct(name: app.name, developer: app.developer, id: app.id, urlString: app.urlString, image: app.image, date: app.date)
-
-            //現在のappを表示
-            if let editVC = createAppLabelVC as? EditAppLabelViewController {
-                let labelID = editVC.id
-                if let currentLabel = realm.object(ofType: AppLabelRealmData.self, forPrimaryKey: labelID) {
-                    let currentLabelApp = realm.objects(ApplicationData.self).filter("label == %@ && app == %@", currentLabel, obj.app!)
-                    if currentLabelApp.count > 0 {
-                        //print("すでにあるよ")
-                        continue
-                    }
-                }
-            }
-
-            appList.append(appData)
+            //            guard let app = obj.app else { return }
+            //            let appData = AppStruct(name: app.name, developer: app.developer, id: app.id, urlString: app.urlString, image: app.image, date: app.date)
+            //
+            //            //現在のappを表示
+            //            if let editVC = createAppLabelVC as? EditAppLabelViewController {
+            //                let labelID = editVC.id
+            //                if let currentLabel = realm.object(ofType: Label.self, forPrimaryKey: labelID) {
+            //                    let currentLabelApp = realm.objects(ApplicationData.self).filter("label == %@ && app == %@", currentLabel, obj.app!)
+            //                    if currentLabelApp.count > 0 {
+            //                        //print("すでにあるよ")
+            //                        continue
+            //                    }
+            //                }
+            //            }
+            //
+            //            appList.append(appData)
         }
     }
 
@@ -103,8 +103,8 @@ extension AppListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell: AppListCollectionViewCell = collectionView.cellForItem(at: indexPath) as! AppListCollectionViewCell
 
-        let id = appList[indexPath.row].id
-        let index = checkArray.findIndex(includeElement: {$0.id == id})
+        let id = appList[indexPath.row].uid
+        let index = checkArray.findIndex(includeElement: {$0.uid == id})
         if index.count > 0 {
             self.checkArray.remove(at: index[0])
             cell.checkImageView.isHidden = true
@@ -125,15 +125,15 @@ extension AppListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: AppListCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "app", for: indexPath) as! AppListCollectionViewCell
 
-        cell.imageView.image = UIImage(data: appList[indexPath.row].image)
+        //        cell.imageView.image = UIImage(data: appList[indexPath.row].image)
 
-        if createAppLabelVC.appList.contains(where: {$0.id == appList[indexPath.row].id}) {
-            cell.checkImageView.isHidden = false
-            cell.imageView.alpha = 0.5
-        } else {
-            cell.checkImageView.isHidden = true
-            cell.imageView.alpha = 1
-        }
+        //        if createAppLabelVC.appList.contains(where: {$0.appStoreID == appList[indexPath.row].id}) {
+        //            cell.checkImageView.isHidden = false
+        //            cell.imageView.alpha = 0.5
+        //        } else {
+        //            cell.checkImageView.isHidden = true
+        //            cell.imageView.alpha = 1
+        //        }
 
         return cell
     }

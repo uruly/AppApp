@@ -13,8 +13,8 @@ import UIKit
 
 class InfoTableView: UITableView {
 
-    var labelArray: [AppLabelData] = []
-    var checkArray: [AppLabelData] = []
+    var labelArray: [Label] = []
+    var checkArray: [Label] = []
     weak var infoDelegate: InfoTableViewDelegate?
     var memoText = "" {
         didSet {

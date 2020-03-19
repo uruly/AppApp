@@ -62,7 +62,7 @@ class CreateAppLabelViewController: UIViewController {
 
     var explain: String?
 
-    var appList: [AppStruct] = []
+    var appList: [App] = []
 
     //var colorPickerView:ColorPicker!
     var colorPickView: ColorBaseView!
@@ -201,10 +201,10 @@ class CreateAppLabelViewController: UIViewController {
         let id = NSUUID().uuidString
         AppLabel.saveLabelData(name: labelName!, color: color, id: id, order: order, explain: explain) {
             //
-            AppData.saveAppData(appList: appList, labelID: id) {
-                BasePageViewController.isUnwind = true
-                self.dismiss(animated: true, completion: nil)
-            }
+            //            AppData.saveAppData(appList: appList, labelID: id) {
+            //                BasePageViewController.isUnwind = true
+            //                self.dismiss(animated: true, completion: nil)
+            //            }
         }
 
     }
