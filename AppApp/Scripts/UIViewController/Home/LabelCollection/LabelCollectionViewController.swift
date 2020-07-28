@@ -221,26 +221,28 @@ extension LabelCollectionViewController {
 extension LabelCollectionViewController: LabelCollectionViewCellDelegate {
 
     func toSettingLabelViewController(label: Label?, isNew: Bool) {
-        //        let viewController = LabelSettingViewController(label, type: isNew ? .new : .edit) { [weak self] isDelete in
-        //            guard let wself = self else { return }
-        //            if isDelete {
-        //                wself.labels = Label.getAll()
-        //                wself.collectionView.reloadData()
-        //                wself.labelDelegate?.update(wself.labels, index: 0)
-        //                return
-        //            }
-        //            let oldLabels = wself.labels
-        //            wself.labels = Label.getAll()
-        //            wself.collectionView.reloadData(with: BatchUpdates.setup(oldItems: oldLabels, newItems: wself.labels), target: 0)
-        //            // 最新のものにフォーカスを当てる
-        //            if isNew {
-        //                wself.labelDelegate?.update(wself.labels, index: wself.labels.count - 1)
-        //            }
-        //        }
-        //        let type = isNew ? "new" : "edit"
-        //        let navigationController = UINavigationController(rootViewController: viewController)
-        //        navigationController.modalPresentationStyle = .fullScreen
-        //        present(navigationController, animated: true, completion: nil)
+        // TODO: Create と Edit を同じ ViewController にしてしまいたい
+        if isNew {
+            let viewController = CreateAppLabelViewController()
+            let navigationController = UINavigationController(rootViewController: viewController)
+            navigationController.modalPresentationStyle = .fullScreen
+            present(navigationController, animated: true, completion: nil)
+        } else {
+            guard let label = label else {
+                errorFeedbackGenerator.notificationOccurred(.error)
+                return
+            }
+            let viewController = EditAppLabelViewController()
+            //今の値を入れておく
+            viewController.currentName = label.name
+            viewController.order = label.order
+            viewController.id = label.id
+            viewController.explain = label.explain
+
+            let navigationController = UINavigationController(rootViewController: viewController)
+            navigationController.modalPresentationStyle = .fullScreen
+            present(navigationController, animated: true, completion: nil)
+        }
     }
 
 }
