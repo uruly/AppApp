@@ -49,6 +49,7 @@ final class HomeViewController: UIViewController {
         UIButton.appearance().isExclusiveTouch = true
         labels = Label.getAll()
         setupChildren()
+        setupNavigationBar()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -94,6 +95,24 @@ final class HomeViewController: UIViewController {
             $0.top.equalToSuperview().offset(75 + safeAreaTop)
             $0.left.equalToSuperview()
         }
+    }
+
+    private func setupNavigationBar() {
+        let editBtn = UIBarButtonItem(title: "選択", style: .plain, target: self, action: #selector(onTapEditButton(sender:)))
+        let tutorial = UIBarButtonItem(image: R.image.tutorial_mark()!.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(onTapTutorialButton(sender:)))
+        navigationItem.leftBarButtonItem = tutorial
+        navigationItem.rightBarButtonItem = editBtn
+        // TODO: - ロゴを載せる
+    }
+
+    // MARK: - IBAction
+
+    @objc func onTapEditButton(sender: UIButton) {
+
+    }
+
+    @objc func onTapTutorialButton(sender: UIButton) {
+
     }
 }
 
