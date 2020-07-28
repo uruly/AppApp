@@ -138,17 +138,17 @@ extension LabelCollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath,
                                  to destinationIndexPath: IndexPath) {
-        if longPressGestureRecognizer.state == .ended {
-            return
-        }
-        labels.swapAt(sourceIndexPath.item, destinationIndexPath.item)
-        do {
-            try Label.update(order: sourceIndexPath.item, label: labels[sourceIndexPath.item])
-            try Label.update(order: destinationIndexPath.item, label: labels[destinationIndexPath.item])
-        } catch {
-            print("update失敗", error)
-        }
-        origLabels = labels
+//        if longPressGestureRecognizer.state == .ended {
+//            return
+//        }
+//        labels.swapAt(sourceIndexPath.item, destinationIndexPath.item)
+//        do {
+//            try Label.update(order: sourceIndexPath.item, label: labels[sourceIndexPath.item])
+//            try Label.update(order: destinationIndexPath.item, label: labels[destinationIndexPath.item])
+//        } catch {
+//            print("update失敗", error)
+//        }
+//        origLabels = labels
     }
 
     override func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
@@ -198,7 +198,6 @@ extension LabelCollectionViewController {
             collectionView.updateInteractiveMovementTargetPosition(position)
         case .ended:
             isMovingEnabled = true
-            Tutorial.done(tutorial: "label_order")
             guard let nextIndexPath = collectionView.indexPathForItem(at: gesture.location(in: gesture.view)), nextIndexPath.section == 0 && nextIndexPath.item != 0 else {
                 cancelMoved()
                 break
@@ -222,45 +221,26 @@ extension LabelCollectionViewController {
 extension LabelCollectionViewController: LabelCollectionViewCellDelegate {
 
     func toSettingLabelViewController(label: Label?, isNew: Bool) {
-        let viewController = LabelSettingViewController(label, type: isNew ? .new : .edit) { [weak self] isDelete in
-            guard let wself = self else { return }
-            if isDelete {
-                wself.labels = Label.getAll()
-                wself.collectionView.reloadData()
-                wself.labelDelegate?.update(wself.labels, index: 0)
-                return
-            }
-            let oldLabels = wself.labels
-            wself.labels = Label.getAll()
-            wself.collectionView.reloadData(with: BatchUpdates.setup(oldItems: oldLabels, newItems: wself.labels), target: 0)
-            // 最新のものにフォーカスを当てる
-            if isNew {
-                wself.labelDelegate?.update(wself.labels, index: wself.labels.count - 1)
-            }
-        }
-        let type = isNew ? "new" : "edit"
-        Analytics.logEvent("tap_label_\(type)", parameters: nil)
-        let navigationController = UINavigationController(rootViewController: viewController)
-        navigationController.modalPresentationStyle = .fullScreen
-        present(navigationController, animated: true, completion: nil)
+//        let viewController = LabelSettingViewController(label, type: isNew ? .new : .edit) { [weak self] isDelete in
+//            guard let wself = self else { return }
+//            if isDelete {
+//                wself.labels = Label.getAll()
+//                wself.collectionView.reloadData()
+//                wself.labelDelegate?.update(wself.labels, index: 0)
+//                return
+//            }
+//            let oldLabels = wself.labels
+//            wself.labels = Label.getAll()
+//            wself.collectionView.reloadData(with: BatchUpdates.setup(oldItems: oldLabels, newItems: wself.labels), target: 0)
+//            // 最新のものにフォーカスを当てる
+//            if isNew {
+//                wself.labelDelegate?.update(wself.labels, index: wself.labels.count - 1)
+//            }
+//        }
+//        let type = isNew ? "new" : "edit"
+//        let navigationController = UINavigationController(rootViewController: viewController)
+//        navigationController.modalPresentationStyle = .fullScreen
+//        present(navigationController, animated: true, completion: nil)
     }
 
-}
-
-// MARK: - Reward Ad
-
-extension LabelCollectionViewController {
-
-    func showRewardAdIfNeeded() -> Bool {
-        // 表示する場合は true を返す
-        let labelCount = labels.filter { (label) -> Bool in
-            return !(label.uid == .allLabel || label.uid == .tutorialLabel)
-        }.count
-        guard labelCount > 1 else { return false }
-        RewardAdViewController.showIfNeeded(self, completion: nil) { [weak self] isCreate in
-            guard isCreate else { return }
-            self?.toSettingLabelViewController(label: nil, isNew: true)
-        }
-        return true
-    }
 }
