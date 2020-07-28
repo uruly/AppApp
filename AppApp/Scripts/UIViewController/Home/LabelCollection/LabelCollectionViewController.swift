@@ -51,9 +51,9 @@ final class LabelCollectionViewController: UICollectionViewController {
     init(labels: [Label]) {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        layout.minimumInteritemSpacing = 0
+        layout.sectionInset = .init(top: 0, left: 0, bottom: 0, right: 0)
         layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
         self.labels = labels
         super.init(collectionViewLayout: layout)
     }

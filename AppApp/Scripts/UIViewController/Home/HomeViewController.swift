@@ -49,8 +49,6 @@ final class HomeViewController: UIViewController {
         UIButton.appearance().isExclusiveTouch = true
         labels = Label.getAll()
         setupChildren()
-
-        print("ここ")
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -86,14 +84,14 @@ final class HomeViewController: UIViewController {
         let safeAreaTop = view.safeAreaInsets.top
         labelCollectionViewController?.view.snp.makeConstraints {
             $0.width.equalToSuperview()
-            $0.height.equalTo(45)
+            $0.height.equalTo(35)
             $0.top.equalToSuperview().offset(40 + safeAreaTop)
             $0.left.equalToSuperview()
         }
         pageViewController?.view.snp.makeConstraints {
             $0.width.equalToSuperview()
-            $0.height.equalToSuperview().offset(-(85 + safeAreaTop))
-            $0.top.equalToSuperview().offset(85 + safeAreaTop)
+            $0.height.equalToSuperview().offset(-(75 + safeAreaTop))
+            $0.top.equalToSuperview().offset(75 + safeAreaTop)
             $0.left.equalToSuperview()
         }
     }

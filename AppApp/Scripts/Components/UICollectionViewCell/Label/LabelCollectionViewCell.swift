@@ -44,9 +44,15 @@ final class LabelCollectionViewCell: UICollectionViewCell {
             $0.edges.equalToSuperview()
         }
 
-        contentView.layer.cornerRadius = 8
+        contentView.layer.cornerRadius = 10
         contentView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         contentView.addGestureRecognizer(doubleTapGestureRecognizer)
+
+        layer.masksToBounds = false
+        layer.shadowColor = UIColor.darkGray.cgColor
+        layer.shadowOffset = CGSize(width: 0, height: -1)
+        layer.shadowRadius = 2
+        layer.shadowOpacity = 0.2
     }
 
     override func prepareForReuse() {
