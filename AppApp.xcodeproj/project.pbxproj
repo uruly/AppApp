@@ -629,7 +629,7 @@
 				66A30A1A240806450016F34D /* Welcome */,
 				66A30A192408063A0016F34D /* HowTo */,
 				6660819D24064E7900001A9C /* AppInfoList */,
-				6660819C24064E6F00001A9C /* App */,
+				6660819C24064E6F00001A9C /* AppList */,
 				6660819B24064E3B00001A9C /* RGBSlider */,
 				6660819924064DFD00001A9C /* ColorSet */,
 				6660819824064DCF00001A9C /* ColorBase */,
@@ -874,13 +874,13 @@
 			path = RGBSlider;
 			sourceTree = "<group>";
 		};
-		6660819C24064E6F00001A9C /* App */ = {
+		6660819C24064E6F00001A9C /* AppList */ = {
 			isa = PBXGroup;
 			children = (
 				667ECE6F1FC4206F009233DE /* AppListCollectionViewCell.swift */,
 				667ECE701FC4206F009233DE /* AppListCollectionViewCell.xib */,
 			);
-			path = App;
+			path = AppList;
 			sourceTree = "<group>";
 		};
 		6660819D24064E7900001A9C /* AppInfoList */ = {

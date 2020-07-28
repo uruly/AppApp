@@ -57,7 +57,7 @@ final class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
         readLabel {
             labelCollectionViewController?.collectionView.reloadData()
-            // appsもreload
+            appsViewController?.collectionView.reloadData()
         }
     }
 
@@ -167,6 +167,7 @@ extension HomeViewController {
             fatalError("Color Archived Error!!")
         }
         let allLabel = Label(id: UUID.init().uuidString, name: "ALL", color: colorData, order: 0, explain: "すべてのApp")
+        labels = [allLabel]
         do {
             try Label.add(allLabel)
         } catch {

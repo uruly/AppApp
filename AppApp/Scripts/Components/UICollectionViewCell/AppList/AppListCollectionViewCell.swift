@@ -8,25 +8,30 @@
 
 import UIKit
 
-class AppListCollectionViewCell: UICollectionViewCell {
+final class AppListCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var imageView: UIImageView!
-
     @IBOutlet weak var checkImageView: UIImageView!
 
     var imageMaskView: UIView!
-    //var checkView:UIImageView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
 
         checkImageView.isHidden = true
 
-        //影をつけるかどうか
-        self.layer.masksToBounds = false
-        self.layer.shadowColor = UIColor.darkGray.cgColor
-        self.layer.shadowOffset = CGSize(width: 2, height: 2)
-        self.layer.shadowRadius = 4
-        self.layer.shadowOpacity = 0.5
+        layer.masksToBounds = false
+        layer.shadowColor = UIColor.darkGray.cgColor
+        layer.shadowOffset = CGSize(width: 2, height: 2)
+        layer.shadowRadius = 4
+        layer.shadowOpacity = 0.5
+    }
+
+    func configure(app: App) {
+        if let data = app.image {
+            imageView.image = UIImage(data: data)
+        }
+
     }
 
 }

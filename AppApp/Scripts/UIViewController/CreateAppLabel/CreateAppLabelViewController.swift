@@ -38,7 +38,7 @@ class CreateAppLabelViewController: UIViewController {
             }
         }
     }
-    var order: Int = AppLabel.count ?? 1 {
+    var order: Int = Label.count {
         didSet {
             if tableView == nil {
                 return
@@ -165,6 +165,7 @@ class CreateAppLabelViewController: UIViewController {
             let alertController = UIAlertController(title: "この色はすでに使われています", message: "", preferredStyle: .alert)
             let otherAction = UIAlertAction(title: "このまま保存する", style: .default) { _ in
                 self.saveLabelData()
+                self.dismiss(animated: true, completion: nil)
             }
             let cancelAction = UIAlertAction(title: "修正する", style: .cancel)
 
@@ -174,6 +175,7 @@ class CreateAppLabelViewController: UIViewController {
             self.present(alertController, animated: true, completion: nil)
         } else {
             self.saveLabelData()
+            dismiss(animated: true, completion: nil)
         }
     }
 
@@ -196,17 +198,18 @@ class CreateAppLabelViewController: UIViewController {
             self.closePicker()
         }
     }
+
     func saveLabelData() {
         //セーブをする
+        guard let labelName = labelName,
+            let colorData = try? NSKeyedArchiver.archivedData(withRootObject: color, requiringSecureCoding: false) else { return }
         let id = NSUUID().uuidString
-        AppLabel.saveLabelData(name: labelName!, color: color, id: id, order: order, explain: explain) {
-            //
-            //            AppData.saveAppData(appList: appList, labelID: id) {
-            //                BasePageViewController.isUnwind = true
-            //                self.dismiss(animated: true, completion: nil)
-            //            }
+        let label = Label(id: id, name: labelName, color: colorData, order: order, explain: explain ?? "")
+        do {
+            try Label.add(label)
+        } catch {
+            print("Label Save Error")
         }
-
     }
 
     func showColorPicker() {

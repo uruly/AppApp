@@ -18,6 +18,7 @@ final class Label: Object {
     @objc dynamic var explain: String = ""
 
     let apps: List<App> = .init()
+    static let count = Label.getAll().count
 
     override static func primaryKey() -> String? {
         return "id"
