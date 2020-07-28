@@ -88,13 +88,13 @@ final class HomeViewController: UIViewController {
         labelCollectionViewController?.view.snp.makeConstraints {
             $0.width.equalToSuperview()
             $0.height.equalTo(35)
-            $0.top.equalToSuperview().offset(40 + safeAreaTop)
+            $0.top.equalToSuperview().offset(10 + safeAreaTop)
             $0.left.equalToSuperview()
         }
         pageViewController?.view.snp.makeConstraints {
             $0.width.equalToSuperview()
-            $0.height.equalToSuperview().offset(-(75 + safeAreaTop))
-            $0.top.equalToSuperview().offset(75 + safeAreaTop)
+            $0.height.equalToSuperview().offset(-(45 + safeAreaTop))
+            $0.top.equalToSuperview().offset(45 + safeAreaTop)
             $0.left.equalToSuperview()
         }
     }
