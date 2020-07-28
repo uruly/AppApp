@@ -9,10 +9,6 @@
 
 import UIKit
 
-//@objc protocol ColorListDelegate {
-//    func labelChanged(color:UIColor)
-//}
-
 class BaseViewController: UIViewController {
 
     var appLabel: Label!

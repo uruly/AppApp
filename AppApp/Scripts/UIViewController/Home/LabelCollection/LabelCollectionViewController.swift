@@ -131,24 +131,24 @@ extension LabelCollectionViewController {
             currentIndex = nextLabel.order
         case .add:
             // ラベルの設定画面に移動
-            guard !showRewardAdIfNeeded() else { return }
+            //            guard !showRewardAdIfNeeded() else { return }
             toSettingLabelViewController(label: nil, isNew: true)
         }
     }
 
     override func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath,
                                  to destinationIndexPath: IndexPath) {
-//        if longPressGestureRecognizer.state == .ended {
-//            return
-//        }
-//        labels.swapAt(sourceIndexPath.item, destinationIndexPath.item)
-//        do {
-//            try Label.update(order: sourceIndexPath.item, label: labels[sourceIndexPath.item])
-//            try Label.update(order: destinationIndexPath.item, label: labels[destinationIndexPath.item])
-//        } catch {
-//            print("update失敗", error)
-//        }
-//        origLabels = labels
+        //        if longPressGestureRecognizer.state == .ended {
+        //            return
+        //        }
+        //        labels.swapAt(sourceIndexPath.item, destinationIndexPath.item)
+        //        do {
+        //            try Label.update(order: sourceIndexPath.item, label: labels[sourceIndexPath.item])
+        //            try Label.update(order: destinationIndexPath.item, label: labels[destinationIndexPath.item])
+        //        } catch {
+        //            print("update失敗", error)
+        //        }
+        //        origLabels = labels
     }
 
     override func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
@@ -221,26 +221,26 @@ extension LabelCollectionViewController {
 extension LabelCollectionViewController: LabelCollectionViewCellDelegate {
 
     func toSettingLabelViewController(label: Label?, isNew: Bool) {
-//        let viewController = LabelSettingViewController(label, type: isNew ? .new : .edit) { [weak self] isDelete in
-//            guard let wself = self else { return }
-//            if isDelete {
-//                wself.labels = Label.getAll()
-//                wself.collectionView.reloadData()
-//                wself.labelDelegate?.update(wself.labels, index: 0)
-//                return
-//            }
-//            let oldLabels = wself.labels
-//            wself.labels = Label.getAll()
-//            wself.collectionView.reloadData(with: BatchUpdates.setup(oldItems: oldLabels, newItems: wself.labels), target: 0)
-//            // 最新のものにフォーカスを当てる
-//            if isNew {
-//                wself.labelDelegate?.update(wself.labels, index: wself.labels.count - 1)
-//            }
-//        }
-//        let type = isNew ? "new" : "edit"
-//        let navigationController = UINavigationController(rootViewController: viewController)
-//        navigationController.modalPresentationStyle = .fullScreen
-//        present(navigationController, animated: true, completion: nil)
+        //        let viewController = LabelSettingViewController(label, type: isNew ? .new : .edit) { [weak self] isDelete in
+        //            guard let wself = self else { return }
+        //            if isDelete {
+        //                wself.labels = Label.getAll()
+        //                wself.collectionView.reloadData()
+        //                wself.labelDelegate?.update(wself.labels, index: 0)
+        //                return
+        //            }
+        //            let oldLabels = wself.labels
+        //            wself.labels = Label.getAll()
+        //            wself.collectionView.reloadData(with: BatchUpdates.setup(oldItems: oldLabels, newItems: wself.labels), target: 0)
+        //            // 最新のものにフォーカスを当てる
+        //            if isNew {
+        //                wself.labelDelegate?.update(wself.labels, index: wself.labels.count - 1)
+        //            }
+        //        }
+        //        let type = isNew ? "new" : "edit"
+        //        let navigationController = UINavigationController(rootViewController: viewController)
+        //        navigationController.modalPresentationStyle = .fullScreen
+        //        present(navigationController, animated: true, completion: nil)
     }
 
 }

@@ -41,8 +41,6 @@ final class PageViewController: UIPageViewController {
     private func setup() {
         delegate = self
         dataSource = self
-        let scrollView = self.view.subviews.compactMap { $0 as? UIScrollView }.first
-        scrollView?.delegate = self
     }
 
 }
@@ -57,10 +55,9 @@ extension PageViewController: UIPageViewControllerDelegate {
 
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         isDuringAnimation = false
-        guard let topViewController: MemoTableViewController = pageViewController.viewControllers?.first as? MemoTableViewController, completed else { return }
+        guard let topViewController: AppsViewController = pageViewController.viewControllers?.first as? AppsViewController, completed else { return }
         currentPage = topViewController.label.order
         pageDelegate?.setCurrentPage(topViewController.label.order)
-        topViewController.reloadTutorialIfNeeded()
     }
 }
 
@@ -70,22 +67,11 @@ extension PageViewController: UIPageViewControllerDataSource {
 
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let pageDelegate = pageDelegate, let prevLabel = pageDelegate.prevLabel else { return nil }
-        return MemoTableViewController(label: prevLabel)
+        return AppsViewController(label: prevLabel)
     }
 
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard let pageDelegate = pageDelegate, let nextLabel = pageDelegate.nextLabel else { return nil }
-        return MemoTableViewController(label: nextLabel)
-    }
-
-}
-
-// MARK: - UIScrollViewDelegate
-
-extension PageViewController: UIScrollViewDelegate {
-
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        guard let topViewController: MemoTableViewController = viewControllers?.first as? MemoTableViewController else { return }
-        topViewController.delegate?.closeKeyboard()
+        return AppsViewController(label: nextLabel)
     }
 }

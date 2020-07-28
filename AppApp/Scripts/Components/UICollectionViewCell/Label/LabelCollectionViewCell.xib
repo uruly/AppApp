@@ -28,7 +28,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="r8N-TJ-XUE">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="label_add_button" translatesAutoresizingMaskIntoConstraints="NO" id="r8N-TJ-XUE">
                                 <rect key="frame" x="58.5" y="14" width="17" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="5qp-dy-1gO"/>
@@ -75,4 +75,7 @@
             <point key="canvasLocation" x="108.69565217391305" y="33.147321428571431"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="label_add_button" width="17" height="17"/>
+    </resources>
 </document>
