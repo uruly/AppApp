@@ -173,8 +173,8 @@ extension LabelCollectionViewController: UICollectionViewDelegateFlowLayout {
         if indexPath.section == 1 { return CGSize(width: 50, height: collectionView.bounds.height) }
         let cellHeight = collectionView.bounds.height
         let text = labels[indexPath.item].name
-        let width = text.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 19, weight: .bold)]).width
-        let cellSize = CGSize(width: width + 32, height: cellHeight)
+        let width = text.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15, weight: .bold)]).width
+        let cellSize = CGSize(width: width + 48, height: cellHeight)
         return cellSize
     }
 
