@@ -12,6 +12,10 @@
 		6606168F1FCD35AE00667020 /* DetailCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6606168D1FCD35AE00667020 /* DetailCollectionViewCell.xib */; };
 		660B066C24D04AF2003100EE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B066A24D04AF2003100EE /* HomeViewController.swift */; };
 		660B066D24D04AF2003100EE /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 660B066B24D04AF2003100EE /* HomeViewController.xib */; };
+		660B067324D04F66003100EE /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B067124D04F66003100EE /* PageViewController.swift */; };
+		660B067424D04F66003100EE /* PageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 660B067224D04F66003100EE /* PageViewController.xib */; };
+		660B067724D04FA3003100EE /* LabelCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B067524D04FA3003100EE /* LabelCollectionViewController.swift */; };
+		660B067824D04FA3003100EE /* LabelCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 660B067624D04FA3003100EE /* LabelCollectionViewController.xib */; };
 		660B576C1FCFC5F500DBC823 /* RGBSliderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 660B57621FCFC5F200DBC823 /* RGBSliderCollectionViewCell.xib */; };
 		660B576D1FCFC5F500DBC823 /* ColorPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B57631FCFC5F300DBC823 /* ColorPageView.swift */; };
 		660B576E1FCFC5F500DBC823 /* RGBSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B57641FCFC5F300DBC823 /* RGBSliderView.swift */; };
@@ -180,6 +184,10 @@
 		6606168D1FCD35AE00667020 /* DetailCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailCollectionViewCell.xib; sourceTree = "<group>"; };
 		660B066A24D04AF2003100EE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		660B066B24D04AF2003100EE /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		660B067124D04F66003100EE /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		660B067224D04F66003100EE /* PageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PageViewController.xib; sourceTree = "<group>"; };
+		660B067524D04FA3003100EE /* LabelCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCollectionViewController.swift; sourceTree = "<group>"; };
+		660B067624D04FA3003100EE /* LabelCollectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelCollectionViewController.xib; sourceTree = "<group>"; };
 		660B57621FCFC5F200DBC823 /* RGBSliderCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RGBSliderCollectionViewCell.xib; sourceTree = "<group>"; };
 		660B57631FCFC5F300DBC823 /* ColorPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPageView.swift; sourceTree = "<group>"; };
 		660B57641FCFC5F300DBC823 /* RGBSliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RGBSliderView.swift; sourceTree = "<group>"; };
@@ -360,8 +368,36 @@
 			children = (
 				660B066A24D04AF2003100EE /* HomeViewController.swift */,
 				660B066B24D04AF2003100EE /* HomeViewController.xib */,
+				660B067024D04F34003100EE /* Page */,
+				660B066F24D04F1B003100EE /* LabelCollection */,
+				660B066E24D04EC2003100EE /* AppList */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		660B066E24D04EC2003100EE /* AppList */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AppList;
+			sourceTree = "<group>";
+		};
+		660B066F24D04F1B003100EE /* LabelCollection */ = {
+			isa = PBXGroup;
+			children = (
+				660B067524D04FA3003100EE /* LabelCollectionViewController.swift */,
+				660B067624D04FA3003100EE /* LabelCollectionViewController.xib */,
+			);
+			path = LabelCollection;
+			sourceTree = "<group>";
+		};
+		660B067024D04F34003100EE /* Page */ = {
+			isa = PBXGroup;
+			children = (
+				660B067124D04F66003100EE /* PageViewController.swift */,
+				660B067224D04F66003100EE /* PageViewController.xib */,
+			);
+			path = Page;
 			sourceTree = "<group>";
 		};
 		660B57CC1FD1501500DBC823 /* Balloon */ = {
@@ -1324,6 +1360,7 @@
 				6662E1261FFFDEB900FB30C7 /* BackgroundColorCollectionViewCell.xib in Resources */,
 				6662E14520024B1700FB30C7 /* backgroundImage.json in Resources */,
 				6606168F1FCD35AE00667020 /* DetailCollectionViewCell.xib in Resources */,
+				660B067824D04FA3003100EE /* LabelCollectionViewController.xib in Resources */,
 				6662E12E1FFFE9EE00FB30C7 /* BackgroundImageCollectionViewCell.xib in Resources */,
 				66681CE61FCC17E2009A0F55 /* DetailAppInfoCollectionViewCell.xib in Resources */,
 				660B57771FCFDB1000DBC823 /* colorData.json in Resources */,
@@ -1336,6 +1373,7 @@
 				6676ED381FCD582200815BF8 /* DetailMemoCollectionViewCell.xib in Resources */,
 				660B57741FCFC5F500DBC823 /* ColorSetCollectionViewCell.xib in Resources */,
 				6662E13D20007E7300FB30C7 /* InfoTableViewCell.xib in Resources */,
+				660B067424D04F66003100EE /* PageViewController.xib in Resources */,
 				666E06B51FCB9A880043DCFF /* MemoTableViewCell.xib in Resources */,
 				66A30A15240804B30016F34D /* BackgroundPlusCollectionViewCell.xib in Resources */,
 				660B57E01FD1774D00DBC823 /* HelpLinkTableViewCell.xib in Resources */,
@@ -1460,6 +1498,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6676ED3A1FCD584200815BF8 /* LabelAppInfoView.swift in Sources */,
+				660B067724D04FA3003100EE /* LabelCollectionViewController.swift in Sources */,
 				666E06B71FCBAC290043DCFF /* WebViewController.swift in Sources */,
 				6662E12D1FFFE9EE00FB30C7 /* BackgroundImageCollectionViewCell.swift in Sources */,
 				667ECE661FC3ADCA009233DE /* CustomNavigationBar.swift in Sources */,
@@ -1487,6 +1526,7 @@
 				66E54DCF2413A5E000069082 /* App.swift in Sources */,
 				6662E11E1FFE98CA00FB30C7 /* BottomView.swift in Sources */,
 				66498E341FC7BA3600239B47 /* UIApplication+Stack.swift in Sources */,
+				660B067324D04F66003100EE /* PageViewController.swift in Sources */,
 				66681CE11FCC1734009A0F55 /* DetailCommonCollectionViewCell.swift in Sources */,
 				6662E13620000FFD00FB30C7 /* EditImageView.swift in Sources */,
 				66498E3B1FC82F9000239B47 /* EditToolbar.swift in Sources */,
