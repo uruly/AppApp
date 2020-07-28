@@ -22,6 +22,16 @@ final class Label: Object {
     override static func primaryKey() -> String? {
         return "id"
     }
+
+    required convenience init(id: String, name: String, color: Data?, order: Int, explain: String) {
+        self.init()
+        self.id = id
+        self.name = name
+        self.color = color
+        self.order = order
+        self.explain = explain
+    }
+
 }
 
 extension Label {

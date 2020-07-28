@@ -47,16 +47,18 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
         // 同時タップの無効
         UIButton.appearance().isExclusiveTouch = true
-        labels = Label.getAll()
-        setupChildren()
+        readLabel {
+            setupChildren()
+        }
         setupNavigationBar()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        labels = Label.getAll()
-        labelCollectionViewController?.collectionView.reloadData()
-        // appsもreload
+        readLabel {
+            labelCollectionViewController?.collectionView.reloadData()
+            // appsもreload
+        }
     }
 
     override func viewWillLayoutSubviews() {
@@ -67,13 +69,13 @@ final class HomeViewController: UIViewController {
     // MARK: - Private method
 
     private func setupChildren() {
+        guard !labels.isEmpty else { return }
         let labelViewController = LabelCollectionViewController(labels: labels)
         addChild(labelViewController)
         view.addSubview(labelViewController.view)
         labelViewController.didMove(toParent: self)
         labelViewController.labelDelegate = self
 
-        guard !labels.isEmpty else { return }
         let pageViewController = PageViewController(first: AppsViewController(label: labels.first!))
         addChild(pageViewController)
         view.addSubview(pageViewController.view)
@@ -149,5 +151,26 @@ extension HomeViewController: LabelCollectionViewControllerDelegate {
     func update(_ labels: [Label], index: Int) {
         self.labels = labels
         change(labels[index])
+    }
+}
+
+// MARK: - Realm
+
+extension HomeViewController {
+
+    private func readLabel(_ completion: (() -> Void)) {
+        labels = Label.getAll()
+        defer { completion() }
+        guard labels.isEmpty else { return }
+        // ALL labelを追加する
+        guard let colorData = try? NSKeyedArchiver.archivedData(withRootObject: R.color.mainBlueColor()!, requiringSecureCoding: false) else {
+            fatalError("Color Archived Error!!")
+        }
+        let allLabel = Label(id: UUID.init().uuidString, name: "ALL", color: colorData, order: 0, explain: "すべてのApp")
+        do {
+            try Label.add(allLabel)
+        } catch {
+            print("Error")
+        }
     }
 }
