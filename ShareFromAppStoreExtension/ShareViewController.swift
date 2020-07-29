@@ -10,6 +10,10 @@ import UIKit
 import Social
 import RealmSwift
 
+extension Notification.Name {
+    static let notificationLabels = Notification.Name("NotificationLabels")
+}
+
 class ShareViewController: SLComposeServiceViewController {
 
     var id: String?
@@ -17,6 +21,12 @@ class ShareViewController: SLComposeServiceViewController {
     var url: String = ""
     var developer = ""
     var image: Data?
+    var labels: [Label] = [] {
+        didSet {
+            let names = labels.map { $0.name }
+            labelItem?.value = names.joined(separator: ",")
+        }
+    }
 
     lazy var labelItem: SLComposeSheetConfigurationItem? = {
         guard let item = SLComposeSheetConfigurationItem() else {
@@ -46,6 +56,11 @@ class ShareViewController: SLComposeServiceViewController {
                 }
             }
         }
+        if let allLabel = Label.getAllLabel() {
+            labels = [allLabel]
+        }
+
+        setupNotificationCenter()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -78,11 +93,22 @@ class ShareViewController: SLComposeServiceViewController {
         //        loadData(itemProviders: itemProviders)
     }
 
+    @objc func getLabels(notification: Notification) {
+        guard let labels = notification.object as? [Label] else {
+            fatalError("Labelじゃないよ")
+        }
+        self.labels = labels
+    }
+
     // MARK: - Private Method
+
+    private func setupNotificationCenter() {
+        NotificationCenter.default.addObserver(self, selector: #selector(getLabels(notification:)), name: .notificationLabels, object: nil)
+    }
 
     private func showLabelList() {
         let viewController = LabelListTableViewController(style: .plain)
-        viewController.delegate = self
+        viewController.selectedLabels = labels
         pushConfigurationViewController(viewController)
     }
 
@@ -121,11 +147,5 @@ class ShareViewController: SLComposeServiceViewController {
             self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
         })
         present(alertController, animated: true, completion: nil)
-    }
-}
-
-extension ShareViewController: LabelListTableViewControllerDelegate {
-    var shareVC: ShareViewController {
-        return self
     }
 }

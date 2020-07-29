@@ -50,6 +50,11 @@ extension Label {
         return .init(DatabaseManager.shared.objects(Label.self, filter: nil, sortedBy: sortProperties))
     }
 
+    static func getAllLabel() -> Label? {
+        let predicate = NSPredicate(format: "id == %@", "ALLLABEL")
+        return DatabaseManager.shared.object(Label.self, filter: predicate)
+    }
+
     static func add(_ label: Label) throws {
         try DatabaseManager.shared.add(label)
     }

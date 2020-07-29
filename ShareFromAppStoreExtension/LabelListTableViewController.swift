@@ -9,17 +9,17 @@
 import UIKit
 import RealmSwift
 
-@objc protocol LabelListTableViewControllerDelegate {
-    var shareVC: ShareViewController { get }
-}
-
 final class LabelListTableViewController: UITableViewController {
 
     private let reuseIdentifier = "labelList"
 
     private var labels: [Label] = []
 
-    weak var delegate: LabelListTableViewControllerDelegate?
+    var selectedLabels: [Label] = [] {
+        didSet {
+            NotificationCenter.default.post(name: .notificationLabels, object: selectedLabels, userInfo: nil)
+        }
+    }
 
     // MARK: - Life cycle
 
@@ -34,6 +34,9 @@ final class LabelListTableViewController: UITableViewController {
         super.viewWillAppear(animated)
 
         readLabel { [weak self] in
+            if let allLabel = Label.getAllLabel(), selectedLabels.isEmpty {
+                selectedLabels = [allLabel]
+            }
             self?.tableView.reloadData()
         }
     }
@@ -56,8 +59,6 @@ extension LabelListTableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
-        cell.contentView.backgroundColor = .systemBackground
-        cell.accessoryView?.backgroundColor = .systemBackground
 
         if indexPath.section == 1 {
             cell.textLabel?.text = "新しいラベルを作成"
@@ -65,6 +66,7 @@ extension LabelListTableViewController {
         } else {
             cell.textLabel?.text = labels[indexPath.row].name
         }
+        cell.isSelected = selectedLabels.contains(labels[indexPath.row])
 
         return cell
     }
@@ -75,15 +77,19 @@ extension LabelListTableViewController {
             navigationController?.pushViewController(createLabelVC, animated: true)
             return
         }
-
+        guard indexPath.row != 0 else { return }
         let cell = tableView.cellForRow(at: indexPath)
         cell?.accessoryType = .checkmark
-        cell?.isHighlighted = false
+        selectedLabels.append(labels[indexPath.row])
     }
 
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
+        guard indexPath.row != 0 else { return }
         cell.accessoryType = .none
+        if let index = selectedLabels.firstIndex(where: { $0 == labels[indexPath.row] }) {
+            selectedLabels.remove(at: index)
+        }
     }
 }
 
@@ -99,7 +105,7 @@ extension LabelListTableViewController {
         guard let colorData = try? NSKeyedArchiver.archivedData(withRootObject: UIColor.blue, requiringSecureCoding: false) else {
             fatalError("Color Archived Error!!")
         }
-        let allLabel = Label(id: UUID.init().uuidString, name: "ALL", color: colorData, order: 0, explain: "すべてのApp")
+        let allLabel = Label(id: "ALLLABEL", name: "ALL", color: colorData, order: 0, explain: "すべてのApp")
         labels = [allLabel]
         do {
             try Label.add(allLabel)

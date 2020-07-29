@@ -166,7 +166,7 @@ extension HomeViewController {
         guard let colorData = try? NSKeyedArchiver.archivedData(withRootObject: R.color.mainBlueColor()!, requiringSecureCoding: false) else {
             fatalError("Color Archived Error!!")
         }
-        let allLabel = Label(id: UUID.init().uuidString, name: "ALL", color: colorData, order: 0, explain: "すべてのApp")
+        let allLabel = Label(id: "ALLLABEL", name: "ALL", color: colorData, order: 0, explain: "すべてのApp")
         labels = [allLabel]
         do {
             try Label.add(allLabel)
