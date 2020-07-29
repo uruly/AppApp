@@ -9,6 +9,7 @@
 import UIKit
 import Social
 import RealmSwift
+import OpenGraph
 
 class ShareViewController: SLComposeServiceViewController {
 
@@ -86,15 +87,14 @@ class ShareViewController: SLComposeServiceViewController {
     // MARK: - Private Method
 
     private func showLabelList() {
-        let labelListVC = LabelListTableViewController(style: .plain)
-        labelListVC.delegate = self
-        pushConfigurationViewController(labelListVC)
+        let viewController = LabelListTableViewController(style: .plain)
+        viewController.delegate = self
+        navigationController?.pushViewController(viewController, animated: true)
     }
 
     private func showMemoView() {
         let memoVC = MemoViewController()
         memoVC.delegate = self
-        pushConfigurationViewController(memoVC)
     }
 
     private func checkAppStore(_ completion: @escaping (Bool) -> Void) {
@@ -113,6 +113,19 @@ class ShareViewController: SLComposeServiceViewController {
                 return
             }
             let urlString = url.absoluteString
+
+            OpenGraph.fetch(url: url) { result in
+                switch result {
+                case .success(let og):
+                    print(og[.title]) // => og:title of the web site
+                    print(og[.type])  // => og:type of the web site
+                    print(og[.image]) // => og:image of the web site
+                    print(og[.url])   // => og:url of the web site
+                    print(og[.description])
+                case .failure(let error):
+                    print(error)
+                }
+            }
             completion(urlString.contains("apps.apple.com"))
         }
     }
@@ -121,6 +134,15 @@ class ShareViewController: SLComposeServiceViewController {
         let alertController = UIAlertController(title: "利用できません", message: "この機能はAppStoreでのみ利用できます。", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "了解", style: .destructive) { _ in
             self.cancel()
+        })
+        present(alertController, animated: true, completion: nil)
+    }
+
+    private func showError() {
+        let alertController = UIAlertController(title: "失敗", message: "保存に失敗しました。", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "了解", style: .destructive) { _ in
+            self.cancel()
+            self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
         })
         present(alertController, animated: true, completion: nil)
     }
@@ -161,23 +183,6 @@ class ShareViewController: SLComposeServiceViewController {
     //        }
     //    }
     //
-    //    func showNoImageAlert() {
-    //        //ポップアップを表示
-    //        let alertController = UIAlertController(title: "利用できません", message: "現在画像を共有できる場合にのみ利用できます。", preferredStyle: .alert)
-    //        alertController.addAction(UIAlertAction(title: "了解", style: .destructive) { _ in
-    //            self.cancel()
-    //        })
-    //        present(alertController, animated: true, completion: nil)
-    //    }
-    //
-    //    func showError() {
-    //        let alertController = UIAlertController(title: "失敗", message: "保存に失敗しました。", preferredStyle: .alert)
-    //        alertController.addAction(UIAlertAction(title: "了解", style: .destructive) { _ in
-    //            self.cancel()
-    //            self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
-    //        })
-    //        present(alertController, animated: true, completion: nil)
-    //    }
     //
     //
     //    func loadData(itemProviders: [NSItemProvider]) {

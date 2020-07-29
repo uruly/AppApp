@@ -13,12 +13,15 @@ import RealmSwift
     var shareVC: ShareViewController { get }
 }
 
-class LabelListTableViewController: UITableViewController {
+final class LabelListTableViewController: UITableViewController {
 
     var labels: [Label] = []
 
-    weak var delegate: LabelListTableViewControllerDelegate!
+    weak var delegate: LabelListTableViewControllerDelegate?
+
     static var isUnwindCreate = false
+
+    // MARK: - Life cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,8 +38,11 @@ class LabelListTableViewController: UITableViewController {
         labels = Label.getAll()
         tableView.reloadData()
     }
+}
 
-    // MARK: - Table view data source
+// MARK: - TableView DataSource
+
+extension LabelListTableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -70,7 +76,7 @@ class LabelListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {
             let createLabelVC = CreateLabelViewController(style: .grouped)
-            self.navigationController?.pushViewController(createLabelVC, animated: true)
+            navigationController?.pushViewController(createLabelVC, animated: true)
             return
         }
 
@@ -91,33 +97,5 @@ class LabelListTableViewController: UITableViewController {
         //        }
 
         cell?.isSelected = false
-    }
-}
-
-extension Array where Element: Hashable {
-
-    func unique() -> [Element] {
-        var elements = [Element]()
-        for value in self {
-            elements += !elements.contains(value) ? [value] : []
-        }
-        return elements
-    }
-
-    mutating func uniqueInPlace() {
-        self = self.unique()
-    }
-
-}
-
-extension Array {
-    func findIndex(includeElement: (Element) -> Bool) -> [Int] {
-        var indexArray: [Int] = []
-        for (index, element) in enumerated() {
-            if includeElement(element) {
-                indexArray.append(index)
-            }
-        }
-        return indexArray
     }
 }
