@@ -17,9 +17,6 @@ class ShareViewController: SLComposeServiceViewController {
     var url: String = ""
     var developer = ""
     var image: Data?
-    var origImage: UIImage?
-    var scale: CGFloat?
-    var position: CGPoint?
 
     lazy var labelItem: SLComposeSheetConfigurationItem? = {
         guard let item = SLComposeSheetConfigurationItem() else {
@@ -38,7 +35,6 @@ class ShareViewController: SLComposeServiceViewController {
         item.title = "メモ"
         item.tapHandler = self.showMemoView
         return item
-
     }()
 
     var memoText: String = ""{
@@ -51,48 +47,23 @@ class ShareViewController: SLComposeServiceViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Appを保存"
-        let viewController: UIViewController = self.navigationController!.viewControllers[0]
-        viewController.navigationItem.rightBarButtonItem!.title = "保存"
-        self.textView.isUserInteractionEnabled = false
 
-        if self.contentText == "" {
-            self.textView.isUserInteractionEnabled = true
-        }
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
+        title = "Appを保存"
+        let viewController = navigationController?.viewControllers.first
+        viewController?.navigationItem.rightBarButtonItem?.title = "保存"
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        //        //self.textView.resignFirstResponder()
-        //        isAppStore { (tag) in
-        //            if tag == 1 {
-        //                //AppStore以外
-        //                //self.showAlert()
-        //                self.showEditImageView()
-        //                self.title = "画像を保存"
-        //            } else if tag == 2 {
-        //                //AppStoreのストーリー
-        //                //self.showStoryAlert()
-        //            }
-        //        }
-        //        isContainImage {
-        //            self.showNoImageAlert()
-        //        }
+        // Appかどうかの判定
+        checkAppStore { [weak self] (isAppStore) in
+            if !isAppStore {
+                self?.showAlert()
+            }
+        }
     }
 
     // MARK: - Public method
-
-    override func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.text != nil && textView.text.count > 0 {
-            self.placeholder = "画像に名前をつけてください。"
-            textView.resignFirstResponder()
-        }
-    }
 
     override func configurationItems() -> [Any]! {
         guard let labelItem = labelItem, let memoItem = memoItem else { return [] }
@@ -101,16 +72,13 @@ class ShareViewController: SLComposeServiceViewController {
     }
 
     override func isContentValid() -> Bool {
-        let canPost: Bool = self.contentText.count > 0
-        if canPost {
-            return true
-        }
-        return false
+        return true
     }
 
     override func didSelectPost() {
-        let extensionItem: NSExtensionItem = self.extensionContext?.inputItems.first as! NSExtensionItem
-        guard let itemProviders = extensionItem.attachments else { return }
+        guard let extensionItem: NSExtensionItem = extensionContext?.inputItems.first as? NSExtensionItem,
+            let itemProviders = extensionItem.attachments else { return }
+        print(itemProviders)
         //        loadData(itemProviders: itemProviders)
     }
 
@@ -127,38 +95,34 @@ class ShareViewController: SLComposeServiceViewController {
         memoVC.delegate = self
         pushConfigurationViewController(memoVC)
     }
-    //
-    //
-    //    func isAppStore(_ completion:@escaping (Int) -> Void) {
-    //        let extensionItem: NSExtensionItem = self.extensionContext?.inputItems.first as! NSExtensionItem
-    //        // var bool = false
-    //        guard let itemProviders = extensionItem.attachments else { return }
-    //        //print(itemProviders)
-    //        if !itemProviders.contains(where: { (itemProvider) -> Bool in
-    //            return itemProvider.hasItemConformingToTypeIdentifier("public.url")
-    //        }) {
-    //            completion(1)
-    //        }
-    //        for itemProvider in itemProviders {
-    //            //print(itemProvider.registeredTypeIdentifiers)
-    //            //URL
-    //            if itemProvider.hasItemConformingToTypeIdentifier("public.url") {
-    //                itemProvider.loadItem(forTypeIdentifier: "public.url", options: nil, completionHandler: { (item, _) in
-    //
-    //                    let url = (item as? URL)!.absoluteString
-    //                    if url.contains("itunes.apple.com") {
-    //                        if url.contains("story") {
-    //                            completion(2)
-    //                        } else {
-    //                            completion(0)
-    //                        }
-    //                    } else {
-    //                        completion(1)
-    //                    }
-    //                })
-    //            }
-    //        }
-    //    }
+
+    private func checkAppStore(_ completion: @escaping (Bool) -> Void) {
+        guard let extensionItem: NSExtensionItem = extensionContext?.inputItems.first as? NSExtensionItem,
+            let itemProviders = extensionItem.attachments else {
+                completion(false)
+                return
+        }
+        guard let urlProvider = itemProviders.first(where: { $0.hasItemConformingToTypeIdentifier("public.url")}) else {
+            completion(false)
+            return
+        }
+        urlProvider.loadItem(forTypeIdentifier: "public.url", options: nil) { (item, _) in
+            guard let url = item as? URL else {
+                completion(false)
+                return
+            }
+            let urlString = url.absoluteString
+            completion(urlString.contains("apps.apple.com"))
+        }
+    }
+
+    private func showAlert() {
+        let alertController = UIAlertController(title: "利用できません", message: "この機能はAppStoreでのみ利用できます。", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "了解", style: .destructive) { _ in
+            self.cancel()
+        })
+        present(alertController, animated: true, completion: nil)
+    }
     //
     //    func getImageData(completion:@escaping (UIImage) -> Void) {
     //        let extensionItem: NSExtensionItem = self.extensionContext?.inputItems.first as! NSExtensionItem
@@ -214,13 +178,6 @@ class ShareViewController: SLComposeServiceViewController {
     //        present(alertController, animated: true, completion: nil)
     //    }
     //
-    //    func showAlert() {
-    //        let alertController = UIAlertController(title: "利用できません", message: "この機能はAppStoreでのみ利用できます。", preferredStyle: .alert)
-    //        alertController.addAction(UIAlertAction(title: "了解", style: .destructive) { _ in
-    //            self.cancel()
-    //        })
-    //        present(alertController, animated: true, completion: nil)
-    //    }
     //
     //    func loadData(itemProviders: [NSItemProvider]) {
     //        for itemProvider in itemProviders {
