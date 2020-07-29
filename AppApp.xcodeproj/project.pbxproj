@@ -10,6 +10,21 @@
 		6606168B1FCD348100667020 /* DeleteAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6606168A1FCD348100667020 /* DeleteAppView.swift */; };
 		6606168E1FCD35AE00667020 /* DetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6606168C1FCD35AE00667020 /* DetailCollectionViewCell.swift */; };
 		6606168F1FCD35AE00667020 /* DetailCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6606168D1FCD35AE00667020 /* DetailCollectionViewCell.xib */; };
+		660B066C24D04AF2003100EE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B066A24D04AF2003100EE /* HomeViewController.swift */; };
+		660B066D24D04AF2003100EE /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 660B066B24D04AF2003100EE /* HomeViewController.xib */; };
+		660B067324D04F66003100EE /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B067124D04F66003100EE /* PageViewController.swift */; };
+		660B067424D04F66003100EE /* PageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 660B067224D04F66003100EE /* PageViewController.xib */; };
+		660B067724D04FA3003100EE /* LabelCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B067524D04FA3003100EE /* LabelCollectionViewController.swift */; };
+		660B067824D04FA3003100EE /* LabelCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 660B067624D04FA3003100EE /* LabelCollectionViewController.xib */; };
+		660B067C24D050E5003100EE /* LabelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B067A24D050E5003100EE /* LabelCollectionViewCell.swift */; };
+		660B067D24D050E5003100EE /* LabelCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 660B067B24D050E5003100EE /* LabelCollectionViewCell.xib */; };
+		660B067F24D05155003100EE /* UIColor+TextColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B067E24D05155003100EE /* UIColor+TextColor.swift */; };
+		660B068524D05202003100EE /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 660B068424D05202003100EE /* SnapKit */; };
+		660B068824D0541B003100EE /* AppsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B068624D0541B003100EE /* AppsViewController.swift */; };
+		660B068924D0541B003100EE /* AppsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 660B068724D0541B003100EE /* AppsViewController.xib */; };
+		660B068B24D07EA2003100EE /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E54DCE2413A5E000069082 /* App.swift */; };
+		660B068C24D07EA5003100EE /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E54DCC2413A59600069082 /* Label.swift */; };
+		660B068D24D07F69003100EE /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662AAF4F24139FB300283AF2 /* DatabaseManager.swift */; };
 		660B576C1FCFC5F500DBC823 /* RGBSliderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 660B57621FCFC5F200DBC823 /* RGBSliderCollectionViewCell.xib */; };
 		660B576D1FCFC5F500DBC823 /* ColorPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B57631FCFC5F300DBC823 /* ColorPageView.swift */; };
 		660B576E1FCFC5F500DBC823 /* RGBSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B57641FCFC5F300DBC823 /* RGBSliderView.swift */; };
@@ -98,7 +113,6 @@
 		6677FC2F1FCAB72F00CB105E /* AppInfoListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6677FC2D1FCAB72F00CB105E /* AppInfoListCollectionViewCell.swift */; };
 		6677FC301FCAB72F00CB105E /* AppInfoListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6677FC2E1FCAB72F00CB105E /* AppInfoListCollectionViewCell.xib */; };
 		667ECE191FC36784009233DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE181FC36784009233DE /* AppDelegate.swift */; };
-		667ECE1E1FC36784009233DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 667ECE1C1FC36784009233DE /* Main.storyboard */; };
 		667ECE201FC36784009233DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 667ECE1F1FC36784009233DE /* Assets.xcassets */; };
 		667ECE231FC36784009233DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 667ECE211FC36784009233DE /* LaunchScreen.storyboard */; };
 		667ECE2E1FC36784009233DE /* AppAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE2D1FC36784009233DE /* AppAppTests.swift */; };
@@ -176,6 +190,17 @@
 		6606168A1FCD348100667020 /* DeleteAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAppView.swift; sourceTree = "<group>"; };
 		6606168C1FCD35AE00667020 /* DetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		6606168D1FCD35AE00667020 /* DetailCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailCollectionViewCell.xib; sourceTree = "<group>"; };
+		660B066A24D04AF2003100EE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		660B066B24D04AF2003100EE /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		660B067124D04F66003100EE /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		660B067224D04F66003100EE /* PageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PageViewController.xib; sourceTree = "<group>"; };
+		660B067524D04FA3003100EE /* LabelCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCollectionViewController.swift; sourceTree = "<group>"; };
+		660B067624D04FA3003100EE /* LabelCollectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelCollectionViewController.xib; sourceTree = "<group>"; };
+		660B067A24D050E5003100EE /* LabelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCollectionViewCell.swift; sourceTree = "<group>"; };
+		660B067B24D050E5003100EE /* LabelCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelCollectionViewCell.xib; sourceTree = "<group>"; };
+		660B067E24D05155003100EE /* UIColor+TextColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+TextColor.swift"; sourceTree = "<group>"; };
+		660B068624D0541B003100EE /* AppsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsViewController.swift; sourceTree = "<group>"; };
+		660B068724D0541B003100EE /* AppsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppsViewController.xib; sourceTree = "<group>"; };
 		660B57621FCFC5F200DBC823 /* RGBSliderCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RGBSliderCollectionViewCell.xib; sourceTree = "<group>"; };
 		660B57631FCFC5F300DBC823 /* ColorPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPageView.swift; sourceTree = "<group>"; };
 		660B57641FCFC5F300DBC823 /* RGBSliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RGBSliderView.swift; sourceTree = "<group>"; };
@@ -205,7 +230,6 @@
 		660B57D61FD16F0B00DBC823 /* HelpTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HelpTableViewCell.xib; sourceTree = "<group>"; };
 		660B57DD1FD1774D00DBC823 /* HelpLinkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpLinkTableViewCell.swift; sourceTree = "<group>"; };
 		660B57DE1FD1774D00DBC823 /* HelpLinkTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HelpLinkTableViewCell.xib; sourceTree = "<group>"; };
-		660B57E11FD19E7500DBC823 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		660B57E21FD19E7500DBC823 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		660B57E31FD19E7600DBC823 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/MainInterface.strings; sourceTree = "<group>"; };
 		660B88332003C67A0064EFFE /* UIColor+Compare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Compare.swift"; sourceTree = "<group>"; };
@@ -270,7 +294,6 @@
 		6677FC2E1FCAB72F00CB105E /* AppInfoListCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppInfoListCollectionViewCell.xib; sourceTree = "<group>"; };
 		667ECE151FC36784009233DE /* AppApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		667ECE181FC36784009233DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		667ECE1D1FC36784009233DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		667ECE1F1FC36784009233DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		667ECE221FC36784009233DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		667ECE241FC36784009233DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -322,6 +345,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				666081B72407B7CB00001A9C /* Rswift in Frameworks */,
+				660B068524D05202003100EE /* SnapKit in Frameworks */,
 				667ECE511FC382C7009233DE /* RealmSwift.framework in Frameworks */,
 				667ECE4F1FC382B9009233DE /* Realm.framework in Frameworks */,
 			);
@@ -351,6 +375,54 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		660B066924D04AB0003100EE /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				660B066A24D04AF2003100EE /* HomeViewController.swift */,
+				660B066B24D04AF2003100EE /* HomeViewController.xib */,
+				660B067024D04F34003100EE /* Page */,
+				660B066F24D04F1B003100EE /* LabelCollection */,
+				660B066E24D04EC2003100EE /* Apps */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		660B066E24D04EC2003100EE /* Apps */ = {
+			isa = PBXGroup;
+			children = (
+				660B068624D0541B003100EE /* AppsViewController.swift */,
+				660B068724D0541B003100EE /* AppsViewController.xib */,
+			);
+			path = Apps;
+			sourceTree = "<group>";
+		};
+		660B066F24D04F1B003100EE /* LabelCollection */ = {
+			isa = PBXGroup;
+			children = (
+				660B067524D04FA3003100EE /* LabelCollectionViewController.swift */,
+				660B067624D04FA3003100EE /* LabelCollectionViewController.xib */,
+			);
+			path = LabelCollection;
+			sourceTree = "<group>";
+		};
+		660B067024D04F34003100EE /* Page */ = {
+			isa = PBXGroup;
+			children = (
+				660B067124D04F66003100EE /* PageViewController.swift */,
+				660B067224D04F66003100EE /* PageViewController.xib */,
+			);
+			path = Page;
+			sourceTree = "<group>";
+		};
+		660B067924D050B6003100EE /* Label */ = {
+			isa = PBXGroup;
+			children = (
+				660B067A24D050E5003100EE /* LabelCollectionViewCell.swift */,
+				660B067B24D050E5003100EE /* LabelCollectionViewCell.xib */,
+			);
+			path = Label;
+			sourceTree = "<group>";
+		};
 		660B57CC1FD1501500DBC823 /* Balloon */ = {
 			isa = PBXGroup;
 			children = (
@@ -412,7 +484,6 @@
 		6660816E2406409A00001A9C /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				667ECE1C1FC36784009233DE /* Main.storyboard */,
 				667ECE211FC36784009233DE /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
@@ -421,6 +492,7 @@
 		666081732406483A00001A9C /* UIViewController */ = {
 			isa = PBXGroup;
 			children = (
+				660B066924D04AB0003100EE /* Home */,
 				6660819724064D9500001A9C /* AppList */,
 				6660819624064D8200001A9C /* EditAppLabel */,
 				6660817F240649BE00001A9C /* Detail */,
@@ -555,11 +627,12 @@
 		6660818124064A9400001A9C /* UICollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				660B067924D050B6003100EE /* Label */,
 				66A30A1C240806610016F34D /* Start */,
 				66A30A1A240806450016F34D /* Welcome */,
 				66A30A192408063A0016F34D /* HowTo */,
 				6660819D24064E7900001A9C /* AppInfoList */,
-				6660819C24064E6F00001A9C /* App */,
+				6660819C24064E6F00001A9C /* AppList */,
 				6660819B24064E3B00001A9C /* RGBSlider */,
 				6660819924064DFD00001A9C /* ColorSet */,
 				6660819824064DCF00001A9C /* ColorBase */,
@@ -804,13 +877,13 @@
 			path = RGBSlider;
 			sourceTree = "<group>";
 		};
-		6660819C24064E6F00001A9C /* App */ = {
+		6660819C24064E6F00001A9C /* AppList */ = {
 			isa = PBXGroup;
 			children = (
 				667ECE6F1FC4206F009233DE /* AppListCollectionViewCell.swift */,
 				667ECE701FC4206F009233DE /* AppListCollectionViewCell.xib */,
 			);
-			path = App;
+			path = AppList;
 			sourceTree = "<group>";
 		};
 		6660819D24064E7900001A9C /* AppInfoList */ = {
@@ -954,6 +1027,7 @@
 			isa = PBXGroup;
 			children = (
 				666E06C41FCBCB260043DCFF /* UITextView+Placeholder.swift */,
+				660B067E24D05155003100EE /* UIColor+TextColor.swift */,
 				66498E381FC810BF00239B47 /* Array+FindIndex.swift */,
 				6662E1312000055F00FB30C7 /* UIResponder+FindView.swift */,
 				6662E13E2001D31700FB30C7 /* UIImage+MaskCorner.swift */,
@@ -1175,6 +1249,7 @@
 			name = AppApp;
 			packageProductDependencies = (
 				666081B62407B7CB00001A9C /* Rswift */,
+				660B068424D05202003100EE /* SnapKit */,
 			);
 			productName = AppApp;
 			productReference = 667ECE151FC36784009233DE /* AppApp.app */;
@@ -1289,6 +1364,7 @@
 			mainGroup = 667ECE0C1FC36784009233DE;
 			packageReferences = (
 				666081B52407B7CB00001A9C /* XCRemoteSwiftPackageReference "R.swift" */,
+				660B068324D05202003100EE /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 667ECE161FC36784009233DE /* Products */;
 			projectDirPath = "";
@@ -1310,6 +1386,7 @@
 				6662E1261FFFDEB900FB30C7 /* BackgroundColorCollectionViewCell.xib in Resources */,
 				6662E14520024B1700FB30C7 /* backgroundImage.json in Resources */,
 				6606168F1FCD35AE00667020 /* DetailCollectionViewCell.xib in Resources */,
+				660B067824D04FA3003100EE /* LabelCollectionViewController.xib in Resources */,
 				6662E12E1FFFE9EE00FB30C7 /* BackgroundImageCollectionViewCell.xib in Resources */,
 				66681CE61FCC17E2009A0F55 /* DetailAppInfoCollectionViewCell.xib in Resources */,
 				660B57771FCFDB1000DBC823 /* colorData.json in Resources */,
@@ -1322,15 +1399,18 @@
 				6676ED381FCD582200815BF8 /* DetailMemoCollectionViewCell.xib in Resources */,
 				660B57741FCFC5F500DBC823 /* ColorSetCollectionViewCell.xib in Resources */,
 				6662E13D20007E7300FB30C7 /* InfoTableViewCell.xib in Resources */,
+				660B067424D04F66003100EE /* PageViewController.xib in Resources */,
 				666E06B51FCB9A880043DCFF /* MemoTableViewCell.xib in Resources */,
 				66A30A15240804B30016F34D /* BackgroundPlusCollectionViewCell.xib in Resources */,
+				660B067D24D050E5003100EE /* LabelCollectionViewCell.xib in Resources */,
 				660B57E01FD1774D00DBC823 /* HelpLinkTableViewCell.xib in Resources */,
 				667ECE201FC36784009233DE /* Assets.xcassets in Resources */,
 				6677FC301FCAB72F00CB105E /* AppInfoListCollectionViewCell.xib in Resources */,
-				667ECE1E1FC36784009233DE /* Main.storyboard in Resources */,
+				660B066D24D04AF2003100EE /* HomeViewController.xib in Resources */,
 				660B57A71FD071D500DBC823 /* HowToCollectionViewCell.xib in Resources */,
 				660B57A31FD06FDB00DBC823 /* WelcomeCollectionViewCell.xib in Resources */,
 				660D7A912409275D00DEC2C8 /* license_plist.yml in Resources */,
+				660B068924D0541B003100EE /* AppsViewController.xib in Resources */,
 				660B57721FCFC5F500DBC823 /* ColorBaseCollectionViewCell.xib in Resources */,
 				66681CE21FCC1734009A0F55 /* DetailCommonCollectionViewCell.xib in Resources */,
 				660D7A8F2409229E00DEC2C8 /* Settings.bundle in Resources */,
@@ -1445,6 +1525,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6676ED3A1FCD584200815BF8 /* LabelAppInfoView.swift in Sources */,
+				660B067724D04FA3003100EE /* LabelCollectionViewController.swift in Sources */,
 				666E06B71FCBAC290043DCFF /* WebViewController.swift in Sources */,
 				6662E12D1FFFE9EE00FB30C7 /* BackgroundImageCollectionViewCell.swift in Sources */,
 				667ECE661FC3ADCA009233DE /* CustomNavigationBar.swift in Sources */,
@@ -1454,7 +1535,9 @@
 				666081B42407B54900001A9C /* R.generated.swift in Sources */,
 				6662E1301FFFF06500FB30C7 /* UploadView.swift in Sources */,
 				66DF587E1FC92D3F00CD71DC /* LabelOrderPickerView.swift in Sources */,
+				660B067F24D05155003100EE /* UIColor+TextColor.swift in Sources */,
 				666E06AF1FCB94DF0043DCFF /* CommonInfoView.swift in Sources */,
+				660B066C24D04AF2003100EE /* HomeViewController.swift in Sources */,
 				660B57BB1FD1260800DBC823 /* HelpView.swift in Sources */,
 				6662E13F2001D31700FB30C7 /* UIImage+MaskCorner.swift in Sources */,
 				660B579F1FD06FBE00DBC823 /* WelcomeView.swift in Sources */,
@@ -1471,6 +1554,7 @@
 				66E54DCF2413A5E000069082 /* App.swift in Sources */,
 				6662E11E1FFE98CA00FB30C7 /* BottomView.swift in Sources */,
 				66498E341FC7BA3600239B47 /* UIApplication+Stack.swift in Sources */,
+				660B067324D04F66003100EE /* PageViewController.swift in Sources */,
 				66681CE11FCC1734009A0F55 /* DetailCommonCollectionViewCell.swift in Sources */,
 				6662E13620000FFD00FB30C7 /* EditImageView.swift in Sources */,
 				66498E3B1FC82F9000239B47 /* EditToolbar.swift in Sources */,
@@ -1478,6 +1562,7 @@
 				660B57701FCFC5F500DBC823 /* ColorBaseCollectionViewCell.swift in Sources */,
 				66E54DCD2413A59600069082 /* Label.swift in Sources */,
 				66498E391FC810BF00239B47 /* Array+FindIndex.swift in Sources */,
+				660B068824D0541B003100EE /* AppsViewController.swift in Sources */,
 				6662E1221FFFDE9000FB30C7 /* BackgroundColorListView.swift in Sources */,
 				667ECE5F1FC395C2009233DE /* SelectionBarCollectionViewCell.swift in Sources */,
 				66686B712405019F005A22A3 /* Constants.swift in Sources */,
@@ -1492,6 +1577,7 @@
 				666E06C31FCBC1E50043DCFF /* PassThroughIndicator.swift in Sources */,
 				6677FC261FCA7E0400CB105E /* VersionManager.swift in Sources */,
 				660B579D1FD06C6400DBC823 /* TutorialPageView.swift in Sources */,
+				660B067C24D050E5003100EE /* LabelCollectionViewCell.swift in Sources */,
 				660B57DF1FD1774D00DBC823 /* HelpLinkTableViewCell.swift in Sources */,
 				666081702406463300001A9C /* IconSizeChanger.swift in Sources */,
 				6677FC2F1FCAB72F00CB105E /* AppInfoListCollectionViewCell.swift in Sources */,
@@ -1549,6 +1635,9 @@
 			files = (
 				66603BD020054BCB002F214D /* EditImageViewController.swift in Sources */,
 				66AA1E091FC5900D001C419E /* LabelListTableViewController.swift in Sources */,
+				660B068D24D07F69003100EE /* DatabaseManager.swift in Sources */,
+				660B068C24D07EA5003100EE /* Label.swift in Sources */,
+				660B068B24D07EA2003100EE /* App.swift in Sources */,
 				66AA1DFA1FC56519001C419E /* ShareViewController.swift in Sources */,
 				6677FC2A1FCA882800CB105E /* ColorPicker.swift in Sources */,
 				66498E2A1FC666A400239B47 /* ShareAppLabel.swift in Sources */,
@@ -1581,15 +1670,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		667ECE1C1FC36784009233DE /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				667ECE1D1FC36784009233DE /* Base */,
-				660B57E11FD19E7500DBC823 /* ja */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		667ECE211FC36784009233DE /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1983,6 +2063,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		660B068324D05202003100EE /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
 		666081B52407B7CB00001A9C /* XCRemoteSwiftPackageReference "R.swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/mac-cain13/R.swift.Library";
@@ -1994,6 +2082,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		660B068424D05202003100EE /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 660B068324D05202003100EE /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
 		666081B62407B7CB00001A9C /* Rswift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 666081B52407B7CB00001A9C /* XCRemoteSwiftPackageReference "R.swift" */;

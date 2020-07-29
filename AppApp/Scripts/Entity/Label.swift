@@ -18,10 +18,21 @@ final class Label: Object {
     @objc dynamic var explain: String = ""
 
     let apps: List<App> = .init()
+    static let count = Label.getAll().count
 
     override static func primaryKey() -> String? {
         return "id"
     }
+
+    required convenience init(id: String, name: String, color: Data?, order: Int, explain: String) {
+        self.init()
+        self.id = id
+        self.name = name
+        self.color = color
+        self.order = order
+        self.explain = explain
+    }
+
 }
 
 extension Label {
