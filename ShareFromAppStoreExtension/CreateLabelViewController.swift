@@ -155,34 +155,21 @@ class CreateLabelViewController: UITableViewController {
         let colorData = NSKeyedArchiver.archivedData(withRootObject: color)
         let id = UUID().uuidString
 
-        var config = Realm.Configuration(schemaVersion: .schemaVersion)
-        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
-        config.fileURL = url.appendingPathComponent("db.realm")
-
-        let realm = try! Realm(configuration: config)
-        let order = realm.objects(AppLabelRealmData.self).count
-        let label = AppLabelRealmData(value: ["name": name,
-                                              "color": colorData,
-                                              "id": id,
-                                              "order": order
-        ])
-        try! realm.write {
-            realm.add(label, update: .all)
-        }
+        // ラベルを保存する
         completion()
 
     }
 
     func contains(name: String) -> Bool {
-        var config = Realm.Configuration(schemaVersion: .schemaVersion)
-        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
-        config.fileURL = url.appendingPathComponent("db.realm")
-
-        let realm = try! Realm(configuration: config)
-        let objs = realm.objects(AppLabelRealmData.self)
-        for obj in objs where obj.name == name {
-            return true
-        }
+        //        var config = Realm.Configuration(schemaVersion: .schemaVersion)
+        //        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
+        //        config.fileURL = url.appendingPathComponent("db.realm")
+        //
+        //        let realm = try! Realm(configuration: config)
+        //        let objs = realm.objects(AppLabelRealmData.self)
+        //        for obj in objs where obj.name == name {
+        //            return true
+        //        }
         return false
     }
 
