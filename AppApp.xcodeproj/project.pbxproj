@@ -135,7 +135,6 @@
 		66AA1DFD1FC56519001C419E /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66AA1DFB1FC56519001C419E /* MainInterface.storyboard */; };
 		66AA1E011FC56519001C419E /* ShareFromAppStoreExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 66AA1DF71FC56519001C419E /* ShareFromAppStoreExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		66AA1E091FC5900D001C419E /* LabelListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AA1E081FC5900D001C419E /* LabelListTableViewController.swift */; };
-		66AA1E0B1FC5919E001C419E /* MemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AA1E0A1FC5919E001C419E /* MemoViewController.swift */; };
 		66DF587E1FC92D3F00CD71DC /* LabelOrderPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66DF587D1FC92D3F00CD71DC /* LabelOrderPickerView.swift */; };
 		66E54DCD2413A59600069082 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E54DCC2413A59600069082 /* Label.swift */; };
 		66E54DCF2413A5E000069082 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E54DCE2413A5E000069082 /* App.swift */; };
@@ -323,7 +322,6 @@
 		66AA1DFC1FC56519001C419E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		66AA1DFE1FC56519001C419E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		66AA1E081FC5900D001C419E /* LabelListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelListTableViewController.swift; sourceTree = "<group>"; };
-		66AA1E0A1FC5919E001C419E /* MemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoViewController.swift; sourceTree = "<group>"; };
 		66DF587D1FC92D3F00CD71DC /* LabelOrderPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelOrderPickerView.swift; sourceTree = "<group>"; };
 		66E54DCC2413A59600069082 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		66E54DCE2413A5E000069082 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
@@ -1205,7 +1203,6 @@
 			children = (
 				66498E231FC5A69B00239B47 /* ShareFromAppStoreExtension.entitlements */,
 				66AA1DF91FC56519001C419E /* ShareViewController.swift */,
-				66AA1E0A1FC5919E001C419E /* MemoViewController.swift */,
 				66AA1E081FC5900D001C419E /* LabelListTableViewController.swift */,
 				6677FC271FCA7F2000CB105E /* CreateLabelViewController.swift */,
 				6677FC291FCA882800CB105E /* ColorPicker.swift */,
@@ -1631,7 +1628,6 @@
 				6677FC2A1FCA882800CB105E /* ColorPicker.swift in Sources */,
 				66686B7324052B37005A22A3 /* Constants.swift in Sources */,
 				6677FC281FCA7F2000CB105E /* CreateLabelViewController.swift in Sources */,
-				66AA1E0B1FC5919E001C419E /* MemoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

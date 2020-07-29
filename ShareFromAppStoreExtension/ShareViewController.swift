@@ -28,26 +28,12 @@ class ShareViewController: SLComposeServiceViewController {
         return item
     }()
 
-    lazy var memoItem: SLComposeSheetConfigurationItem? = {
-        guard let item = SLComposeSheetConfigurationItem() else {
-            return nil
-        }
-        item.title = "メモ"
-        item.tapHandler = self.showMemoView
-        return item
-    }()
-
-    var memoText: String = ""{
-        didSet {
-            memoItem?.value = memoText
-        }
-    }
-
     // MARK: - Life cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        modalPresentationStyle = .fullScreen
         title = "Appを保存"
         let viewController = navigationController?.viewControllers.first
         viewController?.navigationItem.rightBarButtonItem?.title = "保存"
@@ -67,8 +53,8 @@ class ShareViewController: SLComposeServiceViewController {
     // MARK: - Public method
 
     override func configurationItems() -> [Any]! {
-        guard let labelItem = labelItem, let memoItem = memoItem else { return [] }
-        let items: [SLComposeSheetConfigurationItem] = [labelItem, memoItem]
+        guard let labelItem = labelItem else { return [] }
+        let items: [SLComposeSheetConfigurationItem] = [labelItem]
         return items
     }
 
@@ -89,11 +75,6 @@ class ShareViewController: SLComposeServiceViewController {
         let viewController = LabelListTableViewController(style: .plain)
         viewController.delegate = self
         navigationController?.pushViewController(viewController, animated: true)
-    }
-
-    private func showMemoView() {
-        let memoVC = MemoViewController()
-        memoVC.delegate = self
     }
 
     private func checkAppStore(_ completion: @escaping (Bool) -> Void) {
@@ -327,10 +308,8 @@ class ShareViewController: SLComposeServiceViewController {
 
 }
 
-extension ShareViewController: MemoViewDelegate {
+extension ShareViewController: LabelListTableViewControllerDelegate {
     var shareVC: ShareViewController {
         return self
     }
 }
-
-extension ShareViewController: LabelListTableViewControllerDelegate {}
