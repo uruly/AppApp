@@ -61,7 +61,7 @@ class CreateLabelViewController: UITableViewController {
             }
 
             if existsSelfInViewControllers {
-                //print("前の画面に戻る処理が行われました")
+                // 前の画面に戻る
                 self.saveLabel()
             }
         }
@@ -70,11 +70,6 @@ class CreateLabelViewController: UITableViewController {
 
     override init(style: UITableView.Style) {
         super.init(style: style)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
@@ -140,37 +135,16 @@ class CreateLabelViewController: UITableViewController {
         self.name = sender.text
     }
 
-    @objc func saveLabel() {
-        //print("ここ呼ばれてない？")
-        if name != nil && name != "" && !self.contains(name: name) {
-            //saveする
-            save {
-                //labelListVC.readLabelData()
-                //self.navigationController?.popViewController(animated: true)
-                LabelListTableViewController.isUnwindCreate = true
-            }
-        }
-    }
-    func save(_ completion:() -> Void) {
-        let colorData = NSKeyedArchiver.archivedData(withRootObject: color)
+    private func saveLabel() {
+        guard let color = color, let colorData = try? NSKeyedArchiver.archivedData(withRootObject: color, requiringSecureCoding: false) else { return }
         let id = UUID().uuidString
+        let label = Label(id: id, name: name, color: colorData, order: Label.count, explain: "")
 
-        // ラベルを保存する
-        completion()
-
-    }
-
-    func contains(name: String) -> Bool {
-        //        var config = Realm.Configuration(schemaVersion: .schemaVersion)
-        //        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
-        //        config.fileURL = url.appendingPathComponent("db.realm")
-        //
-        //        let realm = try! Realm(configuration: config)
-        //        let objs = realm.objects(AppLabelRealmData.self)
-        //        for obj in objs where obj.name == name {
-        //            return true
-        //        }
-        return false
+        do {
+            try Label.add(label)
+        } catch {
+            print("Error!")
+        }
     }
 
     func showColorPicker() {
@@ -214,12 +188,12 @@ class CreateLabelViewController: UITableViewController {
 }
 
 extension CreateLabelViewController: UITextFieldDelegate {
+
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        //self.currentTextField = textField
         return true
     }
+
     func textFieldDidEndEditing(_ textField: UITextField) {
-        //print("end")
         name = textField.text
         textField.resignFirstResponder()
     }
@@ -229,9 +203,10 @@ extension CreateLabelViewController: UITextFieldDelegate {
         return true
     }
 }
+
 extension CreateLabelViewController: ColorDelegate {
+
     func pickedColor(color: UIColor, endState: Bool) {
-        //print("color\(color)")
         self.color = color
     }
 }
