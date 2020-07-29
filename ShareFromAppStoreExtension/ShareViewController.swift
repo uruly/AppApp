@@ -9,7 +9,6 @@
 import UIKit
 import Social
 import RealmSwift
-import OpenGraph
 
 class ShareViewController: SLComposeServiceViewController {
 
@@ -113,19 +112,6 @@ class ShareViewController: SLComposeServiceViewController {
                 return
             }
             let urlString = url.absoluteString
-
-            OpenGraph.fetch(url: url) { result in
-                switch result {
-                case .success(let og):
-                    print(og[.title]) // => og:title of the web site
-                    print(og[.type])  // => og:type of the web site
-                    print(og[.image]) // => og:image of the web site
-                    print(og[.url])   // => og:url of the web site
-                    print(og[.description])
-                case .failure(let error):
-                    print(error)
-                }
-            }
             completion(urlString.contains("apps.apple.com"))
         }
     }
