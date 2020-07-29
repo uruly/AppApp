@@ -25,6 +25,8 @@
 		660B068B24D07EA2003100EE /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E54DCE2413A5E000069082 /* App.swift */; };
 		660B068C24D07EA5003100EE /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E54DCC2413A59600069082 /* Label.swift */; };
 		660B068D24D07F69003100EE /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662AAF4F24139FB300283AF2 /* DatabaseManager.swift */; };
+		660B068F24D15935003100EE /* OpenGraph.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 660B068E24D15935003100EE /* OpenGraph.framework */; };
+		660B069024D15935003100EE /* OpenGraph.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 660B068E24D15935003100EE /* OpenGraph.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		660B576C1FCFC5F500DBC823 /* RGBSliderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 660B57621FCFC5F200DBC823 /* RGBSliderCollectionViewCell.xib */; };
 		660B576D1FCFC5F500DBC823 /* ColorPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B57631FCFC5F300DBC823 /* ColorPageView.swift */; };
 		660B576E1FCFC5F500DBC823 /* RGBSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B57641FCFC5F300DBC823 /* RGBSliderView.swift */; };
@@ -169,6 +171,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		660B069124D15935003100EE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				660B069024D15935003100EE /* OpenGraph.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		66AA1E051FC56519001C419E /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -197,6 +210,7 @@
 		660B067E24D05155003100EE /* UIColor+TextColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+TextColor.swift"; sourceTree = "<group>"; };
 		660B068624D0541B003100EE /* AppsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsViewController.swift; sourceTree = "<group>"; };
 		660B068724D0541B003100EE /* AppsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppsViewController.xib; sourceTree = "<group>"; };
+		660B068E24D15935003100EE /* OpenGraph.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGraph.framework; path = Carthage/Build/iOS/OpenGraph.framework; sourceTree = "<group>"; };
 		660B57621FCFC5F200DBC823 /* RGBSliderCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RGBSliderCollectionViewCell.xib; sourceTree = "<group>"; };
 		660B57631FCFC5F300DBC823 /* ColorPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPageView.swift; sourceTree = "<group>"; };
 		660B57641FCFC5F300DBC823 /* RGBSliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RGBSliderView.swift; sourceTree = "<group>"; };
@@ -336,6 +350,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				660B068F24D15935003100EE /* OpenGraph.framework in Frameworks */,
 				666081B72407B7CB00001A9C /* Rswift in Frameworks */,
 				660B068524D05202003100EE /* SnapKit in Frameworks */,
 				667ECE511FC382C7009233DE /* RealmSwift.framework in Frameworks */,
@@ -1093,6 +1108,7 @@
 		667ECE4D1FC382B9009233DE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				660B068E24D15935003100EE /* OpenGraph.framework */,
 				66983E4720071305009C9AEF /* libcrypto.a */,
 				66983E4820071306009C9AEF /* libssl.a */,
 				66983E4120070C08009C9AEF /* openssl.framework */,
@@ -1228,6 +1244,7 @@
 				667ECE4C1FC3826D009233DE /* Carthage */,
 				66AA1E051FC56519001C419E /* Embed App Extensions */,
 				660D7A8B24091C1C00DEC2C8 /* LicensePlist */,
+				660B069124D15935003100EE /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

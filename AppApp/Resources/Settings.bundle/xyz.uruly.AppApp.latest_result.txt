@@ -4,9 +4,11 @@ name: LicensePlist, nameSpecified: , owner: mono0926, version: 2.13.0
 
 name: Mint, nameSpecified: , owner: yonaskolb, version: 0.14.1
 
+name: OpenGraph, nameSpecified: , owner: satoshi-takano, version: 1.2.2
+
 name: R.swift, nameSpecified: , owner: mac-cain13, version: v5.1.0
 
-name: realm-cocoa, nameSpecified: , owner: realm, version: v5.3.0
+name: realm-cocoa, nameSpecified: , owner: realm, version: v5.3.2
 
 name: SwiftLint, nameSpecified: , owner: realm, version: 0.39.1
 

@@ -1,1 +1,2 @@
-github "realm/realm-cocoa" "v5.3.0"
+github "realm/realm-cocoa" "v5.3.2"
+github "satoshi-takano/OpenGraph" "1.2.2"
