@@ -37,6 +37,15 @@ class ShareViewController: SLComposeServiceViewController {
         title = "Appを保存"
         let viewController = navigationController?.viewControllers.first
         viewController?.navigationItem.rightBarButtonItem?.title = "保存"
+
+        // iOS13 で高さがおかしいのを修正する（おこ）
+        if #available(iOS 13.0, *) {
+            _ = NotificationCenter.default.addObserver(forName: UIResponder.keyboardDidShowNotification, object: nil, queue: .main) { (_) in
+                if let layoutContainerView = self.view.subviews.last {
+                    layoutContainerView.frame.size.height += 15
+                }
+            }
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -74,7 +83,7 @@ class ShareViewController: SLComposeServiceViewController {
     private func showLabelList() {
         let viewController = LabelListTableViewController(style: .plain)
         viewController.delegate = self
-        navigationController?.pushViewController(viewController, animated: true)
+        pushConfigurationViewController(viewController)
     }
 
     private func checkAppStore(_ completion: @escaping (Bool) -> Void) {
