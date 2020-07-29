@@ -57,7 +57,8 @@ class ShareViewController: SLComposeServiceViewController {
         super.viewDidAppear(animated)
         // Appかどうかの判定
         checkAppStore { [weak self] (isAppStore) in
-            if !isAppStore {
+            guard !isAppStore else { return }
+            DispatchQueue.main.async {
                 self?.showAlert()
             }
         }
