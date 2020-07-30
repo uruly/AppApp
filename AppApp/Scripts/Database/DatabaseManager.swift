@@ -15,7 +15,7 @@ final class DatabaseManager {
 
     private let schemaVersion: UInt64 = 6
 
-    private var realm: Realm {
+    var realm: Realm {
         do {
             return try Realm(configuration: configuration)
         } catch {

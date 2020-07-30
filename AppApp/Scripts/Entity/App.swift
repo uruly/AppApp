@@ -25,4 +25,19 @@ final class App: Object {
     override static func primaryKey() -> String? {
         return "uid"
     }
+
+    convenience required init(uid: String, appStoreID: String, image: Data?, memo: String) {
+        self.init()
+        self.uid = uid
+        self.appStoreID = appStoreID
+        self.image = image
+        self.memo = memo
+    }
+}
+
+extension App {
+
+    static func add(_ app: App) throws {
+        try DatabaseManager.shared.add(app)
+    }
 }

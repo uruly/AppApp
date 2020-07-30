@@ -8,8 +8,8 @@
 
 import UIKit
 
-@objc protocol ColorDelegate {
-    @objc optional func pickedColor(color: UIColor, endState: Bool)
+protocol ColorDelegate: class {
+    func pickedColor(color: UIColor, endState: Bool)
 }
 
 class ColorPicker: UIView {
@@ -74,24 +74,23 @@ class ColorPicker: UIView {
 
     func updateColorEnd(touch: UITouch) {
         let selectedColor = colorFromPoint(point: touch.location(in: self))
-        self.delegate.pickedColor!(color: selectedColor, endState: true)
+        self.delegate.pickedColor(color: selectedColor, endState: true)
         self.setNeedsDisplay()
     }
     func updateColor(touch: UITouch) {
         let selectedColor = colorFromPoint(point: touch.location(in: self))
-        self.delegate.pickedColor!(color: selectedColor, endState: false)
+        self.delegate.pickedColor(color: selectedColor, endState: false)
         self.setNeedsDisplay()
     }
 
 }
 
-class FakeView: UIView {
+final class FakeView: UIView {
     weak var delegate: CreateLabelViewController!
     var pickerTag: Int!
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-        //print("多ｔｔぷ")
         self.delegate.dismissPickerView(tag: pickerTag)
         self.removeFromSuperview()
     }

@@ -50,8 +50,27 @@ extension Label {
         return .init(DatabaseManager.shared.objects(Label.self, filter: nil, sortedBy: sortProperties))
     }
 
+    static func getAllLabel() -> Label? {
+        let predicate = NSPredicate(format: "id == %@", "ALLLABEL")
+        return DatabaseManager.shared.object(Label.self, filter: predicate)
+    }
+
+    static func isContain(appStoreID: String) -> Bool {
+        guard let allLabel = getAllLabel() else {
+            return false
+        }
+        return allLabel.apps.contains(where: {$0.appStoreID == appStoreID})
+    }
+
     static func add(_ label: Label) throws {
         try DatabaseManager.shared.add(label)
+    }
+
+    static func update(_ label: Label, app: App) throws {
+        let realm = DatabaseManager.shared.realm
+        try realm.write {
+            label.apps.append(app)
+        }
     }
 
     static func remove(_ label: Label) throws {
