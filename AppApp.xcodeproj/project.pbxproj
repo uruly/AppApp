@@ -196,7 +196,6 @@
 		660B067E24D05155003100EE /* UIColor+TextColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+TextColor.swift"; sourceTree = "<group>"; };
 		660B068624D0541B003100EE /* AppsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsViewController.swift; sourceTree = "<group>"; };
 		660B068724D0541B003100EE /* AppsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppsViewController.xib; sourceTree = "<group>"; };
-		660B068E24D15935003100EE /* OpenGraph.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGraph.framework; path = Carthage/Build/iOS/OpenGraph.framework; sourceTree = "<group>"; };
 		660B57621FCFC5F200DBC823 /* RGBSliderCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RGBSliderCollectionViewCell.xib; sourceTree = "<group>"; };
 		660B57631FCFC5F300DBC823 /* ColorPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPageView.swift; sourceTree = "<group>"; };
 		660B57641FCFC5F300DBC823 /* RGBSliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RGBSliderView.swift; sourceTree = "<group>"; };
@@ -1092,7 +1091,6 @@
 		667ECE4D1FC382B9009233DE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				660B068E24D15935003100EE /* OpenGraph.framework */,
 				66983E4720071305009C9AEF /* libcrypto.a */,
 				66983E4820071306009C9AEF /* libssl.a */,
 				66983E4120070C08009C9AEF /* openssl.framework */,
