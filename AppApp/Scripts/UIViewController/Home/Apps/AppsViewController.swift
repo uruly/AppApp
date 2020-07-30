@@ -16,12 +16,13 @@ final class AppsViewController: UIViewController {
             collectionView.register(R.nib.appListCollectionViewCell)
             collectionView.delegate = self
             collectionView.dataSource = self
+            collectionView.backgroundColor = mode == .collect ? label.uiColor : .white
         }
     }
 
     let label: Label
 
-    private var mode: ToolbarMode = .collect
+    private var mode: ToolbarMode = .list
 
     // MARK: - Initializer
 
@@ -39,7 +40,7 @@ final class AppsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = mode == .collect ? label.uiColor : .white
+        view.backgroundColor = label.uiColor
     }
 }
 
@@ -50,35 +51,21 @@ extension AppsViewController: UICollectionViewDelegate {}
 // MARK: - UICollectionViewDataSource
 
 extension AppsViewController: UICollectionViewDataSource {
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return label.apps.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if mode == .collect {
+        switch mode {
+        case .collect:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.appListCollectionViewCell, for: indexPath)!
 
             cell.configure(app: label.apps[indexPath.row])
             return cell
-        } else {
+        case .list:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.appInfoListCollectionViewCell, for: indexPath)!
-            //            cell.imageView.image = nil
-            //            if let imageData = appData.appList[indexPath.row].app?.image {
-            //                cell.imageView.image = UIImage(data: imageData)
-            //            }
-            //            cell.nameLabel.text = appData.appList[indexPath.row].app?.name
-            //            cell.developerLabel.text = appData.appList[indexPath.row].app?.developer
-            //
-            //            //チェックマーク
-            //            cell.checkImageView.isHidden = true
-            //            cell.imageView.alpha = 1.0
-            //            //編集中かどうか
-            //            if AppCollectionView.isWhileEditing {
-            //                if checkArray.contains(where: {$0.id == appData.appList[indexPath.row].id}) {
-            //                    cell.checkImageView.isHidden = false
-            //                    cell.imageView.alpha = 0.5
-            //                }
-            //            }
+            cell.configure(app: label.apps[indexPath.row])
 
             return cell
         }
