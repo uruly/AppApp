@@ -41,6 +41,9 @@ final class AppInfoListCollectionViewCell: UICollectionViewCell {
         if let imageData = app.image {
             imageView.image = UIImage(data: imageData)
         }
+        if app.name == "" || app.developer == "" {
+            AppRequest.shared.fetchApp(app: app)
+        }
         nameLabel.text = app.name
         developerLabel.text = app.developer
     }
