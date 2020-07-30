@@ -23,6 +23,7 @@ final class AppsViewController: UIViewController {
     let label: Label
 
     private var mode: ToolbarMode = UserDefaults.standard.bool(forKey: .homeAppListModeIsList) ? .list : .collect
+    private var itemSize: CGSize = CGSize(width: 100, height: 100)
 
     // MARK: - Initializer
 
@@ -72,4 +73,18 @@ extension AppsViewController: UICollectionViewDataSource {
         }
     }
 
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+
+extension AppsViewController: UICollectionViewDelegateFlowLayout {
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        switch mode {
+        case .collect:
+            return itemSize
+        case .list:
+            return CGSize(width: view.frame.width - 30, height: 125)
+        }
+    }
 }
