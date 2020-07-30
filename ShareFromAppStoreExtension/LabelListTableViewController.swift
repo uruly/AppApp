@@ -65,8 +65,9 @@ extension LabelListTableViewController {
             cell.accessoryType = .none
         } else {
             cell.textLabel?.text = labels[indexPath.row].name
+            cell.isSelected = selectedLabels.contains(labels[indexPath.row])
+            cell.accessoryType = cell.isSelected ? .checkmark : .none
         }
-        cell.isSelected = selectedLabels.contains(labels[indexPath.row])
 
         return cell
     }
@@ -78,6 +79,7 @@ extension LabelListTableViewController {
             return
         }
         guard indexPath.row != 0 else { return }
+        print("こっこだよ")
         let cell = tableView.cellForRow(at: indexPath)
         cell?.accessoryType = .checkmark
         selectedLabels.append(labels[indexPath.row])

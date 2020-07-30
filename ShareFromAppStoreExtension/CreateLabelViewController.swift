@@ -11,7 +11,7 @@ import RealmSwift
 
 class CreateLabelViewController: UITableViewController {
 
-    var name: String!
+    var name: String?
     var colorView: UIView!
     var color: UIColor! {
         didSet {
@@ -136,7 +136,7 @@ class CreateLabelViewController: UITableViewController {
     }
 
     private func saveLabel() {
-        guard let color = color, let colorData = try? NSKeyedArchiver.archivedData(withRootObject: color, requiringSecureCoding: false), !name.isEmpty else { return }
+        guard let color = color, let colorData = try? NSKeyedArchiver.archivedData(withRootObject: color, requiringSecureCoding: false), let name = name, name != "" else { return }
         let id = UUID().uuidString
         let label = Label(id: id, name: name, color: colorData, order: Label.count, explain: "")
 
