@@ -26,11 +26,12 @@ final class App: Object {
         return "uid"
     }
 
-    convenience required init(uid: String, appStoreID: String, image: Data?) {
+    convenience required init(uid: String, appStoreID: String, image: Data?, memo: String) {
         self.init()
         self.uid = uid
         self.appStoreID = appStoreID
         self.image = image
+        self.memo = memo
     }
 }
 

@@ -55,6 +55,13 @@ extension Label {
         return DatabaseManager.shared.object(Label.self, filter: predicate)
     }
 
+    static func isContain(appStoreID: String) -> Bool {
+        guard let allLabel = getAllLabel() else {
+            return false
+        }
+        return allLabel.apps.contains(where: {$0.appStoreID == appStoreID})
+    }
+
     static func add(_ label: Label) throws {
         try DatabaseManager.shared.add(label)
     }

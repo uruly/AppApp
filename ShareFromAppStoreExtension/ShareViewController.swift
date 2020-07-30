@@ -72,6 +72,14 @@ class ShareViewController: SLComposeServiceViewController {
                 self?.showAlert()
             }
         }
+        // 既に含んでいるかの判定
+        checkAppDuplicated { [weak self] (isDuplicated) in
+            guard isDuplicated else { return }
+            DispatchQueue.main.async {
+                let message = "このアプリは既に保存されています。"
+                self?.showError(message: message)
+            }
+        }
     }
 
     // MARK: - Public method
@@ -93,7 +101,8 @@ class ShareViewController: SLComposeServiceViewController {
             if isSuccess {
                 self?.extensionContext?.completeRequest(returningItems: [], completionHandler: nil)
             } else {
-                self?.showError()
+                let message = "保存に失敗しました。"
+                self?.showError(message: message)
             }
         }
     }
@@ -137,6 +146,27 @@ class ShareViewController: SLComposeServiceViewController {
         }
     }
 
+    private func checkAppDuplicated(_ completion: @escaping (Bool) -> Void) {
+        guard let extensionItem: NSExtensionItem = extensionContext?.inputItems.first as? NSExtensionItem,
+            let itemProviders = extensionItem.attachments else {
+                completion(false)
+                return
+        }
+        guard let urlProvider = itemProviders.first(where: { $0.hasItemConformingToTypeIdentifier("public.url")}) else {
+            completion(false)
+            return
+        }
+        urlProvider.loadItem(forTypeIdentifier: "public.url", options: nil) { (item, _) in
+            guard let url = item as? URL else {
+                completion(false)
+                return
+            }
+            let id = url.lastPathComponent
+            let isContain = Label.isContain(appStoreID: id)
+            completion(isContain)
+        }
+    }
+
     private func showAlert() {
         let alertController = UIAlertController(title: "利用できません", message: "この機能はAppStoreでのみ利用できます。", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "了解", style: .destructive) { _ in
@@ -145,8 +175,8 @@ class ShareViewController: SLComposeServiceViewController {
         present(alertController, animated: true, completion: nil)
     }
 
-    private func showError() {
-        let alertController = UIAlertController(title: "失敗", message: "保存に失敗しました。", preferredStyle: .alert)
+    private func showError(message: String) {
+        let alertController = UIAlertController(title: "Error!", message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "了解", style: .destructive) { _ in
             self.cancel()
             self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
@@ -167,7 +197,7 @@ class ShareViewController: SLComposeServiceViewController {
             let id = url.lastPathComponent
             wself.getImageData(itemProviders: itemProviders) { (data) in
                 DispatchQueue.main.async {
-                    let app = App(uid: UUID().uuidString, appStoreID: id, image: data)
+                    let app = App(uid: UUID().uuidString, appStoreID: id, image: data, memo: wself.textView.text)
                     do {
                         try App.add(app)
                         for label in wself.labels {

@@ -79,7 +79,6 @@ extension LabelListTableViewController {
             return
         }
         guard indexPath.row != 0 else { return }
-        print("こっこだよ")
         let cell = tableView.cellForRow(at: indexPath)
         cell?.accessoryType = .checkmark
         selectedLabels.append(labels[indexPath.row])
