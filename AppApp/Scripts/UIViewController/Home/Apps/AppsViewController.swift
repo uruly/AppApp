@@ -22,7 +22,7 @@ final class AppsViewController: UIViewController {
 
     let label: Label
 
-    private var mode: ToolbarMode = .list
+    private var mode: ToolbarMode = UserDefaults.standard.bool(forKey: .homeAppListModeIsList) ? .list : .collect
 
     // MARK: - Initializer
 
@@ -41,6 +41,7 @@ final class AppsViewController: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = label.uiColor
+        mode = .list
     }
 }
 

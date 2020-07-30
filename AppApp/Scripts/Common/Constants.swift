@@ -19,3 +19,10 @@ extension UInt64 {
 
     static let schemaVersion: UInt64 = 6
 }
+
+// MARK: - UserDefaults Keys
+
+extension String {
+
+    static let homeAppListModeIsList = "homeAppListModeIsList"
+}
