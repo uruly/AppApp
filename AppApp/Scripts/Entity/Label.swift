@@ -59,6 +59,13 @@ extension Label {
         try DatabaseManager.shared.add(label)
     }
 
+    static func update(_ label: Label, app: App) throws {
+        let realm = DatabaseManager.shared.realm
+        try realm.write {
+            label.apps.append(app)
+        }
+    }
+
     static func remove(_ label: Label) throws {
         try DatabaseManager.shared.delete(label)
     }

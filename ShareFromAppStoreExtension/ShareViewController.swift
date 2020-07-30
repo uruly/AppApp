@@ -89,8 +89,13 @@ class ShareViewController: SLComposeServiceViewController {
     override func didSelectPost() {
         guard let extensionItem: NSExtensionItem = extensionContext?.inputItems.first as? NSExtensionItem,
             let itemProviders = extensionItem.attachments else { return }
-        print(itemProviders)
-        //        loadData(itemProviders: itemProviders)
+        save(itemProviders: itemProviders) { [weak self] isSuccess in
+            if isSuccess {
+                self?.extensionContext?.completeRequest(returningItems: [], completionHandler: nil)
+            } else {
+                self?.showError()
+            }
+        }
     }
 
     @objc func getLabels(notification: Notification) {
@@ -147,5 +152,49 @@ class ShareViewController: SLComposeServiceViewController {
             self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
         })
         present(alertController, animated: true, completion: nil)
+    }
+
+    private func save(itemProviders: [NSItemProvider], completion: @escaping (Bool) -> Void) {
+        guard let urlProvider = itemProviders.first(where: { $0.hasItemConformingToTypeIdentifier("public.url")}) else {
+            completion(false)
+            return
+        }
+        urlProvider.loadItem(forTypeIdentifier: "public.url", options: nil) { [weak self] (item, _) in
+            guard let wself = self, let url = item as? URL else {
+                completion(false)
+                return
+            }
+            let id = url.lastPathComponent
+            wself.getImageData(itemProviders: itemProviders) { (data) in
+                DispatchQueue.main.async {
+                    let app = App(uid: UUID().uuidString, appStoreID: id, image: data)
+                    do {
+                        try App.add(app)
+                        for label in wself.labels {
+                            try Label.update(label, app: app)
+                        }
+                        completion(true)
+                    } catch {
+                        print("error", error)
+                        completion(false)
+                    }
+                }
+            }
+        }
+    }
+
+    private func getImageData(itemProviders: [NSItemProvider], completion: @escaping (Data?) -> Void) {
+        guard let imageProvider = itemProviders.first(where: { $0.hasItemConformingToTypeIdentifier("public.image")}) else {
+            completion(nil)
+            return
+        }
+        imageProvider.loadItem(forTypeIdentifier: "public.image", options: nil) { (item, _) in
+            guard let image = item as? UIImage else {
+                completion(nil)
+                return
+            }
+            let data = image.pngData()
+            completion(data)
+        }
     }
 }
