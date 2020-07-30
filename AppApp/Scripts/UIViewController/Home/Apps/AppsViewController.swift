@@ -42,7 +42,7 @@ final class AppsViewController: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = label.uiColor
-        mode = .collect
+        mode = .list
     }
 }
 

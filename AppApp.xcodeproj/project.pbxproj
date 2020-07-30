@@ -109,6 +109,8 @@
 		6677FC2F1FCAB72F00CB105E /* AppInfoListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6677FC2D1FCAB72F00CB105E /* AppInfoListCollectionViewCell.swift */; };
 		6677FC301FCAB72F00CB105E /* AppInfoListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6677FC2E1FCAB72F00CB105E /* AppInfoListCollectionViewCell.xib */; };
 		667C841B24D2C659002F5B22 /* AppRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667C841A24D2C659002F5B22 /* AppRequest.swift */; };
+		667C842124D2EFCF002F5B22 /* BotomModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667C841F24D2EFCF002F5B22 /* BotomModalViewController.swift */; };
+		667C842224D2EFCF002F5B22 /* BotomModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 667C842024D2EFCF002F5B22 /* BotomModalViewController.xib */; };
 		667ECE191FC36784009233DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE181FC36784009233DE /* AppDelegate.swift */; };
 		667ECE201FC36784009233DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 667ECE1F1FC36784009233DE /* Assets.xcassets */; };
 		667ECE231FC36784009233DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 667ECE211FC36784009233DE /* LaunchScreen.storyboard */; };
@@ -285,6 +287,8 @@
 		6677FC2D1FCAB72F00CB105E /* AppInfoListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoListCollectionViewCell.swift; sourceTree = "<group>"; };
 		6677FC2E1FCAB72F00CB105E /* AppInfoListCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppInfoListCollectionViewCell.xib; sourceTree = "<group>"; };
 		667C841A24D2C659002F5B22 /* AppRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppRequest.swift; path = ShareFromAppStoreExtension/AppRequest.swift; sourceTree = SOURCE_ROOT; };
+		667C841F24D2EFCF002F5B22 /* BotomModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotomModalViewController.swift; sourceTree = "<group>"; };
+		667C842024D2EFCF002F5B22 /* BotomModalViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BotomModalViewController.xib; sourceTree = "<group>"; };
 		667ECE151FC36784009233DE /* AppApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		667ECE181FC36784009233DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		667ECE1F1FC36784009233DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -372,6 +376,7 @@
 			children = (
 				660B066A24D04AF2003100EE /* HomeViewController.swift */,
 				660B066B24D04AF2003100EE /* HomeViewController.xib */,
+				667C841E24D2EFB4002F5B22 /* BottomModal */,
 				660B067024D04F34003100EE /* Page */,
 				660B066F24D04F1B003100EE /* LabelCollection */,
 				660B066E24D04EC2003100EE /* Apps */,
@@ -1040,6 +1045,15 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		667C841E24D2EFB4002F5B22 /* BottomModal */ = {
+			isa = PBXGroup;
+			children = (
+				667C841F24D2EFCF002F5B22 /* BotomModalViewController.swift */,
+				667C842024D2EFCF002F5B22 /* BotomModalViewController.xib */,
+			);
+			path = BottomModal;
+			sourceTree = "<group>";
+		};
 		667ECE0C1FC36784009233DE = {
 			isa = PBXGroup;
 			children = (
@@ -1400,6 +1414,7 @@
 				660D7A912409275D00DEC2C8 /* license_plist.yml in Resources */,
 				660B068924D0541B003100EE /* AppsViewController.xib in Resources */,
 				660B57721FCFC5F500DBC823 /* ColorBaseCollectionViewCell.xib in Resources */,
+				667C842224D2EFCF002F5B22 /* BotomModalViewController.xib in Resources */,
 				66681CE21FCC1734009A0F55 /* DetailCommonCollectionViewCell.xib in Resources */,
 				660D7A8F2409229E00DEC2C8 /* Settings.bundle in Resources */,
 				667ECE721FC4206F009233DE /* AppListCollectionViewCell.xib in Resources */,
@@ -1582,6 +1597,7 @@
 				6662E1412001D76300FB30C7 /* UIView+SnapShot.swift in Sources */,
 				666E06B41FCB9A880043DCFF /* MemoTableViewCell.swift in Sources */,
 				66E54DD12413A6B700069082 /* AppData.swift in Sources */,
+				667C842124D2EFCF002F5B22 /* BotomModalViewController.swift in Sources */,
 				660B57D71FD16F0B00DBC823 /* HelpTableViewCell.swift in Sources */,
 				6662E1392000652000FB30C7 /* InfoTableView.swift in Sources */,
 				660B57B81FD10F9500DBC823 /* StartCollectionViewCell.swift in Sources */,
