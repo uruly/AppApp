@@ -8,22 +8,21 @@
 
 import UIKit
 
-class BottomModalViewController: UIViewController {
+final class BottomModalViewController: UIViewController {
+
+    @IBOutlet private weak var iconSizeSlider: UISlider!
+    @IBOutlet private weak var modeButton: UIBarButtonItem!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
-    /*
-     // MARK: - Navigation
+    @IBAction func valueChangedSlider(_ sender: UISlider) {
 
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    }
+
+    @IBAction func onTapModeButton(_ sender: UIBarButtonItem) {
+        
+    }
 
 }
