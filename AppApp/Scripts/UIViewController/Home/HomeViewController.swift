@@ -26,6 +26,9 @@ final class HomeViewController: UIViewController {
     private var appsViewController: AppsViewController? {
         return pageViewController?.viewControllers?.first as? AppsViewController
     }
+    private var bottomViewController: BottomModalViewController? {
+        return children.first(where: {$0 is BottomModalViewController}) as? BottomModalViewController
+    }
     private lazy var setupLayoutOnce: Void = {
         setupLayout()
     }()
@@ -81,6 +84,11 @@ final class HomeViewController: UIViewController {
         view.addSubview(pageViewController.view)
         pageViewController.didMove(toParent: self)
         pageViewController.pageDelegate = self
+
+        let modalViewController = BottomModalViewController(nib: R.nib.bottomModalViewController)
+        addChild(modalViewController)
+        view.addSubview(modalViewController.view)
+        modalViewController.didMove(toParent: self)
     }
 
     private func setupLayout() {
@@ -96,6 +104,11 @@ final class HomeViewController: UIViewController {
             $0.height.equalToSuperview().offset(-(45 + safeAreaTop))
             $0.top.equalToSuperview().offset(45 + safeAreaTop)
             $0.left.equalToSuperview()
+        }
+        bottomViewController?.view.snp.makeConstraints {
+            $0.width.equalToSuperview()
+            $0.bottom.equalTo(0)
+            $0.height.equalTo(60)
         }
     }
 
