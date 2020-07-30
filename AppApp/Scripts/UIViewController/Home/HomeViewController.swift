@@ -85,10 +85,10 @@ final class HomeViewController: UIViewController {
         pageViewController.didMove(toParent: self)
         pageViewController.pageDelegate = self
 
-        let modalViewController = BottomModalViewController(nib: R.nib.bottomModalViewController)
-        addChild(modalViewController)
-        view.addSubview(modalViewController.view)
-        modalViewController.didMove(toParent: self)
+        let bottomViewController = BottomModalViewController(nib: R.nib.bottomModalViewController)
+        addChild(bottomViewController)
+        view.addSubview(bottomViewController.view)
+        bottomViewController.didMove(toParent: self)
     }
 
     private func setupLayout() {

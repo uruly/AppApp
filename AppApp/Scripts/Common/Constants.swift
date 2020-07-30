@@ -26,3 +26,8 @@ extension String {
 
     static let homeAppListModeIsList = "homeAppListModeIsList"
 }
+
+extension Notification.Name {
+
+    static let toolbarMode = Notification.Name("toolbarMode")
+}

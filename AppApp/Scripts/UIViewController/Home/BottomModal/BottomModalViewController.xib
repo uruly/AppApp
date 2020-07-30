@@ -41,7 +41,7 @@
                         <barButtonItem title="Item" image="list_icon" id="PMD-Ob-JKC">
                             <color key="tintColor" red="0.69234758620000003" green="0.74844485520000004" blue="0.79434329270000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <action selector="onTapModeButton:" destination="-1" id="8Cm-gR-5HF"/>
+                                <action selector="onTapModeButton:" destination="-1" id="Dnw-Q7-pZk"/>
                             </connections>
                         </barButtonItem>
                     </items>

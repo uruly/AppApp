@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol LabelCollectionViewControllerDelegate: class {
+protocol LabelCollectionViewControllerDelegate: AnyObject {
     func change(_ nextLabel: Label)
     func update(_ labels: [Label], index: Int)
 }

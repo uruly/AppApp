@@ -22,7 +22,11 @@ final class AppsViewController: UIViewController {
 
     let label: Label
 
-    private var mode: ToolbarMode = UserDefaults.standard.bool(forKey: .homeAppListModeIsList) ? .list : .collect
+    private var mode: ToolbarMode = UserDefaults.standard.bool(forKey: .homeAppListModeIsList) ? .list : .collect {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
     private var itemSize: CGSize = CGSize(width: 100, height: 100)
 
     // MARK: - Initializer
@@ -42,7 +46,16 @@ final class AppsViewController: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = label.uiColor
-        mode = .list
+
+        NotificationCenter.default.addObserver(self, selector: #selector(changeMode(notification:)), name: .toolbarMode, object: nil)
+    }
+
+    @objc func changeMode(notification: Notification) {
+        guard let mode = notification.object as? ToolbarMode else {
+            fatalError("ToolbarMode じゃないよ")
+        }
+        self.mode = mode
+        UserDefaults.standard.set(mode == .list, forKey: .homeAppListModeIsList)
     }
 }
 
