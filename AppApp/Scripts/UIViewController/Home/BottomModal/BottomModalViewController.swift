@@ -17,10 +17,16 @@ final class BottomModalViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        iconSizeSlider.isEnabled = mode == .collect
+        iconSizeSlider.minimumValue = 30.0
+        iconSizeSlider.maximumValue = Float(view.frame.width / 2) - 45
+        let value = UserDefaults.standard.float(forKey: .homeAppListIconSize)
+        iconSizeSlider.value = value == 0 ? 50.0 : value
     }
 
     @IBAction func valueChangedSlider(_ sender: UISlider) {
-
+        UserDefaults.standard.set(sender.value, forKey: .homeAppListIconSize)
+        NotificationCenter.default.post(name: .iconSize, object: sender.value, userInfo: nil)
     }
 
     @IBAction func onTapModeButton(_ sender: UIBarButtonItem) {
@@ -34,6 +40,7 @@ final class BottomModalViewController: UIViewController {
             sender.image = R.image.collect_icon()!
             NotificationCenter.default.post(name: .toolbarMode, object: ToolbarMode.collect)
         }
+        iconSizeSlider.isEnabled = mode == .collect
     }
 
 }

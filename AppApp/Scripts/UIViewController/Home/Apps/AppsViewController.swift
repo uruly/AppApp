@@ -27,7 +27,11 @@ final class AppsViewController: UIViewController {
             collectionView.reloadData()
         }
     }
-    private var itemSize: CGSize = CGSize(width: 100, height: 100)
+    private var itemSize: CGSize = CGSize(width: 100, height: 100) {
+        didSet {
+            collectionView.collectionViewLayout.invalidateLayout()
+        }
+    }
 
     // MARK: - Initializer
 
@@ -48,6 +52,7 @@ final class AppsViewController: UIViewController {
         view.backgroundColor = label.uiColor
 
         NotificationCenter.default.addObserver(self, selector: #selector(changeMode(notification:)), name: .toolbarMode, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(changeIconSize(notification:)), name: .iconSize, object: nil)
     }
 
     @objc func changeMode(notification: Notification) {
@@ -56,6 +61,13 @@ final class AppsViewController: UIViewController {
         }
         self.mode = mode
         UserDefaults.standard.set(mode == .list, forKey: .homeAppListModeIsList)
+    }
+
+    @objc func changeIconSize(notification: Notification) {
+        guard let value = notification.object as? Float else {
+            fatalError("Slider value じゃないよ")
+        }
+        itemSize = CGSize(width: CGFloat(value), height: CGFloat(value))
     }
 }
 
