@@ -29,6 +29,9 @@ final class HomeViewController: UIViewController {
     private var bottomViewController: BottomModalViewController? {
         return children.first(where: {$0 is BottomModalViewController}) as? BottomModalViewController
     }
+
+    private var isAppEditing: Bool = false
+
     private lazy var setupLayoutOnce: Void = {
         setupLayout()
     }()
@@ -123,11 +126,12 @@ final class HomeViewController: UIViewController {
 
     // MARK: - IBAction
 
-    @objc func onTapEditButton(sender: UIButton) {
-
+    @objc func onTapEditButton(sender: UIBarButtonItem) {
+        navigationItem.rightBarButtonItem?.title = isAppEditing ? "選択" : "キャンセル"
+        isAppEditing = !isAppEditing
     }
 
-    @objc func onTapTutorialButton(sender: UIButton) {
+    @objc func onTapTutorialButton(sender: UIBarButtonItem) {
 
     }
 }
