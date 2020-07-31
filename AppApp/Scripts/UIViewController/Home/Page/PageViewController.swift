@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol PageViewControllerDelegate: class {
+protocol PageViewControllerDelegate: AnyObject {
     var nextLabel: Label? { get }
     var prevLabel: Label? { get }
     func setCurrentPage(_ tag: Int)

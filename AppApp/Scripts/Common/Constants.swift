@@ -19,3 +19,17 @@ extension UInt64 {
 
     static let schemaVersion: UInt64 = 6
 }
+
+// MARK: - UserDefaults Keys
+
+extension String {
+
+    static let homeAppListModeIsList = "homeAppListModeIsList"
+    static let homeAppListIconSize = "homeAppListIconSize"
+}
+
+extension Notification.Name {
+
+    static let toolbarMode = Notification.Name("toolbarMode")
+    static let iconSize = Notification.Name("iconSize")
+}

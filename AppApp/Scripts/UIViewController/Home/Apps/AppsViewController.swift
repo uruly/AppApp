@@ -16,12 +16,22 @@ final class AppsViewController: UIViewController {
             collectionView.register(R.nib.appListCollectionViewCell)
             collectionView.delegate = self
             collectionView.dataSource = self
+            collectionView.backgroundColor = mode == .collect ? label.uiColor : .white
         }
     }
 
     let label: Label
 
-    private var mode: ToolbarMode = .collect
+    private var mode: ToolbarMode = UserDefaults.standard.bool(forKey: .homeAppListModeIsList) ? .list : .collect {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
+    private var itemSize: CGSize = CGSize(width: 100, height: 100) {
+        didSet {
+            collectionView.collectionViewLayout.invalidateLayout()
+        }
+    }
 
     // MARK: - Initializer
 
@@ -39,7 +49,25 @@ final class AppsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = mode == .collect ? label.uiColor : .white
+        view.backgroundColor = label.uiColor
+
+        NotificationCenter.default.addObserver(self, selector: #selector(changeMode(notification:)), name: .toolbarMode, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(changeIconSize(notification:)), name: .iconSize, object: nil)
+    }
+
+    @objc func changeMode(notification: Notification) {
+        guard let mode = notification.object as? ToolbarMode else {
+            fatalError("ToolbarMode じゃないよ")
+        }
+        self.mode = mode
+        UserDefaults.standard.set(mode == .list, forKey: .homeAppListModeIsList)
+    }
+
+    @objc func changeIconSize(notification: Notification) {
+        guard let value = notification.object as? Float else {
+            fatalError("Slider value じゃないよ")
+        }
+        itemSize = CGSize(width: CGFloat(value), height: CGFloat(value))
     }
 }
 
@@ -50,38 +78,38 @@ extension AppsViewController: UICollectionViewDelegate {}
 // MARK: - UICollectionViewDataSource
 
 extension AppsViewController: UICollectionViewDataSource {
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return label.apps.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if mode == .collect {
+        switch mode {
+        case .collect:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.appListCollectionViewCell, for: indexPath)!
 
             cell.configure(app: label.apps[indexPath.row])
             return cell
-        } else {
+        case .list:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.appInfoListCollectionViewCell, for: indexPath)!
-            //            cell.imageView.image = nil
-            //            if let imageData = appData.appList[indexPath.row].app?.image {
-            //                cell.imageView.image = UIImage(data: imageData)
-            //            }
-            //            cell.nameLabel.text = appData.appList[indexPath.row].app?.name
-            //            cell.developerLabel.text = appData.appList[indexPath.row].app?.developer
-            //
-            //            //チェックマーク
-            //            cell.checkImageView.isHidden = true
-            //            cell.imageView.alpha = 1.0
-            //            //編集中かどうか
-            //            if AppCollectionView.isWhileEditing {
-            //                if checkArray.contains(where: {$0.id == appData.appList[indexPath.row].id}) {
-            //                    cell.checkImageView.isHidden = false
-            //                    cell.imageView.alpha = 0.5
-            //                }
-            //            }
+            cell.configure(app: label.apps[indexPath.row])
 
             return cell
         }
     }
 
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+
+extension AppsViewController: UICollectionViewDelegateFlowLayout {
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        switch mode {
+        case .collect:
+            return itemSize
+        case .list:
+            return CGSize(width: view.frame.width - 30, height: 125)
+        }
+    }
 }

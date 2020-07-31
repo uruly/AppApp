@@ -26,6 +26,9 @@ final class HomeViewController: UIViewController {
     private var appsViewController: AppsViewController? {
         return pageViewController?.viewControllers?.first as? AppsViewController
     }
+    private var bottomViewController: BottomModalViewController? {
+        return children.first(where: {$0 is BottomModalViewController}) as? BottomModalViewController
+    }
     private lazy var setupLayoutOnce: Void = {
         setupLayout()
     }()
@@ -81,10 +84,16 @@ final class HomeViewController: UIViewController {
         view.addSubview(pageViewController.view)
         pageViewController.didMove(toParent: self)
         pageViewController.pageDelegate = self
+
+        let bottomViewController = BottomModalViewController(nib: R.nib.bottomModalViewController)
+        addChild(bottomViewController)
+        view.addSubview(bottomViewController.view)
+        bottomViewController.didMove(toParent: self)
     }
 
     private func setupLayout() {
         let safeAreaTop = view.safeAreaInsets.top
+        let bottomViewHeight = 52 + view.safeAreaInsets.bottom
         labelCollectionViewController?.view.snp.makeConstraints {
             $0.width.equalToSuperview()
             $0.height.equalTo(35)
@@ -93,9 +102,14 @@ final class HomeViewController: UIViewController {
         }
         pageViewController?.view.snp.makeConstraints {
             $0.width.equalToSuperview()
-            $0.height.equalToSuperview().offset(-(45 + safeAreaTop))
+            $0.height.equalToSuperview().offset(-(45 + safeAreaTop + bottomViewHeight))
             $0.top.equalToSuperview().offset(45 + safeAreaTop)
             $0.left.equalToSuperview()
+        }
+        bottomViewController?.view.snp.makeConstraints {
+            $0.width.equalToSuperview()
+            $0.bottom.equalTo(0)
+            $0.height.equalTo(bottomViewHeight)
         }
     }
 
