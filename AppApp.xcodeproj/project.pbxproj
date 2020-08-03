@@ -57,6 +57,13 @@
 		660B88342003C67A0064EFFE /* UIColor+Compare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B88332003C67A0064EFFE /* UIColor+Compare.swift */; };
 		660D7A8F2409229E00DEC2C8 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 660D7A8E2409229E00DEC2C8 /* Settings.bundle */; };
 		660D7A912409275D00DEC2C8 /* license_plist.yml in Resources */ = {isa = PBXBuildFile; fileRef = 660D7A902409275D00DEC2C8 /* license_plist.yml */; };
+		6616499524D7E9CF00EE123B /* LabelSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6616499324D7E9CE00EE123B /* LabelSettingViewController.xib */; };
+		6616499624D7E9CF00EE123B /* LabelSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6616499424D7E9CE00EE123B /* LabelSettingViewController.swift */; };
+		6616499824D7EF3600EE123B /* UIColor+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6616499724D7EF3600EE123B /* UIColor+Random.swift */; };
+		661649AD24D7F1FB00EE123B /* LabelSettingTextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661649A724D7F1FB00EE123B /* LabelSettingTextFieldTableViewCell.swift */; };
+		661649AE24D7F1FB00EE123B /* LabelSettingColorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661649A824D7F1FB00EE123B /* LabelSettingColorTableViewCell.swift */; };
+		661649B024D7F1FB00EE123B /* LabelSettingColorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 661649AA24D7F1FB00EE123B /* LabelSettingColorTableViewCell.xib */; };
+		661649B224D7F1FB00EE123B /* LabelSettingTextFieldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 661649AC24D7F1FB00EE123B /* LabelSettingTextFieldTableViewCell.xib */; };
 		662AAF5024139FB300283AF2 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662AAF4F24139FB300283AF2 /* DatabaseManager.swift */; };
 		66498E301FC7A01D00239B47 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E2F1FC7A01D00239B47 /* DetailViewController.swift */; };
 		66498E321FC7B5AA00239B47 /* EditAppLabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E311FC7B5AA00239B47 /* EditAppLabelViewController.swift */; };
@@ -233,6 +240,13 @@
 		660B88332003C67A0064EFFE /* UIColor+Compare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Compare.swift"; sourceTree = "<group>"; };
 		660D7A8E2409229E00DEC2C8 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		660D7A902409275D00DEC2C8 /* license_plist.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = license_plist.yml; sourceTree = "<group>"; };
+		6616499324D7E9CE00EE123B /* LabelSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LabelSettingViewController.xib; sourceTree = "<group>"; };
+		6616499424D7E9CE00EE123B /* LabelSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelSettingViewController.swift; sourceTree = "<group>"; };
+		6616499724D7EF3600EE123B /* UIColor+Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Random.swift"; sourceTree = "<group>"; };
+		661649A724D7F1FB00EE123B /* LabelSettingTextFieldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelSettingTextFieldTableViewCell.swift; sourceTree = "<group>"; };
+		661649A824D7F1FB00EE123B /* LabelSettingColorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelSettingColorTableViewCell.swift; sourceTree = "<group>"; };
+		661649AA24D7F1FB00EE123B /* LabelSettingColorTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LabelSettingColorTableViewCell.xib; sourceTree = "<group>"; };
+		661649AC24D7F1FB00EE123B /* LabelSettingTextFieldTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LabelSettingTextFieldTableViewCell.xib; sourceTree = "<group>"; };
 		662AAF4F24139FB300283AF2 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		66498E231FC5A69B00239B47 /* ShareFromAppStoreExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareFromAppStoreExtension.entitlements; sourceTree = "<group>"; };
 		66498E241FC5A6D700239B47 /* AppApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AppApp.entitlements; sourceTree = "<group>"; };
@@ -428,6 +442,26 @@
 			path = Balloon;
 			sourceTree = "<group>";
 		};
+		6616498E24D7E74E00EE123B /* LabelSetting */ = {
+			isa = PBXGroup;
+			children = (
+				6616499424D7E9CE00EE123B /* LabelSettingViewController.swift */,
+				6616499324D7E9CE00EE123B /* LabelSettingViewController.xib */,
+			);
+			path = LabelSetting;
+			sourceTree = "<group>";
+		};
+		661649A624D7F1FB00EE123B /* LabelSetting */ = {
+			isa = PBXGroup;
+			children = (
+				661649A724D7F1FB00EE123B /* LabelSettingTextFieldTableViewCell.swift */,
+				661649AC24D7F1FB00EE123B /* LabelSettingTextFieldTableViewCell.xib */,
+				661649A824D7F1FB00EE123B /* LabelSettingColorTableViewCell.swift */,
+				661649AA24D7F1FB00EE123B /* LabelSettingColorTableViewCell.xib */,
+			);
+			path = LabelSetting;
+			sourceTree = "<group>";
+		};
 		662AAF4E24139F9800283AF2 /* Database */ = {
 			isa = PBXGroup;
 			children = (
@@ -490,6 +524,7 @@
 			isa = PBXGroup;
 			children = (
 				660B066924D04AB0003100EE /* Home */,
+				6616498E24D7E74E00EE123B /* LabelSetting */,
 				6660819724064D9500001A9C /* AppList */,
 				6660819624064D8200001A9C /* EditAppLabel */,
 				6660817F240649BE00001A9C /* Detail */,
@@ -678,6 +713,7 @@
 		6660818524064B0100001A9C /* UITableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				661649A624D7F1FB00EE123B /* LabelSetting */,
 				6660818F24064C3300001A9C /* Memo */,
 				66A30A1F240806A60016F34D /* HelpLink */,
 				66A30A1E2408069D0016F34D /* Help */,
@@ -1028,6 +1064,7 @@
 				660B067E24D05155003100EE /* UIColor+TextColor.swift */,
 				66498E381FC810BF00239B47 /* Array+FindIndex.swift */,
 				6662E1312000055F00FB30C7 /* UIResponder+FindView.swift */,
+				6616499724D7EF3600EE123B /* UIColor+Random.swift */,
 				6662E13E2001D31700FB30C7 /* UIImage+MaskCorner.swift */,
 				6662E1402001D76300FB30C7 /* UIView+SnapShot.swift */,
 				66498E331FC7BA3600239B47 /* UIApplication+Stack.swift */,
@@ -1385,8 +1422,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6616499524D7E9CF00EE123B /* LabelSettingViewController.xib in Resources */,
 				6662E1261FFFDEB900FB30C7 /* BackgroundColorCollectionViewCell.xib in Resources */,
 				6662E14520024B1700FB30C7 /* backgroundImage.json in Resources */,
+				661649B224D7F1FB00EE123B /* LabelSettingTextFieldTableViewCell.xib in Resources */,
 				6606168F1FCD35AE00667020 /* DetailCollectionViewCell.xib in Resources */,
 				660B067824D04FA3003100EE /* LabelCollectionViewController.xib in Resources */,
 				6662E12E1FFFE9EE00FB30C7 /* BackgroundImageCollectionViewCell.xib in Resources */,
@@ -1406,6 +1445,7 @@
 				666E06B51FCB9A880043DCFF /* MemoTableViewCell.xib in Resources */,
 				66A30A15240804B30016F34D /* BackgroundPlusCollectionViewCell.xib in Resources */,
 				660B067D24D050E5003100EE /* LabelCollectionViewCell.xib in Resources */,
+				661649B024D7F1FB00EE123B /* LabelSettingColorTableViewCell.xib in Resources */,
 				660B57E01FD1774D00DBC823 /* HelpLinkTableViewCell.xib in Resources */,
 				667ECE201FC36784009233DE /* Assets.xcassets in Resources */,
 				6677FC301FCAB72F00CB105E /* AppInfoListCollectionViewCell.xib in Resources */,
@@ -1554,6 +1594,7 @@
 				6606168E1FCD35AE00667020 /* DetailCollectionViewCell.swift in Sources */,
 				6677FC241FCA6CE400CB105E /* AppListViewController.swift in Sources */,
 				667ECE641FC3A7BD009233DE /* CreateAppLabelViewController.swift in Sources */,
+				661649AD24D7F1FB00EE123B /* LabelSettingTextFieldTableViewCell.swift in Sources */,
 				66E54DCF2413A5E000069082 /* App.swift in Sources */,
 				6662E11E1FFE98CA00FB30C7 /* BottomView.swift in Sources */,
 				66498E341FC7BA3600239B47 /* UIApplication+Stack.swift in Sources */,
@@ -1567,6 +1608,7 @@
 				66498E391FC810BF00239B47 /* Array+FindIndex.swift in Sources */,
 				660B068824D0541B003100EE /* AppsViewController.swift in Sources */,
 				6662E1221FFFDE9000FB30C7 /* BackgroundColorListView.swift in Sources */,
+				6616499824D7EF3600EE123B /* UIColor+Random.swift in Sources */,
 				667ECE5F1FC395C2009233DE /* SelectionBarCollectionViewCell.swift in Sources */,
 				66686B712405019F005A22A3 /* Constants.swift in Sources */,
 				660B57CB1FD1501100DBC823 /* BalloonView.swift in Sources */,
@@ -1576,6 +1618,7 @@
 				6662E11D1FFE98CA00FB30C7 /* BottomMenuBaseView.swift in Sources */,
 				6662E13C20007E7300FB30C7 /* InfoTableViewCell.swift in Sources */,
 				660B576E1FCFC5F500DBC823 /* RGBSliderView.swift in Sources */,
+				661649AE24D7F1FB00EE123B /* LabelSettingColorTableViewCell.swift in Sources */,
 				660B57A91FD071EA00DBC823 /* HowToView.swift in Sources */,
 				666E06C31FCBC1E50043DCFF /* PassThroughIndicator.swift in Sources */,
 				667C842524D2F3D1002F5B22 /* BottomModalViewController.swift in Sources */,
@@ -1592,6 +1635,7 @@
 				6606168B1FCD348100667020 /* DeleteAppView.swift in Sources */,
 				667ECE691FC3B454009233DE /* CreateAppLabelTableView.swift in Sources */,
 				6662E1281FFFE94400FB30C7 /* BackgroundImageView.swift in Sources */,
+				6616499624D7E9CF00EE123B /* LabelSettingViewController.swift in Sources */,
 				66E54DD32413A6E000069082 /* AppLabel.swift in Sources */,
 				667ECE491FC368BF009233DE /* BasePageViewController.swift in Sources */,
 				6676ED371FCD582200815BF8 /* DetailMemoCollectionViewCell.swift in Sources */,
