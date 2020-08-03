@@ -40,7 +40,7 @@ final class LabelSettingViewController: UIViewController {
             case .colorView:
                 return tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.labelSettingColorTableViewCell, for: indexPath)
             case .navigation:
-                return tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.labelSettingColorTableViewCell, for: indexPath)
+                return tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.labelSettingAdditionalTableViewCell, for: indexPath)
             }
         }
     }
@@ -88,6 +88,7 @@ final class LabelSettingViewController: UIViewController {
         didSet {
             tableView.register(R.nib.labelSettingColorTableViewCell)
             tableView.register(R.nib.labelSettingTextFieldTableViewCell)
+            tableView.register(R.nib.labelSettingAdditionalTableViewCell)
             tableView.delegate = self
             tableView.dataSource = self
         }
@@ -233,11 +234,11 @@ extension LabelSettingViewController: UITableViewDataSource {
             }
         case .color:
             if let cell = cell as? LabelSettingColorTableViewCell {
-                cell.set(self, color: color.uiColor, text: section.title)
+                cell.set(color: color.uiColor, text: section.title)
             }
         case .additionalApp:
-            if let cell = cell as? LabelSettingColorTableViewCell {
-                cell.set(self, color: label.uiColor, text: section.title)
+            if let cell = cell as? LabelSettingAdditionalTableViewCell {
+                cell.set(text: section.title)
             }
         }
         return cell

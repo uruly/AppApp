@@ -12,7 +12,7 @@ final class LabelSettingColorTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var colorView: UIView!
 
-    func set(_ viewController: LabelSettingViewController, color: UIColor?, text: String) {
+    func set(color: UIColor?, text: String) {
         textLabel?.text = text
         textLabel?.isUserInteractionEnabled = false
         textLabel?.backgroundColor = .clear
