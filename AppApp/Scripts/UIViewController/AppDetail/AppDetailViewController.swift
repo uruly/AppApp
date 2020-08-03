@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import StoreKit
 
 final class AppDetailViewController: UIViewController {
 
@@ -39,6 +40,28 @@ final class AppDetailViewController: UIViewController {
         addChild(infoViewController)
         stackView.addArrangedSubview(infoViewController.view)
         infoViewController.didMove(toParent: self)
+    }
+
+    @IBAction func onTapAppStoreButton(_ sender: UIButton) {
+        let viewController = SKStoreProductViewController()
+        viewController.delegate = self
+        let id = app.appStoreID.filter({ $0.isNumber })
+        present(viewController, animated: true) {
+            viewController.loadProduct(withParameters: [SKStoreProductParameterITunesItemIdentifier: id]) { (_, error) in
+                if error != nil {
+                    viewController.dismiss(animated: true, completion: nil)
+                }
+            }
+        }
+    }
+}
+
+// MARK: - SKStoreProductViewControllerDelegate
+
+extension AppDetailViewController: SKStoreProductViewControllerDelegate {
+
+    func productViewControllerDidFinish(_ viewController: SKStoreProductViewController) {
+        dismiss(animated: true, completion: nil)
     }
 
 }
