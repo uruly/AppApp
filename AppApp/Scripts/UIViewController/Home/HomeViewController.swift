@@ -126,12 +126,16 @@ final class HomeViewController: UIViewController {
         // TODO: - ロゴを載せる
     }
 
-    // MARK: - IBAction
-
-    @objc func onTapEditButton(sender: UIBarButtonItem) {
+    private func changeMode() {
         navigationItem.rightBarButtonItem?.title = isAppEditing ? "選択" : "キャンセル"
         isAppEditing = !isAppEditing
         NotificationCenter.default.post(name: .isAppEditing, object: isAppEditing, userInfo: nil)
+    }
+
+    // MARK: - IBAction
+
+    @objc func onTapEditButton(sender: UIBarButtonItem) {
+        changeMode()
     }
 
     @objc func onTapTutorialButton(sender: UIBarButtonItem) {
@@ -191,7 +195,7 @@ extension HomeViewController: BottomModalViewControllerDelegate {
         // TODO: あにめーしょんつけたい
         appsViewController.collectionView.reloadData()
         // 編集モードを解除する
-        NotificationCenter.default.post(name: .isAppEditing, object: false)
+        changeMode()
     }
 }
 
