@@ -228,7 +228,8 @@ extension LabelSettingViewController: UITableViewDataSource {
         case .labelName:
             if let cell = cell as? LabelSettingTextFieldTableViewCell {
                 cell.delegate = self
-                cell.set(self, text: label.name)
+                let name = textFieldDelegate?.labelName ?? label.name
+                cell.set(self, text: name)
             }
         case .color:
             if let cell = cell as? LabelSettingColorTableViewCell {
