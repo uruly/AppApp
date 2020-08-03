@@ -10,6 +10,7 @@ import UIKit
 
 final class AppDetailViewController: UIViewController {
 
+    @IBOutlet private weak var stackView: UIStackView!
     @IBOutlet private weak var imageView: UIImageView!
 
     let app: App
@@ -34,7 +35,10 @@ final class AppDetailViewController: UIViewController {
     }
 
     private func setupChildren() {
-
+        let infoViewController = AppInformationTableViewController(nib: R.nib.appInformationTableViewController)
+        addChild(infoViewController)
+        stackView.addArrangedSubview(infoViewController.view)
+        infoViewController.didMove(toParent: self)
     }
 
 }
