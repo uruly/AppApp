@@ -166,7 +166,7 @@ final class LabelSettingViewController: UIViewController {
         alertController.addAction(UIAlertAction(title: "削除", style: .destructive) { [weak self] (_) in
             guard let wself = self else { return }
             do {
-                try Label.remove(wself.label)
+                try Label.delete(wself.label)
             } catch {
                 print("error", error)
             }
