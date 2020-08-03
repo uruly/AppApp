@@ -11,6 +11,7 @@ import UIKit
 protocol LabelCollectionViewControllerDelegate: AnyObject {
     func change(_ nextLabel: Label)
     func update(_ labels: [Label], index: Int)
+    func reload()
 }
 
 final class LabelCollectionViewController: UICollectionViewController {
@@ -131,7 +132,6 @@ extension LabelCollectionViewController {
             currentIndex = nextLabel.order
         case .add:
             // ラベルの設定画面に移動
-            //            guard !showRewardAdIfNeeded() else { return }
             toSettingLabelViewController(label: nil, isNew: true)
         }
     }
@@ -221,7 +221,10 @@ extension LabelCollectionViewController {
 extension LabelCollectionViewController: LabelCollectionViewCellDelegate {
 
     func toSettingLabelViewController(label: Label?, isNew: Bool) {
-        let viewController = LabelSettingViewController(label, type: isNew ? .new : .edit, dismissCompletion: nil)
+        let dismissCompletion: ((Bool) -> Void) = { [weak self] _ in
+            self?.labelDelegate?.reload()
+        }
+        let viewController = LabelSettingViewController(label, type: isNew ? .new : .edit, dismissCompletion: dismissCompletion)
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.modalPresentationStyle = .fullScreen
         present(navigationController, animated: true, completion: nil)

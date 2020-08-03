@@ -178,6 +178,11 @@ extension HomeViewController: LabelCollectionViewControllerDelegate {
         self.labels = labels
         change(labels[index])
     }
+
+    func reload() {
+        labelCollectionViewController?.collectionView.reloadData()
+        appsViewController?.collectionView.reloadData()
+    }
 }
 
 // MARK: - BottomModalViewControllerDelegate

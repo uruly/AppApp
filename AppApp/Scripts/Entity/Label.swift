@@ -73,6 +73,12 @@ extension Label {
         }
     }
 
+    static func update(_ label: Label, apps: [App]) throws {
+        for app in apps {
+            try update(label, app: app)
+        }
+    }
+
     static func remove(_ label: Label) throws {
         try DatabaseManager.shared.delete(label)
     }

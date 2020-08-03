@@ -80,6 +80,8 @@ final class LabelSettingViewController: UIViewController {
     let type: SettingType
     let label: Label
 
+    var apps: [App]
+
     private let dismissCompletion: ((Bool) -> Void)?  // (削除したかどうか) -> Void
 
     @IBOutlet private weak var tableView: UITableView! {
@@ -111,12 +113,15 @@ final class LabelSettingViewController: UIViewController {
 
     init(_ label: Label?, type: SettingType, dismissCompletion: ((Bool) -> Void)? = nil) {
         let order = label?.order ?? Label.count
-
-        print("ラベル色", label?.uiColor)
         let color = label?.uiColor ?? UIColor.getRandomColor()
         let colorData = try? NSKeyedArchiver.archivedData(withRootObject: color, requiringSecureCoding: false)
         self.label = label ?? Label(id: UUID().uuidString, name: "", color: colorData, order: order, explain: "")
         self.color = Color(uiColor: color)
+        if let apps = label?.apps {
+            self.apps = Array(apps)
+        } else {
+            self.apps = []
+        }
         self.type = type
         self.dismissCompletion = dismissCompletion
         super.init(nibName: R.nib.labelSettingViewController.name, bundle: nil)
@@ -292,7 +297,13 @@ extension LabelSettingViewController: LabelSettingTextFieldTableViewCellDelegate
 extension LabelSettingViewController {
 
     func saveLabel() {
-        guard let name = textFieldDelegate?.labelName else { return }
-
+        guard let name = textFieldDelegate?.labelName, let colorData = try? NSKeyedArchiver.archivedData(withRootObject: color.uiColor, requiringSecureCoding: false) else { return }
+        let newLabel = Label(id: label.id, name: name, color: colorData, order: label.order, explain: label.explain)
+        do {
+            try Label.add(newLabel)
+            try Label.update(newLabel, apps: apps)
+        } catch {
+            print("Error", error)
+        }
     }
 }
