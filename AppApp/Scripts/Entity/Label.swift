@@ -18,7 +18,11 @@ final class Label: Object {
     @objc dynamic var explain: String = ""
 
     let apps: List<App> = .init()
-    static let count = Label.getAll().count
+
+    static var count: Int {
+        let realm = DatabaseManager.shared.realm
+        return realm.objects(Label.self).count
+    }
 
     override static func primaryKey() -> String? {
         return "id"
