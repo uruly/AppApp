@@ -65,6 +65,7 @@ final class HomeViewController: UIViewController {
             labelCollectionViewController?.collectionView.reloadData()
             appsViewController?.collectionView.reloadData()
         }
+        NotificationCenter.default.post(name: .isAppEditing, object: isAppEditing)
     }
 
     override func viewWillLayoutSubviews() {
