@@ -22,6 +22,7 @@ final class BottomModalViewController: UIViewController {
         iconSizeSlider.maximumValue = Float(view.frame.width / 2) - 45
         let value = UserDefaults.standard.float(forKey: .homeAppListIconSize)
         iconSizeSlider.value = value == 0 ? 50.0 : value
+        NotificationCenter.default.post(name: .iconSize, object: value, userInfo: nil)
     }
 
     @IBAction func valueChangedSlider(_ sender: UISlider) {

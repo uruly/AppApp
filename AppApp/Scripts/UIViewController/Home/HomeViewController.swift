@@ -129,6 +129,7 @@ final class HomeViewController: UIViewController {
     @objc func onTapEditButton(sender: UIBarButtonItem) {
         navigationItem.rightBarButtonItem?.title = isAppEditing ? "選択" : "キャンセル"
         isAppEditing = !isAppEditing
+        NotificationCenter.default.post(name: .isAppEditing, object: isAppEditing, userInfo: nil)
     }
 
     @objc func onTapTutorialButton(sender: UIBarButtonItem) {
