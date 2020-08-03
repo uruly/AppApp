@@ -32,6 +32,7 @@ final class AppDetailViewController: UIViewController {
         if let imageData = app.image {
             imageView.image = UIImage(data: imageData)
         }
+        readDataIfNeeded()
         setupChildren()
     }
 
@@ -45,6 +46,11 @@ final class AppDetailViewController: UIViewController {
         addChild(infoViewController)
         stackView.addArrangedSubview(infoViewController.view)
         infoViewController.didMove(toParent: self)
+    }
+
+    private func readDataIfNeeded() {
+        guard app.name == "" || app.developer == "" else { return }
+        AppRequest.shared.fetchApp(app: app)
     }
 
     @IBAction func onTapAppStoreButton(_ sender: UIButton) {
