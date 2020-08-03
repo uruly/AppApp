@@ -35,6 +35,11 @@ final class AppDetailViewController: UIViewController {
         setupChildren()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setToolbarHidden(true, animated: false)
+    }
+
     private func setupChildren() {
         let infoViewController = AppInformationViewController(app: app)
         addChild(infoViewController)
