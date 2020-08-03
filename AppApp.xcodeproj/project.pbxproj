@@ -65,6 +65,8 @@
 		661649B024D7F1FB00EE123B /* LabelSettingColorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 661649AA24D7F1FB00EE123B /* LabelSettingColorTableViewCell.xib */; };
 		661649B224D7F1FB00EE123B /* LabelSettingTextFieldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 661649AC24D7F1FB00EE123B /* LabelSettingTextFieldTableViewCell.xib */; };
 		661649B524D7F30D00EE123B /* CloseableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661649B424D7F30D00EE123B /* CloseableTextField.swift */; };
+		661649B924D7F5A800EE123B /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661649B724D7F5A800EE123B /* ColorPickerViewController.swift */; };
+		661649BA24D7F5A800EE123B /* ColorPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 661649B824D7F5A800EE123B /* ColorPickerViewController.xib */; };
 		662AAF5024139FB300283AF2 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662AAF4F24139FB300283AF2 /* DatabaseManager.swift */; };
 		66498E301FC7A01D00239B47 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E2F1FC7A01D00239B47 /* DetailViewController.swift */; };
 		66498E321FC7B5AA00239B47 /* EditAppLabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E311FC7B5AA00239B47 /* EditAppLabelViewController.swift */; };
@@ -249,6 +251,8 @@
 		661649AA24D7F1FB00EE123B /* LabelSettingColorTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LabelSettingColorTableViewCell.xib; sourceTree = "<group>"; };
 		661649AC24D7F1FB00EE123B /* LabelSettingTextFieldTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LabelSettingTextFieldTableViewCell.xib; sourceTree = "<group>"; };
 		661649B424D7F30D00EE123B /* CloseableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseableTextField.swift; sourceTree = "<group>"; };
+		661649B724D7F5A800EE123B /* ColorPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
+		661649B824D7F5A800EE123B /* ColorPickerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorPickerViewController.xib; sourceTree = "<group>"; };
 		662AAF4F24139FB300283AF2 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		66498E231FC5A69B00239B47 /* ShareFromAppStoreExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareFromAppStoreExtension.entitlements; sourceTree = "<group>"; };
 		66498E241FC5A6D700239B47 /* AppApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AppApp.entitlements; sourceTree = "<group>"; };
@@ -449,6 +453,7 @@
 			children = (
 				6616499424D7E9CE00EE123B /* LabelSettingViewController.swift */,
 				6616499324D7E9CE00EE123B /* LabelSettingViewController.xib */,
+				661649B624D7F59000EE123B /* ColorPicker */,
 			);
 			path = LabelSetting;
 			sourceTree = "<group>";
@@ -470,6 +475,15 @@
 				661649B424D7F30D00EE123B /* CloseableTextField.swift */,
 			);
 			path = UITextField;
+			sourceTree = "<group>";
+		};
+		661649B624D7F59000EE123B /* ColorPicker */ = {
+			isa = PBXGroup;
+			children = (
+				661649B724D7F5A800EE123B /* ColorPickerViewController.swift */,
+				661649B824D7F5A800EE123B /* ColorPickerViewController.xib */,
+			);
+			path = ColorPicker;
 			sourceTree = "<group>";
 		};
 		662AAF4E24139F9800283AF2 /* Database */ = {
@@ -1436,6 +1450,7 @@
 				6616499524D7E9CF00EE123B /* LabelSettingViewController.xib in Resources */,
 				6662E1261FFFDEB900FB30C7 /* BackgroundColorCollectionViewCell.xib in Resources */,
 				6662E14520024B1700FB30C7 /* backgroundImage.json in Resources */,
+				661649BA24D7F5A800EE123B /* ColorPickerViewController.xib in Resources */,
 				661649B224D7F1FB00EE123B /* LabelSettingTextFieldTableViewCell.xib in Resources */,
 				6606168F1FCD35AE00667020 /* DetailCollectionViewCell.xib in Resources */,
 				660B067824D04FA3003100EE /* LabelCollectionViewController.xib in Resources */,
@@ -1636,6 +1651,7 @@
 				667C842524D2F3D1002F5B22 /* BottomModalViewController.swift in Sources */,
 				6677FC261FCA7E0400CB105E /* VersionManager.swift in Sources */,
 				667C841B24D2C659002F5B22 /* AppRequest.swift in Sources */,
+				661649B924D7F5A800EE123B /* ColorPickerViewController.swift in Sources */,
 				660B579D1FD06C6400DBC823 /* TutorialPageView.swift in Sources */,
 				660B067C24D050E5003100EE /* LabelCollectionViewCell.swift in Sources */,
 				660B57DF1FD1774D00DBC823 /* HelpLinkTableViewCell.swift in Sources */,

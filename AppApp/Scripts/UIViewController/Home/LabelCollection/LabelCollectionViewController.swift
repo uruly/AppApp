@@ -223,6 +223,7 @@ extension LabelCollectionViewController: LabelCollectionViewCellDelegate {
     func toSettingLabelViewController(label: Label?, isNew: Bool) {
         let viewController = LabelSettingViewController(label, type: isNew ? .new : .edit, dismissCompletion: nil)
         let navigationController = UINavigationController(rootViewController: viewController)
+        navigationController.modalPresentationStyle = .fullScreen
         present(navigationController, animated: true, completion: nil)
     }
 

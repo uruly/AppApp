@@ -152,7 +152,6 @@ final class LabelSettingViewController: UIViewController {
     // MARK: - IBAction target
 
     @IBAction func onTapDeleteLabelButton(_ sender: UIButton) {
-        // swiftlint:disable line_length
         let alertController = UIAlertController(title: "ラベル削除", message: "ラベルを削除します。", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "削除", style: .destructive) { [weak self] (_) in
             guard let wself = self else { return }
@@ -175,22 +174,19 @@ extension LabelSettingViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
-        //        let section = Section(rawValue: indexPath.section)!
-        //        switch section {
-        //        case .labelName:
-        //            guard let cell = cell as? LabelSettingTextFieldTableViewCell else { return }
-        //            cell.textField.becomeFirstResponder()
-        //        case .color:
-        //            mediumFeedbackGenerator.impactOccurred()
-        //            let tabBarController = ColorTabBarController(nib: R.nib.colorTabBarController)
-        //            tabBarController.colorDelegate = self
-        //            let safeAreaInsets = view.safeAreaInsets.top + view.safeAreaInsets.bottom
-        //            let frame = CGRect(x: 0, y: 60 + safeAreaInsets, width: view.frame.width, height: view.frame.height - 60 - safeAreaInsets)
-        //            modalView = ModalView()
-        //            modalView!.present(viewController: tabBarController, frame: frame, animated: true, completion: nil)
-        //        default:
-        //            break
-        //        }
+        let section = Section(rawValue: indexPath.section)!
+        switch section {
+        case .labelName:
+            guard let cell = cell as? LabelSettingTextFieldTableViewCell else { return }
+            cell.textField.becomeFirstResponder()
+        case .color:
+            mediumFeedbackGenerator.impactOccurred()
+            let viewController = ColorPickerViewController(nib: R.nib.colorPickerViewController)
+            let navigationController = UINavigationController(rootViewController: viewController)
+            present(navigationController, animated: true, completion: nil)
+        default:
+            break
+        }
         cell.isSelected = false
     }
 }
