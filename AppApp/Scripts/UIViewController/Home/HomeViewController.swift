@@ -65,6 +65,7 @@ final class HomeViewController: UIViewController {
             labelCollectionViewController?.collectionView.reloadData()
             appsViewController?.collectionView.reloadData()
         }
+        changeMode(isEditing: false)
         NotificationCenter.default.post(name: .isAppEditing, object: isAppEditing)
     }
 
@@ -126,16 +127,16 @@ final class HomeViewController: UIViewController {
         // TODO: - ロゴを載せる
     }
 
-    private func changeMode() {
-        navigationItem.rightBarButtonItem?.title = isAppEditing ? "選択" : "キャンセル"
-        isAppEditing = !isAppEditing
+    private func changeMode(isEditing: Bool) {
+        navigationItem.rightBarButtonItem?.title = isEditing ? "キャンセル" : "選択"
+        isAppEditing = isEditing
         NotificationCenter.default.post(name: .isAppEditing, object: isAppEditing, userInfo: nil)
     }
 
     // MARK: - IBAction
 
     @objc func onTapEditButton(sender: UIBarButtonItem) {
-        changeMode()
+        changeMode(isEditing: !isAppEditing)
     }
 
     @objc func onTapTutorialButton(sender: UIBarButtonItem) {
@@ -195,7 +196,7 @@ extension HomeViewController: BottomModalViewControllerDelegate {
         // TODO: あにめーしょんつけたい
         appsViewController.collectionView.reloadData()
         // 編集モードを解除する
-        changeMode()
+        changeMode(isEditing: false)
     }
 }
 

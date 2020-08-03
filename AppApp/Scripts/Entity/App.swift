@@ -40,4 +40,8 @@ extension App {
     static func add(_ app: App) throws {
         try DatabaseManager.shared.add(app)
     }
+
+    static func remove(_ app: App) throws {
+        try DatabaseManager.shared.delete(app)
+    }
 }

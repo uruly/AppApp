@@ -78,6 +78,11 @@ extension Label {
     }
 
     static func remove(_ label: Label, app: App) throws {
+        // もし AllLabelなら全部消す
+        guard label.id != .allLabel else {
+            try App.remove(app)
+            return
+        }
         let realm = DatabaseManager.shared.realm
         try realm.write {
             if let index = label.apps.firstIndex(where: {$0 == app}) {

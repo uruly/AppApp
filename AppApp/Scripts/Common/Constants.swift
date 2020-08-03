@@ -13,6 +13,7 @@ extension String {
     static let appleID = "1319908151"
     static let groupID = "group.xyz.uruly.appapp"
     static let resolution = "@" + String(Int(UIScreen.main.scale)) + "x"
+    static let allLabel = "ALLLABEL"
 }
 
 extension UInt64 {
