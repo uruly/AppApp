@@ -203,8 +203,11 @@ extension LabelSettingViewController: UITableViewDelegate {
             let viewController = ColorPickerViewController(color: color)
             let navigationController = UINavigationController(rootViewController: viewController)
             present(navigationController, animated: true, completion: nil)
-        default:
-            break
+
+        case .additionalApp:
+            mediumFeedbackGenerator.impactOccurred()
+            let viewController = AppListViewController()
+            navigationController?.pushViewController(viewController, animated: true)
         }
         cell.isSelected = false
     }
