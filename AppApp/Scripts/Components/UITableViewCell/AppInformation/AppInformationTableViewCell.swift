@@ -21,5 +21,5 @@ final class AppInformationTableViewCell: UITableViewCell {
         titleLabel.text = title
         dataLabel.text = data
     }
-    
+
 }

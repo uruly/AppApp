@@ -35,7 +35,7 @@ final class AppDetailViewController: UIViewController {
     }
 
     private func setupChildren() {
-        let infoViewController = AppInformationTableViewController(nib: R.nib.appInformationTableViewController)
+        let infoViewController = AppInformationViewController(app: app)
         addChild(infoViewController)
         stackView.addArrangedSubview(infoViewController.view)
         infoViewController.didMove(toParent: self)
