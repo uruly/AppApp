@@ -18,7 +18,11 @@ final class Label: Object {
     @objc dynamic var explain: String = ""
 
     let apps: List<App> = .init()
-    static let count = Label.getAll().count
+
+    static var count: Int {
+        let realm = DatabaseManager.shared.realm
+        return realm.objects(Label.self).count
+    }
 
     override static func primaryKey() -> String? {
         return "id"
@@ -73,8 +77,28 @@ extension Label {
         }
     }
 
-    static func remove(_ label: Label) throws {
-        try DatabaseManager.shared.delete(label)
+    static func update(order: Int, label: Label) throws {
+        let realm = DatabaseManager.shared.realm
+        try realm.write {
+            label.order = order
+        }
+    }
+
+    static func update(_ label: Label, apps: [App]) throws {
+        for app in apps {
+            try update(label, app: app)
+        }
+    }
+
+    static func delete(_ deleteLabel: Label) throws {
+        let realm = DatabaseManager.shared.realm
+        let labels = realm.objects(Label.self).filter("order > %s", deleteLabel.order)
+        for label in labels {
+            try Label.update(order: label.order - 1, label: label)
+        }
+        try realm.write {
+            realm.delete(deleteLabel)
+        }
     }
 
     static func remove(_ label: Label, app: App) throws {

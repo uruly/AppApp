@@ -64,6 +64,12 @@ final class AppsViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(changeEditing(notification:)), name: .isAppEditing, object: nil)
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        view.backgroundColor = label.uiColor
+        collectionView.backgroundColor = label.uiColor
+    }
+
     @objc func changeMode(notification: Notification) {
         guard let mode = notification.object as? ToolbarMode else {
             fatalError("ToolbarMode じゃないよ")

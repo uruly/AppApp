@@ -9,8 +9,8 @@
 import UIKit
 
 protocol LabelCollectionViewControllerDelegate: AnyObject {
-    func change(_ nextLabel: Label)
-    func update(_ labels: [Label], index: Int)
+    func change(_ nextLabel: Label, isAnimated: Bool)
+    func update(_ labels: [Label], index: Int, isAnimated: Bool)
 }
 
 final class LabelCollectionViewController: UICollectionViewController {
@@ -127,11 +127,10 @@ extension LabelCollectionViewController {
         switch type {
         case .label:
             guard let nextLabel = cell.label, nextLabel != labels[currentIndex] else { return }
-            labelDelegate?.change(nextLabel)
+            labelDelegate?.change(nextLabel, isAnimated: true)
             currentIndex = nextLabel.order
         case .add:
             // ラベルの設定画面に移動
-            //            guard !showRewardAdIfNeeded() else { return }
             toSettingLabelViewController(label: nil, isNew: true)
         }
     }
@@ -206,7 +205,7 @@ extension LabelCollectionViewController {
             collectionView.performBatchUpdates({
                 collectionView.reloadSections(IndexSet(integer: 0))
             }, completion: nil)
-            labelDelegate?.update(labels, index: nextIndexPath.item)
+            labelDelegate?.update(labels, index: nextIndexPath.item, isAnimated: true)
         default:
             isMovingEnabled = true
             cancelMoved()
@@ -221,28 +220,26 @@ extension LabelCollectionViewController {
 extension LabelCollectionViewController: LabelCollectionViewCellDelegate {
 
     func toSettingLabelViewController(label: Label?, isNew: Bool) {
-        // TODO: Create と Edit を同じ ViewController にしてしまいたい
-        if isNew {
-            let viewController = CreateAppLabelViewController()
-            let navigationController = UINavigationController(rootViewController: viewController)
-            navigationController.modalPresentationStyle = .fullScreen
-            present(navigationController, animated: true, completion: nil)
-        } else {
-            guard let label = label else {
-                errorFeedbackGenerator.notificationOccurred(.error)
+        let dismissCompletion: ((Bool) -> Void) = { [weak self] isDelete in
+            guard let wself = self else { return }
+            if isDelete {
+                wself.labels = Label.getAll()
+                wself.collectionView.reloadData()
+                wself.labelDelegate?.update(wself.labels, index: 0, isAnimated: false)
                 return
             }
-            let viewController = EditAppLabelViewController()
-            //今の値を入れておく
-            viewController.currentName = label.name
-            viewController.order = label.order
-            viewController.id = label.id
-            viewController.explain = label.explain
-
-            let navigationController = UINavigationController(rootViewController: viewController)
-            navigationController.modalPresentationStyle = .fullScreen
-            present(navigationController, animated: true, completion: nil)
+            let oldLabels = wself.labels
+            wself.labels = Label.getAll()
+            wself.collectionView.reloadData(with: BatchUpdates.setup(oldItems: oldLabels, newItems: wself.labels), target: 0)
+            // 最新のものにフォーカスを当てる
+            if isNew {
+                wself.labelDelegate?.update(wself.labels, index: wself.labels.count - 1, isAnimated: true)
+            }
         }
+        let viewController = LabelSettingViewController(label, type: isNew ? .new : .edit, dismissCompletion: dismissCompletion)
+        let navigationController = UINavigationController(rootViewController: viewController)
+        navigationController.modalPresentationStyle = .fullScreen
+        present(navigationController, animated: true, completion: nil)
     }
 
 }

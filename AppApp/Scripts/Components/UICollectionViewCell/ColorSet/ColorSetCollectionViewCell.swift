@@ -8,24 +8,37 @@
 
 import UIKit
 
-class ColorSetCollectionViewCell: UICollectionViewCell {
+final class ColorSetCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var checkImageView: UIImageView!
+    @IBOutlet private weak var checkImageView: UIImageView!
+
+    var color: Color?
+
+    override var isSelected: Bool {
+        didSet {
+            checkImageView.isHidden = !isSelected
+        }
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+
         checkImageView.isHidden = true
 
         checkImageView.image = R.image.check()!.withRenderingMode(.alwaysTemplate)
         checkImageView.tintColor = UIColor.white
         self.contentView.layer.cornerRadius = 10.0
 
-        //影をつける
         self.layer.masksToBounds = false
         self.layer.shadowColor = UIColor.darkGray.cgColor
         self.layer.shadowOffset = CGSize(width: 1, height: 1)
         self.layer.shadowRadius = 4
         self.layer.shadowOpacity = 0.5
+    }
+
+    func configure(color: Color) {
+        contentView.backgroundColor = color.uiColor
+        self.color = color
     }
 
 }
