@@ -19,7 +19,7 @@ struct ColorPack: Codable {
     }
 }
 
-struct Color: Codable {
+struct Color: Codable, Equatable {
 
     let red: CGFloat
     let green: CGFloat
@@ -29,6 +29,13 @@ struct Color: Codable {
         case red
         case green
         case blue
+    }
+
+    init(uiColor: UIColor) {
+        let rgba = uiColor.rgba
+        self.red = rgba.red
+        self.green = rgba.green
+        self.blue = rgba.blue
     }
 }
 

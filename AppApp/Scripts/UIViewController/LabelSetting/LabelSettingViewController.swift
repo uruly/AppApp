@@ -97,7 +97,7 @@ final class LabelSettingViewController: UIViewController {
         }
     }
 
-    private var color: UIColor
+    private var color: Color
 
     private let mediumFeedbackGenerator: UIImpactFeedbackGenerator = {
         let generator = UIImpactFeedbackGenerator(style: .medium)
@@ -112,10 +112,10 @@ final class LabelSettingViewController: UIViewController {
     init(_ label: Label?, type: SettingType, dismissCompletion: ((Bool) -> Void)? = nil) {
         let order = label?.order ?? Label.count
 
-        let color = UIColor.getRandomColor()
+        let color = label?.uiColor ?? UIColor.getRandomColor()
         let colorData = try? NSKeyedArchiver.archivedData(withRootObject: color, requiringSecureCoding: false)
         self.label = label ?? Label(id: UUID().uuidString, name: "", color: colorData, order: order, explain: "")
-        self.color = color
+        self.color = Color(uiColor: color)
         self.type = type
         self.dismissCompletion = dismissCompletion
         super.init(nibName: R.nib.labelSettingViewController.name, bundle: nil)
@@ -181,7 +181,7 @@ extension LabelSettingViewController: UITableViewDelegate {
             cell.textField.becomeFirstResponder()
         case .color:
             mediumFeedbackGenerator.impactOccurred()
-            let viewController = ColorPickerViewController(nib: R.nib.colorPickerViewController)
+            let viewController = ColorPickerViewController(color: color)
             let navigationController = UINavigationController(rootViewController: viewController)
             present(navigationController, animated: true, completion: nil)
         default:

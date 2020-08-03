@@ -18,11 +18,26 @@ final class ColorPickerViewController: UIViewController {
         }
     }
 
-    var colorPack: [ColorPack] = [] {
+    var selectColor: Color
+
+    private var colorPack: [ColorPack] = [] {
         didSet {
             collectionView.reloadData()
         }
     }
+
+    // MARK: - Initializer
+
+    init(color: Color) {
+        selectColor = color
+        super.init(nibName: R.nib.colorPickerViewController.name, bundle: nil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: - Life cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +72,10 @@ final class ColorPickerViewController: UIViewController {
 
 extension ColorPickerViewController: UICollectionViewDelegate {
 
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? ColorSetCollectionViewCell, let color = cell.color else { return }
+        self.selectColor = color
+    }
 }
 
 // MARK: - UICollectionViewDataSources
@@ -73,7 +92,12 @@ extension ColorPickerViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.colorSetCollectionViewCell, for: indexPath)!
-        cell.contentView.backgroundColor = colorPack[indexPath.section].colors[indexPath.row].uiColor
+        let color = colorPack[indexPath.section].colors[indexPath.row]
+        cell.configure(color: color)
+        if selectColor == color {
+            cell.isSelected = true
+            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .left)
+        }
         return cell
     }
 }
