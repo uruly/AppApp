@@ -8,11 +8,18 @@
 
 import UIKit
 
+protocol BottomModalViewControllerDelegate: AnyObject {
+
+    func deleteApps()
+}
+
 final class BottomModalViewController: UIViewController {
 
     @IBOutlet private weak var iconSizeSlider: UISlider!
     @IBOutlet private weak var modeButton: UIBarButtonItem!
     @IBOutlet private weak var editToolbar: UIToolbar!
+
+    weak var delegate: BottomModalViewControllerDelegate?
 
     private var mode: ToolbarMode = UserDefaults.standard.bool(forKey: .homeAppListModeIsList) ? .list : .collect
 
@@ -49,7 +56,7 @@ final class BottomModalViewController: UIViewController {
     }
 
     @IBAction func onTapTrashButton(_ sender: UIBarButtonItem) {
-        print("trash")
+        delegate?.deleteApps()
     }
 
     @objc func changeEditing(notification: Notification) {

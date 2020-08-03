@@ -76,4 +76,19 @@ extension Label {
     static func remove(_ label: Label) throws {
         try DatabaseManager.shared.delete(label)
     }
+
+    static func remove(_ label: Label, app: App) throws {
+        let realm = DatabaseManager.shared.realm
+        try realm.write {
+            if let index = label.apps.firstIndex(where: {$0 == app}) {
+                label.apps.remove(at: index)
+            }
+        }
+    }
+
+    static func remove(_ label: Label, apps: [App]) throws {
+        for app in apps {
+            try remove(label, app: app)
+        }
+    }
 }

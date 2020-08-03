@@ -38,11 +38,8 @@ final class AppsViewController: UIViewController {
             collectionView.reloadData()
         }
     }
-    private var selectedApps: [App] = [] {
-        didSet {
-            print(selectedApps.count)
-        }
-    }
+
+    var selectedApps: [App] = []
 
     // MARK: - Initializer
 

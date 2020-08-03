@@ -93,6 +93,7 @@ final class HomeViewController: UIViewController {
         addChild(bottomViewController)
         view.addSubview(bottomViewController.view)
         bottomViewController.didMove(toParent: self)
+        bottomViewController.delegate = self
     }
 
     private func setupLayout() {
@@ -171,6 +172,26 @@ extension HomeViewController: LabelCollectionViewControllerDelegate {
     func update(_ labels: [Label], index: Int) {
         self.labels = labels
         change(labels[index])
+    }
+}
+
+// MARK: - BottomModalViewControllerDelegate
+
+extension HomeViewController: BottomModalViewControllerDelegate {
+
+    func deleteApps() {
+        guard let appsViewController = appsViewController else { return }
+        let label = appsViewController.label
+        let apps = appsViewController.selectedApps
+        do {
+            try Label.remove(label, apps: apps)
+        } catch {
+            print("Error!")
+        }
+        // TODO: あにめーしょんつけたい
+        appsViewController.collectionView.reloadData()
+        // 編集モードを解除する
+        NotificationCenter.default.post(name: .isAppEditing, object: false)
     }
 }
 
