@@ -165,23 +165,18 @@ extension HomeViewController: PageViewControllerDelegate {
 
 extension HomeViewController: LabelCollectionViewControllerDelegate {
 
-    func change(_ nextLabel: Label) {
+    func change(_ nextLabel: Label, isAnimated: Bool) {
         let viewController = AppsViewController(label: nextLabel)
-        pageViewController?.setViewControllers([viewController], direction: nextLabel.order > currentIndex ? .forward : .reverse, animated: true) { [weak self] _ in
+        pageViewController?.setViewControllers([viewController], direction: nextLabel.order > currentIndex ? .forward : .reverse, animated: isAnimated) { [weak self] _ in
             self?.pageViewController?.isDuringAnimation = false
             self?.pageViewController?.currentPage = nextLabel.order
         }
         currentIndex = nextLabel.order
     }
 
-    func update(_ labels: [Label], index: Int) {
+    func update(_ labels: [Label], index: Int, isAnimated: Bool = true) {
         self.labels = labels
-        change(labels[index])
-    }
-
-    func reload() {
-        labelCollectionViewController?.collectionView.reloadData()
-        appsViewController?.collectionView.reloadData()
+        change(labels[index], isAnimated: isAnimated)
     }
 }
 

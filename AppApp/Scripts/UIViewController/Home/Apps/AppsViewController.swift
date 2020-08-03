@@ -66,7 +66,6 @@ final class AppsViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("ここ")
         view.backgroundColor = label.uiColor
         collectionView.backgroundColor = label.uiColor
     }

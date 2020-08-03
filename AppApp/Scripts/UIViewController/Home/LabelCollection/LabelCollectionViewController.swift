@@ -9,9 +9,8 @@
 import UIKit
 
 protocol LabelCollectionViewControllerDelegate: AnyObject {
-    func change(_ nextLabel: Label)
-    func update(_ labels: [Label], index: Int)
-    func reload()
+    func change(_ nextLabel: Label, isAnimated: Bool)
+    func update(_ labels: [Label], index: Int, isAnimated: Bool)
 }
 
 final class LabelCollectionViewController: UICollectionViewController {
@@ -128,7 +127,7 @@ extension LabelCollectionViewController {
         switch type {
         case .label:
             guard let nextLabel = cell.label, nextLabel != labels[currentIndex] else { return }
-            labelDelegate?.change(nextLabel)
+            labelDelegate?.change(nextLabel, isAnimated: true)
             currentIndex = nextLabel.order
         case .add:
             // ラベルの設定画面に移動
@@ -206,7 +205,7 @@ extension LabelCollectionViewController {
             collectionView.performBatchUpdates({
                 collectionView.reloadSections(IndexSet(integer: 0))
             }, completion: nil)
-            labelDelegate?.update(labels, index: nextIndexPath.item)
+            labelDelegate?.update(labels, index: nextIndexPath.item, isAnimated: true)
         default:
             isMovingEnabled = true
             cancelMoved()
@@ -221,8 +220,21 @@ extension LabelCollectionViewController {
 extension LabelCollectionViewController: LabelCollectionViewCellDelegate {
 
     func toSettingLabelViewController(label: Label?, isNew: Bool) {
-        let dismissCompletion: ((Bool) -> Void) = { [weak self] _ in
-            self?.labelDelegate?.reload()
+        let dismissCompletion: ((Bool) -> Void) = { [weak self] isDelete in
+            guard let wself = self else { return }
+            if isDelete {
+                wself.labels = Label.getAll()
+                wself.collectionView.reloadData()
+                wself.labelDelegate?.update(wself.labels, index: 0, isAnimated: false)
+                return
+            }
+            let oldLabels = wself.labels
+            wself.labels = Label.getAll()
+            wself.collectionView.reloadData(with: BatchUpdates.setup(oldItems: oldLabels, newItems: wself.labels), target: 0)
+            // 最新のものにフォーカスを当てる
+            if isNew {
+                wself.labelDelegate?.update(wself.labels, index: wself.labels.count - 1, isAnimated: true)
+            }
         }
         let viewController = LabelSettingViewController(label, type: isNew ? .new : .edit, dismissCompletion: dismissCompletion)
         let navigationController = UINavigationController(rootViewController: viewController)

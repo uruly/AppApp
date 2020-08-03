@@ -69,6 +69,7 @@
 		661649BA24D7F5A800EE123B /* ColorPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 661649B824D7F5A800EE123B /* ColorPickerViewController.xib */; };
 		661649BC24D7F9B500EE123B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661649BB24D7F9B500EE123B /* Color.swift */; };
 		661649BE24D7FFDD00EE123B /* UIColor+RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661649BD24D7FFDD00EE123B /* UIColor+RGB.swift */; };
+		6625396324D813A4006B2767 /* UICollectionView+BatchUpdates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6625396224D813A4006B2767 /* UICollectionView+BatchUpdates.swift */; };
 		662AAF5024139FB300283AF2 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662AAF4F24139FB300283AF2 /* DatabaseManager.swift */; };
 		66498E301FC7A01D00239B47 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E2F1FC7A01D00239B47 /* DetailViewController.swift */; };
 		66498E321FC7B5AA00239B47 /* EditAppLabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E311FC7B5AA00239B47 /* EditAppLabelViewController.swift */; };
@@ -257,6 +258,7 @@
 		661649B824D7F5A800EE123B /* ColorPickerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorPickerViewController.xib; sourceTree = "<group>"; };
 		661649BB24D7F9B500EE123B /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		661649BD24D7FFDD00EE123B /* UIColor+RGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RGB.swift"; sourceTree = "<group>"; };
+		6625396224D813A4006B2767 /* UICollectionView+BatchUpdates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+BatchUpdates.swift"; sourceTree = "<group>"; };
 		662AAF4F24139FB300283AF2 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		66498E231FC5A69B00239B47 /* ShareFromAppStoreExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareFromAppStoreExtension.entitlements; sourceTree = "<group>"; };
 		66498E241FC5A6D700239B47 /* AppApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AppApp.entitlements; sourceTree = "<group>"; };
@@ -1092,6 +1094,7 @@
 			children = (
 				666E06C41FCBCB260043DCFF /* UITextView+Placeholder.swift */,
 				661649BD24D7FFDD00EE123B /* UIColor+RGB.swift */,
+				6625396224D813A4006B2767 /* UICollectionView+BatchUpdates.swift */,
 				660B067E24D05155003100EE /* UIColor+TextColor.swift */,
 				66498E381FC810BF00239B47 /* Array+FindIndex.swift */,
 				6662E1312000055F00FB30C7 /* UIResponder+FindView.swift */,
@@ -1649,6 +1652,7 @@
 				660B57B51FD10F7900DBC823 /* StartView.swift in Sources */,
 				660B57A21FD06FDB00DBC823 /* WelcomeCollectionViewCell.swift in Sources */,
 				6662E11D1FFE98CA00FB30C7 /* BottomMenuBaseView.swift in Sources */,
+				6625396324D813A4006B2767 /* UICollectionView+BatchUpdates.swift in Sources */,
 				6662E13C20007E7300FB30C7 /* InfoTableViewCell.swift in Sources */,
 				660B576E1FCFC5F500DBC823 /* RGBSliderView.swift in Sources */,
 				661649AE24D7F1FB00EE123B /* LabelSettingColorTableViewCell.swift in Sources */,
