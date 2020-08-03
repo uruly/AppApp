@@ -72,6 +72,10 @@
 		6625396324D813A4006B2767 /* UICollectionView+BatchUpdates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6625396224D813A4006B2767 /* UICollectionView+BatchUpdates.swift */; };
 		6625396624D81904006B2767 /* LabelSettingAdditionalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6625396424D81904006B2767 /* LabelSettingAdditionalTableViewCell.swift */; };
 		6625396724D81904006B2767 /* LabelSettingAdditionalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6625396524D81904006B2767 /* LabelSettingAdditionalTableViewCell.xib */; };
+		6625396A24D81BF4006B2767 /* AppListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6625396824D81BF4006B2767 /* AppListViewController.swift */; };
+		6625396B24D81BF4006B2767 /* AppListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6625396924D81BF4006B2767 /* AppListViewController.xib */; };
+		6625396F24D81D0D006B2767 /* AppListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6625396D24D81D0D006B2767 /* AppListTableViewCell.swift */; };
+		6625397024D81D0D006B2767 /* AppListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6625396E24D81D0D006B2767 /* AppListTableViewCell.xib */; };
 		662AAF5024139FB300283AF2 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662AAF4F24139FB300283AF2 /* DatabaseManager.swift */; };
 		66498E301FC7A01D00239B47 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E2F1FC7A01D00239B47 /* DetailViewController.swift */; };
 		66498E321FC7B5AA00239B47 /* EditAppLabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E311FC7B5AA00239B47 /* EditAppLabelViewController.swift */; };
@@ -117,7 +121,6 @@
 		6676ED371FCD582200815BF8 /* DetailMemoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6676ED351FCD582100815BF8 /* DetailMemoCollectionViewCell.swift */; };
 		6676ED381FCD582200815BF8 /* DetailMemoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6676ED361FCD582200815BF8 /* DetailMemoCollectionViewCell.xib */; };
 		6676ED3A1FCD584200815BF8 /* LabelAppInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6676ED391FCD584200815BF8 /* LabelAppInfoView.swift */; };
-		6677FC241FCA6CE400CB105E /* AppListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6677FC231FCA6CE400CB105E /* AppListViewController.swift */; };
 		6677FC261FCA7E0400CB105E /* VersionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6677FC251FCA7E0400CB105E /* VersionManager.swift */; };
 		6677FC281FCA7F2000CB105E /* CreateLabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6677FC271FCA7F2000CB105E /* CreateLabelViewController.swift */; };
 		6677FC2A1FCA882800CB105E /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6677FC291FCA882800CB105E /* ColorPicker.swift */; };
@@ -263,6 +266,10 @@
 		6625396224D813A4006B2767 /* UICollectionView+BatchUpdates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+BatchUpdates.swift"; sourceTree = "<group>"; };
 		6625396424D81904006B2767 /* LabelSettingAdditionalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelSettingAdditionalTableViewCell.swift; sourceTree = "<group>"; };
 		6625396524D81904006B2767 /* LabelSettingAdditionalTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelSettingAdditionalTableViewCell.xib; sourceTree = "<group>"; };
+		6625396824D81BF4006B2767 /* AppListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppListViewController.swift; sourceTree = "<group>"; };
+		6625396924D81BF4006B2767 /* AppListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppListViewController.xib; sourceTree = "<group>"; };
+		6625396D24D81D0D006B2767 /* AppListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppListTableViewCell.swift; sourceTree = "<group>"; };
+		6625396E24D81D0D006B2767 /* AppListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppListTableViewCell.xib; sourceTree = "<group>"; };
 		662AAF4F24139FB300283AF2 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		66498E231FC5A69B00239B47 /* ShareFromAppStoreExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareFromAppStoreExtension.entitlements; sourceTree = "<group>"; };
 		66498E241FC5A6D700239B47 /* AppApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AppApp.entitlements; sourceTree = "<group>"; };
@@ -310,7 +317,6 @@
 		6676ED351FCD582100815BF8 /* DetailMemoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailMemoCollectionViewCell.swift; sourceTree = "<group>"; };
 		6676ED361FCD582200815BF8 /* DetailMemoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailMemoCollectionViewCell.xib; sourceTree = "<group>"; };
 		6676ED391FCD584200815BF8 /* LabelAppInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelAppInfoView.swift; sourceTree = "<group>"; };
-		6677FC231FCA6CE400CB105E /* AppListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppListViewController.swift; sourceTree = "<group>"; };
 		6677FC251FCA7E0400CB105E /* VersionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionManager.swift; sourceTree = "<group>"; };
 		6677FC271FCA7F2000CB105E /* CreateLabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateLabelViewController.swift; sourceTree = "<group>"; };
 		6677FC291FCA882800CB105E /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
@@ -496,6 +502,15 @@
 				661649B824D7F5A800EE123B /* ColorPickerViewController.xib */,
 			);
 			path = ColorPicker;
+			sourceTree = "<group>";
+		};
+		6625396C24D81CF8006B2767 /* AppList */ = {
+			isa = PBXGroup;
+			children = (
+				6625396D24D81D0D006B2767 /* AppListTableViewCell.swift */,
+				6625396E24D81D0D006B2767 /* AppListTableViewCell.xib */,
+			);
+			path = AppList;
 			sourceTree = "<group>";
 		};
 		662AAF4E24139F9800283AF2 /* Database */ = {
@@ -750,6 +765,7 @@
 		6660818524064B0100001A9C /* UITableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				6625396C24D81CF8006B2767 /* AppList */,
 				661649A624D7F1FB00EE123B /* LabelSetting */,
 				6660818F24064C3300001A9C /* Memo */,
 				66A30A1F240806A60016F34D /* HelpLink */,
@@ -907,7 +923,8 @@
 		6660819724064D9500001A9C /* AppList */ = {
 			isa = PBXGroup;
 			children = (
-				6677FC231FCA6CE400CB105E /* AppListViewController.swift */,
+				6625396824D81BF4006B2767 /* AppListViewController.swift */,
+				6625396924D81BF4006B2767 /* AppListViewController.xib */,
 			);
 			path = AppList;
 			sourceTree = "<group>";
@@ -1463,6 +1480,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6616499524D7E9CF00EE123B /* LabelSettingViewController.xib in Resources */,
+				6625397024D81D0D006B2767 /* AppListTableViewCell.xib in Resources */,
 				6662E1261FFFDEB900FB30C7 /* BackgroundColorCollectionViewCell.xib in Resources */,
 				6662E14520024B1700FB30C7 /* backgroundImage.json in Resources */,
 				661649BA24D7F5A800EE123B /* ColorPickerViewController.xib in Resources */,
@@ -1494,6 +1512,7 @@
 				660B066D24D04AF2003100EE /* HomeViewController.xib in Resources */,
 				660B57A71FD071D500DBC823 /* HowToCollectionViewCell.xib in Resources */,
 				660B57A31FD06FDB00DBC823 /* WelcomeCollectionViewCell.xib in Resources */,
+				6625396B24D81BF4006B2767 /* AppListViewController.xib in Resources */,
 				660D7A912409275D00DEC2C8 /* license_plist.yml in Resources */,
 				660B068924D0541B003100EE /* AppsViewController.xib in Resources */,
 				660B57721FCFC5F500DBC823 /* ColorBaseCollectionViewCell.xib in Resources */,
@@ -1635,7 +1654,6 @@
 				661649B524D7F30D00EE123B /* CloseableTextField.swift in Sources */,
 				660B576D1FCFC5F500DBC823 /* ColorPageView.swift in Sources */,
 				6606168E1FCD35AE00667020 /* DetailCollectionViewCell.swift in Sources */,
-				6677FC241FCA6CE400CB105E /* AppListViewController.swift in Sources */,
 				667ECE641FC3A7BD009233DE /* CreateAppLabelViewController.swift in Sources */,
 				661649AD24D7F1FB00EE123B /* LabelSettingTextFieldTableViewCell.swift in Sources */,
 				66E54DCF2413A5E000069082 /* App.swift in Sources */,
@@ -1671,6 +1689,7 @@
 				667C841B24D2C659002F5B22 /* AppRequest.swift in Sources */,
 				661649B924D7F5A800EE123B /* ColorPickerViewController.swift in Sources */,
 				660B579D1FD06C6400DBC823 /* TutorialPageView.swift in Sources */,
+				6625396F24D81D0D006B2767 /* AppListTableViewCell.swift in Sources */,
 				660B067C24D050E5003100EE /* LabelCollectionViewCell.swift in Sources */,
 				660B57DF1FD1774D00DBC823 /* HelpLinkTableViewCell.swift in Sources */,
 				666081702406463300001A9C /* IconSizeChanger.swift in Sources */,
@@ -1706,6 +1725,7 @@
 				66A3C3F91FCB66E7007EB295 /* AppInfoView.swift in Sources */,
 				666E06C51FCBCB260043DCFF /* UITextView+Placeholder.swift in Sources */,
 				660B576F1FCFC5F500DBC823 /* ColorBaseView.swift in Sources */,
+				6625396A24D81BF4006B2767 /* AppListViewController.swift in Sources */,
 				666081722406465C00001A9C /* FakeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -249,7 +249,7 @@ class CreateAppLabelViewController: UIViewController {
     func showAppList() {
         let appListVC = AppListViewController()
         //print("koko")
-        appListVC.createAppLabelVC = self
+        //        appListVC.createAppLabelVC = self
         self.navigationController?.pushViewController(appListVC, animated: true)
 
     }
