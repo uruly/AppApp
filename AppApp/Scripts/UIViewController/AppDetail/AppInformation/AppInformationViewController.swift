@@ -64,7 +64,15 @@ final class AppInformationViewController: UIViewController {
 
 // MARK: - UITableViewDelegate
 
-extension AppInformationViewController: UITableViewDelegate {}
+extension AppInformationViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell: AppInformationTableViewCell = tableView.cellForRow(at: indexPath) as? AppInformationTableViewCell, let data = cell.data else { return }
+        let webViewController = WebViewController()
+        webViewController.searchWord = data
+        navigationController?.pushViewController(webViewController, animated: true)
+    }
+}
 
 // MARK: - UITableViewDataSource
 

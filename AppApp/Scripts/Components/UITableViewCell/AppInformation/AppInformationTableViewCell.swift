@@ -13,13 +13,18 @@ final class AppInformationTableViewCell: UITableViewCell {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var dataLabel: UILabel!
 
+    var data: String?
+
     override func awakeFromNib() {
         super.awakeFromNib()
+
+        selectionStyle = .none
     }
 
     func configure(title: String, data: String) {
         titleLabel.text = title
         dataLabel.text = data
+        self.data = data
     }
 
 }
