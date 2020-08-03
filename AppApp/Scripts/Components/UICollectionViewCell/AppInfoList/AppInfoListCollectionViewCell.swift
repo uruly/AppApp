@@ -15,6 +15,12 @@ final class AppInfoListCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var developerLabel: UILabel!
     @IBOutlet private weak var checkImageView: UIImageView!
 
+    override var isSelected: Bool {
+        didSet {
+            checkImageView.isHidden = !isSelected
+        }
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
 

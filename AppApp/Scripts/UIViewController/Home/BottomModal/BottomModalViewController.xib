@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BottomModalViewController" customModule="AppApp" customModuleProvider="target">
             <connections>
+                <outlet property="editToolbar" destination="pxg-qg-TGp" id="Xox-x5-PVM"/>
                 <outlet property="iconSizeSlider" destination="zKH-xc-CWY" id="nmt-uf-EUp"/>
                 <outlet property="modeButton" destination="PMD-Ob-JKC" id="0ft-3M-IKi"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -47,9 +48,24 @@
                     </items>
                     <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </toolbar>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pxg-qg-TGp">
+                    <rect key="frame" x="0.0" y="0.0" width="422" height="49"/>
+                    <items>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="MMU-Ia-eKC"/>
+                        <barButtonItem title="Item" image="trash" catalog="system" id="Lxo-ss-O5t">
+                            <connections>
+                                <action selector="onTapTrashButton:" destination="-1" id="xw3-Pa-T4f"/>
+                            </connections>
+                        </barButtonItem>
+                    </items>
+                    <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </toolbar>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
+                <constraint firstItem="pxg-qg-TGp" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="9IT-kc-LGH"/>
+                <constraint firstAttribute="trailing" secondItem="pxg-qg-TGp" secondAttribute="trailing" id="FOg-D3-FGf"/>
+                <constraint firstItem="pxg-qg-TGp" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Wfq-yT-Hhj"/>
                 <constraint firstItem="N6z-Fd-SvZ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="k5I-yg-Xmz"/>
                 <constraint firstItem="N6z-Fd-SvZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="viV-eT-LQ7"/>
                 <constraint firstAttribute="trailing" secondItem="N6z-Fd-SvZ" secondAttribute="trailing" id="wSg-9m-Qht"/>
@@ -65,5 +81,6 @@
         <image name="big_slider_icon" width="44" height="44"/>
         <image name="list_icon" width="44" height="44"/>
         <image name="small_slider_icon" width="44" height="44"/>
+        <image name="trash" catalog="system" width="121" height="128"/>
     </resources>
 </document>

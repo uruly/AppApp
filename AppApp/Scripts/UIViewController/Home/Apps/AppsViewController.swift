@@ -32,6 +32,14 @@ final class AppsViewController: UIViewController {
             collectionView.collectionViewLayout.invalidateLayout()
         }
     }
+    private var isAppEditing: Bool = false {
+        didSet {
+            collectionView.allowsMultipleSelection = isAppEditing
+            collectionView.reloadData()
+        }
+    }
+
+    var selectedApps: [App] = []
 
     // MARK: - Initializer
 
@@ -53,6 +61,7 @@ final class AppsViewController: UIViewController {
 
         NotificationCenter.default.addObserver(self, selector: #selector(changeMode(notification:)), name: .toolbarMode, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(changeIconSize(notification:)), name: .iconSize, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(changeEditing(notification:)), name: .isAppEditing, object: nil)
     }
 
     @objc func changeMode(notification: Notification) {
@@ -69,11 +78,35 @@ final class AppsViewController: UIViewController {
         }
         itemSize = CGSize(width: CGFloat(value), height: CGFloat(value))
     }
+
+    @objc func changeEditing(notification: Notification) {
+        guard let isAppEditing = notification.object as? Bool else {
+            fatalError("Bool じゃないよ")
+        }
+        self.isAppEditing = isAppEditing
+    }
 }
 
 // MARK: - UICollectionViewDelegate
 
-extension AppsViewController: UICollectionViewDelegate {}
+extension AppsViewController: UICollectionViewDelegate {
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if isAppEditing {
+            selectedApps.append(label.apps[indexPath.row])
+        } else {
+            // TODO: 移動
+        }
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        guard isAppEditing else { return }
+        if let index = selectedApps.firstIndex(where: {$0 == label.apps[indexPath.row]}) {
+            selectedApps.remove(at: index)
+        }
+    }
+
+}
 
 // MARK: - UICollectionViewDataSource
 

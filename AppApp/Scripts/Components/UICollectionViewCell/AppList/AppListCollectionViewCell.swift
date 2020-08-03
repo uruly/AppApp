@@ -15,6 +15,12 @@ final class AppListCollectionViewCell: UICollectionViewCell {
 
     var imageMaskView: UIView!
 
+    override var isSelected: Bool {
+        didSet {
+            checkImageView.isHidden = !isSelected
+        }
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
 
