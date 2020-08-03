@@ -221,28 +221,9 @@ extension LabelCollectionViewController {
 extension LabelCollectionViewController: LabelCollectionViewCellDelegate {
 
     func toSettingLabelViewController(label: Label?, isNew: Bool) {
-        // TODO: Create と Edit を同じ ViewController にしてしまいたい
-        if isNew {
-            let viewController = CreateAppLabelViewController()
-            let navigationController = UINavigationController(rootViewController: viewController)
-            navigationController.modalPresentationStyle = .fullScreen
-            present(navigationController, animated: true, completion: nil)
-        } else {
-            guard let label = label else {
-                errorFeedbackGenerator.notificationOccurred(.error)
-                return
-            }
-            let viewController = EditAppLabelViewController()
-            //今の値を入れておく
-            viewController.currentName = label.name
-            viewController.order = label.order
-            viewController.id = label.id
-            viewController.explain = label.explain
-
-            let navigationController = UINavigationController(rootViewController: viewController)
-            navigationController.modalPresentationStyle = .fullScreen
-            present(navigationController, animated: true, completion: nil)
-        }
+        let viewController = LabelSettingViewController(label, type: isNew ? .new : .edit, dismissCompletion: nil)
+        let navigationController = UINavigationController(rootViewController: viewController)
+        present(navigationController, animated: true, completion: nil)
     }
 
 }

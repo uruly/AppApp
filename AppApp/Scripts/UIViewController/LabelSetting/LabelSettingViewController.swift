@@ -40,7 +40,7 @@ final class LabelSettingViewController: UIViewController {
             case .colorView:
                 return tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.labelSettingColorTableViewCell, for: indexPath)
             case .navigation:
-                return
+                return tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.labelSettingColorTableViewCell, for: indexPath)
             }
         }
     }
@@ -86,10 +86,8 @@ final class LabelSettingViewController: UIViewController {
         didSet {
             tableView.register(R.nib.labelSettingColorTableViewCell)
             tableView.register(R.nib.labelSettingTextFieldTableViewCell)
-            tableView.register(R.nib.labelSettingSwitchTableViewCell)
             tableView.delegate = self
             tableView.dataSource = self
-            tableView.addGestureRecognizer(tapGestureRecognizer)
         }
     }
 
@@ -177,22 +175,22 @@ extension LabelSettingViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
-//        let section = Section(rawValue: indexPath.section)!
-//        switch section {
-//        case .labelName:
-//            guard let cell = cell as? LabelSettingTextFieldTableViewCell else { return }
-//            cell.textField.becomeFirstResponder()
-//        case .color:
-//            mediumFeedbackGenerator.impactOccurred()
-//            let tabBarController = ColorTabBarController(nib: R.nib.colorTabBarController)
-//            tabBarController.colorDelegate = self
-//            let safeAreaInsets = view.safeAreaInsets.top + view.safeAreaInsets.bottom
-//            let frame = CGRect(x: 0, y: 60 + safeAreaInsets, width: view.frame.width, height: view.frame.height - 60 - safeAreaInsets)
-//            modalView = ModalView()
-//            modalView!.present(viewController: tabBarController, frame: frame, animated: true, completion: nil)
-//        default:
-//            break
-//        }
+        //        let section = Section(rawValue: indexPath.section)!
+        //        switch section {
+        //        case .labelName:
+        //            guard let cell = cell as? LabelSettingTextFieldTableViewCell else { return }
+        //            cell.textField.becomeFirstResponder()
+        //        case .color:
+        //            mediumFeedbackGenerator.impactOccurred()
+        //            let tabBarController = ColorTabBarController(nib: R.nib.colorTabBarController)
+        //            tabBarController.colorDelegate = self
+        //            let safeAreaInsets = view.safeAreaInsets.top + view.safeAreaInsets.bottom
+        //            let frame = CGRect(x: 0, y: 60 + safeAreaInsets, width: view.frame.width, height: view.frame.height - 60 - safeAreaInsets)
+        //            modalView = ModalView()
+        //            modalView!.present(viewController: tabBarController, frame: frame, animated: true, completion: nil)
+        //        default:
+        //            break
+        //        }
         cell.isSelected = false
     }
 }
@@ -220,17 +218,11 @@ extension LabelSettingViewController: UITableViewDataSource {
             }
         case .color:
             if let cell = cell as? LabelSettingColorTableViewCell {
-                cell.set(self, color: label.color, colorSet: colorSet, text: section.title)
+                cell.set(self, color: label.uiColor, text: section.title)
             }
-        case .isBreakLine:
-            if let cell = cell as? LabelSettingSwitchTableViewCell {
-                cell.set(isOn: label.isBreakLine, text: section.title, key: .breakLineKey)
-                cell.delegate = self
-            }
-        case .isDeletable:
-            if let cell = cell as? LabelSettingSwitchTableViewCell {
-                cell.set(isOn: label.isDeletable, text: section.title, key: .deletableKey)
-                cell.delegate = self
+        case .additionalApp:
+            if let cell = cell as? LabelSettingColorTableViewCell {
+                cell.set(self, color: label.uiColor, text: section.title)
             }
         }
         return cell
@@ -292,19 +284,6 @@ extension LabelSettingViewController {
 
     func saveLabel() {
         guard let name = textFieldDelegate?.labelName else { return }
-        if let colorSet = colorSet, let newColor = colorSet.getColor(label.order) {
-            color = newColor
-        }
-        let newLabel = Label(uid: label.uid, name: name, color: color, colorSet: colorSet, order: label.order, isDeletable: isDeletable, isBreakLine: isBreakLine)
-        do {
-            try Label.add(newLabel)
-            if let colorSet = colorSet {
-                try Label.update(colorSet, label: newLabel)
-            } else {
-                try Label.deleteColorSet(newLabel)
-            }
-        } catch {
-            print("error", error)
-        }
+
     }
 }

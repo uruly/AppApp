@@ -32,25 +32,6 @@ final class LabelSettingTextFieldTableViewCell: UITableViewCell {
         viewController.textFieldDelegate = self
     }
 
-    private func showAlertIfNeeded() {
-        guard let text = textField.text else { return }
-        if text.count > 15 {
-            let title = R.string.localizable.labelNameIsTooLong()
-            let message = R.string.localizable.pleaseEnterLabelNameWithin15Characters()
-            AlertViewController.show(title, message: message, alertType: .error)
-            return
-        }
-        do {
-            if try Label.isDuplicate(text, label: delegate?.currentLabel) {
-                let title = R.string.localizable.labelNameIsDuplicated()
-                let message = "\(text) " + R.string.localizable.isAlreadyInUseYouCanUseLabelsWithTheSameName()
-                AlertViewController.show(title, message: message, alertType: .warning)
-            }
-        } catch {
-            print("error", error)
-        }
-    }
-
     @IBAction func didChange(_ sender: UITextField) {
         guard let text = textField.text else { return }
         delegate?.changedLabel(text)
@@ -68,7 +49,6 @@ extension LabelSettingTextFieldTableViewCell: LabelSettingTextFieldDelegate {
             return
         }
         textField.resignFirstResponder()
-        showAlertIfNeeded()
     }
 
     var labelName: String? {

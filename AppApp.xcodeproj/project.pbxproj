@@ -64,6 +64,7 @@
 		661649AE24D7F1FB00EE123B /* LabelSettingColorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661649A824D7F1FB00EE123B /* LabelSettingColorTableViewCell.swift */; };
 		661649B024D7F1FB00EE123B /* LabelSettingColorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 661649AA24D7F1FB00EE123B /* LabelSettingColorTableViewCell.xib */; };
 		661649B224D7F1FB00EE123B /* LabelSettingTextFieldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 661649AC24D7F1FB00EE123B /* LabelSettingTextFieldTableViewCell.xib */; };
+		661649B524D7F30D00EE123B /* CloseableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661649B424D7F30D00EE123B /* CloseableTextField.swift */; };
 		662AAF5024139FB300283AF2 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662AAF4F24139FB300283AF2 /* DatabaseManager.swift */; };
 		66498E301FC7A01D00239B47 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E2F1FC7A01D00239B47 /* DetailViewController.swift */; };
 		66498E321FC7B5AA00239B47 /* EditAppLabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E311FC7B5AA00239B47 /* EditAppLabelViewController.swift */; };
@@ -247,6 +248,7 @@
 		661649A824D7F1FB00EE123B /* LabelSettingColorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelSettingColorTableViewCell.swift; sourceTree = "<group>"; };
 		661649AA24D7F1FB00EE123B /* LabelSettingColorTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LabelSettingColorTableViewCell.xib; sourceTree = "<group>"; };
 		661649AC24D7F1FB00EE123B /* LabelSettingTextFieldTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LabelSettingTextFieldTableViewCell.xib; sourceTree = "<group>"; };
+		661649B424D7F30D00EE123B /* CloseableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseableTextField.swift; sourceTree = "<group>"; };
 		662AAF4F24139FB300283AF2 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		66498E231FC5A69B00239B47 /* ShareFromAppStoreExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareFromAppStoreExtension.entitlements; sourceTree = "<group>"; };
 		66498E241FC5A6D700239B47 /* AppApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AppApp.entitlements; sourceTree = "<group>"; };
@@ -462,6 +464,14 @@
 			path = LabelSetting;
 			sourceTree = "<group>";
 		};
+		661649B324D7F2F900EE123B /* UITextField */ = {
+			isa = PBXGroup;
+			children = (
+				661649B424D7F30D00EE123B /* CloseableTextField.swift */,
+			);
+			path = UITextField;
+			sourceTree = "<group>";
+		};
 		662AAF4E24139F9800283AF2 /* Database */ = {
 			isa = PBXGroup;
 			children = (
@@ -541,6 +551,7 @@
 		666081742406484600001A9C /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				661649B324D7F2F900EE123B /* UITextField */,
 				6660819A24064E1000001A9C /* UIPickerView */,
 				6660818E24064BF900001A9C /* UIActivityIndicatorView */,
 				6660818524064B0100001A9C /* UITableViewCell */,
@@ -1590,6 +1601,7 @@
 				667ECE4B1FC3690E009233DE /* BaseViewController.swift in Sources */,
 				667ECE471FC36850009233DE /* BaseNavigationViewController.swift in Sources */,
 				66A30A11240803BC0016F34D /* BackgroundColorCollectionViewCell.swift in Sources */,
+				661649B524D7F30D00EE123B /* CloseableTextField.swift in Sources */,
 				660B576D1FCFC5F500DBC823 /* ColorPageView.swift in Sources */,
 				6606168E1FCD35AE00667020 /* DetailCollectionViewCell.swift in Sources */,
 				6677FC241FCA6CE400CB105E /* AppListViewController.swift in Sources */,
