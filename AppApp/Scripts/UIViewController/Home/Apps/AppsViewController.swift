@@ -101,7 +101,10 @@ extension AppsViewController: UICollectionViewDelegate {
         if isAppEditing {
             selectedApps.append(label.apps[indexPath.row])
         } else {
-            // TODO: 移動
+            let cell = collectionView.cellForItem(at: indexPath)
+            cell?.isSelected = false
+            let viewController = AppDetailViewController(app: label.apps[indexPath.row])
+            navigationController?.pushViewController(viewController, animated: true)
         }
     }
 
