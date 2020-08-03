@@ -18,7 +18,11 @@ final class ColorPickerViewController: UIViewController {
         }
     }
 
-    var colorSet: [UIColor] = []
+    var colorPack: [ColorPack] = [] {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +30,7 @@ final class ColorPickerViewController: UIViewController {
         let cancelButton = UIBarButtonItem(title: "キャンセル", style: .plain, target: self, action: #selector(onTapCancelButton))
         navigationItem.rightBarButtonItem = saveButton
         navigationItem.leftBarButtonItem = cancelButton
+        readColorPack()
     }
 
     @objc func onTapSaveButton() {
@@ -34,6 +39,17 @@ final class ColorPickerViewController: UIViewController {
 
     @objc func onTapCancelButton() {
         dismiss(animated: true, completion: nil)
+    }
+
+    private func readColorPack() {
+        do {
+            let jsonString = try String(contentsOf: R.file.colorDataJson()!, encoding: .utf8)
+            guard let data = jsonString.data(using: .utf8) else { return }
+            let colorPack = try JSONDecoder().decode([ColorPack].self, from: data)
+            self.colorPack = colorPack
+        } catch {
+            print("json get error", error)
+        }
     }
 }
 
@@ -47,13 +63,17 @@ extension ColorPickerViewController: UICollectionViewDelegate {
 
 extension ColorPickerViewController: UICollectionViewDataSource {
 
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return colorPack.count
+    }
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return colorSet.count
+        return colorPack[section].colors.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.colorSetCollectionViewCell, for: indexPath)!
-        cell.contentView.backgroundColor = colorSet[indexPath.row]
+        cell.contentView.backgroundColor = colorPack[indexPath.section].colors[indexPath.row].uiColor
         return cell
     }
 }

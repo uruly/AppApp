@@ -67,6 +67,7 @@
 		661649B524D7F30D00EE123B /* CloseableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661649B424D7F30D00EE123B /* CloseableTextField.swift */; };
 		661649B924D7F5A800EE123B /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661649B724D7F5A800EE123B /* ColorPickerViewController.swift */; };
 		661649BA24D7F5A800EE123B /* ColorPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 661649B824D7F5A800EE123B /* ColorPickerViewController.xib */; };
+		661649BC24D7F9B500EE123B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661649BB24D7F9B500EE123B /* Color.swift */; };
 		662AAF5024139FB300283AF2 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662AAF4F24139FB300283AF2 /* DatabaseManager.swift */; };
 		66498E301FC7A01D00239B47 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E2F1FC7A01D00239B47 /* DetailViewController.swift */; };
 		66498E321FC7B5AA00239B47 /* EditAppLabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E311FC7B5AA00239B47 /* EditAppLabelViewController.swift */; };
@@ -253,6 +254,7 @@
 		661649B424D7F30D00EE123B /* CloseableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseableTextField.swift; sourceTree = "<group>"; };
 		661649B724D7F5A800EE123B /* ColorPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
 		661649B824D7F5A800EE123B /* ColorPickerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorPickerViewController.xib; sourceTree = "<group>"; };
+		661649BB24D7F9B500EE123B /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		662AAF4F24139FB300283AF2 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		66498E231FC5A69B00239B47 /* ShareFromAppStoreExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareFromAppStoreExtension.entitlements; sourceTree = "<group>"; };
 		66498E241FC5A6D700239B47 /* AppApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AppApp.entitlements; sourceTree = "<group>"; };
@@ -1070,6 +1072,7 @@
 			children = (
 				66E54DCE2413A5E000069082 /* App.swift */,
 				66E54DCC2413A59600069082 /* Label.swift */,
+				661649BB24D7F9B500EE123B /* Color.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -1661,6 +1664,7 @@
 				666E06C11FCBB5E90043DCFF /* WebPageToolbar.swift in Sources */,
 				66498E301FC7A01D00239B47 /* DetailViewController.swift in Sources */,
 				6606168B1FCD348100667020 /* DeleteAppView.swift in Sources */,
+				661649BC24D7F9B500EE123B /* Color.swift in Sources */,
 				667ECE691FC3B454009233DE /* CreateAppLabelTableView.swift in Sources */,
 				6662E1281FFFE94400FB30C7 /* BackgroundImageView.swift in Sources */,
 				6616499624D7E9CF00EE123B /* LabelSettingViewController.swift in Sources */,
