@@ -35,4 +35,5 @@ extension Notification.Name {
     static let iconSize = Notification.Name("iconSize")
     static let isAppEditing = Notification.Name("isAppEditing")
     static let labelColor = Notification.Name("labelColor")
+    static let addAppsToLabel = Notification.Name("addAppsToLabel")
 }

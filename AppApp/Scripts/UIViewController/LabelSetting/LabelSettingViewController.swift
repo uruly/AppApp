@@ -139,6 +139,7 @@ final class LabelSettingViewController: UIViewController {
         setupNavigationBar()
 
         NotificationCenter.default.addObserver(self, selector: #selector(selectColor(notification:)), name: .labelColor, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(addApps(notification:)), name: .addAppsToLabel, object: nil)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -185,6 +186,13 @@ final class LabelSettingViewController: UIViewController {
         self.color = color
         tableView.reloadData()
     }
+
+    @objc func addApps(notification: Notification) {
+        guard let apps = notification.object as? [App] else {
+            fatalError("[App] じゃないよ")
+        }
+        self.apps = apps
+    }
 }
 
 // MARK: - UITableViewControllerDelegate
@@ -207,6 +215,7 @@ extension LabelSettingViewController: UITableViewDelegate {
         case .additionalApp:
             mediumFeedbackGenerator.impactOccurred()
             let viewController = AppListViewController()
+            viewController.selectedApps = apps
             navigationController?.pushViewController(viewController, animated: true)
         }
         cell.isSelected = false

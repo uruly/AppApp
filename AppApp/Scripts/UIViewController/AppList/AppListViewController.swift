@@ -10,7 +10,13 @@ import UIKit
 
 final class AppListViewController: UIViewController {
 
-    var apps: [App] = [] {
+    var selectedApps: [App] = [] {
+        didSet {
+            NotificationCenter.default.post(name: .addAppsToLabel, object: selectedApps, userInfo: nil)
+        }
+    }
+
+    private var apps: [App] = [] {
         didSet {
             tableView.reloadData()
         }
@@ -27,6 +33,7 @@ final class AppListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        title = "Appを追加"
         if let allApps = Label.getAllLabel()?.apps {
             self.apps = Array(allApps)
         }
@@ -36,7 +43,20 @@ final class AppListViewController: UIViewController {
 
 // MARK: - UITableViewDelegate
 
-extension AppListViewController: UITableViewDelegate {}
+extension AppListViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell: AppListTableViewCell = tableView.cellForRow(at: indexPath) as? AppListTableViewCell, let app = cell.app else { return }
+        selectedApps.append(app)
+    }
+
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        guard let cell: AppListTableViewCell = tableView.cellForRow(at: indexPath) as? AppListTableViewCell, let app = cell.app else { return }
+        if let index = selectedApps.firstIndex(where: {$0 == app}) {
+            selectedApps.remove(at: index)
+        }
+    }
+}
 
 // MARK: - UITableViewDataSource
 
@@ -49,6 +69,11 @@ extension AppListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: AppListTableViewCell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.appListTableViewCell, for: indexPath)!
         cell.configure(app: apps[indexPath.row])
+        cell.isSelected = selectedApps.contains(where: {$0 == apps[indexPath.row]})
+        if cell.isSelected {
+            tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+        }
+
         return cell
     }
 

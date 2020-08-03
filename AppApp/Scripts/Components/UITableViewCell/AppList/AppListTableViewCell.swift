@@ -13,12 +13,16 @@ final class AppListTableViewCell: UITableViewCell {
     @IBOutlet private weak var appImageView: UIImageView!
     @IBOutlet private weak var appNameLabel: UILabel!
 
+    var app: App?
+
     override func awakeFromNib() {
         super.awakeFromNib()
+        selectionStyle = .none
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+        accessoryType = selected ? .checkmark : .none
     }
 
     override func prepareForReuse() {
@@ -31,5 +35,6 @@ final class AppListTableViewCell: UITableViewCell {
             appImageView.image = UIImage(data: imageData)
         }
         appNameLabel.text = app.name
+        self.app = app
     }
 }
