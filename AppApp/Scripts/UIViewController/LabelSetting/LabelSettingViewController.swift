@@ -112,6 +112,7 @@ final class LabelSettingViewController: UIViewController {
     init(_ label: Label?, type: SettingType, dismissCompletion: ((Bool) -> Void)? = nil) {
         let order = label?.order ?? Label.count
 
+        print("ラベル色", label?.uiColor)
         let color = label?.uiColor ?? UIColor.getRandomColor()
         let colorData = try? NSKeyedArchiver.archivedData(withRootObject: color, requiringSecureCoding: false)
         self.label = label ?? Label(id: UUID().uuidString, name: "", color: colorData, order: order, explain: "")
@@ -130,6 +131,8 @@ final class LabelSettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
+
+        NotificationCenter.default.addObserver(self, selector: #selector(selectColor(notification:)), name: .labelColor, object: nil)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -165,6 +168,16 @@ final class LabelSettingViewController: UIViewController {
         })
         alertController.addAction(UIAlertAction(title: "キャンセル", style: .cancel, handler: nil))
         present(alertController, animated: true, completion: nil)
+    }
+
+    // MARK: - Notification
+
+    @objc func selectColor(notification: Notification) {
+        guard let color = notification.object as? Color else {
+            fatalError("Color じゃないよ")
+        }
+        self.color = color
+        tableView.reloadData()
     }
 }
 
@@ -214,7 +227,7 @@ extension LabelSettingViewController: UITableViewDataSource {
             }
         case .color:
             if let cell = cell as? LabelSettingColorTableViewCell {
-                cell.set(self, color: label.uiColor, text: section.title)
+                cell.set(self, color: color.uiColor, text: section.title)
             }
         case .additionalApp:
             if let cell = cell as? LabelSettingColorTableViewCell {

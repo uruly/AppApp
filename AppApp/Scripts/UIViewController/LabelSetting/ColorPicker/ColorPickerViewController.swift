@@ -49,7 +49,8 @@ final class ColorPickerViewController: UIViewController {
     }
 
     @objc func onTapSaveButton() {
-        // notification
+        NotificationCenter.default.post(name: .labelColor, object: selectColor)
+        dismiss(animated: true, completion: nil)
     }
 
     @objc func onTapCancelButton() {

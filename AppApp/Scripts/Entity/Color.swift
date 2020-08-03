@@ -33,9 +33,9 @@ struct Color: Codable, Equatable {
 
     init(uiColor: UIColor) {
         let rgba = uiColor.rgba
-        self.red = rgba.red
-        self.green = rgba.green
-        self.blue = rgba.blue
+        self.red = rgba.red * 255
+        self.green = rgba.green * 255
+        self.blue = rgba.blue * 255
     }
 }
 

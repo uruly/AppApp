@@ -34,4 +34,5 @@ extension Notification.Name {
     static let toolbarMode = Notification.Name("toolbarMode")
     static let iconSize = Notification.Name("iconSize")
     static let isAppEditing = Notification.Name("isAppEditing")
+    static let labelColor = Notification.Name("labelColor")
 }
