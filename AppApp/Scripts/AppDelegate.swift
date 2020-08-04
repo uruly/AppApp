@@ -29,8 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
-        BasePageViewController.isUnwind = true
-        self.window?.rootViewController?.viewWillAppear(false)
+        guard let navigationController = window?.rootViewController, let viewController = navigationController.children.first else { return }
+        viewController.viewWillAppear(true)
     }
 
 }
