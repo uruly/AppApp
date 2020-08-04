@@ -209,9 +209,6 @@
 		667ECE6F1FC4206F009233DE /* AppListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppListCollectionViewCell.swift; sourceTree = "<group>"; };
 		667ECE701FC4206F009233DE /* AppListCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppListCollectionViewCell.xib; sourceTree = "<group>"; };
 		66983DF62005E8A0009C9AEF /* GoogleAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleAnalytics.framework; path = Carthage/Build/iOS/GoogleAnalytics.framework; sourceTree = "<group>"; };
-		66983E4120070C08009C9AEF /* openssl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = openssl.framework; path = Carthage/Checkouts/OpenSSL/Frameworks/ios/openssl.framework; sourceTree = "<group>"; };
-		66983E4720071305009C9AEF /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "Carthage/Checkouts/OpenSSL/lib-ios/libcrypto.a"; sourceTree = "<group>"; };
-		66983E4820071306009C9AEF /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = "Carthage/Checkouts/OpenSSL/lib-ios/libssl.a"; sourceTree = "<group>"; };
 		66AA1DF71FC56519001C419E /* ShareFromAppStoreExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ShareFromAppStoreExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		66AA1DF91FC56519001C419E /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		66AA1DFC1FC56519001C419E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
@@ -655,9 +652,6 @@
 		667ECE4D1FC382B9009233DE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				66983E4720071305009C9AEF /* libcrypto.a */,
-				66983E4820071306009C9AEF /* libssl.a */,
-				66983E4120070C08009C9AEF /* openssl.framework */,
 				66983DF62005E8A0009C9AEF /* GoogleAnalytics.framework */,
 				666E06C61FCBDE920043DCFF /* StoreKit.framework */,
 				667ECE501FC382C7009233DE /* RealmSwift.framework */,
@@ -1225,7 +1219,6 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Checkouts/OpenSSL/lib-ios",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.uruly.AppApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1262,7 +1255,6 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Checkouts/OpenSSL/lib-ios",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.uruly.AppApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
