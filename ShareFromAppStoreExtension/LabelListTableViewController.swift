@@ -9,83 +9,64 @@
 import UIKit
 import RealmSwift
 
-@objc protocol LabelListTableViewControllerDelegate {
-    var shareVC: ShareViewController { get }
-}
+final class LabelListTableViewController: UITableViewController {
 
-class LabelListTableViewController: UITableViewController {
+    private let reuseIdentifier = "labelList"
 
-    var list: [AppLabelData] = []
-    weak var delegate: LabelListTableViewControllerDelegate!
-    static var isUnwindCreate = false
+    private var labels: [Label] = []
+
+    var selectedLabels: [Label] = [] {
+        didSet {
+            NotificationCenter.default.post(name: .notificationLabels, object: selectedLabels, userInfo: nil)
+        }
+    }
+
+    // MARK: - Life cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "labelList")
-        //self.tableView.allowsMultipleSelection = true
-
-        //readLabelData()
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+        tableView.allowsMultipleSelection = true
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        readLabelData()
-    }
 
-    func readLabelData() {
-        list = []
-        var config = Realm.Configuration(schemaVersion: .schemaVersion)
-        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.xyz.uruly.appapp")!
-        config.fileURL = url.appendingPathComponent("db.realm")
-
-        let realm = try! Realm(configuration: config)
-        let objs = realm.objects(AppLabelRealmData.self)
-        for obj in objs {
-            if let name = obj.name, let colorData = obj.color, let id = obj.id {
-                let color = NSKeyedUnarchiver.unarchiveObject(with: colorData) as! UIColor
-                let label = AppLabelData(name: name, color: color, id: id, order: obj.order)
-                self.list.append(label)
+        readLabel { [weak self] in
+            if let allLabel = Label.getAllLabel(), selectedLabels.isEmpty {
+                selectedLabels = [allLabel]
             }
+            self?.tableView.reloadData()
         }
-        if LabelListTableViewController.isUnwindCreate {
-            self.delegate.shareVC.labelList.append(self.list.last!)
-        }
-        self.tableView.reloadData()
     }
+}
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+// MARK: - TableView DataSource
 
-    // MARK: - Table view data source
+extension LabelListTableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         if section == 1 {   //新しく作る
             return 1
         }
-        return list.count
+        return labels.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "labelList", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
 
         if indexPath.section == 1 {
             cell.textLabel?.text = "新しいラベルを作成"
             cell.accessoryType = .none
         } else {
-            cell.textLabel?.text = list[indexPath.row].name
-            if self.delegate.shareVC.labelList.contains(where: {$0.id == list[indexPath.row].id}) {
-                cell.accessoryType = .checkmark
-            } else {
-                cell.accessoryType = .none
-            }
+            cell.textLabel?.text = labels[indexPath.row].name
+            cell.isSelected = selectedLabels.contains(labels[indexPath.row])
+            cell.accessoryType = cell.isSelected ? .checkmark : .none
         }
 
         return cell
@@ -94,60 +75,43 @@ class LabelListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {
             let createLabelVC = CreateLabelViewController(style: .grouped)
-            self.navigationController?.pushViewController(createLabelVC, animated: true)
+            navigationController?.pushViewController(createLabelVC, animated: true)
             return
         }
-
+        guard indexPath.row != 0 else { return }
         let cell = tableView.cellForRow(at: indexPath)
-
-        if self.delegate.shareVC.labelList.contains(where: {$0.id == list[indexPath.row].id}) {
-            //外す
-            cell?.accessoryType = .none
-            let index = self.delegate.shareVC.labelList.findIndex {$0.id == list[indexPath.row].id}
-            if index.count > 0 {
-                self.delegate.shareVC.labelList.remove(at: index[0])
-            }
-
-        } else {
-            //つける
-            cell?.accessoryType = .checkmark
-            self.delegate.shareVC.labelList.append(list[indexPath.row])
-        }
-
-        cell?.isSelected = false
+        cell?.accessoryType = .checkmark
+        selectedLabels.append(labels[indexPath.row])
     }
 
-    //    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-    //        let cell = tableView.cellForRow(at: indexPath)
-    //        cell?.accessoryType = .none
-    //    }
-
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) else { return }
+        guard indexPath.row != 0 else { return }
+        cell.accessoryType = .none
+        if let index = selectedLabels.firstIndex(where: { $0 == labels[indexPath.row] }) {
+            selectedLabels.remove(at: index)
+        }
+    }
 }
 
-extension Array where Element: Hashable {
+// MARK: - Realm
 
-    func unique() -> [Element] {
-        var elements = [Element]()
-        for value in self {
-            elements += !elements.contains(value) ? [value] : []
+extension LabelListTableViewController {
+
+    private func readLabel(_ completion: (() -> Void)) {
+        labels = Label.getAll()
+        defer { completion() }
+        guard labels.isEmpty else { return }
+        // ALL labelを追加する
+        guard let colorData = try? NSKeyedArchiver.archivedData(withRootObject: UIColor.blue, requiringSecureCoding: false) else {
+            fatalError("Color Archived Error!!")
         }
-        return elements
-    }
-
-    mutating func uniqueInPlace() {
-        self = self.unique()
-    }
-
-}
-
-extension Array {
-    func findIndex(includeElement: (Element) -> Bool) -> [Int] {
-        var indexArray: [Int] = []
-        for (index, element) in enumerated() {
-            if includeElement(element) {
-                indexArray.append(index)
-            }
+        let allLabel = Label(id: "ALLLABEL", name: "ALL", color: colorData, order: 0, explain: "すべてのApp")
+        labels = [allLabel]
+        do {
+            try Label.add(allLabel)
+        } catch {
+            print("Error")
         }
-        return indexArray
     }
 }

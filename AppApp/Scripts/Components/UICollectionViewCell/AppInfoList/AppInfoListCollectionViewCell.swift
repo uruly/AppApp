@@ -8,28 +8,49 @@
 
 import UIKit
 
-class AppInfoListCollectionViewCell: UICollectionViewCell {
+final class AppInfoListCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var developerLabel: UILabel!
-    @IBOutlet weak var checkImageView: UIImageView!
+    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var developerLabel: UILabel!
+    @IBOutlet private weak var checkImageView: UIImageView!
+
+    override var isSelected: Bool {
+        didSet {
+            checkImageView.isHidden = !isSelected
+        }
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        self.contentView.backgroundColor = UIColor.white
+
+        contentView.backgroundColor = UIColor.white
 
         checkImageView.isHidden = true
 
-        self.contentView.layer.cornerRadius = 30.0
+        contentView.layer.cornerRadius = 30.0
 
-        //影をつける
-        self.layer.masksToBounds = false
-        self.layer.shadowColor = UIColor.darkGray.cgColor
-        self.layer.shadowOffset = CGSize(width: 2, height: 2)
-        self.layer.shadowRadius = 4
-        self.layer.shadowOpacity = 0.5
+        // 影をつける
+        layer.masksToBounds = false
+        layer.shadowColor = UIColor.darkGray.cgColor
+        layer.shadowOffset = CGSize(width: 2, height: 2)
+        layer.shadowRadius = 4
+        layer.shadowOpacity = 0.5
     }
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        imageView.image = nil
+    }
+
+    func configure(app: App) {
+        if let imageData = app.image {
+            imageView.image = UIImage(data: imageData)
+        }
+        if app.name == "" || app.developer == "" {
+            AppRequest.shared.fetchApp(app: app)
+        }
+        nameLabel.text = app.name
+        developerLabel.text = app.developer
+    }
 }

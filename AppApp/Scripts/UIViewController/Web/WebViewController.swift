@@ -25,8 +25,6 @@ class WebViewController: UIViewController {
         let width = self.view.frame.width
         let height = self.view.frame.height
 
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
-
         webView = WKWebView(frame: CGRect(x: 0, y: 0, width: width, height: height))
         webView.scrollView.contentInset.bottom = toolBarHeight
         webView.navigationDelegate = self
@@ -42,7 +40,7 @@ class WebViewController: UIViewController {
         webView.load(request as URLRequest)
         self.view.addSubview(webView)
 
-        indicator = PassThroughIndicator(style: .gray)
+        indicator = PassThroughIndicator(style: .medium)
         indicator.frame = self.view.frame
         indicator.startAnimating()
         indicator.isHidden = true
@@ -134,7 +132,6 @@ extension WebViewController: WKNavigationDelegate {
     }
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         self.resetToolbar()
-        UIApplication.shared.isNetworkActivityIndicatorVisible = false
         self.indicator.isHidden = true
         self.indicator.stopAnimating()
 
