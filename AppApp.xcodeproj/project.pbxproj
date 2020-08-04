@@ -24,7 +24,6 @@
 		660B068D24D07F69003100EE /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662AAF4F24139FB300283AF2 /* DatabaseManager.swift */; };
 		660B57771FCFDB1000DBC823 /* colorData.json in Resources */ = {isa = PBXBuildFile; fileRef = 660B57761FCFDB1000DBC823 /* colorData.json */; };
 		660B57BD1FD12A9B00DBC823 /* help.json in Resources */ = {isa = PBXBuildFile; fileRef = 660B57BC1FD12A9A00DBC823 /* help.json */; };
-		660B88342003C67A0064EFFE /* UIColor+Compare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B88332003C67A0064EFFE /* UIColor+Compare.swift */; };
 		660D7A8F2409229E00DEC2C8 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 660D7A8E2409229E00DEC2C8 /* Settings.bundle */; };
 		660D7A912409275D00DEC2C8 /* license_plist.yml in Resources */ = {isa = PBXBuildFile; fileRef = 660D7A902409275D00DEC2C8 /* license_plist.yml */; };
 		6616499524D7E9CF00EE123B /* LabelSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6616499324D7E9CE00EE123B /* LabelSettingViewController.xib */; };
@@ -58,13 +57,8 @@
 		662751BF24D9168B00BFE78F /* AppInfoListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 662751BD24D9168A00BFE78F /* AppInfoListCollectionViewCell.xib */; };
 		662751C224D916B100BFE78F /* ToolbarMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662751C124D916B100BFE78F /* ToolbarMode.swift */; };
 		662AAF5024139FB300283AF2 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662AAF4F24139FB300283AF2 /* DatabaseManager.swift */; };
-		66498E341FC7BA3600239B47 /* UIApplication+Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E331FC7BA3600239B47 /* UIApplication+Stack.swift */; };
-		66498E391FC810BF00239B47 /* Array+FindIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66498E381FC810BF00239B47 /* Array+FindIndex.swift */; };
 		666081B42407B54900001A9C /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666081B32407B54800001A9C /* R.generated.swift */; };
 		666081B72407B7CB00001A9C /* Rswift in Frameworks */ = {isa = PBXBuildFile; productRef = 666081B62407B7CB00001A9C /* Rswift */; };
-		6662E1322000055F00FB30C7 /* UIResponder+FindView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662E1312000055F00FB30C7 /* UIResponder+FindView.swift */; };
-		6662E13F2001D31700FB30C7 /* UIImage+MaskCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662E13E2001D31700FB30C7 /* UIImage+MaskCorner.swift */; };
-		6662E1412001D76300FB30C7 /* UIView+SnapShot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6662E1402001D76300FB30C7 /* UIView+SnapShot.swift */; };
 		6662E14520024B1700FB30C7 /* backgroundImage.json in Resources */ = {isa = PBXBuildFile; fileRef = 6662E14420024B1700FB30C7 /* backgroundImage.json */; };
 		66686B712405019F005A22A3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66686B702405019F005A22A3 /* Constants.swift */; };
 		66686B7324052B37005A22A3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66686B702405019F005A22A3 /* Constants.swift */; };
@@ -149,7 +143,6 @@
 		660B57BC1FD12A9A00DBC823 /* help.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = help.json; sourceTree = "<group>"; };
 		660B57E21FD19E7500DBC823 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		660B57E31FD19E7600DBC823 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/MainInterface.strings; sourceTree = "<group>"; };
-		660B88332003C67A0064EFFE /* UIColor+Compare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Compare.swift"; sourceTree = "<group>"; };
 		660D7A8E2409229E00DEC2C8 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		660D7A902409275D00DEC2C8 /* license_plist.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = license_plist.yml; sourceTree = "<group>"; };
 		6616499324D7E9CE00EE123B /* LabelSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LabelSettingViewController.xib; sourceTree = "<group>"; };
@@ -185,13 +178,8 @@
 		662AAF4F24139FB300283AF2 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		66498E231FC5A69B00239B47 /* ShareFromAppStoreExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareFromAppStoreExtension.entitlements; sourceTree = "<group>"; };
 		66498E241FC5A6D700239B47 /* AppApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AppApp.entitlements; sourceTree = "<group>"; };
-		66498E331FC7BA3600239B47 /* UIApplication+Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Stack.swift"; sourceTree = "<group>"; };
-		66498E381FC810BF00239B47 /* Array+FindIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+FindIndex.swift"; sourceTree = "<group>"; };
 		665B394F24090B55007260A3 /* Carthage.xcfilelist */ = {isa = PBXFileReference; lastKnownFileType = text.xcfilelist; path = Carthage.xcfilelist; sourceTree = "<group>"; };
 		666081B32407B54800001A9C /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
-		6662E1312000055F00FB30C7 /* UIResponder+FindView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIResponder+FindView.swift"; sourceTree = "<group>"; };
-		6662E13E2001D31700FB30C7 /* UIImage+MaskCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+MaskCorner.swift"; sourceTree = "<group>"; };
-		6662E1402001D76300FB30C7 /* UIView+SnapShot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+SnapShot.swift"; sourceTree = "<group>"; };
 		6662E14420024B1700FB30C7 /* backgroundImage.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = backgroundImage.json; sourceTree = "<group>"; };
 		66686B702405019F005A22A3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		666E06B61FCBAC290043DCFF /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
@@ -590,13 +578,7 @@
 				661649BD24D7FFDD00EE123B /* UIColor+RGB.swift */,
 				6625396224D813A4006B2767 /* UICollectionView+BatchUpdates.swift */,
 				660B067E24D05155003100EE /* UIColor+TextColor.swift */,
-				66498E381FC810BF00239B47 /* Array+FindIndex.swift */,
-				6662E1312000055F00FB30C7 /* UIResponder+FindView.swift */,
 				6616499724D7EF3600EE123B /* UIColor+Random.swift */,
-				6662E13E2001D31700FB30C7 /* UIImage+MaskCorner.swift */,
-				6662E1402001D76300FB30C7 /* UIView+SnapShot.swift */,
-				66498E331FC7BA3600239B47 /* UIApplication+Stack.swift */,
-				660B88332003C67A0064EFFE /* UIColor+Compare.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -993,21 +975,16 @@
 			files = (
 				660B067724D04FA3003100EE /* LabelCollectionViewController.swift in Sources */,
 				666E06B71FCBAC290043DCFF /* WebViewController.swift in Sources */,
-				660B88342003C67A0064EFFE /* UIColor+Compare.swift in Sources */,
 				666081B42407B54900001A9C /* R.generated.swift in Sources */,
 				660B067F24D05155003100EE /* UIColor+TextColor.swift in Sources */,
 				660B066C24D04AF2003100EE /* HomeViewController.swift in Sources */,
-				6662E13F2001D31700FB30C7 /* UIImage+MaskCorner.swift in Sources */,
-				6662E1322000055F00FB30C7 /* UIResponder+FindView.swift in Sources */,
 				661649B524D7F30D00EE123B /* CloseableTextField.swift in Sources */,
 				661649AD24D7F1FB00EE123B /* LabelSettingTextFieldTableViewCell.swift in Sources */,
 				66E54DCF2413A5E000069082 /* App.swift in Sources */,
 				6625398224D833C0006B2767 /* AppInformationTableViewCell.swift in Sources */,
-				66498E341FC7BA3600239B47 /* UIApplication+Stack.swift in Sources */,
 				660B067324D04F66003100EE /* PageViewController.swift in Sources */,
 				662751BE24D9168B00BFE78F /* AppInfoListCollectionViewCell.swift in Sources */,
 				66E54DCD2413A59600069082 /* Label.swift in Sources */,
-				66498E391FC810BF00239B47 /* Array+FindIndex.swift in Sources */,
 				662751B624D9161B00BFE78F /* ColorSetCollectionViewCell.swift in Sources */,
 				660B068824D0541B003100EE /* AppsViewController.swift in Sources */,
 				6616499824D7EF3600EE123B /* UIColor+Random.swift in Sources */,
@@ -1028,7 +1005,6 @@
 				661649BC24D7F9B500EE123B /* Color.swift in Sources */,
 				6625397424D82E81006B2767 /* AppDetailViewController.swift in Sources */,
 				6616499624D7E9CF00EE123B /* LabelSettingViewController.swift in Sources */,
-				6662E1412001D76300FB30C7 /* UIView+SnapShot.swift in Sources */,
 				661649BE24D7FFDD00EE123B /* UIColor+RGB.swift in Sources */,
 				662AAF5024139FB300283AF2 /* DatabaseManager.swift in Sources */,
 				667ECE711FC4206F009233DE /* AppListCollectionViewCell.swift in Sources */,
