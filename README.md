@@ -3,6 +3,15 @@ AppAppはAppStoreのアプリをコレクションするためのアプリです
 AppApp is an app for collecting AppStore apps.
 ![appapp_icatch](https://user-images.githubusercontent.com/10204705/53691235-cdf45a80-3dbc-11e9-8c7b-86b48c231f57.png)
 
+## Introduction
+
+```
+git clone git@github.com:uruly/AppApp.git
+cd AppApp
+mint run carthage bootstrap --platform iOS --no-use-binaries
+open AppApp.xcodeproj
+```
+
 ### Functions
  1. Save from AppStore
  
