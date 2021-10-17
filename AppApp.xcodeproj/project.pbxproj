@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		62E1A126271C3CC8006B3271 /* RealmSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62E1A124271C3CC8006B3271 /* RealmSwift.xcframework */; };
+		62E1A128271C3CC8006B3271 /* Realm.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62E1A125271C3CC8006B3271 /* Realm.xcframework */; };
 		660B066C24D04AF2003100EE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B066A24D04AF2003100EE /* HomeViewController.swift */; };
 		660B066D24D04AF2003100EE /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 660B066B24D04AF2003100EE /* HomeViewController.xib */; };
 		660B067324D04F66003100EE /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B067124D04F66003100EE /* PageViewController.swift */; };
@@ -77,8 +79,6 @@
 		667ECE231FC36784009233DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 667ECE211FC36784009233DE /* LaunchScreen.storyboard */; };
 		667ECE2E1FC36784009233DE /* AppAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE2D1FC36784009233DE /* AppAppTests.swift */; };
 		667ECE391FC36784009233DE /* AppAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE381FC36784009233DE /* AppAppUITests.swift */; };
-		667ECE4F1FC382B9009233DE /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 667ECE4E1FC382B9009233DE /* Realm.framework */; };
-		667ECE511FC382C7009233DE /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 667ECE501FC382C7009233DE /* RealmSwift.framework */; };
 		667ECE711FC4206F009233DE /* AppListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE6F1FC4206F009233DE /* AppListCollectionViewCell.swift */; };
 		667ECE721FC4206F009233DE /* AppListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 667ECE701FC4206F009233DE /* AppListCollectionViewCell.xib */; };
 		66AA1DFA1FC56519001C419E /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AA1DF91FC56519001C419E /* ShareViewController.swift */; };
@@ -128,6 +128,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		62E1A124271C3CC8006B3271 /* RealmSwift.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = RealmSwift.xcframework; path = Carthage/Build/RealmSwift.xcframework; sourceTree = "<group>"; };
+		62E1A125271C3CC8006B3271 /* Realm.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Realm.xcframework; path = Carthage/Build/Realm.xcframework; sourceTree = "<group>"; };
 		660B066A24D04AF2003100EE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		660B066B24D04AF2003100EE /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		660B067124D04F66003100EE /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
@@ -224,9 +226,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				666081B72407B7CB00001A9C /* Rswift in Frameworks */,
+				62E1A128271C3CC8006B3271 /* Realm.xcframework in Frameworks */,
+				62E1A126271C3CC8006B3271 /* RealmSwift.xcframework in Frameworks */,
 				660B068524D05202003100EE /* SnapKit in Frameworks */,
-				667ECE511FC382C7009233DE /* RealmSwift.framework in Frameworks */,
-				667ECE4F1FC382B9009233DE /* Realm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -652,6 +654,8 @@
 		667ECE4D1FC382B9009233DE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				62E1A125271C3CC8006B3271 /* Realm.xcframework */,
+				62E1A124271C3CC8006B3271 /* RealmSwift.xcframework */,
 				66983DF62005E8A0009C9AEF /* GoogleAnalytics.framework */,
 				666E06C61FCBDE920043DCFF /* StoreKit.framework */,
 				667ECE501FC382C7009233DE /* RealmSwift.framework */,
