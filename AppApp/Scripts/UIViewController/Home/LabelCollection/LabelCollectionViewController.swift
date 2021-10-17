@@ -137,17 +137,17 @@ extension LabelCollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath,
                                  to destinationIndexPath: IndexPath) {
-        //        if longPressGestureRecognizer.state == .ended {
-        //            return
-        //        }
-        //        labels.swapAt(sourceIndexPath.item, destinationIndexPath.item)
-        //        do {
-        //            try Label.update(order: sourceIndexPath.item, label: labels[sourceIndexPath.item])
-        //            try Label.update(order: destinationIndexPath.item, label: labels[destinationIndexPath.item])
-        //        } catch {
-        //            print("update失敗", error)
-        //        }
-        //        origLabels = labels
+        let label = labels[sourceIndexPath.row]
+        labels.remove(at: sourceIndexPath.row)
+        labels.insert(label, at: destinationIndexPath.row)
+        for index in 0 ..< labels.count {
+            do {
+                try Label.update(order: index, label: labels[index])
+            } catch {
+                print("error", error)
+            }
+        }
+        origLabels = labels
     }
 
     override func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
