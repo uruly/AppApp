@@ -11,9 +11,9 @@ import UIKit
 class WebPageToolbar: UIToolbar {
 
     func didChangeLayout(toolbarMinY: CGFloat, height: CGFloat, bottomInset: CGFloat) {
-        //let toolbarMinY = self.view.frame.height - toolBarHeight - self.view.safeAreaInsets.bottom
+        // let toolbarMinY = self.view.frame.height - toolBarHeight - self.view.safeAreaInsets.bottom
         self.frame = CGRect(x: 0, y: toolbarMinY, width: self.frame.width, height: height)
-        //self.frame.size.height += 32
+        // self.frame.size.height += 32
 
     }
 
@@ -24,7 +24,7 @@ class WebPageToolbar: UIToolbar {
         if #available(iOS 11.0, *), isiPhoneX {
             for subview in self.subviews {
                 let stringFromClass = NSStringFromClass(subview.classForCoder)
-                //print(stringFromClass)
+                // print(stringFromClass)
                 if stringFromClass.contains("BarBackground") {
                     subview.frame = self.bounds
                 } else if stringFromClass.contains("ContentView") {

@@ -21,7 +21,7 @@ class CreateLabelViewController: UITableViewController {
         }
     }
     var colorPickerView: ColorPicker!
-    //var labelListVC:LabelListTableViewController!
+    // var labelListVC:LabelListTableViewController!
     let pickerViewHeight: CGFloat = 200.0
     var textField: UITextField!
 
@@ -36,7 +36,7 @@ class CreateLabelViewController: UITableViewController {
             let width = parentView.frame.width
             let height = parentView.frame.height
 
-            //カラーピッカー
+            // カラーピッカー
             colorPickerView = ColorPicker()
             colorPickerView.frame = CGRect(x: 0,
                                            y: height,
@@ -108,18 +108,18 @@ class CreateLabelViewController: UITableViewController {
             textField.leftViewMode = UITextField.ViewMode.always
             textField.delegate = self
             textField.returnKeyType = .done
-            //textField.viewWithTag(5)
+            // textField.viewWithTag(5)
             if indexPath.row == 0 {
                 textField.placeholder = "ラベル名"
                 textField.tag = 1
                 textField.becomeFirstResponder()
                 textField.addTarget(self, action: #selector(self.nameChanged(sender:)), for: .editingChanged)
-                //self.currentTextField = textField
+                // self.currentTextField = textField
             }
             cell.contentView.addSubview(textField)
         }
 
-        //カラーを表示
+        // カラーを表示
         if indexPath.section == 1 {
             cell.textLabel?.text = "カラー"
             colorView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))

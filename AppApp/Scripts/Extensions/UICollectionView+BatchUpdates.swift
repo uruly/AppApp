@@ -82,11 +82,11 @@ extension UICollectionView {
 
             // itemをアップデート
             self.deleteItems(at: batchUpdates.items.deleted.map {
-                IndexPath(row: $0, section: section) })
+                                IndexPath(row: $0, section: section) })
             self.reloadItems(at: batchUpdates.items.reloaded.map {
-                IndexPath(row: $0, section: section) })
+                                IndexPath(row: $0, section: section) })
             self.insertItems(at: batchUpdates.items.inserted.map {
-                IndexPath(row: $0, section: section) })
+                                IndexPath(row: $0, section: section) })
 
             for movedRows in batchUpdates.items.moved {
                 self.moveItem(
@@ -111,11 +111,11 @@ extension UITableView {
 
             // itemをアップデート
             self.deleteRows(at: batchUpdates.items.deleted.map {
-                IndexPath(row: $0, section: section) }, with: .right)
+                                IndexPath(row: $0, section: section) }, with: .right)
             self.reloadRows(at: batchUpdates.items.reloaded.map {
-                IndexPath(row: $0, section: section) }, with: .fade)
+                                IndexPath(row: $0, section: section) }, with: .fade)
             self.insertRows(at: batchUpdates.items.inserted.map {
-                IndexPath(row: $0, section: section) }, with: .left)
+                                IndexPath(row: $0, section: section) }, with: .left)
         })
     }
 }

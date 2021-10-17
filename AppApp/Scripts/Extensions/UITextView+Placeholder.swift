@@ -74,7 +74,7 @@ extension UITextView: UITextViewDelegate {
 
         self.addSubview(placeholderLabel)
         self.resizePlaceholder()
-        //self.delegate = self
+        // self.delegate = self
     }
 
 }

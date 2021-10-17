@@ -51,7 +51,7 @@ extension LabelListTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 1 {   //新しく作る
+        if section == 1 {   // 新しく作る
             return 1
         }
         return labels.count
