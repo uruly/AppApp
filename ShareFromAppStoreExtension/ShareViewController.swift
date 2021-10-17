@@ -96,7 +96,7 @@ class ShareViewController: SLComposeServiceViewController {
 
     override func didSelectPost() {
         guard let extensionItem: NSExtensionItem = extensionContext?.inputItems.first as? NSExtensionItem,
-            let itemProviders = extensionItem.attachments else { return }
+              let itemProviders = extensionItem.attachments else { return }
         save(itemProviders: itemProviders) { [weak self] isSuccess in
             if isSuccess {
                 self?.extensionContext?.completeRequest(returningItems: [], completionHandler: nil)
@@ -128,9 +128,9 @@ class ShareViewController: SLComposeServiceViewController {
 
     private func checkAppStore(_ completion: @escaping (Bool) -> Void) {
         guard let extensionItem: NSExtensionItem = extensionContext?.inputItems.first as? NSExtensionItem,
-            let itemProviders = extensionItem.attachments else {
-                completion(false)
-                return
+              let itemProviders = extensionItem.attachments else {
+            completion(false)
+            return
         }
         guard let urlProvider = itemProviders.first(where: { $0.hasItemConformingToTypeIdentifier("public.url")}) else {
             completion(false)
@@ -148,9 +148,9 @@ class ShareViewController: SLComposeServiceViewController {
 
     private func checkAppDuplicated(_ completion: @escaping (Bool) -> Void) {
         guard let extensionItem: NSExtensionItem = extensionContext?.inputItems.first as? NSExtensionItem,
-            let itemProviders = extensionItem.attachments else {
-                completion(false)
-                return
+              let itemProviders = extensionItem.attachments else {
+            completion(false)
+            return
         }
         guard let urlProvider = itemProviders.first(where: { $0.hasItemConformingToTypeIdentifier("public.url")}) else {
             completion(false)

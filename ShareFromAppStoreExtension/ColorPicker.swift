@@ -15,7 +15,7 @@ protocol ColorDelegate: class {
 class ColorPicker: UIView {
     weak var delegate: ColorDelegate!
     // 細かさの設定
-    //var xCount = 15
+    // var xCount = 15
     var xCount = 10
     var yCount = 20
 
@@ -43,7 +43,7 @@ class ColorPicker: UIView {
 
     override func draw(_ rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()
-        //print(size)
+        // print(size)
         let blockSize = CGSize(width: size.width / CGFloat(xCount), height: size.height / CGFloat(yCount))
 
         for yIndex in 0...yCount {
@@ -58,7 +58,7 @@ class ColorPicker: UIView {
             }
         }
     }
-    //カラーのラベルのところだけ色を変えるとか
+    // カラーのラベルのところだけ色を変えるとか
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch =  touches.first
         updateColor(touch: touch!)

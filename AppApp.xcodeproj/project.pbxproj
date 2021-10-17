@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		62E1A126271C3CC8006B3271 /* RealmSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62E1A124271C3CC8006B3271 /* RealmSwift.xcframework */; };
-		62E1A128271C3CC8006B3271 /* Realm.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62E1A125271C3CC8006B3271 /* Realm.xcframework */; };
+		62E1A12B271C3F38006B3271 /* Realm.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62E1A125271C3CC8006B3271 /* Realm.xcframework */; };
+		62E1A12C271C3F38006B3271 /* Realm.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 62E1A125271C3CC8006B3271 /* Realm.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		62E1A12E271C3F39006B3271 /* RealmSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62E1A124271C3CC8006B3271 /* RealmSwift.xcframework */; };
+		62E1A12F271C3F39006B3271 /* RealmSwift.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 62E1A124271C3CC8006B3271 /* RealmSwift.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		660B066C24D04AF2003100EE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B066A24D04AF2003100EE /* HomeViewController.swift */; };
 		660B066D24D04AF2003100EE /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 660B066B24D04AF2003100EE /* HomeViewController.xib */; };
 		660B067324D04F66003100EE /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B067124D04F66003100EE /* PageViewController.swift */; };
@@ -114,6 +116,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		62E1A12D271C3F38006B3271 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				62E1A12C271C3F38006B3271 /* Realm.xcframework in Embed Frameworks */,
+				62E1A12F271C3F39006B3271 /* RealmSwift.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		66AA1E051FC56519001C419E /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -226,9 +240,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				666081B72407B7CB00001A9C /* Rswift in Frameworks */,
-				62E1A128271C3CC8006B3271 /* Realm.xcframework in Frameworks */,
-				62E1A126271C3CC8006B3271 /* RealmSwift.xcframework in Frameworks */,
+				62E1A12B271C3F38006B3271 /* Realm.xcframework in Frameworks */,
 				660B068524D05202003100EE /* SnapKit in Frameworks */,
+				62E1A12E271C3F39006B3271 /* RealmSwift.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -690,9 +704,9 @@
 				667ECE121FC36784009233DE /* Frameworks */,
 				667ECE131FC36784009233DE /* Resources */,
 				66686B6E2404520F005A22A3 /* SwiftLint */,
-				667ECE4C1FC3826D009233DE /* Carthage */,
 				66AA1E051FC56519001C419E /* Embed App Extensions */,
 				660D7A8B24091C1C00DEC2C8 /* LicensePlist */,
+				62E1A12D271C3F38006B3271 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -768,7 +782,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0910;
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 1300;
 				ORGANIZATIONNAME = "Reona Kubo";
 				TargetAttributes = {
 					667ECE141FC36784009233DE = {
@@ -947,23 +961,6 @@
 			shellPath = /bin/sh;
 			shellScript = "if which mint >/dev/null; then\n  mint run swiftlint swiftlint autocorrect --format\n  mint run swiftlint swiftlint\nelse\n  echo \"warning: Mint not installed, download from https://github.com/yonaskolb/Mint\"\nfi\n";
 		};
-		667ECE4C1FC3826D009233DE /* Carthage */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"$(SRCROOT)/AppApp/Resources/Carthage.xcfilelist",
-			);
-			inputPaths = (
-			);
-			name = Carthage;
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "mint run carthage copy-frameworks\n";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1111,6 +1108,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1171,6 +1169,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;

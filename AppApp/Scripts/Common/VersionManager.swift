@@ -10,7 +10,7 @@ import UIKit
 
 struct VersionManager {
 
-    //var alertController:UIAlertController?
+    // var alertController:UIAlertController?
 
     init(viewController: UIViewController) {
         self.checkVersion(viewController)

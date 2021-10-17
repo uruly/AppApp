@@ -106,7 +106,7 @@ extension DatabaseManager {
         return results.isEmpty ? nil : results.first
     }
 
-    func objects<T: Object>(_ type: T.Type, filter predicate: NSPredicate? = nil, sortedBy properties: [SortDescriptor]? = nil) -> Results<T> {
+    func objects<T: Object>(_ type: T.Type, filter predicate: NSPredicate? = nil, sortedBy properties: [RealmSwift.SortDescriptor]? = nil) -> Results<T> {
         var results: Results<T>
         if let predicate = predicate {
             results = realm.objects(type).filter(predicate)
