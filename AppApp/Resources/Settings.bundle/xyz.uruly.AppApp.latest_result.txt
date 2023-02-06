@@ -1,47 +1,47 @@
-name: Carthage, nameSpecified: , owner: Carthage, version: 0.34.0
+name: Carthage, nameSpecified: , owner: Carthage, version: 0.34.0, source: https://github.com/Carthage/Carthage
 
-name: Carthage, nameSpecified: , owner: Carthage, version: 0.34.0
+name: Carthage, nameSpecified: , owner: Carthage, version: 0.34.0, source: https://github.com/Carthage/Carthage
 
-name: Carthage, nameSpecified: , owner: Carthage, version: 0.38.0
+name: Carthage, nameSpecified: , owner: Carthage, version: 0.39.0, source: https://github.com/Carthage/Carthage
 
-name: LicensePlist, nameSpecified: , owner: mono0926, version: 2.13.0
+name: LicensePlist, nameSpecified: , owner: mono0926, version: 2.13.0, source: https://github.com/mono0926/LicensePlist
 
-name: LicensePlist, nameSpecified: , owner: mono0926, version: 2.13.0
+name: LicensePlist, nameSpecified: , owner: mono0926, version: 2.13.0, source: https://github.com/mono0926/LicensePlist
 
-name: LicensePlist, nameSpecified: , owner: mono0926, version: 3.14.4
+name: LicensePlist, nameSpecified: , owner: mono0926, version: 3.23.4, source: https://github.com/mono0926/LicensePlist
 
-name: Mint, nameSpecified: , owner: yonaskolb, version: 0.14.1
+name: Mint, nameSpecified: , owner: yonaskolb, version: 0.14.1, source: https://github.com/yonaskolb/Mint
 
-name: Mint, nameSpecified: , owner: yonaskolb, version: 0.14.1
+name: Mint, nameSpecified: , owner: yonaskolb, version: 0.14.1, source: https://github.com/yonaskolb/Mint
 
-name: R.swift, nameSpecified: , owner: mac-cain13, version: v5.1.0
+name: R.swift, nameSpecified: , owner: mac-cain13, version: v5.1.0, source: https://github.com/mac-cain13/R.swift
 
-name: R.swift, nameSpecified: , owner: mac-cain13, version: v5.1.0
+name: R.swift, nameSpecified: , owner: mac-cain13, version: v5.1.0, source: https://github.com/mac-cain13/R.swift
 
-name: R.swift, nameSpecified: , owner: mac-cain13, version: v5.4.0
+name: R.swift, nameSpecified: , owner: mac-cain13, version: v5.4.0, source: https://github.com/mac-cain13/R.swift
 
-name: realm-cocoa, nameSpecified: , owner: realm, version: v10.17.0
+name: realm-cocoa, nameSpecified: , owner: realm, version: v10.34.1, source: https://github.com/realm/realm-cocoa
 
-name: SwiftLint, nameSpecified: , owner: realm, version: 0.39.1
+name: SwiftLint, nameSpecified: , owner: realm, version: 0.39.1, source: https://github.com/realm/SwiftLint
 
-name: SwiftLint, nameSpecified: , owner: realm, version: 0.39.1
+name: SwiftLint, nameSpecified: , owner: realm, version: 0.39.1, source: https://github.com/realm/SwiftLint
 
-name: SwiftLint, nameSpecified: , owner: realm, version: 0.44.0
+name: SwiftLint, nameSpecified: , owner: realm, version: 0.44.0, source: https://github.com/realm/SwiftLint
 
-name: R.swift, nameSpecified: , owner: mac-cain13, version: v5.1.0
+name: R.swift, nameSpecified: , owner: mac-cain13, version: v5.1.0, source: https://github.com/mac-cain13/R.swift
 
-name: LicensePlist, nameSpecified: , owner: mono0926, version: 2.13.0
+name: LicensePlist, nameSpecified: , owner: mono0926, version: 2.13.0, source: https://github.com/mono0926/LicensePlist
 
-name: SwiftLint, nameSpecified: , owner: realm, version: 0.39.1
+name: SwiftLint, nameSpecified: , owner: realm, version: 0.39.1, source: https://github.com/realm/SwiftLint
 
-name: Mint, nameSpecified: , owner: yonaskolb, version: 0.14.1
+name: Mint, nameSpecified: , owner: yonaskolb, version: 0.14.1, source: https://github.com/yonaskolb/Mint
 
-name: Carthage, nameSpecified: , owner: Carthage, version: 0.34.0
+name: Carthage, nameSpecified: , owner: Carthage, version: 0.34.0, source: https://github.com/Carthage/Carthage
 
-name: R.swift.Library, nameSpecified: R.swift.Library, owner: mac-cain13, version: 5.1.0
+name: R.swift.Library, nameSpecified: R.swift.Library, owner: mac-cain13, version: 5.1.0, source: https://github.com/mac-cain13/R.swift.Library
 
-name: SnapKit, nameSpecified: SnapKit, owner: SnapKit, version: 5.0.1
+name: SnapKit, nameSpecified: SnapKit, owner: SnapKit, version: 5.0.1, source: https://github.com/SnapKit/SnapKit
 
 add-version-numbers: false
 
-LicensePlist Version: 3.14.4
+LicensePlist Version: 3.23.4
