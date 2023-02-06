@@ -7,10 +7,10 @@ AppApp is an app for collecting AppStore apps.
 
 ## Environment
 
- - Xcode 11.5
- - Swift 5
- - mint 0.14.2
- - iOS 13.5.1
+ - Xcode 13.4.1
+ - Swift 5.6.1
+ - mint 0.17.5
+ - iOS 15.4
  
 上記環境にて開発・確認済みです。
 
