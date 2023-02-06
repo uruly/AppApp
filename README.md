@@ -21,7 +21,7 @@ AppApp is an app for collecting AppStore apps.
 ```
 git clone git@github.com:uruly/AppApp.git
 cd AppApp
-mint run carthage bootstrap --platform iOS --no-use-binaries
+mint run carthage bootstrap --platform iOS --no-use-binaries --use-xcframeworks
 open AppApp.xcodeproj
 ```
 
