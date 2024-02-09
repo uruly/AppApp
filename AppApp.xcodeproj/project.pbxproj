@@ -62,7 +62,6 @@
 		662751C224D916B100BFE78F /* ToolbarMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662751C124D916B100BFE78F /* ToolbarMode.swift */; };
 		662AAF5024139FB300283AF2 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662AAF4F24139FB300283AF2 /* DatabaseManager.swift */; };
 		666081B42407B54900001A9C /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666081B32407B54800001A9C /* R.generated.swift */; };
-		666081B72407B7CB00001A9C /* Rswift in Frameworks */ = {isa = PBXBuildFile; productRef = 666081B62407B7CB00001A9C /* Rswift */; };
 		6662E14520024B1700FB30C7 /* backgroundImage.json in Resources */ = {isa = PBXBuildFile; fileRef = 6662E14420024B1700FB30C7 /* backgroundImage.json */; };
 		66686B712405019F005A22A3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66686B702405019F005A22A3 /* Constants.swift */; };
 		66686B7324052B37005A22A3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66686B702405019F005A22A3 /* Constants.swift */; };
@@ -228,7 +227,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				624D2F162B75E683007AE22A /* RealmSwift in Frameworks */,
-				666081B72407B7CB00001A9C /* Rswift in Frameworks */,
 				660B068524D05202003100EE /* SnapKit in Frameworks */,
 				624D2F142B75E683007AE22A /* Realm in Frameworks */,
 			);
@@ -689,22 +687,21 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 667ECE3D1FC36784009233DE /* Build configuration list for PBXNativeTarget "AppApp" */;
 			buildPhases = (
-				666081B22407B00600001A9C /* R.swift */,
 				667ECE111FC36784009233DE /* Sources */,
 				667ECE121FC36784009233DE /* Frameworks */,
 				667ECE131FC36784009233DE /* Resources */,
 				66686B6E2404520F005A22A3 /* SwiftLint */,
 				66AA1E051FC56519001C419E /* Embed App Extensions */,
-				660D7A8B24091C1C00DEC2C8 /* LicensePlist */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				624D2F222B75E7F4007AE22A /* PBXTargetDependency */,
+				624D2F1F2B75E7B9007AE22A /* PBXTargetDependency */,
 				66AA1E001FC56519001C419E /* PBXTargetDependency */,
 			);
 			name = AppApp;
 			packageProductDependencies = (
-				666081B62407B7CB00001A9C /* Rswift */,
 				660B068424D05202003100EE /* SnapKit */,
 				624D2F132B75E683007AE22A /* Realm */,
 				624D2F152B75E683007AE22A /* RealmSwift */,
@@ -825,9 +822,10 @@
 			);
 			mainGroup = 667ECE0C1FC36784009233DE;
 			packageReferences = (
-				666081B52407B7CB00001A9C /* XCRemoteSwiftPackageReference "R.swift" */,
 				660B068324D05202003100EE /* XCRemoteSwiftPackageReference "SnapKit" */,
 				624D2F122B75E683007AE22A /* XCRemoteSwiftPackageReference "realm-swift" */,
+				624D2F1B2B75E78D007AE22A /* XCRemoteSwiftPackageReference "R" */,
+				624D2F202B75E7DC007AE22A /* XCRemoteSwiftPackageReference "LicensePlist" */,
 			);
 			productRefGroup = 667ECE161FC36784009233DE /* Products */;
 			projectDirPath = "";
@@ -900,45 +898,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		660D7A8B24091C1C00DEC2C8 /* LicensePlist */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = LicensePlist;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if mint list | grep -q \"LicensePlist\"; then\n  if [[ $CONFIGURATION = \"Debug\" ]]; then\n          xcrun --sdk macosx mint run LicensePlist license-plist --output-path ${SRCROOT}/AppApp/Resources/Settings.bundle \\\n      --config-path ${SRCROOT}/AppApp/Resources/license_plist.yml \\\n      --prefix xyz.uruly.AppApp \\\n      --suppress-opening-directory \\\n      --force\n  fi\nelse\n  echo \"error: LicensePlist not installed; run 'mint bootstrap' to install\"\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		666081B22407B00600001A9C /* R.swift */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$TEMP_DIR/rswift-lastrun",
-			);
-			name = R.swift;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				$SRCROOT/AppApp/Scripts/R.generated.swift,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if mint list | grep -q 'R.swift'; then\n      xcrun --sdk macosx mint run R.swift rswift generate \"$SRCROOT/AppApp/Scripts/R.generated.swift\"\nelse\n  echo \"error: R.swift not installed; run 'mint bootstrap' to install\"\n  return -1\nfi\n";
-		};
 		66686B6E2404520F005A22A3 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1039,6 +998,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		624D2F1F2B75E7B9007AE22A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 624D2F1E2B75E7B9007AE22A /* RswiftGenerateInternalResources */;
+		};
+		624D2F222B75E7F4007AE22A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 624D2F212B75E7F4007AE22A /* LicensePlistBuildTool */;
+		};
 		667ECE2B1FC36784009233DE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 667ECE141FC36784009233DE /* AppApp */;
@@ -1456,20 +1423,28 @@
 				kind = branch;
 			};
 		};
+		624D2F1B2B75E78D007AE22A /* XCRemoteSwiftPackageReference "R" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mac-cain13/R.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.5.0;
+			};
+		};
+		624D2F202B75E7DC007AE22A /* XCRemoteSwiftPackageReference "LicensePlist" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mono0926/LicensePlist";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.25.1;
+			};
+		};
 		660B068324D05202003100EE /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
 			requirement = {
 				kind = upToNextMinorVersion;
 				minimumVersion = 5.0.1;
-			};
-		};
-		666081B52407B7CB00001A9C /* XCRemoteSwiftPackageReference "R.swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/mac-cain13/R.swift.Library";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 5.1.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1495,15 +1470,20 @@
 			package = 624D2F122B75E683007AE22A /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
 		};
+		624D2F1E2B75E7B9007AE22A /* RswiftGenerateInternalResources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 624D2F1B2B75E78D007AE22A /* XCRemoteSwiftPackageReference "R" */;
+			productName = "plugin:RswiftGenerateInternalResources";
+		};
+		624D2F212B75E7F4007AE22A /* LicensePlistBuildTool */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 624D2F202B75E7DC007AE22A /* XCRemoteSwiftPackageReference "LicensePlist" */;
+			productName = "plugin:LicensePlistBuildTool";
+		};
 		660B068424D05202003100EE /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 660B068324D05202003100EE /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
-		};
-		666081B62407B7CB00001A9C /* Rswift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 666081B52407B7CB00001A9C /* XCRemoteSwiftPackageReference "R.swift" */;
-			productName = Rswift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
