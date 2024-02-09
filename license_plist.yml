@@ -1,0 +1,12 @@
+options:
+  outputPath: "./AppApp/Resources/Settings.bundle"
+  mintfilePath: Mintfile
+  podsPath: Pods
+  packagePaths:
+    - Package.swift
+  packageSourcesPath: "./SourcePackages"
+  xcodeprojPath: "*.xcodeproj"
+  xcworkspacePath: "*.xcworkspace"
+  prefix: xyz.uruly.AppApp
+  force: true
+  suppressOpeningDirectory: true

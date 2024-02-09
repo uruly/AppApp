@@ -1,25 +1,122 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "R.swift.Library",
-        "repositoryURL": "https://github.com/mac-cain13/R.swift.Library",
-        "state": {
-          "branch": null,
-          "revision": "4a09ece7d0a30edcd95462ce7d252dd4d3a49843",
-          "version": "5.1.0"
-        }
-      },
-      {
-        "package": "SnapKit",
-        "repositoryURL": "https://github.com/SnapKit/SnapKit",
-        "state": {
-          "branch": null,
-          "revision": "d458564516e5676af9c70b4f4b2a9178294f1bc6",
-          "version": "5.0.1"
-        }
+  "pins" : [
+    {
+      "identity" : "apikit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ishkawa/APIKit.git",
+      "state" : {
+        "revision" : "b839e53b870104798035b279d2a6168b0a2227b1",
+        "version" : "5.4.0"
       }
-    ]
-  },
-  "version": 1
+    },
+    {
+      "identity" : "heliumlogger",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Kitura/HeliumLogger.git",
+      "state" : {
+        "revision" : "fc2a71597ae974da5282d751bcc11965964bccce",
+        "version" : "2.0.0"
+      }
+    },
+    {
+      "identity" : "licenseplist",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mono0926/LicensePlist",
+      "state" : {
+        "revision" : "f3f802009c9f71ad46356adb453fcb57b8931ff9",
+        "version" : "3.25.1"
+      }
+    },
+    {
+      "identity" : "loggerapi",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Kitura/LoggerAPI.git",
+      "state" : {
+        "revision" : "4e6b45e850ffa275e8e26a24c6454fd709d5b6ac",
+        "version" : "2.0.0"
+      }
+    },
+    {
+      "identity" : "r.swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mac-cain13/R.swift",
+      "state" : {
+        "revision" : "384eab88d1a0b98ac96f4819e50a4308ecd5359f",
+        "version" : "7.5.0"
+      }
+    },
+    {
+      "identity" : "realm-core",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/realm/realm-core.git",
+      "state" : {
+        "revision" : "a5e87a39cffdcc591f3203c11cfca68100d0b9a6",
+        "version" : "13.26.0"
+      }
+    },
+    {
+      "identity" : "realm-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/realm/realm-swift",
+      "state" : {
+        "branch" : "master",
+        "revision" : "6b1b7a836625cca8feb0d8461d33842e05e0d0e0"
+      }
+    },
+    {
+      "identity" : "snapkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SnapKit/SnapKit",
+      "state" : {
+        "revision" : "d458564516e5676af9c70b4f4b2a9178294f1bc6",
+        "version" : "5.0.1"
+      }
+    },
+    {
+      "identity" : "swift-argument-parser",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-argument-parser",
+      "state" : {
+        "revision" : "c8ed701b513cf5177118a175d85fbbbcd707ab41",
+        "version" : "1.3.0"
+      }
+    },
+    {
+      "identity" : "swift-html-entities",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Kitura/swift-html-entities.git",
+      "state" : {
+        "revision" : "d8ca73197f59ce260c71bd6d7f6eb8bbdccf508b",
+        "version" : "4.0.1"
+      }
+    },
+    {
+      "identity" : "swift-log",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-log.git",
+      "state" : {
+        "revision" : "e97a6fcb1ab07462881ac165fdbb37f067e205d5",
+        "version" : "1.5.4"
+      }
+    },
+    {
+      "identity" : "xcodeedit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/tomlokhorst/XcodeEdit",
+      "state" : {
+        "revision" : "b6b67389a0f1a6fdd9c6457a8ab5b02eaab13c5c",
+        "version" : "2.9.2"
+      }
+    },
+    {
+      "identity" : "yams",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/jpsim/Yams.git",
+      "state" : {
+        "revision" : "0d9ee7ea8c4ebd4a489ad7a73d5c6cad55d6fed3",
+        "version" : "5.0.6"
+      }
+    }
+  ],
+  "version" : 2
 }
