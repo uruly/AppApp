@@ -5,10 +5,10 @@ disabled_rules:
 included:
   - AppApp
   - ShareFromAppStoreExtension
-
+  
 excluded:
-  - AppApp/Scripts/R.generated.swift
-  - Carthage
+  - SourcePackages
+  - Generated
 
 line_length: 200
 large_tuple: 5

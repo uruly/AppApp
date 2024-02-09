@@ -11,6 +11,10 @@
 		624D2F162B75E683007AE22A /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 624D2F152B75E683007AE22A /* RealmSwift */; };
 		624D2F182B75E6B9007AE22A /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 624D2F172B75E6B9007AE22A /* Realm */; };
 		624D2F1A2B75E6B9007AE22A /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 624D2F192B75E6B9007AE22A /* RealmSwift */; };
+		624D2F2E2B75EA2A007AE22A /* AppRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667C841A24D2C659002F5B22 /* AppRequest.swift */; };
+		624D2F3E2B75EBDF007AE22A /* AppRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667C841A24D2C659002F5B22 /* AppRequest.swift */; };
+		624D2F522B75EFE1007AE22A /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 624D2F512B75EFE1007AE22A /* RswiftLibrary */; };
+		624D2F542B75EFE6007AE22A /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 624D2F532B75EFE6007AE22A /* RswiftLibrary */; };
 		660B066C24D04AF2003100EE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B066A24D04AF2003100EE /* HomeViewController.swift */; };
 		660B066D24D04AF2003100EE /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 660B066B24D04AF2003100EE /* HomeViewController.xib */; };
 		660B067324D04F66003100EE /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B067124D04F66003100EE /* PageViewController.swift */; };
@@ -29,7 +33,6 @@
 		660B57771FCFDB1000DBC823 /* colorData.json in Resources */ = {isa = PBXBuildFile; fileRef = 660B57761FCFDB1000DBC823 /* colorData.json */; };
 		660B57BD1FD12A9B00DBC823 /* help.json in Resources */ = {isa = PBXBuildFile; fileRef = 660B57BC1FD12A9A00DBC823 /* help.json */; };
 		660D7A8F2409229E00DEC2C8 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 660D7A8E2409229E00DEC2C8 /* Settings.bundle */; };
-		660D7A912409275D00DEC2C8 /* license_plist.yml in Resources */ = {isa = PBXBuildFile; fileRef = 660D7A902409275D00DEC2C8 /* license_plist.yml */; };
 		6616499524D7E9CF00EE123B /* LabelSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6616499324D7E9CE00EE123B /* LabelSettingViewController.xib */; };
 		6616499624D7E9CF00EE123B /* LabelSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6616499424D7E9CE00EE123B /* LabelSettingViewController.swift */; };
 		6616499824D7EF3600EE123B /* UIColor+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6616499724D7EF3600EE123B /* UIColor+Random.swift */; };
@@ -61,7 +64,6 @@
 		662751BF24D9168B00BFE78F /* AppInfoListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 662751BD24D9168A00BFE78F /* AppInfoListCollectionViewCell.xib */; };
 		662751C224D916B100BFE78F /* ToolbarMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662751C124D916B100BFE78F /* ToolbarMode.swift */; };
 		662AAF5024139FB300283AF2 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662AAF4F24139FB300283AF2 /* DatabaseManager.swift */; };
-		666081B42407B54900001A9C /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666081B32407B54800001A9C /* R.generated.swift */; };
 		6662E14520024B1700FB30C7 /* backgroundImage.json in Resources */ = {isa = PBXBuildFile; fileRef = 6662E14420024B1700FB30C7 /* backgroundImage.json */; };
 		66686B712405019F005A22A3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66686B702405019F005A22A3 /* Constants.swift */; };
 		66686B7324052B37005A22A3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66686B702405019F005A22A3 /* Constants.swift */; };
@@ -72,7 +74,6 @@
 		6677FC261FCA7E0400CB105E /* VersionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6677FC251FCA7E0400CB105E /* VersionManager.swift */; };
 		6677FC281FCA7F2000CB105E /* CreateLabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6677FC271FCA7F2000CB105E /* CreateLabelViewController.swift */; };
 		6677FC2A1FCA882800CB105E /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6677FC291FCA882800CB105E /* ColorPicker.swift */; };
-		667C841B24D2C659002F5B22 /* AppRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667C841A24D2C659002F5B22 /* AppRequest.swift */; };
 		667C842524D2F3D1002F5B22 /* BottomModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667C842324D2F3D1002F5B22 /* BottomModalViewController.swift */; };
 		667C842624D2F3D1002F5B22 /* BottomModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 667C842424D2F3D1002F5B22 /* BottomModalViewController.xib */; };
 		667ECE191FC36784009233DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667ECE181FC36784009233DE /* AppDelegate.swift */; };
@@ -84,7 +85,7 @@
 		667ECE721FC4206F009233DE /* AppListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 667ECE701FC4206F009233DE /* AppListCollectionViewCell.xib */; };
 		66AA1DFA1FC56519001C419E /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AA1DF91FC56519001C419E /* ShareViewController.swift */; };
 		66AA1DFD1FC56519001C419E /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66AA1DFB1FC56519001C419E /* MainInterface.storyboard */; };
-		66AA1E011FC56519001C419E /* ShareFromAppStoreExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 66AA1DF71FC56519001C419E /* ShareFromAppStoreExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		66AA1E011FC56519001C419E /* ShareFromAppStoreExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 66AA1DF71FC56519001C419E /* ShareFromAppStoreExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		66AA1E091FC5900D001C419E /* LabelListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AA1E081FC5900D001C419E /* LabelListTableViewController.swift */; };
 		66E54DCD2413A59600069082 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E54DCC2413A59600069082 /* Label.swift */; };
 		66E54DCF2413A5E000069082 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E54DCE2413A5E000069082 /* App.swift */; };
@@ -115,22 +116,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		66AA1E051FC56519001C419E /* Embed App Extensions */ = {
+		66AA1E051FC56519001C419E /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				66AA1E011FC56519001C419E /* ShareFromAppStoreExtension.appex in Embed App Extensions */,
+				66AA1E011FC56519001C419E /* ShareFromAppStoreExtension.appex in Embed Foundation Extensions */,
 			);
-			name = "Embed App Extensions";
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		62E1A124271C3CC8006B3271 /* RealmSwift.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = RealmSwift.xcframework; path = Carthage/Build/RealmSwift.xcframework; sourceTree = "<group>"; };
-		62E1A125271C3CC8006B3271 /* Realm.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Realm.xcframework; path = Carthage/Build/Realm.xcframework; sourceTree = "<group>"; };
 		660B066A24D04AF2003100EE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		660B066B24D04AF2003100EE /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		660B067124D04F66003100EE /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
@@ -147,7 +146,6 @@
 		660B57E21FD19E7500DBC823 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		660B57E31FD19E7600DBC823 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/MainInterface.strings; sourceTree = "<group>"; };
 		660D7A8E2409229E00DEC2C8 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
-		660D7A902409275D00DEC2C8 /* license_plist.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = license_plist.yml; sourceTree = "<group>"; };
 		6616499324D7E9CE00EE123B /* LabelSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LabelSettingViewController.xib; sourceTree = "<group>"; };
 		6616499424D7E9CE00EE123B /* LabelSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelSettingViewController.swift; sourceTree = "<group>"; };
 		6616499724D7EF3600EE123B /* UIColor+Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Random.swift"; sourceTree = "<group>"; };
@@ -181,8 +179,6 @@
 		662AAF4F24139FB300283AF2 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		66498E231FC5A69B00239B47 /* ShareFromAppStoreExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareFromAppStoreExtension.entitlements; sourceTree = "<group>"; };
 		66498E241FC5A6D700239B47 /* AppApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AppApp.entitlements; sourceTree = "<group>"; };
-		665B394F24090B55007260A3 /* Carthage.xcfilelist */ = {isa = PBXFileReference; lastKnownFileType = text.xcfilelist; path = Carthage.xcfilelist; sourceTree = "<group>"; };
-		666081B32407B54800001A9C /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		6662E14420024B1700FB30C7 /* backgroundImage.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = backgroundImage.json; sourceTree = "<group>"; };
 		66686B702405019F005A22A3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		666E06B61FCBAC290043DCFF /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
@@ -207,11 +203,8 @@
 		667ECE341FC36784009233DE /* AppAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		667ECE381FC36784009233DE /* AppAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAppUITests.swift; sourceTree = "<group>"; };
 		667ECE3A1FC36784009233DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		667ECE4E1FC382B9009233DE /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
-		667ECE501FC382C7009233DE /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		667ECE6F1FC4206F009233DE /* AppListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppListCollectionViewCell.swift; sourceTree = "<group>"; };
 		667ECE701FC4206F009233DE /* AppListCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppListCollectionViewCell.xib; sourceTree = "<group>"; };
-		66983DF62005E8A0009C9AEF /* GoogleAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleAnalytics.framework; path = Carthage/Build/iOS/GoogleAnalytics.framework; sourceTree = "<group>"; };
 		66AA1DF71FC56519001C419E /* ShareFromAppStoreExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ShareFromAppStoreExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		66AA1DF91FC56519001C419E /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		66AA1DFC1FC56519001C419E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
@@ -227,6 +220,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				624D2F162B75E683007AE22A /* RealmSwift in Frameworks */,
+				624D2F542B75EFE6007AE22A /* RswiftLibrary in Frameworks */,
 				660B068524D05202003100EE /* SnapKit in Frameworks */,
 				624D2F142B75E683007AE22A /* Realm in Frameworks */,
 			);
@@ -252,6 +246,7 @@
 			files = (
 				624D2F1A2B75E6B9007AE22A /* RealmSwift in Frameworks */,
 				624D2F182B75E6B9007AE22A /* Realm in Frameworks */,
+				624D2F522B75EFE1007AE22A /* RswiftLibrary in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,12 +417,10 @@
 			isa = PBXGroup;
 			children = (
 				667ECE181FC36784009233DE /* AppDelegate.swift */,
-				666081B32407B54800001A9C /* R.generated.swift */,
 				662AAF4E24139F9800283AF2 /* Database */,
 				66686B6F2405018B005A22A3 /* Common */,
 				662751C024D9169700BFE78F /* Enumerations */,
 				666081742406484600001A9C /* Components */,
-				666081AD24064F7700001A9C /* Model */,
 				666081AC24064F6D00001A9C /* Entity */,
 				666081732406483A00001A9C /* UIViewController */,
 				66681CD41FCC08A6009A0F55 /* Extensions */,
@@ -442,9 +435,7 @@
 				66498E241FC5A6D700239B47 /* AppApp.entitlements */,
 				667ECE1F1FC36784009233DE /* Assets.xcassets */,
 				667ECE241FC36784009233DE /* Info.plist */,
-				660D7A902409275D00DEC2C8 /* license_plist.yml */,
 				660D7A8E2409229E00DEC2C8 /* Settings.bundle */,
-				665B394F24090B55007260A3 /* Carthage.xcfilelist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -564,14 +555,6 @@
 			path = Entity;
 			sourceTree = "<group>";
 		};
-		666081AD24064F7700001A9C /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				667C841A24D2C659002F5B22 /* AppRequest.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		66681CD41FCC08A6009A0F55 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -656,12 +639,7 @@
 		667ECE4D1FC382B9009233DE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				62E1A125271C3CC8006B3271 /* Realm.xcframework */,
-				62E1A124271C3CC8006B3271 /* RealmSwift.xcframework */,
-				66983DF62005E8A0009C9AEF /* GoogleAnalytics.framework */,
 				666E06C61FCBDE920043DCFF /* StoreKit.framework */,
-				667ECE501FC382C7009233DE /* RealmSwift.framework */,
-				667ECE4E1FC382B9009233DE /* Realm.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -674,6 +652,7 @@
 				66AA1E081FC5900D001C419E /* LabelListTableViewController.swift */,
 				6677FC271FCA7F2000CB105E /* CreateLabelViewController.swift */,
 				6677FC291FCA882800CB105E /* ColorPicker.swift */,
+				667C841A24D2C659002F5B22 /* AppRequest.swift */,
 				66AA1DFB1FC56519001C419E /* MainInterface.storyboard */,
 				66AA1DFE1FC56519001C419E /* Info.plist */,
 			);
@@ -691,7 +670,7 @@
 				667ECE121FC36784009233DE /* Frameworks */,
 				667ECE131FC36784009233DE /* Resources */,
 				66686B6E2404520F005A22A3 /* SwiftLint */,
-				66AA1E051FC56519001C419E /* Embed App Extensions */,
+				66AA1E051FC56519001C419E /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -705,6 +684,7 @@
 				660B068424D05202003100EE /* SnapKit */,
 				624D2F132B75E683007AE22A /* Realm */,
 				624D2F152B75E683007AE22A /* RealmSwift */,
+				624D2F532B75EFE6007AE22A /* RswiftLibrary */,
 			);
 			productName = AppApp;
 			productReference = 667ECE151FC36784009233DE /* AppApp.app */;
@@ -757,11 +737,13 @@
 			buildRules = (
 			);
 			dependencies = (
+				624D2F3B2B75EBC3007AE22A /* PBXTargetDependency */,
 			);
 			name = ShareFromAppStoreExtension;
 			packageProductDependencies = (
 				624D2F172B75E6B9007AE22A /* Realm */,
 				624D2F192B75E6B9007AE22A /* RealmSwift */,
+				624D2F512B75EFE1007AE22A /* RswiftLibrary */,
 			);
 			productName = ShareFromAppStoreExtension;
 			productReference = 66AA1DF71FC56519001C419E /* ShareFromAppStoreExtension.appex */;
@@ -773,8 +755,9 @@
 		667ECE0D1FC36784009233DE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 0910;
-				LastUpgradeCheck = 1300;
+				LastUpgradeCheck = 1500;
 				ORGANIZATIONNAME = "Reona Kubo";
 				TargetAttributes = {
 					667ECE141FC36784009233DE = {
@@ -864,7 +847,6 @@
 				667ECE201FC36784009233DE /* Assets.xcassets in Resources */,
 				660B066D24D04AF2003100EE /* HomeViewController.xib in Resources */,
 				6625396B24D81BF4006B2767 /* AppListViewController.xib in Resources */,
-				660D7A912409275D00DEC2C8 /* license_plist.yml in Resources */,
 				662751B524D9161B00BFE78F /* ColorSetCollectionViewCell.xib in Resources */,
 				660B068924D0541B003100EE /* AppsViewController.xib in Resources */,
 				6625398324D833C0006B2767 /* AppInformationTableViewCell.xib in Resources */,
@@ -900,6 +882,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		66686B6E2404520F005A22A3 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -914,7 +897,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which mint >/dev/null; then\n    xcrun --sdk macosx mint run swiftlint swiftlint autocorrect --format\n    xcrun --sdk macosx mint run swiftlint swiftlint\nelse\n  echo \"warning: Mint not installed, download from https://github.com/yonaskolb/Mint\"\nfi\n";
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which mint >/dev/null; then\n  xcrun --sdk macosx mint run swiftlint swiftlint --fix\n  xcrun --sdk macosx mint run swiftlint swiftlint\nelse\n  echo \"warning: Mint not installed, download from https://github.com/yonaskolb/Mint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -925,7 +908,6 @@
 			files = (
 				660B067724D04FA3003100EE /* LabelCollectionViewController.swift in Sources */,
 				666E06B71FCBAC290043DCFF /* WebViewController.swift in Sources */,
-				666081B42407B54900001A9C /* R.generated.swift in Sources */,
 				660B067F24D05155003100EE /* UIColor+TextColor.swift in Sources */,
 				660B066C24D04AF2003100EE /* HomeViewController.swift in Sources */,
 				661649B524D7F30D00EE123B /* CloseableTextField.swift in Sources */,
@@ -944,8 +926,8 @@
 				666E06C31FCBC1E50043DCFF /* PassThroughIndicator.swift in Sources */,
 				667C842524D2F3D1002F5B22 /* BottomModalViewController.swift in Sources */,
 				6677FC261FCA7E0400CB105E /* VersionManager.swift in Sources */,
+				624D2F3E2B75EBDF007AE22A /* AppRequest.swift in Sources */,
 				6625396624D81904006B2767 /* LabelSettingAdditionalTableViewCell.swift in Sources */,
-				667C841B24D2C659002F5B22 /* AppRequest.swift in Sources */,
 				661649B924D7F5A800EE123B /* ColorPickerViewController.swift in Sources */,
 				662751C224D916B100BFE78F /* ToolbarMode.swift in Sources */,
 				6625396F24D81D0D006B2767 /* AppListTableViewCell.swift in Sources */,
@@ -985,6 +967,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				66AA1E091FC5900D001C419E /* LabelListTableViewController.swift in Sources */,
+				624D2F2E2B75EA2A007AE22A /* AppRequest.swift in Sources */,
 				660B068D24D07F69003100EE /* DatabaseManager.swift in Sources */,
 				660B068C24D07EA5003100EE /* Label.swift in Sources */,
 				660B068B24D07EA2003100EE /* App.swift in Sources */,
@@ -1005,6 +988,10 @@
 		624D2F222B75E7F4007AE22A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			productRef = 624D2F212B75E7F4007AE22A /* LicensePlistBuildTool */;
+		};
+		624D2F3B2B75EBC3007AE22A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 624D2F3A2B75EBC3007AE22A /* RswiftGenerateInternalResources */;
 		};
 		667ECE2B1FC36784009233DE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1053,7 +1040,7 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LIBRARY = "";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
@@ -1083,6 +1070,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1114,7 +1102,7 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LIBRARY = "";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
@@ -1144,6 +1132,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1172,17 +1161,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.1.0;
 				DEVELOPMENT_TEAM = Q2UN54KG3Y;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = AppApp/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.uruly.AppApp;
@@ -1207,17 +1190,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.1.0;
 				DEVELOPMENT_TEAM = Q2UN54KG3Y;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = AppApp/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.uruly.AppApp;
@@ -1320,17 +1297,10 @@
 				CODE_SIGN_ENTITLEMENTS = ShareFromAppStoreExtension/ShareFromAppStoreExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q2UN54KG3Y;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = ShareFromAppStoreExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.uruly.AppApp.ShareFromAppStoreExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1345,17 +1315,10 @@
 				CODE_SIGN_ENTITLEMENTS = ShareFromAppStoreExtension/ShareFromAppStoreExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q2UN54KG3Y;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = ShareFromAppStoreExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.uruly.AppApp.ShareFromAppStoreExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1472,13 +1435,26 @@
 		};
 		624D2F1E2B75E7B9007AE22A /* RswiftGenerateInternalResources */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 624D2F1B2B75E78D007AE22A /* XCRemoteSwiftPackageReference "R" */;
 			productName = "plugin:RswiftGenerateInternalResources";
 		};
 		624D2F212B75E7F4007AE22A /* LicensePlistBuildTool */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 624D2F202B75E7DC007AE22A /* XCRemoteSwiftPackageReference "LicensePlist" */;
 			productName = "plugin:LicensePlistBuildTool";
+		};
+		624D2F3A2B75EBC3007AE22A /* RswiftGenerateInternalResources */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = "plugin:RswiftGenerateInternalResources";
+		};
+		624D2F512B75EFE1007AE22A /* RswiftLibrary */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 624D2F1B2B75E78D007AE22A /* XCRemoteSwiftPackageReference "R" */;
+			productName = RswiftLibrary;
+		};
+		624D2F532B75EFE6007AE22A /* RswiftLibrary */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 624D2F1B2B75E78D007AE22A /* XCRemoteSwiftPackageReference "R" */;
+			productName = RswiftLibrary;
 		};
 		660B068424D05202003100EE /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;

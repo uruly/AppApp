@@ -7,6 +7,6 @@ options:
   packageSourcesPath: "./SourcePackages"
   xcodeprojPath: "*.xcodeproj"
   xcworkspacePath: "*.xcworkspace"
-  prefix: xyz.uruly.App.App
+  prefix: xyz.uruly.AppApp
   force: true
   suppressOpeningDirectory: true
